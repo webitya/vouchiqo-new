@@ -25,7 +25,7 @@ import Logo from "./Logo";
 const MOBILE_NAV_LINKS = [
   { href: "/brands", icon: Store, label: "Brands" },
   { href: "/categories", icon: LayoutGrid, label: "Categories" },
-  { href: "/campaigns", icon: Flame, label: "Trending" },
+  { href: "/trending", icon: Flame, label: "Trending" },
   { href: "/nearby-offers", icon: MapPin, label: "Nearby Map" },
 ];
 
@@ -233,7 +233,7 @@ export const MobileMenu = () => {
       {/* Burger Toggle Button: visible below lg (<1024px) */}
       <button
         onClick={() => setIsOpen(true)}
-        className="p-1 sm:p-1.5 text-slate-700 hover:text-slate-900 transition cursor-pointer bg-transparent border-0 rounded-lg hover:bg-slate-100 flex items-center justify-center"
+        className="p-1 sm:p-1.5 text-[#FFF8EF] hover:text-[#FFD166] transition cursor-pointer bg-transparent border-0 rounded-lg hover:bg-white/10 flex items-center justify-center"
         aria-label="Open navigation menu"
       >
         <Menu className="h-5 w-5 sm:h-5.5 sm:w-5.5" />

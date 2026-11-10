@@ -73,7 +73,7 @@ export function AuthCard({
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-brand-surface text-brand-text font-sans antialiased">
+    <div className="min-h-screen flex flex-col bg-[#FFFDF9] text-[#35104A] font-sans antialiased">
       {/* Sticky Top Navbar */}
       <Navbar />
 
@@ -81,27 +81,51 @@ export function AuthCard({
       <main className="flex-1 flex flex-col justify-center items-center py-8 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 w-full max-w-[1440px] mx-auto">
         {/* Compact split-card container with less border radius (rounded-2xl) */}
         <div
-          className={`w-full ${maxWidth} bg-white dark:bg-zinc-950 border border-brand-border dark:border-zinc-800 rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[460px] md:min-h-[500px] my-auto`}
+          className={`w-full ${maxWidth} bg-white border border-[#EADBCE] rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[460px] md:min-h-[500px] my-auto`}
         >
           {/* Left Visual Panel: Brand gradient theme */}
           <div
-            className="hidden md:flex md:col-span-5 relative overflow-hidden bg-gradient-to-br from-[#35104A] via-[#1D062B] to-[#007F79] select-none items-center justify-center p-8"
+            className="hidden md:flex md:col-span-5 relative overflow-hidden bg-gradient-to-br from-[#35104A] via-[#210830] to-[#007F79] select-none items-center justify-center p-8 text-left"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(#FFD166_1px,transparent_1px)] [background-size:16px_16px] opacity-15" />
-            <div className="relative text-center text-white space-y-2">
-              <span className="text-2xl font-black font-heading tracking-wider block text-warm-ivory">VOUCHIQO</span>
-              <span className="text-[11px] font-medium text-golden-glow tracking-widest uppercase block">Verified Deals. Real Savings.</span>
+            <div className="absolute inset-0 bg-[radial-gradient(#FFD166_1px,transparent_1px)] [background-size:18px_18px] opacity-15 pointer-events-none" />
+            <div className="absolute -top-16 -right-16 w-44 h-44 rounded-full bg-[#007F79]/30 blur-2xl pointer-events-none" />
+            <div className="absolute -bottom-16 -left-16 w-44 h-44 rounded-full bg-[#FF2E63]/25 blur-2xl pointer-events-none" />
+
+            <div className="relative z-10 text-white space-y-4 max-w-xs">
+              <div>
+                <span className="text-2xl font-black font-heading tracking-wider block text-white">
+                  VOUCHIQO
+                </span>
+                <span className="text-[10.5px] font-heading font-bold text-[#FFD166] tracking-widest uppercase block mt-1">
+                  Verified Deals · Real Savings
+                </span>
+              </div>
+
+              <div className="space-y-2.5 pt-3 border-t border-white/15 text-xs text-[#FFF8EF]/90 font-medium">
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFD166] shrink-0" />
+                  <span>Verified discount coupons daily</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FF2E63] shrink-0" />
+                  <span>Exclusive member flash price drops</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#007F79] shrink-0" />
+                  <span>Instant 1-click codes &amp; zero fees</span>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Right Form Panel: Compact, clean sans typography */}
-          <div className="col-span-1 md:col-span-7 bg-white dark:bg-zinc-950 p-6 md:p-8 flex flex-col">
+          <div className="col-span-1 md:col-span-7 bg-white p-6 md:p-8 flex flex-col justify-center">
             {/* Header: Title and subtitle with brand fonts */}
             <div>
-              <h2 className="text-2xl font-bold font-heading text-royal-plum dark:text-white tracking-tight leading-none">
+              <h2 className="text-2xl sm:text-[26px] font-bold font-heading text-[#35104A] tracking-tight leading-none">
                 {getDisplayTitle(title)}
               </h2>
-              <p className="text-xs text-slate-450 dark:text-slate-400 mt-2 font-normal">
+              <p className="text-xs text-[#6B4C82] mt-2 font-sans font-medium">
                 {getSubtitles(title)}
               </p>
             </div>
@@ -110,7 +134,7 @@ export function AuthCard({
             <div className="flex-1 flex flex-col justify-center mt-6">
               {loading ? (
                 <div className="flex justify-center items-center py-8">
-                  <Loader2 className="w-5 h-5 animate-spin text-brand-blue" />
+                  <Loader2 className="w-5 h-5 animate-spin text-[#007F79]" />
                 </div>
               ) : (
                 children

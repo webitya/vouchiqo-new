@@ -82,37 +82,37 @@ export default function BrandStats({
       label: "Active Deals",
       value: `${totalOffersCount || 0}`,
       Icon: Tag,
-      iconColor: "text-festival-teal",
-      bgColor: "bg-festival-teal/10",
+      iconColor: "text-[#007F79]",
+      bgColor: "bg-[#007F79]/10",
     },
     {
       label: "Best Discount",
       value: discountLabel,
       Icon: Percent,
-      iconColor: "text-emerald-600",
-      bgColor: "bg-emerald-50/80",
+      iconColor: "text-[#FF2E63]",
+      bgColor: "bg-[#FF2E63]/10",
     },
     {
       label: "Channel",
       value: channelName,
       Icon: Store,
-      iconColor: "text-purple-600",
-      bgColor: "bg-purple-50/80",
+      iconColor: "text-[#35104A]",
+      bgColor: "bg-[#35104A]/10",
     },
     {
       label: "Category",
       value: categoryName,
       Icon: LayoutGrid,
-      iconColor: "text-amber-600",
-      bgColor: "bg-amber-50/80",
+      iconColor: "text-[#FF8C05]",
+      bgColor: "bg-[#FF8C05]/10",
     },
   ];
 
   return (
     <>
-      {/* ── Mobile Layout (< lg): Compact divide-x bar as seen on linen-club ── */}
-      <div className="block lg:hidden w-full bg-white border border-slate-200/80 rounded-2xl p-3 sm:p-4 shadow-2xs font-sans">
-        <div className="grid grid-cols-4 divide-x divide-slate-100 text-left">
+      {/* ── Mobile Layout (< lg): Compact divide-x bar in Brand Colors ── */}
+      <div className="block lg:hidden w-full bg-[#FFF8EF] border border-[#EADBCE] rounded-xl p-2.5 sm:p-3 shadow-2xs font-sans">
+        <div className="grid grid-cols-4 divide-x divide-[#EADBCE] text-left">
           {stats.map((s, idx) => {
             const IconComp = s.Icon;
             return (
@@ -120,23 +120,23 @@ export default function BrandStats({
                 key={s.label}
                 className={`flex flex-col justify-between ${
                   idx === 0
-                    ? "pr-2 sm:pr-4"
+                    ? "pr-1.5 sm:pr-3"
                     : idx === 3
-                      ? "pl-2 sm:pl-4"
-                      : "px-2 sm:px-4"
+                      ? "pl-1.5 sm:pl-3"
+                      : "px-1.5 sm:px-3"
                 }`}
               >
                 <div
-                  className={`w-7.5 h-7.5 sm:w-8.5 sm:h-8.5 rounded-lg ${s.bgColor} flex items-center justify-center shrink-0 shadow-2xs`}
+                  className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg ${s.bgColor} flex items-center justify-center shrink-0 shadow-2xs`}
                 >
                   <IconComp
                     className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${s.iconColor}`}
                   />
                 </div>
-                <span className="text-[10px] sm:text-xs font-normal text-slate-500 mt-2 block whitespace-nowrap truncate">
+                <span className="text-[9.5px] sm:text-[11px] font-heading font-bold text-[#6B4C82] uppercase mt-1.5 block whitespace-nowrap truncate">
                   {s.label}
                 </span>
-                <span className="text-xs sm:text-base font-bold text-slate-900 mt-0.5 block truncate">
+                <span className="text-xs sm:text-sm font-heading font-bold text-[#35104A] mt-0.5 block truncate">
                   {s.value}
                 </span>
               </div>
@@ -145,27 +145,27 @@ export default function BrandStats({
         </div>
       </div>
 
-      {/* ── Desktop Layout (lg: and above): 4 Separate Hoverable Cards matching hammer ── */}
-      <div className="hidden lg:grid grid-cols-4 gap-3 text-left font-sans">
+      {/* ── Desktop Layout (lg: and above): Compact Brand Cards ── */}
+      <div className="hidden lg:grid grid-cols-4 gap-2.5 text-left font-sans">
         {stats.map((s) => {
           const IconComp = s.Icon;
           return (
             <div
               key={s.label}
-              className="bg-white border border-slate-200/80 rounded-2xl p-3.5 shadow-2xs hover:shadow-md transition-all hover:border-festival-teal/40 flex items-center justify-between"
+              className="bg-[#FFF8EF] border border-[#EADBCE] rounded-xl p-2.5 sm:p-3 shadow-2xs hover:shadow-xs transition-all hover:border-[#007F79] flex items-center justify-between"
             >
               <div>
-                <span className="text-[10px] font-normal text-slate-400 uppercase tracking-wider block">
+                <span className="text-[9.5px] font-heading font-bold text-[#6B4C82] uppercase tracking-wider block">
                   {s.label}
                 </span>
-                <span className="text-[13.5px] font-medium text-slate-800 mt-0.5 block capitalize truncate max-w-[110px]">
+                <span className="text-[13px] font-heading font-bold text-[#35104A] mt-0.5 block capitalize truncate max-w-[110px]">
                   {s.value}
                 </span>
               </div>
               <div
-                className={`w-8.5 h-8.5 rounded-xl ${s.bgColor} flex items-center justify-center shrink-0`}
+                className={`w-7.5 h-7.5 rounded-lg ${s.bgColor} flex items-center justify-center shrink-0`}
               >
-                <IconComp className={`w-4 h-4 ${s.iconColor}`} />
+                <IconComp className={`w-3.5 h-3.5 ${s.iconColor}`} />
               </div>
             </div>
           );

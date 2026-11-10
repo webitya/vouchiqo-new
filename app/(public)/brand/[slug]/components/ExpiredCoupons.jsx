@@ -13,8 +13,8 @@ export default function ExpiredCoupons({
   if (expiredCoupons.length === 0) return null;
 
   return (
-    <div className="space-y-3 pt-4">
-      <h3 className="text-xs sm:text-[13px] font-medium text-[#FF2E63] uppercase tracking-wider text-left">
+    <div className="space-y-2.5 pt-3 font-sans">
+      <h3 className="text-xs sm:text-[13px] font-heading font-bold text-[#FF2E63] uppercase tracking-wider text-left">
         Expired Offers
       </h3>
       <div className="space-y-2">
@@ -25,30 +25,30 @@ export default function ExpiredCoupons({
           return (
             <div
               key={coupon._id}
-              className="bg-white border border-[#e2e8f0] rounded-xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 relative overflow-hidden"
+              className="bg-[#FFF8EF] border border-[#EADBCE] rounded-xl p-3 sm:p-3.5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 relative overflow-hidden"
             >
               <div className="space-y-1 text-left">
                 <div className="flex items-center gap-2">
                   {coupon.code && (
-                    <span className="font-mono text-xs bg-[#f1f5f9] px-2 py-0.5 rounded text-slate-400 line-through">
+                    <span className="font-mono text-xs bg-[#FFFDF9] px-2 py-0.5 rounded text-[#35104A]/60 line-through border border-[#EADBCE]">
                       {coupon.code}
                     </span>
                   )}
-                  <span className="bg-[#fef2f2] text-[#ef4444] border border-[#fee2e2] px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-wider">
+                  <span className="bg-[#FF2E63]/10 text-[#FF2E63] border border-[#FF2E63]/20 px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider font-heading">
                     Expired
                   </span>
                 </div>
-                <h4 className="text-sm font-bold text-slate-700">
+                <h4 className="text-sm font-heading font-bold text-[#35104A]">
                   {coupon.title}
                 </h4>
-                <p className="text-[11px] text-[#6b7280] leading-snug">
+                <p className="text-[11px] text-[#6B4C82] leading-snug">
                   {coupon.description}
                 </p>
               </div>
 
               <div className="flex-shrink-0 self-stretch sm:self-auto flex items-center justify-end">
                 {isSuccess ? (
-                  <div className="flex items-center gap-1.5 text-xs text-[#2f855a] font-bold bg-[#eaf5ec] border border-[#c6f6d5] px-4 py-2 rounded-lg">
+                  <div className="flex items-center gap-1.5 text-xs text-[#007F79] font-bold bg-[#007F79]/10 border border-[#007F79]/20 px-3.5 py-1.5 rounded-lg font-heading">
                     <CheckCircle2 className="w-4 h-4" />
                     <span>Revival Vote Counted</span>
                   </div>
@@ -57,7 +57,7 @@ export default function ExpiredCoupons({
                     disabled={isLoading}
                     onClick={() => onRevive(coupon._id)}
                     type="button"
-                    className="bg-[#FF2E63] hover:bg-[#E02253] text-white text-xs font-heading font-bold py-2 px-4 rounded-lg flex items-center gap-1.5 border-0 cursor-pointer disabled:opacity-50 transition-colors shadow-2xs"
+                    className="bg-[#FF2E63] hover:bg-[#35104A] text-white text-xs font-heading font-bold py-2 px-3.5 rounded-lg flex items-center gap-1.5 border-0 cursor-pointer disabled:opacity-50 transition-colors shadow-2xs"
                   >
                     {isLoading ? (
                       <>

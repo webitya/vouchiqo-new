@@ -19,7 +19,6 @@ import {
   RefreshCw,
   Search,
   Sliders,
-  Sparkles,
   Trash2,
   TrendingUp,
   Upload,

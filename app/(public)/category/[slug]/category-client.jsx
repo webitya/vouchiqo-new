@@ -27,7 +27,6 @@ import {
   Shirt,
   ShoppingCart,
   SlidersHorizontal,
-  Sparkles,
   Tag,
   Utensils,
   Wrench,

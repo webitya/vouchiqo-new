@@ -12,8 +12,7 @@ export default function ExpiredOfferCard({
 
   return (
     <div
-      className="bg-white border border-brand-border/60 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 opacity-70"
-      style={{ fontFamily: "var(--font-sans), sans-serif" }}
+      className="bg-[#FFF8EF] border border-[#EADBCE] rounded-xl p-3 sm:p-3.5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 opacity-75 font-sans"
     >
       <div className="space-y-1 text-left">
         <div className="flex items-center gap-2">

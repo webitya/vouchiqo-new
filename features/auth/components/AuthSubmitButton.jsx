@@ -16,7 +16,7 @@ export function AuthSubmitButton({
       type="submit"
       disabled={isPending}
       className={cn(
-        "w-full bg-brand-blue hover:bg-festival-teal active:scale-[0.98] text-white rounded-md py-2 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-1.5 border-0 h-auto cursor-pointer shadow-none disabled:opacity-50 disabled:pointer-events-none mt-1",
+        "w-full bg-[#007F79] hover:bg-[#35104A] active:scale-[0.98] text-white rounded-xl py-2.5 text-sm font-heading font-bold transition-all duration-200 flex items-center justify-center gap-2 border-0 h-auto cursor-pointer shadow-2xs disabled:opacity-50 disabled:pointer-events-none mt-1.5",
         className,
       )}
     >

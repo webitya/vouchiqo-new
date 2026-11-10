@@ -22,32 +22,32 @@ export default function KPICard({
   variant = "default",
 }) {
   const variantStyles = {
-    rose: "bg-gradient-to-br from-rose-50/70 via-white to-pink-50/20 border-rose-200/70 hover:border-[#FF2E63] hover:shadow-[0_8px_20px_rgba(247,40,83,0.12)]",
-    emerald: "bg-gradient-to-br from-emerald-50/70 via-white to-teal-50/20 border-emerald-200/70 hover:border-emerald-400 hover:shadow-[0_8px_20px_rgba(16,185,129,0.12)]",
-    blue: "bg-gradient-to-br from-warm-ivory via-white to-warm-ivory/50 border-brand-border/70 hover:border-festival-teal hover:shadow-[0_8px_20px_rgba(0,127,121,0.12)]",
-    amber: "bg-gradient-to-br from-amber-50/70 via-white to-orange-50/20 border-amber-200/70 hover:border-amber-400 hover:shadow-[0_8px_20px_rgba(245,158,11,0.12)]",
-    purple: "bg-gradient-to-br from-purple-50/70 via-white to-fuchsia-50/20 border-purple-200/70 hover:border-purple-400 hover:shadow-[0_8px_20px_rgba(168,85,247,0.12)]",
-    default: "bg-white border-slate-200/90 hover:border-[#FF2E63]/60 hover:shadow-[0_8px_20px_rgba(247,40,83,0.08)]",
+    rose: "bg-gradient-to-br from-[#FF2E63]/5 via-[#FFFDF9] to-[#FF2E63]/10 border-[#EADBCE] hover:border-[#FF2E63] hover:shadow-[0_8px_20px_rgba(255,46,99,0.12)]",
+    emerald: "bg-gradient-to-br from-[#007F79]/5 via-[#FFFDF9] to-[#007F79]/10 border-[#EADBCE] hover:border-[#007F79] hover:shadow-[0_8px_20px_rgba(0,127,121,0.12)]",
+    blue: "bg-gradient-to-br from-[#007F79]/5 via-[#FFFDF9] to-[#FFD166]/10 border-[#EADBCE] hover:border-[#007F79] hover:shadow-[0_8px_20px_rgba(0,127,121,0.12)]",
+    amber: "bg-gradient-to-br from-[#FFD166]/10 via-[#FFFDF9] to-[#FF8C05]/10 border-[#EADBCE] hover:border-[#FF8C05] hover:shadow-[0_8px_20px_rgba(255,140,5,0.12)]",
+    purple: "bg-gradient-to-br from-[#35104A]/5 via-[#FFFDF9] to-[#35104A]/10 border-[#EADBCE] hover:border-[#35104A] hover:shadow-[0_8px_20px_rgba(53,16,74,0.12)]",
+    default: "bg-[#FFFDF9] border-[#EADBCE] hover:border-[#007F79] hover:shadow-[0_8px_20px_rgba(53,16,74,0.08)]",
   };
 
   const iconVariantStyles = {
-    rose: "bg-rose-50 text-[#FF2E63] border-rose-200/60",
-    emerald: "bg-emerald-50 text-emerald-600 border-emerald-200/60",
-    blue: "bg-festival-teal/10 text-festival-teal border-brand-border",
-    amber: "bg-amber-50 text-amber-600 border-amber-200/60",
-    purple: "bg-purple-50 text-purple-600 border-purple-200/60",
-    default: "bg-slate-50 text-slate-600 border-slate-200/60",
+    rose: "bg-[#FF2E63]/10 text-[#FF2E63] border-[#FF2E63]/20",
+    emerald: "bg-[#007F79]/10 text-[#007F79] border-[#007F79]/20",
+    blue: "bg-[#007F79]/10 text-[#007F79] border-[#007F79]/20",
+    amber: "bg-[#FF8C05]/10 text-[#FF8C05] border-[#FF8C05]/20",
+    purple: "bg-[#35104A]/10 text-[#35104A] border-[#35104A]/20",
+    default: "bg-[#35104A]/10 text-[#35104A] border-[#35104A]/20",
   };
 
   const trendVariantStyles = {
-    rose: "text-[#FF2E63] bg-rose-50/90 border-rose-100",
-    emerald: "text-emerald-700 bg-emerald-50/90 border-emerald-100",
-    blue: "text-festival-teal bg-warm-ivory border-brand-border",
-    amber: "text-amber-700 bg-amber-50/90 border-amber-100",
-    purple: "text-purple-700 bg-purple-50/90 border-purple-100",
+    rose: "text-[#FF2E63] bg-[#FF2E63]/10 border-[#FF2E63]/20",
+    emerald: "text-[#007F79] bg-[#007F79]/10 border-[#007F79]/20",
+    blue: "text-[#007F79] bg-[#007F79]/10 border-[#007F79]/20",
+    amber: "text-[#FF8C05] bg-[#FF8C05]/10 border-[#FF8C05]/20",
+    purple: "text-[#35104A] bg-[#35104A]/10 border-[#35104A]/20",
     default: isPositive
-      ? "text-emerald-700 bg-emerald-50/90 border-emerald-100"
-      : "text-rose-700 bg-rose-50/90 border-rose-100",
+      ? "text-[#007F79] bg-[#007F79]/10 border-[#007F79]/20"
+      : "text-[#FF2E63] bg-[#FF2E63]/10 border-[#FF2E63]/20",
   };
 
   const cardContent = (
@@ -73,7 +73,7 @@ export default function KPICard({
             {/* Header: Title & Icon Badge */}
             <div className="flex items-center justify-between gap-1.5">
               <span
-                className="text-[9.5px] sm:text-[10.5px] font-medium text-slate-500 uppercase tracking-wider block truncate max-w-[calc(100%-1.75rem)]"
+                className="text-[10px] sm:text-[11px] font-heading font-semibold text-[#6B4C82] uppercase tracking-wider block truncate max-w-[calc(100%-1.75rem)]"
                 title={title}
               >
                 {title}
@@ -93,14 +93,14 @@ export default function KPICard({
 
             {/* Metric Value */}
             <div>
-              <span className="text-base sm:text-xl font-medium text-slate-900 tracking-tight leading-none block">
+              <span className="text-lg sm:text-2xl font-heading font-semibold text-[#35104A] tracking-tight leading-none block">
                 {value}
               </span>
             </div>
 
             {/* Subtitle / Helper Label */}
             {subtitle && (
-              <p className="text-[10.5px] font-normal text-slate-500 capitalize leading-tight">
+              <p className="text-[10.5px] font-sans text-[#6B4C82] capitalize leading-tight">
                 {subtitle}
               </p>
             )}
@@ -110,7 +110,7 @@ export default function KPICard({
               {change !== undefined && change !== null && (
                 <span
                   className={cn(
-                    "inline-flex items-center gap-0.5 text-[9px] sm:text-[10px] font-medium px-1.5 py-0.5 rounded-md border",
+                    "inline-flex items-center gap-0.5 text-[9px] sm:text-[10px] font-heading font-semibold px-1.5 py-0.5 rounded-md border",
                     trendVariantStyles[variant] || trendVariantStyles.default,
                   )}
                 >
@@ -127,7 +127,7 @@ export default function KPICard({
               )}
 
               {timeFrame && (
-                <span className="text-slate-400 text-[9px] sm:text-[10px] truncate">
+                <span className="text-[#6B4C82] font-sans text-[9px] sm:text-[10px] truncate">
                   {timeFrame}
                 </span>
               )}

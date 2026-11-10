@@ -713,17 +713,17 @@ export function AppSidebar({ ...props }) {
     <Sidebar
       collapsible="icon"
       side="left"
-      className="bg-white text-slate-900 border-r border-slate-200 shadow-sm font-sans"
+      className="bg-[#FFFDF9] text-[#35104A] border-r border-[#EADBCE] font-sans"
       {...props}
     >
-      <SidebarHeader className="!flex-row !gap-0 h-14 sm:h-[60px] flex items-center justify-between border-b border-rose-100/90 bg-rose-50/70 px-3.5 py-0 shrink-0">
+      <SidebarHeader className="!flex-row !gap-0 h-14 sm:h-[60px] flex items-center justify-between border-b border-[#EADBCE] bg-[#FFF8EF] px-3.5 py-0 shrink-0">
         <div
           className={`flex items-center gap-2.5 flex-1 min-w-0 ${isCollapsed ? "justify-center" : ""}`}
         >
           {/* Logo & Identity in Left */}
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[7px] border border-rose-200/80 bg-white overflow-hidden shadow-2xs">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#EADBCE] bg-white overflow-hidden shadow-2xs">
             {role === "admin" ? (
-              <div className="w-full h-full bg-gradient-to-br from-[#35104A] via-[#1D062B] to-[#007F79] flex items-center justify-center rounded-[7px]">
+              <div className="w-full h-full bg-gradient-to-br from-[#35104A] via-[#1D062B] to-[#007F79] flex items-center justify-center rounded-full">
                 <ShieldCheck className="w-5 h-5 text-white stroke-[2.2]" />
               </div>
             ) : role === "merchant" ? (
@@ -733,31 +733,44 @@ export function AppSidebar({ ...props }) {
                   alt={merchantName || "Merchant Logo"}
                   width={36}
                   height={36}
-                  className="w-full h-full object-contain p-0.5 bg-white"
+                  className="w-full h-full object-cover rounded-full"
                 />
               ) : (
-                <div className="w-full h-full bg-gradient-to-br from-[#FF2E63] to-rose-600 flex items-center justify-center rounded-[7px]">
+                <div className="w-full h-full bg-gradient-to-br from-[#FF2E63] to-rose-600 flex items-center justify-center rounded-full">
                   <Store className="w-4.5 h-4.5 text-white stroke-[2]" />
                 </div>
               )
             ) : (
-              <div className="w-full h-full bg-rose-50 border border-rose-200/80 flex items-center justify-center rounded-[7px]">
-                <Image
-                  src="/favicon.ico"
-                  alt="Vouchiqo Logo"
-                  width={22}
-                  height={22}
-                  className="w-5.5 h-5.5 object-contain"
+              (user?.image || user?.avatar || authUser?.image) ? (
+                <SafeImage
+                  src={user?.image || user?.avatar || authUser?.image}
+                  alt={user?.name || authUser?.name || "User"}
+                  width={36}
+                  height={36}
+                  className="w-full h-full object-cover rounded-full"
                 />
-              </div>
+              ) : (
+                <div className="w-full h-full bg-[#007F79]/10 text-[#007F79] font-heading font-semibold text-xs uppercase flex items-center justify-center rounded-full">
+                  {(authUser?.name || user?.name || "User")
+                    .split(" ")
+                    .map((w) => w[0])
+                    .join("")
+                    .slice(0, 2)
+                    .toUpperCase()}
+                </div>
+              )
             )}
           </div>
 
           {/* User Name & Role Badge in Middle */}
           {!isCollapsed && (
             <div className="flex flex-col text-left leading-tight min-w-0 flex-1">
-              <span className="text-[13px] font-medium tracking-tight truncate text-slate-900">
-                {role === "admin" ? "Super Admin" : merchantName}
+              <span className="text-[13px] font-heading font-semibold tracking-tight truncate text-[#35104A]">
+                {role === "admin"
+                  ? "Super Admin"
+                  : role === "merchant"
+                    ? merchantName
+                    : authUser?.name || "Member"}
               </span>
               <div className="flex items-center gap-1 mt-0.5">
                 {role === "admin" ? (
@@ -787,11 +800,11 @@ export function AppSidebar({ ...props }) {
                       </a>
                     )}
                   </div>
-                ) : (
-                  <span className="bg-slate-100 text-slate-700 border border-slate-200 text-[8.5px] font-normal px-1.5 py-0.5 rounded-[7px] inline-block">
-                    MEMBER
+                ) : authUser?.email ? (
+                  <span className="text-[10.5px] font-sans text-[#6B4C82] truncate">
+                    {authUser.email}
                   </span>
-                )}
+                ) : null}
               </div>
             </div>
           )}
@@ -803,7 +816,7 @@ export function AppSidebar({ ...props }) {
             variant="ghost"
             size="icon-sm"
             onClick={() => setOpenMobile(false)}
-            className="w-8 h-8 rounded-lg text-slate-500 hover:text-[#FF2E63] hover:bg-rose-50/80 transition-colors shrink-0 cursor-pointer border border-slate-200/80 shadow-2xs ml-1.5"
+            className="w-8 h-8 rounded-lg text-slate-500 hover:text-[#FF2E63] hover:bg-[#FFF8EF] transition-colors shrink-0 cursor-pointer border border-[#EADBCE] shadow-2xs ml-1.5"
             aria-label="Close drawer"
           >
             <X className="w-4 h-4 stroke-[2]" />
@@ -812,11 +825,11 @@ export function AppSidebar({ ...props }) {
       </SidebarHeader>
       <SidebarContent
         data-lenis-prevent
-        className="px-2 py-3 bg-white text-slate-900 overflow-y-auto overflow-x-hidden overscroll-contain custom-scrollbar"
+        className="px-2 py-3 bg-[#FFFDF9] text-[#35104A] overflow-y-auto overflow-x-hidden overscroll-contain custom-scrollbar"
       >
         <NavMain groups={groups} isMerchant={isMerchant} />
       </SidebarContent>
-      <SidebarFooter className="border-t border-slate-200 bg-white shrink-0">
+      <SidebarFooter className="border-t border-[#EADBCE] bg-[#FFF8EF] shrink-0">
         <NavUser user={user} role={role} />
       </SidebarFooter>
       <SidebarRail />

@@ -42,11 +42,6 @@ export const TrendingOffer = ({ banners = [] }) => {
     if (current >= total && total > 0) setCurrent(0);
   }, [total, current]);
 
-  const goTo = useCallback((idx) => {
-    setCurrent(idx);
-    setDragOffset(0);
-  }, []);
-
   const goPrev = useCallback(() => {
     setCurrent((prev) => (prev - 1 + total) % total);
     setDragOffset(0);
@@ -323,7 +318,7 @@ export const TrendingOffer = ({ banners = [] }) => {
           })}
         </div>
 
-        {/* Desktop Left/Right Navigation Chevron Arrows */}
+        {/* Left/Right Navigation Chevron Arrows */}
         {total > 1 && (
           <>
             <button
@@ -333,10 +328,10 @@ export const TrendingOffer = ({ banners = [] }) => {
                 e.stopPropagation();
                 goPrev();
               }}
-              className="hidden sm:flex absolute left-2.5 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-950/60 hover:bg-slate-950/85 text-white backdrop-blur-xs border border-white/20 shadow-lg items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+              className="hidden sm:flex absolute left-2.5 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-8.5 h-8.5 sm:w-9.5 sm:h-9.5 rounded-full bg-[#35104A]/85 hover:bg-[#35104A] text-white backdrop-blur-xs border border-white/30 shadow-lg items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
               aria-label="Previous trending offer"
             >
-              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+              <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
             </button>
             <button
               type="button"
@@ -345,37 +340,12 @@ export const TrendingOffer = ({ banners = [] }) => {
                 e.stopPropagation();
                 goNext();
               }}
-              className="hidden sm:flex absolute right-2.5 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-950/60 hover:bg-slate-950/85 text-white backdrop-blur-xs border border-white/20 shadow-lg items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+              className="hidden sm:flex absolute right-2.5 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-8.5 h-8.5 sm:w-9.5 sm:h-9.5 rounded-full bg-[#35104A]/85 hover:bg-[#35104A] text-white backdrop-blur-xs border border-white/30 shadow-lg items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
               aria-label="Next trending offer"
             >
-              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+              <ChevronRight className="w-5 h-5 stroke-[2.5]" />
             </button>
           </>
-        )}
-
-        {/* Dot navigation — in frosted backdrop pill for 100% visibility on light/dark banners */}
-        {total > 1 && (
-          <div className="absolute bottom-2 sm:bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/45 backdrop-blur-xs border border-white/10 shadow-sm pointer-events-auto">
-            {slides.map((_, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  goTo(idx);
-                }}
-                aria-label={`Go to slide ${idx + 1}`}
-                className="border-0 p-0 transition-all duration-300 cursor-pointer rounded-full"
-                style={{
-                  width: idx === current ? "20px" : "6px",
-                  height: "6px",
-                  backgroundColor:
-                    idx === current ? "#ffffff" : "rgba(255,255,255,0.45)",
-                }}
-              />
-            ))}
-          </div>
         )}
       </div>
     </section>

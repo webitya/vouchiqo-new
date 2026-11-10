@@ -8,7 +8,7 @@ import LocationSelector from "../LocationSelector";
 const ALL_NAV_LINKS = [
   { href: "/brands", icon: Store, label: "Brands", shortLabel: "Brands" },
   { href: "/categories", icon: LayoutGrid, label: "Categories", shortLabel: "Categories" },
-  { href: "/campaigns", icon: Flame, label: "Trending", shortLabel: "Trending" },
+  { href: "/trending", icon: Flame, label: "Trending", shortLabel: "Trending" },
   { href: "/nearby-offers", icon: MapPin, label: "Nearby Map", shortLabel: "Nearby" },
 ];
 
@@ -16,17 +16,17 @@ const NavLink = ({ href, icon: Icon, label, shortLabel, isActive }) => (
   <Link
     href={href}
     prefetch={true}
-    className={`flex items-center gap-1 xl:gap-1.5 text-[12.5px] xl:text-[14px] transition-colors whitespace-nowrap py-1 px-1.5 xl:px-2.5 rounded-md font-sans ${
+    className={`flex items-center gap-1 xl:gap-1.5 text-[12.5px] xl:text-[14px] transition-all whitespace-nowrap py-1 px-2 xl:px-2.5 rounded-lg font-sans ${
       isActive
-        ? "text-[#FF2E63] font-semibold"
-        : "text-[#35104A]/80 hover:text-[#FF2E63] font-medium"
+        ? "text-[#FFD166] font-semibold bg-white/10 shadow-2xs border border-[#FFD166]/30"
+        : "text-[#FFF8EF]/90 hover:text-[#FFD166] hover:bg-white/10 font-medium"
     }`}
   >
     <Icon
       className={`h-4 w-4 xl:h-[18px] xl:w-[18px] shrink-0 transition-transform ${
         isActive
-          ? "stroke-[2.2] text-[#FF2E63]"
-          : "stroke-[1.7] text-[#35104A]/60 group-hover:text-[#FF2E63]"
+          ? "stroke-[2.2] text-[#FFD166]"
+          : "stroke-[1.7] text-[#FFF8EF]/75 group-hover:text-[#FFD166]"
       }`}
     />
     <span className="hidden xl:inline">{label}</span>

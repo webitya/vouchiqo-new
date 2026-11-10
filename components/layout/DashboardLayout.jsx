@@ -430,15 +430,15 @@ export default function DashboardLayout({ title, user, children }) {
       <MerchantRouteGuard>
       <TooltipProvider>
         <SidebarProvider style={{ "--sidebar-width": "250px" }}>
-          <div className="min-h-screen flex bg-white text-slate-900 font-sans w-full pb-14 md:pb-0">
+          <div className="min-h-screen flex bg-[#FAF6F0]/50 text-[#35104A] font-sans w-full pb-14 md:pb-0">
             <AppSidebar />
-            <SidebarInset className="bg-white flex-1 flex flex-col min-w-0 font-sans">
+            <SidebarInset className="bg-[#FAF6F0]/50 flex-1 flex flex-col min-w-0 font-sans">
               <Topbar title={title} user={user} />
 
               {/* Dynamic Live Merchant Notice Alert Banner */}
               {isMerchant && <MerchantNoticeBanner />}
 
-              <main className="p-[7px] w-full grow bg-white relative">
+              <main className="p-2 sm:p-4 w-full grow bg-[#FAF6F0]/50 relative">
                 {isMerchant && <MerchantPageLockOverlay />}
                 {children}
               </main>

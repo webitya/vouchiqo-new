@@ -9,7 +9,6 @@ import { useSession } from "@/lib/auth-client";
 import { HeroSection } from "../HeroSection";
 import PopularOffers from "../PopularOffers";
 import PopularStores from "../PopularStores";
-import LeadingTaglineBar from "./LeadingTaglineBar";
 
 // Defer loads of below-the-fold and modal overlay components
 const Footer = dynamicImport(() =>
@@ -79,8 +78,8 @@ export function HomeClient({
 
       {/* Main Container — Single semantic main for accessibility & SEO */}
       <main id="main-content" className="w-full flex-1">
-        {/* Full-width Hero with 3-6px spacing */}
-        <div className="w-full px-1 sm:px-1.5 pt-1 sm:pt-1.5 pb-1">
+        {/* Full-width Hero with 0px spacing (Flush edge-to-edge & top) */}
+        <div className="w-full px-0 pt-0 pb-1">
           <section
             className="g-main-banner main__banner__div w-full"
             data-toppicks-show="True"
@@ -88,9 +87,6 @@ export function HomeClient({
             <HeroSection banners={banners} />
           </section>
         </div>
-
-        {/* Decorative tagline bar — spans full screen width naturally */}
-        <LeadingTaglineBar />
 
         {/* Popular Offers & Popular Stores */}
         <div className="w-full px-2.5 sm:px-4 md:px-5 py-2 space-y-6 sm:space-y-8">

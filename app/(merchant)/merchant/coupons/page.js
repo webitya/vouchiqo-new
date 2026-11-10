@@ -17,7 +17,6 @@ import {
   Plus,
   Search,
   ShoppingBag,
-  Sparkles,
   Tag,
   Ticket,
   Trash2,
@@ -659,7 +658,7 @@ const renderMobileListingCard = useCallback(
               >
                 {isAffiliate ? (
                   <>
-                    <Sparkles className="w-2.5 h-2.5 text-emerald-600 shrink-0" />
+                    <ShoppingBag className="w-2.5 h-2.5 text-emerald-600 shrink-0" />
                     <span>Affiliate Deal</span>
                   </>
                 ) : (

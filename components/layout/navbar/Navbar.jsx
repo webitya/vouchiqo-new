@@ -26,7 +26,7 @@ export const Navbar = () => {
   }, [pathname]);
 
   return (
-    <header className="w-full bg-[#FFFDF9] font-sans border-b border-[#EADBCE] shadow-xs sticky top-0 z-50">
+    <header className="w-full bg-[#35104A] text-[#FFF8EF] font-sans border-b border-[#1D062B]/80 shadow-md sticky top-0 z-50">
       <PromoBanner />
       <div className="w-full max-w-[1440px] mx-auto px-3 sm:px-4 md:px-5 lg:px-6 xl:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-3 md:gap-4">
         {/* Left: Logo */}
@@ -52,7 +52,7 @@ export const Navbar = () => {
           </div>
 
           {/* Divider (Desktop lg+ only) */}
-          <div className="h-5 w-px bg-[#EADBCE] hidden lg:block" />
+          <div className="h-5 w-px bg-white/15 hidden lg:block" />
 
           {/* Action icons: Mobile Search Trigger + Notification + UserMenu + Drawer Toggle */}
           <div className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5">
@@ -62,8 +62,8 @@ export const Navbar = () => {
               onClick={() => setIsMobileSearchOpen((prev) => !prev)}
               className={`p-1.5 rounded-full transition-colors cursor-pointer border-0 flex items-center justify-center md:hidden ${
                 isMobileSearchOpen
-                  ? "bg-[#007F79]/10 text-[#007F79] hover:bg-[#007F79]/20"
-                  : "text-[#35104A] hover:text-[#007F79] hover:bg-[#FFF8EF] bg-transparent"
+                  ? "bg-white/20 text-[#FFD166]"
+                  : "text-[#FFF8EF] hover:text-[#FFD166] hover:bg-white/10 bg-transparent"
               }`}
               aria-label={isMobileSearchOpen ? "Close search" : "Open search"}
               aria-expanded={isMobileSearchOpen}
@@ -85,7 +85,7 @@ export const Navbar = () => {
 
       {/* Mobile Search Row (Shown ONLY when user clicks the search icon on mobile) */}
       {isMobileSearchOpen && (
-        <div className="block md:hidden px-3 sm:px-4 py-2 border-t border-[#EADBCE] bg-[#FFFDF9]/95 backdrop-blur-md shadow-xs animate-in fade-in slide-in-from-top-1 duration-150 max-w-[1440px] mx-auto w-full font-sans">
+        <div className="block md:hidden px-3 sm:px-4 py-2 border-t border-white/10 bg-[#35104A] shadow-lg animate-in fade-in slide-in-from-top-1 duration-150 max-w-[1440px] mx-auto w-full font-sans">
           <div className="w-full">
             <SearchBar
               autoFocus={true}

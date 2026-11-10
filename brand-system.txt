@@ -20,6 +20,7 @@ are strictly replaced by this cohesive palette.
 │                 │           │                               │ • Warm, friendly whitespace replacing sterile white    │
 ├─────────────────┼───────────┼───────────────────────────────┼────────────────────────────────────────────────────────┤
 │ 2. Royal PLUM   │ #35104A   │ Anchor, Contrast & Authority  │ • Primary typography (--foreground, body text, h1-h6)  │
+│                 │           │                               │ • Solid Header / Navbar background (bg-[#35104A])      │
 │                 │           │                               │ • Footer background & dark section header blocks       │
 │                 │           │                               │ • Dark mode canvas background & surface cards          │
 │                 │           │                               │ • High-contrast icons, dropdown headers, active labels │

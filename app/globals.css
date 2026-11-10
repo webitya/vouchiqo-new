@@ -2,6 +2,17 @@
 @import "tw-animate-css";
 @import "lenis/dist/lenis.css";
 
+/* Lenis Smooth Scroll Baseline - Zero Stuck Guarantees */
+html.lenis,
+html.lenis body {
+  height: auto;
+  scroll-behavior: auto !important;
+}
+
+html.lenis {
+  overflow-y: scroll;
+}
+
 @custom-variant dark (&:is(.dark *));
 @custom-variant data-open (&[data-state="open"], &[data-state="active"], &[data-state="visible"]);
 @custom-variant data-closed (&[data-state="closed"], &[data-state="hidden"]);

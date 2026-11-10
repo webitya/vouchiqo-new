@@ -14,7 +14,6 @@ import {
   PlusCircle,
   RefreshCw,
   Sliders,
-  Sparkles,
   Store,
   Tag,
   Timer,

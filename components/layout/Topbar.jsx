@@ -153,13 +153,13 @@ export default function Topbar({ title = "Dashboard", user: propUser = null }) {
 
   return (
     <header
-      className="h-14 sm:h-[60px] w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs flex items-center justify-between px-3 sm:px-6 sticky top-0 z-40 font-sans shrink-0"
+      className="h-14 sm:h-[60px] w-full bg-[#FFFDF9]/95 backdrop-blur-md border-b border-[#EADBCE] shadow-2xs flex items-center justify-between px-3 sm:px-6 sticky top-0 z-40 font-sans shrink-0"
       style={{ position: "sticky", top: 0, zIndex: 40 }}
     >
       {/* Left section: Sidebar Trigger (Hamburger) and title */}
       <div className="flex items-center gap-2.5 sm:gap-3">
-        <SidebarTrigger className="text-slate-700 hover:text-[#FF2E63]" />
-        <h1 className="text-[13.5px] sm:text-base font-medium text-slate-800 tracking-tight">
+        <SidebarTrigger className="text-[#35104A] hover:text-[#007F79] hover:bg-[#FFF8EF]" />
+        <h1 className="text-[13.5px] sm:text-base font-heading font-semibold text-[#35104A] tracking-tight">
           {title}
         </h1>
       </div>
@@ -167,9 +167,9 @@ export default function Topbar({ title = "Dashboard", user: propUser = null }) {
       {/* Right section: Search input & User actions */}
       <div className="flex items-center gap-2.5 sm:gap-4">
         {/* Search */}
-        <div className="hidden sm:flex items-center bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 w-60 h-8">
+        <div className="hidden sm:flex items-center bg-[#FFF8EF] border border-[#EADBCE] focus-within:border-[#007F79] focus-within:ring-1 focus-within:ring-[#007F79]/30 rounded-xl px-2.5 py-1.5 w-64 h-8 transition-all">
           <Search
-            className="w-3.5 h-3.5 text-slate-400 mr-2 cursor-pointer hover:text-[#FF2E63]"
+            className="w-3.5 h-3.5 text-[#6B4C82] mr-2 cursor-pointer hover:text-[#007F79]"
             onClick={handleSearchClick}
           />
           <Input
@@ -178,7 +178,7 @@ export default function Topbar({ title = "Dashboard", user: propUser = null }) {
             value={searchVal}
             onChange={(e) => setSearchVal(e.target.value)}
             onKeyDown={handleSearchSubmit}
-            className="border-0 bg-transparent text-xs w-full p-0 h-auto focus-visible:ring-0 focus-visible:ring-offset-0 placeholder-slate-400 text-slate-800 shadow-none"
+            className="border-0 bg-transparent text-xs w-full p-0 h-auto focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-[#6B4C82]/60 text-[#35104A] shadow-none font-sans"
           />
         </div>
 
@@ -188,7 +188,7 @@ export default function Topbar({ title = "Dashboard", user: propUser = null }) {
             variant="ghost"
             size="icon"
             onClick={() => setNotifOpen(!notifOpen)}
-            className="relative text-slate-600 hover:text-[#FF2E63] p-1.5 rounded-lg hover:bg-rose-50/60 transition-all cursor-pointer h-8 w-8 border-0 bg-transparent shadow-none"
+            className="relative text-[#35104A] hover:text-[#007F79] p-1.5 rounded-lg hover:bg-[#FFF8EF] transition-all cursor-pointer h-8 w-8 border-0 bg-transparent shadow-none"
           >
             <Bell className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
             {unreadCount > 0 && (
@@ -202,16 +202,16 @@ export default function Topbar({ title = "Dashboard", user: propUser = null }) {
                 className="fixed inset-0 z-40"
                 onClick={() => setNotifOpen(false)}
               />
-              <div className="absolute right-0 mt-2 w-72 bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl shadow-lg py-2 z-50 animate-in fade-in slide-in-from-top-1 duration-100 text-left">
-                <div className="flex justify-between items-center px-3.5 pb-2 border-b border-slate-100 dark:border-zinc-850">
-                  <span className="text-[10px] font-medium text-slate-700 dark:text-zinc-300 uppercase tracking-wider">
+              <div className="absolute right-0 mt-2 w-72 bg-[#FFFDF9] border border-[#EADBCE] rounded-xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-1 duration-100 text-left">
+                <div className="flex justify-between items-center px-3.5 pb-2 border-b border-[#EADBCE]">
+                  <span className="text-[10px] font-heading font-bold text-[#6B4C82] uppercase tracking-wider">
                     Notifications ({unreadCount} unread)
                   </span>
                   {unreadCount > 0 && (
                     <button
                       type="button"
                       onClick={markAllRead}
-                      className="text-[9px] font-normal text-[#FF2E63] hover:underline border-0 bg-transparent cursor-pointer"
+                      className="text-[9px] font-heading font-semibold text-[#FF2E63] hover:underline border-0 bg-transparent cursor-pointer"
                     >
                       Mark all read
                     </button>

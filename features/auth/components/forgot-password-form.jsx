@@ -66,9 +66,9 @@ export function ForgotPasswordForm({
             {subtitle}
           </p>
           <div className="space-y-1.5">
-            <InputGroup className="bg-slate-50 dark:bg-zinc-900/50 border border-slate-250/70 dark:border-zinc-800 rounded-md h-10 px-2 transition-all has-[[data-slot=input-group-control]:focus-visible]:ring-0 has-[[data-slot=input-group-control]:focus-visible]:border-brand-blue/60">
+            <InputGroup className="bg-white border border-[#EADBCE] rounded-xl h-10 px-2 transition-all has-[[data-slot=input-group-control]:focus-visible]:ring-0 has-[[data-slot=input-group-control]:focus-visible]:border-[#007F79]">
               <InputGroupAddon>
-                <Mail className="w-4 h-4 text-slate-400 dark:text-slate-500" />
+                <Mail className="w-4 h-4 text-[#6B4C82]/70" />
               </InputGroupAddon>
               <InputGroupInput
                 id="forgot-password-email"
@@ -81,7 +81,7 @@ export function ForgotPasswordForm({
                 }
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="text-base md:text-sm placeholder:font-light placeholder:text-slate-400 dark:placeholder:text-slate-600 h-full font-normal"
+                className="text-base md:text-sm placeholder:font-normal placeholder:text-[#6B4C82]/50 h-full font-medium text-[#35104A]"
                 required
                 autoFocus
               />
@@ -91,14 +91,14 @@ export function ForgotPasswordForm({
             id="forgot-password-submit"
             type="submit"
             disabled={isPending}
-            className="w-full bg-brand-blue hover:bg-festival-teal active:scale-[0.98] text-white rounded-md py-2 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-1.5 border-0 h-auto cursor-pointer shadow-none disabled:opacity-50 disabled:pointer-events-none mt-1"
+            className="w-full bg-[#007F79] hover:bg-[#35104A] active:scale-[0.98] text-white rounded-xl py-2.5 text-sm font-heading font-bold transition-all duration-200 flex items-center justify-center gap-1.5 border-0 h-auto cursor-pointer shadow-2xs disabled:opacity-50 disabled:pointer-events-none mt-1"
           >
             <Send className="w-3.5 h-3.5" />
             <span>{isPending ? "Sending..." : "Send Reset Link"}</span>
           </Button>
           <Link
             href={loginHref}
-            className="flex items-center justify-center gap-1.5 text-xs font-semibold text-brand-blue hover:text-festival-teal py-1 transition-colors"
+            className="flex items-center justify-center gap-1.5 text-xs font-heading font-semibold text-[#007F79] hover:text-[#35104A] py-1 transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" /> Back to Sign In
           </Link>

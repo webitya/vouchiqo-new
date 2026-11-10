@@ -60,30 +60,30 @@ export function MerchantRegisterForm() {
               id="terms"
               checked={agreedChecked}
               onCheckedChange={(checked) => setValue("agreed", !!checked)}
-              className="w-4 h-4 rounded-sm"
+              className="w-4 h-4 rounded border-[#EADBCE] data-[state=checked]:bg-[#007F79] data-[state=checked]:border-[#007F79] cursor-pointer"
             />
             <label
               htmlFor="terms"
-              className="text-xs text-slate-500 font-medium select-none cursor-pointer"
+              className="text-xs text-[#6B4C82] font-sans font-medium select-none cursor-pointer"
             >
               I agree to the{" "}
               <Link
                 href="/terms"
-                className="text-brand-blue font-bold hover:underline"
+                className="text-[#007F79] hover:text-[#35104A] font-heading font-semibold"
               >
                 Merchant Terms of Service
               </Link>{" "}
               and{" "}
               <Link
                 href="/privacy"
-                className="text-brand-blue font-bold hover:underline"
+                className="text-[#007F79] hover:text-[#35104A] font-heading font-semibold"
               >
                 Privacy Policy
               </Link>
             </label>
           </div>
           {errors.agreed && (
-            <p className="text-xs text-red-500 font-medium pl-1">
+            <p className="text-xs text-[#FF2E63] font-medium pl-1 font-sans">
               {errors.agreed.message}
             </p>
           )}
@@ -97,11 +97,11 @@ export function MerchantRegisterForm() {
         />
       </form>
 
-      <p className="text-center text-sm font-medium text-brand-subtext mt-4">
+      <p className="text-center text-xs font-sans font-medium text-[#6B4C82] mt-4">
         Already registered?{" "}
         <Link
           href="/merchant-login"
-          className="text-brand-blue font-bold hover:underline"
+          className="text-[#007F79] hover:text-[#35104A] font-heading font-bold transition-colors"
         >
           Log in here
         </Link>

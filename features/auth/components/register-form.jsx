@@ -84,24 +84,24 @@ export function RegisterForm() {
               id="agree"
               checked={agreedChecked}
               onCheckedChange={(checked) => setValue("agreed", !!checked)}
-              className="mt-0.5 border-slate-350 dark:border-zinc-700 rounded-sm w-3.5 h-3.5 cursor-pointer"
+              className="mt-0.5 border-[#EADBCE] data-[state=checked]:bg-[#007F79] data-[state=checked]:border-[#007F79] rounded w-4 h-4 cursor-pointer"
             />
             <label
               htmlFor="agree"
-              className="text-[11px] md:text-xs text-slate-500 dark:text-slate-400 leading-snug cursor-pointer select-none text-left font-normal"
+              className="text-xs text-[#6B4C82] leading-snug cursor-pointer select-none text-left font-sans font-medium"
             >
               I agree to the{" "}
-              <Link href="/terms" className="text-brand-blue font-semibold">
+              <Link href="/terms" className="text-[#007F79] hover:text-[#35104A] font-heading font-semibold">
                 Terms
               </Link>{" "}
-              &{" "}
-              <Link href="/privacy" className="text-brand-blue font-semibold">
+              &amp;{" "}
+              <Link href="/privacy" className="text-[#007F79] hover:text-[#35104A] font-heading font-semibold">
                 Privacy Policy
               </Link>
             </label>
           </div>
           {errors.agreed && (
-            <p className="text-xs text-red-500 font-medium pl-1">
+            <p className="text-xs text-[#FF2E63] font-medium pl-1 font-sans">
               {errors.agreed.message}
             </p>
           )}
@@ -117,8 +117,8 @@ export function RegisterForm() {
 
       {/* Divider */}
       <div className="relative my-4 flex items-center justify-center">
-        <Separator className="bg-slate-100 dark:bg-zinc-900" />
-        <span className="absolute bg-white dark:bg-zinc-950 px-2.5 text-[9px] font-normal text-slate-400 dark:text-slate-500 tracking-wider uppercase">
+        <Separator className="bg-[#EADBCE]" />
+        <span className="absolute bg-white px-2.5 text-[9.5px] font-heading font-bold text-[#6B4C82] tracking-wider uppercase">
           Or continue with
         </span>
       </div>
@@ -126,11 +126,11 @@ export function RegisterForm() {
       {/* Reusable Google Login Button */}
       <GoogleLoginButton />
 
-      <p className="text-center text-xs font-normal text-slate-400 dark:text-slate-500 mt-4">
+      <p className="text-center text-xs font-sans font-medium text-[#6B4C82] mt-4">
         Have an account?{" "}
         <Link
           href="/login"
-          className="text-brand-blue hover:text-festival-teal font-semibold transition-colors ml-0.5"
+          className="text-[#007F79] hover:text-[#35104A] font-heading font-bold transition-colors ml-0.5"
         >
           Sign in
         </Link>

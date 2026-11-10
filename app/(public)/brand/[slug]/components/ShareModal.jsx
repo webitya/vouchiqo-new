@@ -23,25 +23,25 @@ export default function ShareModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 font-sans animate-in fade-in duration-200">
-      <div className="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-slate-100 text-center space-y-5 font-sans relative">
+    <div className="fixed inset-0 z-50 bg-[#35104A]/60 backdrop-blur-xs flex items-center justify-center p-4 font-sans animate-in fade-in duration-200">
+      <div className="bg-[#FFF8EF] rounded-2xl p-5 max-w-sm w-full shadow-2xl border border-[#EADBCE] text-center space-y-4 font-sans relative">
         <button
           onClick={onClose}
           type="button"
           aria-label="Close share dialog"
-          className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1 rounded-full hover:bg-slate-100 transition-colors border-0 bg-transparent cursor-pointer"
+          className="absolute top-3.5 right-3.5 text-[#35104A]/60 hover:text-[#35104A] p-1 rounded-full hover:bg-[#EADBCE]/50 transition-colors border-0 bg-transparent cursor-pointer"
         >
           <X className="w-4 h-4" />
         </button>
 
         <div>
-          <div className="w-10 h-10 rounded-2xl bg-festival-teal/10 text-festival-teal mx-auto flex items-center justify-center mb-2">
-            <Share2 className="w-5 h-5" />
+          <div className="w-9 h-9 rounded-xl bg-[#007F79]/10 text-[#007F79] mx-auto flex items-center justify-center mb-2">
+            <Share2 className="w-4.5 h-4.5" />
           </div>
-          <h3 className="text-base font-extrabold text-slate-900">
+          <h3 className="text-base font-heading font-bold text-[#35104A]">
             Share {merchant.businessName} Deals
           </h3>
-          <p className="text-xs text-slate-500 font-medium mt-0.5">
+          <p className="text-xs text-[#6B4C82] font-medium mt-0.5 font-sans">
             Share active promo codes and discounts with friends
           </p>
         </div>
@@ -118,18 +118,18 @@ export default function ShareModal({
         </div>
 
         {/* Copy Link Field */}
-        <div className="pt-2">
-          <div className="flex items-center gap-1.5 bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
+        <div className="pt-1.5">
+          <div className="flex items-center gap-1.5 bg-[#FFFDF9] p-1.5 rounded-xl border border-[#EADBCE]">
             <input
               type="text"
               readOnly
               value={currentUrl}
-              className="bg-transparent text-xs text-slate-600 font-medium px-2 flex-1 focus:outline-none truncate"
+              className="bg-transparent text-xs text-[#35104A] font-medium px-2 flex-1 focus:outline-none truncate font-sans"
             />
             <button
               type="button"
               onClick={copyShareLink}
-              className="bg-festival-teal hover:bg-[#00635E] text-white text-xs font-bold px-3 py-1.5 rounded-xl transition-all cursor-pointer flex items-center gap-1 shrink-0 active:scale-95"
+              className="bg-[#007F79] hover:bg-[#35104A] text-white text-xs font-heading font-bold px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1 shrink-0 active:scale-95 shadow-2xs"
             >
               {shareCopied ? (
                 <>

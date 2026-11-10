@@ -436,7 +436,7 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
         }}
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyDown}
-        className="w-full pl-8.5 sm:pl-10 pr-9 sm:pr-10 py-1.5 sm:py-2 border border-[#EADBCE] rounded-lg text-xs sm:text-sm bg-white focus:outline-none focus:border-[#007F79] focus:ring-2 focus:ring-[#007F79]/20 placeholder-slate-400 transition-all duration-200 shadow-2xs text-[#35104A]"
+        className="w-full pl-8.5 sm:pl-10 pr-9 sm:pr-10 py-1.5 sm:py-2 border border-white/20 rounded-lg text-xs sm:text-sm bg-[#FFFDF9] focus:outline-none focus:border-[#007F79] focus:ring-2 focus:ring-[#007F79]/30 placeholder-slate-400 transition-all duration-200 shadow-sm text-[#35104A] font-medium"
       />
 
       {/* Right icons: Loading spinner or Clear button */}

@@ -51,18 +51,18 @@ export function LoginForm() {
               id="remember"
               checked={rememberChecked}
               onCheckedChange={(checked) => setValue("remember", checked)}
-              className="border-slate-300 dark:border-zinc-700 rounded-sm w-3.5 h-3.5 cursor-pointer"
+              className="border-[#EADBCE] data-[state=checked]:bg-[#007F79] data-[state=checked]:border-[#007F79] rounded w-4 h-4 cursor-pointer"
             />
             <Label
               htmlFor="remember"
-              className="text-xs md:text-sm font-normal text-slate-500 dark:text-slate-400 cursor-pointer select-none"
+              className="text-xs font-sans font-medium text-[#6B4C82] cursor-pointer select-none"
             >
               Remember me
             </Label>
           </div>
           <Link
             href="/forgot-password"
-            className="text-xs md:text-sm text-brand-blue font-normal transition-colors"
+            className="text-xs text-[#007F79] hover:text-[#35104A] font-heading font-semibold transition-colors"
           >
             Forgot Password?
           </Link>
@@ -78,8 +78,8 @@ export function LoginForm() {
 
       {/* Divider */}
       <div className="relative my-4 flex items-center justify-center">
-        <Separator className="bg-slate-100 dark:bg-zinc-900" />
-        <span className="absolute bg-white dark:bg-zinc-955 px-2.5 text-[9px] font-normal text-slate-400 dark:text-slate-500 tracking-wider uppercase">
+        <Separator className="bg-[#EADBCE]" />
+        <span className="absolute bg-white px-2.5 text-[9.5px] font-heading font-bold text-[#6B4C82] tracking-wider uppercase">
           Or Continue With
         </span>
       </div>
@@ -87,11 +87,11 @@ export function LoginForm() {
       {/* Reusable Google Sign In Button */}
       <GoogleLoginButton />
 
-      <p className="text-center text-xs font-normal text-slate-400 dark:text-slate-500 mt-4">
+      <p className="text-center text-xs font-sans font-medium text-[#6B4C82] mt-4">
         Don't have an account?{" "}
         <Link
           href="/register"
-          className="text-brand-blue hover:text-festival-teal font-semibold transition-colors ml-0.5"
+          className="text-[#007F79] hover:text-[#35104A] font-heading font-bold transition-colors ml-0.5"
         >
           Sign up
         </Link>

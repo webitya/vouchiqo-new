@@ -60,14 +60,14 @@ export default function SidebarSection({
   const displayDomain = getDisplayDomain(merchant.website);
 
   return (
-    <div className="lg:col-span-4 space-y-4 text-left" style={fontStyle}>
+    <div className="lg:col-span-4 space-y-3 text-left" style={fontStyle}>
       {/* About store */}
-      <div className="bg-white border border-slate-200/80 rounded-xl p-4 shadow-2xs space-y-3">
+      <div className="bg-[#FFF8EF] border border-[#EADBCE] rounded-xl p-3 sm:p-3.5 shadow-2xs space-y-2.5">
         <div>
-          <h3 className="text-[10.5px] font-medium uppercase tracking-wider text-slate-400 pb-2 border-b border-slate-100 mb-2.5">
+          <h3 className="text-[10.5px] font-heading font-bold uppercase tracking-wider text-[#35104A] pb-1.5 border-b border-[#EADBCE] mb-2">
             About {merchant.businessName}
           </h3>
-          <p className="text-[12.5px] text-slate-600 leading-relaxed font-normal">
+          <p className="text-[12px] text-[#6B4C82] leading-relaxed font-medium">
             {(() => {
               const text =
                 merchant.description ||
@@ -87,22 +87,22 @@ export default function SidebarSection({
             href={normalizeExternalUrl(merchant.website)}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full inline-flex items-center justify-between px-3.5 py-2 rounded-xl bg-festival-teal/10 hover:bg-festival-teal/20 border border-festival-teal/20 text-festival-teal text-xs font-semibold transition-all group shadow-2xs cursor-pointer"
+            className="w-full inline-flex items-center justify-between px-3 py-1.5 rounded-xl bg-[#007F79] hover:bg-[#35104A] text-white text-xs font-heading font-bold transition-all group shadow-2xs cursor-pointer"
           >
             <span className="flex items-center gap-2 truncate">
-              <Globe className="w-3.5 h-3.5 text-festival-teal shrink-0" />
+              <Globe className="w-3.5 h-3.5 text-white shrink-0" />
               <span className="truncate">
                 Visit {displayDomain || "Official Website"}
               </span>
             </span>
-            <ExternalLink className="w-3.5 h-3.5 text-festival-teal group-hover:translate-x-0.5 transition-transform shrink-0" />
+            <ExternalLink className="w-3.5 h-3.5 text-white group-hover:translate-x-0.5 transition-transform shrink-0" />
           </a>
         )}
 
         {/* Official Social Media Channels */}
         {hasSocials && (
-          <div className="pt-2 border-t border-slate-100">
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 block mb-1.5">
+          <div className="pt-1.5 border-t border-[#EADBCE]">
+            <span className="text-[9.5px] font-heading font-bold uppercase tracking-wider text-[#6B4C82] block mb-1">
               Official Channels
             </span>
             <BrandLinksBar merchant={merchant} showWebsite={false} size="sm" />
@@ -112,16 +112,16 @@ export default function SidebarSection({
 
       {/* Storefront / Shop Image (if available in merchant data) */}
       {merchant.shopImage && (
-        <div className="bg-white border border-slate-200/80 rounded-xl p-3 shadow-2xs space-y-2">
-          <div className="flex items-center justify-between pb-1.5 border-b border-slate-100">
-            <h3 className="text-[10.5px] font-medium uppercase tracking-wider text-slate-400">
-              Storefront & Products
+        <div className="bg-[#FFF8EF] border border-[#EADBCE] rounded-xl p-2.5 shadow-2xs space-y-2">
+          <div className="flex items-center justify-between pb-1.5 border-b border-[#EADBCE]">
+            <h3 className="text-[10.5px] font-heading font-bold uppercase tracking-wider text-[#35104A]">
+              Storefront &amp; Products
             </h3>
-            <span className="text-[10px] text-slate-400 font-normal">
+            <span className="text-[10px] text-[#6B4C82] font-medium">
               Official Media
             </span>
           </div>
-          <div className="relative h-44 w-full rounded-lg overflow-hidden border border-slate-100 bg-slate-50 group">
+          <div className="relative h-36 w-full rounded-lg overflow-hidden border border-[#EADBCE] bg-white group">
             <SafeImage
               src={merchant.shopImage}
               alt={`${merchant.businessName} Storefront`}
@@ -134,17 +134,17 @@ export default function SidebarSection({
       )}
 
       {/* Operating Hours */}
-      <div className="bg-white border border-slate-200/80 rounded-xl p-4 shadow-2xs">
-        <div className="flex justify-between items-center pb-2 border-b border-slate-100 mb-2.5">
-          <h3 className="text-[10.5px] font-medium uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-            <Clock className="w-3.5 h-3.5" />
+      <div className="bg-[#FFF8EF] border border-[#EADBCE] rounded-xl p-3 sm:p-3.5 shadow-2xs">
+        <div className="flex justify-between items-center pb-1.5 border-b border-[#EADBCE] mb-2">
+          <h3 className="text-[10.5px] font-heading font-bold uppercase tracking-wider text-[#35104A] flex items-center gap-1.5">
+            <Clock className="w-3.5 h-3.5 text-[#007F79]" />
             Operating Hours
           </h3>
-          <span className={`text-[10.5px] font-normal ${openStatus.color}`}>
+          <span className={`text-[10.5px] font-heading font-semibold ${openStatus.color}`}>
             ● {openStatus.label}
           </span>
         </div>
-        <div className="space-y-1.5">
+        <div className="space-y-1">
           {merchant.operatingHours ? (
             Object.entries(merchant.operatingHours).map(([day, hrs]) => {
               const isClosed = hrs?.closed === true || hrs?.isOpen === false;
@@ -153,9 +153,9 @@ export default function SidebarSection({
               return (
                 <div
                   key={day}
-                  className="flex justify-between text-[11.5px] text-slate-500 font-normal"
+                  className="flex justify-between text-[11px] text-[#6B4C82] font-medium"
                 >
-                  <span className="capitalize font-normal text-slate-700">
+                  <span className="capitalize font-semibold text-[#35104A]">
                     {day}
                   </span>
                   <span>
@@ -165,7 +165,7 @@ export default function SidebarSection({
               );
             })
           ) : (
-            <p className="text-[11.5px] text-slate-400 font-normal">
+            <p className="text-[11px] text-[#6B4C82] font-medium">
               Hours not specified
             </p>
           )}
@@ -173,13 +173,13 @@ export default function SidebarSection({
       </div>
 
       {/* Store Location */}
-      <div className="bg-white border border-slate-200/80 rounded-xl p-4 shadow-2xs space-y-3">
-        <div className="flex justify-between items-center pb-2 border-b border-slate-100">
-          <h3 className="text-[10.5px] font-medium uppercase tracking-wider text-slate-400">
-            Location & Contact
+      <div className="bg-[#FFF8EF] border border-[#EADBCE] rounded-xl p-3 sm:p-3.5 shadow-2xs space-y-2.5">
+        <div className="flex justify-between items-center pb-1.5 border-b border-[#EADBCE]">
+          <h3 className="text-[10.5px] font-heading font-bold uppercase tracking-wider text-[#35104A]">
+            Location &amp; Contact
           </h3>
           {merchant.businessType && (
-            <span className="text-[10px] font-medium text-festival-teal bg-festival-teal/10 px-2 py-0.5 rounded-full capitalize">
+            <span className="text-[10px] font-heading font-semibold text-[#007F79] bg-[#007F79]/10 px-2 py-0.5 rounded-full capitalize">
               {merchant.businessType === "both"
                 ? "Online & In-Store"
                 : merchant.businessType}
@@ -187,8 +187,8 @@ export default function SidebarSection({
           )}
         </div>
 
-        {/* Map Embed */}
-        <div className="relative h-36 w-full rounded-lg overflow-hidden border border-slate-100 bg-slate-50">
+        {/* Map Embed (Compact) */}
+        <div className="relative h-32 w-full rounded-lg overflow-hidden border border-[#EADBCE] bg-white">
           <iframe
             title={`${merchant.businessName} Map Location`}
             width="100%"
@@ -211,11 +211,11 @@ export default function SidebarSection({
             href={merchant.gmapsLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-festival-teal/10 text-slate-700 hover:text-festival-teal border border-slate-200 hover:border-festival-teal/40 text-xs font-medium transition-colors cursor-pointer"
+            className="w-full inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-[#007F79]/10 text-[#35104A] hover:text-[#007F79] border border-[#EADBCE] text-xs font-heading font-semibold transition-colors cursor-pointer"
           >
-            <MapPin className="w-3.5 h-3.5 text-festival-teal" />
+            <MapPin className="w-3.5 h-3.5 text-[#007F79]" />
             <span>Open in Google Maps</span>
-            <ExternalLink className="w-3 h-3 text-slate-400" />
+            <ExternalLink className="w-3 h-3 text-[#6B4C82]" />
           </a>
         )}
 
@@ -301,8 +301,8 @@ export default function SidebarSection({
       </div>
 
       {/* FAQ Accordion */}
-      <div className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm">
-        <h3 className="text-[11px] font-semibold uppercase tracking-widest text-gray-400 pb-3 border-b border-gray-50 mb-1">
+      <div className="bg-[#FFF8EF] border border-[#EADBCE] rounded-xl p-3 sm:p-3.5 shadow-2xs">
+        <h3 className="text-[10.5px] font-heading font-bold uppercase tracking-wider text-[#35104A] pb-2 border-b border-[#EADBCE] mb-1">
           FAQs
         </h3>
         <Accordion type="single" collapsible className="w-full">
@@ -310,12 +310,12 @@ export default function SidebarSection({
             <AccordionItem
               key={idx}
               value={`faq-${idx}`}
-              className="border-b border-gray-50 last:border-0"
+              className="border-b border-[#EADBCE]/60 last:border-0"
             >
-              <AccordionTrigger className="text-left font-medium text-[13px] text-gray-800 hover:text-festival-teal hover:no-underline py-2.5">
+              <AccordionTrigger className="text-left font-heading font-semibold text-[12.5px] text-[#35104A] hover:text-[#007F79] hover:no-underline py-2">
                 {faq.q}
               </AccordionTrigger>
-              <AccordionContent className="text-[12px] text-gray-500 leading-relaxed pb-3 font-normal">
+              <AccordionContent className="text-[11.5px] text-[#6B4C82] leading-relaxed pb-2.5 font-sans font-medium">
                 {faq.a}
               </AccordionContent>
             </AccordionItem>
@@ -324,19 +324,19 @@ export default function SidebarSection({
       </div>
 
       {/* Share */}
-      <div className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm">
-        <h3 className="text-[11px] font-semibold uppercase tracking-widest text-gray-400 pb-3 border-b border-gray-50 mb-3">
+      <div className="bg-[#FFF8EF] border border-[#EADBCE] rounded-xl p-3 sm:p-3.5 shadow-2xs">
+        <h3 className="text-[10.5px] font-heading font-bold uppercase tracking-wider text-[#35104A] pb-2 border-b border-[#EADBCE] mb-2">
           Share Deals
         </h3>
         <button
           onClick={handleShare}
           type="button"
-          className="w-full flex items-center justify-center gap-2 bg-gray-50 hover:bg-festival-teal/10 hover:border-festival-teal/20 text-[13px] font-medium py-2.5 px-4 rounded-lg border border-gray-200 cursor-pointer transition-colors text-gray-700 hover:text-festival-teal"
+          className="w-full flex items-center justify-center gap-2 bg-[#007F79]/10 hover:bg-[#007F79] text-[#007F79] hover:text-white text-xs font-heading font-bold py-2 px-3.5 rounded-lg border border-[#007F79]/20 cursor-pointer transition-all shadow-2xs"
         >
           {copiedLink ? (
             <>
-              <CheckCircle2 className="w-4 h-4 text-green-600" />
-              <span className="text-green-600">Link Copied!</span>
+              <CheckCircle2 className="w-4 h-4 text-[#007F79]" />
+              <span>Link Copied!</span>
             </>
           ) : (
             <>

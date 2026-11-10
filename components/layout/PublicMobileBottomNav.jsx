@@ -31,7 +31,7 @@ export default function PublicMobileBottomNav() {
     },
     {
       label: "Trending",
-      href: "/campaigns",
+      href: "/trending",
       icon: Flame,
     },
     {

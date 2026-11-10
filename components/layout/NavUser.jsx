@@ -84,7 +84,7 @@ export function NavUser({ user, role = "admin" }) {
       );
     }
     return (
-      <AvatarFallback className="rounded-[7px] font-bold text-xs bg-slate-100 text-slate-800 border border-slate-200 uppercase flex items-center justify-center">
+      <AvatarFallback className="rounded-full font-heading font-bold text-xs bg-[#007F79]/10 text-[#007F79] border border-[#007F79]/20 uppercase flex items-center justify-center">
         {initials}
       </AvatarFallback>
     );
@@ -97,14 +97,14 @@ export function NavUser({ user, role = "admin" }) {
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
               size="lg"
-              className="w-full cursor-pointer transition-colors text-slate-800 hover:bg-slate-50 data-[state=open]:bg-slate-100/80 border border-slate-200/80 rounded-[7px] p-2 bg-slate-50/50 shadow-2xs"
+              className="w-full cursor-pointer transition-colors text-[#35104A] hover:bg-[#FFF8EF] data-[state=open]:bg-[#FFF8EF] border border-[#EADBCE] rounded-xl p-2 bg-[#FFFDF9] shadow-2xs"
             >
-              <Avatar className="h-8 w-8 rounded-[7px] shrink-0 border border-slate-200 overflow-hidden bg-white">
+              <Avatar className="h-8 w-8 rounded-full shrink-0 border border-[#EADBCE] overflow-hidden bg-white">
                 {avatarImg ? (
                   <AvatarImage
                     src={avatarImg}
                     alt={user?.name || "User"}
-                    className="object-contain p-0.5"
+                    className="object-cover"
                   />
                 ) : null}
                 {renderAvatarFallback()}
@@ -112,28 +112,28 @@ export function NavUser({ user, role = "admin" }) {
               {!isCollapsed && (
                 <>
                   <div className="grid flex-1 text-left text-xs leading-tight min-w-0">
-                    <span className="truncate font-medium text-sm text-slate-900 flex items-center gap-1.5">
+                    <span className="truncate font-heading font-bold text-xs text-[#35104A] flex items-center gap-1.5">
                       {isAdmin ? "Super Admin" : user?.name || "User"}
                     </span>
-                    <span className="truncate text-[11px] text-slate-400 font-normal">
+                    <span className="truncate text-[10.5px] text-[#6B4C82] font-sans">
                       {user?.email ||
                         (isAdmin ? "admin@vouchiqo.com" : "user@vouchiqo.com")}
                     </span>
                   </div>
-                  <ChevronsUpDown className="ml-auto size-4 text-slate-400" />
+                  <ChevronsUpDown className="ml-auto size-4 text-[#6B4C82]" />
                 </>
               )}
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-56 rounded-xl border border-slate-200/90 shadow-xl p-1 bg-white text-slate-800 font-sans animate-in fade-in zoom-in-95 duration-100"
+            className="w-56 rounded-xl border border-[#EADBCE] shadow-xl p-1 bg-[#FFFDF9] text-[#35104A] font-sans animate-in fade-in zoom-in-95 duration-100"
             side={isMobile ? "bottom" : "right"}
             align="end"
             sideOffset={6}
           >
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2.5 px-2 py-2 text-left text-xs">
-                <Avatar className="h-8 w-8 rounded-[7px] shrink-0 border border-slate-200 overflow-hidden bg-white">
+                <Avatar className="h-8 w-8 rounded-lg shrink-0 border border-[#EADBCE] overflow-hidden bg-white">
                   {avatarImg ? (
                     <AvatarImage
                       src={avatarImg}
@@ -144,31 +144,28 @@ export function NavUser({ user, role = "admin" }) {
                   {renderAvatarFallback()}
                 </Avatar>
                 <div className="grid flex-1 text-left text-xs leading-tight min-w-0">
-                  <span className="truncate font-semibold text-slate-800">
+                  <span className="truncate font-heading font-bold text-xs text-[#35104A]">
                     {isAdmin ? "Super Admin" : user?.name || "User"}
                   </span>
-                  <span className="truncate text-[11px] text-slate-400 font-normal">
+                  <span className="truncate text-[10.5px] text-[#6B4C82] font-sans">
                     {user?.email ||
                       (isAdmin ? "admin@vouchiqo.com" : "user@vouchiqo.com")}
                   </span>
-                  <div className="mt-1">
-                    {isAdmin ? (
-                      <span className="bg-purple-50 text-purple-700 border border-purple-200/80 text-[8.5px] font-semibold px-1.5 py-0.5 rounded-[7px] inline-flex items-center gap-1">
-                        <ShieldCheck className="w-2.5 h-2.5 text-purple-600" />{" "}
-                        SUPER ADMIN
-                      </span>
-                    ) : isMerchant ? (
-                      <span className="bg-rose-50 text-[#FF2E63] border border-rose-200/90 text-[8.5px] font-semibold px-1.5 py-0.5 rounded-[7px] inline-flex items-center gap-1 tracking-wider shadow-2xs">
-                        <Store className="w-2.5 h-2.5 text-[#FF2E63]" />{" "}
-                        MERCHANT PARTNER
-                      </span>
-                    ) : (
-                      <span className="bg-slate-100 text-slate-700 border border-slate-200 text-[8.5px] font-normal px-1.5 py-0.5 rounded-[7px] inline-flex items-center gap-1">
-                        <UserIcon className="w-2.5 h-2.5 text-slate-500" />{" "}
-                        MEMBER
-                      </span>
-                    )}
-                  </div>
+                  {(isAdmin || isMerchant) && (
+                    <div className="mt-1">
+                      {isAdmin ? (
+                        <span className="bg-purple-50 text-purple-700 border border-purple-200/80 text-[8.5px] font-semibold px-1.5 py-0.5 rounded-[7px] inline-flex items-center gap-1">
+                          <ShieldCheck className="w-2.5 h-2.5 text-purple-600" />{" "}
+                          SUPER ADMIN
+                        </span>
+                      ) : (
+                        <span className="bg-rose-50 text-[#FF2E63] border border-rose-200/90 text-[8.5px] font-semibold px-1.5 py-0.5 rounded-[7px] inline-flex items-center gap-1 tracking-wider shadow-2xs">
+                          <Store className="w-2.5 h-2.5 text-[#FF2E63]" />{" "}
+                          MERCHANT PARTNER
+                        </span>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             </DropdownMenuLabel>

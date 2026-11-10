@@ -121,7 +121,10 @@ export async function getUserClaims(userId, searchParams) {
   const { page, limit, skip } = parsePagination(searchParams);
   const status = searchParams.get("status") ?? CLAIM_STATUS.ACTIVE;
 
-  const filter = { userId, status };
+  const filter = { userId };
+  if (status && status !== "all") {
+    filter.status = status;
+  }
 
   const [claims, total] = await Promise.all([
     Claim.aggregate([

@@ -15,7 +15,6 @@ import {
   Search,
   ShieldCheck,
   SlidersHorizontal,
-  Sparkles,
   Store,
   Tag,
   TrendingUp,

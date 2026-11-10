@@ -82,15 +82,15 @@ export default function LocationSelector({
             ? "w-full px-4 py-3 text-slate-700 hover:bg-warm-ivory hover:text-festival-teal border-b border-slate-100"
             : isMobile
               ? "text-[11px] text-festival-teal bg-festival-teal/5 border border-festival-teal/20 rounded-md px-2.5 py-1.5 hover:bg-festival-teal/10"
-              : "h-8 sm:h-8.5 xl:h-9 text-xs xl:text-[13px] text-royal-plum bg-warm-ivory border border-brand-border hover:border-festival-teal rounded-lg px-2 sm:px-2.5 xl:px-3 hover:bg-warm-ivory hover:border-festival-teal hover:shadow-xs shrink-0 max-w-[125px] sm:max-w-[135px] xl:max-w-[160px]"
+              : "h-8 sm:h-8.5 xl:h-9 text-xs xl:text-[13px] text-[#FFF8EF] bg-white/10 border border-white/15 hover:border-[#FFD166]/50 rounded-lg px-2 sm:px-2.5 xl:px-3 hover:bg-white/15 hover:shadow-xs shrink-0 max-w-[125px] sm:max-w-[135px] xl:max-w-[160px]"
         }
       `}
     >
       <div className="flex items-center gap-1 xl:gap-1.5 min-w-0">
         {isDetecting ? (
-          <Loader2 className="w-3.5 h-3.5 animate-spin text-festival-teal shrink-0" />
+          <Loader2 className="w-3.5 h-3.5 animate-spin text-[#FFD166] shrink-0" />
         ) : (
-          <MapPin className="w-3.5 h-3.5 text-festival-teal shrink-0" />
+          <MapPin className="w-3.5 h-3.5 text-[#FFD166] shrink-0" />
         )}
         <span className="truncate leading-none">
           {inDrawer
@@ -101,8 +101,8 @@ export default function LocationSelector({
         </span>
       </div>
       <ChevronDown
-        className={`w-3 h-3 xl:w-3.5 xl:h-3.5 text-slate-400 transition-transform duration-200 shrink-0 ml-1 ${
-          open ? "rotate-180 text-festival-teal" : ""
+        className={`w-3 h-3 xl:w-3.5 xl:h-3.5 text-[#FFF8EF]/60 transition-transform duration-200 shrink-0 ml-1 ${
+          open ? "rotate-180 text-[#FFD166]" : ""
         }`}
       />
     </button>

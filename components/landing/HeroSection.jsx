@@ -9,6 +9,7 @@ export function HeroSection({ banners = [] }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [autoRotate, setAutoRotate] = useState(true);
   const [dragOffset, setDragOffset] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Swipe/drag refs
   const dragStart = useRef(0);
@@ -45,12 +46,12 @@ export function HeroSection({ banners = [] }) {
   }, [slides.length, currentSlide]);
 
   useEffect(() => {
-    if (!autoRotate || slides.length <= 1 || isDragging.current) return;
+    if (!autoRotate || slides.length <= 1 || isDragging.current || isHovered) return;
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
+    }, 5500);
     return () => clearInterval(timer);
-  }, [autoRotate, slides.length]);
+  }, [autoRotate, slides.length, isHovered]);
 
   // Function to smoothly center the active bottom logo inside the scroll container
   const scrollToThumb = useCallback((index) => {
@@ -83,13 +84,15 @@ export function HeroSection({ banners = [] }) {
     return () => cancelAnimationFrame(rafId);
   }, [currentSlide, scrollToThumb]);
 
-  const handlePrev = useCallback(() => {
-    setAutoRotate(false);
+  const handlePrev = useCallback((e) => {
+    e?.preventDefault();
+    e?.stopPropagation();
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   }, [slides.length]);
 
-  const handleNext = useCallback(() => {
-    setAutoRotate(false);
+  const handleNext = useCallback((e) => {
+    e?.preventDefault();
+    e?.stopPropagation();
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   }, [slides.length]);
 
@@ -211,9 +214,38 @@ export function HeroSection({ banners = [] }) {
 
   return (
     <div className="w-full flex flex-col select-none">
-      {/* Full Width Banners Section */}
+      {/* Full Width Banners Section (Flush Edge-to-Edge, 0 Top/Left/Right Space) */}
       <section className="select-none w-full text-left">
-        <div className="w-full rounded-xl sm:rounded-2xl overflow-hidden shadow-sm relative group border border-slate-200/80 bg-slate-950 h-[180px] xs:h-[210px] sm:h-[280px] md:h-[360px] lg:h-[425px] xl:h-[465px] 2xl:h-[490px] max-h-[500px]">
+        <div
+          className="w-full overflow-hidden shadow-2xs relative group bg-[#35104A] border-b border-[#EADBCE] h-[180px] xs:h-[210px] sm:h-[280px] md:h-[360px] lg:h-[425px] xl:h-[465px] 2xl:h-[490px] max-h-[500px]"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => {
+            setIsHovered(false);
+            handleMouseLeave();
+          }}
+        >
+          {/* Compact Left & Right Icons in Left Center & Right Center */}
+          {slides.length > 1 && (
+            <>
+              <button
+                type="button"
+                onClick={handlePrev}
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-7.5 h-7.5 sm:w-8.5 sm:h-8.5 rounded-full bg-white/85 hover:bg-white text-[#35104A] hover:text-[#FF2E63] border border-[#EADBCE] shadow-md flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs opacity-80 hover:opacity-100 group-hover:opacity-100 active:scale-95"
+                aria-label="Previous banner"
+              >
+                <ChevronLeft className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-7.5 h-7.5 sm:w-8.5 sm:h-8.5 rounded-full bg-white/85 hover:bg-white text-[#35104A] hover:text-[#FF2E63] border border-[#EADBCE] shadow-md flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs opacity-80 hover:opacity-100 group-hover:opacity-100 active:scale-95"
+                aria-label="Next banner"
+              >
+                <ChevronRight className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
+              </button>
+            </>
+          )}
+
           {/* Viewport for horizontal sliding */}
           <div
             className="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing touch-pan-y"
@@ -364,7 +396,7 @@ export function HeroSection({ banners = [] }) {
 
       {/* Synchronized Responsive Brands Bar Below (Visible on Mobile & Desktop, supporting 50+ logos) */}
       {slides.some((s) => s.logo || s.name || s.title) && (
-        <div className="relative group/thumb flex w-full mt-2 sm:mt-2.5 select-none text-left items-center overflow-hidden">
+        <div className="relative group/thumb flex w-full mt-2 sm:mt-2.5 select-none text-left items-center overflow-hidden px-2.5 sm:px-4 md:px-5">
           {/* Scroll Left Button for Thumbnails (Shown on overflow/hover) */}
           {slides.length > 4 && (
             <button

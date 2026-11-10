@@ -94,7 +94,7 @@ export default function MobileBrandHeader({
           {/* Left: Brand Logo + Details */}
           <div className="flex items-start gap-3 flex-1 min-w-0">
             {/* Brand Logo Card */}
-            <div className="rounded-2xl shrink-0 flex items-center justify-center bg-white shadow-2xs border border-slate-200/80 overflow-hidden w-[72px] h-[72px] sm:w-[84px] sm:h-[84px] p-2">
+            <div className="rounded-2xl shrink-0 flex items-center justify-center bg-[#FFF8EF] shadow-2xs border border-[#EADBCE] overflow-hidden w-[72px] h-[72px] sm:w-[84px] sm:h-[84px] p-2">
               {merchant.logo && !logoFailed ? (
                 <SafeImage
                   src={merchant.logo}
@@ -105,8 +105,8 @@ export default function MobileBrandHeader({
                   onError={() => setLogoFailed(true)}
                 />
               ) : (
-                <div className="flex flex-col items-center justify-center text-slate-700 font-bold text-center px-1">
-                  <span className="text-lg font-bold text-slate-800 leading-none">
+                <div className="flex flex-col items-center justify-center text-[#35104A] font-bold text-center px-1 font-heading">
+                  <span className="text-lg font-bold text-[#35104A] leading-none">
                     {(merchant.businessName || "B").charAt(0).toUpperCase()}
                   </span>
                   <span className="text-[9px] text-slate-500 truncate max-w-[55px] mt-0.5">
@@ -119,28 +119,28 @@ export default function MobileBrandHeader({
             {/* Info Column */}
             <div className="space-y-1 min-w-0 flex-1 text-left">
               <div className="flex items-center gap-1.5 flex-wrap">
-                <h1 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight truncate">
+                <h1 className="text-base sm:text-lg font-heading font-bold text-[#35104A] tracking-tight truncate">
                   {merchant.businessName}
                 </h1>
                 {merchant.isVerified !== false && (
-                  <BlueVerifiedTick className="w-4 h-4 text-festival-teal" />
+                  <BlueVerifiedTick className="w-4 h-4 text-[#007F79]" />
                 )}
               </div>
 
-              <p className="text-xs text-slate-600 font-normal leading-snug line-clamp-1">
+              <p className="text-xs text-slate-600 font-normal leading-snug line-clamp-1 font-sans">
                 {merchant.shortDescription ||
                   merchant.description ||
                   `Verified coupons, deals & offers for ${merchant.businessName}.`}
               </p>
 
               <div className="pt-0.5">
-                <span className="inline-flex items-center gap-1 text-[10.5px] font-semibold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-200/80">
+                <span className="inline-flex items-center gap-1 text-[10.5px] font-semibold text-[#35104A] bg-[#FFF8EF] px-2.5 py-0.5 rounded-full border border-[#EADBCE] font-heading">
                   <span>
                     {merchant.plan
                       ? `${merchant.plan.charAt(0).toUpperCase() + merchant.plan.slice(1)} Partner`
                       : "Starter Partner"}
                   </span>
-                  <TrendingUp className="w-3 h-3 text-purple-600" />
+                  <TrendingUp className="w-3 h-3 text-[#007F79]" />
                 </span>
               </div>
 
@@ -171,12 +171,12 @@ export default function MobileBrandHeader({
             </div>
           </div>
 
-          {/* Right: Big Blue Share Button */}
+          {/* Right: Share Button */}
           <div className="shrink-0 pt-0.5">
             <button
               type="button"
               onClick={handleShareClick}
-              className="bg-festival-teal hover:bg-[#00635E] active:bg-[#004D49] text-white font-semibold text-xs sm:text-sm px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl shadow-2xs flex items-center gap-1.5 cursor-pointer active:scale-95 transition-all font-heading"
+              className="bg-[#007F79] hover:bg-[#35104A] text-white font-semibold text-xs sm:text-sm px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl shadow-2xs flex items-center gap-1.5 cursor-pointer active:scale-95 transition-all font-heading"
             >
               <Share2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
               <span>Share</span>
@@ -187,7 +187,7 @@ export default function MobileBrandHeader({
 
       {/* Mobile Tabs Capsule */}
       <div className="px-2.5 sm:px-4 pt-1.5 pb-2.5">
-        <div className="bg-[#F4F6FB] border border-slate-200/80 rounded-xl p-0.5 flex items-center justify-between gap-0.5 overflow-x-auto scrollbar-none">
+        <div className="bg-[#FFF8EF] border border-[#EADBCE] rounded-xl p-0.5 flex items-center justify-between gap-0.5 overflow-x-auto scrollbar-none font-heading">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
@@ -197,8 +197,8 @@ export default function MobileBrandHeader({
                   type="button"
                   className={`w-full py-1.5 px-1.5 text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 border-0 whitespace-nowrap ${
                     isActive
-                      ? "bg-[#6366f1] text-white shadow-2xs"
-                      : "bg-transparent text-slate-600 hover:text-slate-900"
+                      ? "bg-[#007F79] text-white shadow-2xs"
+                      : "bg-transparent text-slate-600 hover:text-[#35104A]"
                   }`}
                 >
                   <span>{tab.label}</span>
@@ -206,7 +206,7 @@ export default function MobileBrandHeader({
                     className={`text-[9.5px] px-1 py-0.2 rounded-full font-bold leading-tight ${
                       isActive
                         ? "bg-white/25 text-white"
-                        : "bg-slate-200/70 text-slate-600"
+                        : "bg-[#EADBCE] text-[#35104A]"
                     }`}
                   >
                     {tab.count}

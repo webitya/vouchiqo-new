@@ -52,7 +52,7 @@ export function ResetPasswordForm({
           </div>
           <Link
             href={loginHref}
-            className="btn-primary text-xs py-2.5 px-6 flex items-center justify-center gap-1.5 w-full border-0 h-auto cursor-pointer shadow-none"
+            className="bg-[#007F79] hover:bg-[#35104A] text-white font-heading font-bold text-xs py-2.5 px-6 rounded-xl flex items-center justify-center gap-1.5 w-full border-0 h-auto cursor-pointer shadow-2xs transition-all"
           >
             Go to Sign In <ArrowRight className="w-3.5 h-3.5" />
           </Link>
@@ -60,12 +60,12 @@ export function ResetPasswordForm({
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1.5">
-            <Label className="text-xs font-bold text-brand-text uppercase">
+            <Label className="text-xs font-heading font-semibold text-[#35104A]">
               New Password
             </Label>
-            <InputGroup className="bg-brand-surface border border-brand-border rounded-lg h-10 px-1">
+            <InputGroup className="bg-white border border-[#EADBCE] rounded-xl h-10 px-2 transition-all has-[[data-slot=input-group-control]:focus-visible]:border-[#007F79]">
               <InputGroupAddon>
-                <Lock className="w-4 h-4 text-brand-subtext" />
+                <Lock className="w-4 h-4 text-[#6B4C82]/70" />
               </InputGroupAddon>
               <InputGroupInput
                 id="reset-password-new"
@@ -74,7 +74,7 @@ export function ResetPasswordForm({
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="text-xs placeholder-brand-subtext h-full"
+                className="text-xs placeholder-[#6B4C82]/50 text-[#35104A] h-full"
                 required
                 minLength={8}
                 autoFocus
@@ -82,12 +82,12 @@ export function ResetPasswordForm({
             </InputGroup>
           </div>
           <div className="space-y-1.5">
-            <Label className="text-xs font-bold text-brand-text uppercase">
+            <Label className="text-xs font-heading font-semibold text-[#35104A]">
               Confirm Password
             </Label>
-            <InputGroup className="bg-brand-surface border border-brand-border rounded-lg h-10 px-1">
+            <InputGroup className="bg-white border border-[#EADBCE] rounded-xl h-10 px-2 transition-all has-[[data-slot=input-group-control]:focus-visible]:border-[#007F79]">
               <InputGroupAddon>
-                <Lock className="w-4 h-4 text-brand-subtext" />
+                <Lock className="w-4 h-4 text-[#6B4C82]/70" />
               </InputGroupAddon>
               <InputGroupInput
                 id="reset-password-confirm"
@@ -96,7 +96,7 @@ export function ResetPasswordForm({
                 placeholder="••••••••"
                 value={confirm}
                 onChange={(e) => setConfirm(e.target.value)}
-                className="text-xs placeholder-brand-subtext h-full"
+                className="text-xs placeholder-[#6B4C82]/50 text-[#35104A] h-full"
                 required
                 minLength={8}
               />
@@ -106,7 +106,7 @@ export function ResetPasswordForm({
             id="reset-password-submit"
             type="submit"
             disabled={isPending}
-            className="btn-primary w-full py-2.5 text-xs font-semibold flex items-center justify-center gap-1 border-0 h-auto cursor-pointer shadow-none"
+            className="w-full bg-[#007F79] hover:bg-[#35104A] text-white py-2.5 rounded-xl text-sm font-heading font-bold flex items-center justify-center gap-1.5 border-0 h-auto cursor-pointer shadow-2xs transition-all"
           >
             <span>{isPending ? "Updating..." : "Reset Password"}</span>
             <ArrowRight className="w-3.5 h-3.5" />

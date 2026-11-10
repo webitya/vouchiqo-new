@@ -7,5 +7,5 @@ export const createClaimSchema = z.object({
 export const claimQuerySchema = z.object({
   page: z.coerce.number().int().positive().optional(),
   limit: z.coerce.number().int().min(1).max(100).optional(),
-  status: z.enum(["active", "redeemed", "expired"]).optional(),
+  status: z.enum(["active", "redeemed", "expired", "all"]).optional(),
 });

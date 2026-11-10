@@ -166,20 +166,20 @@ export default function UserDropdown({
   const renderAvatarFallback = () => {
     if (effectiveRole === "admin") {
       return (
-        <div className="w-full h-full bg-gradient-to-br from-[#35104A] via-[#1D062B] to-[#007F79] text-white font-bold text-xs flex items-center justify-center rounded-[7px]">
+        <div className="w-full h-full bg-gradient-to-br from-[#35104A] via-[#1D062B] to-[#007F79] text-white font-bold text-xs flex items-center justify-center rounded-full">
           <ShieldCheck className="w-4 h-4 text-white stroke-[2.2]" />
         </div>
       );
     }
     if (effectiveRole === "merchant") {
       return (
-        <div className="w-full h-full bg-gradient-to-br from-[#FF2E63] to-rose-600 text-white font-medium text-xs flex items-center justify-center rounded-[7px]">
+        <div className="w-full h-full bg-gradient-to-br from-[#FF2E63] to-rose-600 text-white font-medium text-xs flex items-center justify-center rounded-full">
           <Store className="w-4 h-4 text-white stroke-[2]" />
         </div>
       );
     }
     return (
-      <div className="w-full h-full bg-slate-100 text-slate-800 font-medium text-xs border border-slate-200 uppercase flex items-center justify-center rounded-[7px]">
+      <div className="w-full h-full bg-[#007F79]/10 text-[#007F79] font-heading font-bold text-xs uppercase flex items-center justify-center rounded-full">
         {initials}
       </div>
     );
@@ -198,14 +198,14 @@ export default function UserDropdown({
     return (
       <div className="space-y-3 font-sans text-left">
         <div className="flex items-center gap-2.5 bg-slate-50 p-2.5 rounded-xl border border-slate-200/80">
-          <div className="h-9 w-9 rounded-[7px] border border-slate-200 shrink-0 overflow-hidden bg-white flex items-center justify-center shadow-2xs">
+          <div className="h-9 w-9 rounded-full border border-[#EADBCE] shrink-0 overflow-hidden bg-white flex items-center justify-center shadow-2xs">
             {currentImage ? (
               <SafeImage
                 src={currentImage}
                 alt={currentName}
                 width={36}
                 height={36}
-                className="w-full h-full object-contain p-0.5"
+                className="w-full h-full object-cover rounded-full"
               />
             ) : (
               renderAvatarFallback()
@@ -239,24 +239,24 @@ export default function UserDropdown({
         <button
           type="button"
           aria-label="User menu"
-          className="flex items-center justify-center focus:outline-none cursor-pointer select-none rounded-[7px] transition-transform hover:scale-105 active:scale-95 border-0 bg-transparent outline-none"
+          className="flex items-center justify-center focus:outline-none cursor-pointer select-none rounded-full transition-transform hover:scale-105 active:scale-95 border-0 bg-transparent outline-none p-0"
         >
           <div
-            className={`h-8 w-8 rounded-[7px] border shrink-0 shadow-2xs transition-all overflow-hidden flex items-center justify-center bg-white ${
+            className={`h-9 w-9 rounded-full border shrink-0 shadow-2xs transition-all overflow-hidden flex items-center justify-center bg-white ${
               effectiveRole === "admin"
                 ? "border-purple-300 hover:border-purple-400"
                 : effectiveRole === "merchant"
-                  ? "border-slate-200/90 hover:border-rose-300"
-                  : "border-slate-200 hover:border-slate-300"
+                  ? "border-[#EADBCE] hover:border-[#FF2E63]"
+                  : "border-[#EADBCE] hover:border-[#007F79]"
             }`}
           >
             {currentImage ? (
               <SafeImage
                 src={currentImage}
                 alt={currentName}
-                width={32}
-                height={32}
-                className="w-full h-full object-contain p-0.5"
+                width={36}
+                height={36}
+                className="w-full h-full object-cover rounded-full"
               />
             ) : (
               renderAvatarFallback()
@@ -273,14 +273,14 @@ export default function UserDropdown({
         {/* User Card Header */}
         <DropdownMenuLabel className="p-2 font-normal select-none">
           <div className="flex items-center gap-2.5 text-left">
-            <div className="h-9 w-9 rounded-[7px] border border-slate-200 shrink-0 overflow-hidden bg-white flex items-center justify-center shadow-2xs">
+            <div className="h-9 w-9 rounded-full border border-[#EADBCE] shrink-0 overflow-hidden bg-white flex items-center justify-center shadow-2xs">
               {currentImage ? (
                 <SafeImage
                   src={currentImage}
                   alt={currentName}
                   width={36}
                   height={36}
-                  className="w-full h-full object-contain p-0.5"
+                  className="w-full h-full object-cover rounded-full"
                 />
               ) : (
                 renderAvatarFallback()
@@ -295,23 +295,21 @@ export default function UserDropdown({
                   {currentEmail}
                 </span>
               ) : null}
-              <div className="mt-1">
-                {effectiveRole === "admin" ? (
-                  <span className="bg-purple-50 text-purple-700 border border-purple-200/80 text-[8.5px] font-semibold px-1.5 py-0.5 rounded-[7px] inline-flex items-center gap-1">
-                    <ShieldCheck className="w-2.5 h-2.5 text-purple-600" />{" "}
-                    SUPER ADMIN
-                  </span>
-                ) : effectiveRole === "merchant" ? (
-                  <span className="bg-rose-50 text-[#FF2E63] border border-rose-200/90 text-[8.5px] font-semibold px-1.5 py-0.5 rounded-[7px] inline-flex items-center gap-1 tracking-wider shadow-2xs">
-                    <Store className="w-2.5 h-2.5 text-[#FF2E63]" /> MERCHANT
-                    PARTNER
-                  </span>
-                ) : (
-                  <span className="bg-slate-100 text-slate-700 border border-slate-200 text-[8.5px] font-normal px-1.5 py-0.5 rounded-[7px] inline-flex items-center gap-1">
-                    <User className="w-2.5 h-2.5 text-slate-500" /> MEMBER
-                  </span>
-                )}
-              </div>
+              {(effectiveRole === "admin" || effectiveRole === "merchant") && (
+                <div className="mt-1">
+                  {effectiveRole === "admin" ? (
+                    <span className="bg-purple-50 text-purple-700 border border-purple-200/80 text-[8.5px] font-semibold px-1.5 py-0.5 rounded-[7px] inline-flex items-center gap-1">
+                      <ShieldCheck className="w-2.5 h-2.5 text-purple-600" />{" "}
+                      SUPER ADMIN
+                    </span>
+                  ) : (
+                    <span className="bg-rose-50 text-[#FF2E63] border border-rose-200/90 text-[8.5px] font-semibold px-1.5 py-0.5 rounded-[7px] inline-flex items-center gap-1 tracking-wider shadow-2xs">
+                      <Store className="w-2.5 h-2.5 text-[#FF2E63]" /> MERCHANT
+                      PARTNER
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </DropdownMenuLabel>

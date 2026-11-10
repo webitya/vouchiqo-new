@@ -82,7 +82,7 @@ export function NavMain({ groups, isMerchant = false }) {
           {!isCollapsed &&
             group.title &&
             group.title.trim().toLowerCase() !== "navigation" && (
-              <SidebarGroupLabel className="px-2.5 py-1 text-[9.5px] font-medium uppercase tracking-wider block h-auto text-slate-400">
+              <SidebarGroupLabel className="px-2.5 py-1.5 text-[10px] font-heading font-semibold uppercase tracking-wider block h-auto text-[#6B4C82]">
                 {group.title}
               </SidebarGroupLabel>
             )}
@@ -145,8 +145,8 @@ export function NavMain({ groups, isMerchant = false }) {
                 // CTA item (e.g. Post New Listing)
                 if (item.isCta) {
                   const ctaClass = isParentActive
-                    ? "bg-[#FF2E63] text-white shadow-sm shadow-[#FF2E63]/25 font-medium rounded-xl"
-                    : "border border-rose-200 text-[#FF2E63] hover:bg-[#FF2E63] hover:text-white font-medium bg-rose-50/60 shadow-2xs rounded-xl";
+                    ? "bg-[#FF2E63] text-white shadow-xs font-heading font-semibold rounded-xl"
+                    : "border border-[#FF2E63]/30 text-[#FF2E63] hover:bg-[#FF2E63] hover:text-white font-heading font-semibold bg-[#FF2E63]/5 shadow-2xs rounded-xl";
 
                   const ctaIconClass = isParentActive
                     ? "text-white"
@@ -171,7 +171,7 @@ export function NavMain({ groups, isMerchant = false }) {
                           />
                         )}
                         {!isCollapsed && (
-                          <span className="text-xs font-medium">
+                          <span className="text-xs font-heading font-semibold">
                             {item.title}
                           </span>
                         )}
@@ -183,16 +183,16 @@ export function NavMain({ groups, isMerchant = false }) {
                 // Expandable sub-items menu (e.g. My Listings, Merchants)
                 if (hasSubItems) {
                   const parentBtnClass = isParentActive
-                    ? "!bg-[#FF2E63] !text-white font-medium shadow-sm shadow-[#FF2E63]/25 hover:!bg-[#e01e47] rounded-xl"
-                    : "bg-transparent hover:bg-rose-50/70 text-slate-700 hover:text-[#FF2E63] font-normal border border-transparent hover:border-rose-200/60 rounded-xl transition-all";
+                    ? "!bg-[#007F79] !text-white font-heading font-semibold shadow-xs hover:!bg-[#006e69] rounded-xl"
+                    : "bg-transparent hover:bg-[#FFF8EF] text-[#35104A] hover:text-[#007F79] font-heading font-medium border border-transparent hover:border-[#EADBCE] rounded-xl transition-all";
 
                   const parentIconClass = isParentActive
                     ? "text-white"
-                    : "text-inherit";
+                    : "text-[#6B4C82] group-hover:text-[#007F79]";
 
                   const parentTextClass = isParentActive
-                    ? "text-white font-medium"
-                    : "text-inherit font-normal";
+                    ? "text-white font-heading font-semibold"
+                    : "text-inherit font-heading font-medium";
 
                   const chevronClass = isParentActive
                     ? "text-white"
@@ -280,16 +280,16 @@ export function NavMain({ groups, isMerchant = false }) {
                             const SubIcon = sub.icon;
 
                             const subBtnClass = isSubActive
-                              ? "!bg-[#FF2E63] !text-white font-medium shadow-xs rounded-lg"
-                              : "bg-transparent hover:bg-rose-50/70 text-slate-600 hover:text-[#FF2E63] font-normal border border-transparent hover:border-rose-200/50 rounded-lg transition-all";
+                              ? "!bg-[#007F79] !text-white font-heading font-semibold shadow-xs rounded-lg"
+                              : "bg-transparent hover:bg-[#FFF8EF] text-[#35104A] hover:text-[#007F79] font-heading font-medium border border-transparent hover:border-[#EADBCE] rounded-lg transition-all";
 
                             const subIconClass = isSubActive
                               ? "!text-white"
-                              : "text-inherit";
+                              : "text-[#6B4C82] group-hover:text-[#007F79]";
 
                             const subTextClass = isSubActive
-                              ? "!text-white font-medium"
-                              : "text-inherit font-normal";
+                              ? "!text-white font-heading font-semibold"
+                              : "text-inherit font-heading font-medium";
 
                             return (
                               <SidebarMenuSubItem key={sub.title}>
@@ -312,7 +312,7 @@ export function NavMain({ groups, isMerchant = false }) {
                                       {sub.title}
                                     </span>
                                     {sub.badge && !isCollapsed && (
-                                      <span className="ml-auto flex h-4 min-w-4 items-center justify-center rounded-full bg-[#FF2E63] text-[9px] font-medium text-white px-1.5 shrink-0 shadow-2xs">
+                                      <span className="ml-auto flex h-4 min-w-4 items-center justify-center rounded-full bg-[#FF2E63] text-[9px] font-heading font-bold text-white px-1.5 shrink-0 shadow-2xs">
                                         {sub.badge}
                                       </span>
                                     )}
@@ -329,16 +329,16 @@ export function NavMain({ groups, isMerchant = false }) {
 
                 // Normal sidebar navigation item
                 const singleBtnClass = isParentActive
-                  ? "!bg-[#FF2E63] !text-white font-medium shadow-sm shadow-[#FF2E63]/25 hover:!bg-[#e01e47] rounded-xl"
-                  : "bg-transparent hover:bg-rose-50/70 text-slate-700 hover:text-[#FF2E63] font-normal border border-transparent hover:border-rose-200/60 rounded-xl transition-all";
+                  ? "!bg-[#007F79] !text-white font-heading font-semibold shadow-xs hover:!bg-[#006e69] rounded-xl"
+                  : "bg-transparent hover:bg-[#FFF8EF] text-[#35104A] hover:text-[#007F79] font-heading font-medium border border-transparent hover:border-[#EADBCE] rounded-xl transition-all";
 
                 const singleIconClass = isParentActive
                   ? "!text-white"
-                  : "text-inherit";
+                  : "text-[#6B4C82] group-hover:text-[#007F79]";
 
                 const singleTextClass = isParentActive
-                  ? "!text-white font-medium"
-                  : "text-inherit font-normal";
+                  ? "!text-white font-heading font-semibold"
+                  : "text-inherit font-heading font-medium";
 
                 const URL_TOUR_MAP = {
                   "/merchant/dashboard": "tour-dashboard-overview",

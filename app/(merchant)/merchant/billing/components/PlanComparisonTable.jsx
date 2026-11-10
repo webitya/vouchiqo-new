@@ -5,7 +5,6 @@ import {
   Check,
   X,
   Zap,
-  Sparkles,
   SlidersHorizontal,
   ArrowRightLeft,
   ChevronDown,

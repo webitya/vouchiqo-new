@@ -14,7 +14,6 @@ import {
   Radio,
   RefreshCw,
   Send,
-  Sparkles,
   Users,
   Zap,
 } from "lucide-react";

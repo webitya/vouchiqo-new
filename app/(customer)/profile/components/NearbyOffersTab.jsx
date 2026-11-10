@@ -1,64 +1,37 @@
 "use client";
 
+import { useQuery } from "@tanstack/react-query";
 import {
   Car,
-  ChevronRight,
+  Compass,
   Crosshair,
   ExternalLink,
+  Globe,
   MapPin,
-  Maximize2,
   Navigation,
   Search,
   ShieldCheck,
-  Tag,
+  Store,
   X,
 } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { useQuery } from "@tanstack/react-query";
 import { apiFetch } from "@/lib/fetcher";
+import {
+  CITY_COORDINATES,
+  formatDistance,
+  haversine,
+  resolveStoreCoordinates,
+} from "@/lib/location-resolver";
 import { qk } from "@/lib/query-keys";
 
-const CITY_COORDINATES = {
-  ranchi: [23.3441, 85.3096],
-  jamshedpur: [22.8046, 86.2029],
-  patna: [25.5941, 85.1376],
-  delhi: [28.6139, 77.209],
-  mumbai: [19.076, 72.8777],
-  bangalore: [12.9716, 77.5946],
-  kolkata: [22.5726, 88.3639],
-};
-
-function haversine(lat1, lon1, lat2, lon2) {
-  if (lat1 == null || lon1 == null || lat2 == null || lon2 == null) return 1.0;
-  const R = 6371;
-  const dLat = ((lat2 - lat1) * Math.PI) / 180;
-  const dLon = ((lon2 - lon1) * Math.PI) / 180;
-  const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos((lat1 * Math.PI) / 180) *
-      Math.cos((lat2 * Math.PI) / 180) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  return parseFloat((R * c).toFixed(1));
-}
-
 export default function NearbyOffersTab() {
-  const { data: couponsData, isLoading: loading } = useQuery({
-    queryKey: [...qk.coupons.all(), "nearby", 50],
-    queryFn: async () => {
-      const json = await apiFetch("/api/coupons?limit=50&includeAllBrands=true");
-      return json.data?.coupons || (Array.isArray(json.data) ? json.data : []);
-    },
-    staleTime: 60_000,
-  });
-
-  const coupons = couponsData || [];
   const [selectedCity, setSelectedCity] = useState("ranchi");
-  const [radius, setRadius] = useState("5");
-  const [selectedCouponId, setSelectedCouponId] = useState(null);
+  const [radiusFilter, setRadiusFilter] = useState("all"); // "all" | "2" | "5" | "10" | "25"
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedDealId, setSelectedDealId] = useState(null);
   const [userGpsCoords, setUserGpsCoords] = useState(null);
   const [gpsLoading, setGpsLoading] = useState(false);
   const [leafletLoaded, setLeafletLoaded] = useState(false);
@@ -69,12 +42,29 @@ export default function NearbyOffersTab() {
   const markersGroupRef = useRef(null);
   const routeLayerRef = useRef(null);
   const routingReqIdRef = useRef(0);
+  const cardRefs = useRef({});
+
+  // Fetch full active coupons + verified brand storefronts
+  const { data: couponsData, isLoading: loading } = useQuery({
+    queryKey: [...qk.coupons.all(), "nearby-explorer-all"],
+    queryFn: async () => {
+      const json = await apiFetch(
+        "/api/coupons?limit=250&allDates=true&includeAllBrands=true",
+      );
+      return json.data?.coupons || (Array.isArray(json.data) ? json.data : []);
+    },
+    staleTime: 30_000,
+  });
+
+  const rawCoupons = couponsData || [];
 
   const mapCenter = useMemo(() => {
-    return userGpsCoords || CITY_COORDINATES[selectedCity] || [23.3441, 85.3096];
+    return (
+      userGpsCoords || CITY_COORDINATES[selectedCity] || [23.3441, 85.3096]
+    );
   }, [userGpsCoords, selectedCity]);
 
-  // Load Leaflet
+  // Load Leaflet dynamically
   useEffect(() => {
     if (typeof window !== "undefined" && window.L) {
       setLeafletLoaded(true);
@@ -92,72 +82,45 @@ export default function NearbyOffersTab() {
     document.head.appendChild(script);
   }, []);
 
-
-  // Process & spread coordinates
-  const processedDeals = useMemo(() => {
-    const center = mapCenter;
-    return coupons.map((c, idx) => {
-      const mLoc = c.merchantId?.location;
-      let lat = mLoc?.coordinates?.lat;
-      let lng = mLoc?.coordinates?.lng;
-
-      if (lat == null || lng == null) {
-        const brandKey = (c.merchantId?.businessName || c.brandName || "brand").toString();
-        const hash = brandKey.split("").reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
-        const angle = ((hash * 47) % 360) * (Math.PI / 180);
-        const radiusOffset = (((hash * 13) % 35) + 5) / 1000;
-        lat = center[0] + Math.cos(angle) * radiusOffset * 1.1;
-        lng = center[1] + Math.sin(angle) * radiusOffset * 1.3;
-      }
-
-      const dist = haversine(center[0], center[1], lat, lng);
-      const businessName = c.merchantId?.businessName || c.brandName || "Partner Store";
-
-      return {
-        ...c,
-        coords: [lat, lng],
-        distance: dist,
-        businessName,
-        address: mLoc?.address || `${businessName} Store, Main Road`,
-      };
-    });
-  }, [coupons, mapCenter]);
-
-  const filteredDeals = useMemo(() => {
-    const maxRadius = parseFloat(radius);
-    return processedDeals
-      .filter((d) => d.distance <= maxRadius)
-      .sort((a, b) => a.distance - b.distance);
-  }, [processedDeals, radius]);
-
-  // Handle GPS location with network fallback
-  const handleLocateMe = () => {
+  // Live GPS geolocation detection with high accuracy
+  const handleLocateMe = useCallback((showToast = true) => {
     setGpsLoading(true);
-    const toastId = toast.loading("Detecting your live location...");
+    let toastId = null;
+    if (showToast) {
+      toastId = toast.loading("Detecting your live location...");
+    }
 
-    const fallbackToIP = async () => {
+    const fallbackIP = async () => {
       try {
-        const ipRes = await fetch("https://ipapi.co/json/");
-        if (ipRes.ok) {
-          const ipData = await ipRes.json();
-          if (ipData.latitude && ipData.longitude) {
-            const coords = [ipData.latitude, ipData.longitude];
+        const res = await fetch("https://ipapi.co/json/");
+        if (res.ok) {
+          const data = await res.json();
+          if (data.latitude && data.longitude) {
+            const coords = [data.latitude, data.longitude];
             setUserGpsCoords(coords);
             if (mapInstanceRef.current) {
-              mapInstanceRef.current.flyTo(coords, 13, { duration: 1 });
+              mapInstanceRef.current.flyTo(coords, 14, { duration: 1 });
             }
-            toast.success(`Location: ${ipData.city || "Detected"}`, { id: toastId });
+            if (showToast && toastId) {
+              toast.success(`Location detected: ${data.city || "Nearby"}`, {
+                id: toastId,
+              });
+            }
             setGpsLoading(false);
             return;
           }
         }
-      } catch {}
+      } catch (_) {}
+      if (showToast && toastId) {
+        toast.error("Could not get live GPS. Using selected city center.", {
+          id: toastId,
+        });
+      }
       setGpsLoading(false);
-      toast.error("Could not detect location. Selected city used.", { id: toastId });
     };
 
-    if (!navigator.geolocation) {
-      fallbackToIP();
+    if (typeof window === "undefined" || !navigator.geolocation) {
+      fallbackIP();
       return;
     }
 
@@ -168,21 +131,165 @@ export default function NearbyOffersTab() {
         if (mapInstanceRef.current) {
           mapInstanceRef.current.flyTo(coords, 14, { duration: 1.2 });
         }
-        toast.success("Live GPS coordinates detected!", { id: toastId });
+        if (showToast && toastId) {
+          toast.success("Live GPS coordinates detected!", { id: toastId });
+        }
         setGpsLoading(false);
       },
-      () => {
-        fallbackToIP();
-      },
+      () => fallbackIP(),
       { timeout: 7000, enableHighAccuracy: true },
     );
-  };
+  }, []);
 
-  // Route drawing
+  // Auto-detect on first load
+  useEffect(() => {
+    handleLocateMe(false);
+  }, [handleLocateMe]);
+
+  // Process & enrich all store offers with exact coordinates & distance
+  const processedStores = useMemo(() => {
+    const center = mapCenter;
+
+    // Deduplicate by brand / merchant ID so each store location has its offers aggregated
+    const brandMap = new Map();
+
+    for (const c of rawCoupons) {
+      const merchantObj = c.merchantId || {};
+      const brandKey = String(
+        merchantObj._id ||
+          merchantObj.businessName ||
+          c.brandName ||
+          c._id ||
+          "store",
+      )
+        .trim()
+        .toLowerCase();
+
+      const coords = resolveStoreCoordinates(c, center);
+      const distance = haversine(center[0], center[1], coords[0], coords[1]);
+      const businessName =
+        (typeof merchantObj === "object"
+          ? merchantObj.businessName || merchantObj.name
+          : null) ||
+        c.brandName ||
+        "Verified Merchant";
+
+      const address =
+        merchantObj.location?.address ||
+        c.location?.address ||
+        merchantObj.address ||
+        c.address ||
+        `${businessName} Store, Main Road`;
+
+      const city =
+        merchantObj.location?.city ||
+        c.location?.city ||
+        merchantObj.city ||
+        "Ranchi";
+
+      const discountValue = c.discountValue || 20;
+      const discountType = c.discountType || "percentage";
+      const discountText =
+        discountType === "percentage"
+          ? `${discountValue}% OFF`
+          : `₹${discountValue} OFF`;
+
+      const dealItem = {
+        _id: c._id,
+        title: c.title || `Special Offer at ${businessName}`,
+        description: c.description || "Exclusive in-store voucher savings.",
+        discountValue,
+        discountType,
+        discountText,
+        code: c.code || "VIPDEAL",
+        category: c.category || merchantObj.category || "General",
+        isVerified: c.isVerified !== false,
+        merchantId: merchantObj,
+        businessName,
+        address,
+        city,
+        coords,
+        distance,
+        formattedDistance: formatDistance(distance),
+        logo: merchantObj.logo || null,
+        slug: merchantObj.slug || null,
+      };
+
+      if (!brandMap.has(brandKey)) {
+        brandMap.set(brandKey, {
+          ...dealItem,
+          offersCount: 1,
+          allDeals: [dealItem],
+        });
+      } else {
+        const existing = brandMap.get(brandKey);
+        existing.offersCount += 1;
+        existing.allDeals.push(dealItem);
+      }
+    }
+
+    const uniqueStores = Array.from(brandMap.values());
+
+    // Filter by Search Query
+    let filtered = uniqueStores;
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase().trim();
+      filtered = filtered.filter((s) => {
+        const str = [s.businessName, s.title, s.address, s.category, s.city]
+          .join(" ")
+          .toLowerCase();
+        return str.includes(q);
+      });
+    }
+
+    // Filter by Category
+    if (selectedCategory !== "all") {
+      filtered = filtered.filter((s) =>
+        (s.category || "")
+          .toLowerCase()
+          .includes(selectedCategory.toLowerCase()),
+      );
+    }
+
+    // Filter by Radius
+    if (radiusFilter !== "all") {
+      const maxR = parseFloat(radiusFilter);
+      filtered = filtered.filter((s) => s.distance <= maxR);
+    }
+
+    // STRICT NEAREST-FIRST SORT (Google Maps logic: nearest store at 0km is #1)
+    return filtered.sort((a, b) => a.distance - b.distance);
+  }, [rawCoupons, mapCenter, searchQuery, selectedCategory, radiusFilter]);
+
+  // Google Maps Style Categorised Sections
+  const sections = useMemo(() => {
+    const nearMe = []; // < 3 km
+    const acrossTown = []; // 3 km to 10 km
+    const widerRegion = []; // > 10 km
+
+    for (const store of processedStores) {
+      if (store.distance < 3.0) {
+        nearMe.push(store);
+      } else if (store.distance <= 10.0) {
+        acrossTown.push(store);
+      } else {
+        widerRegion.push(store);
+      }
+    }
+
+    return {
+      nearMe,
+      acrossTown,
+      widerRegion,
+      total: processedStores.length,
+    };
+  }, [processedStores]);
+
+  // Select store & draw real route
   const handleSelectDeal = useCallback(
     async (deal) => {
       if (!deal) return;
-      setSelectedCouponId(deal._id);
+      setSelectedDealId(deal._id);
       const reqId = ++routingReqIdRef.current;
 
       if (routeLayerRef.current && mapInstanceRef.current) {
@@ -191,6 +298,14 @@ export default function NearbyOffersTab() {
       }
       setActiveRouteInfo(null);
 
+      // Scroll card into view
+      if (cardRefs.current[deal._id]) {
+        cardRefs.current[deal._id].scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+      }
+
       if (!mapInstanceRef.current || !window.L) return;
       const L = window.L;
 
@@ -198,28 +313,33 @@ export default function NearbyOffersTab() {
       const end = deal.coords;
 
       const drawRouteLine = (latLngs, distKm, durMin) => {
-        if (reqId !== routingReqIdRef.current || !mapInstanceRef.current) return;
+        if (reqId !== routingReqIdRef.current || !mapInstanceRef.current)
+          return;
         if (routeLayerRef.current) {
           mapInstanceRef.current.removeLayer(routeLayerRef.current);
         }
 
+        // Royal Plum casing
         const casing = L.polyline(latLngs, {
-          color: "#9f1239",
-          weight: 7,
-          opacity: 0.8,
+          color: "#35104A",
+          weight: 6,
+          opacity: 0.85,
           lineCap: "round",
           lineJoin: "round",
         });
 
-        const roseLine = L.polyline(latLngs, {
-          color: "#FF2E63",
-          weight: 4.5,
+        // Festival Teal path
+        const tealLine = L.polyline(latLngs, {
+          color: "#007F79",
+          weight: 4,
           opacity: 0.98,
           lineCap: "round",
           lineJoin: "round",
         });
 
-        const group = L.featureGroup([casing, roseLine]).addTo(mapInstanceRef.current);
+        const group = L.featureGroup([casing, tealLine]).addTo(
+          mapInstanceRef.current,
+        );
         routeLayerRef.current = group;
 
         setActiveRouteInfo({
@@ -228,26 +348,22 @@ export default function NearbyOffersTab() {
           businessName: deal.businessName,
           address: deal.address,
           dealId: deal._id,
-          discountValue: deal.discountValue,
-          discountType: deal.discountType,
+          discountText: deal.discountText,
           googleMapsUrl: `https://www.google.com/maps/dir/?api=1&origin=${start[0]},${start[1]}&destination=${end[0]},${end[1]}&travelmode=driving`,
         });
 
         const bounds = group.getBounds();
         if (bounds.isValid()) {
-          mapInstanceRef.current.fitBounds(bounds, { padding: [50, 50], maxZoom: 15 });
+          mapInstanceRef.current.fitBounds(bounds, {
+            padding: [45, 45],
+            maxZoom: 15,
+          });
         }
       };
 
-      // Multi-source routing fetch
       try {
-        const startLng = start[1];
-        const startLat = start[0];
-        const endLng = end[1];
-        const endLat = end[0];
-
         const res = await fetch(
-          `https://routing.openstreetmap.de/routed-car/route/v1/driving/${startLng},${startLat};${endLng},${endLat}?overview=full&geometries=geojson`,
+          `https://routing.openstreetmap.de/routed-car/route/v1/driving/${start[1]},${start[0]};${end[1]},${end[0]}?overview=full&geometries=geojson`,
         );
         if (res.ok) {
           const data = await res.json();
@@ -260,19 +376,24 @@ export default function NearbyOffersTab() {
             return;
           }
         }
-      } catch {}
+      } catch (_) {}
 
-      // Fallback line
-      const fallbackDist = deal.distance ? deal.distance.toFixed(1) : "2.0";
-      const fallbackMin = Math.max(2, Math.round(Number(fallbackDist) * 2.5));
+      // Fallback direct line
+      const fallbackDist = deal.distance ? deal.distance.toFixed(1) : "1.0";
+      const fallbackMin = Math.max(1, Math.round(Number(fallbackDist) * 2.5));
       drawRouteLine([start, end], fallbackDist, fallbackMin);
     },
     [mapCenter],
   );
 
-  // Initialize Leaflet Map Instance
+  // Initialize and update Leaflet Map
   useEffect(() => {
-    if (!leafletLoaded || !mapRef.current || typeof window === "undefined" || !window.L) {
+    if (
+      !leafletLoaded ||
+      !mapRef.current ||
+      typeof window === "undefined" ||
+      !window.L
+    ) {
       return;
     }
     const L = window.L;
@@ -286,12 +407,13 @@ export default function NearbyOffersTab() {
 
       L.control.zoom({ position: "bottomright" }).addTo(map);
 
-      // Crisp High-DPI Google Streets HD tiles (100% Free)
+      // High-DPI Google Streets HD tiles
       L.tileLayer(
         "https://mt{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}&scale=2",
         {
           subdomains: ["0", "1", "2", "3"],
-          attribution: '&copy; <a href="https://www.google.com/maps">Google Maps</a>',
+          attribution:
+            '&copy; <a href="https://www.google.com/maps">Google Maps</a>',
           maxZoom: 21,
           detectRetina: true,
         },
@@ -300,7 +422,10 @@ export default function NearbyOffersTab() {
       markersGroupRef.current = L.layerGroup().addTo(map);
       mapInstanceRef.current = map;
     } else {
-      mapInstanceRef.current.setView(mapCenter, mapInstanceRef.current.getZoom() || 13);
+      mapInstanceRef.current.setView(
+        mapCenter,
+        mapInstanceRef.current.getZoom() || 13,
+      );
     }
 
     const map = mapInstanceRef.current;
@@ -308,25 +433,27 @@ export default function NearbyOffersTab() {
 
     markersGroupRef.current.clearLayers();
 
-    // 1. Draw Radius Circle
-    const distNum = parseFloat(radius);
-    if (!Number.isNaN(distNum)) {
-      L.circle(mapCenter, {
-        radius: distNum * 1000,
-        color: "#FF2E63",
-        weight: 1.5,
-        opacity: 0.65,
-        fillColor: "#FF2E63",
-        fillOpacity: 0.06,
-        dashArray: "6, 6",
-      }).addTo(markersGroupRef.current);
+    // 1. Draw Radius circle if filtered
+    if (radiusFilter !== "all") {
+      const distNum = parseFloat(radiusFilter);
+      if (!Number.isNaN(distNum)) {
+        L.circle(mapCenter, {
+          radius: distNum * 1000,
+          color: "#007F79",
+          weight: 1.5,
+          opacity: 0.7,
+          fillColor: "#007F79",
+          fillOpacity: 0.06,
+          dashArray: "6, 6",
+        }).addTo(markersGroupRef.current);
+      }
     }
 
-    // 2. User Location Marker
+    // 2. User Live Location Marker (Radar Pulse)
     const userMarkerHtml = `
       <div style="position:relative;width:36px;height:36px;display:flex;align-items:center;justify-content:center;">
-        <div style="position:absolute;width:36px;height:36px;border-radius:50%;background:rgba(247,40,83,0.3);animation:pulse 2s infinite;"></div>
-        <div style="width:16px;height:16px;background:#FF2E63;border:3px solid #fff;border-radius:50%;box-shadow:0 0 12px rgba(247,40,83,0.8);z-index:2;"></div>
+        <div style="position:absolute;width:36px;height:36px;border-radius:50%;background:rgba(0,127,121,0.25);animation:ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+        <div style="width:14px;height:14px;background:#007F79;border:3px solid #ffffff;border-radius:50%;box-shadow:0 0 10px rgba(0,127,121,0.7);z-index:2;"></div>
       </div>
     `;
     L.marker(mapCenter, {
@@ -336,163 +463,336 @@ export default function NearbyOffersTab() {
         iconSize: [36, 36],
         iconAnchor: [18, 18],
       }),
-    }).addTo(markersGroupRef.current);
+    })
+      .addTo(markersGroupRef.current)
+      .bindPopup(
+        `<div style="font-family:sans-serif;font-size:11px;font-weight:600;color:#35104A;">Your Location</div>`,
+      );
 
-    // 3. Store Markers
-    filteredDeals.forEach((deal) => {
-      const isSelected = selectedCouponId === deal._id;
-      const badgeText =
-        deal.discountType === "percentage"
-          ? `${deal.discountValue}% OFF`
-          : `₹${deal.discountValue} OFF`;
+    // 3. Store Markers on Leaflet Map
+    processedStores.forEach((store) => {
+      const isSelected = selectedDealId === store._id;
+      const isUltraNear = store.distance < 1.0;
+
+      const markerColor = isSelected
+        ? "#35104A"
+        : isUltraNear
+          ? "#007F79"
+          : "#6B4C82";
+
+      const badgeBg = isSelected ? "#35104A" : "#007F79";
 
       const markerHtml = `
         <div style="display:flex;flex-direction:column;align-items:center;cursor:pointer;transform:${isSelected ? "scale(1.15)" : "scale(1)"};transition:all 0.2s;">
-          <div style="background:#fff;border:2px solid #FF2E63;border-radius:999px;padding:2px 6px;box-shadow:0 3px 10px rgba(0,0,0,0.15);font-size:10px;font-weight:700;color:#0f172a;white-space:nowrap;">
-            ${badgeText}
+          <div style="background:${badgeBg};border:2px solid #ffffff;border-radius:999px;padding:2px 7px;box-shadow:0 3px 10px rgba(0,0,0,0.18);font-size:10px;font-weight:700;color:#ffffff;white-space:nowrap;font-family:sans-serif;">
+            ${store.discountText}
           </div>
-          <div style="width:6px;height:6px;background:#FF2E63;transform:rotate(45deg) translateY(-2px);border-radius:1px;"></div>
+          <div style="width:6px;height:6px;background:${badgeBg};transform:rotate(45deg) translateY(-2px);border-radius:1px;"></div>
         </div>
       `;
 
-      const marker = L.marker(deal.coords, {
+      const marker = L.marker(store.coords, {
         icon: L.divIcon({
-          className: "deal-map-marker",
+          className: "store-deal-marker",
           html: markerHtml,
-          iconSize: [60, 26],
-          iconAnchor: [30, 26],
+          iconSize: [64, 28],
+          iconAnchor: [32, 28],
         }),
       });
 
-      marker.on("click", () => handleSelectDeal(deal));
+      marker.on("click", () => handleSelectDeal(store));
       marker.addTo(markersGroupRef.current);
     });
-  }, [leafletLoaded, mapCenter, radius, filteredDeals, selectedCouponId, handleSelectDeal]);
+  }, [
+    leafletLoaded,
+    mapCenter,
+    radiusFilter,
+    processedStores,
+    selectedDealId,
+    handleSelectDeal,
+  ]);
 
-  return (
-    <div className="bg-white border border-slate-200/90 rounded-2xl p-3.5 sm:p-4 shadow-2xs space-y-3.5 text-left select-none font-sans">
-      {/* Header Info */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2.5 border-b border-slate-100 pb-3">
-        <div className="space-y-0.5">
-          <div className="flex items-center gap-2">
-            <h3 className="text-xs sm:text-[13px] font-semibold text-slate-800 uppercase tracking-wider">
-              Nearby Deals Explorer
-            </h3>
-            <span className="px-2 py-0.2 rounded-full text-[9.5px] font-bold bg-rose-50 text-[#FF2E63] border border-rose-200">
-              {filteredDeals.length} Verified Stores
+  const renderStoreCard = (deal) => {
+    const isSelected = selectedDealId === deal._id;
+    const isNearest = deal.distance < 1.0;
+
+    return (
+      <div
+        key={deal._id}
+        ref={(el) => {
+          cardRefs.current[deal._id] = el;
+        }}
+        onClick={() => handleSelectDeal(deal)}
+        className={`p-3 rounded-xl border transition-all cursor-pointer text-left font-sans ${
+          isSelected
+            ? "bg-[#FFF8EF] border-[#007F79] ring-1 ring-[#007F79]/30 shadow-xs"
+            : "bg-white border-[#EADBCE] hover:border-[#007F79]/60 hover:bg-[#FFFDF9] shadow-2xs"
+        }`}
+      >
+        <div className="flex items-start justify-between gap-2">
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <h4 className="text-xs font-heading font-semibold text-[#35104A] truncate">
+                {deal.businessName}
+              </h4>
+              {deal.isVerified && (
+                <span className="inline-flex items-center gap-0.5 text-[9px] font-heading font-semibold text-[#007F79] bg-[#007F79]/10 px-1.5 py-0.2 rounded-full border border-[#007F79]/20">
+                  <ShieldCheck className="w-2.5 h-2.5" />
+                  <span>Verified</span>
+                </span>
+              )}
+              {deal.offersCount > 1 && (
+                <span className="text-[9px] font-heading font-medium text-[#6B4C82] bg-[#FFF8EF] border border-[#EADBCE] px-1.5 py-0.2 rounded-full">
+                  {deal.offersCount} Deals
+                </span>
+              )}
+            </div>
+
+            <p className="text-[11px] font-sans text-[#6B4C82] line-clamp-1 mt-0.5">
+              {deal.title}
+            </p>
+
+            <div className="flex items-center gap-1 text-[10px] text-[#6B4C82] mt-1 truncate">
+              <MapPin className="w-3 h-3 text-[#007F79] shrink-0" />
+              <span className="truncate">{deal.address}</span>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-end gap-1 shrink-0">
+            <span
+              className={`text-[9.5px] font-heading font-semibold px-2 py-0.5 rounded-full border whitespace-nowrap ${
+                isNearest
+                  ? "bg-[#007F79] text-white border-[#007F79] shadow-2xs"
+                  : "bg-[#007F79]/10 text-[#007F79] border-[#007F79]/20"
+              }`}
+            >
+              {deal.formattedDistance}
+            </span>
+            <span className="text-xs font-heading font-semibold text-[#35104A]">
+              {deal.discountText}
             </span>
           </div>
-          <p className="text-[11px] text-slate-500 font-normal">
-            Explore live partner store offers around your physical location dynamically.
-          </p>
         </div>
 
-        {/* Action Controls */}
-        <div className="flex flex-wrap gap-2 items-center">
-          {/* City Selection */}
-          <select
-            value={selectedCity}
-            onChange={(e) => {
-              setSelectedCity(e.target.value);
-              setUserGpsCoords(null);
-            }}
-            className="text-[11px] font-medium border border-slate-200 bg-slate-50 rounded-lg px-2.5 py-1 outline-none text-slate-700 focus:border-[#FF2E63] transition-colors cursor-pointer"
+        {/* Card Actions Footer */}
+        <div className="flex items-center justify-between gap-2 pt-2 mt-2 border-t border-[#EADBCE]/60">
+          <a
+            href={`https://www.google.com/maps/dir/?api=1&destination=${deal.coords[0]},${deal.coords[1]}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="inline-flex items-center gap-1 text-[10px] font-heading font-semibold text-[#6B4C82] hover:text-[#007F79] transition-colors"
+            title="Open Google Maps Directions"
           >
-            {Object.keys(CITY_COORDINATES).map((city) => (
-              <option key={city} value={city} className="capitalize">
-                {city.charAt(0).toUpperCase() + city.slice(1)}
-              </option>
-            ))}
-          </select>
+            <Navigation className="w-2.5 h-2.5 text-[#007F79]" />
+            <span>Google Maps ↗</span>
+          </a>
 
-          {/* Radius Selector */}
-          <div className="flex items-center border border-slate-200 rounded-lg p-0.5 bg-slate-50">
-            {["2", "5", "10"].map((r) => (
-              <button
-                key={r}
-                type="button"
-                onClick={() => setRadius(r)}
-                className={`text-[10px] font-semibold px-2 py-0.5 rounded-md transition-all uppercase cursor-pointer ${
-                  radius === r
-                    ? "bg-[#FF2E63] text-white shadow-2xs"
-                    : "text-slate-500 hover:text-slate-800 bg-transparent"
-                }`}
-              >
-                {r}km
-              </button>
-            ))}
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleSelectDeal(deal);
+              }}
+              className="text-[10px] font-heading font-semibold text-[#007F79] hover:text-[#006e69] hover:underline cursor-pointer"
+            >
+              Show Route
+            </button>
+            <Link
+              href={`/deals/${deal._id}`}
+              onClick={(e) => e.stopPropagation()}
+              className="text-[10px] font-heading font-semibold text-white bg-[#007F79] hover:bg-[#006e69] px-2 py-0.5 rounded-lg transition-colors shadow-2xs"
+            >
+              View Offer →
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="bg-[#FFFDF9] border border-[#EADBCE] rounded-2xl p-4 sm:p-5 shadow-xs space-y-4 text-left font-sans">
+      {/* Top Header & Search Bar */}
+      <div className="space-y-3 border-b border-[#EADBCE] pb-3.5">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2.5">
+          <div>
+            <div className="flex items-center gap-2">
+              <h3 className="text-sm sm:text-base font-heading font-semibold text-[#35104A] tracking-tight flex items-center gap-1.5">
+                <Store className="w-4 h-4 text-[#007F79]" />
+                <span>Nearby Deals Explorer</span>
+              </h3>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-heading font-semibold bg-[#007F79]/10 text-[#007F79] border border-[#007F79]/20">
+                {processedStores.length} Verified Stores
+              </span>
+            </div>
+            <p className="text-xs font-sans text-[#6B4C82] mt-0.5">
+              Ordered by nearest physical distance to your location — just like
+              Google Maps.
+            </p>
           </div>
 
-          {/* Full Screen Map Link */}
-          <Link
-            href="/nearby-offers"
-            className="text-[11px] font-semibold text-[#FF2E63] hover:text-[#e01e47] bg-rose-50 hover:bg-rose-100/70 border border-rose-200/80 px-2.5 py-1 rounded-lg flex items-center gap-1 transition-all"
+          {/* City & Radius Selector */}
+          <div className="flex items-center gap-2 flex-wrap">
+            {/* City Dropdown */}
+            <select
+              value={selectedCity}
+              onChange={(e) => {
+                setSelectedCity(e.target.value);
+                setUserGpsCoords(null);
+              }}
+              className="text-xs font-heading font-semibold border border-[#EADBCE] bg-white rounded-xl px-2.5 py-1.5 outline-none text-[#35104A] focus:border-[#007F79] transition-all cursor-pointer shadow-2xs"
+            >
+              {Object.keys(CITY_COORDINATES).map((city) => (
+                <option key={city} value={city} className="capitalize">
+                  {city.charAt(0).toUpperCase() + city.slice(1)}
+                </option>
+              ))}
+            </select>
+
+            {/* Radius Filter Pills */}
+            <div className="flex items-center border border-[#EADBCE] rounded-xl p-0.5 bg-[#FFF8EF]">
+              {[
+                { id: "all", label: "All" },
+                { id: "2", label: "2KM" },
+                { id: "5", label: "5KM" },
+                { id: "10", label: "10KM" },
+              ].map((r) => (
+                <button
+                  key={r.id}
+                  type="button"
+                  onClick={() => setRadiusFilter(r.id)}
+                  className={`text-[10px] font-heading font-semibold px-2 py-1 rounded-lg transition-all cursor-pointer ${
+                    radiusFilter === r.id
+                      ? "bg-[#007F79] text-white shadow-xs"
+                      : "text-[#6B4C82] hover:text-[#35104A]"
+                  }`}
+                >
+                  {r.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Full Map Link */}
+            <Link
+              href="/nearby-offers"
+              className="text-xs font-heading font-semibold text-[#007F79] hover:text-white hover:bg-[#007F79] bg-[#007F79]/10 border border-[#007F79]/20 px-3 py-1.5 rounded-xl flex items-center gap-1 transition-all"
+            >
+              <span>Full Map</span>
+              <ExternalLink className="w-3 h-3" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Live Location & Search Row */}
+        <div className="flex flex-col sm:flex-row items-center gap-2">
+          {/* Search Input */}
+          <div className="relative flex-1 w-full">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#6B4C82]" />
+            <input
+              type="text"
+              placeholder="Search store name, location, or coupon..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-white border border-[#EADBCE] focus:border-[#007F79] focus:ring-1 focus:ring-[#007F79]/20 rounded-xl pl-9 pr-8 py-1.5 text-xs font-sans text-[#35104A] placeholder-[#6B4C82]/60 outline-none transition-all shadow-2xs"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#6B4C82] hover:text-[#35104A] cursor-pointer"
+              >
+                <X className="w-3 h-3" />
+              </button>
+            )}
+          </div>
+
+          {/* Near Me GPS Button */}
+          <button
+            type="button"
+            onClick={() => handleLocateMe(true)}
+            disabled={gpsLoading}
+            className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 text-xs font-heading font-semibold px-3.5 py-1.5 rounded-xl border transition-all cursor-pointer shrink-0 shadow-2xs ${
+              userGpsCoords
+                ? "bg-[#007F79] text-white border-[#007F79]"
+                : "bg-white hover:bg-[#FFF8EF] text-[#007F79] border-[#007F79]/30"
+            }`}
           >
-            <span>Full Map</span>
-            <ExternalLink className="w-3 h-3" />
-          </Link>
+            <Crosshair
+              className={`w-3.5 h-3.5 ${gpsLoading ? "animate-spin" : ""}`}
+            />
+            <span>
+              {gpsLoading
+                ? "Locating..."
+                : userGpsCoords
+                  ? "Live GPS Active"
+                  : "Detect My Location"}
+            </span>
+          </button>
         </div>
       </div>
 
-      {/* Main Dual-Column Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5">
-        {/* Left Side: Real Interactive Leaflet Map */}
-        <div className="lg:col-span-7 bg-slate-100 border border-slate-200 rounded-xl relative overflow-hidden h-[340px] flex items-center justify-center">
+      {/* Main Dual-Column Content: Map (Left) + Google Maps Style Sections (Right) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+        {/* Left Side: Interactive Leaflet Map with Live Routing */}
+        <div className="lg:col-span-7 bg-[#FFF8EF] border border-[#EADBCE] rounded-2xl relative overflow-hidden h-[360px] sm:h-[440px] flex items-center justify-center">
           <div ref={mapRef} className="w-full h-full z-0" />
 
-          {/* Floating GPS button */}
-          <div className="absolute top-2.5 right-2.5 z-20">
+          {/* Floating GPS Recenter button on top right of map */}
+          <div className="absolute top-3 right-3 z-20">
             <button
               type="button"
-              onClick={handleLocateMe}
-              className="w-7 h-7 bg-white/95 backdrop-blur-md rounded-lg shadow-md border border-slate-200 flex items-center justify-center text-slate-700 hover:text-[#FF2E63] transition-all cursor-pointer"
-              title="Locate Me (GPS)"
+              onClick={() => handleLocateMe(true)}
+              className="w-8 h-8 bg-white/95 backdrop-blur-md rounded-xl shadow-md border border-[#EADBCE] flex items-center justify-center text-[#35104A] hover:text-[#007F79] transition-all cursor-pointer"
+              title="Recenter on My GPS Location"
             >
-              <Crosshair className={`w-3.5 h-3.5 ${gpsLoading ? "animate-spin text-[#FF2E63]" : ""}`} />
+              <Crosshair
+                className={`w-4 h-4 ${gpsLoading ? "animate-spin text-[#007F79]" : ""}`}
+              />
             </button>
           </div>
 
-          {/* Floating Navigation HUD */}
+          {/* Active Navigation HUD Box */}
           {activeRouteInfo && (
-            <div className="absolute bottom-2.5 left-2.5 right-2.5 z-20 animate-in fade-in slide-in-from-bottom-2 duration-150">
-              <div className="bg-white/95 backdrop-blur-md rounded-xl p-2.5 shadow-xl border border-slate-200 flex flex-col gap-1.5">
-                <div className="flex items-start justify-between gap-1.5">
+            <div className="absolute bottom-3 left-3 right-3 z-20 animate-in fade-in slide-in-from-bottom-2 duration-150">
+              <div className="bg-[#FFFDF9]/95 backdrop-blur-md rounded-xl p-3 shadow-xl border border-[#EADBCE] flex flex-col gap-1.5 font-sans">
+                <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0">
-                    <div className="flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF2E63] animate-pulse shrink-0" />
-                      <h4 className="text-[11px] font-bold text-slate-900 truncate">
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span className="w-2 h-2 rounded-full bg-[#007F79] animate-pulse shrink-0" />
+                      <h4 className="text-xs font-heading font-semibold text-[#35104A] truncate">
                         {activeRouteInfo.businessName}
                       </h4>
-                      {activeRouteInfo.discountValue && (
-                        <span className="px-1.5 py-0.2 rounded text-[8.5px] font-bold bg-rose-50 text-[#FF2E63] border border-rose-200 shrink-0">
-                          {activeRouteInfo.discountType === "percentage"
-                            ? `${activeRouteInfo.discountValue}% OFF`
-                            : `₹${activeRouteInfo.discountValue} OFF`}
-                        </span>
-                      )}
+                      <span className="px-2 py-0.2 rounded-full text-[9px] font-heading font-semibold bg-[#007F79]/10 text-[#007F79] border border-[#007F79]/20 shrink-0">
+                        {activeRouteInfo.discountText}
+                      </span>
                     </div>
-                    <p className="text-[9.5px] text-slate-500 truncate mt-0.5">
+                    <p className="text-[10.5px] font-sans text-[#6B4C82] truncate mt-0.5">
                       {activeRouteInfo.address}
                     </p>
                   </div>
                   <button
                     onClick={() => {
                       if (routeLayerRef.current && mapInstanceRef.current) {
-                        mapInstanceRef.current.removeLayer(routeLayerRef.current);
+                        mapInstanceRef.current.removeLayer(
+                          routeLayerRef.current,
+                        );
                         routeLayerRef.current = null;
                       }
                       setActiveRouteInfo(null);
                     }}
-                    className="text-slate-400 hover:text-slate-600 p-0.5 cursor-pointer"
+                    className="text-[#6B4C82] hover:text-[#35104A] p-0.5 cursor-pointer"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
                 </div>
 
-                <div className="flex items-center justify-between gap-1 pt-1 border-t border-slate-100">
-                  <div className="flex items-center gap-1.5 text-[10px] text-slate-600 font-medium">
-                    <Car className="w-3 h-3 text-[#FF2E63]" />
-                    <span className="text-[#FF2E63] font-bold">{activeRouteInfo.durationMin} mins</span>
+                <div className="flex items-center justify-between gap-2 pt-1.5 border-t border-[#EADBCE]">
+                  <div className="flex items-center gap-1.5 text-xs text-[#35104A] font-heading font-medium">
+                    <Car className="w-3.5 h-3.5 text-[#007F79]" />
+                    <span className="text-[#007F79] font-semibold">
+                      {activeRouteInfo.durationMin} mins drive
+                    </span>
                     <span>•</span>
                     <span>{activeRouteInfo.distanceKm} km</span>
                   </div>
@@ -501,9 +801,9 @@ export default function NearbyOffersTab() {
                     href={activeRouteInfo.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-[10px] font-bold py-1 px-2.5 rounded-md flex items-center gap-1 transition-all shadow-2xs"
+                    className="bg-[#007F79] hover:bg-[#006e69] text-white text-[11px] font-heading font-semibold py-1 px-3 rounded-lg flex items-center gap-1.5 transition-all shadow-2xs"
                   >
-                    <Navigation className="w-2.5 h-2.5" />
+                    <Navigation className="w-3 h-3" />
                     <span>Navigate</span>
                   </a>
                 </div>
@@ -512,87 +812,89 @@ export default function NearbyOffersTab() {
           )}
         </div>
 
-        {/* Right Side: Scrollable Deals List */}
-        <div className="lg:col-span-5 h-[340px] overflow-y-auto space-y-2 pr-1 no-scrollbar scrollbar-thin">
+        {/* Right Side: Google Maps Style Distance Categorised Sections */}
+        <div className="lg:col-span-5 h-[360px] sm:h-[440px] overflow-y-auto space-y-4 pr-1 scrollbar-thin">
           {loading ? (
-            <div className="p-8 text-center text-xs text-slate-400">Loading nearby offers...</div>
-          ) : filteredDeals.length === 0 ? (
-            <div className="p-8 text-center space-y-2 text-slate-400">
-              <MapPin className="w-6 h-6 mx-auto text-slate-300" />
-              <p className="text-xs font-semibold text-slate-700">No stores found within {radius}km</p>
-              <p className="text-[10px] text-slate-400">Try expanding your search radius.</p>
+            <div className="p-8 text-center text-xs font-sans text-[#6B4C82] space-y-2">
+              <div className="w-6 h-6 border-2 border-[#007F79] border-t-transparent rounded-full animate-spin mx-auto" />
+              <p>Scanning nearby verified stores...</p>
+            </div>
+          ) : processedStores.length === 0 ? (
+            <div className="bg-white border border-dashed border-[#EADBCE] rounded-xl p-8 text-center space-y-2 text-[#6B4C82]">
+              <MapPin className="w-8 h-8 mx-auto text-[#007F79]" />
+              <p className="text-xs font-heading font-semibold text-[#35104A]">
+                No verified stores match your criteria
+              </p>
+              <p className="text-[11px] font-sans text-[#6B4C82]">
+                Try selecting "All" distance or resetting your search.
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setRadiusFilter("all");
+                  setSearchQuery("");
+                }}
+                className="text-xs font-heading font-semibold text-[#007F79] hover:underline cursor-pointer"
+              >
+                Reset Filters →
+              </button>
             </div>
           ) : (
-            filteredDeals.map((deal) => {
-              const isSelected = selectedCouponId === deal._id;
-              const discountText =
-                deal.discountType === "percentage"
-                  ? `${deal.discountValue}% OFF`
-                  : `₹${deal.discountValue} OFF`;
-
-              return (
-                <div
-                  key={deal._id}
-                  onClick={() => handleSelectDeal(deal)}
-                  className={`p-2.5 rounded-xl border transition-all cursor-pointer shadow-2xs ${
-                    isSelected
-                      ? "bg-rose-50/40 border-[#FF2E63] ring-1 ring-rose-200"
-                      : "bg-white border-slate-200/90 hover:border-rose-200 hover:bg-rose-50/20"
-                  }`}
-                >
-                  <div className="flex items-start justify-between gap-1.5">
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-1.5">
-                        <h4 className="text-[11.5px] font-bold text-slate-800 truncate">
-                          {deal.businessName}
-                        </h4>
-                        <span className="inline-flex items-center gap-0.5 text-[8.5px] font-normal text-emerald-600">
-                          <ShieldCheck className="w-2.5 h-2.5" /> Verified
-                        </span>
-                      </div>
-                      <p className="text-[10.5px] font-medium text-slate-600 line-clamp-1 mt-0.5">
-                        {deal.title}
-                      </p>
-                      <p className="text-[9.5px] text-slate-400 truncate mt-0.5">
-                        {deal.address}
-                      </p>
-                    </div>
-
-                    <div className="flex flex-col items-end shrink-0 gap-1">
-                      <span className="px-1.5 py-0.5 rounded text-[9.5px] font-bold bg-rose-50 text-[#FF2E63] border border-rose-200">
-                        {discountText}
-                      </span>
-                      <span className="text-[9px] font-medium text-slate-500">
-                        {deal.distance} km away
-                      </span>
-                    </div>
+            <div className="space-y-4">
+              {/* SECTION 1: NEARBY PLACES (< 3 KM) */}
+              {sections.nearMe.length > 0 && (
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between px-1">
+                    <span className="text-xs font-heading font-semibold text-[#35104A] flex items-center gap-1.5 uppercase tracking-wide">
+                      <span className="w-2 h-2 rounded-full bg-[#007F79]" />
+                      <span>Nearby Places (&lt; 3 km)</span>
+                    </span>
+                    <span className="text-[10px] font-heading font-semibold px-2 py-0.2 rounded-full bg-[#007F79]/10 text-[#007F79] border border-[#007F79]/20">
+                      {sections.nearMe.length} Nearby
+                    </span>
                   </div>
-
-                  <div className="mt-2 pt-1.5 border-t border-slate-100 flex items-center justify-between">
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleSelectDeal(deal);
-                      }}
-                      className="text-[10px] font-semibold text-[#FF2E63] hover:text-[#e01e47] flex items-center gap-1 cursor-pointer"
-                    >
-                      <Navigation className="w-2.5 h-2.5" />
-                      <span>Show Route</span>
-                    </button>
-
-                    <Link
-                      href={`/deals/${deal._id}`}
-                      onClick={(e) => e.stopPropagation()}
-                      className="text-[10px] font-semibold text-slate-700 hover:text-[#FF2E63] flex items-center gap-0.5"
-                    >
-                      <span>Claim Deal</span>
-                      <ChevronRight className="w-3 h-3" />
-                    </Link>
+                  <div className="space-y-2">
+                    {sections.nearMe.map(renderStoreCard)}
                   </div>
                 </div>
-              );
-            })
+              )}
+
+              {/* SECTION 2: ACROSS TOWN (3 - 10 KM) */}
+              {sections.acrossTown.length > 0 && (
+                <div className="space-y-2 pt-1">
+                  <div className="flex items-center justify-between px-1">
+                    <span className="text-xs font-heading font-semibold text-[#35104A] flex items-center gap-1.5 uppercase tracking-wide">
+                      <Compass className="w-3.5 h-3.5 text-[#35104A]" />
+                      <span>Across Town (3 – 10 km)</span>
+                    </span>
+                    <span className="text-[10px] font-heading font-semibold px-2 py-0.2 rounded-full bg-[#35104A]/10 text-[#35104A] border border-[#35104A]/20">
+                      {sections.acrossTown.length} Stores
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    {sections.acrossTown.map(renderStoreCard)}
+                  </div>
+                </div>
+              )}
+
+              {/* SECTION 3: WIDER REGION (> 10 KM) */}
+              {sections.widerRegion.length > 0 && radiusFilter === "all" && (
+                <div className="space-y-2 pt-1">
+                  <div className="flex items-center justify-between px-1">
+                    <span className="text-xs font-heading font-semibold text-[#6B4C82] flex items-center gap-1.5 uppercase tracking-wide">
+                      <Globe className="w-3.5 h-3.5 text-[#6B4C82]" />
+                      <span>Wider Region &amp; Online Brands</span>
+                    </span>
+                    <span className="text-[10px] font-heading font-medium px-2 py-0.2 rounded-full bg-[#FFF8EF] text-[#6B4C82] border border-[#EADBCE]">
+                      {sections.widerRegion.length} Stores
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    {sections.widerRegion.map(renderStoreCard)}
+                  </div>
+                </div>
+              )}
+            </div>
           )}
         </div>
       </div>

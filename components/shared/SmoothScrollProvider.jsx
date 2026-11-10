@@ -1,125 +1,137 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { ReactLenis, useLenis } from "lenis/react";
 
-const LenisContext = createContext(null);
-
-export function useLenis() {
-  return useContext(LenisContext);
-}
-
-export default function SmoothScrollProvider({ children }) {
-  const [lenisInstance, setLenisInstance] = useState(null);
-  const lenisRef = useRef(null);
+/**
+ * Controller to maintain Lenis state across route changes,
+ * dynamic content expansions, and modal scroll locks with 0 stuck states.
+ */
+function LenisSyncController() {
+  const lenis = useLenis();
   const pathname = usePathname();
+  const prevPathname = useRef(pathname);
 
+  // 1. Expose to window.lenis for global access
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    // On touch-only mobile devices, preserve native 120Hz GPU momentum scrolling
-    const isTouchOnly =
-      window.matchMedia("(pointer: coarse)").matches &&
-      !window.matchMedia("(pointer: fine)").matches;
-    if (isTouchOnly) return;
-
-    let lenis = null;
-    let rafId = null;
-    let handleAnchorClick = null;
-    let isCancelled = false;
-
-    let idleId = null;
-    let timerId = null;
-
-    const startLenis = () => {
-      if (isCancelled) return;
-      import("lenis").then(({ default: Lenis }) => {
-        if (isCancelled) return;
-
-        document.documentElement.classList.add("lenis", "lenis-smooth");
-
-        lenis = new Lenis({
-          duration: 1.2,
-          easing: (t) => Math.min(1, 1.001 - 2 ** (-10 * t)),
-          orientation: "vertical",
-          gestureOrientation: "vertical",
-          smoothWheel: true,
-          wheelMultiplier: 1.0,
-          touchMultiplier: 1.1,
-          infinite: false,
-          autoRaf: false,
-        });
-
-        lenisRef.current = lenis;
-        setLenisInstance(lenis);
-        window.lenis = lenis;
-
-        function raf(time) {
-          lenis.raf(time);
-          rafId = requestAnimationFrame(raf);
-        }
-
-        rafId = requestAnimationFrame(raf);
-
-        handleAnchorClick = (e) => {
-          const target = e.target.closest("a[href*='#']");
-          if (!target) return;
-
-          const href = target.getAttribute("href");
-          if (!href || href === "#") return;
-
-          if (href.startsWith("#")) {
-            const elem = document.querySelector(href);
-            if (elem) {
-              e.preventDefault();
-              lenis.scrollTo(elem, { offset: -90, duration: 1.2 });
-            }
-          }
-        };
-
-        document.addEventListener("click", handleAnchorClick);
-      });
+    if (!lenis) return;
+    window.lenis = lenis;
+    return () => {
+      window.lenis = null;
     };
+  }, [lenis]);
 
-    if ("requestIdleCallback" in window) {
-      idleId = window.requestIdleCallback(startLenis, { timeout: 2000 });
-    } else {
-      timerId = setTimeout(startLenis, 1000);
+  // 2. Next.js Route changes: reset to top and recalculate dimensions
+  useEffect(() => {
+    if (!lenis) return;
+    if (prevPathname.current !== pathname) {
+      prevPathname.current = pathname;
+      lenis.scrollTo(0, { immediate: true });
+      lenis.start();
+      requestAnimationFrame(() => {
+        lenis.resize();
+      });
+    }
+  }, [pathname, lenis]);
+
+  // 3. Dynamic content expansions: keep scroll limits synced via ResizeObserver (No Stuck)
+  useEffect(() => {
+    if (!lenis) return;
+
+    const handleResize = () => {
+      lenis.resize();
+    };
+    window.addEventListener("resize", handleResize);
+
+    let ro = null;
+    if (typeof ResizeObserver !== "undefined" && document.body) {
+      ro = new ResizeObserver(() => {
+        lenis.resize();
+      });
+      ro.observe(document.body);
     }
 
     return () => {
-      isCancelled = true;
-      if (idleId && "cancelIdleCallback" in window) {
-        window.cancelIdleCallback(idleId);
-      }
-      if (timerId) {
-        clearTimeout(timerId);
-      }
-      if (handleAnchorClick) {
-        document.removeEventListener("click", handleAnchorClick);
-      }
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-      }
-      if (lenis) {
-        lenis.destroy();
-        document.documentElement.classList.remove("lenis", "lenis-smooth");
-        window.lenis = null;
+      window.removeEventListener("resize", handleResize);
+      ro?.disconnect();
+    };
+  }, [lenis]);
+
+  // 4. Modal / Drawer scroll lock auto-detection
+  useEffect(() => {
+    if (!lenis) return;
+
+    const checkScrollLock = () => {
+      const isLocked =
+        document.body.style.overflow === "hidden" ||
+        document.body.hasAttribute("data-scroll-locked") ||
+        document.documentElement.classList.contains("lenis-stopped");
+
+      if (isLocked) {
+        lenis.stop();
+      } else {
+        lenis.start();
       }
     };
-  }, []);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: Reset scroll on route change
+    const mo = new MutationObserver(checkScrollLock);
+    mo.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["style", "class", "data-scroll-locked"],
+    });
+
+    return () => mo.disconnect();
+  }, [lenis]);
+
+  // 5. Smooth Anchor Links (e.g. #faq, #deals, etc.)
   useEffect(() => {
-    if (lenisRef.current) {
-      lenisRef.current.scrollTo(0, { immediate: true });
-      lenisRef.current.resize();
-    }
-  }, [pathname]);
+    if (!lenis) return;
 
+    const handleAnchorClick = (e) => {
+      const target = e.target.closest("a[href*='#']");
+      if (!target) return;
+
+      const href = target.getAttribute("href");
+      if (!href || href === "#") return;
+
+      if (href.startsWith("#")) {
+        const elem = document.querySelector(href);
+        if (elem) {
+          e.preventDefault();
+          lenis.scrollTo(elem, { offset: -90, duration: 1.2 });
+        }
+      }
+    };
+
+    document.addEventListener("click", handleAnchorClick);
+    return () => document.removeEventListener("click", handleAnchorClick);
+  }, [lenis]);
+
+  return null;
+}
+
+export { useLenis };
+
+export default function SmoothScrollProvider({ children }) {
   return (
-    <LenisContext.Provider value={lenisInstance}>
+    <ReactLenis
+      root
+      options={{
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - 2 ** (-10 * t)),
+        orientation: "vertical",
+        gestureOrientation: "vertical",
+        smoothWheel: true,
+        wheelMultiplier: 1.0,
+        touchMultiplier: 1.0,
+        syncTouch: false, // Preserves native 120Hz GPU touch momentum on mobile/tablet (prevents gesture lock/stuck)
+        infinite: false,
+        autoRaf: true,
+      }}
+    >
+      <LenisSyncController />
       {children}
-    </LenisContext.Provider>
+    </ReactLenis>
   );
 }

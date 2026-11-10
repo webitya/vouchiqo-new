@@ -32,23 +32,23 @@ const FormInput = forwardRef(function FormInput(
     error?.message || (typeof error === "string" ? error : undefined);
 
   return (
-    <div className={cn("flex flex-col gap-1.5 w-full", className)}>
+    <div className={cn("flex flex-col gap-1.5 w-full font-sans", className)}>
       {label && (
         <Label
           htmlFor={name}
-          className="text-xs font-medium text-slate-700 dark:text-slate-300 flex items-center gap-1.5"
+          className="text-xs font-heading font-semibold text-[#35104A] flex items-center gap-1.5"
         >
-          {Icon && <Icon className="w-3.5 h-3.5 text-brand-blue" />}
+          {Icon && <Icon className="w-3.5 h-3.5 text-[#007F79]" />}
           <span>{label}</span>
           {required && (
-            <span className="text-red-500 font-medium ml-0.5">*</span>
+            <span className="text-[#FF2E63] font-medium ml-0.5">*</span>
           )}
         </Label>
       )}
 
       <div className="relative flex items-center">
         {Prefix && (
-          <span className="absolute left-3 text-slate-400 dark:text-slate-500 pointer-events-none">
+          <span className="absolute left-3 text-[#6B4C82]/70 pointer-events-none">
             <Prefix className="w-4 h-4" />
           </span>
         )}
@@ -64,11 +64,11 @@ const FormInput = forwardRef(function FormInput(
           }
           aria-invalid={!!errorMessage}
           className={cn(
-            "text-base md:text-sm h-10 border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-slate-900 dark:text-slate-100 placeholder:text-slate-450 focus-visible:ring-brand-blue/20 focus-visible:border-brand-blue/60 w-full",
+            "text-base md:text-sm h-10 border-[#EADBCE] bg-white text-[#35104A] placeholder:text-[#6B4C82]/50 focus-visible:ring-[#007F79]/20 focus-visible:border-[#007F79] rounded-xl w-full transition-colors",
             Prefix && "pl-9",
             (Suffix || isPassword) && "pr-9",
             errorMessage &&
-              "border-red-500 focus-visible:border-red-500 focus-visible:ring-red-500/20",
+              "border-[#FF2E63] focus-visible:border-[#FF2E63] focus-visible:ring-[#FF2E63]/20",
           )}
           {...rest}
         />
@@ -76,7 +76,7 @@ const FormInput = forwardRef(function FormInput(
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 text-slate-400 dark:text-slate-500 hover:text-slate-650 dark:hover:text-slate-300 p-1 focus:outline-none cursor-pointer border-0 bg-transparent"
+            className="absolute right-3 text-[#6B4C82] hover:text-[#35104A] p-1 focus:outline-none cursor-pointer border-0 bg-transparent transition-colors"
           >
             {showPassword ? (
               <EyeOff className="w-4 h-4" />
@@ -86,7 +86,7 @@ const FormInput = forwardRef(function FormInput(
           </button>
         ) : (
           Suffix && (
-            <span className="absolute right-3 text-slate-400 dark:text-slate-500 pointer-events-none">
+            <span className="absolute right-3 text-[#6B4C82]/70 pointer-events-none">
               <Suffix className="w-4 h-4" />
             </span>
           )
@@ -97,9 +97,9 @@ const FormInput = forwardRef(function FormInput(
         <p
           id={`${name}-error`}
           role="alert"
-          className="text-xs text-red-500 font-medium flex items-center gap-1 mt-0.5 animate-in fade-in-50"
+          className="text-xs text-[#FF2E63] font-medium flex items-center gap-1 mt-0.5 animate-in fade-in-50 font-sans"
         >
-          <AlertCircle className="w-3.5 h-3.5 text-red-500 shrink-0" />
+          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
           <span>{errorMessage}</span>
         </p>
       )}

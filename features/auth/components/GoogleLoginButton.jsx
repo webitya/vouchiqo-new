@@ -32,7 +32,7 @@ export function GoogleLoginButton({ className }) {
       type="button"
       onClick={handleGoogleSignIn}
       className={cn(
-        "w-full h-10 border border-slate-200 dark:border-zinc-800 bg-white hover:bg-slate-50 dark:bg-zinc-900 dark:hover:bg-zinc-800/80 text-slate-600 dark:text-slate-300 flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-all shadow-none cursor-pointer",
+        "w-full h-10 border border-[#EADBCE] bg-white hover:bg-[#FFFDF9] text-[#35104A] flex items-center justify-center gap-2 rounded-xl text-xs sm:text-sm font-heading font-semibold transition-all shadow-2xs cursor-pointer",
         className,
       )}
     >

@@ -73,38 +73,39 @@ const PopularOfferCard = memo(function PopularOfferCard({ coupon }) {
   return (
     <Link
       href={`/deals/${coupon._id}`}
-      className="group relative flex flex-col rounded-xl no-underline cursor-pointer border border-[#EADBCE] bg-white shadow-[0_2px_8px_rgba(53,16,74,0.06)] hover:shadow-[0_8px_20px_rgba(255,46,99,0.18)] hover:border-[#FF2E63] transition-all duration-300 select-none text-left overflow-hidden h-full font-sans"
+      prefetch={true}
+      className="group relative flex flex-col rounded-xl sm:rounded-2xl no-underline cursor-pointer border border-[#EADBCE] bg-[#FFF8EF] shadow-2xs hover:shadow-md hover:border-[#FF2E63]/50 transition-all duration-300 select-none text-left overflow-hidden h-full font-sans"
     >
-      {/* 1920x1080 (16:9) Aspect Ratio Image Header */}
-      <div className="relative w-full aspect-[16/9] overflow-hidden bg-slate-100 shrink-0">
+      {/* 16:9 Aspect Ratio Image Header */}
+      <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#35104A] shrink-0">
         <SafeImage
           src={coverImage}
           alt={coupon.title || "Offer Banner"}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105 select-none pointer-events-none"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1F0A2B]/40 via-transparent to-transparent pointer-events-none" />
       </div>
 
       {/* Content Box with Dynamic Depth */}
-      <div className="relative flex-1 flex flex-col justify-between bg-white px-3 sm:px-4 pt-5 sm:pt-6 pb-3 sm:pb-3.5">
+      <div className="relative flex-1 flex flex-col justify-between bg-[#FFF8EF] px-2.5 sm:px-3.5 pt-4 sm:pt-4.5 pb-2.5 sm:pb-3">
         {/* Floating Merchant Circular Logo */}
         <div
-          className="absolute flex items-center justify-center bg-white rounded-full border border-[#EADBCE] shadow-md p-0.5 group-hover:border-[#FF2E63]/40 transition-colors"
+          className="absolute flex items-center justify-center bg-white rounded-full border border-[#EADBCE] shadow-md p-0.5 group-hover:border-[#FF2E63]/40 group-hover:scale-105 transition-all"
           style={{
-            width: "38px",
-            height: "38px",
-            top: "-19px",
-            left: "14px",
+            width: "32px",
+            height: "32px",
+            top: "-16px",
+            left: "12px",
             zIndex: 10,
           }}
         >
           <SafeImage
             src={logoUrl}
             alt={merchantName || "Logo"}
-            width={38}
-            height={38}
+            width={32}
+            height={32}
             className="w-full h-full object-contain rounded-full select-none pointer-events-none"
           />
         </div>
@@ -113,34 +114,24 @@ const PopularOfferCard = memo(function PopularOfferCard({ coupon }) {
         <div>
           {/* Discount Title */}
           <div className="mb-0.5">
-            <p className="text-left text-[11.5px] sm:text-[13px] font-heading font-bold uppercase tracking-tight text-[#FF2E63] leading-tight">
+            <p className="text-left text-[10.5px] sm:text-[12px] font-heading font-extrabold uppercase tracking-tight text-[#FF2E63] leading-tight truncate">
               {isExclusive ? "VOUCHIQO EXCLUSIVE" : discountFormatted}
             </p>
           </div>
 
           {/* Coupon Description / Title */}
-          <div className="mb-1.5 sm:mb-2">
-            <p className="text-left text-[11px] sm:text-xs text-[#35104A] group-hover:text-[#FF2E63] transition-colors leading-snug font-medium line-clamp-2">
+          <div className="mb-1 sm:mb-1.5">
+            <p className="text-left text-[10.5px] sm:text-[11.5px] text-[#35104A] group-hover:text-[#FF2E63] transition-colors leading-snug font-medium line-clamp-2 h-[2.5em]">
               {coupon.title}
             </p>
           </div>
         </div>
 
-        {/* Action Button Area */}
-        <div className="mt-auto pt-1">
-          {/* Mobile "GRAB NOW" */}
-          <div className="sm:hidden">
-            <span className="text-left text-[10px] font-heading font-bold uppercase tracking-wider text-[#FF2E63]">
-              GRAB NOW &rarr;
-            </span>
-          </div>
-
-          {/* Desktop Claim Button */}
-          <div className="hidden sm:block">
-            <span className="block w-full rounded-md py-1 text-center text-[11px] font-heading font-bold uppercase tracking-wider text-white transition-all shadow-2xs group-hover:brightness-95 bg-[#007F79] hover:bg-[#00635E]">
-              Claim now
-            </span>
-          </div>
+        {/* Action Button Area with increased height & responsive layout */}
+        <div className="mt-auto pt-1 sm:pt-1.5">
+          <span className="flex items-center justify-center w-full rounded-lg h-7.5 sm:h-8 md:h-8.5 px-2 text-center text-[10px] sm:text-[11px] font-heading font-bold uppercase tracking-wider text-white transition-all shadow-2xs group-hover:shadow-xs group-hover:bg-[#00605B] bg-[#007F79]">
+            Claim Now
+          </span>
         </div>
       </div>
     </Link>
@@ -154,6 +145,7 @@ export default function PopularOffers({ coupons = [] }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(4);
   const [dragOffset, setDragOffset] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Swipe/drag refs
   const dragStart = useRef(0);
@@ -184,19 +176,29 @@ export default function PopularOffers({ coupons = [] }) {
     }
   }, [totalSlides, selectedIndex]);
 
-  // Auto-rotation effect for slides (6 seconds interval)
+  // Auto-rotation effect for slides (5 seconds interval, pause on hover/drag)
   useEffect(() => {
-    if (totalSlides <= 1 || isDragging.current) return;
+    if (totalSlides <= 1 || isDragging.current || isHovered) return;
     const timer = setInterval(() => {
       setSelectedIndex((prev) => (prev + 1) % totalSlides);
-    }, 6000);
+    }, 5000);
     return () => clearInterval(timer);
-  }, [totalSlides]);
+  }, [totalSlides, isHovered]);
 
   const slides = useMemo(() => {
+    if (!finalItems.length) return [];
     const list = [];
     for (let i = 0; i < totalSlides; i++) {
-      list.push(finalItems.slice(i * itemsPerPage, (i + 1) * itemsPerPage));
+      const chunk = finalItems.slice(i * itemsPerPage, (i + 1) * itemsPerPage);
+      // If the chunk has fewer than itemsPerPage, wrap around from the beginning so it looks infinite with no empty slots
+      if (chunk.length < itemsPerPage && finalItems.length > 0) {
+        let wrapIdx = 0;
+        while (chunk.length < itemsPerPage) {
+          chunk.push(finalItems[wrapIdx % finalItems.length]);
+          wrapIdx++;
+        }
+      }
+      list.push(chunk);
     }
     return list;
   }, [finalItems, itemsPerPage, totalSlides]);
@@ -295,23 +297,30 @@ export default function PopularOffers({ coupons = [] }) {
   return (
     <section className="g-sub-banner text-left w-full select-none relative">
       {/* Custom Section Header */}
-      <div className="flex justify-between items-center mb-3.5 sm:mb-4">
+      <div className="flex justify-between items-center mb-2 sm:mb-2.5">
         <h2 className="text-base sm:text-lg md:text-xl font-heading font-bold text-[#FF2E63] tracking-tight">
           Popular Offers of the Day
         </h2>
       </div>
 
       {/* Carousel viewport & slides */}
-      <div className="relative w-full">
+      <div
+        className="relative w-full"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => {
+          setIsHovered(false);
+          handleMouseLeave();
+        }}
+      >
         {/* Left Side Chevron for Desktop */}
         {totalSlides > 1 && (
           <button
             type="button"
             onClick={handlePrev}
-            className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/95 border border-[#EADBCE] shadow-md items-center justify-center hover:bg-[#FFF8EF] text-[#35104A] hover:text-[#007F79] transition-all cursor-pointer"
+            className="hidden sm:flex absolute -left-2.5 sm:-left-3.5 lg:-left-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#35104A] hover:bg-[#FF2E63] text-white border border-white/30 shadow-[0_4px_14px_rgba(53,16,74,0.4)] items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
             aria-label="Previous Slide"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-5 h-5 sm:w-5.5 sm:h-5.5 stroke-[2.5]" />
           </button>
         )}
 
@@ -324,7 +333,6 @@ export default function PopularOffers({ coupons = [] }) {
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseLeave}
         >
           <div
             className={`w-full flex ${
@@ -339,9 +347,12 @@ export default function PopularOffers({ coupons = [] }) {
             {slides.map((slideItems, slideIdx) => (
               <div key={slideIdx} className="w-full flex-shrink-0 min-w-full">
                 {/* Single Row: 2 columns on mobile, 4 columns on desktop */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5 items-stretch">
-                  {slideItems.map((coupon) => (
-                    <PopularOfferCard key={coupon._id} coupon={coupon} />
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 lg:gap-4 items-stretch">
+                  {slideItems.map((coupon, cardIdx) => (
+                    <PopularOfferCard
+                      key={`${coupon._id || cardIdx}-${slideIdx}-${cardIdx}`}
+                      coupon={coupon}
+                    />
                   ))}
                 </div>
               </div>
@@ -354,32 +365,13 @@ export default function PopularOffers({ coupons = [] }) {
           <button
             type="button"
             onClick={handleNext}
-            className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/95 border border-[#EADBCE] shadow-md items-center justify-center hover:bg-[#FFF8EF] text-[#35104A] hover:text-[#007F79] transition-all cursor-pointer"
+            className="hidden sm:flex absolute -right-2.5 sm:-right-3.5 lg:-right-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#35104A] hover:bg-[#FF2E63] text-white border border-white/30 shadow-[0_4px_14px_rgba(53,16,74,0.4)] items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
             aria-label="Next Slide"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-5 h-5 sm:w-5.5 sm:h-5.5 stroke-[2.5]" />
           </button>
         )}
       </div>
-
-      {/* Slide dots at bottom center */}
-      {totalSlides > 1 && (
-        <div className="flex justify-center items-center gap-1.5 mt-5">
-          {Array.from({ length: totalSlides }).map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              className={`transition-all duration-300 ease-in-out rounded-full cursor-pointer h-1.5 ${
-                i === selectedIndex
-                  ? "w-7 bg-[#007F79] opacity-100"
-                  : "w-1.5 bg-[#EADBCE] opacity-60 hover:opacity-100 hover:bg-[#007F79]"
-              }`}
-              onClick={() => setSelectedIndex(i)}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
-        </div>
-      )}
     </section>
   );
 }

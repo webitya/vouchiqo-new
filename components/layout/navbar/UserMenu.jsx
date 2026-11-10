@@ -120,7 +120,7 @@ export const UserMenu = () => {
     return (
       <Link
         href="/login"
-        className="h-9 text-[13px] font-semibold bg-festival-teal text-white hover:bg-festival-teal-dark rounded-lg px-4 flex items-center justify-center gap-1.5 whitespace-nowrap transition-all duration-200 hover:shadow-sm shrink-0"
+        className="h-9 text-[13px] font-heading font-bold bg-[#007F79] text-white hover:bg-[#00605B] rounded-lg px-4 flex items-center justify-center gap-1.5 whitespace-nowrap transition-all duration-200 hover:shadow-md shadow-xs shrink-0 border border-white/10"
       >
         <User className="h-3.5 w-3.5" />
         Login
@@ -213,8 +213,8 @@ export const UserMenu = () => {
         onClick={() => setOpen((v) => !v)}
         className={`rounded-full transition-all focus:outline-none cursor-pointer flex items-center justify-center p-0.5 border-2 ${
           open
-            ? "border-festival-teal bg-warm-ivory"
-            : "border-transparent hover:border-gray-200"
+            ? "border-[#FFD166] bg-white/20"
+            : "border-transparent hover:border-[#FFD166]/60"
         }`}
         aria-label="User menu"
         aria-haspopup="true"
@@ -238,11 +238,7 @@ export const UserMenu = () => {
                 <span className="text-[8.5px] font-bold px-1.5 py-0.5 rounded-full shrink-0 bg-warm-ivory text-festival-teal border border-brand-border inline-flex items-center gap-1">
                   <Store className="w-2.5 h-2.5 text-festival-teal" /> MERCHANT
                 </span>
-              ) : (
-                <span className="text-[8.5px] font-semibold px-1.5 py-0.5 rounded-full shrink-0 bg-slate-100 text-slate-700 border border-slate-200 inline-flex items-center gap-1">
-                  <User className="w-2.5 h-2.5 text-slate-500" /> MEMBER
-                </span>
-              )}
+              ) : null}
             </div>
             <p className="text-[10px] text-slate-400 font-semibold truncate">
               {session.user.email}

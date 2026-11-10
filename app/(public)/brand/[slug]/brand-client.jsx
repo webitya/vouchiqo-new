@@ -14,7 +14,6 @@ import ExpiredOfferCard from "./components/ExpiredOfferCard";
 import SidebarSection from "./components/SidebarSection";
 
 const Footer = dynamic(() => import("@/components/layout/Footer"));
-const RelatedFooter = dynamic(() => import("./components/RelatedFooter"));
 
 export default function BrandClient({
   merchant,
@@ -84,8 +83,42 @@ export default function BrandClient({
     });
   }, [isClient]);
 
+  const mIdStr = merchant?._id?.toString();
+  const mSlug = (merchant?.slug || "").toLowerCase().trim();
+
+  // Strict validator: ONLY items that belong strictly to this brand
+  const strictlyMatchesBrand = (item) => {
+    if (!item || !merchant) return false;
+    const cMerchId = item.merchantId?._id
+      ? item.merchantId._id.toString()
+      : item.merchantId?.toString();
+    if (cMerchId && mIdStr && cMerchId === mIdStr) return true;
+    const cSlug = (
+      item.merchantId?.slug ||
+      item.merchantSlug ||
+      item.brandSlug ||
+      ""
+    )
+      .toLowerCase()
+      .trim();
+    if (cSlug && mSlug && cSlug === mSlug) return true;
+    return false;
+  };
+
+  const brandCoupons = useMemo(() => {
+    return (coupons || []).filter(strictlyMatchesBrand);
+  }, [coupons, mIdStr, mSlug]);
+
+  const brandExpiredCoupons = useMemo(() => {
+    return (expiredCoupons || []).filter(strictlyMatchesBrand);
+  }, [expiredCoupons, mIdStr, mSlug]);
+
+  const brandAffiliateProducts = useMemo(() => {
+    return (affiliateProducts || []).filter(strictlyMatchesBrand);
+  }, [affiliateProducts, mIdStr, mSlug]);
+
   const filteredCoupons = useMemo(() => {
-    let list = coupons;
+    let list = brandCoupons;
     if (existingUser) {
       list = list.filter((c) => !c.title?.toLowerCase().includes("first"));
     }
@@ -95,19 +128,19 @@ export default function BrandClient({
     if (activeTab === "dl")
       return list.filter((c) => !c.code || c.code.trim() === "");
     return list;
-  }, [coupons, activeTab, existingUser]);
+  }, [brandCoupons, activeTab, existingUser]);
 
   const couponsCount = useMemo(
-    () => coupons.filter((c) => c.code && c.code.trim() !== "").length,
-    [coupons],
+    () => brandCoupons.filter((c) => c.code && c.code.trim() !== "").length,
+    [brandCoupons],
   );
 
   // Offers count includes both coupon link deals and affiliate product deals
   const offersCount = useMemo(
     () =>
-      coupons.filter((c) => !c.code || c.code.trim() === "").length +
-      affiliateProducts.length,
-    [coupons, affiliateProducts],
+      brandCoupons.filter((c) => !c.code || c.code.trim() === "").length +
+      brandAffiliateProducts.length,
+    [brandCoupons, brandAffiliateProducts],
   );
 
   const affiliateSubtitle = useMemo(() => {
@@ -128,11 +161,11 @@ export default function BrandClient({
     if (cat.includes("electronics")) {
       return "Handpicked tech deals & gadget offers ⚡";
     }
-    return `Handpicked deals curated for ${merchant.businessName} ✨`;
+    return `Handpicked deals curated exclusively for ${merchant.businessName} ✨`;
   }, [merchant.category, merchant.slug, merchant.businessName]);
 
   const sortedAffiliateProducts = useMemo(() => {
-    const list = [...affiliateProducts];
+    const list = [...brandAffiliateProducts];
     if (affiliateSort === "discount") {
       return list.sort(
         (a, b) => (b.discountPercentage || 0) - (a.discountPercentage || 0),
@@ -151,7 +184,7 @@ export default function BrandClient({
       );
     }
     return list;
-  }, [affiliateProducts, affiliateSort]);
+  }, [brandAffiliateProducts, affiliateSort]);
 
   const handleFollow = () => {
     if (isFollowing) {
@@ -239,13 +272,13 @@ export default function BrandClient({
   }, [merchant.businessName]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50/60 text-slate-900 font-sans">
+    <div className="min-h-screen flex flex-col bg-[#FFFDF9] text-[#35104A] font-sans">
       <Navbar />
 
       {/* Brand header (breadcrumb + banner + info + tabs) */}
       <BrandHeader
         merchant={merchant}
-        coupons={coupons}
+        coupons={brandCoupons}
         todayStr={todayStr}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -260,40 +293,40 @@ export default function BrandClient({
         setExistingUser={setExistingUser}
         couponsCount={couponsCount}
         offersCount={offersCount}
-        affiliateProductsCount={affiliateProducts.length}
+        affiliateProductsCount={brandAffiliateProducts.length}
       />
 
-      {/* Main content area */}
-      <main className="w-full max-w-[1440px] mx-auto px-3 sm:px-4 md:px-5 lg:px-6 py-4 sm:py-6 flex-grow">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-start">
+      {/* Main content area (compact, minimal whitespace) */}
+      <main className="w-full max-w-[1440px] mx-auto px-2.5 sm:px-4 md:px-5 lg:px-6 py-2.5 sm:py-3.5 flex-grow">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-4.5 items-start">
           {/* Left: Stats, Products & Coupons (8 cols on desktop, full width on mobile) */}
-          <div className="lg:col-span-8 space-y-4">
+          <div className="lg:col-span-8 space-y-3">
             {/* 4-Column Stats card */}
             <BrandStats
-              coupons={coupons}
+              coupons={brandCoupons}
               merchant={merchant}
-              affiliateProducts={affiliateProducts}
-              affiliateCount={affiliateProducts.length}
+              affiliateProducts={brandAffiliateProducts}
+              affiliateCount={brandAffiliateProducts.length}
             />
 
             {/* Quick Carousel (visible when activeTab === "all") */}
-            {affiliateProducts.length > 0 && activeTab === "all" && (
-              <section className="space-y-3 pt-1">
+            {brandAffiliateProducts.length > 0 && activeTab === "all" && (
+              <section className="space-y-2 pt-0.5">
                 {/* Section Header */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">
+                    <h3 className="text-sm sm:text-base font-heading font-bold text-[#35104A] tracking-tight">
                       Featured Deals
                     </h3>
-                    <span className="bg-festival-teal/10 text-festival-teal border border-festival-teal/20 px-2 py-0.5 rounded-full text-xs font-bold">
-                      {affiliateProducts.length}
+                    <span className="bg-[#007F79]/10 text-[#007F79] border border-[#007F79]/20 px-2 py-0.5 rounded-full text-xs font-heading font-bold">
+                      {brandAffiliateProducts.length}
                     </span>
                   </div>
 
                   <button
                     type="button"
                     onClick={() => setActiveTab("affiliate")}
-                    className="text-indigo-600 hover:text-indigo-700 font-bold text-xs sm:text-sm flex items-center gap-1 transition-colors border-0 bg-transparent cursor-pointer"
+                    className="text-[#007F79] hover:text-[#35104A] font-heading font-bold text-xs sm:text-sm flex items-center gap-1 transition-colors border-0 bg-transparent cursor-pointer"
                   >
                     <span>View All</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -301,12 +334,12 @@ export default function BrandClient({
                 </div>
 
                 {/* Featured Deals Grid / Carousel */}
-                {affiliateProducts.length <= 4 ? (
-                  <div className="flex items-stretch gap-3 overflow-x-auto pb-2 scrollbar-none snap-x snap-mandatory -mx-3 px-3 sm:mx-0 sm:px-0 md:grid md:grid-cols-4 md:gap-3.5 md:overflow-visible md:mx-0 md:px-0 w-full pt-1">
-                    {affiliateProducts.map((prod) => (
+                {brandAffiliateProducts.length <= 4 ? (
+                  <div className="flex items-stretch gap-2.5 sm:gap-3 overflow-x-auto pb-1.5 scrollbar-none snap-x snap-mandatory -mx-2.5 px-2.5 sm:mx-0 sm:px-0 md:grid md:grid-cols-4 md:gap-3 md:overflow-visible md:mx-0 md:px-0 w-full pt-0.5">
+                    {brandAffiliateProducts.map((prod) => (
                       <div
                         key={prod._id}
-                        className="snap-start shrink-0 w-[175px] sm:w-[205px] md:w-full"
+                        className="snap-start shrink-0 w-[170px] sm:w-[195px] md:w-full"
                       >
                         <AffiliateProductCard
                           product={prod}
@@ -316,11 +349,11 @@ export default function BrandClient({
                     ))}
                   </div>
                 ) : (
-                  <div className="flex items-stretch gap-3 sm:gap-3.5 overflow-x-auto pb-2 pt-1 scrollbar-none snap-x snap-mandatory -mx-3 px-3 sm:mx-0 sm:px-0">
-                    {affiliateProducts.map((prod) => (
+                  <div className="flex items-stretch gap-2.5 sm:gap-3 overflow-x-auto pb-1.5 pt-0.5 scrollbar-none snap-x snap-mandatory -mx-2.5 px-2.5 sm:mx-0 sm:px-0">
+                    {brandAffiliateProducts.map((prod) => (
                       <div
                         key={prod._id}
-                        className="snap-start shrink-0 w-[180px] sm:w-[210px] md:w-[220px]"
+                        className="snap-start shrink-0 w-[175px] sm:w-[200px] md:w-[215px]"
                       >
                         <AffiliateProductCard
                           product={prod}
@@ -333,24 +366,24 @@ export default function BrandClient({
               </section>
             )}
 
-            {/* ── Affiliate Products Deals List (Clean Minimalist Matching Screenshot) ── */}
+            {/* ── Affiliate Products Deals List (Clean Minimalist Matching Brand Palette) ── */}
             {sortedAffiliateProducts.length > 0 &&
               (activeTab === "all" ||
                 activeTab === "affiliate" ||
                 activeTab === "dl") && (
-                <section className="space-y-3 pt-2">
+                <section className="space-y-2.5 pt-1">
                   {/* Section Header: Title + Badge + Subtitle + Sort Dropdown */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 pb-0.5">
                     <div>
                       <div className="flex items-center gap-2">
-                        <h3 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
+                        <h3 className="text-base sm:text-lg font-heading font-bold text-[#35104A] tracking-tight">
                           Affiliate Products
                         </h3>
-                        <span className="bg-festival-teal/10 text-festival-teal px-2.5 py-0.5 rounded-full text-xs font-bold border border-festival-teal/20">
+                        <span className="bg-[#007F79]/10 text-[#007F79] px-2.5 py-0.5 rounded-full text-xs font-heading font-bold border border-[#007F79]/20">
                           {sortedAffiliateProducts.length}
                         </span>
                       </div>
-                      <p className="text-xs text-slate-500 font-normal mt-0.5">
+                      <p className="text-xs text-[#6B4C82] font-medium mt-0.5">
                         {affiliateSubtitle}
                       </p>
                     </div>
@@ -360,7 +393,7 @@ export default function BrandClient({
                       <select
                         value={affiliateSort}
                         onChange={(e) => setAffiliateSort(e.target.value)}
-                        className="bg-white border border-slate-200 text-slate-700 text-xs font-medium rounded-xl px-3 py-1.5 pr-7 appearance-none shadow-2xs hover:border-slate-300 focus:outline-none focus:ring-1 focus:border-festival-teal focus:ring-festival-teal/20 cursor-pointer"
+                        className="bg-[#FFF8EF] border border-[#EADBCE] text-[#35104A] text-xs font-heading font-semibold rounded-xl px-3 py-1.5 pr-7 appearance-none shadow-2xs hover:border-[#007F79] focus:outline-none focus:ring-1 focus:border-[#007F79] focus:ring-[#007F79]/20 cursor-pointer"
                       >
                         <option value="featured">Sort by: Featured</option>
                         <option value="discount">Sort by: Best Discount</option>
@@ -371,12 +404,12 @@ export default function BrandClient({
                           Sort by: Price: High to Low
                         </option>
                       </select>
-                      <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                      <ChevronDown className="w-3.5 h-3.5 text-[#6B4C82] absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                     </div>
                   </div>
 
                   {/* Clean Minimalist List of Deal Cards */}
-                  <div className="space-y-3">
+                  <div className="space-y-2.5">
                     {sortedAffiliateProducts.map((prod) => (
                       <AffiliateDealCard
                         key={prod._id}
@@ -390,7 +423,7 @@ export default function BrandClient({
 
             {/* Coupon & Deal list */}
             {activeTab !== "affiliate" && (
-              <div className="space-y-3 pt-2">
+              <div className="space-y-2.5 pt-1">
                 {filteredCoupons.length > 0 ? (
                   filteredCoupons.map((coupon) => (
                     <CouponCard
@@ -404,16 +437,16 @@ export default function BrandClient({
                     />
                   ))
                 ) : (
-                  <div className="py-12 sm:py-16 text-center bg-white border border-slate-200/80 rounded-2xl p-6 shadow-2xs">
-                    <div className="w-10 h-10 rounded-xl bg-warm-ivory text-festival-teal mx-auto flex items-center justify-center mb-3">
-                      <Tag className="w-5 h-5 text-festival-teal" />
+                  <div className="py-8 sm:py-12 text-center bg-[#FFF8EF] border border-[#EADBCE] rounded-2xl p-6 shadow-2xs">
+                    <div className="w-9 h-9 rounded-xl bg-[#007F79]/10 text-[#007F79] mx-auto flex items-center justify-center mb-2.5">
+                      <Tag className="w-4.5 h-4.5 text-[#007F79]" />
                     </div>
-                    <h4 className="text-base font-bold text-slate-800">
+                    <h4 className="text-sm sm:text-base font-heading font-bold text-[#35104A]">
                       {activeTab === "all"
                         ? "No active offers available right now"
                         : "No deals match your current filter"}
                     </h4>
-                    <p className="text-xs sm:text-sm text-slate-500 max-w-sm mx-auto mt-1">
+                    <p className="text-xs sm:text-[13px] text-[#6B4C82] max-w-sm mx-auto mt-1 font-medium">
                       {activeTab === "all"
                         ? `${merchant.businessName} currently has no active promo codes or deals. Check back soon!`
                         : "Try switching to the 'All' tab to see all available promotions."}
@@ -425,7 +458,7 @@ export default function BrandClient({
                           setExistingUser(false);
                         }}
                         type="button"
-                        className="mt-3 text-festival-teal font-medium text-sm hover:underline border-0 bg-transparent cursor-pointer"
+                        className="mt-2.5 text-[#007F79] font-heading font-bold text-xs hover:underline border-0 bg-transparent cursor-pointer"
                       >
                         Reset filters
                       </button>
@@ -436,13 +469,13 @@ export default function BrandClient({
             )}
 
             {/* Expired deals */}
-            {expiredCoupons.length > 0 && (
-              <div className="space-y-3 pt-4">
-                <h3 className="text-[11px] font-semibold uppercase tracking-widest text-gray-400">
+            {brandExpiredCoupons.length > 0 && (
+              <div className="space-y-2 pt-3">
+                <h3 className="text-[10.5px] font-heading font-bold uppercase tracking-wider text-[#6B4C82]">
                   Expired Offers
                 </h3>
                 <div className="space-y-2">
-                  {expiredCoupons.map((coupon) => (
+                  {brandExpiredCoupons.map((coupon) => (
                     <ExpiredOfferCard
                       key={coupon._id}
                       coupon={coupon}
@@ -466,9 +499,7 @@ export default function BrandClient({
         </div>
       </main>
 
-      {/* Related brands */}
-      <RelatedFooter relatedBrands={relatedBrands} merchant={merchant} />
-
+      {/* Exclusively this brand - zero other brands shown */}
       <Footer />
     </div>
   );

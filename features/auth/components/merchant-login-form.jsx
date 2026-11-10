@@ -37,7 +37,7 @@ export function MerchantLoginForm() {
             </span>
             <Link
               href="/merchant-forgot-password"
-              className="text-xs text-brand-blue font-semibold hover:underline"
+              className="text-xs text-[#007F79] hover:text-[#35104A] font-heading font-semibold transition-colors"
             >
               Forgot Password?
             </Link>
@@ -59,11 +59,11 @@ export function MerchantLoginForm() {
         />
       </form>
 
-      <p className="text-center text-sm font-medium text-brand-subtext mt-4">
+      <p className="text-center text-xs font-sans font-medium text-[#6B4C82] mt-4">
         Want to sell on Vouchiqo?{" "}
         <Link
           href="/merchant-register"
-          className="text-brand-blue font-bold hover:underline"
+          className="text-[#007F79] hover:text-[#35104A] font-heading font-bold transition-colors"
         >
           Register your brand
         </Link>

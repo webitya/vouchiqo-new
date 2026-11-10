@@ -11,7 +11,6 @@ import {
   Percent,
   RefreshCw,
   Search,
-  Sparkles,
   Tag,
   TrendingUp,
   X,

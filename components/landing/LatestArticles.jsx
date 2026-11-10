@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronLeft, ChevronRight, Clock } from "lucide-react";
+import { Clock } from "lucide-react";
 import Link from "next/link";
 import { memo, useEffect, useRef } from "react";
 import SafeImage from "@/components/shared/SafeImage";
@@ -86,9 +86,9 @@ const ArticleCard = memo(function ArticleCard({ article }) {
       href={article.href}
       className="art-card group block no-underline cursor-pointer select-none h-full font-sans"
     >
-      <div className="art-card__inner flex flex-col rounded-2xl overflow-hidden bg-white border border-[#EADBCE] hover:border-[#FF2E63] transition-all duration-300 hover:shadow-[0_8px_20px_rgba(255,46,99,0.16)] shadow-2xs h-full">
+      <div className="art-card__inner flex flex-col rounded-2xl overflow-hidden bg-[#FFF8EF] border border-[#EADBCE] hover:border-[#FF2E63] transition-all duration-300 hover:shadow-[0_8px_20px_rgba(255,46,99,0.16)] shadow-2xs h-full">
         {/* Cover image */}
-        <div className="h-[140px] sm:h-[150px] overflow-hidden shrink-0 relative bg-slate-100">
+        <div className="h-[140px] sm:h-[150px] overflow-hidden shrink-0 relative bg-[#35104A]">
           <SafeImage
             src={article.image}
             alt={article.title || "Article Cover"}
@@ -103,7 +103,7 @@ const ArticleCard = memo(function ArticleCard({ article }) {
         </div>
 
         {/* Content */}
-        <div className="flex flex-col gap-1.5 p-3.5 flex-1 text-left">
+        <div className="flex flex-col gap-1.5 p-3.5 flex-1 text-left bg-[#FFF8EF]">
           <h3 className="line-clamp-2 text-xs sm:text-[12.5px] font-heading font-bold text-[#35104A] group-hover:text-[#FF2E63] transition-colors leading-snug">
             {article.title}
           </h3>
@@ -164,16 +164,6 @@ export function LatestArticles() {
     return () => cancelAnimationFrame(animId);
   }, []);
 
-  const handlePrev = () => {
-    if (!scrollRef.current) return;
-    scrollRef.current.scrollBy({ left: -320, behavior: "smooth" });
-  };
-
-  const handleNext = () => {
-    if (!scrollRef.current) return;
-    scrollRef.current.scrollBy({ left: 320, behavior: "smooth" });
-  };
-
   // Mouse drag support
   const handleMouseDown = (e) => {
     isDragging.current = true;
@@ -197,8 +187,8 @@ export function LatestArticles() {
 
   return (
     <section className="text-left w-full overflow-hidden select-none pb-2 font-sans">
-      {/* Section Header */}
-      <div className="flex items-center justify-between mb-3.5 sm:mb-4">
+      {/* Section Header (No top-right chevron icons) */}
+      <div className="flex items-center justify-between mb-2 sm:mb-2.5">
         <div>
           <h2 className="font-heading font-bold leading-tight text-[#FF2E63] text-base sm:text-lg md:text-xl tracking-tight">
             Latest Articles &amp; Guides
@@ -206,26 +196,6 @@ export function LatestArticles() {
           <p className="text-[11px] text-[#6B4C82] font-medium mt-0.5">
             Tips, deals breakdowns &amp; shopping guides
           </p>
-        </div>
-
-        {/* Nav Controls */}
-        <div className="flex items-center gap-1.5">
-          <button
-            type="button"
-            onClick={handlePrev}
-            aria-label="Previous"
-            className="w-8 h-8 rounded-full border border-[#EADBCE] bg-white hover:bg-[#FFF8EF] hover:border-[#007F79] hover:text-[#007F79] text-[#35104A] flex items-center justify-center cursor-pointer transition-colors shadow-2xs"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-          <button
-            type="button"
-            onClick={handleNext}
-            aria-label="Next"
-            className="w-8 h-8 rounded-full border border-[#EADBCE] bg-white hover:bg-[#FFF8EF] hover:border-[#007F79] hover:text-[#007F79] text-[#35104A] flex items-center justify-center cursor-pointer transition-colors shadow-2xs"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
         </div>
       </div>
 

@@ -7,7 +7,6 @@ import {
   Loader2,
   Lock,
   ShoppingBag,
-  Sparkles,
   UploadCloud,
   X,
 } from "lucide-react";
@@ -491,7 +490,7 @@ export default function SectionAffiliateProduct({ merchant }) {
               </>
             ) : (
               <>
-                <Sparkles className="w-3.5 h-3.5" />
+                <LinkIcon className="w-3.5 h-3.5" />
                 <span>Publish Website Product Deal</span>
               </>
             )}

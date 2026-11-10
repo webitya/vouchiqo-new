@@ -58,11 +58,11 @@ export const BrandGridItem = memo(function BrandGridItem({
     <Link
       href={href || "#"}
       prefetch={true}
-      className="group relative flex flex-col justify-between rounded-2xl border border-[#EADBCE] bg-white shadow-2xs hover:shadow-md hover:border-[#FF2E63]/40 transition-all duration-200 overflow-hidden select-none text-left w-full h-[168px] sm:h-[176px] font-sans"
+      className="group relative flex flex-col justify-between rounded-xl sm:rounded-2xl border border-[#EADBCE] bg-[#FFF8EF] shadow-2xs hover:shadow-md hover:border-[#FF2E63]/40 transition-all duration-200 overflow-hidden select-none text-left w-full h-[142px] sm:h-[148px] font-sans"
       style={{ textDecoration: "none" }}
     >
       {/* ── 1. Top Half: Visual Imagery & Category Tag ── */}
-      <div className="relative w-full h-1/2 overflow-hidden bg-slate-900">
+      <div className="relative w-full h-1/2 overflow-hidden bg-[#35104A]">
         <SafeImage
           src={bgBanner}
           alt={name || "Store Banner"}
@@ -72,30 +72,30 @@ export const BrandGridItem = memo(function BrandGridItem({
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
         {/* Soft Dark Vignette for Pristine Legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/35 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1F0A2B]/75 via-[#1F0A2B]/20 to-transparent pointer-events-none" />
 
         {/* Category Label (Flush in Top Left Corner) */}
-        <div className="absolute top-1.5 left-1.5 sm:top-2 sm:left-2 z-10">
-          <span className="bg-black/60 backdrop-blur-xs text-white font-semibold text-[9px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 rounded-md border border-white/20 shadow-2xs tracking-wide capitalize">
+        <div className="absolute top-1.5 left-1.5 z-10">
+          <span className="bg-[#35104A]/75 backdrop-blur-xs text-white font-heading font-semibold text-[8.5px] sm:text-[9px] px-1.5 py-0.5 rounded-md border border-white/20 shadow-2xs tracking-wide capitalize">
             {category || "Deals"}
           </span>
         </div>
       </div>
 
-      {/* ── 2. Floating Circular Brand Logo (Anchor - Shifted more to left edge) ── */}
+      {/* ── 2. Floating Circular Brand Logo (Anchor - Shifted to left edge) ── */}
       <div className="absolute top-1/2 left-1.5 sm:left-2 -translate-y-1/2 z-20">
-        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-[#EADBCE] p-1 flex items-center justify-center shadow-md ring-3 ring-white group-hover:ring-[#FFF8EF] transition-all">
+        <div className="w-9.5 h-9.5 sm:w-10 sm:h-10 rounded-full bg-white border border-[#EADBCE] p-1 flex items-center justify-center shadow-md ring-2 ring-white group-hover:ring-[#FFF8EF] transition-all">
           {!imgError && validLogo ? (
             <SafeImage
               src={validLogo}
               alt={name || "Store Logo"}
-              width={48}
-              height={48}
+              width={40}
+              height={40}
               className="max-h-full max-w-full object-contain rounded-full"
               onError={() => setImgError(true)}
             />
           ) : (
-            <span className="text-[11px] font-heading font-black text-[#35104A] uppercase tracking-tight">
+            <span className="text-[10px] font-heading font-black text-[#35104A] uppercase tracking-tight">
               {name ? name.slice(0, 2) : "VT"}
             </span>
           )}
@@ -103,20 +103,20 @@ export const BrandGridItem = memo(function BrandGridItem({
       </div>
 
       {/* ── 3. Bottom Half: Store Details with Verified Twitter Tick & Clean Offer Pill ── */}
-      <div className="pt-6 sm:pt-6.5 pb-2.5 px-2 sm:px-2.5 flex flex-col justify-between h-1/2 bg-white text-left font-sans">
+      <div className="pt-4.5 sm:pt-5 pb-2 px-2 sm:px-2.5 flex flex-col justify-between h-1/2 bg-[#FFF8EF] text-left font-sans">
         {/* Brand Name + Twitter Verified Tick Badge on the Right */}
         <div className="flex items-center gap-1 min-w-0 pr-1">
-          <h4 className="text-[13px] sm:text-[13.5px] font-heading font-bold text-[#35104A] uppercase tracking-tight truncate group-hover:text-[#FF2E63] transition-colors leading-tight">
+          <h4 className="text-[12px] sm:text-[12.5px] font-heading font-bold text-[#35104A] uppercase tracking-tight truncate group-hover:text-[#FF2E63] transition-colors leading-tight">
             {name}
           </h4>
           {isVerified && (
-            <TwitterVerifiedBadge className="w-3.5 h-3.5 shrink-0" />
+            <TwitterVerifiedBadge className="w-3 h-3 shrink-0" />
           )}
         </div>
 
-        {/* Bottom Highlight Row (Clean Offer Pill without redundant text) */}
-        <div className="flex items-center gap-1 mt-auto pt-1 w-full min-w-0">
-          <span className="inline-flex items-center text-[9px] sm:text-[9.5px] font-heading font-bold text-[#FF2E63] bg-[#FF2E63]/10 border border-[#FF2E63]/20 px-2 py-0.5 rounded-md truncate max-w-full">
+        {/* Bottom Highlight Row (Clean Offer Pill on Warm Ivory) */}
+        <div className="flex items-center gap-1 mt-auto pt-0.5 w-full min-w-0">
+          <span className="inline-flex items-center text-[8.5px] sm:text-[9px] font-heading font-bold text-[#FF2E63] bg-white border border-[#FF2E63]/25 px-1.5 sm:px-2 py-0.5 rounded-md truncate max-w-full shadow-2xs">
             {discount ||
               (coupons > 0
                 ? `${coupons} LIVE ${coupons === 1 ? "OFFER" : "OFFERS"}`

@@ -65,11 +65,15 @@ function matchesMerchant(item, mIdStr, mSlug) {
     item.merchantSlug ||
     item.brandSlug ||
     ""
-  ).toLowerCase();
+  )
+    .toLowerCase()
+    .trim();
 
-  const matchesId = Boolean(cMerchId && mIdStr && cMerchId === mIdStr);
-  const matchesSlug = Boolean(cSlug && mSlug && cSlug === mSlug);
-  return matchesId || matchesSlug;
+  // Primary strict match: merchant ObjectId must match exactly
+  if (cMerchId && mIdStr && cMerchId === mIdStr) return true;
+  // Secondary match: slug must match this merchant's verified slug
+  if (cSlug && mSlug && cSlug === mSlug) return true;
+  return false;
 }
 
 /**

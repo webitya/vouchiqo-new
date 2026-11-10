@@ -19,7 +19,7 @@ import { authClient } from "@/lib/auth-client";
 import { AuthCard } from "./auth-card";
 
 const SLOT_CLASS =
-  "w-12 h-12 text-lg border border-brand-border bg-brand-surface rounded-lg";
+  "w-12 h-12 text-lg border border-[#EADBCE] bg-white text-[#35104A] font-heading font-bold rounded-xl focus:border-[#007F79]";
 
 export function VerifyOtpForm() {
   const [otp, setOtp] = useState("");
@@ -88,12 +88,12 @@ export function VerifyOtpForm() {
             </InputOTP>
           </div>
 
-          <div className="flex justify-between items-center text-xs font-semibold">
+          <div className="flex justify-between items-center text-xs font-heading font-semibold">
             <button
               type="button"
               onClick={() => resendOtp()}
               disabled={isResending}
-              className="text-brand-blue hover:underline flex items-center gap-1 disabled:opacity-50 cursor-pointer"
+              className="text-[#007F79] hover:text-[#35104A] flex items-center gap-1 disabled:opacity-50 cursor-pointer transition-colors"
             >
               <RotateCcw
                 className={`w-3 h-3 ${isResending ? "animate-spin" : ""}`}
@@ -105,7 +105,7 @@ export function VerifyOtpForm() {
           <Button
             type="submit"
             disabled={isPending || otp.length < 6}
-            className="btn-primary w-full py-2.5 text-xs font-semibold flex items-center justify-center gap-1 border-0 h-auto cursor-pointer shadow-none"
+            className="w-full bg-[#007F79] hover:bg-[#35104A] text-white py-2.5 rounded-xl text-sm font-heading font-bold flex items-center justify-center gap-1.5 border-0 h-auto cursor-pointer shadow-2xs transition-all disabled:opacity-50"
           >
             <span>{isPending ? "Verifying..." : "Verify & Continue"}</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -113,7 +113,7 @@ export function VerifyOtpForm() {
 
           <Link
             href="/login"
-            className="flex items-center justify-center gap-1 text-xs font-bold text-brand-blue hover:underline py-1"
+            className="flex items-center justify-center gap-1.5 text-xs font-heading font-semibold text-[#007F79] hover:text-[#35104A] py-1 transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Sign In</span>

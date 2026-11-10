@@ -510,7 +510,8 @@ export async function listCoupons(searchParams) {
       status: { $in: ["approved", "active"] },
     })
       .select("businessName slug logo location category address createdAt")
-      .limit(50)
+      .sort({ "location.coordinates.lat": -1, createdAt: -1 })
+      .limit(300)
       .lean();
 
     const existingMerchantIds = new Set(

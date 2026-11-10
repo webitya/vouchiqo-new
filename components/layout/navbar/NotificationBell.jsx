@@ -197,12 +197,12 @@ export const NotificationBell = () => {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <button
-          className="relative p-1 text-[#35104A] hover:text-[#007F79] hover:bg-[#007F79]/10 rounded-full transition-colors cursor-pointer bg-transparent border-0 outline-none"
+          className="relative p-1.5 text-[#FFF8EF] hover:text-[#FFD166] hover:bg-white/10 rounded-full transition-colors cursor-pointer bg-transparent border-0 outline-none"
           aria-label="Notifications"
         >
-          <Bell className="h-[22px] w-[22px]" />
+          <Bell className="h-[21px] w-[21px]" />
           {unreadCount > 0 && (
-            <span className="absolute top-0 right-0 -mt-1 -mr-1 bg-[#FF2E63] text-white text-[9.5px] font-heading font-bold h-[17px] w-[17px] flex items-center justify-center rounded-full border-2 border-white shadow-2xs">
+            <span className="absolute top-0 right-0 -mt-0.5 -mr-0.5 bg-[#FF2E63] text-white text-[9.5px] font-heading font-bold h-[17px] w-[17px] flex items-center justify-center rounded-full border-2 border-[#35104A] shadow-2xs">
               {unreadCount}
             </span>
           )}
