@@ -52,7 +52,7 @@ export default function WizardFooter({
               className={`text-xs font-semibold h-9 px-2.5 sm:px-3 rounded-lg border flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs ${
                 allCommitmentsChecked
                   ? "bg-emerald-50 text-emerald-700 border-emerald-300 hover:bg-emerald-100 font-bold"
-                  : "bg-blue-50 text-blue-700 border-blue-300 hover:bg-blue-100"
+                  : "bg-warm-ivory text-festival-teal border-brand-border hover:bg-festival-teal/20"
               }`}
               title="Accept All Acknowledgements (Merchant Commitments)"
             >
@@ -75,7 +75,7 @@ export default function WizardFooter({
               className={`text-xs font-semibold h-9 px-2.5 sm:px-3 rounded-lg border flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs ${
                 allPoliciesChecked
                   ? "bg-emerald-50 text-emerald-700 border-emerald-300 hover:bg-emerald-100 font-bold"
-                  : "bg-blue-50 text-blue-700 border-blue-300 hover:bg-blue-100"
+                  : "bg-warm-ivory text-festival-teal border-brand-border hover:bg-festival-teal/20"
               }`}
               title="Accept All Legal Policy Documents"
             >
@@ -119,7 +119,7 @@ export default function WizardFooter({
           <Button
             type="button"
             onClick={onNext}
-            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-xs h-9.5 px-6 rounded-lg border-0 cursor-pointer shadow-md shadow-blue-500/25 hover:shadow-lg hover:shadow-blue-500/35 transition-all duration-200 flex items-center gap-1.5"
+            className="bg-gradient-to-r from-[#35104A] to-[#007F79] hover:from-[#250B34] hover:to-[#00635E] text-white font-semibold text-xs h-9.5 px-6 rounded-lg border-0 cursor-pointer shadow-md shadow-festival-teal/20 hover:shadow-lg hover:shadow-festival-teal/20 transition-all duration-200 flex items-center gap-1.5"
           >
             <span>Next</span>
             <ChevronRight className="w-4 h-4" />

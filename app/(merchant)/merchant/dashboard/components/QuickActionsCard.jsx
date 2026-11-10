@@ -16,7 +16,7 @@ const ACTIONS = [
     label: "+ Post New Offer",
     href: "/merchant/coupons/new",
     icon: Plus,
-    color: "bg-blue-600 hover:bg-blue-700 text-white shadow-xs",
+    color: "bg-festival-teal hover:bg-festival-teal-dark text-white shadow-xs",
     locked: false,
   },
   {
@@ -24,7 +24,7 @@ const ACTIONS = [
     label: "+ Post New Deal",
     href: "/merchant/coupons/new?type=deal",
     icon: Tag,
-    color: "bg-blue-600 hover:bg-blue-700 text-white shadow-xs",
+    color: "bg-festival-teal hover:bg-festival-teal-dark text-white shadow-xs",
     locked: false,
   },
   {
@@ -33,7 +33,7 @@ const ACTIONS = [
     href: "/merchant/campaigns",
     icon: Rocket,
     color:
-      "bg-white border border-slate-200 hover:bg-blue-50/50 hover:border-blue-200 text-slate-800",
+      "bg-white border border-slate-200 hover:bg-warm-ivory/50 hover:border-festival-teal text-slate-800",
     lockedOnStarter: true,
   },
   {
@@ -42,7 +42,7 @@ const ACTIONS = [
     href: "/merchant/coupons?status=expired",
     icon: RefreshCw,
     color:
-      "bg-white border border-slate-200 hover:bg-blue-50/50 hover:border-blue-200 text-slate-800",
+      "bg-white border border-slate-200 hover:bg-warm-ivory/50 hover:border-festival-teal text-slate-800",
     lockedOnStarter: true,
   },
 ];
@@ -100,7 +100,7 @@ export default function QuickActionsCard({ plan = "starter" }) {
             Campaign &amp; Revival tools require{" "}
             <Link
               href="/merchant/billing"
-              className="text-blue-600 hover:text-blue-700 underline underline-offset-2 font-bold"
+              className="text-festival-teal hover:text-festival-teal-dark underline underline-offset-2 font-bold"
             >
               Growth plan or above
             </Link>

@@ -127,7 +127,7 @@ export default function TourCard({
 
       {/* Step label + close */}
       <div className="flex items-center justify-between mb-2 relative z-10">
-        <span className="text-[10px] font-extrabold text-blue-700 bg-blue-50 border border-blue-200/80 px-2 py-0.5 rounded-md uppercase tracking-wider font-sans">
+        <span className="text-[10px] font-extrabold text-festival-teal bg-festival-teal/10 border border-brand-border px-2 py-0.5 rounded-md uppercase tracking-wider font-sans">
           STEP {currentStepIndex + 1} OF {totalSteps}
         </span>
         <button
@@ -162,7 +162,7 @@ export default function TourCard({
         <button
           type="button"
           onClick={onNext}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-4 py-1.5 rounded-lg cursor-pointer transition-all shadow-md shadow-blue-600/20 font-sans hover:scale-[1.02]"
+          className="bg-festival-teal hover:bg-[#00635E] text-white font-bold text-xs px-4 py-1.5 rounded-lg cursor-pointer transition-all shadow-md shadow-festival-teal/20 font-sans hover:scale-[1.02]"
         >
           {isLastStep ? "Got it" : "Next"}
         </button>

@@ -76,16 +76,16 @@ export default function Step5HoursCommission({
               };
 
               return (
-                <div className="p-3.5 bg-blue-50/70 border border-blue-200/90 rounded-xl space-y-2 text-left">
+                <div className="p-3.5 bg-warm-ivory border border-brand-border/90 rounded-xl space-y-2 text-left">
                   <div className="flex justify-between items-center">
-                    <Label className="text-[11px] font-extrabold text-blue-950 uppercase tracking-wider block">
+                    <Label className="text-[11px] font-extrabold text-royal-plum uppercase tracking-wider block">
                       PERFORMANCE COMMISSION RATE (
                       {selectedCatLabel.toUpperCase()})
                     </Label>
                     <button
                       type="button"
                       onClick={() => setShowMasterCpaTable(!showMasterCpaTable)}
-                      className="text-[11px] font-bold text-blue-700 hover:text-blue-800 underline cursor-pointer"
+                      className="text-[11px] font-bold text-festival-teal hover:text-[#004D49] underline cursor-pointer"
                     >
                       {showMasterCpaTable
                         ? "Hide Master CPA Table"
@@ -93,12 +93,12 @@ export default function Step5HoursCommission({
                     </button>
                   </div>
 
-                  <div className="p-3 bg-white rounded-lg border border-blue-100 shadow-2xs space-y-1.5">
+                  <div className="p-3 bg-white rounded-lg border border-brand-border shadow-2xs space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-xs text-slate-800">
                         {selectedCatLabel}:
                       </span>
-                      <span className="font-mono text-xs text-blue-700 font-extrabold px-3 py-1 rounded-md bg-blue-50 border border-blue-200">
+                      <span className="font-mono text-xs text-festival-teal font-extrabold px-3 py-1 rounded-md bg-warm-ivory border border-brand-border">
                         {matchedComm.rate}
                       </span>
                     </div>
@@ -121,7 +121,7 @@ export default function Step5HoursCommission({
                   {/* Expandable Master CPA Rate Table matching exact user design screenshot */}
                   {showMasterCpaTable && (
                     <div className="pt-2 space-y-2">
-                      <div className="border-b border-blue-200 pb-1 flex justify-between items-center">
+                      <div className="border-b border-brand-border pb-1 flex justify-between items-center">
                         <h4 className="text-xs font-extrabold text-slate-900 uppercase">
                           The Master CPA Rate Table
                         </h4>
@@ -158,7 +158,7 @@ export default function Step5HoursCommission({
                                       formData.category.toLowerCase(),
                                     ) ||
                                   (row.id && row.id === formData.category)
-                                    ? "bg-blue-50/90 font-bold text-blue-900"
+                                    ? "bg-warm-ivory font-bold text-royal-plum"
                                     : "hover:bg-slate-50/60 text-slate-700"
                                 }
                               >
@@ -168,7 +168,7 @@ export default function Step5HoursCommission({
                                 <td className="px-2.5 py-1.5 font-medium">
                                   {row.category}
                                 </td>
-                                <td className="px-2.5 py-1.5 font-mono text-blue-700 font-semibold">
+                                <td className="px-2.5 py-1.5 font-mono text-festival-teal font-semibold">
                                   {row.rate}
                                 </td>
                                 <td className="px-2.5 py-1.5 font-semibold text-slate-800">
@@ -192,7 +192,7 @@ export default function Step5HoursCommission({
               className={`flex items-center gap-2.5 p-3 rounded-xl border transition-all cursor-pointer select-none ${
                 fieldErrors.commissionAgreed
                   ? "bg-red-50/50 border-red-400"
-                  : "bg-blue-50/50 border-blue-200/80 text-slate-900"
+                  : "bg-warm-ivory border-brand-border text-slate-900"
               }`}
             >
               <Checkbox
@@ -263,7 +263,7 @@ export default function Step5HoursCommission({
                       "Applied Monday operating hours to all 7 days!",
                     );
                   }}
-                  className="text-[10.5px] font-bold text-blue-700 border-blue-200 hover:bg-blue-50 h-7 px-2.5 rounded-lg cursor-pointer self-start sm:self-auto"
+                  className="text-[10.5px] font-bold text-festival-teal border-brand-border hover:bg-warm-ivory h-7 px-2.5 rounded-lg cursor-pointer self-start sm:self-auto"
                 >
                   Apply Monday to All
                 </Button>
@@ -353,7 +353,7 @@ export default function Step5HoursCommission({
                                 },
                               }));
                             }}
-                            className="w-full h-7 text-[11px] bg-white border border-slate-200/90 shadow-2xs rounded px-1.5 font-mono text-slate-800 focus:outline-none focus:border-blue-500 cursor-pointer"
+                            className="w-full h-7 text-[11px] bg-white border border-brand-border shadow-2xs rounded px-1.5 font-mono text-royal-plum focus:outline-none focus:border-festival-teal cursor-pointer"
                           >
                             {STANDARD_TIME_OPTIONS.map((tOpt) => (
                               <option key={`open-${tOpt}`} value={tOpt}>
@@ -376,7 +376,7 @@ export default function Step5HoursCommission({
                                 },
                               }));
                             }}
-                            className="w-full h-7 text-[11px] bg-white border border-slate-200/90 shadow-2xs rounded px-1.5 font-mono text-slate-800 focus:outline-none focus:border-blue-500 cursor-pointer"
+                            className="w-full h-7 text-[11px] bg-white border border-brand-border shadow-2xs rounded px-1.5 font-mono text-royal-plum focus:outline-none focus:border-festival-teal cursor-pointer"
                           >
                             {STANDARD_TIME_OPTIONS.map((tOpt) => (
                               <option key={`close-${tOpt}`} value={tOpt}>

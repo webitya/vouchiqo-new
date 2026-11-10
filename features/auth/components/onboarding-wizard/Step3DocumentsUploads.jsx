@@ -114,7 +114,7 @@ export default function Step3DocumentsUploads({
                   Upload {formData.docType || "Identity Document"}{" "}
                   <span className="text-slate-400 font-normal">(Optional)</span>
                 </Label>
-                <div className="h-9 px-3 bg-white border-2 border-dashed border-blue-300/80 hover:border-blue-400 rounded-lg flex items-center justify-between gap-2 shadow-[0_2px_6px_rgba(37,99,235,0.08)] transition-all">
+                <div className="h-9 px-3 bg-white border-2 border-dashed border-brand-border hover:border-festival-teal rounded-lg flex items-center justify-between gap-2 shadow-xs transition-all">
                   {formData.docFileUrl ? (
                     <div className="flex items-center gap-1.5 min-w-0">
                       <FileCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
@@ -122,7 +122,7 @@ export default function Step3DocumentsUploads({
                         href={formData.docFileUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-xs text-blue-600 underline font-medium truncate"
+                        className="text-xs text-festival-teal underline font-medium truncate"
                       >
                         Document Uploaded ✓
                       </a>
@@ -149,7 +149,7 @@ export default function Step3DocumentsUploads({
                     <Button
                       type="button"
                       disabled={uploadingDoc}
-                      className="bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs h-6 px-2.5 rounded border-0 cursor-pointer shadow-2xs flex items-center gap-1"
+                      className="bg-festival-teal hover:bg-[#00635E] text-white font-medium text-xs h-6 px-2.5 rounded border-0 cursor-pointer shadow-2xs flex items-center gap-1"
                     >
                       {uploadingDoc ? (
                         <Loader2 className="w-3 h-3 animate-spin" />
@@ -170,11 +170,11 @@ export default function Step3DocumentsUploads({
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold text-slate-800 uppercase tracking-wide flex items-center gap-1">
-                    <ImageIcon className="w-3.5 h-3.5 text-blue-600" />
+                    <ImageIcon className="w-3.5 h-3.5 text-festival-teal" />
                     Shop Photo
                   </span>
                 </div>
-                <div className="border border-dashed border-slate-300 bg-slate-50/70 hover:bg-blue-50/30 hover:border-blue-400 rounded-xl p-2.5 flex flex-col items-center justify-center text-center space-y-1.5 h-28 overflow-hidden shadow-2xs transition-all">
+                <div className="border border-dashed border-slate-300 bg-slate-50/70 hover:bg-warm-ivory hover:border-festival-teal rounded-xl p-2.5 flex flex-col items-center justify-center text-center space-y-1.5 h-28 overflow-hidden shadow-2xs transition-all">
                   {formData.shopPhotoUrl ? (
                     <div className="space-y-1 w-full flex flex-col items-center">
                       <img
@@ -211,7 +211,7 @@ export default function Step3DocumentsUploads({
                     <Button
                       type="button"
                       disabled={uploadingShopPhoto}
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium text-[11px] h-7 rounded-lg border-0 cursor-pointer shadow-2xs flex items-center justify-center gap-1"
+                      className="w-full bg-festival-teal hover:bg-[#00635E] text-white font-medium text-[11px] h-7 rounded-lg border-0 cursor-pointer shadow-2xs flex items-center justify-center gap-1"
                     >
                       {uploadingShopPhoto ? (
                         <Loader2 className="w-3 h-3 animate-spin" />
@@ -232,11 +232,11 @@ export default function Step3DocumentsUploads({
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold text-slate-800 uppercase tracking-wide flex items-center gap-1">
-                    <ImageIcon className="w-3.5 h-3.5 text-blue-600" />
+                    <ImageIcon className="w-3.5 h-3.5 text-festival-teal" />
                     Store Logo
                   </span>
                 </div>
-                <div className="border border-dashed border-slate-300 bg-slate-50/70 hover:bg-blue-50/30 hover:border-blue-400 rounded-xl p-2.5 flex flex-col items-center justify-center text-center space-y-1.5 h-28 overflow-hidden shadow-2xs transition-all">
+                <div className="border border-dashed border-slate-300 bg-slate-50/70 hover:bg-warm-ivory hover:border-festival-teal rounded-xl p-2.5 flex flex-col items-center justify-center text-center space-y-1.5 h-28 overflow-hidden shadow-2xs transition-all">
                   {formData.logoUrl ? (
                     <div className="space-y-1 w-full flex flex-col items-center">
                       <img
@@ -273,7 +273,7 @@ export default function Step3DocumentsUploads({
                     <Button
                       type="button"
                       disabled={uploadingLogo}
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium text-[11px] h-7 rounded-lg border-0 cursor-pointer shadow-2xs flex items-center justify-center gap-1"
+                      className="w-full bg-festival-teal hover:bg-[#00635E] text-white font-medium text-[11px] h-7 rounded-lg border-0 cursor-pointer shadow-2xs flex items-center justify-center gap-1"
                     >
                       {uploadingLogo ? (
                         <Loader2 className="w-3 h-3 animate-spin" />
@@ -294,11 +294,11 @@ export default function Step3DocumentsUploads({
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold text-slate-800 uppercase tracking-wide flex items-center gap-1">
-                    <ImageIcon className="w-3.5 h-3.5 text-blue-600" />
+                    <ImageIcon className="w-3.5 h-3.5 text-festival-teal" />
                     Banner Image
                   </span>
                 </div>
-                <div className="border border-dashed border-slate-300 bg-slate-50/70 hover:bg-blue-50/30 hover:border-blue-400 rounded-xl p-2.5 flex flex-col items-center justify-center text-center space-y-1.5 h-28 overflow-hidden shadow-2xs transition-all">
+                <div className="border border-dashed border-slate-300 bg-slate-50/70 hover:bg-warm-ivory hover:border-festival-teal rounded-xl p-2.5 flex flex-col items-center justify-center text-center space-y-1.5 h-28 overflow-hidden shadow-2xs transition-all">
                   {formData.bannerUrl ? (
                     <div className="space-y-1 w-full flex flex-col items-center">
                       <img
@@ -335,7 +335,7 @@ export default function Step3DocumentsUploads({
                     <Button
                       type="button"
                       disabled={uploadingBanner}
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium text-[11px] h-7 rounded-lg border-0 cursor-pointer shadow-2xs flex items-center justify-center gap-1"
+                      className="w-full bg-festival-teal hover:bg-[#00635E] text-white font-medium text-[11px] h-7 rounded-lg border-0 cursor-pointer shadow-2xs flex items-center justify-center gap-1"
                     >
                       {uploadingBanner ? (
                         <Loader2 className="w-3 h-3 animate-spin" />

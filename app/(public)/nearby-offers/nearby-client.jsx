@@ -120,7 +120,7 @@ const GirlFaceIcon = ({ className, style }) => (
 // ─── 15 Distinct & Meaningful Categories with Unique Icons ────────────────────
 
 const CATEGORIES = [
-  { key: "all", label: "All", icon: Flame, color: "#2563eb" },
+  { key: "all", label: "All", icon: Flame, color: "#007F79" },
   {
     key: "food",
     label: "Food & Dining",
@@ -258,7 +258,7 @@ const DealCardSkeleton = () => (
         {/* Top row: Brand & distance */}
         <div className="flex items-center justify-between gap-1">
           <div className="h-2.5 bg-slate-200 rounded w-24" />
-          <div className="h-3 bg-blue-100/70 rounded-full w-14" />
+          <div className="h-3 bg-warm-ivory-dark rounded-full w-14" />
         </div>
         {/* Discount banner */}
         <div className="h-3.5 bg-slate-200 rounded w-20" />
@@ -269,7 +269,7 @@ const DealCardSkeleton = () => (
         {/* Bottom row */}
         <div className="flex items-center justify-between pt-1 border-t border-slate-100">
           <div className="h-2 bg-slate-100 rounded w-12" />
-          <div className="h-2.5 bg-blue-100/80 rounded w-14" />
+          <div className="h-2.5 bg-warm-ivory-dark rounded w-14" />
         </div>
       </div>
     </div>
@@ -290,15 +290,15 @@ const MapSkeleton = () => (
 
     {/* Central Pulsing Radar & Beacon */}
     <div className="relative flex items-center justify-center z-10">
-      <div className="w-20 h-20 rounded-full bg-blue-400/20 animate-ping absolute" />
-      <div className="w-10 h-10 rounded-full bg-blue-500/30 flex items-center justify-center shadow-md">
-        <div className="w-4 h-4 rounded-full bg-blue-600 border-2 border-white shadow-sm" />
+      <div className="w-20 h-20 rounded-full bg-festival-pink/20 animate-ping absolute" />
+      <div className="w-10 h-10 rounded-full bg-festival-pink/30 flex items-center justify-center shadow-md">
+        <div className="w-4 h-4 rounded-full bg-festival-pink border-2 border-white shadow-sm" />
       </div>
     </div>
 
     {/* Floating Action Dock Skeleton (Top-Right) */}
     <div className="absolute top-3 right-3 flex flex-col items-center gap-1 bg-white/90 p-1 rounded-xl shadow-md border border-slate-200/90 pointer-events-none">
-      <div className="w-7 h-7 rounded-lg bg-blue-100/70" />
+      <div className="w-7 h-7 rounded-lg bg-warm-ivory-dark" />
       <div className="h-[1px] w-3.5 bg-slate-200" />
       <div className="w-7 h-7 rounded-lg bg-slate-200" />
       <div className="w-7 h-7 rounded-lg bg-slate-200" />
@@ -307,7 +307,7 @@ const MapSkeleton = () => (
 
     {/* Bottom Watermark Badge */}
     <div className="absolute bottom-3 left-3 bg-white/85 px-2 py-1 rounded-md border border-slate-200 shadow-xs flex items-center gap-1.5 pointer-events-none">
-      <div className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-ping" />
+      <div className="w-2.5 h-2.5 rounded-full bg-festival-teal animate-ping" />
       <span className="text-[10px] font-semibold text-slate-500">
         Loading Map & Deals…
       </span>
@@ -543,9 +543,9 @@ function getCategoryTheme(category) {
   return {
     iconComp: Tag,
     svg: CATEGORY_SVGS.default,
-    color: "#2563eb",
-    bg: "#eff6ff",
-    border: "#dbeafe",
+    color: "#007F79",
+    bg: "#FFF8EF",
+    border: "#E9DFC6",
   };
 }
 
@@ -939,7 +939,7 @@ export default function NearbyOffers() {
 
         // Vibrant Brand Rose Shortest Path
         const roseLine = L.polyline(coords, {
-          color: "#F72853",
+          color: "#FF2E63",
           weight: 4.5,
           opacity: 0.98,
           lineCap: "round",
@@ -1137,10 +1137,10 @@ export default function NearbyOffers() {
       try {
         L.circle(centerPoint, {
           radius: distNum * 1000,
-          color: "#F72853",
+          color: "#FF2E63",
           weight: 1.5,
           opacity: 0.65,
-          fillColor: "#F72853",
+          fillColor: "#FF2E63",
           fillOpacity: 0.05,
           dashArray: "6, 6",
         }).addTo(markersGroupRef.current);
@@ -1171,7 +1171,7 @@ export default function NearbyOffers() {
 
       L.marker(centerPoint, { icon: userDivIcon, zIndexOffset: 2000 })
         .bindPopup(
-          `<div style="font-family:var(--font-inter),sans-serif;font-size:11px;font-weight:600;color:#1e293b;padding:3px 5px;">
+          `<div style="font-family:var(--font-sans),sans-serif;font-size:11px;font-weight:600;color:#1e293b;padding:3px 5px;">
             📍 ${userGpsCoords ? "Your Live GPS Location" : `Center: ${savedCity || "Selected City"}`}
           </div>`,
         )
@@ -1231,7 +1231,7 @@ export default function NearbyOffers() {
                 <span class="verified-check-circle" title="Verified Merchant">${checkCircleSvg}</span>
                 ${
                   deal.offersCount > 1
-                    ? `<span style="font-size:8px;font-weight:600;color:#F72853;background:#fff1f2;padding:0.5px 4px;border-radius:3px;border:1px solid #fecdd3;flex-shrink:0;">${deal.offersCount} Deals</span>`
+                    ? `<span style="font-size:8px;font-weight:600;color:#FF2E63;background:#fff1f2;padding:0.5px 4px;border-radius:3px;border:1px solid #fecdd3;flex-shrink:0;">${deal.offersCount} Deals</span>`
                     : ""
                 }
               </div>
@@ -1326,12 +1326,12 @@ export default function NearbyOffers() {
   return (
     <div
       className="flex flex-col h-screen w-full overflow-hidden bg-slate-100 select-none"
-      style={{ fontFamily: "var(--font-inter), sans-serif" }}
+      style={{ fontFamily: "var(--font-sans), sans-serif" }}
     >
       {/* Global & Leaflet Font & Marker Styling */}
       <style>{`
         * {
-          font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+          font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
         }
 
         /* Pulsing & Blinking GPS user marker */
@@ -1362,7 +1362,7 @@ export default function NearbyOffers() {
         .center-dot {
           width: 20px;
           height: 20px;
-          background: #F72853;
+          background: #FF2E63;
           border: 3px solid #ffffff;
           border-radius: 50%;
           box-shadow: 0 0 16px rgba(247, 40, 83, 0.8), 0 3px 10px rgba(0, 0, 0, 0.35);
@@ -1416,7 +1416,7 @@ export default function NearbyOffers() {
           align-items: center;
           gap: 3px;
           background: #ffffff;
-          border: 1.5px solid #F72853;
+          border: 1.5px solid #FF2E63;
           border-radius: 999px;
           padding: 1.5px 5px;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
@@ -1438,7 +1438,7 @@ export default function NearbyOffers() {
         .marker-pin-tip {
           width: 5px;
           height: 5px;
-          background: #F72853;
+          background: #FF2E63;
           transform: rotate(45deg) translateY(-2px);
           border-radius: 0.5px;
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
@@ -1456,7 +1456,7 @@ export default function NearbyOffers() {
         .vouchiqo-custom-leaflet-popup .leaflet-popup-content {
           margin: 0;
           line-height: 1.3;
-          font-family: var(--font-inter), sans-serif !important;
+          font-family: var(--font-sans), sans-serif !important;
         }
         .vouchiqo-custom-leaflet-popup .leaflet-popup-close-button {
           top: 4px !important;
@@ -1483,7 +1483,7 @@ export default function NearbyOffers() {
           padding: 7px 9px;
           box-sizing: border-box;
           color: #0f172a;
-          font-family: var(--font-inter), sans-serif !important;
+          font-family: var(--font-sans), sans-serif !important;
         }
         .popup-header {
           display: flex;
@@ -1562,7 +1562,7 @@ export default function NearbyOffers() {
         }
         .popup-btn-claim {
           flex: 1;
-          background: #F72853;
+          background: #FF2E63;
           color: #ffffff !important;
           text-align: center;
           padding: 3.5px 6px;
@@ -1616,7 +1616,7 @@ export default function NearbyOffers() {
         }
         .leaflet-control-zoom a:hover {
           background-color: #f1f5f9 !important;
-          color: #2563eb !important;
+          color: #007F79 !important;
         }
 
         /* Cross-Browser Scrollbar Hiding */
@@ -1645,7 +1645,7 @@ export default function NearbyOffers() {
               <div>
                 <h1 className="text-[13px] font-bold text-gray-900 tracking-tight flex items-center gap-1.5">
                   <span>Deals Near You</span>
-                  <span className="text-[10px] font-bold text-[#F72853] bg-rose-50 px-1.5 py-0.2 rounded-full border border-rose-200">
+                  <span className="text-[10px] font-bold text-[#FF2E63] bg-rose-50 px-1.5 py-0.2 rounded-full border border-rose-200">
                     {filteredDeals.length}
                   </span>
                 </h1>
@@ -1660,13 +1660,13 @@ export default function NearbyOffers() {
                 disabled={gpsLoading}
                 className={`flex items-center gap-1 text-[10.5px] font-semibold px-2 py-1 rounded-md border transition-all cursor-pointer shrink-0 ${
                   userGpsCoords
-                    ? "bg-rose-50 text-[#F72853] border-rose-300 shadow-2xs"
-                    : "bg-rose-50/70 hover:bg-rose-100/70 text-[#F72853] border-rose-200"
+                    ? "bg-rose-50 text-[#FF2E63] border-rose-300 shadow-2xs"
+                    : "bg-rose-50/70 hover:bg-rose-100/70 text-[#FF2E63] border-rose-200"
                 }`}
                 title="Locate with live GPS"
               >
                 <Crosshair
-                  className={`w-3 h-3 ${gpsLoading ? "animate-spin text-[#F72853]" : "text-[#F72853]"}`}
+                  className={`w-3 h-3 ${gpsLoading ? "animate-spin text-[#FF2E63]" : "text-[#FF2E63]"}`}
                 />
                 <span>
                   {gpsLoading
@@ -1686,7 +1686,7 @@ export default function NearbyOffers() {
                 placeholder="Search stores or deals…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-slate-50/70 border border-slate-300 focus:border-[#F72853] focus:bg-white focus:ring-1 focus:ring-rose-100 rounded-md pl-8 pr-7 py-1.5 text-[12px] font-medium text-gray-800 placeholder-gray-400 outline-none transition-all"
+                className="w-full bg-slate-50/70 border border-slate-300 focus:border-[#FF2E63] focus:bg-white focus:ring-1 focus:ring-rose-100 rounded-md pl-8 pr-7 py-1.5 text-[12px] font-medium text-gray-800 placeholder-gray-400 outline-none transition-all"
               />
               {searchQuery && (
                 <button
@@ -1712,7 +1712,7 @@ export default function NearbyOffers() {
                     onClick={(e) => handleCategoryClick(cat.key, e)}
                     className={`flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-medium whitespace-nowrap transition-all cursor-pointer border shrink-0 ${
                       active
-                        ? "bg-[#F72853] text-white border-[#F72853] shadow-2xs"
+                        ? "bg-[#FF2E63] text-white border-[#FF2E63] shadow-2xs"
                         : "bg-slate-50 hover:bg-rose-50/40 text-gray-700 border-slate-200"
                     }`}
                   >
@@ -1751,7 +1751,7 @@ export default function NearbyOffers() {
                     setCategoryFilter("all");
                     setSearchQuery("");
                   }}
-                  className="mt-1.5 text-[11px] font-semibold text-[#F72853] hover:underline cursor-pointer"
+                  className="mt-1.5 text-[11px] font-semibold text-[#FF2E63] hover:underline cursor-pointer"
                 >
                   Reset search
                 </button>
@@ -1775,7 +1775,7 @@ export default function NearbyOffers() {
                     onClick={() => handleSelectDeal(deal, true)}
                     className={`bg-white rounded-lg p-2.5 border transition-all cursor-pointer shadow-2xs hover:shadow-xs relative group ${
                       isSelected
-                        ? "border-[#F72853] ring-1 ring-rose-200 bg-rose-50/20"
+                        ? "border-[#FF2E63] ring-1 ring-rose-200 bg-rose-50/20"
                         : "border-slate-200 hover:border-rose-200"
                     }`}
                   >
@@ -1811,12 +1811,12 @@ export default function NearbyOffers() {
                               {deal.businessName}
                             </h2>
                             {deal.offersCount > 1 && (
-                              <span className="text-[8px] font-medium text-[#F72853] bg-rose-50 border border-rose-200 px-1 py-0.2 rounded-full shrink-0">
+                              <span className="text-[8px] font-medium text-[#FF2E63] bg-rose-50 border border-rose-200 px-1 py-0.2 rounded-full shrink-0">
                                 {deal.offersCount} Deals
                               </span>
                             )}
                           </div>
-                          <span className="text-[9.5px] font-medium text-[#F72853] bg-rose-50 border border-rose-200 px-1.5 py-0.2 rounded-full shrink-0">
+                          <span className="text-[9.5px] font-medium text-[#FF2E63] bg-rose-50 border border-rose-200 px-1.5 py-0.2 rounded-full shrink-0">
                             {deal.distance} km away
                           </span>
                         </div>
@@ -1847,7 +1847,7 @@ export default function NearbyOffers() {
                               e.stopPropagation();
                               handleSelectDeal(deal, true);
                             }}
-                            className="text-[9.5px] font-medium text-slate-700 hover:text-[#F72853] bg-slate-50 hover:bg-rose-50 px-2 py-0.5 rounded-md border border-slate-200 flex items-center gap-1 transition-colors cursor-pointer"
+                            className="text-[9.5px] font-medium text-slate-700 hover:text-[#FF2E63] bg-slate-50 hover:bg-rose-50 px-2 py-0.5 rounded-md border border-slate-200 flex items-center gap-1 transition-colors cursor-pointer"
                             title="Show Route and Directions"
                           >
                             <GoogleIcon className="w-2.5 h-2.5" />
@@ -1856,7 +1856,7 @@ export default function NearbyOffers() {
                           <Link
                             href={`/deals/${deal._id}`}
                             onClick={(e) => e.stopPropagation()}
-                            className="text-[10.5px] font-medium text-[#F72853] hover:text-[#e01e47] flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform"
+                            className="text-[10.5px] font-medium text-[#FF2E63] hover:text-[#e01e47] flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform"
                           >
                             <span>Get Deal</span>
                             <ChevronRight className="w-3 h-3" />
@@ -1894,7 +1894,7 @@ export default function NearbyOffers() {
                   <div className="bg-white/95 backdrop-blur-md rounded-lg shadow-xl border border-slate-200 p-1.5 w-36 animate-in fade-in zoom-in-95 duration-150 space-y-0.5 font-sans">
                     <div className="flex items-center border-b border-slate-100 pb-1 px-0.5">
                       <span className="text-[10.5px] font-semibold text-gray-900 tracking-tight flex items-center gap-1">
-                        <Layers className="w-3 h-3 text-blue-600" />
+                        <Layers className="w-3 h-3 text-festival-teal" />
                         <span>Map View</span>
                       </span>
                     </div>
@@ -1912,18 +1912,18 @@ export default function NearbyOffers() {
                             }}
                             className={`w-full flex items-center justify-between px-2 py-1.5 rounded-md text-[11px] font-medium transition-all text-left cursor-pointer ${
                               isCurrent
-                                ? "bg-blue-50 text-blue-700 font-semibold border border-blue-200"
+                                ? "bg-warm-ivory text-festival-teal font-semibold border border-festival-teal/30"
                                 : "text-gray-700 hover:bg-slate-50 hover:text-gray-900 border border-transparent"
                             }`}
                           >
                             <span className="flex items-center gap-1.5">
                               <IconComponent
-                                className={`w-3.5 h-3.5 ${isCurrent ? "text-blue-600" : "text-slate-500"}`}
+                                className={`w-3.5 h-3.5 ${isCurrent ? "text-festival-teal" : "text-slate-500"}`}
                               />
                               <span>{tile.name}</span>
                             </span>
                             {isCurrent && (
-                              <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-festival-teal" />
                             )}
                           </button>
                         );
@@ -1939,8 +1939,8 @@ export default function NearbyOffers() {
                     onClick={() => setShowLayerMenu((prev) => !prev)}
                     className={`w-6.5 h-6.5 rounded-md flex items-center justify-center transition-all cursor-pointer ${
                       showLayerMenu
-                        ? "bg-blue-600 text-white shadow-xs"
-                        : "text-slate-700 hover:bg-slate-100 hover:text-blue-600"
+                        ? "bg-festival-teal text-white shadow-xs"
+                        : "text-slate-700 hover:bg-slate-100 hover:text-festival-teal"
                     }`}
                     title="Map Views & Layers"
                     aria-label="Map Views"
@@ -1953,7 +1953,7 @@ export default function NearbyOffers() {
                   {/* 2nd: Fit Bounds Button */}
                   <button
                     onClick={handleFitBounds}
-                    className="w-6.5 h-6.5 rounded-md flex items-center justify-center text-slate-700 hover:bg-slate-100 hover:text-blue-600 transition-all cursor-pointer"
+                    className="w-6.5 h-6.5 rounded-md flex items-center justify-center text-slate-700 hover:bg-slate-100 hover:text-festival-teal transition-all cursor-pointer"
                     title="Fit All Deals on Screen"
                     aria-label="Fit All Deals"
                   >
@@ -1967,13 +1967,13 @@ export default function NearbyOffers() {
                     className={`w-6.5 h-6.5 rounded-md flex items-center justify-center transition-all cursor-pointer ${
                       userGpsCoords
                         ? "bg-emerald-50 text-emerald-600 border border-emerald-200"
-                        : "text-slate-700 hover:bg-slate-100 hover:text-blue-600"
+                        : "text-slate-700 hover:bg-slate-100 hover:text-festival-teal"
                     }`}
                     title="Locate with Live GPS"
                     aria-label="Live GPS"
                   >
                     <Crosshair
-                      className={`w-3.5 h-3.5 ${gpsLoading ? "animate-spin text-blue-600" : ""}`}
+                      className={`w-3.5 h-3.5 ${gpsLoading ? "animate-spin text-festival-teal" : ""}`}
                     />
                   </button>
 
@@ -1982,7 +1982,7 @@ export default function NearbyOffers() {
                     onClick={() => setShowRadiusCircle((prev) => !prev)}
                     className={`w-6.5 h-6.5 rounded-md flex items-center justify-center transition-all cursor-pointer ${
                       showRadiusCircle
-                        ? "text-blue-600 bg-blue-50"
+                        ? "text-festival-teal bg-warm-ivory"
                         : "text-slate-400 hover:bg-slate-100 hover:text-slate-700"
                     }`}
                     title={
@@ -2007,12 +2007,12 @@ export default function NearbyOffers() {
                 <div className="flex items-start justify-between gap-1.5">
                   <div className="min-w-0">
                     <div className="flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#F72853] animate-pulse shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF2E63] animate-pulse shrink-0" />
                       <h3 className="text-[11.5px] font-medium text-slate-800 truncate">
                         {activeRouteInfo.businessName}
                       </h3>
                       {activeRouteInfo.discountValue && (
-                        <span className="px-1.5 py-0.2 rounded text-[8.5px] font-medium bg-rose-50 text-[#F72853] border border-rose-200 shrink-0">
+                        <span className="px-1.5 py-0.2 rounded text-[8.5px] font-medium bg-rose-50 text-[#FF2E63] border border-rose-200 shrink-0">
                           {activeRouteInfo.discountType === "percentage"
                             ? `${activeRouteInfo.discountValue}% OFF`
                             : `₹${activeRouteInfo.discountValue} OFF`}
@@ -2035,7 +2035,7 @@ export default function NearbyOffers() {
 
                 {/* Metrics Row: Drive time, Distance, Walk time */}
                 <div className="flex items-center gap-2 bg-slate-50 rounded-md py-1 px-2 border border-slate-100 text-[10.5px]">
-                  <div className="flex items-center gap-1 text-[#F72853] font-medium">
+                  <div className="flex items-center gap-1 text-[#FF2E63] font-medium">
                     <Car className="w-3 h-3" />
                     <span>{activeRouteInfo.durationMin} mins drive</span>
                   </div>
@@ -2055,7 +2055,7 @@ export default function NearbyOffers() {
                     href={activeRouteInfo.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 bg-[#F72853] hover:bg-[#e01e47] text-white text-[10.5px] font-medium py-1 px-2.5 rounded-md flex items-center justify-center gap-1 transition-all shadow-2xs active:scale-98"
+                    className="flex-1 bg-[#FF2E63] hover:bg-[#e01e47] text-white text-[10.5px] font-medium py-1 px-2.5 rounded-md flex items-center justify-center gap-1 transition-all shadow-2xs active:scale-98"
                   >
                     <Navigation className="w-3 h-3" />
                     <span>Start Live Navigation</span>
@@ -2091,12 +2091,12 @@ export default function NearbyOffers() {
                   }
                   handleFitBounds();
                 }}
-                className="flex flex-col items-center justify-center gap-0.5 bg-white/95 backdrop-blur-md hover:bg-rose-50/90 text-[#F72853] px-2.5 py-1.5 rounded-lg shadow-md border border-rose-200 hover:border-rose-300 transition-all cursor-pointer animate-in fade-in slide-in-from-bottom-2 duration-200 group"
+                className="flex flex-col items-center justify-center gap-0.5 bg-white/95 backdrop-blur-md hover:bg-rose-50/90 text-[#FF2E63] px-2.5 py-1.5 rounded-lg shadow-md border border-rose-200 hover:border-rose-300 transition-all cursor-pointer animate-in fade-in slide-in-from-bottom-2 duration-200 group"
                 title="Re-Center Map on Selected Store"
                 aria-label="Recenter"
               >
-                <LocateFixed className="w-4.5 h-4.5 text-[#F72853] stroke-[2.3] group-hover:scale-110 transition-transform" />
-                <span className="text-[9px] font-extrabold text-[#F72853] tracking-tight leading-none">
+                <LocateFixed className="w-4.5 h-4.5 text-[#FF2E63] stroke-[2.3] group-hover:scale-110 transition-transform" />
+                <span className="text-[9px] font-extrabold text-[#FF2E63] tracking-tight leading-none">
                   Recenter
                 </span>
               </button>
@@ -2128,7 +2128,7 @@ export default function NearbyOffers() {
                   setCategoryFilter("all");
                   setSearchQuery("");
                 }}
-                className="mt-1.5 text-[11px] font-bold text-blue-600 hover:underline cursor-pointer"
+                className="mt-1.5 text-[11px] font-bold text-festival-teal hover:underline cursor-pointer"
               >
                 Reset search
               </button>
@@ -2149,8 +2149,8 @@ export default function NearbyOffers() {
                   onClick={() => handleSelectDeal(deal, true)}
                   className={`bg-white rounded-lg p-2.5 border transition-all cursor-pointer shadow-xs hover:shadow-sm relative group ${
                     isSelected
-                      ? "border-blue-600 ring-1.5 ring-blue-100 bg-blue-50/15"
-                      : "border-slate-200 hover:border-blue-300"
+                      ? "border-festival-teal ring-1.5 ring-festival-teal/20 bg-warm-ivory"
+                      : "border-slate-200 hover:border-festival-teal/40"
                   }`}
                 >
                   <div className="flex gap-2.5 items-start">
@@ -2185,12 +2185,12 @@ export default function NearbyOffers() {
                             {deal.businessName}
                           </h2>
                           {deal.offersCount > 1 && (
-                            <span className="text-[8px] font-bold text-blue-600 bg-blue-50 border border-blue-100 px-1 py-0.2 rounded-full shrink-0">
+                            <span className="text-[8px] font-bold text-festival-teal bg-warm-ivory border border-festival-teal/20 px-1 py-0.2 rounded-full shrink-0">
                               {deal.offersCount} Deals
                             </span>
                           )}
                         </div>
-                        <span className="text-[9.5px] font-semibold text-blue-600 bg-blue-50 border border-blue-100 px-1.5 py-0.2 rounded-full shrink-0">
+                        <span className="text-[9.5px] font-semibold text-festival-teal bg-warm-ivory border border-festival-teal/20 px-1.5 py-0.2 rounded-full shrink-0">
                           {deal.distance} km away
                         </span>
                       </div>
@@ -2221,7 +2221,7 @@ export default function NearbyOffers() {
                             e.stopPropagation();
                             handleSelectDeal(deal, true);
                           }}
-                          className="text-[10px] font-semibold text-slate-700 hover:text-blue-600 bg-slate-50 hover:bg-blue-50/70 px-2 py-0.5 rounded-md border border-slate-200 flex items-center gap-1.5 transition-colors cursor-pointer"
+                          className="text-[10px] font-semibold text-slate-700 hover:text-festival-teal bg-slate-50 hover:bg-warm-ivory px-2 py-0.5 rounded-md border border-slate-200 flex items-center gap-1.5 transition-colors cursor-pointer"
                           title="Show Route and Directions"
                         >
                           <GoogleIcon className="w-2.5 h-2.5" />
@@ -2230,7 +2230,7 @@ export default function NearbyOffers() {
                         <Link
                           href={`/deals/${deal._id}`}
                           onClick={(e) => e.stopPropagation()}
-                          className="text-[11px] font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform"
+                          className="text-[11px] font-semibold text-festival-teal hover:text-festival-teal-dark flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform"
                         >
                           <span>Get Deal</span>
                           <ChevronRight className="w-3 h-3" />

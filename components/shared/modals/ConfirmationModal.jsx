@@ -105,14 +105,14 @@ export default function ConfirmationModal({ coupon, onClose, onConfirm }) {
               </div>
 
               {/* Code Container */}
-              <div className="border-2 border-dashed border-blue-300 bg-blue-50/40 rounded-xl p-4 flex items-center justify-between gap-4 transition-all duration-200">
+              <div className="border-2 border-dashed border-festival-teal/30 bg-warm-ivory rounded-xl p-4 flex items-center justify-between gap-4 transition-all duration-200">
                 <span className="font-mono font-bold text-xl tracking-[0.15em] text-slate-800 uppercase select-all">
                   {voucherCode}
                 </span>
                 <Button
                   onClick={copyToClipboard}
                   className={`text-xs font-semibold py-2 px-4 rounded-lg border-0 h-auto cursor-pointer transition-all duration-200 ${
-                    copied ? "bg-[#2563eb] text-white" : "btn-primary shadow-sm"
+                    copied ? "bg-festival-teal text-white" : "btn-primary shadow-sm"
                   }`}
                 >
                   {copied ? "✅ Copied!" : "Copy Code"}

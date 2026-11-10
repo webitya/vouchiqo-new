@@ -44,7 +44,7 @@ export default function CampaignStepper({
                 <span
                   className={`w-4.5 h-4.5 rounded-full flex items-center justify-center text-[10px] font-medium transition-all ${
                     isActive
-                      ? "bg-[#F72853] text-white shadow-2xs"
+                      ? "bg-[#FF2E63] text-white shadow-2xs"
                       : isCompleted
                         ? "bg-emerald-100 text-emerald-700 border border-emerald-200"
                         : "bg-slate-100 text-slate-400"

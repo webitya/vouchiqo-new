@@ -61,7 +61,7 @@ export default function ActionButtons({
           variant="ghost"
           size="sm"
           onClick={handleResendEmail}
-          className="text-xs font-normal text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg cursor-pointer"
+          className="text-xs font-normal text-festival-teal hover:text-[#004D49] hover:bg-festival-teal/10 rounded-lg cursor-pointer"
         >
           <Mail className="w-3.5 h-3.5 mr-1" /> Resend Email
         </Button>
@@ -72,7 +72,7 @@ export default function ActionButtons({
           variant="outline"
           size="sm"
           onClick={handleContactWhatsApp}
-          className="text-xs font-normal text-blue-700 bg-blue-50/80 border-blue-200 hover:bg-blue-100/80 rounded-lg cursor-pointer shadow-none gap-1.5"
+          className="text-xs font-normal text-festival-teal bg-warm-ivory border-brand-border hover:bg-festival-teal/20/80 rounded-lg cursor-pointer shadow-none gap-1.5"
         >
           <MessageCircle className="w-3.5 h-3.5 fill-current" /> Contact Support
         </Button>
@@ -83,7 +83,7 @@ export default function ActionButtons({
             onClick={onOpenAdminModal}
             className="text-xs font-normal bg-slate-900 hover:bg-slate-800 text-white rounded-lg cursor-pointer shadow-none gap-1.5"
           >
-            <ShieldAlert className="w-3.5 h-3.5 text-blue-400" /> Admin Simulator
+            <ShieldAlert className="w-3.5 h-3.5 text-festival-teal/80" /> Admin Simulator
           </Button>
         )}
       </div>

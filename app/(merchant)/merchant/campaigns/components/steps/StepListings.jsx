@@ -113,7 +113,7 @@ export default function StepListings({
                   className={cn(
                     "p-3 sm:p-3.5 flex items-center justify-between cursor-pointer transition-all select-none",
                     isAttached
-                      ? "bg-rose-50/60 border-l-4 border-l-[#F72853]"
+                      ? "bg-rose-50/60 border-l-4 border-l-[#FF2E63]"
                       : "hover:bg-slate-50/80",
                   )}
                 >
@@ -123,7 +123,7 @@ export default function StepListings({
                       className={cn(
                         "flex h-4 w-4 shrink-0 items-center justify-center rounded-[5px] border transition-colors",
                         isAttached
-                          ? "border-[#F72853] bg-[#F72853] text-white"
+                          ? "border-[#FF2E63] bg-[#FF2E63] text-white"
                           : "border-slate-300 bg-white",
                       )}
                     >
@@ -138,7 +138,7 @@ export default function StepListings({
                       </span>
                     </div>
                   </div>
-                  <span className="text-xs font-semibold text-[#F72853] bg-rose-50 px-2.5 py-0.5 rounded-md border border-rose-200/80">
+                  <span className="text-xs font-semibold text-[#FF2E63] bg-rose-50 px-2.5 py-0.5 rounded-md border border-rose-200/80">
                     {couponItem.discountType === "percentage"
                       ? `${couponItem.discountValue || 0}% OFF`
                       : `₹${couponItem.discountValue || 0} OFF`}
@@ -152,7 +152,7 @@ export default function StepListings({
         <Link
           href="/merchant/coupons"
           target="_blank"
-          className="inline-flex items-center gap-1.5 text-xs font-medium text-[#F72853] hover:text-[#e01e47] hover:underline"
+          className="inline-flex items-center gap-1.5 text-xs font-medium text-[#FF2E63] hover:text-[#e01e47] hover:underline"
         >
           <Plus className="w-4 h-4" />
           <span>Create Coupon</span>
@@ -170,7 +170,7 @@ export default function StepListings({
         </Button>
         <Button
           onClick={onNext}
-          className="bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-medium h-8 sm:h-9 px-5 rounded-xl cursor-pointer shadow-xs"
+          className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium h-8 sm:h-9 px-5 rounded-xl cursor-pointer shadow-xs"
         >
           Next
         </Button>

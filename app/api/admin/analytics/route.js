@@ -94,8 +94,8 @@ export const GET = asyncHandler(async (request) => {
       name: "Organic",
       value: organicCount,
       pct: totalVisits > 0 ? "30%" : "0%",
-      color: "bg-[#2563eb]",
-      hexColor: "#2563eb",
+      color: "bg-festival-teal",
+      hexColor: "#007F79",
     },
     {
       label: "Referral",

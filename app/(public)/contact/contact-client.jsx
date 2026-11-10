@@ -36,20 +36,17 @@ export default function ContactPage() {
   };
 
   return (
-    <div
-      className="min-h-screen flex flex-col bg-gray-50 text-gray-900"
-      style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
-    >
+    <div className="min-h-screen flex flex-col bg-warm-ivory text-royal-plum font-sans">
       <Navbar />
 
       <main className="max-w-5xl mx-auto px-4 py-12 sm:px-6 lg:px-8 w-full flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8 items-start min-h-screen">
         {/* Left Side: Contact Info */}
         <section className="lg:col-span-5 space-y-6">
           <div className="space-y-3">
-            <h1 className="text-3xl font-semibold text-gray-900 tracking-tight leading-tight">
+            <h1 className="text-3xl font-bold font-heading text-royal-plum tracking-tight leading-tight">
               Get in touch
             </h1>
-            <p className="text-[13px] text-gray-500 font-normal leading-relaxed">
+            <p className="text-[13px] text-royal-plum/70 font-normal leading-relaxed">
               Have questions about claim verification, coupon revival, or
               partner billing plans? Fill out the form or reach out via our
               direct channels.
@@ -58,60 +55,60 @@ export default function ContactPage() {
 
           <div className="space-y-4">
             {/* Email Contact Card */}
-            <div className="flex items-start gap-4 p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:border-blue-200 hover:shadow-md transition-all duration-200">
-              <div className="p-2.5 bg-blue-50 text-blue-600 rounded-lg border border-blue-100 flex-shrink-0">
+            <div className="flex items-start gap-4 p-4 bg-white border border-brand-border rounded-xl shadow-sm hover:border-festival-teal hover:shadow-md transition-all duration-200">
+              <div className="p-2.5 bg-festival-teal/10 text-festival-teal rounded-lg border border-festival-teal/20 flex-shrink-0">
                 <Mail className="w-5 h-5" />
               </div>
               <div className="space-y-1">
-                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                <h3 className="text-[10px] font-bold text-royal-plum/50 uppercase tracking-wider font-heading">
                   Email Address
                 </h3>
                 <a
                   href="mailto:contact@vouchiqo.com"
-                  className="text-[14px] font-medium text-gray-900 hover:text-blue-600 transition-colors"
+                  className="text-[14px] font-medium text-royal-plum hover:text-festival-teal transition-colors"
                 >
                   contact@vouchiqo.com
                 </a>
-                <p className="text-[11px] text-gray-400 font-normal">
+                <p className="text-[11px] text-royal-plum/50 font-normal">
                   Estimated reply within 24 hours
                 </p>
               </div>
             </div>
 
             {/* Phone Contact Card */}
-            <div className="flex items-start gap-4 p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:border-blue-200 hover:shadow-md transition-all duration-200">
-              <div className="p-2.5 bg-blue-50 text-blue-600 rounded-lg border border-blue-100 flex-shrink-0">
+            <div className="flex items-start gap-4 p-4 bg-white border border-brand-border rounded-xl shadow-sm hover:border-festival-teal hover:shadow-md transition-all duration-200">
+              <div className="p-2.5 bg-festival-teal/10 text-festival-teal rounded-lg border border-festival-teal/20 flex-shrink-0">
                 <Phone className="w-5 h-5" />
               </div>
               <div className="space-y-1">
-                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                <h3 className="text-[10px] font-bold text-royal-plum/50 uppercase tracking-wider font-heading">
                   Call Support
                 </h3>
                 <a
                   href="tel:+917997443334"
-                  className="text-[14px] font-medium text-gray-900 hover:text-blue-600 transition-colors"
+                  className="text-[14px] font-medium text-royal-plum hover:text-festival-teal transition-colors"
                 >
                   +91-7997443334
                 </a>
-                <p className="text-[11px] text-gray-400 font-normal">
+                <p className="text-[11px] text-royal-plum/50 font-normal">
                   Mon-Fri from 9:00 AM to 6:00 PM IST
                 </p>
               </div>
             </div>
 
             {/* Address / Office Contact Card */}
-            <div className="flex items-start gap-4 p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:border-blue-200 hover:shadow-md transition-all duration-200">
-              <div className="p-2.5 bg-blue-50 text-blue-600 rounded-lg border border-blue-100 flex-shrink-0">
+            <div className="flex items-start gap-4 p-4 bg-white border border-brand-border rounded-xl shadow-sm hover:border-festival-teal hover:shadow-md transition-all duration-200">
+              <div className="p-2.5 bg-festival-teal/10 text-festival-teal rounded-lg border border-festival-teal/20 flex-shrink-0">
                 <MapPin className="w-5 h-5" />
               </div>
               <div className="space-y-1">
-                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                <h3 className="text-[10px] font-bold text-royal-plum/50 uppercase tracking-wider font-heading">
                   Office Address
                 </h3>
-                <p className="text-[14px] font-medium text-gray-900 leading-snug">
+                <p className="text-[14px] font-medium text-royal-plum leading-snug">
                   Vouchiqo
                 </p>
-                <p className="text-[11px] text-gray-400 font-normal">
+                <p className="text-[11px] text-royal-plum/50 font-normal">
                   Ranchi, Jharkhand, India
                 </p>
               </div>
@@ -120,20 +117,20 @@ export default function ContactPage() {
         </section>
 
         {/* Right Side: Form Panel */}
-        <section className="lg:col-span-7 bg-white border border-gray-100 rounded-2xl p-6 sm:p-8 shadow-sm">
+        <section className="lg:col-span-7 bg-white border border-brand-border rounded-2xl p-6 sm:p-8 shadow-sm">
           {submitted ? (
             <div className="text-center py-10 space-y-4">
-              <div className="w-12 h-12 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center mx-auto">
-                <CheckCircle2 className="w-6 h-6 text-blue-600 animate-pulse" />
+              <div className="w-12 h-12 rounded-full bg-festival-teal/10 border border-festival-teal/20 flex items-center justify-center mx-auto">
+                <CheckCircle2 className="w-6 h-6 text-festival-teal animate-pulse" />
               </div>
               <div>
-                <h2 className="text-lg font-semibold text-gray-900 mb-1">
+                <h2 className="text-lg font-bold font-heading text-royal-plum mb-1">
                   Thank you for reaching out!
                 </h2>
-                <p className="text-[13px] text-gray-500 font-normal max-w-sm mx-auto leading-relaxed">
+                <p className="text-[13px] text-royal-plum/70 font-normal max-w-sm mx-auto leading-relaxed">
                   Your support request has been received. One of our support
                   representatives will contact you shortly via email at{" "}
-                  <span className="font-semibold text-gray-900">
+                  <span className="font-semibold text-royal-plum">
                     {formData.email}
                   </span>
                   .
@@ -150,7 +147,7 @@ export default function ContactPage() {
                     message: "",
                   });
                 }}
-                className="bg-blue-600 hover:bg-blue-700 text-white text-[12px] font-medium py-2 px-6 rounded-lg border-0 cursor-pointer transition-colors"
+                className="bg-festival-teal hover:bg-[#00635E] text-white text-[12px] font-heading font-semibold py-2 px-6 rounded-lg border-0 cursor-pointer transition-colors"
               >
                 Send Another Message
               </Button>
@@ -159,8 +156,8 @@ export default function ContactPage() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider block">
-                    Full Name <span className="text-red-500">*</span>
+                  <label className="text-[11px] font-semibold text-royal-plum/70 uppercase tracking-wider block font-heading">
+                    Full Name <span className="text-festival-pink">*</span>
                   </label>
                   <Input
                     type="text"
@@ -170,13 +167,13 @@ export default function ContactPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="border-gray-200 bg-white text-[13px] h-10 px-3 focus:border-blue-400 focus:ring-2 focus:ring-blue-50"
+                    className="border-brand-border bg-white text-royal-plum text-[13px] h-10 px-3 focus:border-festival-teal focus:ring-2 focus:ring-festival-teal/20"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider block">
-                    Email Address <span className="text-red-500">*</span>
+                  <label className="text-[11px] font-semibold text-royal-plum/70 uppercase tracking-wider block font-heading">
+                    Email Address <span className="text-festival-pink">*</span>
                   </label>
                   <Input
                     type="email"
@@ -186,14 +183,14 @@ export default function ContactPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="border-gray-200 bg-white text-[13px] h-10 px-3 focus:border-blue-400 focus:ring-2 focus:ring-blue-50"
+                    className="border-brand-border bg-white text-royal-plum text-[13px] h-10 px-3 focus:border-festival-teal focus:ring-2 focus:ring-festival-teal/20"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider block">
+                  <label className="text-[11px] font-semibold text-royal-plum/70 uppercase tracking-wider block font-heading">
                     Phone Number
                   </label>
                   <Input
@@ -203,12 +200,12 @@ export default function ContactPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })
                     }
-                    className="border-gray-200 bg-white text-[13px] h-10 px-3 focus:border-blue-400 focus:ring-2 focus:ring-blue-50"
+                    className="border-brand-border bg-white text-royal-plum text-[13px] h-10 px-3 focus:border-festival-teal focus:ring-2 focus:ring-festival-teal/20"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider block">
+                  <label className="text-[11px] font-semibold text-royal-plum/70 uppercase tracking-wider block font-heading">
                     Subject
                   </label>
                   <Input
@@ -218,14 +215,14 @@ export default function ContactPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, subject: e.target.value })
                     }
-                    className="border-gray-200 bg-white text-[13px] h-10 px-3 focus:border-blue-400 focus:ring-2 focus:ring-blue-50"
+                    className="border-brand-border bg-white text-royal-plum text-[13px] h-10 px-3 focus:border-festival-teal focus:ring-2 focus:ring-festival-teal/20"
                   />
                 </div>
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider block">
-                  Message Details <span className="text-red-500">*</span>
+                <label className="text-[11px] font-semibold text-royal-plum/70 uppercase tracking-wider block font-heading">
+                  Message Details <span className="text-festival-pink">*</span>
                 </label>
                 <Textarea
                   required
@@ -235,14 +232,14 @@ export default function ContactPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
-                  className="border-gray-200 bg-white text-[13px] p-3 focus-visible:ring-offset-0 focus:border-blue-400 focus:ring-2 focus:ring-blue-50"
+                  className="border-brand-border bg-white text-royal-plum text-[13px] p-3 focus-visible:ring-offset-0 focus:border-festival-teal focus:ring-2 focus:ring-festival-teal/20"
                 />
               </div>
 
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white text-[13px] py-2.5 font-medium border-0 h-auto cursor-pointer shadow-sm flex items-center justify-center gap-2 rounded-lg"
+                className="w-full bg-festival-teal hover:bg-[#00635E] text-white text-[13px] py-2.5 font-heading font-bold border-0 h-auto cursor-pointer shadow-sm flex items-center justify-center gap-2 rounded-lg transition-colors"
               >
                 <span>
                   {loading ? "Submitting ticket..." : "Submit Support Request"}

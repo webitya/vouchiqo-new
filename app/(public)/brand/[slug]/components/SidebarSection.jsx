@@ -32,7 +32,7 @@ export default function SidebarSection({
   copiedLink,
   handleShare,
 }) {
-  const fontStyle = { fontFamily: "var(--font-inter), Inter, sans-serif" };
+  const fontStyle = { fontFamily: "var(--font-sans), sans-serif" };
 
   const fullAddress = [
     merchant.location?.address,
@@ -87,15 +87,15 @@ export default function SidebarSection({
             href={normalizeExternalUrl(merchant.website)}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full inline-flex items-center justify-between px-3.5 py-2 rounded-xl bg-blue-50/80 hover:bg-blue-100/90 border border-blue-200/80 text-blue-700 text-xs font-semibold transition-all group shadow-2xs cursor-pointer"
+            className="w-full inline-flex items-center justify-between px-3.5 py-2 rounded-xl bg-festival-teal/10 hover:bg-festival-teal/20 border border-festival-teal/20 text-festival-teal text-xs font-semibold transition-all group shadow-2xs cursor-pointer"
           >
             <span className="flex items-center gap-2 truncate">
-              <Globe className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+              <Globe className="w-3.5 h-3.5 text-festival-teal shrink-0" />
               <span className="truncate">
                 Visit {displayDomain || "Official Website"}
               </span>
             </span>
-            <ExternalLink className="w-3.5 h-3.5 text-blue-600 group-hover:translate-x-0.5 transition-transform shrink-0" />
+            <ExternalLink className="w-3.5 h-3.5 text-festival-teal group-hover:translate-x-0.5 transition-transform shrink-0" />
           </a>
         )}
 
@@ -179,7 +179,7 @@ export default function SidebarSection({
             Location & Contact
           </h3>
           {merchant.businessType && (
-            <span className="text-[10px] font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full capitalize">
+            <span className="text-[10px] font-medium text-festival-teal bg-festival-teal/10 px-2 py-0.5 rounded-full capitalize">
               {merchant.businessType === "both"
                 ? "Online & In-Store"
                 : merchant.businessType}
@@ -211,9 +211,9 @@ export default function SidebarSection({
             href={merchant.gmapsLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-700 border border-slate-200 hover:border-blue-300 text-xs font-medium transition-colors cursor-pointer"
+            className="w-full inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-festival-teal/10 text-slate-700 hover:text-festival-teal border border-slate-200 hover:border-festival-teal/40 text-xs font-medium transition-colors cursor-pointer"
           >
-            <MapPin className="w-3.5 h-3.5 text-blue-600" />
+            <MapPin className="w-3.5 h-3.5 text-festival-teal" />
             <span>Open in Google Maps</span>
             <ExternalLink className="w-3 h-3 text-slate-400" />
           </a>
@@ -222,17 +222,17 @@ export default function SidebarSection({
         <div className="space-y-2 text-[12px] text-slate-600 font-normal pt-1">
           {fullAddress && (
             <div className="flex gap-2 items-start">
-              <MapPin className="w-3.5 h-3.5 text-blue-500 shrink-0 mt-0.5" />
+              <MapPin className="w-3.5 h-3.5 text-festival-teal shrink-0 mt-0.5" />
               <p className="leading-relaxed text-slate-700">{fullAddress}</p>
             </div>
           )}
 
           {merchant.contactPhone && (
             <div className="flex items-center gap-2">
-              <Phone className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+              <Phone className="w-3.5 h-3.5 text-festival-teal shrink-0" />
               <a
                 href={`tel:${merchant.contactPhone}`}
-                className="hover:text-blue-600 transition-colors"
+                className="hover:text-festival-teal transition-colors"
               >
                 {merchant.contactPhone}
               </a>
@@ -258,10 +258,10 @@ export default function SidebarSection({
 
           {merchant.contactEmail && (
             <div className="flex items-center gap-2">
-              <Mail className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+              <Mail className="w-3.5 h-3.5 text-festival-teal shrink-0" />
               <a
                 href={`mailto:${merchant.contactEmail}`}
-                className="hover:text-blue-600 transition-colors truncate"
+                className="hover:text-festival-teal transition-colors truncate"
               >
                 {merchant.contactEmail}
               </a>
@@ -276,7 +276,7 @@ export default function SidebarSection({
                 merchant.liaisonPhone !== merchant.contactPhone && (
                   <a
                     href={`tel:${merchant.liaisonPhone}`}
-                    className="text-blue-600 hover:underline"
+                    className="text-festival-teal hover:underline"
                   >
                     ({merchant.liaisonPhone})
                   </a>
@@ -286,12 +286,12 @@ export default function SidebarSection({
 
           {merchant.website && (
             <div className="flex items-center gap-2">
-              <Globe className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+              <Globe className="w-3.5 h-3.5 text-festival-teal shrink-0" />
               <a
                 href={normalizeExternalUrl(merchant.website)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 hover:underline truncate font-medium"
+                className="text-festival-teal hover:underline truncate font-medium"
               >
                 {displayDomain || "Official Website"}
               </a>
@@ -312,7 +312,7 @@ export default function SidebarSection({
               value={`faq-${idx}`}
               className="border-b border-gray-50 last:border-0"
             >
-              <AccordionTrigger className="text-left font-medium text-[13px] text-gray-800 hover:text-blue-600 hover:no-underline py-2.5">
+              <AccordionTrigger className="text-left font-medium text-[13px] text-gray-800 hover:text-festival-teal hover:no-underline py-2.5">
                 {faq.q}
               </AccordionTrigger>
               <AccordionContent className="text-[12px] text-gray-500 leading-relaxed pb-3 font-normal">
@@ -331,7 +331,7 @@ export default function SidebarSection({
         <button
           onClick={handleShare}
           type="button"
-          className="w-full flex items-center justify-center gap-2 bg-gray-50 hover:bg-blue-50 hover:border-blue-200 text-[13px] font-medium py-2.5 px-4 rounded-lg border border-gray-200 cursor-pointer transition-colors text-gray-700 hover:text-blue-600"
+          className="w-full flex items-center justify-center gap-2 bg-gray-50 hover:bg-festival-teal/10 hover:border-festival-teal/20 text-[13px] font-medium py-2.5 px-4 rounded-lg border border-gray-200 cursor-pointer transition-colors text-gray-700 hover:text-festival-teal"
         >
           {copiedLink ? (
             <>

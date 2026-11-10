@@ -221,7 +221,7 @@ export default function PlanComparisonTable({
             variant="ghost"
             size="sm"
             onClick={() => setIsDualCompare(!isDualCompare)}
-            className="h-7 px-2 text-xs font-semibold text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-md gap-1"
+            className="h-7 px-2 text-xs font-semibold text-festival-teal hover:text-festival-teal-dark hover:bg-warm-ivory rounded-md gap-1"
           >
             <ArrowRightLeft className="w-3 h-3" />
             <span>{isDualCompare ? "Single Plan View" : "Compare 2 Plans"}</span>
@@ -261,7 +261,7 @@ export default function PlanComparisonTable({
 
         {/* Dual Compare Target Selector (if dual mode enabled on mobile) */}
         {isDualCompare && (
-          <div className="flex items-center justify-between gap-2 p-2 bg-blue-50/60 rounded-xl border border-blue-200/80 text-xs">
+          <div className="flex items-center justify-between gap-2 p-2 bg-warm-ivory rounded-xl border border-festival-teal/25 text-xs">
             <span className="font-medium text-slate-700">Compare with:</span>
             <div className="flex items-center gap-1">
               {PLAN_COLUMNS.filter((p) => p.id !== activePlanTab).map((p) => (
@@ -272,7 +272,7 @@ export default function PlanComparisonTable({
                   className={cn(
                     "px-2 py-0.5 rounded text-[10.5px] font-semibold border cursor-pointer",
                     comparisonTargetTab === p.id
-                      ? "bg-blue-600 text-white border-blue-600"
+                      ? "bg-festival-teal text-white border-festival-teal"
                       : "bg-white text-slate-700 border-slate-200",
                   )}
                 >
@@ -287,7 +287,7 @@ export default function PlanComparisonTable({
         <div className="p-3.5 bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-xl shadow-xs flex items-center justify-between">
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="text-xs font-extrabold uppercase tracking-wider text-blue-300">
+              <span className="text-xs font-extrabold uppercase tracking-wider text-festival-teal/80">
                 {activePlanMeta.name}
               </span>
               {currentPlanId === activePlanMeta.id && (
@@ -319,7 +319,7 @@ export default function PlanComparisonTable({
                 ? activePlanMeta.id === "starter"
                   ? "bg-slate-700 text-slate-300 cursor-default"
                   : "bg-emerald-600 hover:bg-emerald-700 text-white"
-                : "bg-blue-600 hover:bg-blue-700 text-white shadow-xs",
+                : "bg-festival-teal hover:bg-festival-teal-dark text-white shadow-xs",
             )}
           >
             {currentPlanId === activePlanMeta.id
@@ -423,7 +423,7 @@ export default function PlanComparisonTable({
                           </div>
 
                           {/* Compare Plan Column */}
-                          <div className="flex items-center gap-1.5 bg-blue-50/50 p-1.5 rounded-lg border border-blue-100/80">
+                          <div className="flex items-center gap-1.5 bg-warm-ivory p-1.5 rounded-lg border border-brand-border">
                             {compareData.included ? (
                               <span className="w-3.5 h-3.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center shrink-0">
                                 <Check className="w-2 h-2 stroke-[3]" />
@@ -434,7 +434,7 @@ export default function PlanComparisonTable({
                               </span>
                             )}
                             <div className="flex flex-col min-w-0">
-                              <span className="text-[9px] font-bold text-blue-600 uppercase">
+                              <span className="text-[9px] font-bold text-festival-teal uppercase">
                                 {comparePlanMeta.name.split(" ")[0]}
                               </span>
                               <span
@@ -466,12 +466,12 @@ export default function PlanComparisonTable({
           ========================================================================= */}
       <div className="hidden md:block w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-xs">
         {/* Horizontal Scroll Guidance on Tablet */}
-        <div className="lg:hidden flex items-center justify-between px-4 py-2 bg-blue-50/70 border-b border-blue-100 text-[11px] text-blue-800 font-medium">
+        <div className="lg:hidden flex items-center justify-between px-4 py-2 bg-warm-ivory border-b border-brand-border text-[11px] text-festival-teal-dark font-medium">
           <span className="flex items-center gap-1">
-            <ArrowRightLeft className="w-3.5 h-3.5 text-blue-600" />
+            <ArrowRightLeft className="w-3.5 h-3.5 text-festival-teal" />
             Tablet Mode: Swipe horizontally to compare all tiers side-by-side
           </span>
-          <span className="text-[10px] bg-white px-2 py-0.5 rounded-full border border-blue-200 font-bold">
+          <span className="text-[10px] bg-white px-2 py-0.5 rounded-full border border-brand-border font-bold">
             Sticky Left Column
           </span>
         </div>
@@ -497,7 +497,7 @@ export default function PlanComparisonTable({
                       key={col.id}
                       className={cn(
                         "py-3.5 px-3 lg:px-4 text-center align-top min-w-[140px] lg:min-w-[160px] transition-colors border-r last:border-r-0 border-slate-100",
-                        isCurrent && "bg-blue-50/40",
+                        isCurrent && "bg-warm-ivory",
                       )}
                     >
                       <div className="flex flex-col items-center">
@@ -521,7 +521,7 @@ export default function PlanComparisonTable({
                               "mt-1 text-[9px] font-bold px-2 py-0.5 rounded-full",
                               isPopular
                                 ? "bg-amber-100 text-amber-800"
-                                : "bg-blue-100 text-blue-800",
+                                : "bg-festival-teal/10 text-festival-teal-dark",
                             )}
                           >
                             {isPopular ? "Popular" : "Best Value"}
@@ -578,7 +578,7 @@ export default function PlanComparisonTable({
                             key={tierId}
                             className={cn(
                               "py-2.5 px-2 lg:px-3 text-center align-middle border-r last:border-r-0 border-slate-100 transition-colors",
-                              isCurrent && "bg-blue-50/20",
+                              isCurrent && "bg-warm-ivory",
                             )}
                           >
                             <div className="flex flex-col items-center justify-center gap-1">
@@ -626,7 +626,7 @@ export default function PlanComparisonTable({
                       key={col.id}
                       className={cn(
                         "py-3.5 px-3 text-center align-middle border-r last:border-r-0 border-slate-100",
-                        isCurrent && "bg-blue-50/30",
+                        isCurrent && "bg-warm-ivory",
                       )}
                     >
                       <Button
@@ -640,7 +640,7 @@ export default function PlanComparisonTable({
                               ? "bg-slate-700 text-white cursor-default"
                               : "bg-emerald-600 hover:bg-emerald-700 text-white"
                             : col.id === "pro"
-                              ? "bg-blue-600 hover:bg-blue-700 text-white shadow-xs"
+                              ? "bg-festival-teal hover:bg-festival-teal-dark text-white shadow-xs"
                               : "bg-slate-900 hover:bg-slate-800 text-white",
                         )}
                       >

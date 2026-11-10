@@ -221,14 +221,14 @@ export function BrandLinksBar({
           href={websiteUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className={`inline-flex items-center gap-1.5 ${pillPadding} rounded-full bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-700 border border-slate-200 hover:border-blue-300 font-medium transition-all shadow-2xs group cursor-pointer`}
+          className={`inline-flex items-center gap-1.5 ${pillPadding} rounded-full bg-slate-50 hover:bg-festival-teal/10 text-slate-700 hover:text-festival-teal border border-slate-200 hover:border-festival-teal/30 font-medium transition-all shadow-2xs group cursor-pointer`}
           title={`Visit official ${merchant.businessName} website`}
         >
-          <Globe className={`${iconSize} text-blue-600`} />
+          <Globe className={`${iconSize} text-festival-teal`} />
           <span className="font-medium max-w-[140px] truncate">
             {displayDomain || "Official Website"}
           </span>
-          <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover:text-blue-600 transition-colors" />
+          <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover:text-festival-teal transition-colors" />
         </a>
       )}
 

@@ -68,7 +68,7 @@ export default function BrandClient({
     const hours = merchant.operatingHours[dayName];
     if (!hours || hours.closed === true || hours.isOpen === false)
       return { label: "Closed Today", color: "text-red-500" };
-    return { label: "Open Now", color: "text-blue-600" };
+    return { label: "Open Now", color: "text-festival-teal" };
   }, [merchant.operatingHours]);
 
   useEffect(() => {
@@ -285,7 +285,7 @@ export default function BrandClient({
                     <h3 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">
                       Featured Deals
                     </h3>
-                    <span className="bg-blue-50 text-blue-700 border border-blue-200/60 px-2 py-0.5 rounded-full text-xs font-bold">
+                    <span className="bg-festival-teal/10 text-festival-teal border border-festival-teal/20 px-2 py-0.5 rounded-full text-xs font-bold">
                       {affiliateProducts.length}
                     </span>
                   </div>
@@ -346,7 +346,7 @@ export default function BrandClient({
                         <h3 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
                           Affiliate Products
                         </h3>
-                        <span className="bg-blue-50 text-blue-600 px-2.5 py-0.5 rounded-full text-xs font-bold border border-blue-100">
+                        <span className="bg-festival-teal/10 text-festival-teal px-2.5 py-0.5 rounded-full text-xs font-bold border border-festival-teal/20">
                           {sortedAffiliateProducts.length}
                         </span>
                       </div>
@@ -360,7 +360,7 @@ export default function BrandClient({
                       <select
                         value={affiliateSort}
                         onChange={(e) => setAffiliateSort(e.target.value)}
-                        className="bg-white border border-slate-200 text-slate-700 text-xs font-medium rounded-xl px-3 py-1.5 pr-7 appearance-none shadow-2xs hover:border-slate-300 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer"
+                        className="bg-white border border-slate-200 text-slate-700 text-xs font-medium rounded-xl px-3 py-1.5 pr-7 appearance-none shadow-2xs hover:border-slate-300 focus:outline-none focus:ring-1 focus:border-festival-teal focus:ring-festival-teal/20 cursor-pointer"
                       >
                         <option value="featured">Sort by: Featured</option>
                         <option value="discount">Sort by: Best Discount</option>
@@ -405,8 +405,8 @@ export default function BrandClient({
                   ))
                 ) : (
                   <div className="py-12 sm:py-16 text-center bg-white border border-slate-200/80 rounded-2xl p-6 shadow-2xs">
-                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 mx-auto flex items-center justify-center mb-3">
-                      <Tag className="w-5 h-5 text-blue-600" />
+                    <div className="w-10 h-10 rounded-xl bg-warm-ivory text-festival-teal mx-auto flex items-center justify-center mb-3">
+                      <Tag className="w-5 h-5 text-festival-teal" />
                     </div>
                     <h4 className="text-base font-bold text-slate-800">
                       {activeTab === "all"
@@ -425,7 +425,7 @@ export default function BrandClient({
                           setExistingUser(false);
                         }}
                         type="button"
-                        className="mt-3 text-blue-600 font-medium text-sm hover:underline border-0 bg-transparent cursor-pointer"
+                        className="mt-3 text-festival-teal font-medium text-sm hover:underline border-0 bg-transparent cursor-pointer"
                       >
                         Reset filters
                       </button>

@@ -43,7 +43,7 @@ export default function PublicMobileBottomNav() {
 
   return (
     <nav
-      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/90 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] px-2 py-1.5 flex items-center justify-around select-none"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FFFDF9]/95 backdrop-blur-md border-t border-[#EADBCE] shadow-[0_-4px_20px_rgba(53,16,74,0.06)] px-2 py-1.5 flex items-center justify-around select-none font-sans"
       aria-label="Mobile Bottom Navigation"
     >
       {navItems.map((item) => {
@@ -60,20 +60,24 @@ export default function PublicMobileBottomNav() {
             prefetch={true}
             className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-lg transition-colors focus:outline-none active:scale-95 ${
               isActive
-                ? "text-[#F72853] font-medium"
-                : "text-slate-400 hover:text-slate-700 font-normal"
+                ? "text-[#FF2E63] font-semibold"
+                : "text-[#35104A]/60 hover:text-[#35104A] font-medium"
             }`}
           >
             <div className="flex items-center justify-center w-7 h-7">
               <Icon
                 className={`w-5 h-5 transition-transform duration-200 ${
-                  isActive ? "stroke-[2.2] text-[#F72853] scale-105" : "stroke-[1.6] text-slate-400"
+                  isActive
+                    ? "stroke-[2.2] text-[#FF2E63] scale-105"
+                    : "stroke-[1.6] text-[#35104A]/60"
                 }`}
               />
             </div>
             <span
               className={`text-[10px] tracking-tight mt-0.5 ${
-                isActive ? "font-medium text-[#F72853]" : "font-normal text-slate-400"
+                isActive
+                  ? "font-semibold text-[#FF2E63]"
+                  : "font-medium text-[#35104A]/60"
               }`}
             >
               {item.label}

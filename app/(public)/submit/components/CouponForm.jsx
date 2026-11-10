@@ -206,7 +206,7 @@ export default function CouponForm() {
 
         <button
           type="submit"
-          className="w-full bg-[#2563eb] hover:bg-[#2563eb]/90 text-white font-bold py-3.5 rounded-xl text-[13px] uppercase tracking-wider transition-colors cursor-pointer border-none shadow-md shadow-blue-600/20"
+          className="w-full bg-festival-teal hover:bg-[#00635E] text-white font-heading font-bold py-3.5 rounded-xl text-[13px] uppercase tracking-wider transition-colors cursor-pointer border-none shadow-md shadow-festival-teal/20"
         >
           Submit Offer
         </button>

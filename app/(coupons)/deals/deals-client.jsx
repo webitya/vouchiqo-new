@@ -94,7 +94,7 @@ export default function DealsClient() {
         className="relative overflow-hidden select-none py-12 md:py-14 px-4"
         style={{
           background:
-            "linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #e0e7ff 100%)",
+            "linear-gradient(135deg, #FFF8EF 0%, #FFFDF9 50%, #F7EADB 100%)",
         }}
       >
         {/* Subtle dot grid */}
@@ -102,7 +102,7 @@ export default function DealsClient() {
           className="absolute inset-0 opacity-[0.35]"
           style={{
             backgroundImage:
-              "radial-gradient(circle, #93c5fd 1px, transparent 1px)",
+              "radial-gradient(circle, #E9DFC6 1px, transparent 1px)",
             backgroundSize: "22px 22px",
           }}
         />
@@ -118,7 +118,7 @@ export default function DealsClient() {
         <div className="max-w-6xl mx-auto relative z-10 text-left">
           {/* Badge */}
           <span
-            className="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 text-blue-700"
+            className="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 text-festival-teal"
             style={{
               backgroundColor: "rgba(37,99,235,0.10)",
               border: "1px solid rgba(37,99,235,0.18)",
@@ -149,7 +149,7 @@ export default function DealsClient() {
                 placeholder="Search brand name, keywords or tags..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-10 text-sm h-10 border-slate-200 bg-slate-50 rounded-lg focus-visible:ring-1 focus-visible:ring-blue-500 focus-visible:border-blue-400 placeholder:text-slate-400"
+                className="pl-10 text-sm h-10 border-slate-200 bg-slate-50 rounded-lg focus-visible:ring-1 focus-visible:ring-festival-teal/30 focus-visible:border-festival-teal placeholder:text-slate-400"
               />
             </div>
 
@@ -230,7 +230,7 @@ export default function DealsClient() {
                 </div>
                 <Button
                   onClick={handleResetFilters}
-                  className="bg-blue-600 hover:bg-blue-700 text-white text-xs h-9 px-6 font-semibold rounded-lg cursor-pointer border-0 shadow-none transition-colors"
+                  className="bg-festival-pink hover:bg-[#E02253] text-white text-xs h-9 px-6 font-semibold rounded-lg cursor-pointer border-0 shadow-none transition-colors"
                 >
                   Reset Filters
                 </Button>

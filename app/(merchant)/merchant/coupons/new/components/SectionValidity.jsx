@@ -78,11 +78,11 @@ export default function SectionValidity({
   return (
     <Card className="border-slate-200/90 shadow-2xs rounded-xl bg-white p-3.5 sm:p-4 space-y-3.5 text-left font-sans relative overflow-hidden">
       {/* Top Light Accent Bar */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-[#F72853]" />
+      <div className="absolute top-0 left-0 right-0 h-1 bg-[#FF2E63]" />
 
       <div className="border-b border-slate-100 pb-2.5 pt-0.5 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <span className="p-1.5 rounded-lg bg-rose-50 text-[#F72853] shrink-0">
+          <span className="p-1.5 rounded-lg bg-rose-50 text-[#FF2E63] shrink-0">
             <CalendarIcon className="w-4 h-4" />
           </span>
           <div>
@@ -101,7 +101,7 @@ export default function SectionValidity({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="space-y-1.5">
             <Label className="flex items-center gap-1.5 font-medium text-xs text-slate-700">
-              <Clock className="w-3.5 h-3.5 text-[#F72853]" /> Start Date
+              <Clock className="w-3.5 h-3.5 text-[#FF2E63]" /> Start Date
               <span className="text-red-500 font-medium ml-0.5">*</span>
             </Label>
             <DatePicker
@@ -110,7 +110,7 @@ export default function SectionValidity({
                 setValue("startDate", val, { shouldValidate: true })
               }
               placeholder="Select start date"
-              iconColor="text-[#F72853]"
+              iconColor="text-[#FF2E63]"
             />
             {errors.startDate && (
               <p className="text-[11px] text-red-500 font-medium pt-0.5">
@@ -216,7 +216,7 @@ export default function SectionValidity({
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
               <Label className="flex items-center gap-1.5 font-medium text-xs text-slate-700">
-                <CalendarIcon className="w-3.5 h-3.5 text-[#F72853]" /> Valid
+                <CalendarIcon className="w-3.5 h-3.5 text-[#FF2E63]" /> Valid
                 Offer Days
                 <span className="text-[10px] text-slate-400 font-normal ml-1">
                   (Optional)
@@ -232,7 +232,7 @@ export default function SectionValidity({
                       shouldValidate: true,
                     })
                   }
-                  className="text-[10px] font-medium text-[#F72853] hover:text-[#e01e47] hover:underline cursor-pointer px-1 py-0.5 rounded"
+                  className="text-[10px] font-medium text-[#FF2E63] hover:text-[#e01e47] hover:underline cursor-pointer px-1 py-0.5 rounded"
                 >
                   All 7 Days
                 </button>
@@ -277,7 +277,7 @@ export default function SectionValidity({
                     className={cn(
                       "px-2.5 py-1 h-7 text-xs font-medium rounded-lg border transition-all cursor-pointer shadow-none",
                       isSelected
-                        ? "bg-[#F72853] text-white border-[#F72853]"
+                        ? "bg-[#FF2E63] text-white border-[#FF2E63]"
                         : "bg-white text-slate-700 border-slate-200 hover:bg-rose-50/20 hover:border-rose-200",
                     )}
                   >
@@ -292,7 +292,7 @@ export default function SectionValidity({
           <div className="space-y-1.5 pt-2 border-t border-slate-200/60">
             <div className="flex items-center justify-between flex-wrap gap-1">
               <Label className="flex items-center gap-1.5 font-medium text-xs text-slate-700">
-                <Clock className="w-3.5 h-3.5 text-[#F72853]" /> Store Operating
+                <Clock className="w-3.5 h-3.5 text-[#FF2E63]" /> Store Operating
                 / Valid Hours
               </Label>
 
@@ -305,7 +305,7 @@ export default function SectionValidity({
                       shouldValidate: true,
                     })
                   }
-                  className="text-[10px] font-medium bg-white text-slate-700 hover:bg-rose-50 hover:text-[#F72853] hover:border-rose-200 border border-slate-200 px-1.5 py-0.5 rounded cursor-pointer transition-colors"
+                  className="text-[10px] font-medium bg-white text-slate-700 hover:bg-rose-50 hover:text-[#FF2E63] hover:border-rose-200 border border-slate-200 px-1.5 py-0.5 rounded cursor-pointer transition-colors"
                 >
                   Regular (10 AM–9 PM)
                 </button>
@@ -316,7 +316,7 @@ export default function SectionValidity({
                       shouldValidate: true,
                     })
                   }
-                  className="text-[10px] font-medium bg-white text-slate-700 hover:bg-rose-50 hover:text-[#F72853] hover:border-rose-200 border border-slate-200 px-1.5 py-0.5 rounded cursor-pointer transition-colors"
+                  className="text-[10px] font-medium bg-white text-slate-700 hover:bg-rose-50 hover:text-[#FF2E63] hover:border-rose-200 border border-slate-200 px-1.5 py-0.5 rounded cursor-pointer transition-colors"
                 >
                   Lunch (12 PM–4 PM)
                 </button>
@@ -327,7 +327,7 @@ export default function SectionValidity({
                       shouldValidate: true,
                     })
                   }
-                  className="text-[10px] font-medium bg-white text-slate-700 hover:bg-rose-50 hover:text-[#F72853] hover:border-rose-200 border border-slate-200 px-1.5 py-0.5 rounded cursor-pointer transition-colors"
+                  className="text-[10px] font-medium bg-white text-slate-700 hover:bg-rose-50 hover:text-[#FF2E63] hover:border-rose-200 border border-slate-200 px-1.5 py-0.5 rounded cursor-pointer transition-colors"
                 >
                   Evening (5 PM–10 PM)
                 </button>
@@ -361,7 +361,7 @@ export default function SectionValidity({
         </Button>
         <Button
           onClick={onNext}
-          className="bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-medium h-8 px-4 rounded-xl flex items-center gap-1.5 cursor-pointer shadow-xs transition-colors"
+          className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium h-8 px-4 rounded-xl flex items-center gap-1.5 cursor-pointer shadow-xs transition-colors"
         >
           <span>Next: Terms</span>
           <ArrowRight className="w-3.5 h-3.5" />

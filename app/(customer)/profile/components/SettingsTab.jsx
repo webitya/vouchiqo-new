@@ -72,7 +72,7 @@ export default function SettingsTab({
       {/* Personal Details */}
       <div className="bg-white border border-slate-200/90 rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-2xs space-y-4">
         <h3 className="text-xs sm:text-[13px] font-medium text-slate-800 tracking-tight border-b border-slate-100 pb-2.5 flex items-center gap-1.5">
-          <User className="w-4 h-4 text-[#F72853]" />
+          <User className="w-4 h-4 text-[#FF2E63]" />
           <span>Personal Information</span>
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
@@ -86,7 +86,7 @@ export default function SettingsTab({
               onChange={(e) =>
                 setProfileData({ ...profileData, name: e.target.value })
               }
-              className="bg-slate-50/70 border-slate-200 text-xs rounded-lg focus-visible:ring-1 focus-visible:ring-[#F72853]"
+              className="bg-slate-50/70 border-slate-200 text-xs rounded-lg focus-visible:ring-1 focus-visible:ring-[#FF2E63]"
               required
             />
           </div>
@@ -103,7 +103,7 @@ export default function SettingsTab({
           </div>
           <div className="space-y-1">
             <Label className="flex items-center gap-1 text-[10px] font-medium uppercase tracking-wider text-slate-600">
-              <Phone className="w-3 h-3 text-[#F72853]" />
+              <Phone className="w-3 h-3 text-[#FF2E63]" />
               Phone Number
             </Label>
             <InputGroup
@@ -168,7 +168,7 @@ export default function SettingsTab({
                 onChange={(e) =>
                   setProfileData({ ...profileData, state: e.target.value })
                 }
-                className="bg-slate-50/70 border-slate-200 text-xs rounded-lg h-9 focus-visible:ring-1 focus-visible:ring-[#F72853]"
+                className="bg-slate-50/70 border-slate-200 text-xs rounded-lg h-9 focus-visible:ring-1 focus-visible:ring-[#FF2E63]"
               />
             </div>
           </div>
@@ -178,7 +178,7 @@ export default function SettingsTab({
       {/* Interest categories selection */}
       <div className="bg-white border border-slate-200/90 rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-2xs space-y-3">
         <h3 className="text-xs sm:text-[13px] font-medium text-slate-800 tracking-tight border-b border-slate-100 pb-2.5 flex items-center gap-1.5">
-          <Heart className="w-4 h-4 text-[#F72853]" />
+          <Heart className="w-4 h-4 text-[#FF2E63]" />
           <span>Shopping Category Interests</span>
         </h3>
         <p className="text-[10.5px] text-slate-500 font-normal">
@@ -194,7 +194,7 @@ export default function SettingsTab({
                 onClick={() => handleInterestToggle(cat)}
                 className={`text-[10px] font-normal py-1 px-2.5 rounded-full border cursor-pointer transition-all ${
                   isSel
-                    ? "bg-rose-50 text-[#F72853] border-rose-200 font-medium shadow-2xs"
+                    ? "bg-rose-50 text-[#FF2E63] border-rose-200 font-medium shadow-2xs"
                     : "bg-slate-50 text-slate-600 border-slate-200/80 hover:border-slate-300"
                 }`}
               >
@@ -208,7 +208,7 @@ export default function SettingsTab({
       {/* Notification settings */}
       <div className="bg-white border border-slate-200/90 rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-2xs space-y-3.5">
         <h3 className="text-xs sm:text-[13px] font-medium text-slate-800 tracking-tight border-b border-slate-100 pb-2.5 flex items-center gap-1.5">
-          <Bell className="w-4 h-4 text-[#F72853]" />
+          <Bell className="w-4 h-4 text-[#FF2E63]" />
           <span>Notification Preferences</span>
         </h3>
         <div className="space-y-3">
@@ -292,7 +292,7 @@ export default function SettingsTab({
       <Button
         type="submit"
         disabled={savingSettings}
-        className="w-full py-2.5 text-xs font-medium border-0 h-auto cursor-pointer shadow-2xs text-white bg-[#F72853] hover:bg-[#df1c44] flex items-center justify-center gap-1.5 rounded-xl transition-colors"
+        className="w-full py-2.5 text-xs font-medium border-0 h-auto cursor-pointer shadow-2xs text-white bg-[#FF2E63] hover:bg-[#df1c44] flex items-center justify-center gap-1.5 rounded-xl transition-colors"
       >
         <Save className="w-3.5 h-3.5" />
         <span>{savingSettings ? "Saving Settings..." : "Save Settings"}</span>

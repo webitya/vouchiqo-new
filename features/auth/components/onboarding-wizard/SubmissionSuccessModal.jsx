@@ -32,7 +32,7 @@ export default function SubmissionSuccessModal({ data, router }) {
           <Button
             type="button"
             onClick={() => router.push("/merchant/dashboard")}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs h-10 rounded-xl cursor-pointer shadow-sm flex items-center justify-center gap-1.5"
+            className="bg-festival-teal hover:bg-[#00635E] text-white font-semibold text-xs h-10 rounded-xl cursor-pointer shadow-sm flex items-center justify-center gap-1.5"
           >
             <Store className="w-4 h-4" />
             <span>Dashboard</span>
@@ -42,9 +42,9 @@ export default function SubmissionSuccessModal({ data, router }) {
             type="button"
             variant="outline"
             onClick={() => router.push("/merchant/application-status")}
-            className="border-blue-300 bg-blue-50/50 hover:bg-blue-100 text-blue-700 font-semibold text-xs h-10 rounded-xl cursor-pointer shadow-xs flex items-center justify-center gap-1.5"
+            className="border-brand-border bg-warm-ivory hover:bg-festival-teal/20 text-festival-teal font-semibold text-xs h-10 rounded-xl cursor-pointer shadow-xs flex items-center justify-center gap-1.5"
           >
-            <FileCheck className="w-4 h-4 text-blue-600" />
+            <FileCheck className="w-4 h-4 text-festival-teal" />
             <span>Track Status</span>
           </Button>
 

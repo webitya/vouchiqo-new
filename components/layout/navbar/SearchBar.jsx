@@ -419,9 +419,9 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
     allSuggestions.categories.length > 0;
 
   return (
-    <div ref={containerRef} className="w-full relative flex items-center">
+    <div ref={containerRef} className="w-full relative flex items-center font-sans">
       <Search
-        className="absolute left-3 sm:left-3.5 h-3.5 w-3.5 sm:h-4 sm:w-4 text-slate-400 cursor-pointer hover:text-blue-600 transition-colors z-10 shrink-0"
+        className="absolute left-3 sm:left-3.5 h-3.5 w-3.5 sm:h-4 sm:w-4 text-slate-400 cursor-pointer hover:text-[#007F79] transition-colors z-10 shrink-0"
         onClick={handleSearchClick}
       />
       <input
@@ -436,13 +436,13 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
         }}
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyDown}
-        className="w-full pl-8.5 sm:pl-10 pr-9 sm:pr-10 py-1.5 sm:py-2 border border-slate-200 rounded-lg text-xs sm:text-sm bg-white focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 placeholder-slate-400 transition-all duration-200 shadow-2xs"
+        className="w-full pl-8.5 sm:pl-10 pr-9 sm:pr-10 py-1.5 sm:py-2 border border-[#EADBCE] rounded-lg text-xs sm:text-sm bg-white focus:outline-none focus:border-[#007F79] focus:ring-2 focus:ring-[#007F79]/20 placeholder-slate-400 transition-all duration-200 shadow-2xs text-[#35104A]"
       />
 
       {/* Right icons: Loading spinner or Clear button */}
       <div className="absolute right-2.5 sm:right-3 flex items-center gap-1 z-10">
         {loading && (
-          <Loader2 className="h-3.5 w-3.5 text-blue-500 animate-spin" />
+          <Loader2 className="h-3.5 w-3.5 text-[#007F79] animate-spin" />
         )}
         {query && (
           <button
@@ -460,12 +460,12 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
       {isOpen && (
         <div
           data-lenis-prevent="true"
-          className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl border border-slate-200 shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-1 duration-150 text-left"
+          className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl border border-[#EADBCE] shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-1 duration-150 text-left font-sans"
           style={{ overscrollBehavior: "contain" }}
         >
           {/* Header section with counts and quick category filter tabs */}
-          <div className="px-3 py-2 border-b border-slate-200/80 bg-slate-50/70">
-            <div className="flex items-center justify-between text-[11px] font-semibold text-slate-500 mb-1.5">
+          <div className="px-3 py-2 border-b border-[#EADBCE] bg-[#FFF8EF]">
+            <div className="flex items-center justify-between text-[11px] font-semibold text-[#6B4C82] mb-1.5">
               <span>
                 {loading
                   ? "Searching..."
@@ -485,14 +485,14 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
                     setActiveTab("all");
                     setSelectedIndex(-1);
                   }}
-                  className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
+                  className={`px-2.5 py-1 rounded-md text-[11px] font-heading font-bold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
                     activeTab === "all"
-                      ? "bg-blue-600 text-white border-blue-600 shadow-xs"
-                      : "bg-white text-slate-600 border-slate-200 hover:bg-slate-100"
+                      ? "bg-[#007F79] text-white border-[#007F79] shadow-xs"
+                      : "bg-white text-[#35104A] border-[#EADBCE] hover:bg-[#FFF8EF]"
                   }`}
                 >
                   <Layers
-                    className={`w-3 h-3 ${activeTab === "all" ? "text-white" : "text-blue-500"}`}
+                    className={`w-3 h-3 ${activeTab === "all" ? "text-white" : "text-[#007F79]"}`}
                   />
                   <span>All</span>
                   <span className="opacity-75 text-[10px]">
@@ -507,14 +507,14 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
                       setActiveTab("tags");
                       setSelectedIndex(-1);
                     }}
-                    className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
+                    className={`px-2.5 py-1 rounded-md text-[11px] font-heading font-bold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
                       activeTab === "tags"
-                        ? "bg-indigo-600 text-white border-indigo-600 shadow-xs"
-                        : "bg-white text-indigo-700 border-indigo-200 hover:bg-indigo-50"
+                        ? "bg-[#35104A] text-white border-[#35104A] shadow-xs"
+                        : "bg-white text-[#35104A] border-[#EADBCE] hover:bg-[#FFF8EF]"
                     }`}
                   >
                     <Tag
-                      className={`w-3 h-3 ${activeTab === "tags" ? "text-white" : "text-indigo-500"}`}
+                      className={`w-3 h-3 ${activeTab === "tags" ? "text-white" : "text-[#35104A]"}`}
                     />
                     <span>Sub-Category Tags</span>
                     <span className="opacity-75 text-[10px]">
@@ -530,14 +530,14 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
                       setActiveTab("offers");
                       setSelectedIndex(-1);
                     }}
-                    className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
+                    className={`px-2.5 py-1 rounded-md text-[11px] font-heading font-bold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
                       activeTab === "offers"
-                        ? "bg-amber-600 text-white border-amber-600 shadow-xs"
-                        : "bg-white text-amber-700 border-amber-200 hover:bg-amber-50"
+                        ? "bg-[#FF8C05] text-white border-[#FF8C05] shadow-xs"
+                        : "bg-white text-[#FF8C05] border-[#EADBCE] hover:bg-[#FFF8EF]"
                     }`}
                   >
                     <Ticket
-                      className={`w-3 h-3 ${activeTab === "offers" ? "text-white" : "text-amber-500"}`}
+                      className={`w-3 h-3 ${activeTab === "offers" ? "text-white" : "text-[#FF8C05]"}`}
                     />
                     <span>Offers</span>
                     <span className="opacity-75 text-[10px]">
@@ -553,14 +553,14 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
                       setActiveTab("products");
                       setSelectedIndex(-1);
                     }}
-                    className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
+                    className={`px-2.5 py-1 rounded-md text-[11px] font-heading font-bold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
                       activeTab === "products"
-                        ? "bg-purple-600 text-white border-purple-600 shadow-xs"
-                        : "bg-white text-purple-700 border-purple-200 hover:bg-purple-50"
+                        ? "bg-[#FF2E63] text-white border-[#FF2E63] shadow-xs"
+                        : "bg-white text-[#FF2E63] border-[#EADBCE] hover:bg-[#FFF8EF]"
                     }`}
                   >
                     <ShoppingBag
-                      className={`w-3 h-3 ${activeTab === "products" ? "text-white" : "text-purple-500"}`}
+                      className={`w-3 h-3 ${activeTab === "products" ? "text-white" : "text-[#FF2E63]"}`}
                     />
                     <span>Products</span>
                     <span className="opacity-75 text-[10px]">
@@ -576,14 +576,14 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
                       setActiveTab("brands");
                       setSelectedIndex(-1);
                     }}
-                    className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
+                    className={`px-2.5 py-1 rounded-md text-[11px] font-heading font-bold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
                       activeTab === "brands"
-                        ? "bg-blue-600 text-white border-blue-600 shadow-xs"
-                        : "bg-white text-blue-700 border-blue-200 hover:bg-blue-50"
+                        ? "bg-[#007F79] text-white border-[#007F79] shadow-xs"
+                        : "bg-white text-[#007F79] border-[#EADBCE] hover:bg-[#FFF8EF]"
                     }`}
                   >
                     <Store
-                      className={`w-3 h-3 ${activeTab === "brands" ? "text-white" : "text-blue-500"}`}
+                      className={`w-3 h-3 ${activeTab === "brands" ? "text-white" : "text-[#007F79]"}`}
                     />
                     <span>Brands</span>
                     <span className="opacity-75 text-[10px]">
@@ -599,14 +599,14 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
                       setActiveTab("categories");
                       setSelectedIndex(-1);
                     }}
-                    className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
+                    className={`px-2.5 py-1 rounded-md text-[11px] font-heading font-bold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
                       activeTab === "categories"
-                        ? "bg-emerald-600 text-white border-emerald-600 shadow-xs"
-                        : "bg-white text-emerald-700 border-emerald-200 hover:bg-emerald-50"
+                        ? "bg-[#35104A] text-white border-[#35104A] shadow-xs"
+                        : "bg-white text-[#35104A] border-[#EADBCE] hover:bg-[#FFF8EF]"
                     }`}
                   >
                     <Folder
-                      className={`w-3 h-3 ${activeTab === "categories" ? "text-white" : "text-emerald-500"}`}
+                      className={`w-3 h-3 ${activeTab === "categories" ? "text-white" : "text-[#35104A]"}`}
                     />
                     <span>Categories</span>
                     <span className="opacity-75 text-[10px]">
@@ -622,7 +622,7 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
           <div
             ref={scrollBoxRef}
             data-lenis-prevent="true"
-            className="max-h-80 overflow-y-auto overscroll-contain divide-y divide-slate-100 search-dropdown-scroll"
+            className="max-h-80 overflow-y-auto overscroll-contain divide-y divide-[#EADBCE]/50 search-dropdown-scroll"
             style={{
               overscrollBehavior: "contain",
               WebkitOverflowScrolling: "touch",
@@ -643,19 +643,19 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
                       setIsOpen(false);
                       if (onSelect) onSelect();
                     }}
-                    className={`flex items-center justify-between gap-2.5 py-2 px-3 border-b border-slate-100 last:border-b-0 transition-colors group cursor-pointer ${
+                    className={`flex items-center justify-between gap-2.5 py-2 px-3 border-b border-[#EADBCE]/40 last:border-b-0 transition-colors group cursor-pointer ${
                       isSelected
-                        ? "bg-blue-50/80 text-blue-900"
-                        : "hover:bg-slate-50/80 text-slate-800"
+                        ? "bg-[#FFF8EF] text-[#35104A]"
+                        : "hover:bg-[#FFF8EF]/60 text-[#35104A]"
                     }`}
                   >
                     <div className="flex items-center gap-2.5 min-w-0 flex-1">
                       {/* Logo / Icon Container */}
-                      <div className="w-7 h-7 rounded-md border border-slate-200/90 bg-slate-50 flex items-center justify-center overflow-hidden shrink-0 group-hover:border-blue-300 transition-colors">
+                      <div className="w-7 h-7 rounded-md border border-[#EADBCE] bg-[#FFF8EF] flex items-center justify-center overflow-hidden shrink-0 group-hover:border-[#007F79] transition-colors">
                         {item.iconType === "tag" ? (
-                          <Tag className="w-3.5 h-3.5 text-indigo-600" />
+                          <Tag className="w-3.5 h-3.5 text-[#35104A]" />
                         ) : item.iconType === "category" ? (
-                          <Folder className="w-3.5 h-3.5 text-emerald-600" />
+                          <Folder className="w-3.5 h-3.5 text-[#007F79]" />
                         ) : item.logo && typeof item.logo === "string" ? (
                           <SafeImage
                             src={item.logo}
@@ -665,34 +665,34 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
                             className="w-full h-full object-contain p-0.5"
                           />
                         ) : item.iconType === "deal" ? (
-                          <Ticket className="w-3.5 h-3.5 text-amber-500" />
+                          <Ticket className="w-3.5 h-3.5 text-[#FF8C05]" />
                         ) : item.iconType === "product" ? (
-                          <ShoppingBag className="w-3.5 h-3.5 text-purple-500" />
+                          <ShoppingBag className="w-3.5 h-3.5 text-[#FF2E63]" />
                         ) : (
-                          <Store className="w-3.5 h-3.5 text-blue-600" />
+                          <Store className="w-3.5 h-3.5 text-[#007F79]" />
                         )}
                       </div>
 
                       <div className="min-w-0 flex-1">
-                        <div className="text-xs font-semibold truncate group-hover:text-blue-600 transition-colors">
+                        <div className="text-xs font-semibold truncate group-hover:text-[#007F79] transition-colors text-[#35104A]">
                           {item.title}
                         </div>
                       </div>
                     </div>
 
                     <div className="flex items-center shrink-0">
-                      <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-500 transition-colors" />
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-[#007F79] transition-colors" />
                     </div>
                   </Link>
                 );
               })
             ) : !loading ? (
-              <div className="p-4 text-center text-xs text-slate-500">
+              <div className="p-4 text-center text-xs text-[#6B4C82]">
                 No instant matches found for &ldquo;{query}&rdquo;.
                 <button
                   type="button"
                   onClick={handleSearchClick}
-                  className="block mx-auto mt-2 text-blue-600 font-semibold hover:underline"
+                  className="block mx-auto mt-2 text-[#007F79] font-bold hover:underline"
                 >
                   Search everywhere for &ldquo;{query}&rdquo; →
                 </button>

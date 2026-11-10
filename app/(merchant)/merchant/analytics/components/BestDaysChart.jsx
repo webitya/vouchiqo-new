@@ -41,7 +41,7 @@ export default function BestDaysChart({ data = [] }) {
           {data.map((d, i) => (
             <Cell
               key={i}
-              fill={d.value > 0 && d.value === maxVal ? "#2563eb" : "#93c5fd"}
+              fill={d.value > 0 && d.value === maxVal ? "#007F79" : "#007F7966"}
             />
           ))}
         </Bar>

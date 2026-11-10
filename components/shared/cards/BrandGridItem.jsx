@@ -58,7 +58,7 @@ export const BrandGridItem = memo(function BrandGridItem({
     <Link
       href={href || "#"}
       prefetch={true}
-      className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white shadow-2xs hover:shadow-md hover:border-rose-300/80 transition-all duration-200 overflow-hidden select-none text-left w-full h-[168px] sm:h-[176px]"
+      className="group relative flex flex-col justify-between rounded-2xl border border-[#EADBCE] bg-white shadow-2xs hover:shadow-md hover:border-[#FF2E63]/40 transition-all duration-200 overflow-hidden select-none text-left w-full h-[168px] sm:h-[176px] font-sans"
       style={{ textDecoration: "none" }}
     >
       {/* ── 1. Top Half: Visual Imagery & Category Tag ── */}
@@ -84,7 +84,7 @@ export const BrandGridItem = memo(function BrandGridItem({
 
       {/* ── 2. Floating Circular Brand Logo (Anchor - Shifted more to left edge) ── */}
       <div className="absolute top-1/2 left-1.5 sm:left-2 -translate-y-1/2 z-20">
-        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-slate-100 p-1 flex items-center justify-center shadow-md ring-3 ring-white group-hover:ring-rose-50 transition-all">
+        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-[#EADBCE] p-1 flex items-center justify-center shadow-md ring-3 ring-white group-hover:ring-[#FFF8EF] transition-all">
           {!imgError && validLogo ? (
             <SafeImage
               src={validLogo}
@@ -95,7 +95,7 @@ export const BrandGridItem = memo(function BrandGridItem({
               onError={() => setImgError(true)}
             />
           ) : (
-            <span className="text-[11px] font-black text-slate-800 uppercase tracking-tight">
+            <span className="text-[11px] font-heading font-black text-[#35104A] uppercase tracking-tight">
               {name ? name.slice(0, 2) : "VT"}
             </span>
           )}
@@ -106,7 +106,7 @@ export const BrandGridItem = memo(function BrandGridItem({
       <div className="pt-6 sm:pt-6.5 pb-2.5 px-2 sm:px-2.5 flex flex-col justify-between h-1/2 bg-white text-left font-sans">
         {/* Brand Name + Twitter Verified Tick Badge on the Right */}
         <div className="flex items-center gap-1 min-w-0 pr-1">
-          <h4 className="text-[13px] sm:text-[13.5px] font-extrabold text-slate-900 uppercase tracking-tight truncate group-hover:text-[#F72853] transition-colors leading-tight">
+          <h4 className="text-[13px] sm:text-[13.5px] font-heading font-bold text-[#35104A] uppercase tracking-tight truncate group-hover:text-[#FF2E63] transition-colors leading-tight">
             {name}
           </h4>
           {isVerified && (
@@ -116,7 +116,7 @@ export const BrandGridItem = memo(function BrandGridItem({
 
         {/* Bottom Highlight Row (Clean Offer Pill without redundant text) */}
         <div className="flex items-center gap-1 mt-auto pt-1 w-full min-w-0">
-          <span className="inline-flex items-center text-[9px] sm:text-[9.5px] font-bold text-rose-700 bg-rose-50 border border-rose-100 px-2 py-0.5 rounded-md truncate max-w-full">
+          <span className="inline-flex items-center text-[9px] sm:text-[9.5px] font-heading font-bold text-[#FF2E63] bg-[#FF2E63]/10 border border-[#FF2E63]/20 px-2 py-0.5 rounded-md truncate max-w-full">
             {discount ||
               (coupons > 0
                 ? `${coupons} LIVE ${coupons === 1 ? "OFFER" : "OFFERS"}`

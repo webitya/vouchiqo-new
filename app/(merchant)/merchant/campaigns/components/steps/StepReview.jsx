@@ -59,7 +59,7 @@ export default function StepReview({
           </div>
           <div className="flex justify-between">
             <span className="text-slate-500 font-normal">Promo Code:</span>
-            <span className="font-mono font-semibold text-[#F72853]">
+            <span className="font-mono font-semibold text-[#FF2E63]">
               {formData.code || "SAVE20"}
             </span>
           </div>
@@ -71,7 +71,7 @@ export default function StepReview({
           </div>
           <div className="flex justify-between border-t border-slate-200/80 pt-2 font-semibold text-slate-900">
             <span>Total Channel Add-Ons:</span>
-            <span className="text-[#F72853]">₹{calculateAddOnTotal()}</span>
+            <span className="text-[#FF2E63]">₹{calculateAddOnTotal()}</span>
           </div>
         </div>
 
@@ -217,7 +217,7 @@ export default function StepReview({
         <Button
           onClick={onSubmit}
           disabled={isPending}
-          className="bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-medium h-8 sm:h-9 px-6 rounded-xl shadow-xs cursor-pointer"
+          className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium h-8 sm:h-9 px-6 rounded-xl shadow-xs cursor-pointer"
         >
           {isPending ? "Submitting..." : "Submit Campaign for Review"}
         </Button>

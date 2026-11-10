@@ -11,25 +11,25 @@ export default function GlobalError({ error, reset }) {
   }, [error]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#f5f6fa] text-[#191f2e] font-sans p-4">
-      <div className="max-w-md w-full text-center space-y-6 bg-white border border-[#e2e8f0] rounded-3xl p-8 shadow-xl relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-500" />
+    <div className="min-h-screen flex items-center justify-center bg-warm-ivory text-royal-plum font-sans p-4">
+      <div className="max-w-md w-full text-center space-y-6 bg-white border border-brand-border rounded-3xl p-8 shadow-xl relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#35104A] via-[#007F79] to-[#FF2E63]" />
 
         <div className="flex justify-center">
-          <div className="w-16 h-16 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center text-rose-600 shadow-inner">
+          <div className="w-16 h-16 rounded-2xl bg-festival-pink/10 border border-festival-pink/20 flex items-center justify-center text-festival-pink shadow-inner">
             <AlertTriangle className="w-8 h-8" />
           </div>
         </div>
 
         <div className="space-y-2">
-          <h1 className="text-xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-xl font-bold font-heading text-royal-plum tracking-tight">
             Something Went Wrong
           </h1>
-          <p className="text-xs text-slate-500 leading-relaxed font-medium">
+          <p className="text-xs text-royal-plum/70 leading-relaxed font-medium">
             An unexpected application error occurred while loading this page. Click below to reload or return home.
           </p>
           {error?.message && (
-            <div className="mt-2 p-2.5 bg-slate-50 border border-slate-200/80 rounded-xl text-[11px] font-mono text-slate-600 text-left overflow-x-auto max-h-24">
+            <div className="mt-2 p-2.5 bg-warm-ivory border border-brand-border rounded-xl text-[11px] font-mono text-royal-plum/80 text-left overflow-x-auto max-h-24">
               {error.message}
             </div>
           )}
@@ -39,14 +39,14 @@ export default function GlobalError({ error, reset }) {
           <button
             type="button"
             onClick={() => reset ? reset() : window.location.reload()}
-            className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2.5 px-5 rounded-xl flex items-center justify-center gap-2 cursor-pointer transition-all shadow-sm hover:scale-[1.02]"
+            className="bg-festival-pink hover:bg-[#E02253] text-white text-xs font-bold font-heading py-2.5 px-5 rounded-xl flex items-center justify-center gap-2 cursor-pointer transition-all shadow-md shadow-festival-pink/20 hover:scale-[1.02]"
           >
             <RefreshCw className="w-3.5 h-3.5" />
             <span>Reload</span>
           </button>
           <Link
             href="/"
-            className="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2.5 px-5 rounded-xl flex items-center justify-center gap-2 transition-all"
+            className="bg-warm-ivory border border-brand-border hover:bg-brand-surface text-royal-plum text-xs font-bold font-heading py-2.5 px-5 rounded-xl flex items-center justify-center gap-2 transition-all"
           >
             <Home className="w-3.5 h-3.5" />
             <span>Homepage</span>

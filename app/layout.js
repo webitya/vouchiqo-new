@@ -1,21 +1,8 @@
-import localFont from "next/font/local";
 import "./globals.css";
 import PublicMobileBottomNav from "@/components/layout/PublicMobileBottomNav";
 import ClientPrompts from "@/components/shared/ClientPrompts";
 import QueryProvider from "@/components/shared/QueryProvider";
 import SmoothScrollProvider from "@/components/shared/SmoothScrollProvider";
-
-const inter = localFont({
-  src: "../public/fonts/Inter-Variable.woff2",
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const geistSans = localFont({
-  src: "../public/fonts/Geist-Variable.woff2",
-  variable: "--font-geist-sans",
-  display: "swap",
-});
 
 export const metadata = {
   title: "Vouchiqo | Verified Deals. Real Savings.",
@@ -41,11 +28,23 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${geistSans.variable} antialiased`}
+      className="antialiased font-sans"
       suppressHydrationWarning
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body
-        className="min-h-screen flex flex-col bg-brand-surface text-brand-text w-full pb-16 md:pb-0"
+        className="min-h-screen flex flex-col bg-brand-surface text-brand-text w-full pb-16 md:pb-0 font-sans"
         suppressHydrationWarning
       >
         <SmoothScrollProvider>

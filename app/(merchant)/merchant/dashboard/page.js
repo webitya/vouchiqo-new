@@ -323,7 +323,7 @@ export default function MerchantDashboard() {
                     e.stopPropagation();
                     router.push("/merchant/profile?edit=true");
                   }}
-                  className="w-full bg-[#F72853] hover:bg-[#e01e47] text-white font-medium text-xs rounded-xl h-10 shadow-sm cursor-pointer flex items-center justify-center gap-2 transition-all"
+                  className="w-full bg-[#FF2E63] hover:bg-[#e01e47] text-white font-medium text-xs rounded-xl h-10 shadow-sm cursor-pointer flex items-center justify-center gap-2 transition-all"
                 >
                   <span>Complete Profile</span>
                   <ArrowRight className="w-4 h-4" />
@@ -378,7 +378,7 @@ export default function MerchantDashboard() {
                   key={idx}
                   className="flex items-center gap-2 border border-rose-200/80 bg-rose-50/50 text-slate-800 rounded-xl px-3.5 py-2 text-xs font-normal font-sans"
                 >
-                  <Icon className="w-3.5 h-3.5 shrink-0 text-[#F72853]" />
+                  <Icon className="w-3.5 h-3.5 shrink-0 text-[#FF2E63]" />
                   <span>{alert.msg}</span>
                 </div>
               );
@@ -406,7 +406,7 @@ export default function MerchantDashboard() {
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-xs font-medium rounded-xl border border-slate-200/90 shadow-2xs transition-all cursor-pointer hover:border-slate-300"
                 title="Preview how your public brand page appears to customers"
               >
-                <Eye className="w-3.5 h-3.5 text-blue-600" />
+                <Eye className="w-3.5 h-3.5 text-festival-teal" />
                 <span>Preview Storefront</span>
                 <ExternalLink className="w-3 h-3 text-slate-400" />
               </a>
@@ -424,16 +424,16 @@ export default function MerchantDashboard() {
             <button
               type="button"
               onClick={() => openFeedback()}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-rose-50/60 text-slate-700 hover:text-[#F72853] text-xs font-medium rounded-xl border border-slate-200/90 shadow-2xs transition-all cursor-pointer hover:border-rose-200"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-rose-50/60 text-slate-700 hover:text-[#FF2E63] text-xs font-medium rounded-xl border border-slate-200/90 shadow-2xs transition-all cursor-pointer hover:border-rose-200"
               title="Give feedback & suggestions"
             >
-              <MessageSquareHeart className="w-3.5 h-3.5 text-[#F72853]" />
+              <MessageSquareHeart className="w-3.5 h-3.5 text-[#FF2E63]" />
               <span className="hidden sm:inline">Feedback</span>
             </button>
 
             <Link
               href="/merchant/coupons/new"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-medium rounded-xl shadow-xs transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium rounded-xl shadow-xs transition-colors cursor-pointer"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>Post New Listing</span>

@@ -100,8 +100,8 @@ export default function ProcessFeedbackModal({
         {/* Header with Top-Right Close Button */}
         <div className="flex items-start justify-between gap-3 pb-1">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center shrink-0">
-              <MessageSquareHeart className="w-4 h-4 text-blue-600" />
+            <div className="w-8 h-8 rounded-xl bg-festival-teal/10 border border-brand-border text-festival-teal flex items-center justify-center shrink-0">
+              <MessageSquareHeart className="w-4 h-4 text-festival-teal" />
             </div>
             <div>
               <DialogTitle className="text-sm sm:text-base font-semibold text-slate-800 leading-snug">
@@ -175,7 +175,7 @@ export default function ProcessFeedbackModal({
                 step="5"
                 value={scaleScore}
                 onChange={(e) => setScaleScore(Number(e.target.value))}
-                className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-blue-600 focus:outline-none"
+                className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-festival-teal focus:outline-none"
               />
             </div>
 
@@ -210,7 +210,7 @@ export default function ProcessFeedbackModal({
                     className={
                       "text-[11px] px-2.5 py-1 rounded-lg border transition-all cursor-pointer " +
                       (isSelected
-                        ? "bg-blue-50 text-blue-700 border-blue-200 font-medium"
+                        ? "bg-festival-teal/10 text-festival-teal border-brand-border font-medium"
                         : "bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-50 font-normal")
                     }
                   >
@@ -232,7 +232,7 @@ export default function ProcessFeedbackModal({
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder="Tell us what we can do better or what feature you'd love to see next..."
-              className="w-full text-xs p-2.5 rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20 outline-none resize-none font-normal text-slate-700 placeholder:text-slate-400"
+              className="w-full text-xs p-2.5 rounded-lg border border-brand-border focus:border-festival-teal focus:ring-1 focus:ring-festival-teal/20 outline-none resize-none font-normal text-slate-700 placeholder:text-slate-400"
             />
           </div>
         </div>
@@ -253,7 +253,7 @@ export default function ProcessFeedbackModal({
             type="button"
             onClick={handleSubmit}
             disabled={isSubmitting}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs h-8 px-4 rounded-lg border-0 shadow-xs cursor-pointer transition-all flex items-center gap-1.5"
+            className="bg-festival-teal hover:bg-[#00635E] text-white font-medium text-xs h-8 px-4 rounded-lg border-0 shadow-xs cursor-pointer transition-all flex items-center gap-1.5"
           >
             {isSubmitting ? (
               <>

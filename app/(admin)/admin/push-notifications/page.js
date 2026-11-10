@@ -127,8 +127,8 @@ function ConfirmModal({ open, onClose, onConfirm, form, stats, sending }) {
         </button>
 
         <div className="flex items-center gap-2 mb-3">
-          <div className="w-7 h-7 rounded-md bg-blue-50 flex items-center justify-center">
-            <Send className="w-3.5 h-3.5 text-blue-600" />
+          <div className="w-7 h-7 rounded-md bg-warm-ivory flex items-center justify-center">
+            <Send className="w-3.5 h-3.5 text-festival-teal" />
           </div>
           <h3 className="text-xs font-semibold text-slate-800">
             Confirm broadcast
@@ -148,7 +148,7 @@ function ConfirmModal({ open, onClose, onConfirm, form, stats, sending }) {
           </div>
           <div className="flex justify-between">
             <span className="text-slate-500">Estimated devices</span>
-            <span className="font-bold text-blue-600">
+            <span className="font-bold text-festival-teal">
               ~{(estimated ?? 0).toLocaleString()}
             </span>
           </div>
@@ -193,7 +193,7 @@ function ConfirmModal({ open, onClose, onConfirm, form, stats, sending }) {
             type="button"
             onClick={onConfirm}
             disabled={sending}
-            className="flex-1 py-1.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-md transition-colors disabled:opacity-60 cursor-pointer flex items-center justify-center gap-1.5"
+            className="flex-1 py-1.5 text-xs font-semibold text-white bg-festival-teal hover:bg-festival-teal-dark rounded-md transition-colors disabled:opacity-60 cursor-pointer flex items-center justify-center gap-1.5"
           >
             {sending ? (
               <>
@@ -524,7 +524,7 @@ export default function AdminPushNotificationsPage() {
             label="Active devices"
             value={stats?.activeDevices}
             icon={Bell}
-            iconClass="bg-blue-50 text-blue-600"
+            iconClass="bg-warm-ivory text-festival-teal"
             loading={statsLoading}
           />
           <StatCard
@@ -621,7 +621,7 @@ export default function AdminPushNotificationsPage() {
                     <select
                       value={form.category}
                       onChange={(e) => handleFormChange("category", e.target.value)}
-                      className="w-full text-xs text-slate-700 bg-white border border-slate-200 rounded-md px-2.5 py-1.5 pr-7 appearance-none focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer"
+                      className="w-full text-xs text-slate-700 bg-white border border-slate-200 rounded-md px-2.5 py-1.5 pr-7 appearance-none focus:outline-none focus:ring-1 focus:ring-festival-teal/20 cursor-pointer"
                     >
                       {CATEGORY_OPTIONS.map((o) => (
                         <option key={o.value} value={o.value}>{o.label}</option>
@@ -638,7 +638,7 @@ export default function AdminPushNotificationsPage() {
                     <select
                       value={form.audience}
                       onChange={(e) => handleFormChange("audience", e.target.value)}
-                      className="w-full text-xs text-slate-700 bg-white border border-slate-200 rounded-md px-2.5 py-1.5 pr-7 appearance-none focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer"
+                      className="w-full text-xs text-slate-700 bg-white border border-slate-200 rounded-md px-2.5 py-1.5 pr-7 appearance-none focus:outline-none focus:ring-1 focus:ring-festival-teal/20 cursor-pointer"
                     >
                       {AUDIENCE_OPTIONS.map((o) => (
                         <option key={o.value} value={o.value}>{o.label}</option>
@@ -664,7 +664,7 @@ export default function AdminPushNotificationsPage() {
                   value={form.title}
                   onChange={(e) => handleFormChange("title", e.target.value.slice(0, titleMax))}
                   placeholder="Notification title..."
-                  className="w-full text-xs text-slate-800 border border-slate-200 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-slate-400"
+                  className="w-full text-xs text-slate-800 border border-slate-200 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-festival-teal/20 placeholder:text-slate-400"
                 />
               </div>
 
@@ -683,7 +683,7 @@ export default function AdminPushNotificationsPage() {
                   onChange={(e) => handleFormChange("body", e.target.value.slice(0, bodyMax))}
                   placeholder="Your message to subscribers..."
                   rows={2}
-                  className="w-full text-xs text-slate-800 border border-slate-200 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-slate-400 resize-none"
+                  className="w-full text-xs text-slate-800 border border-slate-200 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-festival-teal/20 placeholder:text-slate-400 resize-none"
                 />
               </div>
 
@@ -700,7 +700,7 @@ export default function AdminPushNotificationsPage() {
                   value={form.url}
                   onChange={(e) => handleFormChange("url", e.target.value)}
                   placeholder="https://vouchiqo.com/offers"
-                  className="w-full text-xs text-slate-800 border border-slate-200 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-slate-400"
+                  className="w-full text-xs text-slate-800 border border-slate-200 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-festival-teal/20 placeholder:text-slate-400"
                 />
               </div>
 
@@ -711,16 +711,16 @@ export default function AdminPushNotificationsPage() {
                 onDrop={handleDrop}
                 className={`space-y-2 p-3 bg-slate-50 border rounded-lg transition-all ${
                   isDragging
-                    ? "border-blue-500 bg-blue-50/50 ring-2 ring-blue-500/20"
+                    ? "border-festival-teal bg-warm-ivory ring-2 ring-festival-teal/20/20"
                     : "border-slate-200/80"
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
-                    <ImageIcon className="w-3.5 h-3.5 text-blue-600" />
+                    <ImageIcon className="w-3.5 h-3.5 text-festival-teal" />
                     <span>Banner image</span>
                   </label>
-                  <span className="px-1.5 py-0.5 text-[10px] bg-blue-50 text-blue-700 border border-blue-200 rounded font-semibold">
+                  <span className="px-1.5 py-0.5 text-[10px] bg-warm-ivory text-festival-teal border border-brand-border rounded font-semibold">
                     Ratio 2:1 (1024 × 512 px)
                   </span>
                 </div>
@@ -806,15 +806,15 @@ export default function AdminPushNotificationsPage() {
                     onClick={() => fileInputRef.current?.click()}
                     className={`border-2 border-dashed rounded-lg p-4 text-center cursor-pointer transition-all ${
                       isDragging
-                        ? "border-blue-500 bg-blue-100/40"
-                        : "border-slate-300 hover:border-blue-400 bg-white hover:bg-slate-50/80"
+                        ? "border-festival-teal bg-festival-teal/10"
+                        : "border-slate-300 hover:border-festival-teal bg-white hover:bg-slate-50/80"
                     }`}
                   >
                     <div className="flex flex-col items-center justify-center gap-1.5">
                       {isUploadingImage ? (
                         <>
-                          <Loader2 className="w-6 h-6 animate-spin text-blue-600" />
-                          <p className="text-xs font-semibold text-blue-700">
+                          <Loader2 className="w-6 h-6 animate-spin text-festival-teal" />
+                          <p className="text-xs font-semibold text-festival-teal">
                             Uploading to Cloudinary CDN...
                           </p>
                           <p className="text-[11px] text-slate-400">
@@ -823,11 +823,11 @@ export default function AdminPushNotificationsPage() {
                         </>
                       ) : (
                         <>
-                          <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 mb-0.5">
+                          <div className="w-8 h-8 rounded-full bg-warm-ivory flex items-center justify-center text-festival-teal mb-0.5">
                             <UploadCloud className="w-4 h-4" />
                           </div>
                           <p className="text-xs font-semibold text-slate-700">
-                            <span className="text-blue-600 hover:underline">Upload via Cloudinary</span> or drag and drop
+                            <span className="text-festival-teal hover:underline">Upload via Cloudinary</span> or drag and drop
                           </p>
                           <p className="text-[11px] text-slate-400">
                             PNG, JPG, WebP up to 5MB (Auto 2:1 Banner)
@@ -845,7 +845,7 @@ export default function AdminPushNotificationsPage() {
                     value={form.image}
                     onChange={(e) => handleFormChange("image", e.target.value)}
                     placeholder="Or paste Cloudinary image URL directly..."
-                    className="w-full text-xs text-slate-800 bg-white border border-slate-200 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-slate-400 font-mono"
+                    className="w-full text-xs text-slate-800 bg-white border border-slate-200 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-festival-teal/20 placeholder:text-slate-400 font-mono"
                   />
                 </div>
               </div>
@@ -856,7 +856,7 @@ export default function AdminPushNotificationsPage() {
                 type="button"
                 onClick={handleSend}
                 disabled={!canSend || sending}
-                className="w-full flex items-center justify-center gap-1.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                className="w-full flex items-center justify-center gap-1.5 py-2 bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-semibold rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 <Send className="w-3.5 h-3.5" />
                 Broadcast Push
@@ -936,7 +936,7 @@ export default function AdminPushNotificationsPage() {
               ))}
               <div className="border-t border-slate-100 pt-1.5 flex justify-between text-xs">
                 <span className="text-slate-500">Selected audience</span>
-                <span className="font-bold text-blue-600">
+                <span className="font-bold text-festival-teal">
                   {statsLoading
                     ? "—"
                     : (form.audience === "all"

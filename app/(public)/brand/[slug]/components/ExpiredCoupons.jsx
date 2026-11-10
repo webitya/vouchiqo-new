@@ -14,7 +14,7 @@ export default function ExpiredCoupons({
 
   return (
     <div className="space-y-3 pt-4">
-      <h3 className="text-xs sm:text-[13px] font-medium text-[#F72853] uppercase tracking-wider text-left">
+      <h3 className="text-xs sm:text-[13px] font-medium text-[#FF2E63] uppercase tracking-wider text-left">
         Expired Offers
       </h3>
       <div className="space-y-2">
@@ -57,7 +57,7 @@ export default function ExpiredCoupons({
                     disabled={isLoading}
                     onClick={() => onRevive(coupon._id)}
                     type="button"
-                    className="bg-[#3e80dd] hover:bg-[#2563eb] text-white text-xs font-bold py-2 px-4 rounded-lg flex items-center gap-1.5 border-0 cursor-pointer disabled:opacity-50"
+                    className="bg-[#FF2E63] hover:bg-[#E02253] text-white text-xs font-heading font-bold py-2 px-4 rounded-lg flex items-center gap-1.5 border-0 cursor-pointer disabled:opacity-50 transition-colors shadow-2xs"
                   >
                     {isLoading ? (
                       <>

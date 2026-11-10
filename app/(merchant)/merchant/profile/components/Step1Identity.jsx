@@ -69,12 +69,12 @@ export default function Step1Identity({
     <Card className="border-slate-200/80 shadow-xs rounded-2xl bg-white p-6 space-y-5 text-left font-sans">
       <div className="border-b border-slate-100 pb-3 flex items-center justify-between">
         <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-          <Store className="w-4 h-4 text-blue-600" />
+          <Store className="w-4 h-4 text-festival-teal" />
           <span>1. Business Logical Identity &amp; Categorization</span>
         </h3>
         <Badge
           variant="outline"
-          className="text-[10px] font-bold bg-blue-50 text-blue-700 border-blue-200"
+          className="text-[10px] font-bold bg-warm-ivory text-festival-teal border-brand-border"
         >
           Step 1 of 3
         </Badge>

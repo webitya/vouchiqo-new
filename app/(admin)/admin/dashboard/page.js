@@ -82,8 +82,8 @@ export default function AdminDashboard() {
   const trendData = analyticsData?.trendData ?? DEFAULT_TREND_DATA;
 
   const chartSeries = {
-    revenue: [{ key: "revenue", name: "Revenue (₹)", color: "#2563eb" }],
-    orders: [{ key: "orders", name: "Orders", color: "#1d4ed8" }],
+    revenue: [{ key: "revenue", name: "Revenue (₹)", color: "#007F79" }],
+    orders: [{ key: "orders", name: "Orders", color: "#35104A" }],
     profit: [{ key: "profit", name: "Profit (₹)", color: "#0a2e6e" }],
   };
 
@@ -94,7 +94,7 @@ export default function AdminDashboard() {
       sortable: true,
       cell: (row) => (
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-medium text-[10px] shrink-0">
+          <div className="w-8 h-8 rounded-full bg-festival-teal text-white flex items-center justify-center font-medium text-[10px] shrink-0">
             {row.customer.slice(0, 2).toUpperCase()}
           </div>
           <div>
@@ -142,7 +142,7 @@ export default function AdminDashboard() {
                 ? "/admin/approvals/merchants"
                 : "/admin/approvals/coupons"
             }
-            className="text-[10px] text-[#2563eb] hover:underline font-normal"
+            className="text-[10px] text-festival-teal hover:underline font-normal"
           >
             Review →
           </Link>
@@ -186,7 +186,7 @@ export default function AdminDashboard() {
           </div>
           <Link
             href="/admin/approvals/merchants"
-            className="bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-medium py-1 px-2.5 rounded-lg flex items-center justify-center gap-1.5 shadow-2xs relative shrink-0"
+            className="bg-festival-teal hover:bg-festival-teal-dark text-white text-[11px] font-medium py-1 px-2.5 rounded-lg flex items-center justify-center gap-1.5 shadow-2xs relative shrink-0"
           >
             <span>Review Queue</span>
             {unreadCount > 0 && (
@@ -214,7 +214,7 @@ export default function AdminDashboard() {
             value={(kpis.totalUsers || 0).toLocaleString()}
             subtitle="Registered user accounts"
             icon={Users}
-            iconClassName="bg-blue-50 border-blue-200/90 text-blue-600 shadow-2xs"
+            iconClassName="bg-warm-ivory border-festival-teal/30 text-festival-teal shadow-2xs"
             loading={isLoading}
           />
           <KPICard
@@ -244,7 +244,7 @@ export default function AdminDashboard() {
         {/* Overview Chart & Traffic Column */}
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-3">
           <Card className="col-span-full xl:col-span-8 bg-white border border-slate-200/90 rounded-xl shadow-2xs overflow-hidden flex flex-col h-full p-0 gap-0">
-            <CardHeader className="px-3.5 py-2.5 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-gradient-to-r from-slate-50/80 via-white to-blue-50/30 min-h-[44px]">
+            <CardHeader className="px-3.5 py-2.5 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-gradient-to-r from-slate-50/80 via-white to-warm-ivory min-h-[44px]">
               <div>
                 <CardTitle className="font-sans text-xs font-medium text-slate-800 tracking-wider uppercase m-0 leading-none">
                   Overview
@@ -261,7 +261,7 @@ export default function AdminDashboard() {
                     onClick={() => setActiveMetricTab(metric)}
                     className={`text-[10px] font-medium px-2 py-0.5 rounded-md transition-all uppercase cursor-pointer border-0 ${
                       activeMetricTab === metric
-                        ? "bg-white text-blue-600 shadow-2xs"
+                        ? "bg-white text-festival-teal shadow-2xs"
                         : "text-slate-500 hover:text-slate-800 bg-transparent"
                     }`}
                   >
@@ -301,7 +301,7 @@ export default function AdminDashboard() {
               </div>
               <Link
                 href="/admin/approvals/merchants"
-                className="text-[11px] font-medium text-[#2563eb] hover:underline flex items-center gap-0.5"
+                className="text-[11px] font-medium text-festival-teal hover:underline flex items-center gap-0.5"
               >
                 <span>View all</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -334,7 +334,7 @@ export default function AdminDashboard() {
                       {/* Header: Single Avatar + Customer Name & Type + Top-Right Status */}
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex items-center gap-3 min-w-0">
-                          <div className="w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-2xs">
+                          <div className="w-8 h-8 rounded-full bg-festival-teal text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-2xs">
                             {initials}
                           </div>
                           <div className="min-w-0">
@@ -381,7 +381,7 @@ export default function AdminDashboard() {
                       <div className="pt-0.5">
                         <Link
                           href={reviewHref}
-                          className="w-full min-h-[34px] rounded-lg px-3 py-1.5 bg-blue-50/90 hover:bg-blue-100 text-blue-600 dark:bg-blue-950/40 dark:hover:bg-blue-900/50 dark:text-blue-400 flex items-center justify-between text-xs sm:text-sm font-bold transition-colors cursor-pointer select-none group"
+                          className="w-full min-h-[34px] rounded-lg px-3 py-1.5 bg-warm-ivory hover:bg-festival-teal/20 text-festival-teal dark:bg-royal-plum/40 dark:hover:bg-royal-plum/60 dark:text-festival-teal flex items-center justify-between text-xs sm:text-sm font-bold transition-colors cursor-pointer select-none group"
                         >
                           <span>
                             Review{" "}

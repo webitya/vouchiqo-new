@@ -277,37 +277,37 @@ export default function SearchClient() {
 
   return (
     <TooltipProvider>
-      <div className="min-h-screen flex flex-col bg-slate-50 font-sans text-slate-800 antialiased w-full">
+      <div className="min-h-screen flex flex-col bg-warm-ivory font-sans text-royal-plum antialiased w-full">
         <Navbar />
 
         {/* ── 1. Full-Width Compact Header Strip ── */}
-        <section className="bg-white border-b border-slate-200/80 w-full">
+        <section className="bg-white border-b border-brand-border w-full">
           <div className="w-full px-3 sm:px-5 lg:px-6 py-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             {/* Left: Clean Query Summary & Breadcrumb */}
             <div className="flex flex-wrap items-center gap-1.5 text-[11px]">
               <Link
                 href="/"
-                className="font-medium text-slate-400 hover:text-blue-600 transition-colors"
+                className="font-medium text-royal-plum/50 hover:text-festival-teal transition-colors"
               >
                 Home
               </Link>
-              <span className="text-slate-300">/</span>
-              <span className="font-medium text-slate-400">Search</span>
-              <span className="text-slate-300">/</span>
+              <span className="text-royal-plum/30">/</span>
+              <span className="font-medium text-royal-plum/50">Search</span>
+              <span className="text-royal-plum/30">/</span>
 
               {activeQuery ? (
                 <div className="flex items-center gap-1.5">
-                  <span className="text-slate-500">Showing</span>
-                  <span className="font-semibold text-blue-700 bg-blue-50 border border-blue-200/60 px-1.5 py-0.2 rounded text-[10px]">
+                  <span className="text-royal-plum/60">Showing</span>
+                  <span className="font-bold font-heading text-festival-teal bg-festival-teal/10 border border-festival-teal/20 px-1.5 py-0.2 rounded text-[10px]">
                     {filteredTotal} results
                   </span>
-                  <span className="text-slate-500">for</span>
-                  <span className="font-semibold text-slate-800 bg-slate-100 border border-slate-200 px-1.5 py-0.2 rounded text-[10px]">
+                  <span className="text-royal-plum/60">for</span>
+                  <span className="font-bold font-heading text-royal-plum bg-warm-ivory border border-brand-border px-1.5 py-0.2 rounded text-[10px]">
                     &ldquo;{activeQuery}&rdquo;
                   </span>
                 </div>
               ) : (
-                <span className="font-semibold text-slate-700">
+                <span className="font-bold font-heading text-royal-plum">
                   All Discovery Deals
                 </span>
               )}
@@ -315,15 +315,15 @@ export default function SearchClient() {
 
             {/* Right: Sort & Actions */}
             <div className="flex items-center gap-2 shrink-0">
-              <span className="text-[11px] font-medium text-slate-400 flex items-center gap-1">
-                <ArrowUpDown className="w-3 h-3 text-slate-400" />
+              <span className="text-[11px] font-medium text-royal-plum/60 flex items-center gap-1 font-heading">
+                <ArrowUpDown className="w-3 h-3 text-royal-plum/40" />
                 <span>Sort:</span>
               </span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
                 aria-label="Sort results"
-                className="text-[11px] font-medium bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-md px-2 py-1 text-slate-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 cursor-pointer transition-colors"
+                className="text-[11px] font-medium bg-warm-ivory hover:bg-brand-surface border border-brand-border rounded-md px-2 py-1 text-royal-plum focus:outline-none focus:ring-1 focus:ring-festival-teal focus:border-festival-teal cursor-pointer transition-colors"
               >
                 <option value="relevance">Relevance</option>
                 <option value="discount">Highest Discount</option>
@@ -336,12 +336,12 @@ export default function SearchClient() {
                 variant="outline"
                 size="sm"
                 onClick={() => setMobileFilterOpen(true)}
-                className="lg:hidden gap-1 h-7 text-[11px] font-semibold px-2"
+                className="lg:hidden gap-1 h-7 text-[11px] font-semibold font-heading px-2 border-brand-border text-royal-plum"
               >
-                <SlidersHorizontal className="w-3 h-3 text-blue-600" />
+                <SlidersHorizontal className="w-3 h-3 text-festival-teal" />
                 <span>Filters</span>
                 {isFiltered ? (
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-festival-pink" />
                 ) : null}
               </Button>
             </div>
@@ -351,17 +351,17 @@ export default function SearchClient() {
         {/* ── 2. Full-Width Compact Sticky Navigation Tabs ── */}
         <nav
           aria-label="Filter navigation"
-          className="sticky top-0 sm:top-16 z-20 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-2xs w-full"
+          className="sticky top-0 sm:top-16 z-20 bg-white/95 backdrop-blur-md border-b border-brand-border shadow-2xs w-full"
         >
           <div className="w-full px-3 sm:px-5 lg:px-6 flex items-center justify-between gap-2 overflow-x-auto no-scrollbar py-1.5">
             <div className="flex items-center gap-1 shrink-0">
               <button
                 type="button"
                 onClick={() => setActiveTab("all")}
-                className={`inline-flex items-center gap-1.5 text-[11px] font-semibold transition-all h-7 px-2.5 rounded-md cursor-pointer ${
+                className={`inline-flex items-center gap-1.5 text-[11px] font-semibold font-heading transition-all h-7 px-2.5 rounded-md cursor-pointer ${
                   activeTab === "all"
-                    ? "bg-blue-600 text-white shadow-2xs"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                    ? "bg-festival-teal text-white shadow-2xs"
+                    : "text-royal-plum/70 hover:text-royal-plum hover:bg-warm-ivory"
                 }`}
               >
                 <Layers className="w-3 h-3" />
@@ -370,7 +370,7 @@ export default function SearchClient() {
                   className={`text-[9px] px-1 py-0 rounded-full font-bold ${
                     activeTab === "all"
                       ? "bg-white/20 text-white"
-                      : "bg-slate-100 text-slate-600"
+                      : "bg-warm-ivory text-royal-plum/70 border border-brand-border"
                   }`}
                 >
                   {filteredTotal}
@@ -381,10 +381,10 @@ export default function SearchClient() {
                 <button
                   type="button"
                   onClick={() => setActiveTab("tags")}
-                  className={`inline-flex items-center gap-1.5 text-[11px] font-semibold transition-all h-7 px-2.5 rounded-md cursor-pointer ${
+                  className={`inline-flex items-center gap-1.5 text-[11px] font-semibold font-heading transition-all h-7 px-2.5 rounded-md cursor-pointer ${
                     activeTab === "tags"
-                      ? "bg-indigo-600 text-white shadow-2xs"
-                      : "text-indigo-700 hover:text-indigo-900 hover:bg-indigo-50"
+                      ? "bg-royal-plum text-white shadow-2xs"
+                      : "text-royal-plum/70 hover:text-royal-plum hover:bg-warm-ivory"
                   }`}
                 >
                   <Tag className="w-3 h-3" />
@@ -393,7 +393,7 @@ export default function SearchClient() {
                     className={`text-[9px] px-1 py-0 rounded-full font-bold ${
                       activeTab === "tags"
                         ? "bg-white/20 text-white"
-                        : "bg-indigo-50 text-indigo-700"
+                        : "bg-warm-ivory text-royal-plum/70 border border-brand-border"
                     }`}
                   >
                     {searchData.tags.length}
@@ -404,10 +404,10 @@ export default function SearchClient() {
               <button
                 type="button"
                 onClick={() => setActiveTab("brands")}
-                className={`inline-flex items-center gap-1.5 text-[11px] font-semibold transition-all h-7 px-2.5 rounded-md cursor-pointer ${
+                className={`inline-flex items-center gap-1.5 text-[11px] font-semibold font-heading transition-all h-7 px-2.5 rounded-md cursor-pointer ${
                   activeTab === "brands"
-                    ? "bg-blue-600 text-white shadow-2xs"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                    ? "bg-festival-teal text-white shadow-2xs"
+                    : "text-royal-plum/70 hover:text-royal-plum hover:bg-warm-ivory"
                 }`}
               >
                 <Store className="w-3 h-3" />
@@ -416,7 +416,7 @@ export default function SearchClient() {
                   className={`text-[9px] px-1 py-0 rounded-full font-bold ${
                     activeTab === "brands"
                       ? "bg-white/20 text-white"
-                      : "bg-slate-100 text-slate-600"
+                      : "bg-warm-ivory text-royal-plum/70 border border-brand-border"
                   }`}
                 >
                   {filteredBrands.length}
@@ -426,10 +426,10 @@ export default function SearchClient() {
               <button
                 type="button"
                 onClick={() => setActiveTab("coupons")}
-                className={`inline-flex items-center gap-1.5 text-[11px] font-semibold transition-all h-7 px-2.5 rounded-md cursor-pointer ${
+                className={`inline-flex items-center gap-1.5 text-[11px] font-semibold font-heading transition-all h-7 px-2.5 rounded-md cursor-pointer ${
                   activeTab === "coupons"
-                    ? "bg-blue-600 text-white shadow-2xs"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                    ? "bg-festival-teal text-white shadow-2xs"
+                    : "text-royal-plum/70 hover:text-royal-plum hover:bg-warm-ivory"
                 }`}
               >
                 <Tag className="w-3 h-3" />
@@ -438,7 +438,7 @@ export default function SearchClient() {
                   className={`text-[9px] px-1 py-0 rounded-full font-bold ${
                     activeTab === "coupons"
                       ? "bg-white/20 text-white"
-                      : "bg-slate-100 text-slate-600"
+                      : "bg-warm-ivory text-royal-plum/70 border border-brand-border"
                   }`}
                 >
                   {filteredCoupons.length}
@@ -448,10 +448,10 @@ export default function SearchClient() {
               <button
                 type="button"
                 onClick={() => setActiveTab("products")}
-                className={`inline-flex items-center gap-1.5 text-[11px] font-semibold transition-all h-7 px-2.5 rounded-md cursor-pointer ${
+                className={`inline-flex items-center gap-1.5 text-[11px] font-semibold font-heading transition-all h-7 px-2.5 rounded-md cursor-pointer ${
                   activeTab === "products"
-                    ? "bg-blue-600 text-white shadow-2xs"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                    ? "bg-festival-teal text-white shadow-2xs"
+                    : "text-royal-plum/70 hover:text-royal-plum hover:bg-warm-ivory"
                 }`}
               >
                 <ShoppingBag className="w-3 h-3" />
@@ -460,7 +460,7 @@ export default function SearchClient() {
                   className={`text-[9px] px-1 py-0 rounded-full font-bold ${
                     activeTab === "products"
                       ? "bg-white/20 text-white"
-                      : "bg-slate-100 text-slate-600"
+                      : "bg-warm-ivory text-royal-plum/70 border border-brand-border"
                   }`}
                 >
                   {filteredProducts.length}
@@ -471,10 +471,10 @@ export default function SearchClient() {
                 <button
                   type="button"
                   onClick={() => setActiveTab("categories")}
-                  className={`inline-flex items-center gap-1.5 text-[11px] font-semibold transition-all h-7 px-2.5 rounded-md cursor-pointer ${
+                  className={`inline-flex items-center gap-1.5 text-[11px] font-semibold font-heading transition-all h-7 px-2.5 rounded-md cursor-pointer ${
                     activeTab === "categories"
-                      ? "bg-emerald-600 text-white shadow-2xs"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                      ? "bg-festival-teal text-white shadow-2xs"
+                      : "text-royal-plum/70 hover:text-royal-plum hover:bg-warm-ivory"
                   }`}
                 >
                   <Folder className="w-3 h-3" />
@@ -483,7 +483,7 @@ export default function SearchClient() {
                     className={`text-[9px] px-1 py-0 rounded-full font-bold ${
                       activeTab === "categories"
                         ? "bg-white/20 text-white"
-                        : "bg-slate-100 text-slate-600"
+                        : "bg-warm-ivory text-royal-plum/70 border border-brand-border"
                     }`}
                   >
                     {searchData.categories.length}
@@ -498,37 +498,37 @@ export default function SearchClient() {
                 {minDiscount > 0 ? (
                   <button
                     type="button"
-                    className="gap-1 inline-flex items-center cursor-pointer bg-blue-50 text-blue-700 border border-blue-200 text-[10px] font-medium px-1.5 py-0.5 rounded hover:bg-blue-100"
+                    className="gap-1 inline-flex items-center cursor-pointer bg-festival-teal/10 text-festival-teal border border-festival-teal/20 text-[10px] font-medium px-1.5 py-0.5 rounded hover:bg-festival-teal/20"
                     onClick={() => setMinDiscount(0)}
                   >
                     <span>{minDiscount}%+ Off</span>
-                    <X className="w-2.5 h-2.5 text-blue-500" />
+                    <X className="w-2.5 h-2.5 text-festival-teal" />
                   </button>
                 ) : null}
                 {selectedCategory !== "all" ? (
                   <button
                     type="button"
-                    className="gap-1 inline-flex items-center cursor-pointer bg-blue-50 text-blue-700 border border-blue-200 text-[10px] font-medium px-1.5 py-0.5 rounded capitalize hover:bg-blue-100"
+                    className="gap-1 inline-flex items-center cursor-pointer bg-festival-teal/10 text-festival-teal border border-festival-teal/20 text-[10px] font-medium px-1.5 py-0.5 rounded capitalize hover:bg-festival-teal/20"
                     onClick={() => setSelectedCategory("all")}
                   >
                     <span>{selectedCategory}</span>
-                    <X className="w-2.5 h-2.5 text-blue-500" />
+                    <X className="w-2.5 h-2.5 text-festival-teal" />
                   </button>
                 ) : null}
                 {verifiedOnly ? (
                   <button
                     type="button"
-                    className="gap-1 inline-flex items-center cursor-pointer bg-blue-50 text-blue-700 border border-blue-200 text-[10px] font-medium px-1.5 py-0.5 rounded hover:bg-blue-100"
+                    className="gap-1 inline-flex items-center cursor-pointer bg-festival-teal/10 text-festival-teal border border-festival-teal/20 text-[10px] font-medium px-1.5 py-0.5 rounded hover:bg-festival-teal/20"
                     onClick={() => setVerifiedOnly(false)}
                   >
                     <span>Verified</span>
-                    <X className="w-2.5 h-2.5 text-blue-500" />
+                    <X className="w-2.5 h-2.5 text-festival-teal" />
                   </button>
                 ) : null}
                 <button
                   type="button"
                   onClick={resetFilters}
-                  className="text-[10px] text-blue-600 font-semibold gap-1 flex items-center h-5 cursor-pointer hover:underline ml-1"
+                  className="text-[10px] text-festival-pink font-semibold font-heading gap-1 flex items-center h-5 cursor-pointer hover:underline ml-1"
                 >
                   <RotateCcw className="w-2.5 h-2.5" />
                   <span>Clear</span>
@@ -543,12 +543,12 @@ export default function SearchClient() {
           <div className="flex items-start gap-4 xl:gap-5 w-full flex-1">
             {/* ── Left Sidebar Filters (Desktop Compact Sticky) ── */}
             <aside className="hidden lg:block w-48 xl:w-52 shrink-0 sticky top-24 self-start">
-              <div className="border border-slate-200 rounded-xl bg-white p-3 space-y-3.5 shadow-2xs">
+              <div className="border border-brand-border rounded-xl bg-white p-3 space-y-3.5 shadow-2xs">
                 {/* Header: Title + Reset */}
-                <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                <div className="flex items-center justify-between pb-2 border-b border-brand-border/60">
                   <div className="flex items-center gap-1.5">
-                    <SlidersHorizontal className="w-3.5 h-3.5 text-slate-500" />
-                    <span className="text-xs font-bold text-slate-800">
+                    <SlidersHorizontal className="w-3.5 h-3.5 text-royal-plum/60" />
+                    <span className="text-xs font-bold font-heading text-royal-plum">
                       Filters
                     </span>
                   </div>
@@ -556,7 +556,7 @@ export default function SearchClient() {
                     <button
                       type="button"
                       onClick={resetFilters}
-                      className="text-[10px] text-blue-600 hover:underline font-semibold flex items-center gap-0.5 cursor-pointer"
+                      className="text-[10px] text-festival-pink hover:underline font-semibold font-heading flex items-center gap-0.5 cursor-pointer"
                     >
                       <RotateCcw className="w-2.5 h-2.5" />
                       <span>Reset</span>
@@ -566,7 +566,7 @@ export default function SearchClient() {
 
                 {/* Filter: Minimum Discount */}
                 <div className="space-y-1.5">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                  <span className="text-[10px] font-bold font-heading text-royal-plum/50 uppercase tracking-wider block">
                     Discount
                   </span>
                   <div className="space-y-0.5">
@@ -580,8 +580,8 @@ export default function SearchClient() {
                         key={opt.value}
                         className={`flex items-center gap-2 px-1.5 py-1 rounded text-[11px] cursor-pointer transition-colors ${
                           minDiscount === opt.value
-                            ? "bg-blue-50/80 text-blue-700 font-semibold"
-                            : "text-slate-600 hover:bg-slate-50"
+                            ? "bg-festival-teal/10 text-festival-teal font-semibold"
+                            : "text-royal-plum/70 hover:bg-warm-ivory"
                         }`}
                       >
                         <input
@@ -589,7 +589,7 @@ export default function SearchClient() {
                           name="minDiscount"
                           checked={minDiscount === opt.value}
                           onChange={() => setMinDiscount(opt.value)}
-                          className="w-3 h-3 text-blue-600 focus:ring-blue-500 border-slate-300"
+                          className="w-3 h-3 text-festival-teal focus:ring-festival-teal/30 border-brand-border"
                         />
                         <span>{opt.label}</span>
                       </label>
@@ -602,15 +602,15 @@ export default function SearchClient() {
                 {/* Filter: Categories */}
                 {availableCategories.length > 0 ? (
                   <div className="space-y-1.5">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                    <span className="text-[10px] font-bold font-heading text-royal-plum/50 uppercase tracking-wider block">
                       Category
                     </span>
                     <div className="space-y-0.5 max-h-40 overflow-y-auto pr-0.5 no-scrollbar">
                       <label
                         className={`flex items-center gap-2 px-1.5 py-1 rounded text-[11px] cursor-pointer transition-colors ${
                           selectedCategory === "all"
-                            ? "bg-blue-50/80 text-blue-700 font-semibold"
-                            : "text-slate-600 hover:bg-slate-50"
+                            ? "bg-festival-teal/10 text-festival-teal font-semibold"
+                            : "text-royal-plum/70 hover:bg-warm-ivory"
                         }`}
                       >
                         <input
@@ -618,7 +618,7 @@ export default function SearchClient() {
                           name="selectedCategory"
                           checked={selectedCategory === "all"}
                           onChange={() => setSelectedCategory("all")}
-                          className="w-3 h-3 text-blue-600 focus:ring-blue-500 border-slate-300"
+                          className="w-3 h-3 text-festival-teal focus:ring-festival-teal/30 border-brand-border"
                         />
                         <span>All Categories</span>
                       </label>
@@ -628,8 +628,8 @@ export default function SearchClient() {
                           key={cat}
                           className={`flex items-center gap-2 px-1.5 py-1 rounded text-[11px] cursor-pointer transition-colors ${
                             selectedCategory === cat
-                              ? "bg-blue-50/80 text-blue-700 font-semibold"
-                              : "text-slate-600 hover:bg-slate-50"
+                              ? "bg-festival-teal/10 text-festival-teal font-semibold"
+                              : "text-royal-plum/70 hover:bg-warm-ivory"
                           }`}
                         >
                           <input
@@ -637,7 +637,7 @@ export default function SearchClient() {
                             name="selectedCategory"
                             checked={selectedCategory === cat}
                             onChange={() => setSelectedCategory(cat)}
-                            className="w-3 h-3 text-blue-600 focus:ring-blue-500 border-slate-300"
+                            className="w-3 h-3 text-festival-teal focus:ring-festival-teal/30 border-brand-border"
                           />
                           <span className="capitalize truncate">{cat}</span>
                         </label>
@@ -685,9 +685,9 @@ export default function SearchClient() {
                         step="100"
                         value={maxPrice}
                         onChange={(e) => setMaxPrice(Number(e.target.value))}
-                        className="w-full accent-blue-600 cursor-pointer h-1 bg-slate-200 rounded-lg"
+                        className="w-full accent-festival-teal cursor-pointer h-1 bg-warm-ivory border border-brand-border rounded-lg"
                       />
-                      <div className="flex justify-between text-[9px] text-slate-400">
+                      <div className="flex justify-between text-[9px] text-royal-plum/50 font-heading">
                         <span>₹200</span>
                         <span>₹{highestProductPrice.toLocaleString()}</span>
                       </div>
@@ -703,7 +703,7 @@ export default function SearchClient() {
               {loading ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
-                    <Card key={n} className="p-3 space-y-2.5">
+                    <Card key={n} className="p-3 space-y-2.5 bg-white border-brand-border">
                       <Skeleton className="w-full aspect-[4/3] rounded-lg" />
                       <Skeleton className="h-3.5 w-3/4 rounded" />
                       <Skeleton className="h-3 w-1/2 rounded" />
@@ -715,18 +715,18 @@ export default function SearchClient() {
 
               {/* Empty State: Zero Results */}
               {!loading && totalResults === 0 ? (
-                <Card className="p-6 sm:p-10 text-center max-w-xl mx-auto shadow-2xs space-y-4">
-                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mx-auto">
-                    <Search className="w-6 h-6 text-blue-500" />
+                <Card className="p-6 sm:p-10 text-center max-w-xl mx-auto shadow-2xs space-y-4 bg-white border-brand-border">
+                  <div className="w-12 h-12 rounded-xl bg-festival-teal/10 text-festival-teal flex items-center justify-center mx-auto">
+                    <Search className="w-6 h-6 text-festival-teal" />
                   </div>
 
                   <div className="space-y-1.5">
-                    <h2 className="text-base sm:text-lg font-bold text-slate-900">
+                    <h2 className="text-base sm:text-lg font-bold font-heading text-royal-plum">
                       {activeQuery
                         ? `No matches found for "${activeQuery}"`
                         : "Discover top savings & verified deals"}
                     </h2>
-                    <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
+                    <p className="text-xs text-royal-plum/70 max-w-md mx-auto leading-relaxed">
                       We couldn&rsquo;t find verified coupons, partner brands,
                       or deals matching your search term. Try exploring popular
                       categories.
@@ -734,7 +734,7 @@ export default function SearchClient() {
                   </div>
 
                   <div className="pt-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2 block">
+                    <span className="text-[10px] font-bold font-heading uppercase tracking-wider text-royal-plum/50 mb-2 block">
                       Top Discovery Categories
                     </span>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -742,10 +742,10 @@ export default function SearchClient() {
                         <Link
                           key={cat.slug}
                           href={`/category/${cat.slug}`}
-                          className="p-2.5 rounded-lg border border-slate-200 bg-white hover:border-blue-300 hover:shadow-2xs transition-all text-left flex items-center gap-2 group"
+                          className="p-2.5 rounded-lg border border-brand-border bg-white hover:border-festival-teal hover:shadow-2xs transition-all text-left flex items-center gap-2 group"
                         >
                           <span className="text-base">{cat.emoji}</span>
-                          <span className="text-[11px] font-semibold text-slate-800 truncate group-hover:text-blue-600">
+                          <span className="text-[11px] font-bold font-heading text-royal-plum truncate group-hover:text-festival-teal">
                             {cat.name}
                           </span>
                         </Link>
@@ -753,11 +753,11 @@ export default function SearchClient() {
                     </div>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-100">
+                  <div className="pt-3 border-t border-brand-border/60">
                     <Button
                       asChild
                       size="sm"
-                      className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs"
+                      className="bg-festival-teal hover:bg-[#00635E] text-white rounded-lg text-xs font-heading font-bold"
                     >
                       <Link href="/deals" className="gap-1.5">
                         <span>Browse All Deals</span>
@@ -785,7 +785,7 @@ export default function SearchClient() {
                     <Button
                       onClick={resetFilters}
                       size="sm"
-                      className="bg-blue-600 hover:bg-blue-700 text-white gap-1 rounded-lg text-xs cursor-pointer"
+                      className="bg-festival-teal hover:bg-[#00635E] text-white gap-1 rounded-lg text-xs font-heading font-bold cursor-pointer"
                     >
                       <RotateCcw className="w-3 h-3" />
                       <span>Reset Filters</span>
@@ -800,9 +800,9 @@ export default function SearchClient() {
                   {/* ── 0. SUB-CATEGORY TAGS (Clean Authentic Related Chips Bar) ── */}
                   {searchData.tags?.length > 0 &&
                   (activeTab === "all" || activeTab === "tags") ? (
-                    <div className="flex items-center gap-1.5 flex-wrap p-2.5 rounded-lg bg-white border border-slate-200/80 shadow-2xs">
-                      <div className="flex items-center gap-1 text-[11px] font-semibold text-slate-500 shrink-0 mr-1">
-                        <Tag className="w-3 h-3 text-slate-400" />
+                    <div className="flex items-center gap-1.5 flex-wrap p-2.5 rounded-lg bg-white border border-brand-border shadow-2xs">
+                      <div className="flex items-center gap-1 text-[11px] font-bold font-heading text-royal-plum/60 shrink-0 mr-1">
+                        <Tag className="w-3 h-3 text-royal-plum/40" />
                         <span>Related Tags:</span>
                       </div>
                       {searchData.tags.map((tagItem) => (
@@ -815,11 +815,11 @@ export default function SearchClient() {
                               `/search?q=${encodeURIComponent(tagItem.title)}`,
                             );
                           }}
-                          className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-50 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 text-slate-700 border border-slate-200 transition-colors cursor-pointer"
+                          className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-warm-ivory hover:bg-festival-teal/10 hover:text-festival-teal hover:border-festival-teal/30 text-royal-plum border border-brand-border transition-colors cursor-pointer"
                         >
                           <span>#{tagItem.title}</span>
                           {tagItem.merchantName && (
-                            <span className="text-[10px] text-slate-400 font-normal">
+                            <span className="text-[10px] text-royal-plum/50 font-normal">
                               ({tagItem.merchantName})
                             </span>
                           )}
@@ -832,12 +832,12 @@ export default function SearchClient() {
                   {(activeTab === "all" || activeTab === "brands") &&
                   filteredBrands.length > 0 ? (
                     <section className="space-y-2.5">
-                      <div className="flex items-center justify-between pb-2 border-b border-slate-200/80">
+                      <div className="flex items-center justify-between pb-2 border-b border-brand-border">
                         <div className="flex items-center gap-2">
-                          <h2 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                          <h2 className="text-xs font-bold font-heading text-royal-plum uppercase tracking-wider">
                             Brands & Stores
                           </h2>
-                          <span className="text-[10px] font-semibold px-1.5 py-0.2 rounded-full bg-slate-100 text-slate-600 border border-slate-200/70">
+                          <span className="text-[10px] font-bold font-heading px-1.5 py-0.2 rounded-full bg-warm-ivory text-royal-plum border border-brand-border">
                             {filteredBrands.length}
                           </span>
                         </div>
@@ -846,7 +846,7 @@ export default function SearchClient() {
                           <button
                             type="button"
                             onClick={() => setActiveTab("brands")}
-                            className="text-[11px] font-medium text-blue-600 hover:underline flex items-center gap-0.5 cursor-pointer"
+                            className="text-[11px] font-semibold font-heading text-festival-teal hover:underline flex items-center gap-0.5 cursor-pointer"
                           >
                             <span>View all ({filteredBrands.length})</span>
                             <ChevronRight className="w-3 h-3" />
@@ -860,10 +860,10 @@ export default function SearchClient() {
                           <Link
                             key={brand.id}
                             href={brand.href}
-                            className="group block bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-2xs p-3 transition-all"
+                            className="group block bg-white border border-brand-border rounded-xl hover:border-festival-teal hover:shadow-2xs p-3 transition-all"
                           >
                             <div className="flex items-center gap-2.5">
-                              <div className="w-9 h-9 rounded-lg border border-slate-100 bg-slate-50 flex items-center justify-center overflow-hidden shrink-0 group-hover:border-blue-200 transition-colors">
+                              <div className="w-9 h-9 rounded-lg border border-brand-border/60 bg-warm-ivory flex items-center justify-center overflow-hidden shrink-0 group-hover:border-festival-teal/40 transition-colors">
                                 {brand.logo ? (
                                   <SafeImage
                                     src={brand.logo}
@@ -873,13 +873,13 @@ export default function SearchClient() {
                                     className="w-full h-full object-contain p-0.5"
                                   />
                                 ) : (
-                                  <Store className="w-4 h-4 text-blue-600" />
+                                  <Store className="w-4 h-4 text-festival-teal" />
                                 )}
                               </div>
 
                               <div className="min-w-0 flex-1">
                                 <div className="flex items-center gap-1">
-                                  <h3 className="text-xs font-bold text-slate-800 truncate group-hover:text-blue-600 transition-colors">
+                                  <h3 className="text-xs font-bold font-heading text-royal-plum truncate group-hover:text-festival-teal transition-colors">
                                     {brand.title}
                                   </h3>
                                   {brand.isVerified ? (
@@ -895,24 +895,24 @@ export default function SearchClient() {
                                     </Tooltip>
                                   ) : null}
                                 </div>
-                                <p className="text-[10px] text-slate-500 truncate mt-0.5">
+                                <p className="text-[10px] text-royal-plum/60 truncate mt-0.5">
                                   {brand.category || "Store"} •{" "}
                                   {brand.totalCoupons || 0} Deals
                                 </p>
                               </div>
 
-                              <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all shrink-0" />
+                              <ChevronRight className="w-3.5 h-3.5 text-royal-plum/30 group-hover:text-festival-teal group-hover:translate-x-0.5 transition-all shrink-0" />
                             </div>
 
                             {(brand.subCategoryTags || brand.tags || [])
                               .length > 0 && (
-                              <div className="flex flex-wrap gap-1 mt-2 pt-2 border-t border-slate-100">
+                              <div className="flex flex-wrap gap-1 mt-2 pt-2 border-t border-brand-border/60">
                                 {(brand.subCategoryTags || brand.tags || [])
                                   .slice(0, 2)
                                   .map((chip) => (
                                     <span
                                       key={chip}
-                                      className="text-[9px] px-1.5 py-0.2 rounded bg-slate-50 text-slate-600 border border-slate-200/70 truncate max-w-[120px]"
+                                      className="text-[9px] px-1.5 py-0.2 rounded bg-warm-ivory text-royal-plum/70 border border-brand-border truncate max-w-[120px]"
                                     >
                                       #{chip}
                                     </span>
@@ -929,12 +929,12 @@ export default function SearchClient() {
                   {(activeTab === "all" || activeTab === "coupons") &&
                   filteredCoupons.length > 0 ? (
                     <section className="space-y-2.5">
-                      <div className="flex items-center justify-between pb-2 border-b border-slate-200/80">
+                      <div className="flex items-center justify-between pb-2 border-b border-brand-border">
                         <div className="flex items-center gap-2">
-                          <h2 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                          <h2 className="text-xs font-bold font-heading text-royal-plum uppercase tracking-wider">
                             Verified Coupons & Offers
                           </h2>
-                          <span className="text-[10px] font-semibold px-1.5 py-0.2 rounded-full bg-slate-100 text-slate-600 border border-slate-200/70">
+                          <span className="text-[10px] font-bold font-heading px-1.5 py-0.2 rounded-full bg-warm-ivory text-royal-plum border border-brand-border">
                             {filteredCoupons.length}
                           </span>
                         </div>
@@ -943,7 +943,7 @@ export default function SearchClient() {
                           <button
                             type="button"
                             onClick={() => setActiveTab("coupons")}
-                            className="text-[11px] font-medium text-blue-600 hover:underline flex items-center gap-0.5 cursor-pointer"
+                            className="text-[11px] font-semibold font-heading text-festival-teal hover:underline flex items-center gap-0.5 cursor-pointer"
                           >
                             <span>View all ({filteredCoupons.length})</span>
                             <ChevronRight className="w-3 h-3" />
@@ -956,7 +956,7 @@ export default function SearchClient() {
                         {filteredCoupons.map((coupon) => (
                           <div
                             key={coupon.id}
-                            className="bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-2xs transition-all duration-150 p-3.5 flex flex-col justify-between group"
+                            className="bg-white border border-brand-border rounded-xl hover:border-festival-teal hover:shadow-2xs transition-all duration-150 p-3.5 flex flex-col justify-between group"
                           >
                             <div className="space-y-2.5">
                               {/* Top: Store info & Discount badge */}
@@ -992,7 +992,7 @@ export default function SearchClient() {
                                   </div>
                                 </div>
 
-                                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200 shrink-0">
+                                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-golden-glow/25 text-royal-plum border border-golden-glow/50 font-heading font-bold shrink-0">
                                   {coupon.discountValue
                                     ? `${coupon.discountValue}${
                                         coupon.discountType === "percentage"
@@ -1004,7 +1004,7 @@ export default function SearchClient() {
                               </div>
 
                               {/* Title */}
-                              <h3 className="text-xs font-semibold text-slate-800 line-clamp-2 leading-snug group-hover:text-blue-600 transition-colors">
+                              <h3 className="text-xs font-semibold text-slate-800 line-clamp-2 leading-snug group-hover:text-festival-teal transition-colors">
                                 {coupon.title}
                               </h3>
                             </div>
@@ -1017,7 +1017,7 @@ export default function SearchClient() {
                                   onClick={() =>
                                     handleCopyCode(coupon.code, coupon.id)
                                   }
-                                  className="font-mono text-[11px] font-semibold border border-dashed border-slate-300 bg-slate-50/80 hover:bg-blue-50 hover:border-blue-300 text-slate-700 hover:text-blue-700 px-2 py-1 rounded flex items-center gap-1 transition-colors cursor-pointer"
+                                  className="font-mono text-[11px] font-semibold border border-dashed border-slate-300 bg-slate-50/80 hover:bg-festival-teal/10 hover:border-festival-teal text-slate-700 hover:text-festival-teal px-2 py-1 rounded flex items-center gap-1 transition-colors cursor-pointer"
                                 >
                                   {copiedId === coupon.id ? (
                                     <>
@@ -1041,7 +1041,7 @@ export default function SearchClient() {
 
                               <Link
                                 href={coupon.href}
-                                className="h-7 px-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-semibold inline-flex items-center gap-1 transition-colors shrink-0 shadow-2xs"
+                                className="h-7 px-2.5 rounded-lg bg-festival-pink hover:bg-[#E02253] text-white text-[11px] font-semibold inline-flex items-center gap-1 transition-colors shrink-0 shadow-2xs"
                               >
                                 <span>Claim Deal</span>
                                 <ChevronRight className="w-3 h-3" />
@@ -1073,15 +1073,15 @@ export default function SearchClient() {
                           <Link
                             key={cat.id}
                             href={cat.href}
-                            className="p-2.5 rounded-lg border border-slate-200 bg-white hover:border-blue-400 hover:bg-blue-50/20 transition-all flex items-center justify-between gap-2 group"
+                            className="p-2.5 rounded-lg border border-slate-200 bg-white hover:border-festival-teal hover:bg-festival-teal/10/20 transition-all flex items-center justify-between gap-2 group"
                           >
                             <div className="flex items-center gap-2 min-w-0">
-                              <Folder className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 transition-colors shrink-0" />
-                              <span className="text-[11px] font-medium text-slate-800 truncate group-hover:text-blue-600">
+                              <Folder className="w-3.5 h-3.5 text-slate-400 group-hover:text-festival-teal transition-colors shrink-0" />
+                              <span className="text-[11px] font-medium text-slate-800 truncate group-hover:text-festival-teal">
                                 {cat.title}
                               </span>
                             </div>
-                            <ChevronRight className="w-3 h-3 text-slate-300 group-hover:text-blue-500 transition-colors shrink-0" />
+                            <ChevronRight className="w-3 h-3 text-slate-300 group-hover:text-festival-teal transition-colors shrink-0" />
                           </Link>
                         ))}
                       </div>
@@ -1106,7 +1106,7 @@ export default function SearchClient() {
                           <button
                             type="button"
                             onClick={() => setActiveTab("products")}
-                            className="text-[11px] font-medium text-blue-600 hover:underline flex items-center gap-0.5 cursor-pointer"
+                            className="text-[11px] font-medium text-festival-teal hover:underline flex items-center gap-0.5 cursor-pointer"
                           >
                             <span>View all ({filteredProducts.length})</span>
                             <ChevronRight className="w-3 h-3" />
@@ -1119,7 +1119,7 @@ export default function SearchClient() {
                         {filteredProducts.map((prod) => (
                           <div
                             key={prod.id}
-                            className="bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-2xs p-2.5 flex flex-col justify-between group transition-all"
+                            className="bg-white border border-slate-200 rounded-xl hover:border-festival-teal hover:shadow-2xs p-2.5 flex flex-col justify-between group transition-all"
                           >
                             <div className="space-y-2">
                               {/* Image Container */}
@@ -1145,12 +1145,12 @@ export default function SearchClient() {
 
                               {/* Title & Brand */}
                               <div className="space-y-0.5">
-                                <span className="text-[9px] font-bold text-blue-600 uppercase tracking-wider truncate block">
+                                <span className="text-[9px] font-bold text-festival-teal uppercase tracking-wider truncate block">
                                   {prod.merchant?.name ||
                                     prod.category ||
                                     "Deal"}
                                 </span>
-                                <h3 className="text-[11px] font-medium text-slate-800 line-clamp-2 leading-snug group-hover:text-blue-600 transition-colors">
+                                <h3 className="text-[11px] font-medium text-slate-800 line-clamp-2 leading-snug group-hover:text-festival-teal transition-colors">
                                   {prod.title}
                                 </h3>
                               </div>
@@ -1182,7 +1182,7 @@ export default function SearchClient() {
                                 href={prod.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="h-6 px-2 rounded bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-semibold inline-flex items-center gap-1 transition-colors shrink-0"
+                                className="h-6 px-2 rounded bg-festival-pink hover:bg-[#E02253] text-white text-[10px] font-semibold inline-flex items-center gap-1 transition-colors shrink-0"
                               >
                                 <span>Shop</span>
                                 <ExternalLink className="w-2.5 h-2.5" />
@@ -1207,7 +1207,7 @@ export default function SearchClient() {
           >
             <SheetHeader className="p-3 border-b border-slate-100 flex flex-row items-center justify-between">
               <SheetTitle className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                <SlidersHorizontal className="w-3.5 h-3.5 text-blue-600" />
+                <SlidersHorizontal className="w-3.5 h-3.5 text-festival-teal" />
                 <span>Filters</span>
               </SheetTitle>
             </SheetHeader>
@@ -1229,7 +1229,7 @@ export default function SearchClient() {
                       key={opt.value}
                       className={`flex items-center gap-2 px-2 py-1.5 rounded text-[11px] font-medium cursor-pointer ${
                         minDiscount === opt.value
-                          ? "bg-blue-50 text-blue-700 font-bold"
+                          ? "bg-festival-teal/10 text-festival-teal font-bold"
                           : "text-slate-700"
                       }`}
                     >
@@ -1238,7 +1238,7 @@ export default function SearchClient() {
                         name="mobileMinDiscount"
                         checked={minDiscount === opt.value}
                         onChange={() => setMinDiscount(opt.value)}
-                        className="w-3 h-3 text-blue-600"
+                        className="w-3 h-3 text-festival-teal"
                       />
                       <span>{opt.label}</span>
                     </label>
@@ -1256,7 +1256,7 @@ export default function SearchClient() {
                     <label
                       className={`flex items-center gap-2 px-2 py-1.5 rounded text-[11px] font-medium cursor-pointer ${
                         selectedCategory === "all"
-                          ? "bg-blue-50 text-blue-700 font-bold"
+                          ? "bg-festival-teal/10 text-festival-teal font-bold"
                           : "text-slate-700"
                       }`}
                     >
@@ -1265,7 +1265,7 @@ export default function SearchClient() {
                         name="mobileCategory"
                         checked={selectedCategory === "all"}
                         onChange={() => setSelectedCategory("all")}
-                        className="w-3 h-3 text-blue-600"
+                        className="w-3 h-3 text-festival-teal"
                       />
                       <span>All Categories</span>
                     </label>
@@ -1275,7 +1275,7 @@ export default function SearchClient() {
                         key={cat}
                         className={`flex items-center gap-2 px-2 py-1.5 rounded text-[11px] font-medium cursor-pointer ${
                           selectedCategory === cat
-                            ? "bg-blue-50 text-blue-700 font-bold"
+                            ? "bg-festival-teal/10 text-festival-teal font-bold"
                             : "text-slate-700"
                         }`}
                       >
@@ -1284,7 +1284,7 @@ export default function SearchClient() {
                           name="mobileCategory"
                           checked={selectedCategory === cat}
                           onChange={() => setSelectedCategory(cat)}
-                          className="w-3 h-3 text-blue-600"
+                          className="w-3 h-3 text-festival-teal"
                         />
                         <span className="capitalize">{cat}</span>
                       </label>
@@ -1324,7 +1324,7 @@ export default function SearchClient() {
               <Button
                 size="sm"
                 onClick={() => setMobileFilterOpen(false)}
-                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-semibold h-8 rounded-lg"
+                className="flex-1 bg-festival-pink hover:bg-[#E02253] text-white text-[11px] font-semibold h-8 rounded-lg"
               >
                 Apply Filters
               </Button>

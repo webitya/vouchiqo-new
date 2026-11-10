@@ -15,13 +15,13 @@ export default function SuccessHero({
     <div className="rounded-xl bg-slate-900 text-white p-4 sm:p-5 shadow-xs border border-slate-800 font-sans">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-blue-600/20 text-blue-400 flex items-center justify-center shrink-0 border border-blue-500/30">
-            <CheckCircle2 className="w-5 h-5 text-blue-400" />
+          <div className="w-10 h-10 rounded-full bg-festival-teal/20 text-festival-teal/80 flex items-center justify-center shrink-0 border border-festival-teal/30">
+            <CheckCircle2 className="w-5 h-5 text-festival-teal/80" />
           </div>
 
           <div className="space-y-1">
             <div className="flex flex-wrap items-center gap-2">
-              <Badge className="bg-blue-600 text-white text-[10px] font-normal tracking-wide px-2 py-0.5 rounded-md border-none">
+              <Badge className="bg-festival-teal text-white text-[10px] font-normal tracking-wide px-2 py-0.5 rounded-md border-none">
                 Under Compliance Review
               </Badge>
 
@@ -47,7 +47,7 @@ export default function SuccessHero({
             <span className="text-[10px] font-normal text-slate-400 block">
               Application Reference ID
             </span>
-            <span className="text-xs font-medium text-blue-400">
+            <span className="text-xs font-medium text-festival-teal/80">
               #{applicationId}
             </span>
           </div>

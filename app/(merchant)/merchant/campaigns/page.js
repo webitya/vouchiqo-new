@@ -112,7 +112,7 @@ export default function MerchantCampaigns() {
                   toast.dismiss(t.id);
                   router.push("/merchant/billing");
                 }}
-                className="mt-1 bg-[#F72853] hover:bg-[#e01e47] text-white px-3 py-1.5 rounded-lg text-xs font-semibold self-start cursor-pointer transition-all"
+                className="mt-1 bg-[#FF2E63] hover:bg-[#e01e47] text-white px-3 py-1.5 rounded-lg text-xs font-semibold self-start cursor-pointer transition-all"
               >
                 Upgrade Plan
               </button>

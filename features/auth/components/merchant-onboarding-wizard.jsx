@@ -732,7 +732,7 @@ export function MerchantOnboardingWizard() {
   if (checkingExistingMerchant) {
     return (
       <div className="py-24 text-center flex flex-col items-center justify-center space-y-3 bg-white rounded-2xl border border-slate-200/90 shadow-sm max-w-xl mx-auto my-12">
-        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+        <Loader2 className="w-8 h-8 animate-spin text-festival-teal" />
         <p className="text-sm font-semibold text-slate-700">
           Checking merchant account status...
         </p>

@@ -344,7 +344,7 @@ export default function MerchantDetailPage({ params }) {
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-xl font-black text-slate-900 flex items-center gap-2">
-                  <Store className="w-5 h-5 text-blue-600" /> {bName}
+                  <Store className="w-5 h-5 text-festival-teal" /> {bName}
                 </h1>
                 <Badge
                   className={`rounded-full px-2.5 py-0.5 text-[9px] font-bold border-0 uppercase ${
@@ -380,7 +380,7 @@ export default function MerchantDetailPage({ params }) {
             <Button
               disabled={isAddingCredits}
               onClick={handleAddCredits}
-              className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl h-9 px-3.5 cursor-pointer shadow-xs"
+              className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-bold rounded-xl h-9 px-3.5 cursor-pointer shadow-xs"
             >
               {isAddingCredits
                 ? <Loader2 className="w-3.5 h-3.5 animate-spin mr-1" />
@@ -439,7 +439,7 @@ export default function MerchantDetailPage({ params }) {
             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
               Est Revenue (₹)
             </span>
-            <p className="text-2xl font-black text-blue-600">
+            <p className="text-2xl font-black text-festival-teal">
               ₹{(totalRedemptionsCount * 250).toLocaleString("en-IN")}
             </p>
           </Card>
@@ -460,38 +460,38 @@ export default function MerchantDetailPage({ params }) {
           <TabsList className="bg-slate-100/90 p-1.5 rounded-2xl border border-slate-200/80 flex flex-wrap gap-1 justify-start h-auto w-full">
             <TabsTrigger
               value="profile"
-              className="text-xs font-bold rounded-xl px-3 py-2 cursor-pointer data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-xs"
+              className="text-xs font-bold rounded-xl px-3 py-2 cursor-pointer data-[state=active]:bg-white data-[state=active]:text-festival-teal data-[state=active]:shadow-xs"
             >
               <Building2 className="w-3.5 h-3.5 mr-1" /> Business Profile
             </TabsTrigger>
             <TabsTrigger
               value="listings"
-              className="text-xs font-bold rounded-xl px-3 py-2 cursor-pointer data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-xs"
+              className="text-xs font-bold rounded-xl px-3 py-2 cursor-pointer data-[state=active]:bg-white data-[state=active]:text-festival-teal data-[state=active]:shadow-xs"
             >
               <Tag className="w-3.5 h-3.5 mr-1" /> Offer Listings (
               {totalCouponsCount})
             </TabsTrigger>
             <TabsTrigger
               value="subscriptions"
-              className="text-xs font-bold rounded-xl px-3 py-2 cursor-pointer data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-xs"
+              className="text-xs font-bold rounded-xl px-3 py-2 cursor-pointer data-[state=active]:bg-white data-[state=active]:text-festival-teal data-[state=active]:shadow-xs"
             >
               <CreditCard className="w-3.5 h-3.5 mr-1" /> Subscription History
             </TabsTrigger>
             <TabsTrigger
               value="commissions"
-              className="text-xs font-bold rounded-xl px-3 py-2 cursor-pointer data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-xs"
+              className="text-xs font-bold rounded-xl px-3 py-2 cursor-pointer data-[state=active]:bg-white data-[state=active]:text-festival-teal data-[state=active]:shadow-xs"
             >
               <DollarSign className="w-3.5 h-3.5 mr-1" /> Commission Ledger
             </TabsTrigger>
             <TabsTrigger
               value="tickets"
-              className="text-xs font-bold rounded-xl px-3 py-2 cursor-pointer data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-xs"
+              className="text-xs font-bold rounded-xl px-3 py-2 cursor-pointer data-[state=active]:bg-white data-[state=active]:text-festival-teal data-[state=active]:shadow-xs"
             >
               <LifeBuoy className="w-3.5 h-3.5 mr-1" /> Support Tickets
             </TabsTrigger>
             <TabsTrigger
               value="activity"
-              className="text-xs font-bold rounded-xl px-3 py-2 cursor-pointer data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-xs"
+              className="text-xs font-bold rounded-xl px-3 py-2 cursor-pointer data-[state=active]:bg-white data-[state=active]:text-festival-teal data-[state=active]:shadow-xs"
             >
               <Activity className="w-3.5 h-3.5 mr-1" /> Activity Log
             </TabsTrigger>
@@ -502,7 +502,7 @@ export default function MerchantDetailPage({ params }) {
             <Card className="border-slate-200/80 shadow-xs rounded-2xl bg-white p-6 space-y-6">
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-                  <Building2 className="w-4 h-4 text-blue-600" /> Full Verified
+                  <Building2 className="w-4 h-4 text-festival-teal" /> Full Verified
                   Merchant Profile
                 </h3>
                 <Badge
@@ -631,7 +631,7 @@ export default function MerchantDetailPage({ params }) {
                               href={shopImgUrl}
                               target="_blank"
                               rel="noreferrer"
-                              className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1 cursor-pointer"
+                              className="text-xs font-bold text-festival-teal hover:underline flex items-center gap-1 cursor-pointer"
                             >
                               <ExternalLink className="w-3.5 h-3.5" /> Full Size
                             </a>
@@ -666,7 +666,7 @@ export default function MerchantDetailPage({ params }) {
                               href={logoImgUrl}
                               target="_blank"
                               rel="noreferrer"
-                              className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1 cursor-pointer"
+                              className="text-xs font-bold text-festival-teal hover:underline flex items-center gap-1 cursor-pointer"
                             >
                               <ExternalLink className="w-3.5 h-3.5" /> Full Size
                             </a>
@@ -703,7 +703,7 @@ export default function MerchantDetailPage({ params }) {
                               href={bannerImgUrl}
                               target="_blank"
                               rel="noreferrer"
-                              className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1 cursor-pointer"
+                              className="text-xs font-bold text-festival-teal hover:underline flex items-center gap-1 cursor-pointer"
                             >
                               <ExternalLink className="w-3.5 h-3.5" /> Full Size
                             </a>
@@ -850,7 +850,7 @@ export default function MerchantDetailPage({ params }) {
                     key: "status",
                     header: "Status",
                     cell: (c) => (
-                      <Badge className="bg-blue-100 text-blue-800 text-[9px] font-bold">
+                      <Badge className="bg-festival-teal/10 text-festival-teal-dark text-[9px] font-bold">
                         {c.status}
                       </Badge>
                     ),

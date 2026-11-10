@@ -7,71 +7,105 @@
 @custom-variant data-closed (&[data-state="closed"], &[data-state="hidden"]);
 
 :root {
-  --font-sans: var(--font-inter), sans-serif;
-  --font-heading: var(--font-geist-sans), sans-serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* Brand Colors - Light Mode Defaults (Derived from Vouchiqo Logo & professional UI/UX laws) */
-  --brand-navy: #08214d;
-  --brand-blue: #3e80dd;
-  --brand-success: #2563eb;
-  --brand-warning: #f59e0b;
-  --brand-error: #ef4444;
-  --brand-bg: #ffffff;
-  --brand-surface: #f8fafc;
-  --brand-border: #e2e8f0;
-  --brand-text: #08214d;
-  --brand-subtext: #64748b;
+  /* Official Brand Primitives */
+  --royal-plum: #35104A;
+  --festival-teal: #007F79;
+  --festival-pink: #FF2E63;
+  --warm-ivory: #FFF8EF;
+  --golden-glow: #FFD166;
+  --marigold-glow: #FF8C05;
+
+  /* Vouchiqo Brand Semantic Tokens */
+  --brand-navy: #35104A;         /* Royal PLUM anchor */
+  --brand-blue: #007F79;         /* Festival Teal trust & action */
+  --brand-success: #007F79;      /* Festival Teal */
+  --brand-warning: #FF8C05;      /* Marigold Glow */
+  --brand-error: #FF2E63;        /* Festival Pink */
+  --brand-bg: #FFF8EF;           /* Warm Ivory canvas */
+  --brand-surface: #FFFDF9;      /* Warm surface */
+  --brand-border: #EADBCE;       /* Warm Ivory border */
+  --brand-text: #35104A;         /* Royal PLUM text */
+  --brand-subtext: #6B4C82;      /* Muted Royal PLUM */
+  --brand-plum: #35104A;
+  --brand-teal: #007F79;
+  --brand-pink: #FF2E63;
+  --brand-ivory: #FFF8EF;
+  --brand-marigold: #FF8C05;
+  --brand-gold: #FFD166;
+
+  /* Universal UI Component Tokens */
   --background: var(--brand-bg);
   --foreground: var(--brand-text);
-  --card: var(--brand-bg);
+  --card: #FFFFFF;
   --card-foreground: var(--brand-text);
-  --popover: var(--brand-bg);
+  --popover: #FFFFFF;
   --popover-foreground: var(--brand-text);
-  --primary: #2563eb;
-  --primary-foreground: #ffffff;
-  --secondary: #1d4ed8;
-  --secondary-foreground: #ffffff;
-  --muted: var(--brand-surface);
+  --primary: #007F79;            /* Festival Teal */
+  --primary-foreground: #FFFFFF;
+  --secondary: #35104A;          /* Royal PLUM */
+  --secondary-foreground: #FFFFFF;
+  --muted: #F7EFE6;
   --muted-foreground: var(--brand-subtext);
-  --accent: var(--brand-surface);
-  --accent-foreground: var(--brand-text);
-  --destructive: var(--brand-error);
+  --accent: #FF2E63;             /* Festival Pink */
+  --accent-foreground: #FFFFFF;
+  --destructive: #FF2E63;
   --border: var(--brand-border);
   --input: var(--brand-border);
-  --ring: var(--primary);
-  --chart-1: oklch(0.871 0.006 286.286);
-  --chart-2: oklch(0.552 0.016 285.938);
-  --chart-3: oklch(0.442 0.017 285.786);
-  --chart-4: oklch(0.37 0.013 285.805);
-  --chart-5: oklch(0.274 0.006 286.033);
-  --radius: 4px;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-primary: oklch(0.21 0.006 285.885);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.705 0.015 286.067);
+  --ring: #007F79;
+  --chart-1: #007F79;
+  --chart-2: #FF2E63;
+  --chart-3: #FF8C05;
+  --chart-4: #FFD166;
+  --chart-5: #35104A;
+  --radius: 6px;
+  --sidebar: #FFFDF9;
+  --sidebar-foreground: #35104A;
+  --sidebar-primary: #007F79;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #FFF8EF;
+  --sidebar-accent-foreground: #35104A;
+  --sidebar-border: #EADBCE;
+  --sidebar-ring: #007F79;
 }
 
 /* Note: Auto dark mode from OS preference is intentionally disabled.
    The site defaults to clean light mode with dark mode toggle support.
    Dark mode can be manually enabled by adding the .dark class to <html>. */
 
-/* Support .dark and [data-theme="dark"] class switches - styled with Vouchiqo Brand Dark Navy Palette */
+/* Support .dark and [data-theme="dark"] class switches - styled with Vouchiqo Brand Royal Plum Palette */
 .dark,
 [data-theme="dark"] {
-  --brand-navy: #f8fafc;
-  --brand-blue: #3b82f6;
-  --brand-success: #2563eb;
-  --brand-warning: #f59e0b;
-  --brand-error: #ef4444;
-  --brand-bg: #091932; /* Deep Navy Card backgrounds */
-  --brand-surface: #061327; /* Darker Navy Page backgrounds */
-  --brand-border: #1e293b;
-  --brand-text: #f8fafc;
-  --brand-subtext: #94a3b8;
+  --brand-navy: #FFF8EF;
+  --brand-blue: #00BFA5;
+  --brand-success: #00BFA5;
+  --brand-warning: #FF8C05;
+  --brand-error: #FF2E63;
+  --brand-bg: #1D062B;          /* Deep Royal Plum */
+  --brand-surface: #280C38;     /* Rich Plum Card Background */
+  --brand-border: #4A1A66;
+  --brand-text: #FFF8EF;        /* Warm Ivory Text */
+  --brand-subtext: #D5BEDE;
+  --background: var(--brand-bg);
+  --foreground: var(--brand-text);
+  --card: #280C38;
+  --card-foreground: var(--brand-text);
+  --popover: #280C38;
+  --popover-foreground: var(--brand-text);
+  --primary: #00BFA5;
+  --primary-foreground: #1D062B;
+  --secondary: #FFF8EF;
+  --secondary-foreground: #1D062B;
+  --muted: #280C38;
+  --muted-foreground: #D5BEDE;
+  --accent: #FF2E63;
+  --accent-foreground: #FFFFFF;
+  --destructive: #FF2E63;
+  --border: #4A1A66;
+  --input: #4A1A66;
+  --ring: #00BFA5;
 }
 
 .dark .text-brand-navy,
@@ -80,6 +114,20 @@
 }
 
 @theme {
+  --color-royal-plum: #35104A;
+  --color-festival-teal: #007F79;
+  --color-festival-pink: #FF2E63;
+  --color-warm-ivory: #FFF8EF;
+  --color-golden-glow: #FFD166;
+  --color-marigold-glow: #FF8C05;
+
+  --color-brand-plum: #35104A;
+  --color-brand-teal: #007F79;
+  --color-brand-pink: #FF2E63;
+  --color-brand-ivory: #FFF8EF;
+  --color-brand-gold: #FFD166;
+  --color-brand-marigold: #FF8C05;
+
   --color-brand-navy: var(--brand-navy);
   --color-brand-blue: var(--brand-blue);
   --color-brand-success: var(--brand-success);
@@ -91,8 +139,8 @@
   --color-brand-text: var(--brand-text);
   --color-brand-subtext: var(--brand-subtext);
 
-  --font-sans: var(--font-inter), sans-serif;
-  --font-heading: var(--font-geist-sans), sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
 
   --animate-ticker: ticker 50s linear infinite;
 
@@ -175,8 +223,17 @@ body {
 body {
   background-color: var(--brand-surface);
   color: var(--brand-text);
-  /* Vouchiqo primary font — Nunito Sans with Inter as fallback */
-  font-family: "Nunito Sans", var(--font-sans), sans-serif;
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading {
+  font-family: var(--font-heading);
 }
 
 /* ── Universal Pointer Cursor Enforcement for Interactive Elements ───────────── */
@@ -206,8 +263,8 @@ button:disabled,
 /* Highlighted SIDEBAR item during tour - clean crisp border without shadow spread */
 [data-tour-active="sidebar"] {
   background: #ffffff !important;
-  color: #1d4ed8 !important;
-  border: 1.5px solid #2563eb !important;
+  color: #007F79 !important;
+  border: 1.5px solid #007F79 !important;
   box-shadow: none !important;
   border-radius: 10px !important;
   position: relative !important;
@@ -216,13 +273,13 @@ button:disabled,
 }
 
 [data-tour-active="sidebar"] * {
-  color: #1d4ed8 !important;
+  color: #007F79 !important;
   font-weight: 700 !important;
 }
 
-/* Highlighted CONTENT element during tour — crisp thin blue outline without shadow spread */
+/* Highlighted CONTENT element during tour — crisp thin teal outline without shadow spread */
 [data-tour-active="content"] {
-  outline: 1.5px solid #2563eb !important;
+  outline: 1.5px solid #007F79 !important;
   outline-offset: 4px !important;
   box-shadow: none !important;
   border-radius: 10px !important;
@@ -232,7 +289,7 @@ button:disabled,
 }
 
 .bg-brand-gradient {
-  background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
+  background: linear-gradient(135deg, #35104A 0%, #007F79 100%);
   background-size: 200% auto;
   transition: background-position 0.3s ease;
 }
@@ -242,24 +299,25 @@ button:disabled,
 }
 
 .text-brand-gradient {
-  background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
+  background: linear-gradient(135deg, #35104A 0%, #007F79 50%, #FF2E63 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 /* Premium Button System */
 .btn-primary {
-  background-color: var(--brand-success);
+  background-color: var(--brand-teal);
   color: #ffffff;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-weight: 700;
   padding: 0.625rem 1.25rem;
-  border-radius: 0.25rem; /* 4px radius as per DESIGN.md shapes */
+  border-radius: 0.5rem;
   transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 127, 121, 0.22);
   position: relative;
   overflow: hidden;
 }
@@ -284,8 +342,8 @@ button:disabled,
 
 .btn-primary:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
-  background-color: var(--secondary);
+  box-shadow: 0 6px 16px rgba(0, 127, 121, 0.35);
+  background-color: #00635E;
 }
 
 .btn-primary:hover::after {
@@ -296,41 +354,43 @@ button:disabled,
 
 .btn-primary:active {
   transform: translateY(0) scale(0.96);
-  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 127, 121, 0.2);
 }
 
 .btn-secondary {
-  background-color: var(--brand-blue);
+  background-color: var(--brand-pink);
   color: #ffffff;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-weight: 700;
   padding: 0.625rem 1.25rem;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(62, 128, 221, 0.15);
+  box-shadow: 0 2px 8px rgba(255, 46, 99, 0.25);
 }
 
 .btn-secondary:hover {
-  background-color: #2b70cd;
+  background-color: #E02253;
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 6px 16px rgba(62, 128, 221, 0.3);
+  box-shadow: 0 6px 16px rgba(255, 46, 99, 0.35);
 }
 
 .btn-secondary:active {
   transform: translateY(0) scale(0.96);
-  box-shadow: 0 2px 4px rgba(62, 128, 221, 0.2);
+  box-shadow: 0 2px 4px rgba(255, 46, 99, 0.2);
 }
 
 .btn-tertiary {
   background-color: transparent;
-  border: 1px solid var(--brand-blue);
-  color: var(--brand-blue);
+  border: 1.5px solid var(--brand-teal);
+  color: var(--brand-teal);
+  font-family: var(--font-sans);
   font-weight: 600;
   padding: 0.625rem 1.25rem;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: inline-flex;
   align-items: center;
@@ -339,9 +399,9 @@ button:disabled,
 }
 
 .btn-tertiary:hover {
-  background-color: rgba(62, 128, 221, 0.08);
-  border-color: var(--brand-blue);
-  color: var(--brand-blue);
+  background-color: rgba(0, 127, 121, 0.08);
+  border-color: var(--brand-teal);
+  color: var(--brand-teal);
   transform: translateY(-2px);
 }
 
@@ -349,10 +409,94 @@ button:disabled,
   transform: translateY(0) scale(0.97);
 }
 
+.btn-festival {
+  background-color: #FF2E63;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255, 46, 99, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-festival:hover {
+  background-color: #E02253;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 46, 99, 0.35);
+}
+
+.btn-marigold {
+  background-color: #FF8C05;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255, 140, 5, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-marigold:hover {
+  background-color: #E67E00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 140, 5, 0.35);
+}
+
+.btn-plum {
+  background-color: #35104A;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(53, 16, 74, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-plum:hover {
+  background-color: #250B34;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(53, 16, 74, 0.35);
+}
+
+.btn-gold {
+  background-color: #FFD166;
+  color: #35104A;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255, 209, 102, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-gold:hover {
+  background-color: #F2C450;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 209, 102, 0.45);
+}
+
 /* Official Badge System */
 .badge-merchant-verified {
-  background-color: rgba(30, 79, 175, 0.1);
-  color: var(--brand-blue);
+  background-color: rgba(0, 127, 121, 0.12);
+  color: var(--brand-teal);
   font-size: 0.75rem;
   font-weight: 600;
   padding: 0.25rem 0.625rem;
@@ -360,17 +504,18 @@ button:disabled,
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
+  border: 1px solid rgba(0, 127, 121, 0.2);
   transition: all 0.2s ease;
 }
 
 .badge-merchant-verified:hover {
-  background-color: rgba(30, 79, 175, 0.15);
+  background-color: rgba(0, 127, 121, 0.18);
   transform: scale(1.05);
 }
 
 .badge-vouchiqo-verified {
-  background-color: rgba(0, 182, 122, 0.1);
-  color: var(--brand-success);
+  background-color: rgba(53, 16, 74, 0.1);
+  color: var(--brand-plum);
   font-size: 0.75rem;
   font-weight: 600;
   padding: 0.25rem 0.625rem;
@@ -378,11 +523,12 @@ button:disabled,
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
+  border: 1px solid rgba(53, 16, 74, 0.18);
 }
 
 .badge-worked-today {
-  background-color: rgba(255, 176, 32, 0.1);
-  color: var(--brand-warning);
+  background-color: rgba(255, 140, 5, 0.12);
+  color: var(--brand-marigold);
   font-size: 0.75rem;
   font-weight: 600;
   padding: 0.25rem 0.625rem;
@@ -390,11 +536,12 @@ button:disabled,
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
+  border: 1px solid rgba(255, 140, 5, 0.25);
 }
 
 .badge-success-rate {
-  background-color: rgba(0, 182, 122, 0.05);
-  color: var(--brand-success);
+  background-color: rgba(0, 127, 121, 0.08);
+  color: var(--brand-teal);
   font-size: 0.75rem;
   font-weight: 600;
   padding: 0.25rem 0.625rem;
@@ -402,6 +549,7 @@ button:disabled,
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
+  border: 1px solid rgba(0, 127, 121, 0.18);
 }
 
 /* Coupon Ticket Concave Edge Effect */
@@ -434,7 +582,7 @@ button:disabled,
 }
 
 @theme inline {
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-heading);
   --font-sans: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -664,7 +812,7 @@ button:disabled,
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
+  background: linear-gradient(90deg, #007F79 0%, #00605B 100%);
   transform: scale-x(0);
   transition: transform 0.25s ease-out;
   transform-origin: left;
@@ -696,7 +844,7 @@ button:disabled,
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
+  background: linear-gradient(90deg, #007F79 0%, #00605B 100%);
   transform: scale-x(1);
   z-index: 20;
 }

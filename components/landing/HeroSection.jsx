@@ -370,7 +370,7 @@ export function HeroSection({ banners = [] }) {
             <button
               type="button"
               onClick={() => scrollThumbBar("left")}
-              className="hidden sm:flex absolute left-1 z-10 items-center justify-center w-6 h-6 rounded-full bg-white border border-slate-200 shadow-md text-slate-700 hover:text-blue-600 hover:border-blue-400 transition-all opacity-0 group-hover/thumb:opacity-100 cursor-pointer"
+              className="hidden sm:flex absolute left-1 z-10 items-center justify-center w-6 h-6 rounded-full bg-white border border-brand-border shadow-md text-royal-plum hover:text-festival-teal hover:border-festival-teal transition-all opacity-0 group-hover/thumb:opacity-100 cursor-pointer"
               aria-label="Scroll logos left"
             >
               <ChevronLeft className="w-3.5 h-3.5" />
@@ -404,8 +404,8 @@ export function HeroSection({ banners = [] }) {
                   type="button"
                   className={`relative flex-none shrink-0 inline-flex items-center justify-center cursor-pointer border rounded-md bg-white p-1.5 w-[76px] sm:w-[84px] h-[36px] sm:h-[40px] transition-all duration-200 ${
                     isActive
-                      ? "border-blue-600 shadow-sm ring-1 ring-blue-600/30 scale-105"
-                      : "border-slate-200 hover:border-blue-400 opacity-80 hover:opacity-100"
+                      ? "border-festival-pink shadow-sm ring-1 ring-festival-pink/40 scale-105"
+                      : "border-brand-border hover:border-festival-pink/60 opacity-80 hover:opacity-100"
                   }`}
                   title={titleText}
                 >
@@ -421,7 +421,7 @@ export function HeroSection({ banners = [] }) {
                       className="max-w-full max-h-full w-auto h-auto object-contain rounded-md select-none pointer-events-none"
                     />
                   ) : (
-                    <span className="text-[9px] sm:text-[10px] font-bold text-slate-700 truncate max-w-full text-center uppercase px-0.5 select-none">
+                    <span className="text-[9px] sm:text-[10px] font-bold font-heading text-royal-plum truncate max-w-full text-center uppercase px-0.5 select-none">
                       {titleText}
                     </span>
                   )}
@@ -435,7 +435,7 @@ export function HeroSection({ banners = [] }) {
             <button
               type="button"
               onClick={() => scrollThumbBar("right")}
-              className="hidden sm:flex absolute right-1 z-10 items-center justify-center w-6 h-6 rounded-full bg-white border border-slate-200 shadow-md text-slate-700 hover:text-blue-600 hover:border-blue-400 transition-all opacity-0 group-hover/thumb:opacity-100 cursor-pointer"
+              className="hidden sm:flex absolute right-1 z-10 items-center justify-center w-6 h-6 rounded-full bg-white border border-brand-border shadow-md text-royal-plum hover:text-festival-teal hover:border-festival-teal transition-all opacity-0 group-hover/thumb:opacity-100 cursor-pointer"
               aria-label="Scroll logos right"
             >
               <ChevronRight className="w-3.5 h-3.5" />

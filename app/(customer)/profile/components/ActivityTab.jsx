@@ -37,7 +37,7 @@ export default function ActivityTab() {
         ].map((act, idx) => (
           <div key={idx} className="relative space-y-0.5">
             {/* Dot */}
-            <div className="absolute left-[-21px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#F72853] border-2 border-white shadow-2xs"></div>
+            <div className="absolute left-[-21px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#FF2E63] border-2 border-white shadow-2xs"></div>
             <div className="flex items-center justify-between text-xs">
               <span className="text-slate-800 font-medium">{act.message}</span>
               <span className="text-[9.5px] text-slate-400 font-normal">

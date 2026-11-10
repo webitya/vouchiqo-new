@@ -120,7 +120,7 @@ export const UserMenu = () => {
     return (
       <Link
         href="/login"
-        className="h-9 text-[13px] font-semibold bg-[#2563eb] text-white hover:bg-[#1d4ed8] rounded-lg px-4 flex items-center justify-center gap-1.5 whitespace-nowrap transition-all duration-200 hover:shadow-sm shrink-0"
+        className="h-9 text-[13px] font-semibold bg-festival-teal text-white hover:bg-festival-teal-dark rounded-lg px-4 flex items-center justify-center gap-1.5 whitespace-nowrap transition-all duration-200 hover:shadow-sm shrink-0"
       >
         <User className="h-3.5 w-3.5" />
         Login
@@ -194,9 +194,9 @@ export const UserMenu = () => {
     }
     const initials = getInitials(session.user.name);
     const avatarClass = isAdmin
-      ? "bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 text-white border-purple-200"
+      ? "bg-gradient-to-br from-[#35104A] via-[#1D062B] to-[#007F79] text-white border-purple-200"
       : isMerchant
-        ? "bg-gradient-to-br from-blue-500 to-cyan-500 text-white border-blue-200"
+        ? "bg-gradient-to-br from-[#007F79] to-[#00635E] text-white border-brand-border"
         : "bg-slate-100 text-slate-800 border-slate-200";
     return (
       <div
@@ -213,7 +213,7 @@ export const UserMenu = () => {
         onClick={() => setOpen((v) => !v)}
         className={`rounded-full transition-all focus:outline-none cursor-pointer flex items-center justify-center p-0.5 border-2 ${
           open
-            ? "border-[#2563eb] bg-[#eff6ff]"
+            ? "border-festival-teal bg-warm-ivory"
             : "border-transparent hover:border-gray-200"
         }`}
         aria-label="User menu"
@@ -235,8 +235,8 @@ export const UserMenu = () => {
                   <ShieldCheck className="w-2.5 h-2.5 text-purple-600" /> ADMIN
                 </span>
               ) : isMerchant ? (
-                <span className="text-[8.5px] font-bold px-1.5 py-0.5 rounded-full shrink-0 bg-blue-50 text-blue-700 border border-blue-200/80 inline-flex items-center gap-1">
-                  <Store className="w-2.5 h-2.5 text-blue-600" /> MERCHANT
+                <span className="text-[8.5px] font-bold px-1.5 py-0.5 rounded-full shrink-0 bg-warm-ivory text-festival-teal border border-brand-border inline-flex items-center gap-1">
+                  <Store className="w-2.5 h-2.5 text-festival-teal" /> MERCHANT
                 </span>
               ) : (
                 <span className="text-[8.5px] font-semibold px-1.5 py-0.5 rounded-full shrink-0 bg-slate-100 text-slate-700 border border-slate-200 inline-flex items-center gap-1">
@@ -254,7 +254,7 @@ export const UserMenu = () => {
               key={href}
               href={href}
               onClick={() => setOpen(false)}
-              className="flex items-center gap-3 px-4 py-2.5 text-[13px] font-medium text-gray-700 hover:bg-[#eff6ff] hover:text-[#2563eb] transition-colors"
+              className="flex items-center gap-3 px-4 py-2.5 text-[13px] font-medium text-gray-700 hover:bg-warm-ivory hover:text-festival-teal transition-colors"
             >
               <Icon className="h-4 w-4 shrink-0" />
               {label}

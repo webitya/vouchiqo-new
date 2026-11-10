@@ -12,7 +12,7 @@ function BlueVerifiedTick({ className = "w-4 h-4" }) {
       aria-label="Verified"
       className={`${className} flex-shrink-0 inline-block`}
     >
-      <circle cx="12" cy="12" r="10" fill="#2563EB" />
+      <circle cx="12" cy="12" r="10" fill="#007F79" />
       <path
         d="M8.5 12.2l2.4 2.4 5-5"
         stroke="#ffffff"
@@ -50,7 +50,7 @@ export default function MobileBrandHeader({
           <li>
             <Link
               href="/"
-              className="text-slate-500 hover:text-blue-600 transition-colors"
+              className="text-slate-500 hover:text-festival-teal transition-colors"
             >
               Home
             </Link>
@@ -59,7 +59,7 @@ export default function MobileBrandHeader({
           <li>
             <Link
               href="/brands"
-              className="text-slate-500 hover:text-blue-600 transition-colors"
+              className="text-slate-500 hover:text-festival-teal transition-colors"
             >
               Brands
             </Link>
@@ -123,7 +123,7 @@ export default function MobileBrandHeader({
                   {merchant.businessName}
                 </h1>
                 {merchant.isVerified !== false && (
-                  <BlueVerifiedTick className="w-4 h-4 text-blue-600" />
+                  <BlueVerifiedTick className="w-4 h-4 text-festival-teal" />
                 )}
               </div>
 
@@ -176,7 +176,7 @@ export default function MobileBrandHeader({
             <button
               type="button"
               onClick={handleShareClick}
-              className="bg-[#2563eb] hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs sm:text-sm px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl shadow-2xs flex items-center gap-1.5 cursor-pointer active:scale-95 transition-all"
+              className="bg-festival-teal hover:bg-[#00635E] active:bg-[#004D49] text-white font-semibold text-xs sm:text-sm px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl shadow-2xs flex items-center gap-1.5 cursor-pointer active:scale-95 transition-all font-heading"
             >
               <Share2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
               <span>Share</span>

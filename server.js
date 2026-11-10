@@ -10,7 +10,7 @@ import { initSocketIO } from "./lib/socket/server.js";
 
 const dev = process.env.NODE_ENV !== "production";
 const port = Number.parseInt(process.env.PORT || "3000", 10);
-const app = next({ dev });
+const app = next({ dev, turbo: false });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {

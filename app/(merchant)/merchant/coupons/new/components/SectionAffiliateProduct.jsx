@@ -171,7 +171,7 @@ export default function SectionAffiliateProduct({ merchant }) {
         <div className="flex items-center justify-between border-b border-slate-100 pb-3">
           <div>
             <h2 className="text-sm font-semibold text-slate-900 flex items-center gap-1.5">
-              <ShoppingBag className="w-4 h-4 text-[#F72853]" />
+              <ShoppingBag className="w-4 h-4 text-[#FF2E63]" />
               Website Product Details
             </h2>
             <p className="text-[11px] text-slate-500">
@@ -195,7 +195,7 @@ export default function SectionAffiliateProduct({ merchant }) {
               placeholder="e.g. Handmade Ceramic Cup or Wireless Earbuds"
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
-              className="w-full bg-slate-50/70 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-[#F72853] focus:ring-1 focus:ring-[#F72853]/20 focus:bg-white transition-all font-normal placeholder:text-slate-400"
+              className="w-full bg-slate-50/70 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-[#FF2E63] focus:ring-1 focus:ring-[#FF2E63]/20 focus:bg-white transition-all font-normal placeholder:text-slate-400"
               required
             />
           </div>
@@ -204,7 +204,7 @@ export default function SectionAffiliateProduct({ merchant }) {
             <label className="text-xs font-medium text-slate-700 block flex items-center justify-between">
               <span>Category *</span>
               {merchantCategory && (
-                <span className="text-[10px] font-medium text-[#F72853] flex items-center gap-0.5">
+                <span className="text-[10px] font-medium text-[#FF2E63] flex items-center gap-0.5">
                   <Lock className="w-2.5 h-2.5" /> Profile Category
                 </span>
               )}
@@ -215,7 +215,7 @@ export default function SectionAffiliateProduct({ merchant }) {
                 <span className="truncate">
                   {form.category || merchantCategory}
                 </span>
-                <span className="inline-flex items-center gap-0.5 text-[9px] font-semibold text-[#F72853] bg-white border border-rose-200/80 px-1.5 py-0.5 rounded-md shrink-0">
+                <span className="inline-flex items-center gap-0.5 text-[9px] font-semibold text-[#FF2E63] bg-white border border-rose-200/80 px-1.5 py-0.5 rounded-md shrink-0">
                   <Lock className="w-2.5 h-2.5" /> Auto-set
                 </span>
               </div>
@@ -223,7 +223,7 @@ export default function SectionAffiliateProduct({ merchant }) {
               <select
                 value={form.category}
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
-                className="w-full bg-slate-50/70 border border-slate-200 rounded-xl px-2.5 py-2 text-xs text-slate-900 focus:outline-none focus:border-[#F72853] focus:bg-white transition-all font-normal cursor-pointer"
+                className="w-full bg-slate-50/70 border border-slate-200 rounded-xl px-2.5 py-2 text-xs text-slate-900 focus:outline-none focus:border-[#FF2E63] focus:bg-white transition-all font-normal cursor-pointer"
               >
                 {CATEGORIES.map((c) => (
                   <option key={c} value={c}>
@@ -238,7 +238,7 @@ export default function SectionAffiliateProduct({ merchant }) {
         {/* Destination Product Link URL */}
         <div className="space-y-1">
           <label className="text-xs font-medium text-slate-700 block flex items-center gap-1">
-            <LinkIcon className="w-3.5 h-3.5 text-[#F72853]" />
+            <LinkIcon className="w-3.5 h-3.5 text-[#FF2E63]" />
             Website Product URL (Direct Buy Page) *
           </label>
           <input
@@ -246,7 +246,7 @@ export default function SectionAffiliateProduct({ merchant }) {
             placeholder="https://yourstore.com/products/summer-jacket"
             value={form.affiliateUrl}
             onChange={(e) => setForm({ ...form, affiliateUrl: e.target.value })}
-            className="w-full bg-slate-50/70 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-[#F72853] focus:ring-1 focus:ring-[#F72853]/20 focus:bg-white transition-all font-normal placeholder:text-slate-400 font-mono text-[11px]"
+            className="w-full bg-slate-50/70 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-[#FF2E63] focus:ring-1 focus:ring-[#FF2E63]/20 focus:bg-white transition-all font-normal placeholder:text-slate-400 font-mono text-[11px]"
             required
           />
           <p className="text-[10px] text-slate-400">
@@ -259,7 +259,7 @@ export default function SectionAffiliateProduct({ merchant }) {
         <div className="bg-slate-50/80 border border-slate-200/80 p-3 sm:p-3.5 rounded-2xl space-y-2.5">
           <div className="flex items-center justify-between flex-wrap gap-2">
             <span className="text-xs font-semibold text-slate-800 flex items-center gap-1">
-              <IndianRupee className="w-3.5 h-3.5 text-[#F72853]" />
+              <IndianRupee className="w-3.5 h-3.5 text-[#FF2E63]" />
               Pricing &amp; Discount Deal
             </span>
 
@@ -270,7 +270,7 @@ export default function SectionAffiliateProduct({ merchant }) {
                 onClick={() => setPricingMode("percent")}
                 className={`px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer ${
                   pricingMode === "percent"
-                    ? "bg-[#F72853] text-white font-medium shadow-xs"
+                    ? "bg-[#FF2E63] text-white font-medium shadow-xs"
                     : "text-slate-600 hover:text-slate-900 font-normal"
                 }`}
               >
@@ -281,7 +281,7 @@ export default function SectionAffiliateProduct({ merchant }) {
                 onClick={() => setPricingMode("fixed")}
                 className={`px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer ${
                   pricingMode === "fixed"
-                    ? "bg-[#F72853] text-white font-medium shadow-xs"
+                    ? "bg-[#FF2E63] text-white font-medium shadow-xs"
                     : "text-slate-600 hover:text-slate-900 font-normal"
                 }`}
               >
@@ -292,7 +292,7 @@ export default function SectionAffiliateProduct({ merchant }) {
                 onClick={() => setPricingMode("exact")}
                 className={`px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer ${
                   pricingMode === "exact"
-                    ? "bg-[#F72853] text-white font-medium shadow-xs"
+                    ? "bg-[#FF2E63] text-white font-medium shadow-xs"
                     : "text-slate-600 hover:text-slate-900 font-normal"
                 }`}
               >
@@ -319,7 +319,7 @@ export default function SectionAffiliateProduct({ merchant }) {
                       discountText: val ? `${val}% OFF` : "",
                     });
                   }}
-                  className="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-[#F72853] focus:ring-1 focus:ring-[#F72853]/20"
+                  className="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-[#FF2E63] focus:ring-1 focus:ring-[#FF2E63]/20"
                 />
               </div>
 
@@ -334,7 +334,7 @@ export default function SectionAffiliateProduct({ merchant }) {
                   onChange={(e) =>
                     setForm({ ...form, discountText: e.target.value })
                   }
-                  className="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-900 font-medium focus:outline-none focus:border-[#F72853] focus:ring-1 focus:ring-[#F72853]/20"
+                  className="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-900 font-medium focus:outline-none focus:border-[#FF2E63] focus:ring-1 focus:ring-[#FF2E63]/20"
                 />
               </div>
             </div>
@@ -356,7 +356,7 @@ export default function SectionAffiliateProduct({ merchant }) {
                       discountText: val ? `Deal @ ₹${val}` : form.discountText,
                     });
                   }}
-                  className="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-[#F72853] focus:ring-1 focus:ring-[#F72853]/20"
+                  className="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-[#FF2E63] focus:ring-1 focus:ring-[#FF2E63]/20"
                 />
               </div>
 
@@ -371,7 +371,7 @@ export default function SectionAffiliateProduct({ merchant }) {
                   onChange={(e) =>
                     setForm({ ...form, discountText: e.target.value })
                   }
-                  className="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-900 font-medium focus:outline-none focus:border-[#F72853] focus:ring-1 focus:ring-[#F72853]/20"
+                  className="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-900 font-medium focus:outline-none focus:border-[#FF2E63] focus:ring-1 focus:ring-[#FF2E63]/20"
                 />
               </div>
             </div>
@@ -388,7 +388,7 @@ export default function SectionAffiliateProduct({ merchant }) {
                   onChange={(e) =>
                     setForm({ ...form, originalPrice: e.target.value })
                   }
-                  className="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-[#F72853] focus:ring-1 focus:ring-[#F72853]/20"
+                  className="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-[#FF2E63] focus:ring-1 focus:ring-[#FF2E63]/20"
                 />
               </div>
 
@@ -403,7 +403,7 @@ export default function SectionAffiliateProduct({ merchant }) {
                   onChange={(e) =>
                     setForm({ ...form, discountPrice: e.target.value })
                   }
-                  className="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-[#F72853] focus:ring-1 focus:ring-[#F72853]/20"
+                  className="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-[#FF2E63] focus:ring-1 focus:ring-[#FF2E63]/20"
                 />
               </div>
             </div>
@@ -419,9 +419,9 @@ export default function SectionAffiliateProduct({ merchant }) {
           <div className="flex items-center gap-2">
             <label className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200/80 text-slate-700 font-semibold text-xs rounded-xl border border-slate-200 cursor-pointer transition-colors inline-flex items-center gap-1.5 shrink-0">
               {uploadingImage ? (
-                <Loader2 className="w-3.5 h-3.5 animate-spin text-[#F72853]" />
+                <Loader2 className="w-3.5 h-3.5 animate-spin text-[#FF2E63]" />
               ) : (
-                <UploadCloud className="w-3.5 h-3.5 text-[#F72853]" />
+                <UploadCloud className="w-3.5 h-3.5 text-[#FF2E63]" />
               )}
               <span>Upload Photo</span>
               <input
@@ -438,7 +438,7 @@ export default function SectionAffiliateProduct({ merchant }) {
               placeholder="Or paste direct image URL (https://...)"
               value={form.imageUrl}
               onChange={(e) => setForm({ ...form, imageUrl: e.target.value })}
-              className="w-full bg-slate-50/70 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-[#F72853] focus:bg-white transition-all font-normal placeholder:text-slate-400 font-mono text-[11px]"
+              className="w-full bg-slate-50/70 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-[#FF2E63] focus:bg-white transition-all font-normal placeholder:text-slate-400 font-mono text-[11px]"
             />
           </div>
 
@@ -466,7 +466,7 @@ export default function SectionAffiliateProduct({ merchant }) {
             placeholder="Add key highlights like 1-Year Warranty, 100% Cotton, Free Delivery, etc."
             value={form.description}
             onChange={(e) => setForm({ ...form, description: e.target.value })}
-            className="w-full bg-slate-50/70 border border-slate-200 rounded-xl p-3 text-xs text-slate-900 focus:outline-none focus:border-[#F72853] focus:ring-1 focus:ring-[#F72853]/20 focus:bg-white transition-all font-normal placeholder:text-slate-400 resize-none"
+            className="w-full bg-slate-50/70 border border-slate-200 rounded-xl p-3 text-xs text-slate-900 focus:outline-none focus:border-[#FF2E63] focus:ring-1 focus:ring-[#FF2E63]/20 focus:bg-white transition-all font-normal placeholder:text-slate-400 resize-none"
           />
         </div>
 
@@ -482,7 +482,7 @@ export default function SectionAffiliateProduct({ merchant }) {
           <button
             type="submit"
             disabled={loading}
-            className="px-5 py-2 bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-semibold rounded-xl shadow-xs hover:shadow-sm transition-all cursor-pointer flex items-center gap-1.5 disabled:opacity-50"
+            className="px-5 py-2 bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-semibold rounded-xl shadow-xs hover:shadow-sm transition-all cursor-pointer flex items-center gap-1.5 disabled:opacity-50"
           >
             {loading ? (
               <>
@@ -503,7 +503,7 @@ export default function SectionAffiliateProduct({ merchant }) {
       <div className="lg:col-span-5 sticky top-20 space-y-2 text-left">
         <div className="flex items-center justify-between px-1">
           <span className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
-            <Eye className="w-3.5 h-3.5 text-[#F72853]" />
+            <Eye className="w-3.5 h-3.5 text-[#FF2E63]" />
             Live Shopper Card Preview
           </span>
           <span className="text-[10px] text-slate-400">

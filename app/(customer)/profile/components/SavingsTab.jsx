@@ -35,7 +35,7 @@ import {
 } from "@/components/ui/table";
 
 const DONUT_COLORS = [
-  "#F72853",
+  "#FF2E63",
   "#10B981",
   "#6366F1",
   "#F59E0B",
@@ -177,17 +177,17 @@ export default function SavingsTab({
           icon={TrendingUp}
           variant="blue"
         />
-        <div className="bg-gradient-to-br from-rose-50/70 via-white to-pink-50/20 border border-rose-200/70 hover:border-[#F72853] rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-2xs hover:shadow-[0_8px_20px_rgba(247,40,83,0.12)] transition-all duration-300 flex flex-col justify-between group">
+        <div className="bg-gradient-to-br from-rose-50/70 via-white to-pink-50/20 border border-rose-200/70 hover:border-[#FF2E63] rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-2xs hover:shadow-[0_8px_20px_rgba(247,40,83,0.12)] transition-all duration-300 flex flex-col justify-between group">
           <div className="flex items-center justify-between gap-1.5 mb-1">
             <span className="text-[9.5px] sm:text-[10.5px] text-slate-500 font-medium uppercase tracking-wider block truncate">
               Savings Rate
             </span>
-            <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-rose-50 border border-rose-200/60 text-[#F72853] flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-all">
+            <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-rose-50 border border-rose-200/60 text-[#FF2E63] flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-all">
               <Percent className="w-3.5 h-3.5" />
             </div>
           </div>
           <div className="my-0.5">
-            <span className="text-base sm:text-xl font-medium text-[#F72853] tracking-tight leading-none block">
+            <span className="text-base sm:text-xl font-medium text-[#FF2E63] tracking-tight leading-none block">
               {savingsData?.kpis?.savingsRate || 0}%
             </span>
           </div>
@@ -203,7 +203,7 @@ export default function SavingsTab({
           <h3 className="text-xs sm:text-[13px] font-medium text-slate-800 tracking-tight flex items-center gap-1.5">
             <span>Savings Milestone Badges</span>
           </h3>
-          <span className="text-[10px] sm:text-[10.5px] text-[#F72853] font-normal bg-rose-50 border border-rose-200/60 px-2 py-0.5 rounded-full">
+          <span className="text-[10px] sm:text-[10.5px] text-[#FF2E63] font-normal bg-rose-50 border border-rose-200/60 px-2 py-0.5 rounded-full">
             {savingsData?.milestones?.filter((m) => m.achieved)?.length || 0} /{" "}
             {savingsData?.milestones?.length || 0} Unlocked
           </span>
@@ -273,7 +273,7 @@ export default function SavingsTab({
                   onClick={() => setTimelineRange(r)}
                   className={`text-[9.5px] sm:text-[10px] font-medium px-2.5 py-0.5 rounded-md transition-all uppercase cursor-pointer border-0 ${
                     timelineRange === r
-                      ? "bg-white text-[#F72853] shadow-2xs border border-rose-100"
+                      ? "bg-white text-[#FF2E63] shadow-2xs border border-rose-100"
                       : "text-slate-500 hover:text-slate-800 bg-transparent"
                   }`}
                 >
@@ -407,7 +407,7 @@ export default function SavingsTab({
               <span className="text-[9px] text-slate-500 block font-normal">
                 I SAVED THIS MONTH
               </span>
-              <span className="text-xl sm:text-2xl font-medium text-[#F72853] tracking-tight block">
+              <span className="text-xl sm:text-2xl font-medium text-[#FF2E63] tracking-tight block">
                 ₹{savingsData?.kpis?.totalSavedMonth?.toLocaleString("en-IN") || 0}
               </span>
               <span className="text-[8.5px] text-slate-400 block font-normal">
@@ -418,7 +418,7 @@ export default function SavingsTab({
 
           <Button
             onClick={handleShareSavings}
-            className="w-full py-2 rounded-lg text-xs font-normal text-white bg-[#F72853] hover:bg-[#df1c44] border-0 h-auto cursor-pointer flex justify-center items-center gap-1.5 shadow-2xs transition-colors"
+            className="w-full py-2 rounded-lg text-xs font-normal text-white bg-[#FF2E63] hover:bg-[#df1c44] border-0 h-auto cursor-pointer flex justify-center items-center gap-1.5 shadow-2xs transition-colors"
           >
             {copiedShareCard ? (
               <Check className="w-3.5 h-3.5" />
@@ -443,7 +443,7 @@ export default function SavingsTab({
               <button
                 type="button"
                 onClick={() => setSelectedCategory(null)}
-                className="text-[9px] font-medium text-[#F72853] uppercase hover:underline cursor-pointer bg-transparent border-0"
+                className="text-[9px] font-medium text-[#FF2E63] uppercase hover:underline cursor-pointer bg-transparent border-0"
               >
                 Clear Filter
               </button>
@@ -508,7 +508,7 @@ export default function SavingsTab({
                     }
                     className={`w-full flex items-center justify-between text-[10.5px] p-1 rounded-md transition-colors cursor-pointer border-0 ${
                       selectedCategory === slice.category
-                        ? "bg-rose-50 text-[#F72853] font-medium"
+                        ? "bg-rose-50 text-[#FF2E63] font-medium"
                         : "text-slate-600 hover:bg-slate-50 font-normal"
                     }`}
                   >
@@ -545,7 +545,7 @@ export default function SavingsTab({
                   className="flex items-center justify-between p-2 rounded-lg border border-slate-100 hover:border-rose-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors"
                 >
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-7 h-7 rounded-md bg-white border border-slate-200 flex items-center justify-center text-xs font-medium text-[#F72853] shrink-0">
+                    <div className="w-7 h-7 rounded-md bg-white border border-slate-200 flex items-center justify-center text-xs font-medium text-[#FF2E63] shrink-0">
                       {m.brand?.[0]}
                     </div>
                     <div className="min-w-0">
@@ -593,14 +593,14 @@ export default function SavingsTab({
                   setSearchTerm(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="pl-8 pr-2.5 py-1 text-xs h-8 rounded-lg border-slate-200 focus-visible:ring-1 focus-visible:ring-[#F72853]"
+                className="pl-8 pr-2.5 py-1 text-xs h-8 rounded-lg border-slate-200 focus-visible:ring-1 focus-visible:ring-[#FF2E63]"
               />
             </div>
             <Button
               onClick={handleExportCSV}
               variant="outline"
               size="sm"
-              className="h-8 px-2.5 text-xs font-normal border-slate-200 hover:border-rose-200 hover:text-[#F72853] text-slate-600 rounded-lg cursor-pointer"
+              className="h-8 px-2.5 text-xs font-normal border-slate-200 hover:border-rose-200 hover:text-[#FF2E63] text-slate-600 rounded-lg cursor-pointer"
             >
               <Download className="w-3.5 h-3.5 mr-1" />
               CSV

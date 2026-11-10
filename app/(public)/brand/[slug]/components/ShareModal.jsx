@@ -35,7 +35,7 @@ export default function ShareModal({
         </button>
 
         <div>
-          <div className="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 mx-auto flex items-center justify-center mb-2">
+          <div className="w-10 h-10 rounded-2xl bg-festival-teal/10 text-festival-teal mx-auto flex items-center justify-center mb-2">
             <Share2 className="w-5 h-5" />
           </div>
           <h3 className="text-base font-extrabold text-slate-900">
@@ -129,7 +129,7 @@ export default function ShareModal({
             <button
               type="button"
               onClick={copyShareLink}
-              className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded-xl transition-all cursor-pointer flex items-center gap-1 shrink-0 active:scale-95"
+              className="bg-festival-teal hover:bg-[#00635E] text-white text-xs font-bold px-3 py-1.5 rounded-xl transition-all cursor-pointer flex items-center gap-1 shrink-0 active:scale-95"
             >
               {shareCopied ? (
                 <>

@@ -21,8 +21,8 @@ export default function WelcomeModal({
     <Dialog open={isOpen} onOpenChange={(open) => !open && onSkip()}>
       <DialogContent className="sm:max-w-md border-slate-200/90 bg-white text-slate-900 rounded-2xl shadow-2xl p-6 border text-left font-sans">
         <DialogHeader className="space-y-3">
-          <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 border border-blue-200 flex items-center justify-center">
-            <Store className="w-6 h-6 text-blue-600" />
+          <div className="w-12 h-12 rounded-2xl bg-festival-teal/10 text-festival-teal border border-brand-border flex items-center justify-center">
+            <Store className="w-6 h-6 text-festival-teal" />
           </div>
           <DialogTitle className="text-xl font-bold tracking-tight text-slate-900 flex items-center gap-2 font-sans">
             Welcome to Vouchiqo, {merchantName || "Partner"}!
@@ -56,7 +56,7 @@ export default function WelcomeModal({
           <Button
             type="button"
             onClick={onStart}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs px-5 py-2.5 rounded-xl cursor-pointer shadow-md shadow-blue-600/20 font-sans"
+            className="bg-festival-teal hover:bg-[#00635E] text-white font-semibold text-xs px-5 py-2.5 rounded-xl cursor-pointer shadow-md shadow-festival-teal/20 font-sans"
           >
             Start Tour →
           </Button>

@@ -168,14 +168,14 @@ export const TrendingOffer = ({ banners = [] }) => {
   if (!slides || slides.length === 0) return null;
 
   return (
-    <section className="text-left w-full select-none">
+    <section className="text-left w-full select-none font-sans">
       {/* Heading with slide counter */}
       <div className="flex justify-between items-center mb-2.5 sm:mb-3.5">
-        <h2 className="text-base sm:text-lg md:text-xl font-medium text-[#F72853] tracking-tight">
+        <h2 className="text-base sm:text-lg md:text-xl font-heading font-bold text-[#FF2E63] tracking-tight">
           Trending Offer
         </h2>
         {total > 1 && (
-          <span className="text-[11px] font-medium text-slate-500 hidden sm:inline-block">
+          <span className="text-[11px] font-medium text-[#6B4C82] hidden sm:inline-block">
             {current + 1} / {total}
           </span>
         )}
@@ -183,7 +183,7 @@ export const TrendingOffer = ({ banners = [] }) => {
 
       {/* Carousel wrapper with AI-compatible 8:3 (~2.67:1 / 2048x768) aspect ratio - responsive on all devices */}
       <div
-        className="group relative w-full rounded-xl sm:rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 bg-slate-950 touch-pan-y"
+        className="group relative w-full rounded-xl sm:rounded-2xl overflow-hidden shadow-sm border border-[#EADBCE] bg-slate-950 touch-pan-y"
         style={{
           aspectRatio: "2048 / 768",
           minHeight: "130px",

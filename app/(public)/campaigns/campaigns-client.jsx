@@ -381,10 +381,10 @@ export default function CampaignsClient({
         onClick={() => {
           if (!hasCode) setSelectedCoupon(coupon);
         }}
-        className="w-[260px] sm:w-[280px] h-[146px] shrink-0 bg-white border border-slate-200/90 rounded-xl p-3 shadow-[0_1px_3px_rgba(15,23,42,0.05)] hover:shadow-[0_8px_20px_rgba(247,40,83,0.12)] hover:border-[#F72853] transition-all duration-200 flex flex-col justify-between select-none group text-left cursor-pointer active:scale-[0.99] relative overflow-hidden"
+        className="w-[260px] sm:w-[280px] h-[146px] shrink-0 bg-white border border-slate-200/90 rounded-xl p-3 shadow-[0_1px_3px_rgba(15,23,42,0.05)] hover:shadow-[0_8px_20px_rgba(247,40,83,0.12)] hover:border-[#FF2E63] transition-all duration-200 flex flex-col justify-between select-none group text-left cursor-pointer active:scale-[0.99] relative overflow-hidden"
       >
         {/* Top Accent Strip */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#F72853] to-rose-400 opacity-80" />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FF2E63] to-rose-400 opacity-80" />
 
         {/* Top: Logo + Store + Discount Badge */}
         <div className="flex items-start justify-between gap-1.5 pt-0.5">
@@ -400,7 +400,7 @@ export default function CampaignsClient({
               />
             </div>
             <div className="min-w-0">
-              <p className="text-[12px] font-semibold text-slate-800 truncate group-hover:text-[#F72853] transition-colors">
+              <p className="text-[12px] font-semibold text-slate-800 truncate group-hover:text-[#FF2E63] transition-colors">
                 {merchantName}
               </p>
               <span className="inline-flex items-center gap-0.5 text-[9px] font-medium text-emerald-600">
@@ -409,7 +409,7 @@ export default function CampaignsClient({
             </div>
           </div>
 
-          <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-rose-50 text-[#F72853] border border-rose-200/80 shrink-0 shadow-2xs">
+          <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-rose-50 text-[#FF2E63] border border-rose-200/80 shrink-0 shadow-2xs">
             {discountBadge}
           </span>
         </div>
@@ -435,7 +435,7 @@ export default function CampaignsClient({
               className={`px-2.5 py-1 text-[11px] font-semibold rounded-md transition-all flex items-center gap-1.5 cursor-pointer border ${
                 isCopied
                   ? "bg-emerald-50 text-emerald-700 border-emerald-300 shadow-2xs"
-                  : "bg-rose-50/70 text-[#F72853] border-dashed border-rose-300 hover:bg-[#F72853] hover:text-white active:scale-95 shadow-2xs"
+                  : "bg-rose-50/70 text-[#FF2E63] border-dashed border-rose-300 hover:bg-[#FF2E63] hover:text-white active:scale-95 shadow-2xs"
               }`}
             >
               {isCopied ? (
@@ -457,7 +457,7 @@ export default function CampaignsClient({
                 e.stopPropagation();
                 setSelectedCoupon(coupon);
               }}
-              className="px-2.5 py-1 bg-slate-50 hover:bg-rose-50 text-slate-700 hover:text-[#F72853] border border-slate-200 hover:border-rose-200 active:scale-95 text-[11px] font-semibold rounded-md transition-all flex items-center gap-1 cursor-pointer shadow-2xs"
+              className="px-2.5 py-1 bg-slate-50 hover:bg-rose-50 text-slate-700 hover:text-[#FF2E63] border border-slate-200 hover:border-rose-200 active:scale-95 text-[11px] font-semibold rounded-md transition-all flex items-center gap-1 cursor-pointer shadow-2xs"
             >
               <span>Get Deal</span>
               <ExternalLink className="w-3 h-3 text-slate-400" />
@@ -474,10 +474,10 @@ export default function CampaignsClient({
       {/* Sidebar Header with Active Count & Reset */}
       <div className="flex items-center justify-between pb-3 border-b border-slate-100">
         <div className="flex items-center gap-2">
-          <SlidersHorizontal className="w-4 h-4 text-[#F72853]" />
+          <SlidersHorizontal className="w-4 h-4 text-[#FF2E63]" />
           <span className="text-sm font-bold text-slate-900">Filters</span>
           {activeFiltersCount > 0 && (
-            <span className="w-5 h-5 rounded-full bg-[#F72853] text-white text-[11px] font-bold flex items-center justify-center">
+            <span className="w-5 h-5 rounded-full bg-[#FF2E63] text-white text-[11px] font-bold flex items-center justify-center">
               {activeFiltersCount}
             </span>
           )}
@@ -486,7 +486,7 @@ export default function CampaignsClient({
           <button
             type="button"
             onClick={resetAllFilters}
-            className="text-xs font-semibold text-[#F72853] hover:underline cursor-pointer"
+            className="text-xs font-semibold text-[#FF2E63] hover:underline cursor-pointer"
           >
             Reset All
           </button>
@@ -496,7 +496,7 @@ export default function CampaignsClient({
       {/* ── 1. Offer Type Filter ── */}
       <div className="space-y-2">
         <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-          <Zap className="w-3.5 h-3.5 text-[#F72853]" />
+          <Zap className="w-3.5 h-3.5 text-[#FF2E63]" />
           <span>Offer Type</span>
         </h4>
         <div className="space-y-1">
@@ -511,7 +511,7 @@ export default function CampaignsClient({
               onClick={() => setSelectedType(type.id)}
               className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                 selectedType === type.id
-                  ? "bg-rose-50 text-[#F72853] font-bold"
+                  ? "bg-rose-50 text-[#FF2E63] font-bold"
                   : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
               }`}
             >
@@ -528,14 +528,14 @@ export default function CampaignsClient({
       <div className="space-y-2 pt-4 border-t border-slate-100">
         <div className="flex items-center justify-between">
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-            <LayoutGrid className="w-3.5 h-3.5 text-[#F72853]" />
+            <LayoutGrid className="w-3.5 h-3.5 text-[#FF2E63]" />
             <span>Category</span>
           </h4>
           {selectedCategory !== "all" && (
             <button
               type="button"
               onClick={() => setSelectedCategory("all")}
-              className="text-[11px] font-semibold text-[#F72853] hover:underline cursor-pointer"
+              className="text-[11px] font-semibold text-[#FF2E63] hover:underline cursor-pointer"
             >
               Clear
             </button>
@@ -552,7 +552,7 @@ export default function CampaignsClient({
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                   isSelected
-                    ? "bg-rose-50 text-[#F72853] font-bold"
+                    ? "bg-rose-50 text-[#FF2E63] font-bold"
                     : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                 }`}
               >
@@ -560,7 +560,7 @@ export default function CampaignsClient({
                   <Icon className="w-3.5 h-3.5 shrink-0 opacity-70" />
                   <span className="truncate">{cat.label}</span>
                 </div>
-                {isSelected && <Check className="w-3.5 h-3.5 text-[#F72853] shrink-0" />}
+                {isSelected && <Check className="w-3.5 h-3.5 text-[#FF2E63] shrink-0" />}
               </button>
             );
           })}
@@ -572,14 +572,14 @@ export default function CampaignsClient({
         <div className="space-y-2.5 pt-4 border-t border-slate-100">
           <div className="flex items-center justify-between">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-              <Store className="w-3.5 h-3.5 text-[#F72853]" />
+              <Store className="w-3.5 h-3.5 text-[#FF2E63]" />
               <span>Brand / Store</span>
             </h4>
             {selectedBrands.length > 0 && (
               <button
                 type="button"
                 onClick={() => setSelectedBrands([])}
-                className="text-[11px] font-semibold text-[#F72853] hover:underline cursor-pointer"
+                className="text-[11px] font-semibold text-[#FF2E63] hover:underline cursor-pointer"
               >
                 Clear ({selectedBrands.length})
               </button>
@@ -594,7 +594,7 @@ export default function CampaignsClient({
               value={brandSearch}
               onChange={(e) => setBrandSearch(e.target.value)}
               placeholder="Search brands..."
-              className="w-full h-7.5 pl-7 pr-2.5 text-[11px] bg-slate-50 rounded-lg border border-slate-200 focus:border-[#F72853] outline-none"
+              className="w-full h-7.5 pl-7 pr-2.5 text-[11px] bg-slate-50 rounded-lg border border-slate-200 focus:border-[#FF2E63] outline-none"
             />
           </div>
 
@@ -608,7 +608,7 @@ export default function CampaignsClient({
                   onClick={() => handleToggleBrand(brand.name)}
                   className={`flex items-center justify-between px-2 py-1.5 rounded-lg text-xs cursor-pointer select-none transition-colors ${
                     isChecked
-                      ? "bg-rose-50/70 text-[#F72853] font-semibold"
+                      ? "bg-rose-50/70 text-[#FF2E63] font-semibold"
                       : "hover:bg-slate-50 text-slate-700"
                   }`}
                 >
@@ -616,7 +616,7 @@ export default function CampaignsClient({
                     <div
                       className={`w-4 h-4 rounded flex items-center justify-center border transition-all ${
                         isChecked
-                          ? "bg-[#F72853] border-[#F72853] text-white"
+                          ? "bg-[#FF2E63] border-[#FF2E63] text-white"
                           : "border-slate-300 bg-white"
                       }`}
                     >
@@ -646,14 +646,14 @@ export default function CampaignsClient({
       <div className="space-y-2 pt-4 border-t border-slate-100">
         <div className="flex items-center justify-between">
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-            <Percent className="w-3.5 h-3.5 text-[#F72853]" />
+            <Percent className="w-3.5 h-3.5 text-[#FF2E63]" />
             <span>Discount Range</span>
           </h4>
           {minDiscount > 0 && (
             <button
               type="button"
               onClick={() => setMinDiscount(0)}
-              className="text-[11px] font-semibold text-[#F72853] hover:underline cursor-pointer"
+              className="text-[11px] font-semibold text-[#FF2E63] hover:underline cursor-pointer"
             >
               Clear
             </button>
@@ -667,12 +667,12 @@ export default function CampaignsClient({
               onClick={() => setMinDiscount(item.value)}
               className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                 minDiscount === item.value
-                  ? "bg-rose-50 text-[#F72853] font-bold"
+                  ? "bg-rose-50 text-[#FF2E63] font-bold"
                   : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
               }`}
             >
               <span>{item.label}</span>
-              {minDiscount === item.value && <Check className="w-3.5 h-3.5 text-[#F72853]" />}
+              {minDiscount === item.value && <Check className="w-3.5 h-3.5 text-[#FF2E63]" />}
             </button>
           ))}
         </div>
@@ -682,14 +682,14 @@ export default function CampaignsClient({
       <div className="space-y-2 pt-4 border-t border-slate-100">
         <div className="flex items-center justify-between">
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-            <Tag className="w-3.5 h-3.5 text-[#F72853]" />
+            <Tag className="w-3.5 h-3.5 text-[#FF2E63]" />
             <span>Price Range</span>
           </h4>
           {priceRange !== "all" && (
             <button
               type="button"
               onClick={() => setPriceRange("all")}
-              className="text-[11px] font-semibold text-[#F72853] hover:underline cursor-pointer"
+              className="text-[11px] font-semibold text-[#FF2E63] hover:underline cursor-pointer"
             >
               Clear
             </button>
@@ -703,12 +703,12 @@ export default function CampaignsClient({
               onClick={() => setPriceRange(item.value)}
               className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                 priceRange === item.value
-                  ? "bg-rose-50 text-[#F72853] font-bold"
+                  ? "bg-rose-50 text-[#FF2E63] font-bold"
                   : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
               }`}
             >
               <span>{item.label}</span>
-              {priceRange === item.value && <Check className="w-3.5 h-3.5 text-[#F72853]" />}
+              {priceRange === item.value && <Check className="w-3.5 h-3.5 text-[#FF2E63]" />}
             </button>
           ))}
         </div>
@@ -723,7 +723,7 @@ export default function CampaignsClient({
         <div className="w-full px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
             <div className="flex items-center gap-1.5 text-xs text-slate-500 font-normal">
-              <Link href="/" className="hover:text-[#F72853] transition-colors">
+              <Link href="/" className="hover:text-[#FF2E63] transition-colors">
                 Home
               </Link>
               <ChevronRight className="w-3 h-3 text-slate-400" />
@@ -736,7 +736,7 @@ export default function CampaignsClient({
                 100% Tested
               </span>
               <span className="bg-slate-50 px-2.5 py-0.5 rounded-md border border-slate-200 flex items-center gap-1 shadow-2xs">
-                <Clock className="w-3.5 h-3.5 text-[#F72853]" />
+                <Clock className="w-3.5 h-3.5 text-[#FF2E63]" />
                 Updated Daily
               </span>
               <span className="bg-slate-50 px-2.5 py-0.5 rounded-md border border-slate-200 flex items-center gap-1 shadow-2xs">
@@ -748,9 +748,9 @@ export default function CampaignsClient({
 
           <div className="flex items-center gap-2.5 flex-wrap">
             <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
-              <span className="text-[#F72853]">🔥 Trending Deals</span> &amp; Brand Offers
+              <span className="text-[#FF2E63]">🔥 Trending Deals</span> &amp; Brand Offers
             </h1>
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-50 text-[#F72853] border border-rose-200/80 shadow-2xs">
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200/80 shadow-2xs">
               {totalCount} Live Deals
             </span>
           </div>
@@ -779,12 +779,12 @@ export default function CampaignsClient({
                 <button
                   type="button"
                   onClick={() => setMobileFiltersOpen(true)}
-                  className="lg:hidden flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-rose-50 border border-slate-200 text-slate-700 hover:text-[#F72853] text-xs font-semibold rounded-lg transition-all shrink-0 cursor-pointer shadow-2xs"
+                  className="lg:hidden flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-rose-50 border border-slate-200 text-slate-700 hover:text-[#FF2E63] text-xs font-semibold rounded-lg transition-all shrink-0 cursor-pointer shadow-2xs"
                 >
-                  <SlidersHorizontal className="w-3.5 h-3.5 text-[#F72853]" />
+                  <SlidersHorizontal className="w-3.5 h-3.5 text-[#FF2E63]" />
                   <span>Filters</span>
                   {activeFiltersCount > 0 && (
-                    <span className="w-4.5 h-4.5 rounded-full bg-[#F72853] text-white text-[10px] font-bold flex items-center justify-center">
+                    <span className="w-4.5 h-4.5 rounded-full bg-[#FF2E63] text-white text-[10px] font-bold flex items-center justify-center">
                       {activeFiltersCount}
                     </span>
                   )}
@@ -798,7 +798,7 @@ export default function CampaignsClient({
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search deals, stores, codes..."
-                    className="w-full h-9 pl-8.5 pr-8 text-xs bg-slate-50 border border-slate-200 rounded-lg outline-none focus:border-[#F72853] focus:bg-white transition-all shadow-2xs text-slate-800 placeholder-slate-400"
+                    className="w-full h-9 pl-8.5 pr-8 text-xs bg-slate-50 border border-slate-200 rounded-lg outline-none focus:border-[#FF2E63] focus:bg-white transition-all shadow-2xs text-slate-800 placeholder-slate-400"
                   />
                   {searchQuery && (
                     <button
@@ -823,7 +823,7 @@ export default function CampaignsClient({
                   <select
                     value={selectedSort}
                     onChange={(e) => setSelectedSort(e.target.value)}
-                    className="h-9 px-2.5 bg-slate-50 hover:bg-slate-100 text-xs font-medium text-slate-700 rounded-lg border border-slate-200 outline-none cursor-pointer focus:border-[#F72853] shadow-2xs"
+                    className="h-9 px-2.5 bg-slate-50 hover:bg-slate-100 text-xs font-medium text-slate-700 rounded-lg border border-slate-200 outline-none cursor-pointer focus:border-[#FF2E63] shadow-2xs"
                   >
                     <option value="featured">Featured Deals</option>
                     <option value="discount-desc">Discount: High to Low</option>
@@ -840,7 +840,7 @@ export default function CampaignsClient({
                 <span className="text-xs font-semibold text-slate-500 mr-1">Active:</span>
 
                 {selectedCategory !== "all" && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#F72853] border border-rose-200">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200">
                     <span>Category: {CATEGORIES.find((c) => c.id === selectedCategory)?.label || selectedCategory}</span>
                     <button type="button" onClick={() => setSelectedCategory("all")} className="hover:text-rose-900 cursor-pointer">
                       <X className="w-3 h-3" />
@@ -849,7 +849,7 @@ export default function CampaignsClient({
                 )}
 
                 {selectedType !== "all" && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#F72853] border border-rose-200">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200">
                     <span className="capitalize">Type: {selectedType}</span>
                     <button type="button" onClick={() => setSelectedType("all")} className="hover:text-rose-900 cursor-pointer">
                       <X className="w-3 h-3" />
@@ -858,7 +858,7 @@ export default function CampaignsClient({
                 )}
 
                 {selectedBrands.map((b) => (
-                  <span key={b} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#F72853] border border-rose-200">
+                  <span key={b} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200">
                     <span>Brand: {b}</span>
                     <button type="button" onClick={() => handleToggleBrand(b)} className="hover:text-rose-900 cursor-pointer">
                       <X className="w-3 h-3" />
@@ -867,7 +867,7 @@ export default function CampaignsClient({
                 ))}
 
                 {minDiscount > 0 && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#F72853] border border-rose-200">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200">
                     <span>Discount: {minDiscount}%+</span>
                     <button type="button" onClick={() => setMinDiscount(0)} className="hover:text-rose-900 cursor-pointer">
                       <X className="w-3 h-3" />
@@ -876,7 +876,7 @@ export default function CampaignsClient({
                 )}
 
                 {priceRange !== "all" && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#F72853] border border-rose-200">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200">
                     <span>Price: {PRICE_OPTIONS.find((p) => p.value === priceRange)?.label}</span>
                     <button type="button" onClick={() => setPriceRange("all")} className="hover:text-rose-900 cursor-pointer">
                       <X className="w-3 h-3" />
@@ -887,7 +887,7 @@ export default function CampaignsClient({
                 <button
                   type="button"
                   onClick={resetAllFilters}
-                  className="text-xs font-semibold text-[#F72853] hover:underline cursor-pointer ml-1.5"
+                  className="text-xs font-semibold text-[#FF2E63] hover:underline cursor-pointer ml-1.5"
                 >
                   Clear All
                 </button>
@@ -951,7 +951,7 @@ export default function CampaignsClient({
             {filteredCoupons.length === 0 && filteredAffiliate.length === 0 && (
               <div className="w-full py-16">
                 <div className="bg-white rounded-2xl border border-slate-200 p-10 text-center space-y-4 max-w-md mx-auto shadow-2xs">
-                  <div className="w-14 h-14 rounded-full bg-rose-50 text-[#F72853] border border-rose-200/70 flex items-center justify-center mx-auto shadow-2xs">
+                  <div className="w-14 h-14 rounded-full bg-rose-50 text-[#FF2E63] border border-rose-200/70 flex items-center justify-center mx-auto shadow-2xs">
                     <Search className="w-7 h-7" />
                   </div>
                   <div className="space-y-1">
@@ -965,7 +965,7 @@ export default function CampaignsClient({
                   <button
                     type="button"
                     onClick={resetAllFilters}
-                    className="px-5 py-2 bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-semibold rounded-lg transition-all shadow-xs cursor-pointer active:scale-95"
+                    className="px-5 py-2 bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-semibold rounded-lg transition-all shadow-xs cursor-pointer active:scale-95"
                   >
                     Reset All Filters
                   </button>
@@ -989,7 +989,7 @@ export default function CampaignsClient({
           <div className="fixed inset-y-0 left-0 max-w-xs w-full bg-white shadow-2xl z-10 flex flex-col">
             <div className="px-4 py-3.5 border-b border-slate-200 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-[#F72853]" />
+                <SlidersHorizontal className="w-4 h-4 text-[#FF2E63]" />
                 <h3 className="font-bold text-sm text-slate-900">Filter Deals</h3>
               </div>
               <button
@@ -1016,7 +1016,7 @@ export default function CampaignsClient({
               <button
                 type="button"
                 onClick={() => setMobileFiltersOpen(false)}
-                className="flex-1 py-2 text-xs font-semibold text-white bg-[#F72853] hover:bg-[#e01e47] rounded-lg shadow-xs"
+                className="flex-1 py-2 text-xs font-semibold text-white bg-[#FF2E63] hover:bg-[#e01e47] rounded-lg shadow-xs"
               >
                 Apply ({totalCount})
               </button>

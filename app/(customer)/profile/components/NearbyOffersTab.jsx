@@ -212,7 +212,7 @@ export default function NearbyOffersTab() {
         });
 
         const roseLine = L.polyline(latLngs, {
-          color: "#F72853",
+          color: "#FF2E63",
           weight: 4.5,
           opacity: 0.98,
           lineCap: "round",
@@ -313,10 +313,10 @@ export default function NearbyOffersTab() {
     if (!Number.isNaN(distNum)) {
       L.circle(mapCenter, {
         radius: distNum * 1000,
-        color: "#F72853",
+        color: "#FF2E63",
         weight: 1.5,
         opacity: 0.65,
-        fillColor: "#F72853",
+        fillColor: "#FF2E63",
         fillOpacity: 0.06,
         dashArray: "6, 6",
       }).addTo(markersGroupRef.current);
@@ -326,7 +326,7 @@ export default function NearbyOffersTab() {
     const userMarkerHtml = `
       <div style="position:relative;width:36px;height:36px;display:flex;align-items:center;justify-content:center;">
         <div style="position:absolute;width:36px;height:36px;border-radius:50%;background:rgba(247,40,83,0.3);animation:pulse 2s infinite;"></div>
-        <div style="width:16px;height:16px;background:#F72853;border:3px solid #fff;border-radius:50%;box-shadow:0 0 12px rgba(247,40,83,0.8);z-index:2;"></div>
+        <div style="width:16px;height:16px;background:#FF2E63;border:3px solid #fff;border-radius:50%;box-shadow:0 0 12px rgba(247,40,83,0.8);z-index:2;"></div>
       </div>
     `;
     L.marker(mapCenter, {
@@ -348,10 +348,10 @@ export default function NearbyOffersTab() {
 
       const markerHtml = `
         <div style="display:flex;flex-direction:column;align-items:center;cursor:pointer;transform:${isSelected ? "scale(1.15)" : "scale(1)"};transition:all 0.2s;">
-          <div style="background:#fff;border:2px solid #F72853;border-radius:999px;padding:2px 6px;box-shadow:0 3px 10px rgba(0,0,0,0.15);font-size:10px;font-weight:700;color:#0f172a;white-space:nowrap;">
+          <div style="background:#fff;border:2px solid #FF2E63;border-radius:999px;padding:2px 6px;box-shadow:0 3px 10px rgba(0,0,0,0.15);font-size:10px;font-weight:700;color:#0f172a;white-space:nowrap;">
             ${badgeText}
           </div>
-          <div style="width:6px;height:6px;background:#F72853;transform:rotate(45deg) translateY(-2px);border-radius:1px;"></div>
+          <div style="width:6px;height:6px;background:#FF2E63;transform:rotate(45deg) translateY(-2px);border-radius:1px;"></div>
         </div>
       `;
 
@@ -378,7 +378,7 @@ export default function NearbyOffersTab() {
             <h3 className="text-xs sm:text-[13px] font-semibold text-slate-800 uppercase tracking-wider">
               Nearby Deals Explorer
             </h3>
-            <span className="px-2 py-0.2 rounded-full text-[9.5px] font-bold bg-rose-50 text-[#F72853] border border-rose-200">
+            <span className="px-2 py-0.2 rounded-full text-[9.5px] font-bold bg-rose-50 text-[#FF2E63] border border-rose-200">
               {filteredDeals.length} Verified Stores
             </span>
           </div>
@@ -396,7 +396,7 @@ export default function NearbyOffersTab() {
               setSelectedCity(e.target.value);
               setUserGpsCoords(null);
             }}
-            className="text-[11px] font-medium border border-slate-200 bg-slate-50 rounded-lg px-2.5 py-1 outline-none text-slate-700 focus:border-[#F72853] transition-colors cursor-pointer"
+            className="text-[11px] font-medium border border-slate-200 bg-slate-50 rounded-lg px-2.5 py-1 outline-none text-slate-700 focus:border-[#FF2E63] transition-colors cursor-pointer"
           >
             {Object.keys(CITY_COORDINATES).map((city) => (
               <option key={city} value={city} className="capitalize">
@@ -414,7 +414,7 @@ export default function NearbyOffersTab() {
                 onClick={() => setRadius(r)}
                 className={`text-[10px] font-semibold px-2 py-0.5 rounded-md transition-all uppercase cursor-pointer ${
                   radius === r
-                    ? "bg-[#F72853] text-white shadow-2xs"
+                    ? "bg-[#FF2E63] text-white shadow-2xs"
                     : "text-slate-500 hover:text-slate-800 bg-transparent"
                 }`}
               >
@@ -426,7 +426,7 @@ export default function NearbyOffersTab() {
           {/* Full Screen Map Link */}
           <Link
             href="/nearby-offers"
-            className="text-[11px] font-semibold text-[#F72853] hover:text-[#e01e47] bg-rose-50 hover:bg-rose-100/70 border border-rose-200/80 px-2.5 py-1 rounded-lg flex items-center gap-1 transition-all"
+            className="text-[11px] font-semibold text-[#FF2E63] hover:text-[#e01e47] bg-rose-50 hover:bg-rose-100/70 border border-rose-200/80 px-2.5 py-1 rounded-lg flex items-center gap-1 transition-all"
           >
             <span>Full Map</span>
             <ExternalLink className="w-3 h-3" />
@@ -445,10 +445,10 @@ export default function NearbyOffersTab() {
             <button
               type="button"
               onClick={handleLocateMe}
-              className="w-7 h-7 bg-white/95 backdrop-blur-md rounded-lg shadow-md border border-slate-200 flex items-center justify-center text-slate-700 hover:text-[#F72853] transition-all cursor-pointer"
+              className="w-7 h-7 bg-white/95 backdrop-blur-md rounded-lg shadow-md border border-slate-200 flex items-center justify-center text-slate-700 hover:text-[#FF2E63] transition-all cursor-pointer"
               title="Locate Me (GPS)"
             >
-              <Crosshair className={`w-3.5 h-3.5 ${gpsLoading ? "animate-spin text-[#F72853]" : ""}`} />
+              <Crosshair className={`w-3.5 h-3.5 ${gpsLoading ? "animate-spin text-[#FF2E63]" : ""}`} />
             </button>
           </div>
 
@@ -459,12 +459,12 @@ export default function NearbyOffersTab() {
                 <div className="flex items-start justify-between gap-1.5">
                   <div className="min-w-0">
                     <div className="flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#F72853] animate-pulse shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF2E63] animate-pulse shrink-0" />
                       <h4 className="text-[11px] font-bold text-slate-900 truncate">
                         {activeRouteInfo.businessName}
                       </h4>
                       {activeRouteInfo.discountValue && (
-                        <span className="px-1.5 py-0.2 rounded text-[8.5px] font-bold bg-rose-50 text-[#F72853] border border-rose-200 shrink-0">
+                        <span className="px-1.5 py-0.2 rounded text-[8.5px] font-bold bg-rose-50 text-[#FF2E63] border border-rose-200 shrink-0">
                           {activeRouteInfo.discountType === "percentage"
                             ? `${activeRouteInfo.discountValue}% OFF`
                             : `₹${activeRouteInfo.discountValue} OFF`}
@@ -491,8 +491,8 @@ export default function NearbyOffersTab() {
 
                 <div className="flex items-center justify-between gap-1 pt-1 border-t border-slate-100">
                   <div className="flex items-center gap-1.5 text-[10px] text-slate-600 font-medium">
-                    <Car className="w-3 h-3 text-[#F72853]" />
-                    <span className="text-[#F72853] font-bold">{activeRouteInfo.durationMin} mins</span>
+                    <Car className="w-3 h-3 text-[#FF2E63]" />
+                    <span className="text-[#FF2E63] font-bold">{activeRouteInfo.durationMin} mins</span>
                     <span>•</span>
                     <span>{activeRouteInfo.distanceKm} km</span>
                   </div>
@@ -501,7 +501,7 @@ export default function NearbyOffersTab() {
                     href={activeRouteInfo.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#F72853] hover:bg-[#e01e47] text-white text-[10px] font-bold py-1 px-2.5 rounded-md flex items-center gap-1 transition-all shadow-2xs"
+                    className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-[10px] font-bold py-1 px-2.5 rounded-md flex items-center gap-1 transition-all shadow-2xs"
                   >
                     <Navigation className="w-2.5 h-2.5" />
                     <span>Navigate</span>
@@ -536,7 +536,7 @@ export default function NearbyOffersTab() {
                   onClick={() => handleSelectDeal(deal)}
                   className={`p-2.5 rounded-xl border transition-all cursor-pointer shadow-2xs ${
                     isSelected
-                      ? "bg-rose-50/40 border-[#F72853] ring-1 ring-rose-200"
+                      ? "bg-rose-50/40 border-[#FF2E63] ring-1 ring-rose-200"
                       : "bg-white border-slate-200/90 hover:border-rose-200 hover:bg-rose-50/20"
                   }`}
                 >
@@ -559,7 +559,7 @@ export default function NearbyOffersTab() {
                     </div>
 
                     <div className="flex flex-col items-end shrink-0 gap-1">
-                      <span className="px-1.5 py-0.5 rounded text-[9.5px] font-bold bg-rose-50 text-[#F72853] border border-rose-200">
+                      <span className="px-1.5 py-0.5 rounded text-[9.5px] font-bold bg-rose-50 text-[#FF2E63] border border-rose-200">
                         {discountText}
                       </span>
                       <span className="text-[9px] font-medium text-slate-500">
@@ -575,7 +575,7 @@ export default function NearbyOffersTab() {
                         e.stopPropagation();
                         handleSelectDeal(deal);
                       }}
-                      className="text-[10px] font-semibold text-[#F72853] hover:text-[#e01e47] flex items-center gap-1 cursor-pointer"
+                      className="text-[10px] font-semibold text-[#FF2E63] hover:text-[#e01e47] flex items-center gap-1 cursor-pointer"
                     >
                       <Navigation className="w-2.5 h-2.5" />
                       <span>Show Route</span>
@@ -584,7 +584,7 @@ export default function NearbyOffersTab() {
                     <Link
                       href={`/deals/${deal._id}`}
                       onClick={(e) => e.stopPropagation()}
-                      className="text-[10px] font-semibold text-slate-700 hover:text-[#F72853] flex items-center gap-0.5"
+                      className="text-[10px] font-semibold text-slate-700 hover:text-[#FF2E63] flex items-center gap-0.5"
                     >
                       <span>Claim Deal</span>
                       <ChevronRight className="w-3 h-3" />

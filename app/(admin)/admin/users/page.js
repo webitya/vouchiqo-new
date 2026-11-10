@@ -137,7 +137,7 @@ function SkeletonKPICard() {
 // ── Row colour themes ─────────────────────────────────────────────────────────
 
 const ROW_COLOR_THEMES = [
-  { row: "bg-blue-100/65 hover:bg-blue-100/90 border-l-[3.5px] border-l-blue-600 border-b border-blue-200/80 text-slate-900" },
+  { row: "bg-festival-teal/10 hover:bg-festival-teal/20 border-l-[3.5px] border-l-festival-teal border-b border-festival-teal/20 text-slate-900" },
   { row: "bg-emerald-100/65 hover:bg-emerald-100/90 border-l-[3.5px] border-l-emerald-600 border-b border-emerald-200/80 text-slate-900" },
   { row: "bg-amber-100/65 hover:bg-amber-100/90 border-l-[3.5px] border-l-amber-600 border-b border-amber-200/80 text-slate-900" },
   { row: "bg-purple-100/65 hover:bg-purple-100/90 border-l-[3.5px] border-l-purple-600 border-b border-purple-200/80 text-slate-900" },
@@ -340,7 +340,7 @@ export default function UserManagement() {
           <span
             className={`px-2 py-0.5 text-[9.5px] font-medium rounded-md border shadow-2xs inline-block ${
               user.emailNotifications !== false
-                ? "bg-white/95 text-blue-700 border-blue-200"
+                ? "bg-white/95 text-festival-teal border-brand-border"
                 : "bg-white/95 text-slate-500 border-slate-200"
             }`}
           >
@@ -451,7 +451,7 @@ export default function UserManagement() {
               <Button
                 onClick={handleExport}
                 disabled={exporting}
-                className="gap-1.5 h-7.5 px-3 text-xs font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-lg cursor-pointer shadow-2xs shrink-0"
+                className="gap-1.5 h-7.5 px-3 text-xs font-medium bg-festival-teal hover:bg-festival-teal-dark text-white rounded-lg cursor-pointer shadow-2xs shrink-0"
               >
                 {exporting ? (
                   <RefreshCw className="w-3 h-3 animate-spin" />
@@ -545,7 +545,7 @@ export default function UserManagement() {
               {/* Search input with inline spinner */}
               <div className="relative flex-1 w-full sm:max-w-xs">
                 {isSearchLoading ? (
-                  <Loader2 className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-blue-500 pointer-events-none animate-spin" />
+                  <Loader2 className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-festival-teal pointer-events-none animate-spin" />
                 ) : (
                   <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 pointer-events-none" />
                 )}
@@ -555,7 +555,7 @@ export default function UserManagement() {
                   onChange={handleSearchChange}
                   className={cn(
                     "pl-8 text-[11px] h-7.5 rounded-lg border-slate-200 bg-white transition-all duration-200",
-                    isSearchLoading && "border-blue-300 ring-1 ring-blue-200",
+                    isSearchLoading && "border-festival-teal/30 ring-1 ring-festival-teal/20",
                   )}
                 />
               </div>
@@ -565,7 +565,7 @@ export default function UserManagement() {
                 {/* Searching status pill — visible while debounce is pending or fetch is in flight */}
                 <div
                   className={cn(
-                    "flex items-center gap-1 text-[10px] font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-full px-2 py-0.5 transition-all duration-300",
+                    "flex items-center gap-1 text-[10px] font-medium text-festival-teal bg-warm-ivory border border-brand-border rounded-full px-2 py-0.5 transition-all duration-300",
                     isSearchLoading && debouncedSearch
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 pointer-events-none -translate-y-1",
@@ -598,7 +598,7 @@ export default function UserManagement() {
                           className={cn(
                             "text-[10.5px] font-medium px-2 py-0.5 rounded-md transition-all cursor-pointer flex items-center gap-1 border-0",
                             activeTab === tab.id
-                              ? "bg-white text-blue-600 shadow-2xs"
+                              ? "bg-white text-festival-teal shadow-2xs"
                               : "text-slate-500 hover:text-slate-800 bg-transparent",
                           )}
                         >
@@ -607,7 +607,7 @@ export default function UserManagement() {
                             className={cn(
                               "text-[9px] px-1 rounded-full",
                               activeTab === tab.id
-                                ? "bg-blue-50 text-blue-600"
+                                ? "bg-warm-ivory text-festival-teal"
                                 : "bg-slate-200/70 text-slate-600",
                             )}
                           >

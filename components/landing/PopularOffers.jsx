@@ -8,7 +8,7 @@ import SafeImage from "@/components/shared/SafeImage";
 const CATEGORY_GRADIENTS = {
   fashion: "linear-gradient(135deg, #f472b6, #db2777)",
   food: "linear-gradient(135deg, #fb923c, #ea580c)",
-  electronics: "linear-gradient(135deg, #60a5fa, #2563eb)",
+  electronics: "linear-gradient(135deg, #00A69D, #007F79)",
   beauty: "linear-gradient(135deg, #f472b6, #e11d48)",
   travel: "linear-gradient(135deg, #2dd4bf, #0d9488)",
   home: "linear-gradient(135deg, #a78bfa, #7c3aed)",
@@ -73,7 +73,7 @@ const PopularOfferCard = memo(function PopularOfferCard({ coupon }) {
   return (
     <Link
       href={`/deals/${coupon._id}`}
-      className="group relative flex flex-col rounded-xl no-underline cursor-pointer border border-slate-200/90 bg-white shadow-[0_2px_8px_rgba(15,23,42,0.06)] hover:shadow-[0_8px_20px_rgba(247,40,83,0.14)] hover:border-[#F72853] transition-all duration-300 select-none text-left overflow-hidden h-full"
+      className="group relative flex flex-col rounded-xl no-underline cursor-pointer border border-[#EADBCE] bg-white shadow-[0_2px_8px_rgba(53,16,74,0.06)] hover:shadow-[0_8px_20px_rgba(255,46,99,0.18)] hover:border-[#FF2E63] transition-all duration-300 select-none text-left overflow-hidden h-full font-sans"
     >
       {/* 1920x1080 (16:9) Aspect Ratio Image Header */}
       <div className="relative w-full aspect-[16/9] overflow-hidden bg-slate-100 shrink-0">
@@ -91,7 +91,7 @@ const PopularOfferCard = memo(function PopularOfferCard({ coupon }) {
       <div className="relative flex-1 flex flex-col justify-between bg-white px-3 sm:px-4 pt-5 sm:pt-6 pb-3 sm:pb-3.5">
         {/* Floating Merchant Circular Logo */}
         <div
-          className="absolute flex items-center justify-center bg-white rounded-full border border-slate-100 shadow-md p-0.5 group-hover:border-[#F72853]/40 transition-colors"
+          className="absolute flex items-center justify-center bg-white rounded-full border border-[#EADBCE] shadow-md p-0.5 group-hover:border-[#FF2E63]/40 transition-colors"
           style={{
             width: "38px",
             height: "38px",
@@ -113,14 +113,14 @@ const PopularOfferCard = memo(function PopularOfferCard({ coupon }) {
         <div>
           {/* Discount Title */}
           <div className="mb-0.5">
-            <p className="text-left text-[11.5px] sm:text-[13px] font-medium uppercase tracking-tight text-[#F72853] leading-tight">
+            <p className="text-left text-[11.5px] sm:text-[13px] font-heading font-bold uppercase tracking-tight text-[#FF2E63] leading-tight">
               {isExclusive ? "VOUCHIQO EXCLUSIVE" : discountFormatted}
             </p>
           </div>
 
           {/* Coupon Description / Title */}
           <div className="mb-1.5 sm:mb-2">
-            <p className="text-left text-[11px] sm:text-xs text-slate-800 group-hover:text-[#F72853] transition-colors leading-snug font-normal line-clamp-2">
+            <p className="text-left text-[11px] sm:text-xs text-[#35104A] group-hover:text-[#FF2E63] transition-colors leading-snug font-medium line-clamp-2">
               {coupon.title}
             </p>
           </div>
@@ -130,17 +130,14 @@ const PopularOfferCard = memo(function PopularOfferCard({ coupon }) {
         <div className="mt-auto pt-1">
           {/* Mobile "GRAB NOW" */}
           <div className="sm:hidden">
-            <span className="text-left text-[10px] font-medium uppercase tracking-wider text-[#F72853]">
+            <span className="text-left text-[10px] font-heading font-bold uppercase tracking-wider text-[#FF2E63]">
               GRAB NOW &rarr;
             </span>
           </div>
 
           {/* Desktop Claim Button */}
           <div className="hidden sm:block">
-            <span
-              className="block w-full rounded-md py-1 text-center text-[11px] font-normal uppercase tracking-wider text-white transition-all shadow-2xs group-hover:brightness-95"
-              style={{ backgroundColor: "#3E80DD" }}
-            >
+            <span className="block w-full rounded-md py-1 text-center text-[11px] font-heading font-bold uppercase tracking-wider text-white transition-all shadow-2xs group-hover:brightness-95 bg-[#007F79] hover:bg-[#00635E]">
               Claim now
             </span>
           </div>
@@ -299,7 +296,7 @@ export default function PopularOffers({ coupons = [] }) {
     <section className="g-sub-banner text-left w-full select-none relative">
       {/* Custom Section Header */}
       <div className="flex justify-between items-center mb-3.5 sm:mb-4">
-        <h2 className="text-base sm:text-lg md:text-xl font-medium text-[#F72853] tracking-tight">
+        <h2 className="text-base sm:text-lg md:text-xl font-heading font-bold text-[#FF2E63] tracking-tight">
           Popular Offers of the Day
         </h2>
       </div>
@@ -311,7 +308,7 @@ export default function PopularOffers({ coupons = [] }) {
           <button
             type="button"
             onClick={handlePrev}
-            className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white border border-slate-200 shadow-md items-center justify-center hover:bg-slate-50 text-slate-600 hover:text-blue-600 transition-all cursor-pointer"
+            className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/95 border border-[#EADBCE] shadow-md items-center justify-center hover:bg-[#FFF8EF] text-[#35104A] hover:text-[#007F79] transition-all cursor-pointer"
             aria-label="Previous Slide"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -357,7 +354,7 @@ export default function PopularOffers({ coupons = [] }) {
           <button
             type="button"
             onClick={handleNext}
-            className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white border border-slate-200 shadow-md items-center justify-center hover:bg-slate-50 text-slate-600 hover:text-blue-600 transition-all cursor-pointer"
+            className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/95 border border-[#EADBCE] shadow-md items-center justify-center hover:bg-[#FFF8EF] text-[#35104A] hover:text-[#007F79] transition-all cursor-pointer"
             aria-label="Next Slide"
           >
             <ChevronRight className="w-5 h-5" />
@@ -374,8 +371,8 @@ export default function PopularOffers({ coupons = [] }) {
               type="button"
               className={`transition-all duration-300 ease-in-out rounded-full cursor-pointer h-1.5 ${
                 i === selectedIndex
-                  ? "w-7 bg-blue-600 opacity-100"
-                  : "w-1.5 bg-slate-300 opacity-50 hover:opacity-100 hover:bg-blue-600"
+                  ? "w-7 bg-[#007F79] opacity-100"
+                  : "w-1.5 bg-[#EADBCE] opacity-60 hover:opacity-100 hover:bg-[#007F79]"
               }`}
               onClick={() => setSelectedIndex(i)}
               aria-label={`Go to slide ${i + 1}`}

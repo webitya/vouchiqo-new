@@ -82,8 +82,8 @@ export default function BrandStats({
       label: "Active Deals",
       value: `${totalOffersCount || 0}`,
       Icon: Tag,
-      iconColor: "text-blue-600",
-      bgColor: "bg-blue-50/80",
+      iconColor: "text-festival-teal",
+      bgColor: "bg-festival-teal/10",
     },
     {
       label: "Best Discount",
@@ -152,7 +152,7 @@ export default function BrandStats({
           return (
             <div
               key={s.label}
-              className="bg-white border border-slate-200/80 rounded-2xl p-3.5 shadow-2xs hover:shadow-md transition-all hover:border-blue-300 flex items-center justify-between"
+              className="bg-white border border-slate-200/80 rounded-2xl p-3.5 shadow-2xs hover:shadow-md transition-all hover:border-festival-teal/40 flex items-center justify-between"
             >
               <div>
                 <span className="text-[10px] font-normal text-slate-400 uppercase tracking-wider block">

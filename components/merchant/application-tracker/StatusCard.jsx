@@ -51,7 +51,7 @@ export default function StatusCard({
       <CardHeader className="pb-3 border-b border-slate-100 flex flex-row items-center justify-between p-4 sm:p-5">
         <div>
           <CardTitle className="text-xs font-medium text-slate-900 flex items-center gap-2">
-            <FileText className="w-4 h-4 text-blue-600" /> Application Summary
+            <FileText className="w-4 h-4 text-festival-teal" /> Application Summary
           </CardTitle>
           <CardDescription className="text-xs text-slate-500 mt-0.5 font-normal">
             Real-time verification details for your merchant profile
@@ -67,7 +67,7 @@ export default function StatusCard({
             <span className="text-[10px] font-normal text-slate-400 block">
               Application ID
             </span>
-            <span className="font-medium text-blue-600 text-xs">
+            <span className="font-medium text-festival-teal text-xs">
               #{applicationId}
             </span>
           </div>
@@ -94,7 +94,7 @@ export default function StatusCard({
             <span className="text-[10px] font-normal text-slate-400 block">
               Est. Completion
             </span>
-            <span className="font-normal text-blue-600">
+            <span className="font-normal text-festival-teal">
               {estimatedCompletion}
             </span>
           </div>
@@ -106,14 +106,14 @@ export default function StatusCard({
             variant="outline"
             className="bg-slate-50 text-slate-700 border-slate-200 text-xs font-normal px-2.5 py-0.5 flex items-center gap-1"
           >
-            <Building2 className="w-3.5 h-3.5 text-blue-600" /> {category}
+            <Building2 className="w-3.5 h-3.5 text-festival-teal" /> {category}
           </Badge>
           {city && (
             <Badge
               variant="outline"
               className="bg-slate-50 text-slate-700 border-slate-200 text-xs font-normal px-2.5 py-0.5 flex items-center gap-1"
             >
-              <MapPin className="w-3.5 h-3.5 text-blue-600" /> {city}, {state}
+              <MapPin className="w-3.5 h-3.5 text-festival-teal" /> {city}, {state}
             </Badge>
           )}
         </div>
@@ -132,7 +132,7 @@ export default function StatusCard({
             variant="ghost"
             size="sm"
             onClick={onContactSupport}
-            className="text-xs font-normal text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg cursor-pointer"
+            className="text-xs font-normal text-festival-teal hover:text-[#004D49] hover:bg-festival-teal/10 rounded-lg cursor-pointer"
           >
             <HelpCircle className="w-3.5 h-3.5 mr-1" /> Contact Support
           </Button>

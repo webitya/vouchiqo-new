@@ -116,7 +116,7 @@ export default function MerchantKycDialog({
         {/* Fixed Pinned Header with Safe Clearance for Close Button */}
         <DialogHeader className="px-3.5 py-2.5 sm:px-6 sm:py-3 border-b border-slate-100 bg-white shrink-0 pr-14 relative text-left">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-warm-ivory border border-brand-border flex items-center justify-center text-festival-teal shrink-0">
               <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <div className="min-w-0 flex-1">
@@ -131,7 +131,7 @@ export default function MerchantKycDialog({
                       : merchant.status === "rejected"
                         ? "bg-rose-50 text-rose-700 border-rose-200"
                         : merchant.status === "form_accepted"
-                          ? "bg-blue-50 text-blue-700 border-blue-200"
+                          ? "bg-warm-ivory text-festival-teal border-brand-border"
                           : "bg-amber-50 text-amber-700 border-amber-200"
                   }`}
                 >
@@ -161,28 +161,28 @@ export default function MerchantKycDialog({
             <TabsList className="grid grid-cols-2 sm:grid-cols-4 bg-slate-100/90 p-1.5 rounded-xl gap-1.5 w-full shrink-0 border border-slate-200/60 h-auto">
               <TabsTrigger
                 value="business"
-                className="text-xs font-semibold rounded-lg py-2 px-2 flex items-center justify-center gap-1.5 h-auto data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-xs text-slate-700 transition-all cursor-pointer"
+                className="text-xs font-semibold rounded-lg py-2 px-2 flex items-center justify-center gap-1.5 h-auto data-[state=active]:bg-festival-teal data-[state=active]:text-white data-[state=active]:shadow-xs text-slate-700 transition-all cursor-pointer"
               >
                 <Store className="w-3.5 h-3.5 shrink-0" />
                 <span className="truncate">Profile &amp; Location</span>
               </TabsTrigger>
               <TabsTrigger
                 value="legal"
-                className="text-xs font-semibold rounded-lg py-2 px-2 flex items-center justify-center gap-1.5 h-auto data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-xs text-slate-700 transition-all cursor-pointer"
+                className="text-xs font-semibold rounded-lg py-2 px-2 flex items-center justify-center gap-1.5 h-auto data-[state=active]:bg-festival-teal data-[state=active]:text-white data-[state=active]:shadow-xs text-slate-700 transition-all cursor-pointer"
               >
                 <FileText className="w-3.5 h-3.5 shrink-0" />
                 <span className="truncate">Statutory KYC</span>
               </TabsTrigger>
               <TabsTrigger
                 value="visuals"
-                className="text-xs font-semibold rounded-lg py-2 px-2 flex items-center justify-center gap-1.5 h-auto data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-xs text-slate-700 transition-all cursor-pointer"
+                className="text-xs font-semibold rounded-lg py-2 px-2 flex items-center justify-center gap-1.5 h-auto data-[state=active]:bg-festival-teal data-[state=active]:text-white data-[state=active]:shadow-xs text-slate-700 transition-all cursor-pointer"
               >
                 <ImageIcon className="w-3.5 h-3.5 shrink-0" />
                 <span className="truncate">Store Media</span>
               </TabsTrigger>
               <TabsTrigger
                 value="subscription"
-                className="text-xs font-semibold rounded-lg py-2 px-2 flex items-center justify-center gap-1.5 h-auto data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-xs text-slate-700 transition-all cursor-pointer"
+                className="text-xs font-semibold rounded-lg py-2 px-2 flex items-center justify-center gap-1.5 h-auto data-[state=active]:bg-festival-teal data-[state=active]:text-white data-[state=active]:shadow-xs text-slate-700 transition-all cursor-pointer"
               >
                 <CreditCard className="w-3.5 h-3.5 shrink-0" />
                 <span className="truncate">Plan &amp; Billing</span>
@@ -196,7 +196,7 @@ export default function MerchantKycDialog({
                 <div className="bg-slate-50/70 p-2.5 sm:p-3.5 rounded-xl border border-slate-200/80">
                   <div className="flex items-center justify-between border-b border-slate-200/80 pb-1.5 mb-2">
                     <h4 className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                      <Building2 className="w-3.5 h-3.5 text-blue-600" />{" "}
+                      <Building2 className="w-3.5 h-3.5 text-festival-teal" />{" "}
                       Business Overview
                     </h4>
                     <span className="text-[9px] font-mono text-slate-400 uppercase">
@@ -237,7 +237,7 @@ export default function MerchantKycDialog({
                           href={merchant.website}
                           target="_blank"
                           rel="noreferrer"
-                          className="text-xs text-blue-600 hover:underline flex items-center gap-1 font-medium truncate"
+                          className="text-xs text-festival-teal hover:underline flex items-center gap-1 font-medium truncate"
                         >
                           <Globe className="w-3 h-3 shrink-0" />{" "}
                           <span className="truncate">{merchant.website}</span>
@@ -246,8 +246,8 @@ export default function MerchantKycDialog({
                     )}
                     {merchant.category === "others" &&
                       merchant.customCategoryNotes && (
-                        <div className="col-span-2 p-2 bg-blue-50/70 border border-blue-200 rounded-lg text-xs text-blue-900">
-                          <span className="font-bold block text-[9px] uppercase text-blue-700 tracking-wider">
+                        <div className="col-span-2 p-2 bg-warm-ivory border border-brand-border rounded-lg text-xs text-royal-plum">
+                          <span className="font-bold block text-[9px] uppercase text-festival-teal tracking-wider">
                             Special Category Notes:
                           </span>
                           <p className="text-[11px] font-normal leading-relaxed mt-0.5">
@@ -262,7 +262,7 @@ export default function MerchantKycDialog({
                 <div className="bg-slate-50/70 p-2.5 sm:p-3.5 rounded-xl border border-slate-200/80">
                   <div className="flex items-center justify-between border-b border-slate-200/80 pb-1.5 mb-2">
                     <h4 className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                      <UserCheck className="w-3.5 h-3.5 text-blue-600" />{" "}
+                      <UserCheck className="w-3.5 h-3.5 text-festival-teal" />{" "}
                       Contact &amp; Liaison
                     </h4>
                     <span className="text-[9px] font-mono text-slate-400 uppercase">
@@ -317,7 +317,7 @@ export default function MerchantKycDialog({
                 <div className="bg-slate-50/70 p-2.5 sm:p-3.5 rounded-xl border border-slate-200/80">
                   <div className="flex items-center justify-between border-b border-slate-200/80 pb-1.5 mb-2">
                     <h4 className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                      <MapPin className="w-3.5 h-3.5 text-blue-600" /> Store
+                      <MapPin className="w-3.5 h-3.5 text-festival-teal" /> Store
                       Location
                     </h4>
                     {mapsUrl && (
@@ -325,7 +325,7 @@ export default function MerchantKycDialog({
                         href={mapsUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-[10px] font-semibold text-blue-600 hover:underline flex items-center gap-1"
+                        className="text-[10px] font-semibold text-festival-teal hover:underline flex items-center gap-1"
                       >
                         <ExternalLink className="w-3 h-3" /> Maps
                       </a>
@@ -363,7 +363,7 @@ export default function MerchantKycDialog({
                         <span className="text-[9px] uppercase font-bold text-slate-400 block tracking-wider">
                           GPS Coordinates
                         </span>
-                        <span className="font-mono text-[11px] font-semibold text-blue-700 block truncate">
+                        <span className="font-mono text-[11px] font-semibold text-festival-teal block truncate">
                           Lat: {lat} | Lng: {lng}
                         </span>
                       </div>
@@ -372,7 +372,7 @@ export default function MerchantKycDialog({
                           href={mapsUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-1 text-[10px] font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded-md border border-blue-100 hover:bg-blue-100 shrink-0"
+                          className="inline-flex items-center gap-1 text-[10px] font-semibold text-festival-teal bg-warm-ivory px-2 py-1 rounded-md border border-brand-border hover:bg-festival-teal/20 shrink-0"
                         >
                           <ExternalLink className="w-3 h-3" /> Navigate
                         </a>
@@ -468,7 +468,7 @@ export default function MerchantKycDialog({
                   <span className="text-[9px] uppercase font-bold text-slate-400 block tracking-wider">
                     Primary Document Type
                   </span>
-                  <span className="font-bold text-blue-700 text-xs block truncate">
+                  <span className="font-bold text-festival-teal text-xs block truncate">
                     {merchant.docType || "GST Registration Certificate"}
                   </span>
                 </div>
@@ -493,8 +493,8 @@ export default function MerchantKycDialog({
                   merchant.identityDocumentUrl ||
                   merchant.docFile;
                 return (
-                  <div className="p-2.5 sm:p-3.5 bg-blue-50/30 rounded-xl border border-blue-200/80 text-center space-y-2">
-                    <div className="flex items-center justify-between border-b border-blue-100 pb-1.5">
+                  <div className="p-2.5 sm:p-3.5 bg-warm-ivory rounded-xl border border-festival-teal/25 text-center space-y-2">
+                    <div className="flex items-center justify-between border-b border-brand-border pb-1.5">
                       <span className="text-xs font-bold text-slate-900 block truncate">
                         Document Preview (
                         {merchant.docType || "GST Certificate"})
@@ -504,7 +504,7 @@ export default function MerchantKycDialog({
                           href={docImgUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="text-xs font-semibold text-blue-600 hover:underline flex items-center gap-1 cursor-pointer shrink-0"
+                          className="text-xs font-semibold text-festival-teal hover:underline flex items-center gap-1 cursor-pointer shrink-0"
                         >
                           <ExternalLink className="w-3.5 h-3.5" /> Full Screen
                         </a>
@@ -553,7 +553,7 @@ export default function MerchantKycDialog({
                             href={shopImgUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-[10px] font-semibold text-blue-600 hover:underline flex items-center gap-0.5"
+                            className="text-[10px] font-semibold text-festival-teal hover:underline flex items-center gap-0.5"
                           >
                             <ExternalLink className="w-3 h-3" /> View
                           </a>
@@ -592,7 +592,7 @@ export default function MerchantKycDialog({
                             href={logoImgUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-[10px] font-semibold text-blue-600 hover:underline flex items-center gap-0.5"
+                            className="text-[10px] font-semibold text-festival-teal hover:underline flex items-center gap-0.5"
                           >
                             <ExternalLink className="w-3 h-3" /> View
                           </a>
@@ -633,7 +633,7 @@ export default function MerchantKycDialog({
                             href={bannerImgUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-[10px] font-semibold text-blue-600 hover:underline flex items-center gap-0.5"
+                            className="text-[10px] font-semibold text-festival-teal hover:underline flex items-center gap-0.5"
                           >
                             <ExternalLink className="w-3 h-3" /> View
                           </a>
@@ -666,7 +666,7 @@ export default function MerchantKycDialog({
                 {/* Card 1: Subscription Status & Expiry Overview */}
                 <div className="bg-slate-50/70 p-2.5 sm:p-3.5 rounded-xl border border-slate-200/80 space-y-2">
                   <h4 className="text-xs font-bold text-slate-900 flex items-center gap-1.5 border-b border-slate-200/80 pb-1.5">
-                    <CreditCard className="w-3.5 h-3.5 text-blue-600" />{" "}
+                    <CreditCard className="w-3.5 h-3.5 text-festival-teal" />{" "}
                     Subscription &amp; Payment Status
                   </h4>
 
@@ -691,7 +691,7 @@ export default function MerchantKycDialog({
 
                           return (
                             <>
-                              <Badge className="bg-blue-600 text-white font-semibold text-[11px] uppercase border-0 px-2 py-0.5 rounded-md">
+                              <Badge className="bg-festival-teal text-white font-semibold text-[11px] uppercase border-0 px-2 py-0.5 rounded-md">
                                 Plan: {merchant.plan || "Starter Free"}
                               </Badge>
                               <Badge
@@ -723,9 +723,9 @@ export default function MerchantKycDialog({
                     </div>
 
                     {planExpiryDate && (
-                      <div className="bg-blue-50/70 border border-blue-200/60 rounded-lg p-2 space-y-1.5 text-xs text-blue-900 font-normal">
-                        <div className="flex items-center gap-1.5 border-b border-blue-100/80 pb-1 flex-wrap">
-                          <Calendar className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                      <div className="bg-warm-ivory border border-festival-teal/20 rounded-lg p-2 space-y-1.5 text-xs text-royal-plum font-normal">
+                        <div className="flex items-center gap-1.5 border-b border-brand-border pb-1 flex-wrap">
+                          <Calendar className="w-3.5 h-3.5 text-festival-teal shrink-0" />
                           <span className="text-slate-600 font-normal text-xs">
                             Plan Expiry:
                           </span>
@@ -744,10 +744,10 @@ export default function MerchantKycDialog({
                         {countdownStr && (
                           <div className="flex items-center justify-between gap-2 pt-0.5">
                             <span className="flex items-center gap-1 text-[11px] text-slate-600 font-medium">
-                              <Clock className="w-3 h-3 text-blue-600 animate-pulse shrink-0" />{" "}
+                              <Clock className="w-3 h-3 text-festival-teal animate-pulse shrink-0" />{" "}
                               Time Remaining:
                             </span>
-                            <span className="font-bold text-blue-700 bg-blue-100/80 px-2 py-0.5 rounded-md text-[11px] font-mono whitespace-nowrap">
+                            <span className="font-bold text-festival-teal bg-festival-teal/15 px-2 py-0.5 rounded-md text-[11px] font-mono whitespace-nowrap">
                               {countdownStr}
                             </span>
                           </div>
@@ -767,7 +767,7 @@ export default function MerchantKycDialog({
                     {/* Section 1: Compact Custom Date & Time Picker */}
                     <div className="space-y-1 bg-white p-2 rounded-lg border border-slate-200/70 shadow-2xs">
                       <span className="text-[9px] uppercase font-bold text-slate-500 block flex items-center gap-1 tracking-wider">
-                        <Calendar className="w-3 h-3 text-blue-600" /> Custom
+                        <Calendar className="w-3 h-3 text-festival-teal" /> Custom
                         Expiry Date &amp; Time:
                       </span>
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5">
@@ -775,19 +775,19 @@ export default function MerchantKycDialog({
                           type="date"
                           value={customDate}
                           onChange={(e) => setCustomDate(e.target.value)}
-                          className="h-7 text-xs font-normal px-2 bg-slate-50 border border-slate-200 rounded-md text-slate-800 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                          className="h-7 text-xs font-normal px-2 bg-slate-50 border border-slate-200 rounded-md text-slate-800 focus:outline-none focus:ring-1 focus:ring-festival-teal/20"
                         />
                         <input
                           type="time"
                           value={customTime}
                           onChange={(e) => setCustomTime(e.target.value)}
-                          className="h-7 text-xs font-normal px-2 bg-slate-50 border border-slate-200 rounded-md text-slate-800 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                          className="h-7 text-xs font-normal px-2 bg-slate-50 border border-slate-200 rounded-md text-slate-800 focus:outline-none focus:ring-1 focus:ring-festival-teal/20"
                         />
                         <Button
                           size="sm"
                           disabled={isExtending || !customDate}
                           onClick={handleApplyCustomDate}
-                          className="h-7 text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-md px-3 cursor-pointer border-0 shadow-none"
+                          className="h-7 text-xs font-semibold bg-festival-teal hover:bg-festival-teal-dark text-white rounded-md px-3 cursor-pointer border-0 shadow-none"
                         >
                           Set Expiry
                         </Button>
@@ -805,7 +805,7 @@ export default function MerchantKycDialog({
                           variant="outline"
                           disabled={isExtending}
                           onClick={() => handleControlPlan({ extendDays: 7 })}
-                          className="h-6 text-[11px] font-semibold text-blue-700 bg-blue-50/80 border-blue-200/80 hover:bg-blue-100 rounded-md cursor-pointer px-1 w-full"
+                          className="h-6 text-[11px] font-semibold text-festival-teal bg-warm-ivory border-festival-teal/25 hover:bg-festival-teal/20 rounded-md cursor-pointer px-1 w-full"
                         >
                           +7 D
                         </Button>
@@ -903,7 +903,7 @@ export default function MerchantKycDialog({
                           variant="outline"
                           disabled={isExtending}
                           onClick={() => handleControlPlan({ plan: "growth" })}
-                          className="h-6 text-[11px] font-semibold text-blue-800 bg-blue-50 border-blue-200 hover:bg-blue-100 rounded-md cursor-pointer px-1"
+                          className="h-6 text-[11px] font-semibold text-festival-teal-dark bg-warm-ivory border-brand-border hover:bg-festival-teal/20 rounded-md cursor-pointer px-1"
                         >
                           Growth
                         </Button>
@@ -950,7 +950,7 @@ export default function MerchantKycDialog({
             {(merchant.status === "pending" || !merchant.status) && (
               <Button
                 onClick={() => onAction(merchant._id, "form_accepted")}
-                className="flex-1 sm:flex-none h-9 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg cursor-pointer shadow-none gap-1.5 px-4"
+                className="flex-1 sm:flex-none h-9 bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-semibold rounded-lg cursor-pointer shadow-none gap-1.5 px-4"
               >
                 <Check className="w-3.5 h-3.5" /> Accept Form
               </Button>

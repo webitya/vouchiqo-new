@@ -118,7 +118,7 @@ const DEFAULT_POLICIES = [
 // 8 Distinct Colorful Row Palettes (Clearly visible without hover)
 const ROW_COLOR_THEMES = [
   {
-    row: "bg-blue-100/65 hover:bg-blue-100/90 border-l-[3.5px] border-l-blue-600 border-b border-blue-200/80 text-slate-900",
+    row: "bg-festival-teal/10 hover:bg-festival-teal/20 border-l-[3.5px] border-l-festival-teal border-b border-festival-teal/20 text-slate-900",
   },
   {
     row: "bg-emerald-100/65 hover:bg-emerald-100/90 border-l-[3.5px] border-l-emerald-600 border-b border-emerald-200/80 text-slate-900",
@@ -329,7 +329,7 @@ export default function PolicyAgreementsAdminPage() {
               <Button
                 onClick={() => handleSaveAll(commitments, policies)}
                 disabled={saving}
-                className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg h-7.5 px-3.5 cursor-pointer shadow-2xs gap-1.5 shrink-0"
+                className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-medium rounded-lg h-7.5 px-3.5 cursor-pointer shadow-2xs gap-1.5 shrink-0"
               >
                 {saving ? (
                   <RefreshCw className="w-3.5 h-3.5 animate-spin" />
@@ -369,7 +369,7 @@ export default function PolicyAgreementsAdminPage() {
                     {stats.requiredCommitments}
                   </span>
                 </div>
-                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 border border-blue-200/60 flex items-center justify-center shrink-0">
+                <div className="w-7 h-7 rounded-lg bg-warm-ivory text-festival-teal border border-festival-teal/20 flex items-center justify-center shrink-0">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                 </div>
               </CardContent>
@@ -397,7 +397,7 @@ export default function PolicyAgreementsAdminPage() {
                   <span className="text-[10px] font-medium text-slate-500 uppercase tracking-wider block">
                     PDF Downloads
                   </span>
-                  <span className="text-base font-medium text-blue-700 mt-0.5 block leading-none">
+                  <span className="text-base font-medium text-festival-teal mt-0.5 block leading-none">
                     {stats.linkedPdfs}
                   </span>
                 </div>
@@ -434,11 +434,11 @@ export default function PolicyAgreementsAdminPage() {
                 placeholder="Enter new commitment text (e.g. I will honour every verified offer...)"
                 value={newCommitmentText}
                 onChange={(e) => setNewCommitmentText(e.target.value)}
-                className="flex-1 bg-white border border-slate-200 rounded-lg text-xs h-8 px-2.5 font-normal text-slate-900 focus:border-blue-500 outline-none shadow-2xs"
+                className="flex-1 bg-white border border-slate-200 rounded-lg text-xs h-8 px-2.5 font-normal text-slate-900 focus:border-festival-teal outline-none shadow-2xs"
               />
               <Button
                 onClick={handleAddCommitment}
-                className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg h-8 px-3 cursor-pointer gap-1 shrink-0 shadow-2xs"
+                className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-medium rounded-lg h-8 px-3 cursor-pointer gap-1 shrink-0 shadow-2xs"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Add Statement</span>
@@ -448,7 +448,7 @@ export default function PolicyAgreementsAdminPage() {
             {/* Commitment List with 8 Colorful Palettes */}
             {loading ? (
               <div className="py-6 text-center text-slate-400 text-xs flex justify-center items-center gap-2">
-                <RefreshCw className="w-4 h-4 animate-spin text-blue-600" />
+                <RefreshCw className="w-4 h-4 animate-spin text-festival-teal" />
                 <span>Loading commitments...</span>
               </div>
             ) : (
@@ -472,7 +472,7 @@ export default function PolicyAgreementsAdminPage() {
                         onChange={(e) =>
                           handleUpdateCommitment(idx, "text", e.target.value)
                         }
-                        className="flex-1 bg-white/95 border border-slate-300/90 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 outline-none shadow-2xs"
+                        className="flex-1 bg-white/95 border border-slate-300/90 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal outline-none shadow-2xs"
                       />
                       <label className="flex items-center gap-1.5 text-xs text-slate-700 cursor-pointer select-none shrink-0 bg-white/95 border border-slate-300/90 px-2 py-1 rounded-lg shadow-2xs">
                         <Checkbox
@@ -538,7 +538,7 @@ export default function PolicyAgreementsAdminPage() {
                   onChange={(e) =>
                     setNewPolicy({ ...newPolicy, title: e.target.value })
                   }
-                  className="w-full bg-white border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 outline-none shadow-2xs"
+                  className="w-full bg-white border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal outline-none shadow-2xs"
                 />
               </div>
               <div className="sm:col-span-5 space-y-0.5">
@@ -552,13 +552,13 @@ export default function PolicyAgreementsAdminPage() {
                   onChange={(e) =>
                     setNewPolicy({ ...newPolicy, link: e.target.value })
                   }
-                  className="w-full bg-white border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 outline-none shadow-2xs"
+                  className="w-full bg-white border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal outline-none shadow-2xs"
                 />
               </div>
               <div className="sm:col-span-2 flex flex-col justify-end">
                 <Button
                   onClick={handleAddPolicy}
-                  className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg h-7.5 px-3 cursor-pointer gap-1 w-full shadow-2xs"
+                  className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-medium rounded-lg h-7.5 px-3 cursor-pointer gap-1 w-full shadow-2xs"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>Add Policy</span>
@@ -569,7 +569,7 @@ export default function PolicyAgreementsAdminPage() {
             {/* Policy List */}
             {loading ? (
               <div className="py-6 text-center text-slate-400 text-xs flex justify-center items-center gap-2">
-                <RefreshCw className="w-4 h-4 animate-spin text-blue-600" />
+                <RefreshCw className="w-4 h-4 animate-spin text-festival-teal" />
                 <span>Loading policy agreements...</span>
               </div>
             ) : (
@@ -597,7 +597,7 @@ export default function PolicyAgreementsAdminPage() {
                             onChange={(e) =>
                               handleUpdatePolicy(idx, "title", e.target.value)
                             }
-                            className="w-full bg-white/95 border border-slate-300/90 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 outline-none shadow-2xs"
+                            className="w-full bg-white/95 border border-slate-300/90 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal outline-none shadow-2xs"
                           />
                         </div>
 
@@ -641,7 +641,7 @@ export default function PolicyAgreementsAdminPage() {
                               onChange={(e) =>
                                 handleUpdatePolicy(idx, "link", e.target.value)
                               }
-                              className="w-full bg-white/95 border border-slate-300/90 rounded-lg text-xs h-7.5 px-2.5 font-mono text-slate-800 focus:border-blue-500 outline-none pr-7 shadow-2xs"
+                              className="w-full bg-white/95 border border-slate-300/90 rounded-lg text-xs h-7.5 px-2.5 font-mono text-slate-800 focus:border-festival-teal outline-none pr-7 shadow-2xs"
                             />
                             {p.link && (
                               <FileText className="w-3.5 h-3.5 text-red-500 absolute right-2 pointer-events-none" />

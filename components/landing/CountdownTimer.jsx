@@ -36,7 +36,7 @@ export function CountdownTimer() {
 
   return (
     <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-xl w-fit">
-      <Clock className="w-4 h-4 text-[#2563eb] animate-pulse" />
+      <Clock className="w-4 h-4 text-festival-pink animate-pulse" />
       <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">
         Ends In:
       </span>

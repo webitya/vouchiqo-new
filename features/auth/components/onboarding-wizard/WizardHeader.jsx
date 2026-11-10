@@ -20,7 +20,7 @@ export default function WizardHeader({
             <h1 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
               Merchant Onboarding Application
             </h1>
-            <Badge className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-0 text-[10px] font-semibold px-2.5 py-0.5 rounded-full shadow-2xs">
+            <Badge className="bg-gradient-to-r from-[#35104A] to-[#007F79] text-white border-0 text-[10px] font-semibold px-2.5 py-0.5 rounded-full shadow-2xs">
               Founding Partner
             </Badge>
           </div>
@@ -46,14 +46,14 @@ export default function WizardHeader({
             variant="outline"
             size="sm"
             onClick={() => router.push("/merchant/dashboard")}
-            className="h-8 px-2.5 text-xs font-semibold text-blue-700 hover:text-blue-800 border-blue-200 bg-blue-50/60 hover:bg-blue-100/80 rounded-lg flex items-center gap-1.5 cursor-pointer shadow-2xs"
+            className="h-8 px-2.5 text-xs font-semibold text-festival-teal hover:text-[#004D49] border-brand-border bg-warm-ivory hover:bg-festival-teal/20/80 rounded-lg flex items-center gap-1.5 cursor-pointer shadow-2xs"
           >
-            <Store className="w-3.5 h-3.5 text-blue-600" />
+            <Store className="w-3.5 h-3.5 text-festival-teal" />
             <span className="hidden sm:inline">Dashboard</span>
           </Button>
 
           <div className="flex items-center gap-1.5 bg-slate-50 p-1 rounded-lg border border-slate-200/80">
-            <span className="text-[11px] font-bold text-blue-700 bg-white px-2 py-0.5 rounded-md shadow-2xs border border-blue-100">
+            <span className="text-[11px] font-bold text-festival-teal bg-white px-2 py-0.5 rounded-md shadow-2xs border border-brand-border">
               Section {currentStep} of 6
             </span>
             <span className="text-[11px] font-semibold text-slate-600 px-1">
@@ -83,20 +83,20 @@ export default function WizardHeader({
           const colorThemes = {
             1: {
               active:
-                "bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white shadow-md shadow-blue-500/25 border-0 ring-2 ring-blue-500/30",
+                "bg-gradient-to-r from-[#35104A] via-[#007F79] to-[#35104A] text-white shadow-md shadow-festival-teal/20 border-0 ring-2 ring-festival-teal/30",
               completed:
                 "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-sm border-0",
               upcoming:
-                "bg-blue-50/80 border-blue-200/80 text-blue-950 hover:bg-blue-100/70 hover:border-blue-300",
+                "bg-warm-ivory border-brand-border text-royal-plum hover:bg-festival-teal/20/70 hover:border-brand-border",
               numberActive:
-                "bg-white text-blue-700 font-extrabold shadow-2xs",
+                "bg-white text-festival-teal font-extrabold shadow-2xs",
               numberCompleted:
                 "bg-white text-emerald-700 font-extrabold shadow-2xs",
               numberUpcoming:
-                "bg-blue-100/90 text-blue-700 font-bold border border-blue-200/80",
-              labelActive: "text-blue-100 font-semibold",
+                "bg-festival-teal/20/90 text-festival-teal font-bold border border-brand-border",
+              labelActive: "text-warm-ivory font-semibold",
               labelCompleted: "text-emerald-100 font-semibold",
-              labelUpcoming: "text-blue-700/80 font-semibold",
+              labelUpcoming: "text-festival-teal/80 font-semibold",
             },
             2: {
               active:

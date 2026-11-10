@@ -287,7 +287,7 @@ export default function DataTable({
                 <>
                   <TableRow className="border-0">
                     <TableCell colSpan={columns.length} className="p-0 border-0">
-                      <div className="h-0.5 w-full bg-blue-500 animate-pulse" />
+                      <div className="h-0.5 w-full bg-festival-teal/100 animate-pulse" />
                     </TableCell>
                   </TableRow>
                   {paged.map((row, rowIndex) => {
@@ -387,8 +387,8 @@ export default function DataTable({
           <MobileLoadingCards />
         ) : refetching ? (
           <>
-            <div className="h-1 w-full bg-blue-600/20 overflow-hidden rounded-full my-1">
-              <div className="h-full bg-blue-600 animate-pulse w-full" />
+            <div className="h-1 w-full bg-festival-teal/20 overflow-hidden rounded-full my-1">
+              <div className="h-full bg-festival-teal animate-pulse w-full" />
             </div>
             {paged.map((row, rowIndex) => _renderMobileRow(row, rowIndex, columns, renderMobileCard))}
           </>

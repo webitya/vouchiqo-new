@@ -1,0 +1,274 @@
+================================================================================
+ VOUCHIQO OFFICIAL BRAND SYSTEM SPECIFICATION
+ Complete In-Depth Guide: Colors, Typography, Semantic Hierarchy & UI Architecture
+================================================================================
+
+1. BRAND COLOR PALETTE & ARCHITECTURAL MAPPING
+--------------------------------------------------------------------------------
+The Vouchiqo visual identity is built on six distinctive, high-impact colors
+designed for festive warmth, premium clarity, and high e-commerce conversion.
+Arbitrary generic colors (standard blue #2563eb, dark navy #08214d, off-pink #F72853)
+are strictly replaced by this cohesive palette.
+
+┌─────────────────┬───────────┬───────────────────────────────┬────────────────────────────────────────────────────────┐
+│ Brand Color     │ Hex Code  │ Semantic Role                 │ Primary Where-To-Use Placement                         │
+├─────────────────┼───────────┼───────────────────────────────┼────────────────────────────────────────────────────────┤
+│ 1. Warm Ivory   │ #FFF8EF   │ Foundation Canvas & Surfaces  │ • Universal page background (--background, body)       │
+│                 │           │                               │ • Card surfaces & subtle inner card panels             │
+│                 │           │                               │ • Modal backdrops & drawer sheet backgrounds           │
+│                 │           │                               │ • Ticket cutout holes & tear-off borders               │
+│                 │           │                               │ • Warm, friendly whitespace replacing sterile white    │
+├─────────────────┼───────────┼───────────────────────────────┼────────────────────────────────────────────────────────┤
+│ 2. Royal PLUM   │ #35104A   │ Anchor, Contrast & Authority  │ • Primary typography (--foreground, body text, h1-h6)  │
+│                 │           │                               │ • Footer background & dark section header blocks       │
+│                 │           │                               │ • Dark mode canvas background & surface cards          │
+│                 │           │                               │ • High-contrast icons, dropdown headers, active labels │
+│                 │           │                               │ • Premium secondary buttons & structured dividers      │
+├─────────────────┼───────────┼───────────────────────────────┼────────────────────────────────────────────────────────┤
+│ 3. Festival Teal│ #007F79   │ Trust, Action & Savings       │ • Primary action buttons (btn-primary, Search CTAs)    │
+│                 │           │                               │ • Trust & verification badges ("Verified Merchant")    │
+│                 │           │                               │ • Active navigation indicator & search input focus ring│
+│                 │           │                               │ • Real-time savings indicators ("You Saved ₹450")      │
+│                 │           │                               │ • Progress bars, active toggles & checked checkboxes   │
+├─────────────────┼───────────┼───────────────────────────────┼────────────────────────────────────────────────────────┤
+│ 4. Festival Pink│ #FF2E63   │ High-Conversion & Excitement  │ • High-intent conversion CTAs ("Grab Offer", "Claim")  │
+│                 │           │                               │ • Urgent badges ("Trending", "Hot Deal", "Expiring")   │
+│                 │           │                               │ • Discount percentage callouts ("70% OFF", "BUY 1 GET 1")
+│                 │           │                               │ • Notification counter badges & pulsating dots         │
+│                 │           │                               │ • Active mobile navigation icon highlights             │
+├─────────────────┼───────────┼───────────────────────────────┼────────────────────────────────────────────────────────┤
+│ 5. Marigold Glow│ #FF8C05   │ Warmth, Deals & Urgency       │ • "Deals of the Day" accent ribbons & countdown badges │
+│                 │           │                               │ • Star rating indicators & celebratory alerts          │
+│                 │           │                               │ • Flash sale banner highlights & limited-time headers  │
+│                 │           │                               │ • Secondary action buttons on festive campaign cards   │
+├─────────────────┼───────────┼───────────────────────────────┼────────────────────────────────────────────────────────┤
+│ 6. Golden Glow  │ #FFD166   │ Delight, Rewards & Accents    │ • Cashback badges, coin icons & loyalty reward counters│
+│                 │           │                               │ • Dotted ticket border accents & voucher code boxes    │
+│                 │           │                               │ • Soft warm badge backdrops (bg-golden-glow/20)        │
+│                 │           │                               │ • Star rating fill highlights & festive card glow      │
+└─────────────────┴───────────┴───────────────────────────────┴────────────────────────────────────────────────────────┘
+
+
+2. TYPOGRAPHY SYSTEM & HIERARCHY SPECIFICATION
+--------------------------------------------------------------------------------
+The typography pairs a clean humanist geometric sans for supreme reading clarity
+with a bold, punchy, editorial geometric sans for brand identity.
+
+A. PRIMARY FONT: Plus Jakarta Sans
+   Family: 'Plus Jakarta Sans', sans-serif
+   Import: @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+   Role: Universal Body, UI Controls, Form Elements, and Navigation
+   Where to use:
+   • Body copy, paragraphs, deal terms and conditions, FAQ answers
+   • Navbar links, footer links, dropdown item text, mobile bottom nav labels
+   • Form inputs, textareas, placeholder copy, labels, validation messages
+   • Table cells, descriptions, user profile info, dates and timestamps
+   • Standard button labels (Search, Cancel, Filter, Load More)
+
+   Weights & Usage:
+   - 400 (Regular): Standard body text, fine print, descriptions
+   - 500 (Medium): Form labels, navigation links, secondary metadata
+   - 600 (Semi-Bold): Form inputs, interactive action labels, filter chips
+   - 700 (Bold): Emphasized numbers, strong body callouts
+
+B. SECONDARY FONT: Montserrat
+   Family: 'Montserrat', sans-serif
+   Import: @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+   Role: Headings, Display Headlines, Numerals, Discount Callouts & Badges
+   Where to use:
+   • Page titles (h1) and Section titles (h2, h3, h4)
+   • Hero marketing headlines and promotional taglines
+   • Discount percentages (e.g., "50% OFF", "FLAT ₹200 CASHBACK")
+   • Coupon codes (e.g., "VOUCH50", "DIWALI2026")
+   • Kicker badges (e.g., "TRENDING NOW", "DEALS OF THE DAY", "VERIFIED STORE")
+   • Big metric numbers on KPI cards and dashboard stats
+   • CTA button text for high-impact buttons ("GRAB OFFER", "CLAIM NOW")
+
+   Weights & Usage:
+   - 600 (Semi-Bold): Category card titles, filter section headers
+   - 700 (Bold): Main section titles, card discount values, badges
+   - 800 (Extra-Bold): Hero headers, big discount callouts, coupon codes
+
+
+3. CSS & TAILWIND TOKENS MAPPING
+--------------------------------------------------------------------------------
+
+/* CSS Variables */
+:root {
+  /* Brand Primitives */
+  --color-royal-plum: #35104A;
+  --color-festival-teal: #007F79;
+  --color-festival-pink: #FF2E63;
+  --color-warm-ivory: #FFF8EF;
+  --color-golden-glow: #FFD166;
+  --color-marigold-glow: #FF8C05;
+
+  /* Semantic Light Mode System */
+  --brand-bg: #FFF8EF;
+  --brand-surface: #FFFDF9;
+  --brand-text: #35104A;
+  --brand-subtext: #6B4C82;
+  --brand-border: #EADBCE;
+  --brand-plum: #35104A;
+  --brand-teal: #007F79;
+  --brand-pink: #FF2E63;
+  --brand-ivory: #FFF8EF;
+  --brand-marigold: #FF8C05;
+  --brand-gold: #FFD166;
+
+  /* UI Component Mapping */
+  --background: var(--brand-bg);
+  --foreground: var(--brand-text);
+  --card: #FFFFFF;
+  --card-foreground: var(--brand-text);
+  --popover: #FFFFFF;
+  --popover-foreground: var(--brand-text);
+  --primary: #007F79;             /* Festival Teal */
+  --primary-foreground: #FFFFFF;
+  --secondary: #35104A;           /* Royal Plum */
+  --secondary-foreground: #FFFFFF;
+  --accent: #FF2E63;              /* Festival Pink */
+  --accent-foreground: #FFFFFF;
+  --warning: #FF8C05;             /* Marigold Glow */
+  --highlight: #FFD166;           /* Golden Glow */
+  --border: var(--brand-border);
+  --input: var(--brand-border);
+  --ring: #007F79;                /* Festival Teal */
+
+  /* Typography Variables */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Dark Mode Mapping */
+.dark, [data-theme="dark"] {
+  --brand-bg: #1D062B;            /* Deep Royal Plum */
+  --brand-surface: #280C38;       /* Plum Surface */
+  --brand-border: #4A1A66;
+  --brand-text: #FFF8EF;          /* Warm Ivory */
+  --brand-subtext: #D5BEDE;
+  --background: var(--brand-bg);
+  --foreground: var(--brand-text);
+  --card: #280C38;
+  --card-foreground: var(--brand-text);
+  --popover: #280C38;
+  --popover-foreground: var(--brand-text);
+  --primary: #00BFA5;
+  --secondary: #FFF8EF;
+  --accent: #FF2E63;
+  --ring: #00BFA5;
+}
+
+
+4. SIGNATURE GRADIENTS & COMPONENT UTILITIES
+--------------------------------------------------------------------------------
+• Brand Hero Gradient:
+  linear-gradient(135deg, #35104A 0%, #007F79 100%)
+
+• Festival Action Gradient:
+  linear-gradient(135deg, #FF2E63 0%, #FF8C05 100%)
+
+• Golden Warmth Gradient:
+  linear-gradient(135deg, #FFD166 0%, #FF8C05 100%)
+
+• Text Gradient Utility (.text-brand-gradient):
+  linear-gradient(135deg, #35104A 0%, #007F79 50%, #FF2E63 100%)
+
+• Button Utilities:
+  - .btn-primary:     bg-[#007F79] hover:bg-[#00635E] text-white (Festival Teal)
+  - .btn-festival:    bg-[#FF2E63] hover:bg-[#E02253] text-white (Festival Pink)
+  - .btn-marigold:    bg-[#FF8C05] hover:bg-[#E67E00] text-white (Marigold Glow)
+  - .btn-plum:        bg-[#35104A] hover:bg-[#250B34] text-white (Royal Plum)
+  - .btn-gold:        bg-[#FFD166] hover:bg-[#F2C450] text-[#35104A] font-bold (Golden Glow)
+
+• Official Badges:
+  - Verified Store:   bg-[#007F79]/10 text-[#007F79] border border-[#007F79]/20
+  - Hot / Trending:   bg-[#FF2E63]/10 text-[#FF2E63] border border-[#FF2E63]/20
+  - Ending Soon:      bg-[#FF8C05]/10 text-[#FF8C05] border border-[#FF8C05]/20
+  - Gold Savings:     bg-[#FFD166]/25 text-[#35104A] border border-[#FFD166]/50
+================================================================================
+
+5. EXHAUSTIVE PAGE-BY-PAGE DESIGN SYSTEM IMPLEMENTATION MATRIX
+--------------------------------------------------------------------------------
+This matrix details the exact, in-depth application of the brand color palette and
+typography across every major portal and surface in Vouchiqo:
+
+A. PUBLIC PORTAL & CONSUMER EXPERIENCE
+   1. Homepage & Hero Section:
+      - Canvas: Warm Ivory (#FFF8EF) with subtle micro-dot grid.
+      - Hero Headline: Montserrat Bold/Extra-Bold in Royal Plum (#35104A) with Festival Pink (#FF2E63) accent phrases.
+      - Search Input: Warm Ivory surface, border-brand-border, focus ring in Festival Teal (#007F79).
+      - Category Pills: Plus Jakarta Sans Medium; active state in Festival Teal with Warm Ivory badge text.
+      - Featured / Flash Deal Cards: Dotted ticket cutouts on Warm Ivory; "Grab Offer" CTA in Festival Pink.
+      - Countdown Timer: Festival Pink (#FF2E63) pulsating clock with Montserrat bold numerals.
+
+   2. Search & Filter Experience (/search):
+      - Sticky Filter Bar: Warm Ivory Light (#FFFDF9) with brand border (#EADBCE).
+      - Filter Chips: Inactive in slate-700/warm surface; active in Festival Teal with Warm Ivory badge counter.
+      - Range Slider & Checkboxes: Accent color in Festival Teal (#007F79).
+      - Result Count & Headings: Montserrat Semi-Bold in Royal Plum (#35104A).
+      - Coupon Cards: Festival Teal verification badges; copy-code button in Festival Teal; "Claim Deal" in Festival Pink.
+
+   3. Brand Store Pages (/brand/[slug]):
+      - Brand Header Banner: Warm Ivory card surface with Royal Plum store title in Montserrat Bold.
+      - Store Status: "Open Now" in Festival Teal (#007F79); "Closed Today" in Red-500.
+      - Tab Navigation (Coupons, Deals, About): Active indicator in Festival Teal; hover in Festival Teal Dark.
+      - Coupon Cards: Cutout circles matching Warm Ivory canvas; discount banner in Festival Pink or Marigold Glow.
+      - Expired Offers Section: Desaturated Warm Ivory card with subtle slate tags.
+
+   4. Nearby Local Offers (/nearby-offers):
+      - Map Radar Skeleton: Festival Pink (#FF2E63) pulsating radar beacon.
+      - Map Layer Selector: Floating dock with Festival Teal active layer button and Warm Ivory popup.
+      - Live GPS Locate: Active in Festival Teal with spinning crosshair icon.
+      - Local Offer Cards: Distance pill in Festival Teal; discount banner in Festival Pink; "Get Directions" in Royal Plum.
+
+   5. All Brands Directory (/brands):
+      - Canvas: Warm Ivory (#FFF8EF).
+      - Search Brand Bar: Focus border in Festival Teal.
+      - Brand Grid Items: Warm Ivory Light card base, Festival Teal verified tick, Montserrat brand name.
+
+   6. Category Exploration (/categories):
+      - Category Badges: Fashion (Festival Pink), Electronics & Tech (Festival Teal), Food & Dining (Marigold Glow),
+        Entertainment & Media (Royal Plum), Jewellery & Luxury (Golden Glow), Finance (Festival Teal Dark).
+
+B. AUTHENTICATION & ONBOARDING
+   1. Sign In & Register (/auth):
+      - Auth Card Background: Premium brand gradient from Royal Plum (#35104A) via Deep Plum (#1D062B) to Festival Teal (#007F79).
+      - Headline: Montserrat Bold in Warm Ivory with Golden Glow decorative star accents.
+      - Input Fields: Warm Ivory borders, Festival Teal focus ring.
+      - Submit Button: Festival Teal (#007F79) with Festival Teal Dark hover state; Montserrat Semi-Bold label.
+      - Social Login & Secondary Links: Royal Plum text with Festival Pink hover highlights.
+
+   2. Merchant Onboarding Wizard:
+      - Stepper / Progress Bar: Completed and active steps in Festival Teal (#007F79); future steps in slate-200.
+      - Plan Selection Cards: Recommended plan highlighted in Golden Glow (#FFD166) ring; CTA in Festival Teal.
+      - KYC & Document Upload: Dropzone with Warm Ivory fill and Festival Teal dotted boundary on hover.
+
+C. MERCHANT BACKOFFICE & DASHBOARD (/merchant)
+   1. KPI Summary Cards:
+      - Metric Numerals: Montserrat Extra-Bold in Royal Plum (#35104A).
+      - Trend Sparklines: Stroke in Festival Teal (#007F79) with gradient fill to transparent.
+      - Positive Delta Badges: Festival Teal with Warm Ivory badge background.
+
+   2. Coupon & Campaign Management:
+      - "Create New Coupon" Button: Festival Pink (#FF2E63) CTA.
+      - Coupon Status Badges: Active (Festival Teal), Expired (slate-400), Flash Sale (Marigold Glow).
+      - Table Rows: Alternating Warm Ivory surfaces with Festival Teal hover glow.
+
+   3. Billing & Plan Upgrades (/merchant/billing):
+      - Plan Comparison Matrix: Pro/Growth plan marked with "POPULAR" ribbon in Festival Pink.
+      - Checkout Modal: Festival Teal action CTA with Festival Teal glow shadow.
+
+D. ADMIN CONTROL CENTER (/admin)
+   1. Coupon Moderation (/admin/approvals/coupons):
+      - Moderation Table: Row highlight in Festival Teal/10 with 3.5px Festival Teal left accent border.
+      - "Approve & Publish" Action: Festival Teal button with Montserrat Semi-Bold font.
+      - "Reject" Action: Festival Pink / Rose-600 outline button.
+
+   2. Merchant KYC Verification (/admin/approvals/merchants):
+      - KYC Status Pills: Verified (Festival Teal), Pending (Marigold Glow), Rejected (Festival Pink).
+      - Review Dialog: Royal Plum headers, Warm Ivory document preview containers, Festival Teal approve CTA.
+
+   3. Banner & Campaign Management (/admin/banners):
+      - Banner Color Picker: Curated brand palette presets (Festival Teal, Festival Pink, Royal Plum, Marigold Glow, Golden Glow).
+================================================================================

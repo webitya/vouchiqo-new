@@ -113,7 +113,7 @@ export function StatusPill({ status, type, icon: CustomIcon, className }) {
 export default function MobileTableCard({
   avatar,
   avatarText,
-  avatarBg = "bg-blue-600",
+  avatarBg = "bg-festival-teal",
   badge,
   title,
   subtitle,
@@ -266,7 +266,7 @@ export default function MobileTableCard({
               className={cn(
                 "w-full h-8 rounded-lg px-3 py-1 flex items-center justify-between text-xs font-bold transition-all cursor-pointer select-none",
                 actionVariant === "primary" &&
-                  "bg-blue-50/90 hover:bg-blue-100 text-blue-600 dark:bg-blue-950/40 dark:hover:bg-blue-900/50 dark:text-blue-400",
+                  "bg-warm-ivory hover:bg-festival-teal/20 text-festival-teal dark:bg-royal-plum/40 dark:hover:bg-royal-plum/60 dark:text-warm-ivory",
                 actionVariant === "success" &&
                   "bg-emerald-50/90 hover:bg-emerald-100 text-emerald-600 dark:bg-emerald-950/40 dark:hover:bg-emerald-900/50 dark:text-emerald-400",
                 actionVariant === "danger" &&

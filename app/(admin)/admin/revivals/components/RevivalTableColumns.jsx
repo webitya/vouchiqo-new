@@ -64,7 +64,7 @@ export function getRevivalColumns({ onReviewClick }) {
           <Button
             size="sm"
             onClick={() => onReviewClick(row)}
-            className="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold h-7 px-3 rounded-lg cursor-pointer shadow-2xs"
+            className="bg-festival-teal hover:bg-festival-teal-dark text-white text-[10px] font-bold h-7 px-3 rounded-lg cursor-pointer shadow-2xs"
           >
             Review &amp; Audit
           </Button>

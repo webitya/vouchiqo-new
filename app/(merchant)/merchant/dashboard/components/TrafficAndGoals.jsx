@@ -78,13 +78,13 @@ export default function TrafficAndGoals({
               <span className="font-normal text-slate-700">
                 Monthly Revenue
               </span>
-              <span className="text-[#F72853] font-medium text-xs">
+              <span className="text-[#FF2E63] font-medium text-xs">
                 {revenuePct}%
               </span>
             </div>
             <div className="relative h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
               <div
-                className="h-full rounded-full transition-all duration-500 ease-out bg-[#F72853]"
+                className="h-full rounded-full transition-all duration-500 ease-out bg-[#FF2E63]"
                 style={{ width: `${revenuePct}%` }}
               />
             </div>
@@ -98,13 +98,13 @@ export default function TrafficAndGoals({
           <div className="space-y-1">
             <div className="flex items-center justify-between text-xs">
               <span className="font-normal text-slate-700">Coupon Claims</span>
-              <span className="text-blue-600 font-medium text-xs">
+              <span className="text-festival-teal font-medium text-xs">
                 {claimsPct}%
               </span>
             </div>
             <div className="relative h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
               <div
-                className="h-full rounded-full transition-all duration-500 ease-out bg-blue-600"
+                className="h-full rounded-full transition-all duration-500 ease-out bg-festival-teal"
                 style={{ width: `${claimsPct}%` }}
               />
             </div>

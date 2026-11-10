@@ -125,12 +125,12 @@ export const DealsOfTheDay = ({ affiliateProducts = [] }) => {
     <section className="text-left w-full overflow-hidden select-none pb-2">
       {/* Header */}
       <div className="flex items-center justify-between mb-3.5 sm:mb-4">
-        <h2 className="text-base sm:text-lg md:text-xl font-medium text-[#F72853] tracking-tight">
+        <h2 className="text-base sm:text-lg md:text-xl font-heading font-bold text-[#FF2E63] tracking-tight">
           Affiliate Products
         </h2>
         <Link
           href="/deals"
-          className="text-xs font-normal text-[#F72853] hover:underline transition-all"
+          className="text-xs font-sans font-semibold text-[#007F79] hover:text-[#35104A] hover:underline transition-all"
         >
           View All →
         </Link>
@@ -143,7 +143,7 @@ export const DealsOfTheDay = ({ affiliateProducts = [] }) => {
           <button
             type="button"
             onClick={handlePrev}
-            className="hidden md:flex absolute left-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-9 md:h-9 rounded-full bg-white/90 backdrop-blur-xs border border-slate-200 shadow-md items-center justify-center hover:bg-white text-slate-600 hover:text-blue-600 transition-all cursor-pointer"
+            className="hidden md:flex absolute left-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-9 md:h-9 rounded-full bg-white/95 backdrop-blur-xs border border-[#EADBCE] shadow-md items-center justify-center hover:bg-[#FFF8EF] text-[#35104A] hover:text-[#007F79] transition-all cursor-pointer"
             aria-label="Previous Slide"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -182,7 +182,7 @@ export const DealsOfTheDay = ({ affiliateProducts = [] }) => {
           <button
             type="button"
             onClick={handleNext}
-            className="hidden md:flex absolute right-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-9 md:h-9 rounded-full bg-white/90 backdrop-blur-xs border border-slate-200 shadow-md items-center justify-center hover:bg-white text-slate-600 hover:text-blue-600 transition-all cursor-pointer"
+            className="hidden md:flex absolute right-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-9 md:h-9 rounded-full bg-white/95 backdrop-blur-xs border border-[#EADBCE] shadow-md items-center justify-center hover:bg-[#FFF8EF] text-[#35104A] hover:text-[#007F79] transition-all cursor-pointer"
             aria-label="Next Slide"
           >
             <ChevronRight className="w-5 h-5" />

@@ -68,7 +68,7 @@ const PLAN_OPTIONS = [
 // 8 Distinct Colorful Row Palettes (Clearly visible without hover)
 const ROW_COLOR_THEMES = [
   {
-    row: "bg-blue-100/65 hover:bg-blue-100/90 border-l-[3.5px] border-l-blue-600 border-b border-blue-200/80 text-slate-900",
+    row: "bg-festival-teal/10 hover:bg-festival-teal/20 border-l-[3.5px] border-l-festival-teal border-b border-festival-teal/20 text-slate-900",
   },
   {
     row: "bg-emerald-100/65 hover:bg-emerald-100/90 border-l-[3.5px] border-l-emerald-600 border-b border-emerald-200/80 text-slate-900",
@@ -276,7 +276,7 @@ export default function AdminMerchantsClient({
             <div className="min-w-0">
               <Link
                 href={`/admin/merchants/${row._id}`}
-                className="font-medium text-slate-900 hover:text-blue-600 transition-colors text-[11.5px] leading-tight block truncate"
+                className="font-medium text-slate-900 hover:text-festival-teal transition-colors text-[11.5px] leading-tight block truncate"
               >
                 {row.businessName || "Merchant Partner"}
               </Link>
@@ -315,7 +315,7 @@ export default function AdminMerchantsClient({
           tierBg = "bg-emerald-100 text-emerald-800 border-emerald-300";
           tierLabel = "GROWTH";
         } else if (tier.includes("pro")) {
-          tierBg = "bg-blue-100 text-blue-800 border-blue-300";
+          tierBg = "bg-festival-teal/10 text-festival-teal-dark border-festival-teal/30";
           tierLabel = "PRO";
         } else if (tier.includes("enterprise")) {
           tierBg = "bg-amber-100 text-amber-800 border-amber-300";
@@ -385,7 +385,7 @@ export default function AdminMerchantsClient({
           stBg = "bg-white/95 text-emerald-700 border-emerald-300";
           stLabel = "Active";
         } else if (st === "form_accepted" || st === "under_review") {
-          stBg = "bg-white/95 text-blue-700 border-blue-300";
+          stBg = "bg-white/95 text-festival-teal border-festival-teal/30";
           stLabel = "Form Accepted";
         } else if (st === "suspended" || st === "rejected") {
           stBg = "bg-white/95 text-rose-700 border-rose-300";
@@ -417,7 +417,7 @@ export default function AdminMerchantsClient({
                   size="sm"
                   variant="outline"
                   onClick={() => handleOpenKyc(row)}
-                  className="h-6.5 w-6.5 p-0 flex items-center justify-center border-slate-200 text-slate-700 bg-white hover:bg-slate-50 hover:text-blue-600 hover:border-blue-200 rounded-md cursor-pointer shadow-2xs transition-colors shrink-0"
+                  className="h-6.5 w-6.5 p-0 flex items-center justify-center border-slate-200 text-slate-700 bg-white hover:bg-slate-50 hover:text-festival-teal hover:border-festival-teal rounded-md cursor-pointer shadow-2xs transition-colors shrink-0"
                 >
                   <Eye className="h-3 w-3" />
                   <span className="sr-only">Audit KYC</span>
@@ -435,7 +435,7 @@ export default function AdminMerchantsClient({
                   size="sm"
                   variant="outline"
                   asChild
-                  className="h-6.5 w-6.5 p-0 flex items-center justify-center border-slate-200 text-slate-700 bg-white hover:bg-slate-50 hover:text-blue-600 hover:border-blue-200 rounded-md cursor-pointer shadow-2xs transition-colors shrink-0"
+                  className="h-6.5 w-6.5 p-0 flex items-center justify-center border-slate-200 text-slate-700 bg-white hover:bg-slate-50 hover:text-festival-teal hover:border-festival-teal rounded-md cursor-pointer shadow-2xs transition-colors shrink-0"
                 >
                   <Link href={`/admin/merchants/${row._id}`}>
                     <FileText className="h-3 w-3" />
@@ -454,7 +454,7 @@ export default function AdminMerchantsClient({
                 <TooltipTrigger asChild>
                   <Button
                     size="sm"
-                    className="h-6.5 w-6.5 p-0 flex items-center justify-center bg-blue-100 hover:bg-blue-600 text-blue-700 hover:text-white border border-blue-200 rounded-md cursor-pointer shadow-2xs transition-colors shrink-0"
+                    className="h-6.5 w-6.5 p-0 flex items-center justify-center bg-festival-teal/10 hover:bg-festival-teal text-festival-teal hover:text-white border border-brand-border rounded-md cursor-pointer shadow-2xs transition-colors shrink-0"
                     onClick={() => handleAction(row._id, "form_accepted")}
                     disabled={isPending}
                   >
@@ -594,7 +594,7 @@ export default function AdminMerchantsClient({
             className={cn(
               "rounded-xl border p-2.5 cursor-pointer transition-all duration-200 shadow-2xs font-sans",
               activeTab === "all"
-                ? "bg-blue-50/70 border-blue-300 ring-1 ring-blue-300"
+                ? "bg-warm-ivory border-festival-teal/30 ring-1 ring-festival-teal/20"
                 : "bg-white border-slate-200/80 hover:border-slate-300",
             )}
           >
@@ -607,7 +607,7 @@ export default function AdminMerchantsClient({
                   {isLoading ? <Skeleton className="h-4.5 w-10 rounded mt-0.5" /> : stats.total}
                 </span>
               </div>
-              <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 border border-blue-200/60 flex items-center justify-center shrink-0">
+              <div className="w-7 h-7 rounded-lg bg-warm-ivory text-festival-teal border border-festival-teal/20 flex items-center justify-center shrink-0">
                 <Store className="w-3.5 h-3.5" />
               </div>
             </CardContent>
@@ -723,7 +723,7 @@ export default function AdminMerchantsClient({
                         className={cn(
                           "text-[10.5px] font-medium px-2.5 py-1 rounded-md transition-all cursor-pointer flex items-center gap-1 border-0",
                           activeTab === tab.id
-                            ? "bg-white text-blue-600 shadow-sm"
+                            ? "bg-white text-festival-teal shadow-sm"
                             : "text-slate-500 hover:text-slate-800 bg-transparent",
                         )}
                       >
@@ -731,7 +731,7 @@ export default function AdminMerchantsClient({
                         <span className={cn(
                           "text-[9px] px-1.5 py-px rounded-full font-medium",
                           activeTab === tab.id
-                            ? "bg-blue-100 text-blue-700"
+                            ? "bg-festival-teal/10 text-festival-teal"
                             : "bg-slate-200/80 text-slate-600",
                         )}>
                           {tab.count}

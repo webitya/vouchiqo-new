@@ -21,9 +21,9 @@ const OFFER_TYPES = [
     desc: "Customer copies code for online checkout or presents a Smart Code at counter in-store.",
     bestFor:
       "Best for: Restaurants, salons, retail stores, or online checkouts.",
-    badgeBg: "bg-rose-50 text-[#F72853]",
+    badgeBg: "bg-rose-50 text-[#FF2E63]",
     activeColor:
-      "border-[#F72853] bg-rose-50/40 text-slate-900 ring-2 ring-[#F72853]/20 shadow-xs",
+      "border-[#FF2E63] bg-rose-50/40 text-slate-900 ring-2 ring-[#FF2E63]/20 shadow-xs",
   },
   {
     id: "deal",
@@ -59,11 +59,11 @@ export default function SectionType({ control, setValue, watch, onNext }) {
   return (
     <Card className="border-slate-200/90 shadow-2xs rounded-xl bg-white p-3.5 sm:p-4 space-y-3.5 text-left font-sans relative overflow-hidden">
       {/* Top Light Accent Bar */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-[#F72853]" />
+      <div className="absolute top-0 left-0 right-0 h-1 bg-[#FF2E63]" />
 
       <div className="border-b border-slate-100 pb-2.5 pt-0.5 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <span className="p-1.5 rounded-lg bg-rose-50 text-[#F72853] shrink-0">
+          <span className="p-1.5 rounded-lg bg-rose-50 text-[#FF2E63] shrink-0">
             <Tag className="w-4 h-4" />
           </span>
           <div>
@@ -124,8 +124,8 @@ export default function SectionType({ control, setValue, watch, onNext }) {
                 {/* Selection Indicator */}
                 <div className="flex items-center gap-1">
                   {isSelected ? (
-                    <span className="inline-flex items-center gap-1 text-[10px] font-medium text-[#F72853] bg-white border border-rose-200 px-2 py-0.5 rounded-full shadow-2xs">
-                      <CheckCircle2 className="w-3 h-3 text-[#F72853] fill-rose-50 stroke-[#F72853]" />
+                    <span className="inline-flex items-center gap-1 text-[10px] font-medium text-[#FF2E63] bg-white border border-rose-200 px-2 py-0.5 rounded-full shadow-2xs">
+                      <CheckCircle2 className="w-3 h-3 text-[#FF2E63] fill-rose-50 stroke-[#FF2E63]" />
                       Selected
                     </span>
                   ) : (
@@ -148,7 +148,7 @@ export default function SectionType({ control, setValue, watch, onNext }) {
       <div className="flex justify-end pt-2.5 border-t border-slate-100">
         <Button
           onClick={onNext}
-          className="bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-medium h-8 px-4 rounded-xl flex items-center gap-1.5 cursor-pointer shadow-xs transition-colors"
+          className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium h-8 px-4 rounded-xl flex items-center gap-1.5 cursor-pointer shadow-xs transition-colors"
         >
           <span>Next: Details</span>
           <ArrowRight className="w-3.5 h-3.5" />

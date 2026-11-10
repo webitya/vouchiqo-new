@@ -38,8 +38,8 @@ export default function ClicksTrendChart({ data = [] }) {
         <XAxis dataKey="label" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} />
         <YAxis stroke="#94a3b8" fontSize={10} tickLine={false} axisLine={false} />
         <Tooltip {...TOOLTIP_STYLE} />
-        <Line type="monotone" dataKey="clicks" stroke="#2563eb" strokeWidth={2.5}
-          dot={{ r: 3, fill: "#2563eb" }} activeDot={{ r: 5 }} name="Clicks" />
+        <Line type="monotone" dataKey="clicks" stroke="#007F79" strokeWidth={2.5}
+          dot={{ r: 3, fill: "#007F79" }} activeDot={{ r: 5 }} name="Clicks" />
         <Line type="monotone" dataKey="redemptions" stroke="#0f172a" strokeWidth={2.5}
           dot={{ r: 3, fill: "#0f172a" }} activeDot={{ r: 5 }} name="Redemptions" />
       </LineChart>

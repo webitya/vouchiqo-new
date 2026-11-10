@@ -105,7 +105,7 @@ export default function BrandHeader({
               <li>
                 <Link
                   href="/"
-                  className="hover:text-blue-600 transition-colors"
+                  className="hover:text-festival-teal transition-colors"
                 >
                   Home
                 </Link>
@@ -114,7 +114,7 @@ export default function BrandHeader({
               <li>
                 <Link
                   href="/brands"
-                  className="hover:text-blue-600 transition-colors"
+                  className="hover:text-festival-teal transition-colors"
                 >
                   Brands
                 </Link>
@@ -280,7 +280,7 @@ export default function BrandHeader({
                   onClick={handleShareClick}
                   className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-[10.5px] sm:text-[11px] font-normal text-slate-700 shadow-2xs shrink-0 transition-all cursor-pointer active:scale-95"
                 >
-                  <Share2 className="w-3 h-3 text-blue-600" />
+                  <Share2 className="w-3 h-3 text-festival-teal" />
                   <span>Share</span>
                 </button>
 
@@ -295,7 +295,7 @@ export default function BrandHeader({
                     onClick={() => setExistingUser(!existingUser)}
                     aria-label="Toggle Existing User Deals"
                     className={`relative inline-flex h-4 w-7 shrink-0 cursor-pointer rounded-full border border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                      existingUser ? "bg-blue-600" : "bg-slate-300"
+                      existingUser ? "bg-festival-teal" : "bg-slate-300"
                     }`}
                   >
                     <span
@@ -320,7 +320,7 @@ export default function BrandHeader({
                       onClick={() => setActiveTab(tab.id)}
                       className={`flex-grow py-1 px-2.5 text-[11px] sm:text-xs font-normal whitespace-nowrap transition-all border-0 cursor-pointer rounded-md text-center ${
                         isActive
-                          ? "bg-white text-blue-700 shadow-2xs border border-slate-200/70 font-medium"
+                          ? "bg-white text-festival-teal shadow-2xs border border-slate-200/70 font-medium"
                           : "bg-transparent text-slate-500 hover:text-slate-900"
                       }`}
                     >

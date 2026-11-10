@@ -16,15 +16,17 @@ const NavLink = ({ href, icon: Icon, label, shortLabel, isActive }) => (
   <Link
     href={href}
     prefetch={true}
-    className={`flex items-center gap-1 xl:gap-1.5 text-[12.5px] xl:text-[14px] transition-colors whitespace-nowrap py-1 px-1.5 xl:px-2.5 rounded-md ${
+    className={`flex items-center gap-1 xl:gap-1.5 text-[12.5px] xl:text-[14px] transition-colors whitespace-nowrap py-1 px-1.5 xl:px-2.5 rounded-md font-sans ${
       isActive
-        ? "text-[#F72853] font-medium"
-        : "text-slate-600 hover:text-[#F72853] font-normal"
+        ? "text-[#FF2E63] font-semibold"
+        : "text-[#35104A]/80 hover:text-[#FF2E63] font-medium"
     }`}
   >
     <Icon
       className={`h-4 w-4 xl:h-[18px] xl:w-[18px] shrink-0 transition-transform ${
-        isActive ? "stroke-[2] text-[#F72853]" : "stroke-[1.6] text-slate-500 group-hover:text-[#F72853]"
+        isActive
+          ? "stroke-[2.2] text-[#FF2E63]"
+          : "stroke-[1.7] text-[#35104A]/60 group-hover:text-[#FF2E63]"
       }`}
     />
     <span className="hidden xl:inline">{label}</span>

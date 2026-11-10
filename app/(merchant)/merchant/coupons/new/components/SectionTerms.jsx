@@ -55,11 +55,11 @@ export default function SectionTerms({
   return (
     <Card className="border-slate-200/90 shadow-2xs rounded-xl bg-white p-3.5 sm:p-4 space-y-3.5 text-left font-sans relative overflow-hidden">
       {/* Top Light Accent Bar */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-[#F72853]" />
+      <div className="absolute top-0 left-0 right-0 h-1 bg-[#FF2E63]" />
 
       <div className="border-b border-slate-100 pb-2.5 pt-0.5 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <span className="p-1.5 rounded-lg bg-rose-50 text-[#F72853] shrink-0">
+          <span className="p-1.5 rounded-lg bg-rose-50 text-[#FF2E63] shrink-0">
             <ShieldCheck className="w-4 h-4" />
           </span>
           <div>
@@ -139,7 +139,7 @@ export default function SectionTerms({
         <div className="p-2.5 bg-slate-50/80 rounded-xl border border-slate-200/80 space-y-2">
           <div className="flex items-center justify-between">
             <Label className="flex items-center gap-1.5 font-medium text-xs text-slate-700">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#F72853]" /> Mandatory
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#FF2E63]" /> Mandatory
               Merchant Declaration
               <span className="text-red-500 font-medium ml-0.5">*</span>
             </Label>
@@ -157,7 +157,7 @@ export default function SectionTerms({
                 setValue("agreed3", nextVal, { shouldValidate: true });
                 setValue("agreed4", nextVal, { shouldValidate: true });
               }}
-              className="text-[11px] font-medium text-[#F72853] hover:text-[#e01e47] cursor-pointer flex items-center gap-1 transition-colors"
+              className="text-[11px] font-medium text-[#FF2E63] hover:text-[#e01e47] cursor-pointer flex items-center gap-1 transition-colors"
             >
               {watch("agreed1") &&
               watch("agreed2") &&
@@ -207,7 +207,7 @@ export default function SectionTerms({
                       className={cn(
                         "mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-[4px] border transition-colors",
                         isChecked
-                          ? "border-[#F72853] bg-[#F72853] text-white"
+                          ? "border-[#FF2E63] bg-[#FF2E63] text-white"
                           : hasErr
                             ? "border-red-400 bg-white"
                             : "border-slate-300 bg-white",
@@ -243,7 +243,7 @@ export default function SectionTerms({
         <Button
           onClick={onSubmit}
           disabled={isPending}
-          className="bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-medium h-8 px-5 rounded-xl cursor-pointer shadow-xs transition-colors"
+          className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium h-8 px-5 rounded-xl cursor-pointer shadow-xs transition-colors"
         >
           {isPending
             ? "Submitting for Verification..."

@@ -58,7 +58,7 @@ export default function AnalyticsRevenueTab() {
       <Card className="border-slate-200/80 shadow-xs rounded-2xl bg-white p-5 space-y-4">
         <div className="flex items-center justify-between border-b border-slate-100 pb-3">
           <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-            <PieChart className="w-4 h-4 text-blue-600" /> Channel Conversion
+            <PieChart className="w-4 h-4 text-festival-teal" /> Channel Conversion
             Attribution
           </h3>
           <Button
@@ -82,8 +82,8 @@ export default function AnalyticsRevenueTab() {
               878 Redemptions
             </span>
           </div>
-          <div className="p-3 bg-blue-50/60 rounded-xl border border-blue-100">
-            <span className="text-xs font-bold text-blue-800 block">
+          <div className="p-3 bg-warm-ivory rounded-xl border border-brand-border">
+            <span className="text-xs font-bold text-festival-teal-dark block">
               Email Blast (E-9)
             </span>
             <span className="text-lg font-black text-slate-900 block mt-0.5">

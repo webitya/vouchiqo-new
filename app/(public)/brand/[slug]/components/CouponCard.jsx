@@ -87,7 +87,7 @@ export default function CouponCard({
     : null;
 
   return (
-    <div className="bg-white border border-slate-200/90 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-200 shadow-2xs hover:shadow-[0_8px_20px_rgba(247,40,83,0.14)] hover:border-[#F72853] font-sans text-left group">
+    <div className="bg-white border border-slate-200/90 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-200 shadow-2xs hover:shadow-[0_8px_20px_rgba(247,40,83,0.14)] hover:border-[#FF2E63] font-sans text-left group">
       {/* Main card row */}
       <div className="flex flex-row items-stretch">
         {/* Discount badge column */}
@@ -95,13 +95,13 @@ export default function CouponCard({
           className="w-[75px] sm:w-[115px] flex-shrink-0 flex flex-col items-center justify-center py-3 sm:py-5 px-1.5 sm:px-3 text-center"
           style={{
             background: hasCode
-              ? "linear-gradient(160deg, #1d4ed8, #2563eb)"
+              ? "linear-gradient(160deg, #00605B, #007F79)"
               : "linear-gradient(160deg, #0f172a, #1e3a5f)",
           }}
         >
           {mainDiscountBadge ? (
             <>
-              <span className="text-[8.5px] sm:text-[9px] font-medium uppercase tracking-widest text-blue-200 mb-0.5">
+              <span className="text-[8.5px] sm:text-[9px] font-medium uppercase tracking-widest text-golden-glow mb-0.5">
                 {topSaveLabel}
               </span>
               <span className="text-lg sm:text-2xl font-semibold text-white leading-none uppercase truncate max-w-full">
@@ -113,7 +113,7 @@ export default function CouponCard({
             </>
           ) : (
             <>
-              <span className="text-[8.5px] sm:text-[9px] font-medium uppercase tracking-widest text-blue-200 mb-0.5">
+              <span className="text-[8.5px] sm:text-[9px] font-medium uppercase tracking-widest text-golden-glow mb-0.5">
                 {hasCode ? "Code" : "Deal"}
               </span>
               <span className="text-sm sm:text-base font-medium text-white leading-none">
@@ -162,7 +162,7 @@ export default function CouponCard({
               <div className="flex flex-wrap items-center gap-2 pt-1 text-[10px] font-bold text-slate-600">
                 {coupon.minOrderValue && (
                   <span className="bg-slate-100 border border-slate-200 px-2 py-0.5 rounded flex items-center gap-1">
-                    <ShieldCheck className="w-3 h-3 text-blue-600" /> Min Bill:
+                    <ShieldCheck className="w-3 h-3 text-festival-teal" /> Min Bill:
                     ₹{coupon.minOrderValue}
                   </span>
                 )}
@@ -173,8 +173,8 @@ export default function CouponCard({
                   </span>
                 )}
                 {coupon.validHours && (
-                  <span className="bg-blue-50 border border-blue-100 text-blue-700 px-2 py-0.5 rounded flex items-center gap-1">
-                    <Clock className="w-3 h-3 text-blue-600" />{" "}
+                  <span className="bg-festival-teal/10 border border-festival-teal/20 text-festival-teal px-2 py-0.5 rounded flex items-center gap-1">
+                    <Clock className="w-3 h-3 text-festival-teal" />{" "}
                     {coupon.validHours}
                   </span>
                 )}
@@ -187,7 +187,7 @@ export default function CouponCard({
             <button
               onClick={toggleDetails}
               type="button"
-              className="text-xs font-bold text-slate-400 hover:text-blue-600 transition-colors flex items-center gap-1 border-0 bg-transparent cursor-pointer p-0"
+              className="text-xs font-bold text-slate-400 hover:text-festival-teal transition-colors flex items-center gap-1 border-0 bg-transparent cursor-pointer p-0"
             >
               {isExpanded ? "Hide details" : "Show details"}
               {isExpanded ? (
@@ -208,7 +208,7 @@ export default function CouponCard({
                   <button
                     onClick={() => handleCopyCode(coupon.code, coupon._id)}
                     type="button"
-                    className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-[11px] sm:text-xs font-medium px-3 sm:px-4 py-1.5 rounded-lg sm:rounded-xl border-0 cursor-pointer transition-colors shadow-2xs"
+                    className="bg-festival-pink hover:bg-[#E02253] active:bg-[#C91A46] text-white text-[11px] sm:text-xs font-medium px-3 sm:px-4 py-1.5 rounded-lg sm:rounded-xl border-0 cursor-pointer transition-colors shadow-2xs"
                   >
                     Get Code
                   </button>
@@ -257,7 +257,7 @@ export default function CouponCard({
           {coupon.redemptionMethod && (
             <div className="pt-2 border-t border-slate-200/60 flex items-center justify-between text-xs font-bold text-slate-700">
               <span>Redemption Method:</span>
-              <span className="text-blue-700 bg-white px-2.5 py-1 rounded-md border border-blue-200">
+              <span className="text-festival-teal bg-white px-2.5 py-1 rounded-md border border-festival-teal/20">
                 {coupon.redemptionMethod}
               </span>
             </div>
@@ -268,7 +268,7 @@ export default function CouponCard({
               <span className="text-xs font-bold text-slate-600">
                 Promo code:
               </span>
-              <span className="font-mono bg-white border border-slate-300 text-blue-700 px-3 py-1 rounded-lg text-xs font-black tracking-wider uppercase shadow-2xs">
+              <span className="font-mono bg-white border border-slate-300 text-festival-teal px-3 py-1 rounded-lg text-xs font-black tracking-wider uppercase shadow-2xs">
                 {coupon.code}
               </span>
             </div>

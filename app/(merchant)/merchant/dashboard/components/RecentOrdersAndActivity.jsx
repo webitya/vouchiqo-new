@@ -70,7 +70,7 @@ export default function RecentOrdersAndActivity({
 
             <Link
               href="/merchant/coupons"
-              className="text-xs font-medium text-[#F72853] hover:underline flex items-center gap-0.5"
+              className="text-xs font-medium text-[#FF2E63] hover:underline flex items-center gap-0.5"
             >
               <span>View all</span>
               <ArrowUpRight className="w-3 h-3" />
@@ -107,7 +107,7 @@ export default function RecentOrdersAndActivity({
                   >
                     <TableCell className="py-2 px-3 flex items-center gap-2">
                       <div
-                        className={`w-6.5 h-6.5 rounded-full ${tx.bg || "bg-[#F72853]"} text-white flex items-center justify-center font-medium text-[9px] shadow-2xs shrink-0`}
+                        className={`w-6.5 h-6.5 rounded-full ${tx.bg || "bg-[#FF2E63]"} text-white flex items-center justify-center font-medium text-[9px] shadow-2xs shrink-0`}
                       >
                         {tx.initials || "CU"}
                       </div>
@@ -132,7 +132,7 @@ export default function RecentOrdersAndActivity({
                           tx.status === "Completed" ||
                           activeTab === "redemptions"
                             ? "bg-emerald-50 text-emerald-700 border border-emerald-200/80"
-                            : "bg-rose-50 text-[#F72853] border border-rose-200/80"
+                            : "bg-rose-50 text-[#FF2E63] border border-rose-200/80"
                         }`}
                       >
                         {tx.status ||
@@ -174,7 +174,7 @@ export default function RecentOrdersAndActivity({
           </div>
           <Link
             href="/merchant/analytics"
-            className="text-xs font-medium text-[#F72853] hover:underline flex items-center gap-0.5"
+            className="text-xs font-medium text-[#FF2E63] hover:underline flex items-center gap-0.5"
           >
             <span>View all</span>
             <ArrowUpRight className="w-3 h-3" />

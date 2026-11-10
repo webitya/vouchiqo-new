@@ -88,9 +88,9 @@ export default function ProgressSteps({
               className={cn(
                 "rounded-lg p-3 border transition-all flex flex-col justify-between h-full space-y-2 text-left",
                 isComp
-                  ? "border-blue-200 bg-blue-50/30 text-slate-900"
+                  ? "border-brand-border bg-festival-teal/10/30 text-slate-900"
                   : isActive
-                    ? "border-blue-600 bg-blue-50/60 text-slate-900 shadow-2xs"
+                    ? "border-festival-teal bg-festival-teal/10 text-slate-900 shadow-2xs"
                     : isRej
                       ? "border-red-200 bg-red-50/40 text-slate-900"
                       : "border-slate-200/80 bg-slate-50/40 text-slate-600",
@@ -102,7 +102,7 @@ export default function ProgressSteps({
                   className={cn(
                     "w-7 h-7 rounded-lg flex items-center justify-center shrink-0 text-xs font-medium",
                     isComp || isActive
-                      ? "bg-blue-600 text-white"
+                      ? "bg-festival-teal text-white"
                       : isRej
                         ? "bg-red-600 text-white"
                         : "bg-slate-200 text-slate-500",
@@ -115,7 +115,7 @@ export default function ProgressSteps({
                   className={cn(
                     "text-[10px] font-normal px-2 py-0.5 rounded border",
                     isComp || isActive
-                      ? "bg-blue-600 text-white border-blue-600"
+                      ? "bg-festival-teal text-white border-festival-teal"
                       : isRej
                         ? "bg-red-100 text-red-800 border-red-200"
                         : "bg-slate-100 text-slate-500 border-slate-200",

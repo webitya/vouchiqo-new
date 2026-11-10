@@ -50,7 +50,7 @@ export default function StepPromotion({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-1">
             <Label className="flex items-center gap-1.5 font-medium text-xs text-slate-700">
-              <Clock className="w-3.5 h-3.5 text-[#F72853]" /> Start Date
+              <Clock className="w-3.5 h-3.5 text-[#FF2E63]" /> Start Date
               <span className="text-red-500 font-normal ml-0.5">*</span>
             </Label>
             <DatePicker
@@ -59,7 +59,7 @@ export default function StepPromotion({
                 setValue("startDate", val, { shouldValidate: true })
               }
               placeholder="Select start date"
-              iconColor="text-[#F72853]"
+              iconColor="text-[#FF2E63]"
             />
             {errors.startDate && (
               <p className="text-[11px] text-red-500 font-medium pt-0.5">
@@ -70,7 +70,7 @@ export default function StepPromotion({
 
           <div className="space-y-1">
             <Label className="flex items-center gap-1.5 font-medium text-xs text-slate-700">
-              <Clock className="w-3.5 h-3.5 text-[#F72853]" /> End Date
+              <Clock className="w-3.5 h-3.5 text-[#FF2E63]" /> End Date
               <span className="text-red-500 font-normal ml-0.5">*</span>
             </Label>
             <DatePicker
@@ -79,7 +79,7 @@ export default function StepPromotion({
                 setValue("endDate", val, { shouldValidate: true })
               }
               placeholder="Select end date"
-              iconColor="text-[#F72853]"
+              iconColor="text-[#FF2E63]"
             />
             {errors.endDate && (
               <p className="text-[11px] text-red-500 font-medium pt-0.5">
@@ -94,7 +94,7 @@ export default function StepPromotion({
           <div className="p-3 sm:p-3.5 border border-slate-200/80 rounded-xl flex items-center justify-between bg-slate-50/50">
             <div>
               <span className="text-xs font-semibold text-slate-900 block flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-[#F72853]" /> Countdown Timer
+                <Clock className="w-3.5 h-3.5 text-[#FF2E63]" /> Countdown Timer
               </span>
               <span className="text-[11px] text-slate-500 font-normal">
                 Show live ticking countdown timer
@@ -111,7 +111,7 @@ export default function StepPromotion({
           <div className="p-3 sm:p-3.5 border border-slate-200/80 rounded-xl flex items-center justify-between bg-slate-50/50">
             <div>
               <span className="text-xs font-semibold text-slate-900 block flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-[#F72853]" /> Pre-Launch
+                <Clock className="w-3.5 h-3.5 text-[#FF2E63]" /> Pre-Launch
                 Teaser
               </span>
               <span className="text-[11px] text-slate-500 font-normal">
@@ -144,13 +144,13 @@ export default function StepPromotion({
             {/* Targeted Email Blast */}
             <div className="p-3 sm:p-3.5 border border-slate-200/80 rounded-xl flex items-center justify-between bg-white hover:border-slate-300 transition-all">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-rose-50 text-[#F72853] flex items-center justify-center shrink-0">
+                <div className="w-8 h-8 rounded-lg bg-rose-50 text-[#FF2E63] flex items-center justify-center shrink-0">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
                   <span className="text-xs font-semibold text-slate-900 block flex items-center gap-2">
                     Targeted Email Blast
-                    <Badge className="bg-rose-50 text-[#F72853] border-rose-200 font-medium text-[9px]">
+                    <Badge className="bg-rose-50 text-[#FF2E63] border-rose-200 font-medium text-[9px]">
                       ₹799 / blast
                     </Badge>
                   </span>
@@ -173,13 +173,13 @@ export default function StepPromotion({
             <div className="p-3 sm:p-3.5 border border-slate-200/80 rounded-xl space-y-2.5 bg-white hover:border-slate-300 transition-all">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-rose-50 text-[#F72853] flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-rose-50 text-[#FF2E63] flex items-center justify-center shrink-0">
                     <Bell className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="text-xs font-semibold text-slate-900 block flex items-center gap-2">
                       Push Notification Broadcast
-                      <Badge className="bg-rose-50 text-[#F72853] border-rose-200 font-medium text-[9px]">
+                      <Badge className="bg-rose-50 text-[#FF2E63] border-rose-200 font-medium text-[9px]">
                         ₹599 / broadcast
                       </Badge>
                     </span>
@@ -241,13 +241,13 @@ export default function StepPromotion({
             {/* Homepage Ticker Priority */}
             <div className="p-3 sm:p-3.5 border border-slate-200/80 rounded-xl flex items-center justify-between bg-white hover:border-slate-300 transition-all">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-rose-50 text-[#F72853] flex items-center justify-center shrink-0 border border-rose-100">
+                <div className="w-8 h-8 rounded-lg bg-rose-50 text-[#FF2E63] flex items-center justify-center shrink-0 border border-rose-100">
                   <Tag className="w-4 h-4" />
                 </div>
                 <div>
                   <span className="text-xs font-semibold text-slate-900 block flex items-center gap-2">
                     Homepage Hero Priority
-                    <Badge className="bg-rose-50 text-[#F72853] border-rose-200 font-medium text-[9px]">
+                    <Badge className="bg-rose-50 text-[#FF2E63] border-rose-200 font-medium text-[9px]">
                       ₹999 / 3-day window
                     </Badge>
                   </span>
@@ -293,7 +293,7 @@ export default function StepPromotion({
         </Button>
         <Button
           onClick={onNext}
-          className="bg-[#F72853] hover:bg-[#e01e47] text-white font-medium text-xs h-8 sm:h-9 px-5 rounded-xl cursor-pointer shadow-xs"
+          className="bg-[#FF2E63] hover:bg-[#e01e47] text-white font-medium text-xs h-8 sm:h-9 px-5 rounded-xl cursor-pointer shadow-xs"
         >
           Next
         </Button>

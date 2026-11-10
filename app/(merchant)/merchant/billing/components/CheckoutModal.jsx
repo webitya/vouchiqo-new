@@ -50,10 +50,10 @@ export default function CheckoutModal({
         <DialogHeader className="border-b border-slate-100 pb-3 sm:pb-3.5 pr-10">
           <DialogTitle className="font-heading text-sm sm:text-base font-extrabold text-slate-900 flex items-center justify-between gap-2 tracking-tight">
             <span className="flex items-center gap-2">
-              <CreditCard className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 shrink-0" />
+              <CreditCard className="w-4 h-4 sm:w-5 sm:h-5 text-festival-teal shrink-0" />
               <span>Secure Checkout</span>
             </span>
-            <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0">
+            <Badge variant="outline" className="bg-warm-ivory text-festival-teal border-brand-border text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0">
               SSL Encrypted
             </Badge>
           </DialogTitle>
@@ -85,7 +85,7 @@ export default function CheckoutModal({
 
             <div className="border-t border-slate-200/80 pt-2 flex justify-between items-center font-black text-xs sm:text-sm">
               <span className="text-slate-900">Total Amount Payable:</span>
-              <span className="text-blue-600 text-sm sm:text-base font-extrabold">
+              <span className="text-festival-teal text-sm sm:text-base font-extrabold">
                 ₹{numTotal.toLocaleString("en-IN")}
               </span>
             </div>
@@ -109,7 +109,7 @@ export default function CheckoutModal({
           <Button
             onClick={onPayWithRazorpay}
             disabled={isPending}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm rounded-xl h-10 sm:h-11 shadow-md shadow-blue-500/25 cursor-pointer flex items-center justify-center gap-2 transition-all mt-1 font-sans"
+            className="w-full bg-festival-teal hover:bg-festival-teal-dark text-white font-bold text-xs sm:text-sm rounded-xl h-10 sm:h-11 shadow-md shadow-festival-teal/25 cursor-pointer flex items-center justify-center gap-2 transition-all mt-1 font-sans"
           >
             {isPending ? (
               <>

@@ -19,13 +19,13 @@ export default function RedirectToUnifiedNewListing() {
       user={{ role: "merchant" }}
     >
       <div className="flex flex-col items-center justify-center min-h-[50vh] space-y-3 font-sans">
-        <Loader2 className="w-6 h-6 animate-spin text-[#F72853]" />
+        <Loader2 className="w-6 h-6 animate-spin text-[#FF2E63]" />
         <p className="text-xs text-slate-600 font-medium">
           Redirecting to unified Post New Listing hub...
         </p>
         <Link
           href="/merchant/coupons/new?type=affiliate"
-          className="text-xs text-[#F72853] hover:underline"
+          className="text-xs text-[#FF2E63] hover:underline"
         >
           Click here if not redirected automatically
         </Link>

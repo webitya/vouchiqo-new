@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 /**
  * TableSearch — reusable, debounced search bar for data tables.
@@ -65,7 +65,7 @@ export function TableSearch({
         {/* Leading icon */}
         <span className="absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none">
           {showSpinner ? (
-            <Loader2 className="w-3.5 h-3.5 text-blue-500 animate-spin" />
+            <Loader2 className="w-3.5 h-3.5 text-festival-teal animate-spin" />
           ) : (
             <Search className="w-3.5 h-3.5 text-slate-400" />
           )}
@@ -80,9 +80,9 @@ export function TableSearch({
           className={cn(
             "w-full h-8 pl-8 pr-7 text-[11.5px] rounded-lg border border-slate-200 bg-white",
             "text-slate-800 placeholder:text-slate-400",
-            "outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100",
+            "outline-none focus:border-festival-teal focus:ring-2 focus:ring-festival-teal/20",
             "transition-all duration-150",
-            showSpinner && "border-blue-300 ring-1 ring-blue-100",
+            showSpinner && "border-festival-teal/30 ring-1 ring-festival-teal/20",
           )}
         />
 
@@ -108,7 +108,7 @@ export function TableSearch({
 
       {/* Searching pill (animated) */}
       {showSpinner && (
-        <span className="shrink-0 flex items-center gap-1 text-[10px] font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-full px-2 py-0.5 animate-fade-in whitespace-nowrap">
+        <span className="shrink-0 flex items-center gap-1 text-[10px] font-medium text-festival-teal bg-festival-teal/10 border border-brand-border rounded-full px-2 py-0.5 animate-fade-in whitespace-nowrap">
           <Loader2 className="w-2.5 h-2.5 animate-spin" />
           Searching…
         </span>

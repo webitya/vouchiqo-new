@@ -38,7 +38,7 @@ export default function WizardStepper({ wizardStep, setWizardStep, steps }) {
                   title={label}
                   className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-xs border-2 transition-all duration-300 ${
                     isCompleted
-                      ? "bg-brand-success border-brand-success text-white hover:bg-blue-600 hover:border-blue-600 cursor-pointer"
+                      ? "bg-brand-success border-brand-success text-white hover:bg-festival-teal hover:border-festival-teal cursor-pointer"
                       : isActive
                         ? "bg-white border-brand-blue text-brand-blue ring-4 ring-brand-blue/15 scale-110"
                         : "bg-white border-slate-200 text-slate-400 cursor-not-allowed"

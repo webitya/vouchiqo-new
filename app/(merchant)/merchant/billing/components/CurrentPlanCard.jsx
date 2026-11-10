@@ -72,7 +72,7 @@ export default function CurrentPlanCard({
     <div className="bg-white border border-slate-200/80 rounded-xl p-3.5 sm:p-4 shadow-2xs space-y-3 text-left font-sans">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-100 pb-3">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100/80 shrink-0">
+          <div className="w-9 h-9 rounded-lg bg-warm-ivory text-festival-teal flex items-center justify-center border border-brand-border shrink-0">
             <CreditCard className="w-4 h-4" />
           </div>
           <div className="space-y-0.5">
@@ -158,7 +158,7 @@ export default function CurrentPlanCard({
               onClick={() =>
                 onOpenUpgrade(plans.find((p) => p.id === "growth") || plans[1])
               }
-              className="bg-blue-600 hover:bg-blue-700 text-white text-xs h-8 px-3.5 font-medium rounded-lg cursor-pointer border-0 shadow-none"
+              className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs h-8 px-3.5 font-medium rounded-lg cursor-pointer border-0 shadow-none"
             >
               Upgrade to Growth Plan →
             </Button>
@@ -177,7 +177,7 @@ export default function CurrentPlanCard({
                 onClick={() =>
                   onOpenUpgrade(plans.find((p) => p.id === "pro") || plans[2])
                 }
-                className="bg-blue-600 hover:bg-blue-700 text-white text-xs h-8 px-3.5 font-medium rounded-lg cursor-pointer border-0 shadow-none"
+                className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs h-8 px-3.5 font-medium rounded-lg cursor-pointer border-0 shadow-none"
               >
                 Upgrade Plan
               </Button>
@@ -199,7 +199,7 @@ export default function CurrentPlanCard({
           </div>
           <div className="w-full bg-slate-200/70 h-1.5 rounded-full overflow-hidden">
             <div
-              className="bg-blue-600 h-full rounded-full transition-all"
+              className="bg-festival-teal h-full rounded-full transition-all"
               style={{
                 width: `${planListingsLimit === 999 ? 20 : Math.min(100, (activeListingsCount / planListingsLimit) * 100)}%`,
               }}
@@ -223,7 +223,7 @@ export default function CurrentPlanCard({
           </div>
           <div className="w-full bg-slate-200/70 h-1.5 rounded-full overflow-hidden">
             <div
-              className="bg-blue-600 h-full rounded-full transition-all"
+              className="bg-festival-teal h-full rounded-full transition-all"
               style={{
                 width: `${planCampaignsLimit === 0 ? 0 : Math.min(100, (campaignsUsedCount / planCampaignsLimit) * 100)}%`,
               }}

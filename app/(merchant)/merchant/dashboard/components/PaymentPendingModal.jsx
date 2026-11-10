@@ -77,7 +77,7 @@ export default function PaymentPendingModal({ merchant }) {
         {/* Header */}
         <div className="bg-slate-900 text-white p-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-blue-600 flex items-center justify-center text-white shadow-md shrink-0">
+            <div className="w-10 h-10 rounded-2xl bg-festival-teal flex items-center justify-center text-white shadow-md shrink-0">
               <CreditCard className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -102,17 +102,17 @@ export default function PaymentPendingModal({ merchant }) {
 
         {/* Modal Body */}
         <div className="p-6 space-y-4">
-          <div className="p-4 rounded-2xl bg-blue-50/80 border border-blue-200/80 space-y-2">
+          <div className="p-4 rounded-2xl bg-warm-ivory border border-festival-teal/25 space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-blue-900 uppercase tracking-wider flex items-center gap-1.5">
-                <ShieldAlert className="w-4 h-4 text-blue-600" />
+              <span className="text-xs font-bold text-royal-plum uppercase tracking-wider flex items-center gap-1.5">
+                <ShieldAlert className="w-4 h-4 text-festival-teal" />
                 Selected Plan: {planName}
               </span>
               <Badge className="bg-amber-100 text-amber-900 border-amber-300 text-[10px] font-black animate-pulse">
                 Payment Pending
               </Badge>
             </div>
-            <p className="text-xs text-blue-800 font-normal leading-relaxed">
+            <p className="text-xs text-festival-teal-dark font-normal leading-relaxed">
               You selected the <strong>{planName}</strong> plan during
               onboarding. Complete your subscription payment now to unlock full
               listings, campaigns, and expired offer revivals.
@@ -125,15 +125,15 @@ export default function PaymentPendingModal({ merchant }) {
             </span>
             <ul className="space-y-1.5 text-slate-700">
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-festival-teal shrink-0" />
                 <span>Active Store Listings &amp; Campaign Wizard</span>
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-festival-teal shrink-0" />
                 <span>Expired Offer Revivals &amp; Target Push Alerts</span>
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-festival-teal shrink-0" />
                 <span>Founding Partner 0% Commission Rate Lock</span>
               </li>
             </ul>
@@ -151,7 +151,7 @@ export default function PaymentPendingModal({ merchant }) {
             <Button
               type="button"
               onClick={handleGoToPayment}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl h-10 px-5 shadow-md shadow-blue-500/25 cursor-pointer flex items-center gap-1.5 transition-all"
+              className="bg-festival-teal hover:bg-festival-teal-dark text-white font-bold text-xs rounded-xl h-10 px-5 shadow-md shadow-festival-teal/25 cursor-pointer flex items-center gap-1.5 transition-all"
             >
               <span>Complete Payment</span>
               <ArrowRight className="w-4 h-4" />

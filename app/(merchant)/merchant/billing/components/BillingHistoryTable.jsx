@@ -51,7 +51,7 @@ export default function BillingHistoryTable({ invoices = [] }) {
           <span className="text-slate-600 font-normal">
             Base: {r.basePrice || r.amount}
           </span>
-          <span className="text-blue-600 font-normal text-[11px]">
+          <span className="text-festival-teal font-normal text-[11px]">
             + 18% GST: {r.gstBreakdown || "Included"}
           </span>
         </div>
@@ -106,7 +106,7 @@ export default function BillingHistoryTable({ invoices = [] }) {
             onClick={() =>
               showSuccess(`Downloading ${r.id} Official GST Tax Invoice PDF…`)
             }
-            className="text-xs font-medium text-blue-600 hover:text-blue-800 hover:bg-blue-50 h-7 px-2 rounded-lg cursor-pointer flex items-center gap-1"
+            className="text-xs font-medium text-festival-teal hover:text-festival-teal-dark hover:bg-warm-ivory h-7 px-2 rounded-lg cursor-pointer flex items-center gap-1"
           >
             <FileText className="w-3.5 h-3.5" /> PDF
           </Button>
@@ -137,7 +137,7 @@ export default function BillingHistoryTable({ invoices = [] }) {
           }
           className="text-xs h-8 py-1 px-3 font-medium rounded-lg border-slate-200 flex items-center gap-1.5 cursor-pointer shrink-0 shadow-none text-slate-700 hover:bg-slate-50"
         >
-          <Download className="w-3.5 h-3.5 text-blue-600" />
+          <Download className="w-3.5 h-3.5 text-festival-teal" />
           Download Invoices
         </Button>
       </div>
@@ -157,7 +157,7 @@ export default function BillingHistoryTable({ invoices = [] }) {
           <DialogHeader className="border-b border-slate-100 pb-3 space-y-1">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Receipt className="w-4 h-4 text-blue-600" />
+                <Receipt className="w-4 h-4 text-festival-teal" />
                 <DialogTitle className="text-sm font-semibold text-slate-800">
                   Tax Invoice Details
                 </DialogTitle>
@@ -201,7 +201,7 @@ export default function BillingHistoryTable({ invoices = [] }) {
                 </div>
                 <div className="flex justify-between items-center text-xs pt-1.5 border-t border-slate-100 font-semibold text-slate-900">
                   <span>Total Amount Paid:</span>
-                  <span className="text-sm font-semibold text-blue-600">{selectedInvoice.amount}</span>
+                  <span className="text-sm font-semibold text-festival-teal">{selectedInvoice.amount}</span>
                 </div>
               </div>
 
@@ -234,7 +234,7 @@ export default function BillingHistoryTable({ invoices = [] }) {
                     showSuccess(`Downloading ${selectedInvoice.id} Official Tax Invoice PDF…`);
                     setSelectedInvoice(null);
                   }}
-                  className="h-8 text-xs font-medium rounded-lg bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-1.5 cursor-pointer border-0"
+                  className="h-8 text-xs font-medium rounded-lg bg-festival-teal hover:bg-festival-teal-dark text-white flex items-center gap-1.5 cursor-pointer border-0"
                 >
                   <FileText className="w-3.5 h-3.5" /> Download Tax Invoice PDF
                 </Button>

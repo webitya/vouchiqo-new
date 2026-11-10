@@ -131,13 +131,13 @@ export default function PushNotificationPrompt() {
         {showIOSGuide ? (
           <>
             <p className="text-xs font-semibold text-slate-800 leading-tight flex items-center gap-1.5">
-              <Share className="w-3.5 h-3.5 text-[#F72853]" />
+              <Share className="w-3.5 h-3.5 text-[#FF2E63]" />
               <span>iPhone Deal Alerts</span>
             </p>
             <p className="text-[11px] text-slate-600 mt-1 leading-snug font-normal">
               To enable notifications on Apple iOS: tap the{" "}
               <strong className="text-slate-800 font-semibold">Share</strong> button in Safari and choose{" "}
-              <strong className="text-[#F72853] font-semibold">"Add to Home Screen"</strong>.
+              <strong className="text-[#FF2E63] font-semibold">"Add to Home Screen"</strong>.
             </p>
             <div className="flex items-center gap-2 mt-2.5">
               <button
@@ -165,7 +165,7 @@ export default function PushNotificationPrompt() {
                 type="button"
                 onClick={handleAllow}
                 disabled={loading}
-                className="flex items-center gap-1.5 px-2.5 py-1 bg-[#F72853] hover:bg-[#e01e47]
+                className="flex items-center gap-1.5 px-2.5 py-1 bg-[#FF2E63] hover:bg-[#e01e47]
                            text-white text-[11px] font-medium rounded-md shadow-xs
                            transition-colors disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
               >

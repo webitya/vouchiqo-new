@@ -222,7 +222,7 @@ export default function AffiliateProductModal({
         {/* Drawer Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-slate-200/80 bg-slate-50/90 shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 bg-blue-50 text-blue-600 rounded-xl border border-blue-100">
+            <div className="p-2 bg-warm-ivory text-festival-teal rounded-xl border border-brand-border">
               <ShoppingBag className="w-5 h-5" />
             </div>
             <div>
@@ -270,7 +270,7 @@ export default function AffiliateProductModal({
                     onChange={(e) =>
                       setForm({ ...form, title: e.target.value })
                     }
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all font-normal"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs text-slate-900 focus:outline-none focus:border-festival-teal focus:bg-white transition-all font-normal"
                     required
                   />
                 </div>
@@ -279,19 +279,19 @@ export default function AffiliateProductModal({
                   <label className="text-xs font-semibold text-slate-700 block flex items-center justify-between">
                     <span>Category *</span>
                     {merchantCategory && !isAdmin && (
-                      <span className="text-[10px] font-bold text-blue-600 flex items-center gap-0.5">
+                      <span className="text-[10px] font-bold text-festival-teal flex items-center gap-0.5">
                         <Lock className="w-3 h-3" /> Locked
                       </span>
                     )}
                   </label>
 
                   {merchantCategory && !isAdmin ? (
-                    <div className="h-9 px-3 flex items-center justify-between rounded-xl border border-blue-200 bg-blue-50/60 text-slate-900 font-semibold text-xs shadow-2xs">
+                    <div className="h-9 px-3 flex items-center justify-between rounded-xl border border-brand-border bg-warm-ivory text-slate-900 font-semibold text-xs shadow-2xs">
                       <span className="truncate">
                         {form.category || merchantCategory}
                       </span>
-                      <span className="inline-flex items-center gap-1 text-[10px] font-bold text-blue-700 bg-white border border-blue-200 px-2 py-0.5 rounded-md shrink-0">
-                        <Lock className="w-3 h-3 text-blue-600" /> Locked to
+                      <span className="inline-flex items-center gap-1 text-[10px] font-bold text-festival-teal bg-white border border-brand-border px-2 py-0.5 rounded-md shrink-0">
+                        <Lock className="w-3 h-3 text-festival-teal" /> Locked to
                         Profile
                       </span>
                     </div>
@@ -301,7 +301,7 @@ export default function AffiliateProductModal({
                       onChange={(e) =>
                         setForm({ ...form, category: e.target.value })
                       }
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all font-normal cursor-pointer"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-festival-teal focus:bg-white transition-all font-normal cursor-pointer"
                     >
                       {CATEGORIES.map((c) => (
                         <option key={c} value={c}>
@@ -314,10 +314,10 @@ export default function AffiliateProductModal({
               </div>
 
               {/* Pricing & Offer Mode Tabs (% Off, Deal @ Price, MRP & Sale) */}
-              <div className="bg-blue-50/50 border border-blue-100 p-3.5 rounded-xl space-y-3">
+              <div className="bg-warm-ivory border border-brand-border p-3.5 rounded-xl space-y-3">
                 <div className="flex items-center justify-between flex-wrap gap-2">
-                  <span className="text-xs font-bold text-blue-900 flex items-center gap-1">
-                    <IndianRupee className="w-3.5 h-3.5 text-blue-600" />
+                  <span className="text-xs font-bold text-royal-plum flex items-center gap-1">
+                    <IndianRupee className="w-3.5 h-3.5 text-festival-teal" />
                     Pricing & Deal Type
                   </span>
 
@@ -328,7 +328,7 @@ export default function AffiliateProductModal({
                       onClick={() => setPricingMode("percent")}
                       className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all cursor-pointer ${
                         pricingMode === "percent"
-                          ? "bg-blue-600 text-white font-bold"
+                          ? "bg-festival-teal text-white font-bold"
                           : "text-slate-600 hover:text-slate-900"
                       }`}
                     >
@@ -339,7 +339,7 @@ export default function AffiliateProductModal({
                       onClick={() => setPricingMode("fixed")}
                       className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all cursor-pointer ${
                         pricingMode === "fixed"
-                          ? "bg-blue-600 text-white font-bold"
+                          ? "bg-festival-teal text-white font-bold"
                           : "text-slate-600 hover:text-slate-900"
                       }`}
                     >
@@ -350,7 +350,7 @@ export default function AffiliateProductModal({
                       onClick={() => setPricingMode("exact")}
                       className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all cursor-pointer ${
                         pricingMode === "exact"
-                          ? "bg-blue-600 text-white font-bold"
+                          ? "bg-festival-teal text-white font-bold"
                           : "text-slate-600 hover:text-slate-900"
                       }`}
                     >
@@ -377,7 +377,7 @@ export default function AffiliateProductModal({
                             discountText: val ? `${val}% OFF` : "",
                           });
                         }}
-                        className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 font-bold focus:outline-none focus:border-blue-600"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 font-bold focus:outline-none focus:border-festival-teal"
                       />
                     </div>
 
@@ -392,7 +392,7 @@ export default function AffiliateProductModal({
                         onChange={(e) =>
                           setForm({ ...form, discountText: e.target.value })
                         }
-                        className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-blue-600"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-festival-teal"
                       />
                     </div>
                   </div>
@@ -416,7 +416,7 @@ export default function AffiliateProductModal({
                               : form.discountText,
                           });
                         }}
-                        className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 font-bold focus:outline-none focus:border-blue-600"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 font-bold focus:outline-none focus:border-festival-teal"
                       />
                     </div>
 
@@ -431,7 +431,7 @@ export default function AffiliateProductModal({
                         onChange={(e) =>
                           setForm({ ...form, discountText: e.target.value })
                         }
-                        className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-blue-600"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-festival-teal"
                       />
                     </div>
                   </div>
@@ -448,7 +448,7 @@ export default function AffiliateProductModal({
                         onChange={(e) =>
                           setForm({ ...form, originalPrice: e.target.value })
                         }
-                        className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 font-bold focus:outline-none focus:border-blue-600"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 font-bold focus:outline-none focus:border-festival-teal"
                       />
                     </div>
 
@@ -463,7 +463,7 @@ export default function AffiliateProductModal({
                         onChange={(e) =>
                           setForm({ ...form, discountPrice: e.target.value })
                         }
-                        className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 font-bold focus:outline-none focus:border-blue-600"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 font-bold focus:outline-none focus:border-festival-teal"
                       />
                     </div>
                   </div>
@@ -473,7 +473,7 @@ export default function AffiliateProductModal({
               {/* Destination URL */}
               <div className="space-y-1">
                 <label className="text-xs font-semibold text-slate-700 block flex items-center gap-1">
-                  <LinkIcon className="w-3.5 h-3.5 text-blue-600" />
+                  <LinkIcon className="w-3.5 h-3.5 text-festival-teal" />
                   Destination Affiliate Link URL *
                 </label>
                 <input
@@ -483,7 +483,7 @@ export default function AffiliateProductModal({
                   onChange={(e) =>
                     setForm({ ...form, affiliateUrl: e.target.value })
                   }
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all font-normal"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-festival-teal focus:bg-white transition-all font-normal"
                   required
                 />
               </div>
@@ -497,9 +497,9 @@ export default function AffiliateProductModal({
                 <div className="flex items-center gap-3">
                   <label className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl border border-slate-200 cursor-pointer transition-colors inline-flex items-center gap-1.5 shrink-0">
                     {uploadingImage ? (
-                      <Loader2 className="w-3.5 h-3.5 animate-spin text-blue-600" />
+                      <Loader2 className="w-3.5 h-3.5 animate-spin text-festival-teal" />
                     ) : (
-                      <UploadCloud className="w-3.5 h-3.5 text-blue-600" />
+                      <UploadCloud className="w-3.5 h-3.5 text-festival-teal" />
                     )}
                     <span>Upload Image</span>
                     <input
@@ -518,7 +518,7 @@ export default function AffiliateProductModal({
                     onChange={(e) =>
                       setForm({ ...form, imageUrl: e.target.value })
                     }
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-blue-600 font-normal"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-festival-teal font-normal"
                   />
                 </div>
               </div>
@@ -535,7 +535,7 @@ export default function AffiliateProductModal({
                   onChange={(e) =>
                     setForm({ ...form, description: e.target.value })
                   }
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all font-normal"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-900 focus:outline-none focus:border-festival-teal focus:bg-white transition-all font-normal"
                 />
               </div>
 
@@ -575,7 +575,7 @@ export default function AffiliateProductModal({
             <div className="lg:col-span-5 bg-slate-50 border border-slate-200/90 rounded-2xl p-4 flex flex-col justify-between space-y-3 sticky top-0">
               <div className="flex items-center justify-between border-b border-slate-200 pb-2.5">
                 <span className="flex items-center gap-1.5 text-xs font-bold text-slate-900">
-                  <Eye className="w-4 h-4 text-blue-600" /> Live Product Preview
+                  <Eye className="w-4 h-4 text-festival-teal" /> Live Product Preview
                 </span>
                 <span className="bg-emerald-100 text-emerald-700 text-xs font-semibold px-2 py-0.5 rounded-full">
                   Interactive Preview
@@ -608,7 +608,7 @@ export default function AffiliateProductModal({
             type="submit"
             form="affiliate-form"
             disabled={loading || uploadingImage}
-            className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl transition-colors cursor-pointer disabled:opacity-50 inline-flex items-center gap-2 shadow-xs"
+            className="px-6 py-2 bg-festival-teal hover:bg-festival-teal-dark text-white font-bold text-xs rounded-xl transition-colors cursor-pointer disabled:opacity-50 inline-flex items-center gap-2 shadow-xs"
           >
             {loading ? (
               <>

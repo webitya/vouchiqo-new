@@ -43,7 +43,7 @@ export default function FilterControls({
             placeholder="Search brands or discount deals..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-8 h-9 text-xs border-brand-border bg-white rounded-xl focus:ring-brand-blue w-full shadow-none"
+            className="pl-8 h-9 text-xs border-brand-border bg-white rounded-xl focus:ring-festival-teal w-full shadow-none"
           />
         </div>
 
@@ -52,14 +52,14 @@ export default function FilterControls({
           onClick={() => setShowFilters((v) => !v)}
           className={`flex items-center gap-1.5 px-3 h-9 border rounded-xl text-xs font-black transition-all cursor-pointer shrink-0 ${
             showFilters || activeFilterCount > 0
-              ? "bg-[#eff6ff] text-brand-blue border-blue-200"
+              ? "bg-warm-ivory text-festival-teal border-festival-teal/30"
               : "bg-white text-slate-700 border-brand-border hover:bg-slate-50"
           }`}
         >
           <SlidersHorizontal className="w-3.5 h-3.5" />
           <span>Filters</span>
           {activeFilterCount > 0 && (
-            <span className="bg-brand-blue text-white rounded-full w-4.5 h-4.5 flex items-center justify-center text-[9px] font-bold">
+            <span className="bg-festival-teal text-white rounded-full w-4.5 h-4.5 flex items-center justify-center text-[9px] font-bold">
               {activeFilterCount}
             </span>
           )}

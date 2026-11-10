@@ -40,7 +40,7 @@ import { cn } from "@/lib/utils";
 // 8 Distinct Pastel Row Palettes (Clearly visible without hover)
 const ROW_COLOR_THEMES = [
   {
-    row: "bg-blue-100/65 hover:bg-blue-100/90 border-l-[3.5px] border-l-blue-600 border-b border-blue-200/80 text-slate-900",
+    row: "bg-festival-teal/10 hover:bg-festival-teal/20 border-l-[3.5px] border-l-festival-teal border-b border-festival-teal/20 text-slate-900",
   },
   {
     row: "bg-emerald-100/65 hover:bg-emerald-100/90 border-l-[3.5px] border-l-emerald-600 border-b border-emerald-200/80 text-slate-900",
@@ -199,11 +199,11 @@ export default function PlatformRevenue() {
                   <span className="text-[10px] font-medium text-slate-500 uppercase tracking-wider block">
                     Active Paid Subscribers
                   </span>
-                  <span className="text-base font-medium text-blue-700 mt-0.5 block leading-none font-mono">
+                  <span className="text-base font-medium text-festival-teal mt-0.5 block leading-none font-mono">
                     {paidSubscribers}
                   </span>
                 </div>
-                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 border border-blue-200/60 flex items-center justify-center shrink-0">
+                <div className="w-7 h-7 rounded-lg bg-warm-ivory text-festival-teal border border-festival-teal/20 flex items-center justify-center shrink-0">
                   <Users className="w-3.5 h-3.5" />
                 </div>
               </CardContent>
@@ -247,7 +247,7 @@ export default function PlatformRevenue() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-2.5">
               <div>
                 <h3 className="text-xs font-medium text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
-                  <FileText className="w-3.5 h-3.5 text-blue-600" />
+                  <FileText className="w-3.5 h-3.5 text-festival-teal" />
                   <span>Recent SaaS Billing Invoices ({invoices.length})</span>
                 </h3>
                 <p className="text-[10.5px] text-slate-500 font-normal mt-0.5">
@@ -264,7 +264,7 @@ export default function PlatformRevenue() {
                     placeholder="Search invoices..."
                     value={invoiceSearch}
                     onChange={(e) => setInvoiceSearch(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 focus:border-blue-500 focus:bg-white rounded-lg pl-8 pr-7 py-1 text-xs text-slate-800 placeholder-slate-400 outline-none transition-all shadow-2xs h-7.5"
+                    className="w-full bg-slate-50 border border-slate-200 focus:border-festival-teal focus:bg-white rounded-lg pl-8 pr-7 py-1 text-xs text-slate-800 placeholder-slate-400 outline-none transition-all shadow-2xs h-7.5"
                   />
                   {invoiceSearch && (
                     <Button
@@ -306,7 +306,7 @@ export default function PlatformRevenue() {
                       className={cn(
                         "text-[10.5px] font-medium px-2 py-0.5 h-6 rounded-md transition-all cursor-pointer flex items-center gap-1 border-0",
                         invoiceTab === tab.id
-                          ? "bg-white text-blue-600 shadow-2xs hover:bg-white hover:text-blue-600"
+                          ? "bg-white text-festival-teal shadow-2xs hover:bg-white hover:text-festival-teal"
                           : "text-slate-500 hover:text-slate-800 bg-transparent",
                       )}
                     >
@@ -316,7 +316,7 @@ export default function PlatformRevenue() {
                         className={cn(
                           "text-[9px] px-1 h-4 min-w-4 flex items-center justify-center rounded-full font-normal border-0",
                           invoiceTab === tab.id
-                            ? "bg-blue-50 text-blue-600"
+                            ? "bg-warm-ivory text-festival-teal"
                             : "bg-slate-200/70 text-slate-600",
                         )}
                       >
@@ -413,7 +413,7 @@ export default function PlatformRevenue() {
                               <TableCell className="py-2 px-3">
                                 <Badge
                                   variant="secondary"
-                                  className="bg-white/95 text-blue-700 border border-blue-200 text-[10px] font-medium px-1.5 py-0.5 rounded shadow-2xs"
+                                  className="bg-white/95 text-festival-teal border border-brand-border text-[10px] font-medium px-1.5 py-0.5 rounded shadow-2xs"
                                 >
                                   {inv.plan}
                                 </Badge>
@@ -468,7 +468,7 @@ export default function PlatformRevenue() {
                       <MobileTableCard
                         key={inv.id || idx}
                         avatarText={inv.merchantName}
-                        avatarBg="bg-blue-600"
+                        avatarBg="bg-festival-teal"
                         badge="CUSTOMER BILLING"
                         title={inv.merchantName}
                         subtitle={`Subscription Tier: ${inv.plan}`}
@@ -523,7 +523,7 @@ export default function PlatformRevenue() {
                   placeholder="Search payout merchant or bank..."
                   value={payoutSearch}
                   onChange={(e) => setPayoutSearch(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 focus:border-blue-500 focus:bg-white rounded-lg pl-8 pr-7 py-1 text-xs text-slate-800 placeholder-slate-400 outline-none transition-all shadow-2xs h-7.5"
+                  className="w-full bg-slate-50 border border-slate-200 focus:border-festival-teal focus:bg-white rounded-lg pl-8 pr-7 py-1 text-xs text-slate-800 placeholder-slate-400 outline-none transition-all shadow-2xs h-7.5"
                 />
                 {payoutSearch && (
                   <Button

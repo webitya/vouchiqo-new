@@ -71,14 +71,14 @@ export function NavUser({ user, role = "admin" }) {
   const renderAvatarFallback = () => {
     if (isAdmin) {
       return (
-        <AvatarFallback className="rounded-[7px] bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 text-white font-bold text-xs flex items-center justify-center">
+        <AvatarFallback className="rounded-[7px] bg-gradient-to-br from-[#35104A] via-[#1D062B] to-[#007F79] text-white font-bold text-xs flex items-center justify-center">
           <ShieldCheck className="h-4 w-4 text-white stroke-[2.2]" />
         </AvatarFallback>
       );
     }
     if (isMerchant) {
       return (
-        <AvatarFallback className="rounded-[7px] bg-gradient-to-br from-[#F72853] to-rose-600 text-white font-medium text-xs flex items-center justify-center">
+        <AvatarFallback className="rounded-[7px] bg-gradient-to-br from-[#FF2E63] to-rose-600 text-white font-medium text-xs flex items-center justify-center">
           <Store className="h-4 w-4 text-white stroke-[2]" />
         </AvatarFallback>
       );
@@ -158,8 +158,8 @@ export function NavUser({ user, role = "admin" }) {
                         SUPER ADMIN
                       </span>
                     ) : isMerchant ? (
-                      <span className="bg-rose-50 text-[#F72853] border border-rose-200/90 text-[8.5px] font-semibold px-1.5 py-0.5 rounded-[7px] inline-flex items-center gap-1 tracking-wider shadow-2xs">
-                        <Store className="w-2.5 h-2.5 text-[#F72853]" />{" "}
+                      <span className="bg-rose-50 text-[#FF2E63] border border-rose-200/90 text-[8.5px] font-semibold px-1.5 py-0.5 rounded-[7px] inline-flex items-center gap-1 tracking-wider shadow-2xs">
+                        <Store className="w-2.5 h-2.5 text-[#FF2E63]" />{" "}
                         MERCHANT PARTNER
                       </span>
                     ) : (
@@ -180,9 +180,9 @@ export function NavUser({ user, role = "admin" }) {
                     <Link
                       href="/merchant/billing"
                       onClick={handleLinkClick}
-                      className="flex items-center gap-2 text-xs font-normal text-[#F72853] hover:text-[#df1c44] cursor-pointer"
+                      className="flex items-center gap-2 text-xs font-normal text-[#FF2E63] hover:text-[#df1c44] cursor-pointer"
                     >
-                      <Zap className="h-4 w-4 text-[#F72853]" />
+                      <Zap className="h-4 w-4 text-[#FF2E63]" />
                       Upgrade Plan
                     </Link>
                   </DropdownMenuItem>

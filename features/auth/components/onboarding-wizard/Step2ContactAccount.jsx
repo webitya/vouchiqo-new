@@ -188,7 +188,7 @@ export default function Step2ContactAccount({
                       }));
                       toast.success("Copied Mobile to WhatsApp!");
                     }}
-                    className="text-[9.5px] text-blue-600 hover:text-blue-800 font-medium hover:underline cursor-pointer"
+                    className="text-[9.5px] text-festival-teal hover:text-[#004D49] font-medium hover:underline cursor-pointer"
                   >
                     Same as Mobile
                   </button>
@@ -248,7 +248,7 @@ export default function Step2ContactAccount({
                   <button
                     type="button"
                     onClick={handleAutoSuggestPassword}
-                    className="text-[10px] text-blue-700 hover:text-blue-900 font-semibold bg-blue-50 hover:bg-blue-100 border border-blue-200 px-2 py-0.5 rounded cursor-pointer transition-all flex items-center gap-1"
+                    className="text-[10px] text-festival-teal hover:text-royal-plum font-semibold bg-warm-ivory hover:bg-festival-teal/20 border border-brand-border px-2 py-0.5 rounded cursor-pointer transition-all flex items-center gap-1"
                   >
                     <span>⚡ Suggest Password</span>
                   </button>
@@ -337,7 +337,7 @@ export default function Step2ContactAccount({
                     Facebook URL
                   </Label>
                   <div className="relative">
-                    <FacebookIcon className="w-3.5 h-3.5 text-blue-600 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                    <FacebookIcon className="w-3.5 h-3.5 text-festival-teal absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                     <Input
                       type="url"
                       placeholder="https://facebook.com/marbellatiles"

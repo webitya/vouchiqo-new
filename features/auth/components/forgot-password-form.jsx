@@ -32,7 +32,7 @@ export function ForgotPasswordForm({
     <AuthCard title={title}>
       {isSuccess ? (
         <div className="text-center space-y-4 py-4">
-          <div className="mx-auto w-11 h-11 bg-blue-50 dark:bg-zinc-900 text-brand-blue rounded-full flex items-center justify-center border border-slate-200 dark:border-zinc-800">
+          <div className="mx-auto w-11 h-11 bg-warm-ivory dark:bg-zinc-900 text-brand-blue rounded-full flex items-center justify-center border border-slate-200 dark:border-zinc-800">
             <CheckCircle2 className="w-5 h-5" />
           </div>
           <div className="space-y-1">
@@ -91,14 +91,14 @@ export function ForgotPasswordForm({
             id="forgot-password-submit"
             type="submit"
             disabled={isPending}
-            className="w-full bg-brand-blue hover:bg-blue-600 active:scale-[0.98] text-white rounded-md py-2 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-1.5 border-0 h-auto cursor-pointer shadow-none disabled:opacity-50 disabled:pointer-events-none mt-1"
+            className="w-full bg-brand-blue hover:bg-festival-teal active:scale-[0.98] text-white rounded-md py-2 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-1.5 border-0 h-auto cursor-pointer shadow-none disabled:opacity-50 disabled:pointer-events-none mt-1"
           >
             <Send className="w-3.5 h-3.5" />
             <span>{isPending ? "Sending..." : "Send Reset Link"}</span>
           </Button>
           <Link
             href={loginHref}
-            className="flex items-center justify-center gap-1.5 text-xs font-semibold text-brand-blue hover:text-blue-700 py-1 transition-colors"
+            className="flex items-center justify-center gap-1.5 text-xs font-semibold text-brand-blue hover:text-festival-teal py-1 transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" /> Back to Sign In
           </Link>

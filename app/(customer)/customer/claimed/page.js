@@ -51,10 +51,10 @@ export default function ClaimedCoupons() {
       <div className="space-y-4 text-left font-sans">
         <div className="flex justify-between items-center border-b border-slate-100 pb-3">
           <h2 className="text-xs sm:text-[13.5px] font-medium text-slate-800 tracking-tight flex items-center gap-1.5">
-            <Ticket className="w-4 h-4 text-[#F72853]" />
+            <Ticket className="w-4 h-4 text-[#FF2E63]" />
             <span>Offer Claims &amp; Redeemed History</span>
           </h2>
-          <span className="text-[10px] sm:text-[10.5px] text-[#F72853] font-normal bg-rose-50 border border-rose-200/60 px-2 py-0.5 rounded-full">
+          <span className="text-[10px] sm:text-[10.5px] text-[#FF2E63] font-normal bg-rose-50 border border-rose-200/60 px-2 py-0.5 rounded-full">
             {redemptions.length} Claimed
           </span>
         </div>
@@ -112,13 +112,13 @@ export default function ClaimedCoupons() {
                         </TableCell>
                         <TableCell className="p-3.5">
                           <div className="flex items-center gap-1.5">
-                            <span className="font-mono bg-rose-50 border border-rose-200/80 px-2 py-0.5 rounded-md text-[#F72853] text-[11px] font-normal tracking-wide">
+                            <span className="font-mono bg-rose-50 border border-rose-200/80 px-2 py-0.5 rounded-md text-[#FF2E63] text-[11px] font-normal tracking-wide">
                               {red.couponCode}
                             </span>
                             <button
                               type="button"
                               onClick={() => handleCopy(red.couponCode, idx)}
-                              className="text-slate-400 hover:text-[#F72853] p-1 rounded-md hover:bg-rose-50 transition-all cursor-pointer border-0 bg-transparent"
+                              className="text-slate-400 hover:text-[#FF2E63] p-1 rounded-md hover:bg-rose-50 transition-all cursor-pointer border-0 bg-transparent"
                               title="Copy Code"
                             >
                               {copiedIndex === idx ? (

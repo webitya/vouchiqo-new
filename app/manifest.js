@@ -9,7 +9,7 @@ export default function manifest() {
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
-    theme_color: "#F72853",
+    theme_color: "#FF2E63",
     orientation: "portrait-primary",
     icons: [
       {

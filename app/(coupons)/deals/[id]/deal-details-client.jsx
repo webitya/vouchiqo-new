@@ -399,7 +399,7 @@ export default function DealDetailsClient({ coupon, relatedCoupons = [] }) {
               <button
                 type="button"
                 onClick={() => router.back()}
-                className="flex items-center gap-1.5 text-xs font-medium text-slate-700 hover:text-blue-600 cursor-pointer transition-colors bg-transparent border-0 p-0"
+                className="flex items-center gap-1.5 text-xs font-medium text-slate-700 hover:text-festival-teal cursor-pointer transition-colors bg-transparent border-0 p-0"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
                 <span>Go Back</span>
@@ -431,7 +431,7 @@ export default function DealDetailsClient({ coupon, relatedCoupons = [] }) {
                     onClick={handleShare}
                     className="flex items-center gap-1.5 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 px-3 py-1 rounded-lg border border-slate-200 shadow-2xs cursor-pointer transition-all"
                   >
-                    <Share2 className="w-3.5 h-3.5 text-blue-600" />
+                    <Share2 className="w-3.5 h-3.5 text-festival-teal" />
                     <span>Share</span>
                   </button>
                   {showShareTooltip && (
@@ -446,7 +446,7 @@ export default function DealDetailsClient({ coupon, relatedCoupons = [] }) {
             {/* Offer Summary & Deal Title Bar */}
             <div className="p-4 sm:p-6 border-b border-slate-100 bg-white">
               <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className="inline-block bg-blue-50 text-blue-700 border border-blue-200 text-[10px] sm:text-[10.5px] font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                <span className="inline-block bg-festival-teal/10 text-festival-teal border border-festival-teal/20 text-[10px] sm:text-[10.5px] font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                   {discountFormatted}
                 </span>
                 <span className="inline-block bg-purple-50 text-purple-700 border border-purple-200 text-[10px] sm:text-[10.5px] font-medium px-2.5 py-0.5 rounded-md uppercase tracking-wider">
@@ -461,12 +461,12 @@ export default function DealDetailsClient({ coupon, relatedCoupons = [] }) {
                 {coupon.code ? (
                   <>
                     {"Use Code & Get "}
-                    <span className="text-blue-600 font-extrabold">{discountFormatted}</span>
+                    <span className="text-festival-pink font-extrabold font-heading">{discountFormatted}</span>
                     {" on "}
                     {coupon.merchantId?.slug ? (
                       <Link
                         href={`/brand/${coupon.merchantId.slug}`}
-                        className="text-slate-900 hover:text-blue-600 hover:underline cursor-pointer transition-colors"
+                        className="text-slate-900 hover:text-festival-teal hover:underline cursor-pointer transition-colors"
                       >
                         {merchantName}
                       </Link>
@@ -487,7 +487,7 @@ export default function DealDetailsClient({ coupon, relatedCoupons = [] }) {
             </div>
 
             {/* Coupon Box Container with soft background */}
-            <div className="p-3.5 sm:p-6 border-b border-slate-100 bg-gradient-to-b from-slate-50/50 via-blue-50/20 to-indigo-50/30 text-center space-y-3.5 sm:space-y-4">
+            <div className="p-3.5 sm:p-6 border-b border-slate-100 bg-gradient-to-b from-slate-50/50 via-warm-ivory to-warm-ivory/50 text-center space-y-3.5 sm:space-y-4">
               <div className="space-y-1">
                 <p className="text-[11px] sm:text-xs text-slate-500 font-normal uppercase tracking-wider">
                   {coupon.code
@@ -504,7 +504,7 @@ export default function DealDetailsClient({ coupon, relatedCoupons = [] }) {
                   className={`w-full border-2 border-dashed rounded-xl py-3 sm:py-3.5 px-3 sm:px-4 relative cursor-pointer transition-all duration-300 shadow-[0_4px_16px_rgba(59,130,246,0.06)] active:scale-[0.99] ${
                     copiedCode
                       ? "border-emerald-500 bg-emerald-50/60"
-                      : "border-blue-300/90 bg-white hover:bg-blue-50/40 hover:border-blue-500"
+                      : "border-festival-teal/40 bg-white hover:bg-warm-ivory hover:border-festival-teal"
                   }`}
                 >
                   <span className="font-mono text-lg sm:text-2xl font-medium tracking-[0.14em] sm:tracking-[0.18em] text-slate-800 uppercase pl-1 sm:pl-2">
@@ -560,13 +560,13 @@ export default function DealDetailsClient({ coupon, relatedCoupons = [] }) {
                   </div>
                 )
               ) : (
-                <div className="max-w-md mx-auto bg-blue-50/40 border border-blue-200/80 border-dashed rounded-xl p-3 text-center space-y-1.5">
+                <div className="max-w-md mx-auto bg-warm-ivory border border-brand-border border-dashed rounded-xl p-3 text-center space-y-1.5">
                   <p className="text-xs text-slate-600 font-normal">
                     Want to redeem in-store?
                   </p>
                   <Link
                     href={`/login?callbackUrl=/deals/${coupon._id}`}
-                    className="inline-block bg-blue-600 text-white text-[11px] font-normal px-3.5 py-1.5 rounded-lg hover:bg-blue-700 transition-colors cursor-pointer shadow-2xs"
+                    className="inline-block bg-festival-pink text-white text-[11px] font-bold font-heading px-3.5 py-1.5 rounded-lg hover:bg-[#E02253] transition-colors cursor-pointer shadow-2xs"
                   >
                     Login to Generate In-Store Code
                   </Link>
@@ -589,10 +589,10 @@ export default function DealDetailsClient({ coupon, relatedCoupons = [] }) {
                         source: "deal_page",
                       });
                     }}
-                    className="inline-flex items-center gap-1 text-xs sm:text-[13px] font-medium text-blue-600 hover:underline transition-colors"
+                    className="inline-flex items-center gap-1 text-xs sm:text-[13px] font-medium text-festival-teal hover:underline transition-colors"
                   >
                     <span>Go To {merchantName} Website</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-blue-600" />
+                    <ExternalLink className="w-3.5 h-3.5 text-festival-teal" />
                   </a>
                 </div>
               ) : (
@@ -624,7 +624,7 @@ export default function DealDetailsClient({ coupon, relatedCoupons = [] }) {
                             )}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-[10.5px] font-normal text-blue-600 hover:underline"
+                            className="inline-flex items-center gap-1 text-[10.5px] font-normal text-festival-teal hover:underline"
                           >
                             <span>Open in Google Maps</span>
                             <ExternalLink className="w-3 h-3" />
@@ -659,14 +659,14 @@ export default function DealDetailsClient({ coupon, relatedCoupons = [] }) {
             </div>
 
             {/* T&C Section */}
-            <div className="p-4 sm:p-6 border-b border-slate-100 bg-gradient-to-r from-slate-50/70 via-blue-50/15 to-slate-50/70 text-left">
+            <div className="p-4 sm:p-6 border-b border-slate-100 bg-gradient-to-r from-slate-50/70 via-warm-ivory to-white text-left">
               <h3 className="text-xs sm:text-[13px] font-medium text-slate-800 uppercase tracking-wider mb-2.5">
                 T&amp;C&apos;s
               </h3>
               <ul className="text-xs text-slate-500 space-y-2 list-disc pl-4 leading-relaxed font-normal">
                 <li>
                   Get{" "}
-                  <span className="text-blue-600 font-medium">{discountFormatted}</span>{" "}
+                  <span className="text-festival-pink font-medium font-heading">{discountFormatted}</span>{" "}
                   on your <span className="text-slate-700">{coupon.title}</span>
                 </li>
                 <li>
@@ -724,9 +724,9 @@ export default function DealDetailsClient({ coupon, relatedCoupons = [] }) {
           {/* Related Coupons Sidebar (Right) with soft colorful accents */}
           <div className="lg:col-span-4 space-y-4">
             <div className="bg-white rounded-xl sm:rounded-2xl border border-slate-200/90 shadow-2xs p-4 sm:p-5 text-left">
-              <h2 className="text-xs sm:text-[13px] font-medium text-[#F72853] uppercase tracking-wider mb-3.5 pb-2 border-b border-slate-100 flex items-center justify-between">
+              <h2 className="text-xs sm:text-[13px] font-medium text-[#FF2E63] uppercase tracking-wider mb-3.5 pb-2 border-b border-slate-100 flex items-center justify-between">
                 <span>Vouchiqo Related Offers</span>
-                <span className="text-[10px] font-normal text-[#F72853] bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200/60">
+                <span className="text-[10px] font-normal text-[#FF2E63] bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200/60">
                   {relatedCoupons.length} Deals
                 </span>
               </h2>
@@ -746,9 +746,9 @@ export default function DealDetailsClient({ coupon, relatedCoupons = [] }) {
                       <Link
                         key={c._id}
                         href={`/deals/${c._id}`}
-                        className="flex items-center gap-3 p-2.5 rounded-lg border border-slate-100 hover:border-[#F72853] hover:bg-gradient-to-r hover:from-rose-50/40 hover:to-pink-50/20 transition-all duration-200 group"
+                        className="flex items-center gap-3 p-2.5 rounded-lg border border-slate-100 hover:border-[#FF2E63] hover:bg-gradient-to-r hover:from-rose-50/40 hover:to-pink-50/20 transition-all duration-200 group"
                       >
-                        <div className="w-11 h-11 rounded-lg border border-slate-100 bg-white flex items-center justify-center p-1 overflow-hidden shrink-0 shadow-2xs group-hover:border-[#F72853]/40 transition-colors">
+                        <div className="w-11 h-11 rounded-lg border border-slate-100 bg-white flex items-center justify-center p-1 overflow-hidden shrink-0 shadow-2xs group-hover:border-[#FF2E63]/40 transition-colors">
                           <img
                             src={cLogo}
                             alt={cBrand}
@@ -760,10 +760,10 @@ export default function DealDetailsClient({ coupon, relatedCoupons = [] }) {
                           />
                         </div>
                         <div className="space-y-0.5 flex-1 min-w-0">
-                          <span className="text-[9.5px] sm:text-[10px] font-medium text-[#F72853] bg-rose-50 border border-rose-200/60 px-1.5 py-0.2 rounded uppercase tracking-wider inline-block">
+                          <span className="text-[9.5px] sm:text-[10px] font-medium text-[#FF2E63] bg-rose-50 border border-rose-200/60 px-1.5 py-0.2 rounded uppercase tracking-wider inline-block">
                             {cDiscount}
                           </span>
-                          <h4 className="text-xs font-normal text-slate-700 line-clamp-1 group-hover:text-[#F72853] transition-colors">
+                          <h4 className="text-xs font-normal text-slate-700 line-clamp-1 group-hover:text-[#FF2E63] transition-colors">
                             {c.title}
                           </h4>
                         </div>
@@ -810,7 +810,7 @@ export default function DealDetailsClient({ coupon, relatedCoupons = [] }) {
                 <span className="text-[10px] font-black text-slate-400 uppercase tracking-wider block text-left pl-1">
                   Unique In-Store Verification Code:
                 </span>
-                <div className="bg-blue-50/50 border border-blue-200 rounded-xl py-3 px-6 select-all font-mono text-base font-black tracking-wider text-blue-700 uppercase flex items-center justify-between">
+                <div className="bg-warm-ivory border border-festival-teal/20 rounded-xl py-3 px-6 select-all font-mono text-base font-black tracking-wider text-festival-teal uppercase flex items-center justify-between">
                   <span>{uniqueClaimCode}</span>
                   <button
                     onClick={() => {
@@ -818,7 +818,7 @@ export default function DealDetailsClient({ coupon, relatedCoupons = [] }) {
                       toast.success("Claim code copied!");
                     }}
                     type="button"
-                    className="text-xs text-blue-600 font-bold hover:underline border-0 bg-transparent p-0 cursor-pointer"
+                    className="text-xs text-festival-teal font-bold hover:underline border-0 bg-transparent p-0 cursor-pointer"
                   >
                     Copy
                   </button>
@@ -836,7 +836,7 @@ export default function DealDetailsClient({ coupon, relatedCoupons = [] }) {
             {coupon.merchantId?.website ? (
               <Button
                 asChild
-                className="bg-brand-blue hover:bg-blue-600 text-white font-bold text-xs h-10 w-full rounded-xl cursor-pointer shadow-sm flex items-center justify-center gap-1.5"
+                className="bg-brand-blue hover:bg-festival-teal text-white font-bold text-xs h-10 w-full rounded-xl cursor-pointer shadow-sm flex items-center justify-center gap-1.5"
               >
                 <a
                   href={coupon.merchantId.website}

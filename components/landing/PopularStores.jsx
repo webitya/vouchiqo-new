@@ -237,10 +237,10 @@ export default function PopularStores({ merchants = [] }) {
       {/* Custom Section Header with Navigation Controls */}
       <div className="flex justify-between items-center mb-3 sm:mb-4">
         <div className="flex items-center gap-2">
-          <h2 className="text-base sm:text-lg md:text-xl font-bold text-[#F72853] tracking-tight">
+          <h2 className="text-base sm:text-lg md:text-xl font-heading font-bold text-[#FF2E63] tracking-tight">
             Popular Stores
           </h2>
-          <span className="text-[10.5px] sm:text-[11px] font-semibold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full">
+          <span className="text-[10.5px] sm:text-[11px] font-semibold text-[#6B4C82] bg-[#FFF8EF] border border-[#EADBCE] px-2.5 py-0.5 rounded-full">
             {finalStoresList.length} Stores
           </span>
         </div>
@@ -256,8 +256,8 @@ export default function PopularStores({ merchants = [] }) {
                   onClick={() => setSelectedIndex(idx)}
                   className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                     selectedIndex === idx
-                      ? "w-4.5 bg-[#F72853]"
-                      : "w-1.5 bg-slate-300 hover:bg-slate-400"
+                      ? "w-4.5 bg-[#FF2E63]"
+                      : "w-1.5 bg-[#EADBCE] hover:bg-[#FF2E63]/60"
                   }`}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
@@ -269,7 +269,7 @@ export default function PopularStores({ merchants = [] }) {
               <button
                 type="button"
                 onClick={handlePrev}
-                className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:text-[#F72853] flex items-center justify-center shadow-2xs transition-colors cursor-pointer"
+                className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-full border border-[#EADBCE] bg-white text-[#35104A] hover:bg-[#FFF8EF] hover:text-[#FF2E63] flex items-center justify-center shadow-2xs transition-colors cursor-pointer"
                 aria-label="Previous stores"
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
@@ -277,7 +277,7 @@ export default function PopularStores({ merchants = [] }) {
               <button
                 type="button"
                 onClick={handleNext}
-                className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:text-[#F72853] flex items-center justify-center shadow-2xs transition-colors cursor-pointer"
+                className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-full border border-[#EADBCE] bg-white text-[#35104A] hover:bg-[#FFF8EF] hover:text-[#FF2E63] flex items-center justify-center shadow-2xs transition-colors cursor-pointer"
                 aria-label="Next stores"
               >
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -293,7 +293,7 @@ export default function PopularStores({ merchants = [] }) {
           <Link
             href={sodHref}
             prefetch={true}
-            className="relative flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-2xl border border-rose-200/90 bg-gradient-to-r from-rose-50/70 via-white to-pink-50/30 shadow-2xs hover:shadow-md hover:border-rose-300 transition-all duration-200 overflow-hidden no-underline group select-none"
+            className="relative flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-2xl border border-[#EADBCE] bg-gradient-to-r from-[#FFF8EF] via-white to-[#FFF8EF] shadow-2xs hover:shadow-md hover:border-[#FF2E63]/40 transition-all duration-200 overflow-hidden no-underline group select-none font-sans"
           >
             {/* Subtle banner accent watermark on the right */}
             <div className="absolute right-0 top-0 bottom-0 w-2/5 overflow-hidden pointer-events-none opacity-20">
@@ -308,7 +308,7 @@ export default function PopularStores({ merchants = [] }) {
             </div>
 
             {/* Brand Logo */}
-            <div className="relative w-12 h-12 sm:w-13 sm:h-13 rounded-xl bg-white p-1 border border-slate-150 shadow-xs flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform z-10">
+            <div className="relative w-12 h-12 sm:w-13 sm:h-13 rounded-xl bg-white p-1 border border-[#EADBCE] shadow-xs flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform z-10">
               <SafeImage
                 src={sodLogo}
                 alt={sodName}
@@ -323,17 +323,17 @@ export default function PopularStores({ merchants = [] }) {
             <div className="flex-1 min-w-0 z-10">
               {/* Badges line: compact, no gemini icon, single line */}
               <div className="flex items-center gap-1.5 mb-0.5">
-                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[8.5px] sm:text-[9px] font-extrabold bg-[#F72853] text-white tracking-wide uppercase shadow-2xs whitespace-nowrap shrink-0">
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[8.5px] sm:text-[9px] font-heading font-extrabold bg-[#FF2E63] text-white tracking-wide uppercase shadow-2xs whitespace-nowrap shrink-0">
                   Store of the Day
                 </span>
-                <span className="inline-flex items-center text-[9.5px] sm:text-[10px] font-bold text-slate-500 bg-slate-100/90 px-2 py-0.5 rounded-full capitalize truncate">
+                <span className="inline-flex items-center text-[9.5px] sm:text-[10px] font-bold text-[#6B4C82] bg-[#FFF8EF] border border-[#EADBCE] px-2 py-0.5 rounded-full capitalize truncate">
                   {sodCategory}
                 </span>
               </div>
 
               {/* Brand Name */}
               <div className="flex items-center gap-1 min-w-0">
-                <h3 className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-[#F72853] transition-colors truncate">
+                <h3 className="text-xs sm:text-sm font-heading font-bold text-[#35104A] group-hover:text-[#FF2E63] transition-colors truncate">
                   {sodName}
                 </h3>
                 <TwitterVerifiedBadge className="w-3.5 h-3.5 shrink-0" />
@@ -341,31 +341,31 @@ export default function PopularStores({ merchants = [] }) {
 
               {/* Highlights & Discount */}
               <div className="flex items-center gap-1.5 text-[11px] mt-0.5">
-                <span className="font-extrabold text-[#F72853] whitespace-nowrap">
+                <span className="font-heading font-bold text-[#FF2E63] whitespace-nowrap">
                   {sodCoupons > 0
                     ? `${sodCoupons} Live Offers`
                     : "Active Deals"}
                 </span>
-                <span className="text-slate-300">•</span>
-                <span className="font-semibold text-emerald-600 truncate">
+                <span className="text-[#EADBCE]">•</span>
+                <span className="font-semibold text-[#007F79] truncate">
                   {sodMaxDiscount || "Verified Partner"}
                 </span>
               </div>
             </div>
 
             {/* Subtle Chevron indicator on right */}
-            <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-[#F72853] group-hover:translate-x-0.5 transition-all shrink-0 z-10 mr-0.5" />
+            <ChevronRight className="w-4 h-4 text-[#6B4C82]/60 group-hover:text-[#FF2E63] group-hover:translate-x-0.5 transition-all shrink-0 z-10 mr-0.5" />
           </Link>
         </div>
       )}
 
-      <div className="flex flex-col lg:flex-row gap-3 sm:gap-4 lg:gap-6 mt-1 sm:mt-2 items-stretch">
+      <div className="flex flex-col lg:flex-row gap-3 sm:gap-4 lg:gap-6 mt-1 sm:mt-2 items-stretch font-sans">
         {/* ── Store of the Day Card ── */}
         <div className="hidden lg:flex lg:w-1/4 shrink-0 flex-col self-stretch">
           <Link
             href={sodHref}
             prefetch={true}
-            className="flex-1 relative flex flex-col no-underline cursor-pointer rounded-2xl overflow-hidden border border-slate-200/90 bg-white shadow-2xs group transition-all duration-300 hover:shadow-[0_12px_28px_rgba(247,40,83,0.16)] hover:border-[#F72853]/60 h-full min-h-0"
+            className="flex-1 relative flex flex-col no-underline cursor-pointer rounded-2xl overflow-hidden border border-[#EADBCE] bg-white shadow-2xs group transition-all duration-300 hover:shadow-[0_12px_28px_rgba(255,46,99,0.18)] hover:border-[#FF2E63]/60 h-full min-h-0 font-sans"
           >
             {/* 1. Hero Visual Cover (Rich, vibrant banner - 100% opacity with subtle dark scrim) */}
             <div className="relative w-full h-44 sm:h-48 md:h-52 overflow-hidden bg-slate-900 shrink-0">
@@ -383,7 +383,7 @@ export default function PopularStores({ merchants = [] }) {
 
               {/* Top Floating Badges */}
               <div className="absolute top-3 left-3 right-3 z-10 flex items-center justify-between gap-2">
-                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-[#F72853] text-white tracking-wider uppercase shadow-xs">
+                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-heading font-extrabold bg-[#FF2E63] text-white tracking-wider uppercase shadow-xs">
                   Store Of The Day
                 </span>
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-black/55 backdrop-blur-md text-white border border-white/20 shadow-2xs capitalize">
@@ -394,7 +394,7 @@ export default function PopularStores({ merchants = [] }) {
 
             {/* 2. Elevated Brand Logo Seam */}
             <div className="relative -mt-9 sm:-mt-10 px-3.5 sm:px-4.5 z-20 flex items-end justify-between">
-              <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-2xl bg-white p-2 shadow-lg ring-4 ring-white border border-slate-100 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:shadow-xl transition-all duration-300">
+              <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-2xl bg-white p-2 shadow-lg ring-4 ring-white border border-[#EADBCE] flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:shadow-xl transition-all duration-300">
                 <SafeImage
                   src={sodLogo}
                   alt={sodName}
@@ -405,7 +405,7 @@ export default function PopularStores({ merchants = [] }) {
                 />
               </div>
 
-              <div className="mb-1 flex items-center bg-emerald-50 border border-emerald-200/90 text-emerald-700 px-2.5 py-1 rounded-full text-[10px] font-bold shadow-2xs">
+              <div className="mb-1 flex items-center bg-[#007F79]/10 border border-[#007F79]/20 text-[#007F79] px-2.5 py-1 rounded-full text-[10px] font-heading font-bold shadow-2xs">
                 <span>Verified Partner</span>
               </div>
             </div>
@@ -415,34 +415,34 @@ export default function PopularStores({ merchants = [] }) {
               {/* Brand Name & Category */}
               <div>
                 <div className="flex items-center gap-1.5 min-w-0">
-                  <h3 className="text-base sm:text-lg font-black text-slate-900 group-hover:text-[#F72853] transition-colors leading-tight tracking-tight line-clamp-1">
+                  <h3 className="text-base sm:text-lg font-heading font-black text-[#35104A] group-hover:text-[#FF2E63] transition-colors leading-tight tracking-tight line-clamp-1">
                     {sodName}
                   </h3>
                   <TwitterVerifiedBadge className="w-4 h-4 shrink-0" />
                 </div>
-                <p className="text-[11.5px] font-medium text-slate-500 mt-0.5 line-clamp-1">
+                <p className="text-[11.5px] font-medium text-[#6B4C82] mt-0.5 line-clamp-1">
                   Exclusive verified discounts & promotional codes
                 </p>
               </div>
 
               {/* Special Highlights Box */}
               <div className="my-auto py-3">
-                <div className="bg-gradient-to-br from-rose-50/70 via-pink-50/30 to-amber-50/40 border border-rose-100/90 rounded-2xl p-3 sm:p-3.5 shadow-2xs space-y-2">
-                  <div className="flex items-center justify-between text-[11px] font-bold text-slate-700">
-                    <span className="text-[#F72853] uppercase tracking-wider text-[10.5px] font-extrabold">
+                <div className="bg-gradient-to-br from-[#FFF8EF] via-[#FFFDF9] to-[#FFF8EF] border border-[#EADBCE] rounded-2xl p-3 sm:p-3.5 shadow-2xs space-y-2">
+                  <div className="flex items-center justify-between text-[11px] font-bold text-[#35104A]">
+                    <span className="text-[#FF2E63] font-heading uppercase tracking-wider text-[10.5px] font-extrabold">
                       Partner Highlights
                     </span>
-                    <span className="bg-white px-2 py-0.5 rounded-full text-[10px] font-bold text-slate-700 border border-slate-200/80 shadow-2xs">
+                    <span className="bg-white px-2 py-0.5 rounded-full text-[10px] font-bold text-[#35104A] border border-[#EADBCE] shadow-2xs">
                       {sodMaxDiscount || "Verified Partner"}
                     </span>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2 pt-0.5 text-center">
-                    <div className="bg-white/95 backdrop-blur-xs rounded-xl p-2 border border-slate-100 shadow-2xs">
-                      <div className="text-[10px] text-slate-500 font-semibold">
+                    <div className="bg-white/95 backdrop-blur-xs rounded-xl p-2 border border-[#EADBCE] shadow-2xs">
+                      <div className="text-[10px] text-[#6B4C82] font-semibold">
                         Live Offers
                       </div>
-                      <div className="text-sm font-black text-[#F72853]">
+                      <div className="text-sm font-heading font-black text-[#FF2E63]">
                         {sodCoupons > 0 ? `${sodCoupons} Deals` : "Active"}
                       </div>
                     </div>
@@ -462,7 +462,7 @@ export default function PopularStores({ merchants = [] }) {
 
               {/* CTA Action Button */}
               <div className="pt-1 mt-auto">
-                <div className="w-full py-2.5 sm:py-3 px-4 rounded-xl bg-gradient-to-r from-[#F72853] to-[#e01e47] text-white font-bold text-xs sm:text-sm text-center shadow-md shadow-rose-500/20 group-hover:shadow-lg group-hover:shadow-rose-500/30 group-hover:from-[#e01e47] group-hover:to-[#c7173e] transition-all flex items-center justify-center gap-2">
+                <div className="w-full py-2.5 sm:py-3 px-4 rounded-xl bg-gradient-to-r from-[#FF2E63] to-[#e01e47] text-white font-bold text-xs sm:text-sm text-center shadow-md shadow-rose-500/20 group-hover:shadow-lg group-hover:shadow-rose-500/30 group-hover:from-[#e01e47] group-hover:to-[#c7173e] transition-all flex items-center justify-center gap-2">
                   <span>
                     {sodCoupons > 0
                       ? `Explore All ${sodCoupons} Offers`

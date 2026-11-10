@@ -14,17 +14,17 @@ export default function AdminIndicator({
   if (!isReviewing) return null;
 
   return (
-    <div className="bg-blue-50/40 border border-blue-200/80 rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-slate-900 font-sans">
+    <div className="bg-warm-ivory border border-brand-border rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-slate-900 font-sans">
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 border border-blue-200">
-          <Eye className="w-4 h-4 text-blue-600 animate-pulse" />
+        <div className="w-8 h-8 rounded-lg bg-festival-teal/20 text-festival-teal flex items-center justify-center shrink-0 border border-brand-border">
+          <Eye className="w-4 h-4 text-festival-teal animate-pulse" />
         </div>
         <div className="space-y-0.5">
           <div className="flex items-center gap-2">
             <span className="text-xs font-medium text-slate-900">
               Admin Review In Progress
             </span>
-            <Badge className="bg-blue-600 text-white text-[9px] font-normal px-2 py-0.5 rounded">
+            <Badge className="bg-festival-teal text-white text-[9px] font-normal px-2 py-0.5 rounded">
               Active Audit
             </Badge>
           </div>

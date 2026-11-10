@@ -142,7 +142,7 @@ const DEFAULT_COMMISSION_TABLE = [
 // 8 Distinct Pastel Row Palettes (Clearly visible without hover)
 const ROW_COLOR_THEMES = [
   {
-    row: "bg-blue-100/65 hover:bg-blue-100/90 border-l-[3.5px] border-l-blue-600 border-b border-blue-200/80 text-slate-900",
+    row: "bg-festival-teal/10 hover:bg-festival-teal/20 border-l-[3.5px] border-l-festival-teal border-b border-festival-teal/20 text-slate-900",
   },
   {
     row: "bg-emerald-100/65 hover:bg-emerald-100/90 border-l-[3.5px] border-l-emerald-600 border-b border-emerald-200/80 text-slate-900",
@@ -359,7 +359,7 @@ export default function CommissionRatesEditorPage() {
               <Button
                 onClick={handleSave}
                 disabled={saving || loading}
-                className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg h-7.5 px-3.5 cursor-pointer shadow-2xs gap-1.5 shrink-0"
+                className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-medium rounded-lg h-7.5 px-3.5 cursor-pointer shadow-2xs gap-1.5 shrink-0"
               >
                 {saving
                   ? <RefreshCw className="w-3.5 h-3.5 animate-spin" />
@@ -376,7 +376,7 @@ export default function CommissionRatesEditorPage() {
               className={cn(
                 "rounded-xl border p-2.5 cursor-pointer transition-all duration-200 shadow-2xs font-sans",
                 activeTab === "all"
-                  ? "bg-blue-50/70 border-blue-300 ring-1 ring-blue-300"
+                  ? "bg-warm-ivory border-festival-teal/30 ring-1 ring-festival-teal/20"
                   : "bg-white border-slate-200/80 hover:border-slate-300",
               )}
             >
@@ -389,7 +389,7 @@ export default function CommissionRatesEditorPage() {
                     {stats.total}
                   </span>
                 </div>
-                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 border border-blue-200/60 flex items-center justify-center shrink-0">
+                <div className="w-7 h-7 rounded-lg bg-warm-ivory text-festival-teal border border-festival-teal/20 flex items-center justify-center shrink-0">
                   <Percent className="w-3.5 h-3.5" />
                 </div>
               </CardContent>
@@ -452,7 +452,7 @@ export default function CommissionRatesEditorPage() {
                   <span className="text-[10px] font-medium text-slate-500 uppercase tracking-wider block">
                     Live Onboarding
                   </span>
-                  <span className="text-base font-medium text-blue-700 mt-0.5 block leading-none">
+                  <span className="text-base font-medium text-festival-teal mt-0.5 block leading-none">
                     Active
                   </span>
                 </div>
@@ -467,7 +467,7 @@ export default function CommissionRatesEditorPage() {
           {activePreviewRate?.category && (
             <div className="bg-slate-50/90 border border-slate-200/90 p-2.5 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-2xs">
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-md bg-white border border-blue-200 text-blue-600 flex items-center justify-center shrink-0 shadow-2xs">
+                <div className="w-6 h-6 rounded-md bg-white border border-brand-border text-festival-teal flex items-center justify-center shrink-0 shadow-2xs">
                   <Eye className="w-3.5 h-3.5" />
                 </div>
                 <div>
@@ -478,7 +478,7 @@ export default function CommissionRatesEditorPage() {
                     <span className="text-xs font-medium text-slate-900">
                       {activePreviewRate.category}:
                     </span>
-                    <span className="font-mono text-[11px] font-medium text-blue-700 bg-white px-2 py-0.5 rounded border border-blue-200/80 shadow-2xs">
+                    <span className="font-mono text-[11px] font-medium text-festival-teal bg-white px-2 py-0.5 rounded border border-festival-teal/25 shadow-2xs">
                       {activePreviewRate.rate}
                     </span>
                     <span className="text-[10.5px] text-slate-500 font-normal">
@@ -492,7 +492,7 @@ export default function CommissionRatesEditorPage() {
                   </div>
                 </div>
               </div>
-              <span className="bg-white text-blue-700 border border-blue-200 text-[9.5px] font-medium px-2 py-0.5 rounded-md shadow-2xs self-start sm:self-auto">
+              <span className="bg-white text-festival-teal border border-brand-border text-[9.5px] font-medium px-2 py-0.5 rounded-md shadow-2xs self-start sm:self-auto">
                 Selected Preview Row
               </span>
             </div>
@@ -524,7 +524,7 @@ export default function CommissionRatesEditorPage() {
                     placeholder="Search category or rate..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 focus:border-blue-500 focus:bg-white rounded-lg pl-8 pr-7 py-1 text-xs text-slate-800 placeholder-slate-400 outline-none transition-all shadow-2xs"
+                    className="w-full bg-slate-50 border border-slate-200 focus:border-festival-teal focus:bg-white rounded-lg pl-8 pr-7 py-1 text-xs text-slate-800 placeholder-slate-400 outline-none transition-all shadow-2xs"
                   />
                   {searchQuery && (
                     <button
@@ -567,7 +567,7 @@ export default function CommissionRatesEditorPage() {
                           className={cn(
                             "text-[10.5px] font-medium px-2 py-0.5 rounded-md transition-all cursor-pointer flex items-center gap-1 border-0",
                             activeTab === tab.id
-                              ? "bg-white text-blue-600 shadow-2xs"
+                              ? "bg-white text-festival-teal shadow-2xs"
                               : "text-slate-500 hover:text-slate-800 bg-transparent",
                           )}
                         >
@@ -576,7 +576,7 @@ export default function CommissionRatesEditorPage() {
                             className={cn(
                               "text-[9px] px-1 rounded-full",
                               activeTab === tab.id
-                                ? "bg-blue-50 text-blue-600"
+                                ? "bg-warm-ivory text-festival-teal"
                                 : "bg-slate-200/70 text-slate-600",
                             )}
                           >
@@ -600,7 +600,7 @@ export default function CommissionRatesEditorPage() {
             <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1.5">
               <div className="flex items-center justify-between">
                 <span className="text-[10.5px] font-medium text-slate-700 uppercase flex items-center gap-1">
-                  <Plus className="w-3 h-3 text-blue-600" /> Add Category Rate
+                  <Plus className="w-3 h-3 text-festival-teal" /> Add Category Rate
                 </span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-2">
@@ -612,7 +612,7 @@ export default function CommissionRatesEditorPage() {
                     onChange={(e) =>
                       setNewCpaRate({ ...newCpaRate, category: e.target.value })
                     }
-                    className="w-full bg-white border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 outline-none shadow-2xs"
+                    className="w-full bg-white border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal outline-none shadow-2xs"
                   />
                 </div>
                 <div className="sm:col-span-3">
@@ -623,7 +623,7 @@ export default function CommissionRatesEditorPage() {
                     onChange={(e) =>
                       setNewCpaRate({ ...newCpaRate, rate: e.target.value })
                     }
-                    className="w-full bg-white border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 outline-none shadow-2xs"
+                    className="w-full bg-white border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal outline-none shadow-2xs"
                   />
                 </div>
                 <div className="sm:col-span-2">
@@ -634,7 +634,7 @@ export default function CommissionRatesEditorPage() {
                     onChange={(e) =>
                       setNewCpaRate({ ...newCpaRate, model: e.target.value })
                     }
-                    className="w-full bg-white border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 outline-none shadow-2xs"
+                    className="w-full bg-white border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal outline-none shadow-2xs"
                   />
                 </div>
                 <div className="sm:col-span-3">
@@ -645,13 +645,13 @@ export default function CommissionRatesEditorPage() {
                     onChange={(e) =>
                       setNewCpaRate({ ...newCpaRate, notes: e.target.value })
                     }
-                    className="w-full bg-white border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 outline-none shadow-2xs"
+                    className="w-full bg-white border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal outline-none shadow-2xs"
                   />
                 </div>
                 <div className="sm:col-span-1">
                   <Button
                     onClick={handleAddCpaRate}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg h-7.5 px-2 cursor-pointer gap-1 shadow-2xs"
+                    className="w-full bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-medium rounded-lg h-7.5 px-2 cursor-pointer gap-1 shadow-2xs"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>Add</span>
@@ -680,7 +680,7 @@ export default function CommissionRatesEditorPage() {
                           colSpan={6}
                           className="py-8 text-center text-slate-400 text-xs"
                         >
-                          <RefreshCw className="w-4 h-4 animate-spin mx-auto mb-1.5 text-blue-500" />
+                          <RefreshCw className="w-4 h-4 animate-spin mx-auto mb-1.5 text-festival-teal" />
                           Loading commission rates...
                         </td>
                       </tr>
@@ -706,7 +706,7 @@ export default function CommissionRatesEditorPage() {
                               className={cn(
                                 "transition-all duration-150 cursor-pointer",
                                 theme.row,
-                                isSelected && "ring-1 ring-blue-500",
+                                isSelected && "ring-1 ring-festival-teal/20",
                               )}
                             >
                               {/* # */}
@@ -728,7 +728,7 @@ export default function CommissionRatesEditorPage() {
                                       e.target.value,
                                     )
                                   }
-                                  className="w-full bg-white/95 border border-slate-300/90 rounded-lg text-xs h-7 px-2 font-medium text-slate-900 focus:border-blue-500 outline-none shadow-2xs"
+                                  className="w-full bg-white/95 border border-slate-300/90 rounded-lg text-xs h-7 px-2 font-medium text-slate-900 focus:border-festival-teal outline-none shadow-2xs"
                                 />
                               </td>
 
@@ -745,7 +745,7 @@ export default function CommissionRatesEditorPage() {
                                       e.target.value,
                                     )
                                   }
-                                  className="w-full bg-white/95 border border-slate-300/90 rounded-lg text-xs font-mono h-7 px-2 font-medium text-blue-700 focus:border-blue-500 outline-none shadow-2xs"
+                                  className="w-full bg-white/95 border border-slate-300/90 rounded-lg text-xs font-mono h-7 px-2 font-medium text-festival-teal focus:border-festival-teal outline-none shadow-2xs"
                                 />
                               </td>
 
@@ -762,7 +762,7 @@ export default function CommissionRatesEditorPage() {
                                       e.target.value,
                                     )
                                   }
-                                  className="w-full bg-white/95 border border-slate-300/90 rounded-lg text-xs h-7 px-2 font-normal text-slate-900 focus:border-blue-500 outline-none shadow-2xs"
+                                  className="w-full bg-white/95 border border-slate-300/90 rounded-lg text-xs h-7 px-2 font-normal text-slate-900 focus:border-festival-teal outline-none shadow-2xs"
                                 />
                               </td>
 
@@ -779,7 +779,7 @@ export default function CommissionRatesEditorPage() {
                                       e.target.value,
                                     )
                                   }
-                                  className="w-full bg-white/95 border border-slate-300/90 rounded-lg text-xs h-7 px-2 font-normal text-slate-700 focus:border-blue-500 outline-none shadow-2xs"
+                                  className="w-full bg-white/95 border border-slate-300/90 rounded-lg text-xs h-7 px-2 font-normal text-slate-700 focus:border-festival-teal outline-none shadow-2xs"
                                 />
                               </td>
 
@@ -818,7 +818,7 @@ export default function CommissionRatesEditorPage() {
             <div className="md:hidden space-y-3">
               {loading
                 ? <div className="py-8 text-center text-slate-400 text-xs">
-                    <RefreshCw className="w-4 h-4 animate-spin mx-auto mb-1.5 text-blue-500" />
+                    <RefreshCw className="w-4 h-4 animate-spin mx-auto mb-1.5 text-festival-teal" />
                     Loading commission rates...
                   </div>
                 : filteredRates.length === 0
@@ -834,7 +834,7 @@ export default function CommissionRatesEditorPage() {
                         >
                           {/* Top Header */}
                           <div className="flex items-center gap-3">
-                            <div className="w-11 h-11 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shrink-0 shadow-xs">
+                            <div className="w-11 h-11 rounded-full bg-festival-teal text-white font-bold text-sm flex items-center justify-center shrink-0 shadow-xs">
                               #{rIdx + 1}
                             </div>
                             <div className="min-w-0 flex-1">
@@ -878,7 +878,7 @@ export default function CommissionRatesEditorPage() {
                                     e.target.value,
                                   )
                                 }
-                                className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs h-9 px-2.5 font-bold text-slate-900 dark:text-white focus:ring-1 focus:ring-blue-500 outline-none"
+                                className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs h-9 px-2.5 font-bold text-slate-900 dark:text-white focus:ring-1 focus:ring-festival-teal/20 outline-none"
                               />
                             </div>
 
@@ -897,7 +897,7 @@ export default function CommissionRatesEditorPage() {
                                     e.target.value,
                                   )
                                 }
-                                className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-mono h-9 px-2.5 font-extrabold text-blue-600 dark:text-blue-400 focus:ring-1 focus:ring-blue-500 outline-none"
+                                className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-mono h-9 px-2.5 font-extrabold text-festival-teal dark:text-festival-teal focus:ring-1 focus:ring-festival-teal/20 outline-none"
                               />
                             </div>
 
@@ -916,7 +916,7 @@ export default function CommissionRatesEditorPage() {
                                     e.target.value,
                                   )
                                 }
-                                className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs h-9 px-2.5 font-semibold text-slate-900 dark:text-slate-200 focus:ring-1 focus:ring-blue-500 outline-none"
+                                className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs h-9 px-2.5 font-semibold text-slate-900 dark:text-slate-200 focus:ring-1 focus:ring-festival-teal/20 outline-none"
                               />
                             </div>
 
@@ -935,7 +935,7 @@ export default function CommissionRatesEditorPage() {
                                     e.target.value,
                                   )
                                 }
-                                className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs h-9 px-2.5 text-slate-700 dark:text-slate-300 focus:ring-1 focus:ring-blue-500 outline-none truncate"
+                                className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs h-9 px-2.5 text-slate-700 dark:text-slate-300 focus:ring-1 focus:ring-festival-teal/20 outline-none truncate"
                               />
                             </div>
                           </div>
@@ -954,7 +954,7 @@ export default function CommissionRatesEditorPage() {
               <Button
                 onClick={handleSave}
                 disabled={saving || loading}
-                className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg h-7.5 px-3.5 cursor-pointer shadow-2xs gap-1.5 shrink-0 self-start sm:self-auto"
+                className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-medium rounded-lg h-7.5 px-3.5 cursor-pointer shadow-2xs gap-1.5 shrink-0 self-start sm:self-auto"
               >
                 {saving
                   ? <RefreshCw className="w-3.5 h-3.5 animate-spin" />

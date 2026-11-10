@@ -17,7 +17,7 @@ export default function OperatingHours({ formData, handleHoursChange }) {
   return (
     <div className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs space-y-4 text-left font-sans">
       <h3 className="font-sans text-xs font-bold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-3 flex items-center gap-2">
-        <Clock className="w-4 h-4 text-blue-600" />
+        <Clock className="w-4 h-4 text-festival-teal" />
         <span>Weekly Store Operating Hours</span>
       </h3>
 

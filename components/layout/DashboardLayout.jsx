@@ -164,7 +164,7 @@ function MerchantPageLockOverlay() {
                 openModal();
               }
             }}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl h-11 shadow-md shadow-blue-500/25 cursor-pointer flex items-center justify-center gap-2 transition-all hover:scale-[1.01]"
+            className="w-full bg-festival-teal hover:bg-[#00635E] text-white font-bold text-xs rounded-xl h-11 shadow-md shadow-festival-teal/20 cursor-pointer flex items-center justify-center gap-2 transition-all hover:scale-[1.01]"
           >
             <span>{isPending ? "Track Status" : "Complete Profile"}</span>
             <ArrowRight className="w-4 h-4 text-white" />
@@ -228,9 +228,9 @@ function MerchantNoticeBanner() {
       new Date(merchant.planExpiry).getTime() < Date.now());
 
   return (
-    <div className="bg-blue-50/80 border-b border-blue-200/60 px-4 py-2.5 flex items-center justify-between text-xs font-normal text-blue-900 font-sans">
+    <div className="bg-warm-ivory border-b border-brand-border px-4 py-2.5 flex items-center justify-between text-xs font-normal text-royal-plum font-sans">
       <div className="flex items-center gap-2 min-w-0">
-        <AlertTriangle className="w-4 h-4 text-blue-600 flex-shrink-0 animate-pulse" />
+        <AlertTriangle className="w-4 h-4 text-festival-teal flex-shrink-0 animate-pulse" />
         <span className="truncate">
           <strong>Founding Merchant Program Active:</strong>{" "}
           {isPaused ? (
@@ -271,14 +271,14 @@ function MerchantNoticeBanner() {
       <div className="flex items-center gap-2 shrink-0">
         <Badge
           onClick={() => router.push("/merchant/billing")}
-          className="bg-blue-600 hover:bg-blue-700 text-white border-0 text-[10px] font-medium cursor-pointer px-2.5 py-0.5 shadow-xs"
+          className="bg-festival-teal hover:bg-[#00635E] text-white border-0 text-[10px] font-medium cursor-pointer px-2.5 py-0.5 shadow-xs"
         >
           {isStarter ? "Upgrade Plan" : "Manage Subscription"}
         </Badge>
         <button
           type="button"
           onClick={() => setDismissed(true)}
-          className="text-blue-700 hover:text-blue-900 p-0.5 cursor-pointer"
+          className="text-festival-teal hover:text-royal-plum p-0.5 cursor-pointer"
         >
           <X className="w-3.5 h-3.5" />
         </button>
@@ -395,7 +395,7 @@ export default function DashboardLayout({ title, user, children }) {
         <div className="w-[250px] bg-slate-50/80 border-r border-slate-200/80 p-3 hidden md:flex flex-col justify-between shrink-0 animate-pulse">
           <div className="space-y-4">
             <div className="flex items-center gap-2.5 px-2 py-1">
-              <div className="w-7 h-7 rounded-lg bg-blue-600/20" />
+              <div className="w-7 h-7 rounded-lg bg-festival-teal/20" />
               <div className="h-4.5 w-24 rounded bg-slate-200" />
             </div>
             <div className="space-y-1.5 pt-2">

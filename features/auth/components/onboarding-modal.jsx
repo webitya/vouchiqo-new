@@ -52,7 +52,7 @@ const CATEGORIES = [
     key: "electronics",
     label: "Electronics & Tech",
     icon: Smartphone,
-    color: "bg-blue-50 text-blue-600 border-blue-100",
+    color: "bg-warm-ivory text-festival-teal border-brand-border",
   },
   {
     key: "beauty",
@@ -233,7 +233,7 @@ export function OnboardingModal({
                   value: "men",
                   label: "Men",
                   icon: User,
-                  iconColor: "text-blue-600",
+                  iconColor: "text-festival-teal",
                 },
                 {
                   value: "women",

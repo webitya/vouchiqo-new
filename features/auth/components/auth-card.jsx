@@ -83,17 +83,22 @@ export function AuthCard({
         <div
           className={`w-full ${maxWidth} bg-white dark:bg-zinc-950 border border-brand-border dark:border-zinc-800 rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[460px] md:min-h-[500px] my-auto`}
         >
-          {/* Left Visual Panel: Blue & White theme, clean with NO text overlays */}
+          {/* Left Visual Panel: Brand gradient theme */}
           <div
-            className="hidden md:flex md:col-span-5 relative overflow-hidden bg-cover bg-center select-none"
-            style={{ backgroundImage: "url('/auth-blue-bg.png')" }}
-          />
+            className="hidden md:flex md:col-span-5 relative overflow-hidden bg-gradient-to-br from-[#35104A] via-[#1D062B] to-[#007F79] select-none items-center justify-center p-8"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(#FFD166_1px,transparent_1px)] [background-size:16px_16px] opacity-15" />
+            <div className="relative text-center text-white space-y-2">
+              <span className="text-2xl font-black font-heading tracking-wider block text-warm-ivory">VOUCHIQO</span>
+              <span className="text-[11px] font-medium text-golden-glow tracking-widest uppercase block">Verified Deals. Real Savings.</span>
+            </div>
+          </div>
 
           {/* Right Form Panel: Compact, clean sans typography */}
           <div className="col-span-1 md:col-span-7 bg-white dark:bg-zinc-950 p-6 md:p-8 flex flex-col">
-            {/* Header: Title and subtitle with normal/simple fonts */}
+            {/* Header: Title and subtitle with brand fonts */}
             <div>
-              <h2 className="text-2xl font-semibold text-slate-800 dark:text-white tracking-tight leading-none">
+              <h2 className="text-2xl font-bold font-heading text-royal-plum dark:text-white tracking-tight leading-none">
                 {getDisplayTitle(title)}
               </h2>
               <p className="text-xs text-slate-450 dark:text-slate-400 mt-2 font-normal">

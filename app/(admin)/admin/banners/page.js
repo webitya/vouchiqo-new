@@ -64,14 +64,14 @@ const SLOTS = [
     format: "WebP, JPG, PNG",
     maxSize: "2 MB",
     aliases: ["hero", "left-hero", "top-hero"],
-    badgeColor: "bg-blue-50 text-blue-700 border-blue-200",
-    activeTabBg: "bg-blue-600 text-white shadow-2xs",
-    inactiveTabBg: "text-blue-700 hover:bg-blue-100/70 bg-blue-50/40",
-    cardBorder: "border-blue-200/90",
-    headerBg: "bg-blue-50/70 text-blue-950 border-blue-100",
-    submitBtn: "bg-blue-600 hover:bg-blue-700 text-white",
-    accentText: "text-blue-600",
-    subCardBg: "bg-blue-50/30 border-blue-100/80",
+    badgeColor: "bg-warm-ivory text-festival-teal border-brand-border",
+    activeTabBg: "bg-festival-teal text-white shadow-2xs",
+    inactiveTabBg: "text-festival-teal hover:bg-festival-teal/20/70 bg-warm-ivory",
+    cardBorder: "border-festival-teal/30",
+    headerBg: "bg-warm-ivory text-royal-plum-dark border-brand-border",
+    submitBtn: "bg-festival-teal hover:bg-festival-teal-dark text-white",
+    accentText: "text-festival-teal",
+    subCardBg: "bg-warm-ivory border-brand-border",
     description: "Main homepage top carousel banner rotation",
   },
   {
@@ -119,11 +119,11 @@ const SLOTS = [
 ];
 
 const QUICK_COLORS = [
-  { label: "Amber", hex: "#f59e0b" },
-  { label: "Orange", hex: "#e85d04" },
-  { label: "Blue", hex: "#2563eb" },
-  { label: "Emerald", hex: "#10b981" },
-  { label: "Purple", hex: "#8b5cf6" },
+  { label: "Festival Teal", hex: "#007F79" },
+  { label: "Festival Pink", hex: "#FF2E63" },
+  { label: "Royal Plum", hex: "#35104A" },
+  { label: "Marigold Glow", hex: "#FF8C05" },
+  { label: "Golden Glow", hex: "#FFD166" },
   { label: "Dark Slate", hex: "#0f172a" },
   { label: "White", hex: "#ffffff" },
 ];
@@ -131,7 +131,7 @@ const QUICK_COLORS = [
 // 8 Distinct Colorful Row Palettes (Clearly visible without hover)
 const ROW_COLOR_THEMES = [
   {
-    row: "bg-blue-100/65 hover:bg-blue-100/90 border-l-[3.5px] border-l-blue-600 border-b border-blue-200/80 text-slate-900",
+    row: "bg-festival-teal/10 hover:bg-festival-teal/20 border-l-[3.5px] border-l-festival-teal border-b border-festival-teal/20 text-slate-900",
   },
   {
     row: "bg-emerald-100/65 hover:bg-emerald-100/90 border-l-[3.5px] border-l-emerald-600 border-b border-emerald-200/80 text-slate-900",
@@ -518,7 +518,7 @@ export default function BannerManagement() {
               className={cn(
                 "rounded-xl border p-2.5 cursor-pointer transition-all duration-200 shadow-2xs font-sans",
                 activeTab === "hero"
-                  ? "bg-blue-50/70 border-blue-300 ring-1 ring-blue-300"
+                  ? "bg-warm-ivory border-festival-teal/30 ring-1 ring-festival-teal/20"
                   : "bg-white border-slate-200/80 hover:border-slate-300",
               )}
             >
@@ -531,7 +531,7 @@ export default function BannerManagement() {
                     {stats.heroCount}
                   </span>
                 </div>
-                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 border border-blue-200/60 flex items-center justify-center shrink-0">
+                <div className="w-7 h-7 rounded-lg bg-warm-ivory text-festival-teal border border-festival-teal/20 flex items-center justify-center shrink-0">
                   <Layout className="w-3.5 h-3.5" />
                 </div>
               </CardContent>
@@ -617,7 +617,7 @@ export default function BannerManagement() {
                         className={cn(
                           "flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-medium transition-all cursor-pointer shrink-0 border-0",
                           isActive
-                            ? "bg-white text-blue-600 shadow-2xs"
+                            ? "bg-white text-festival-teal shadow-2xs"
                             : "text-slate-500 hover:text-slate-800 bg-transparent",
                         )}
                       >
@@ -626,7 +626,7 @@ export default function BannerManagement() {
                           className={cn(
                             "text-[9px] px-1 rounded-full",
                             isActive
-                              ? "bg-blue-50 text-blue-600"
+                              ? "bg-warm-ivory text-festival-teal"
                               : "bg-slate-200/70 text-slate-600",
                           )}
                         >
@@ -647,7 +647,7 @@ export default function BannerManagement() {
 
             <div className="inline-flex items-center gap-2 flex-wrap text-[11px] bg-slate-50 border border-slate-200/90 rounded-xl px-2.5 py-1 shadow-2xs select-none">
               <div className="flex items-center gap-1 text-slate-500 font-medium">
-                <ImageIcon className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                <ImageIcon className="w-3.5 h-3.5 text-festival-teal shrink-0" />
                 <span>Upload Specs:</span>
               </div>
               <span className="font-semibold text-slate-800 bg-white px-2 py-0.5 rounded-md border border-slate-200/80 shadow-2xs">
@@ -686,7 +686,7 @@ export default function BannerManagement() {
               {/* Header */}
               <div className="flex items-center justify-between p-1.5 px-2 rounded-lg bg-slate-50 border border-slate-200/80">
                 <div className="flex items-center gap-1.5">
-                  <Sliders className="w-3.5 h-3.5 text-blue-600" />
+                  <Sliders className="w-3.5 h-3.5 text-festival-teal" />
                   <h2 className="text-xs font-medium text-slate-900">
                     {editingId
                       ? `Edit Banner — ${currentSlotConfig.label}`
@@ -747,7 +747,7 @@ export default function BannerManagement() {
                       size="sm"
                       disabled={uploadingImage}
                       onClick={() => imageInputRef.current?.click()}
-                      className="h-5 text-[10px] font-medium text-blue-700 bg-blue-50 border-blue-200 hover:bg-blue-100 cursor-pointer gap-1 px-1.5 rounded"
+                      className="h-5 text-[10px] font-medium text-festival-teal bg-warm-ivory border-brand-border hover:bg-festival-teal/20 cursor-pointer gap-1 px-1.5 rounded"
                     >
                       {uploadingImage
                         ? <RefreshCw className="w-2.5 h-2.5 animate-spin" />
@@ -791,7 +791,7 @@ export default function BannerManagement() {
                         size="sm"
                         disabled={uploadingLogo}
                         onClick={() => logoInputRef.current?.click()}
-                        className="h-5 text-[10px] font-medium text-blue-700 bg-blue-50 border-blue-200 hover:bg-blue-100 cursor-pointer gap-1 px-1.5 rounded"
+                        className="h-5 text-[10px] font-medium text-festival-teal bg-warm-ivory border-brand-border hover:bg-festival-teal/20 cursor-pointer gap-1 px-1.5 rounded"
                       >
                         {uploadingLogo
                           ? <RefreshCw className="w-2.5 h-2.5 animate-spin" />
@@ -1010,7 +1010,7 @@ export default function BannerManagement() {
                                 className={cn(
                                   "px-1.5 py-0.2 text-[9px] font-medium uppercase rounded cursor-pointer transition-all",
                                   form.textPosition === pos
-                                    ? "bg-blue-600 text-white"
+                                    ? "bg-festival-teal text-white"
                                     : "text-slate-600 hover:text-slate-900",
                                 )}
                               >
@@ -1172,7 +1172,7 @@ export default function BannerManagement() {
                   <Button
                     type="submit"
                     disabled={saving}
-                    className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg h-7 px-3 cursor-pointer gap-1 shadow-2xs transition-all"
+                    className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-medium rounded-lg h-7 px-3 cursor-pointer gap-1 shadow-2xs transition-all"
                   >
                     {saving
                       ? <RefreshCw className="w-3 h-3 animate-spin" />
@@ -1201,7 +1201,7 @@ export default function BannerManagement() {
                   placeholder={`Search ${currentSlotConfig?.label} banners...`}
                   value={searchTableQuery}
                   onChange={(e) => setSearchTableQuery(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 focus:border-blue-500 focus:bg-white rounded-lg pl-8 pr-7 py-1 text-xs text-slate-800 placeholder-slate-400 outline-none transition-all"
+                  className="w-full bg-slate-50 border border-slate-200 focus:border-festival-teal focus:bg-white rounded-lg pl-8 pr-7 py-1 text-xs text-slate-800 placeholder-slate-400 outline-none transition-all"
                 />
                 {searchTableQuery && (
                   <button
@@ -1218,8 +1218,8 @@ export default function BannerManagement() {
                 <span className="text-[10.5px] font-medium text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200">
                   {displayedBanners.length} results
                 </span>
-                <span className="text-[10px] font-medium text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200 hidden md:inline-flex items-center gap-1">
-                  <GripVertical className="w-3 h-3 text-blue-500" />
+                <span className="text-[10px] font-medium text-festival-teal bg-warm-ivory px-2 py-0.5 rounded-md border border-brand-border hidden md:inline-flex items-center gap-1">
+                  <GripVertical className="w-3 h-3 text-festival-teal" />
                   <span>Drag rows or use 1-Click Top to reorder</span>
                 </span>
                 {reordering && (
@@ -1266,7 +1266,7 @@ export default function BannerManagement() {
                           colSpan={10}
                           className="py-8 text-center text-slate-400 text-xs"
                         >
-                          <RefreshCw className="w-4 h-4 animate-spin mx-auto mb-1.5 text-blue-500" />
+                          <RefreshCw className="w-4 h-4 animate-spin mx-auto mb-1.5 text-festival-teal" />
                           Loading promotional banners...
                         </td>
                       </tr>
@@ -1303,9 +1303,9 @@ export default function BannerManagement() {
                               className={cn(
                                 "transition-all duration-150",
                                 isDragging
-                                  ? "opacity-30 bg-blue-100"
+                                  ? "opacity-30 bg-festival-teal/10"
                                   : isOver
-                                    ? "bg-blue-100/90 ring-2 ring-blue-500 ring-inset"
+                                    ? "bg-festival-teal/20 ring-2 ring-festival-teal/20 ring-inset"
                                     : theme.row,
                               )}
                             >
@@ -1314,7 +1314,7 @@ export default function BannerManagement() {
                                 <div className="flex items-center justify-center gap-1">
                                   {/* Drag Handle */}
                                   <span
-                                    className="cursor-grab active:cursor-grabbing text-slate-400 hover:text-blue-600 p-0.5 rounded transition-colors"
+                                    className="cursor-grab active:cursor-grabbing text-slate-400 hover:text-festival-teal p-0.5 rounded transition-colors"
                                     title="Drag to reorder slide position"
                                   >
                                     <GripVertical className="w-3.5 h-3.5" />
@@ -1359,7 +1359,7 @@ export default function BannerManagement() {
                                         "p-0.5 rounded transition-colors bg-white border border-slate-200",
                                         isTop
                                           ? "text-slate-300 cursor-not-allowed opacity-50"
-                                          : "text-slate-600 hover:text-blue-600 hover:bg-blue-50 cursor-pointer shadow-2xs",
+                                          : "text-slate-600 hover:text-festival-teal hover:bg-warm-ivory cursor-pointer shadow-2xs",
                                       )}
                                       title="Move Up 1 slot"
                                     >
@@ -1373,7 +1373,7 @@ export default function BannerManagement() {
                                         "p-0.5 rounded transition-colors bg-white border border-slate-200",
                                         isBottom
                                           ? "text-slate-300 cursor-not-allowed opacity-50"
-                                          : "text-slate-600 hover:text-blue-600 hover:bg-blue-50 cursor-pointer shadow-2xs",
+                                          : "text-slate-600 hover:text-festival-teal hover:bg-warm-ivory cursor-pointer shadow-2xs",
                                       )}
                                       title="Move Down 1 slot"
                                     >
@@ -1516,7 +1516,7 @@ export default function BannerManagement() {
                                             setEditingPriorityId(null);
                                         }}
                                         onBlur={() => handleSavePriority(r._id)}
-                                        className="w-12 text-center text-xs font-medium border border-blue-500 rounded py-0.5 outline-none bg-white shadow-2xs"
+                                        className="w-12 text-center text-xs font-medium border border-festival-teal rounded py-0.5 outline-none bg-white shadow-2xs"
                                       />
                                       <button
                                         type="button"
@@ -1587,7 +1587,7 @@ export default function BannerManagement() {
                                         size="sm"
                                         variant="outline"
                                         onClick={() => handleStartEdit(r)}
-                                        className="h-6.5 w-6.5 p-0 text-slate-700 bg-white border-slate-200 hover:text-blue-600 hover:bg-slate-50 hover:border-blue-200 rounded-md cursor-pointer flex items-center justify-center shrink-0 transition-colors shadow-2xs"
+                                        className="h-6.5 w-6.5 p-0 text-slate-700 bg-white border-slate-200 hover:text-festival-teal hover:bg-slate-50 hover:border-festival-teal rounded-md cursor-pointer flex items-center justify-center shrink-0 transition-colors shadow-2xs"
                                       >
                                         <Pencil className="w-3 h-3" />
                                         <span className="sr-only">
@@ -1636,7 +1636,7 @@ export default function BannerManagement() {
             <div className="md:hidden space-y-3">
               {loading
                 ? <div className="py-8 text-center text-slate-400 text-xs">
-                    <RefreshCw className="w-4 h-4 animate-spin mx-auto mb-1.5 text-blue-500" />
+                    <RefreshCw className="w-4 h-4 animate-spin mx-auto mb-1.5 text-festival-teal" />
                     Loading promotional banners...
                   </div>
                 : displayedBanners.length === 0
@@ -1720,7 +1720,7 @@ export default function BannerManagement() {
                                     "p-1.5 rounded-lg border",
                                     index === 0
                                       ? "opacity-30 cursor-not-allowed border-slate-200 text-slate-300"
-                                      : "text-slate-600 hover:text-blue-600 hover:bg-blue-50 border-slate-200 bg-white cursor-pointer shadow-2xs",
+                                      : "text-slate-600 hover:text-festival-teal hover:bg-warm-ivory border-slate-200 bg-white cursor-pointer shadow-2xs",
                                   )}
                                 >
                                   <ArrowUp className="w-3.5 h-3.5" />
@@ -1735,7 +1735,7 @@ export default function BannerManagement() {
                                     "p-1.5 rounded-lg border",
                                     index === displayedBanners.length - 1
                                       ? "opacity-30 cursor-not-allowed border-slate-200 text-slate-300"
-                                      : "text-slate-600 hover:text-blue-600 hover:bg-blue-50 border-slate-200 bg-white cursor-pointer shadow-2xs",
+                                      : "text-slate-600 hover:text-festival-teal hover:bg-warm-ivory border-slate-200 bg-white cursor-pointer shadow-2xs",
                                   )}
                                 >
                                   <ArrowDown className="w-3.5 h-3.5" />
@@ -1756,7 +1756,7 @@ export default function BannerManagement() {
                               <button
                                 type="button"
                                 onClick={() => handleStartEdit(r)}
-                                className="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold rounded-xl py-2.5 px-4 flex items-center justify-between text-xs transition-colors cursor-pointer select-none"
+                                className="flex-1 bg-warm-ivory hover:bg-festival-teal/20 text-festival-teal font-bold rounded-xl py-2.5 px-4 flex items-center justify-between text-xs transition-colors cursor-pointer select-none"
                               >
                                 <span>Edit Banner</span>
                                 <ArrowRight className="w-4 h-4" />

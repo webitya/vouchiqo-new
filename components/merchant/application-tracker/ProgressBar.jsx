@@ -19,7 +19,7 @@ export default function ProgressBar({
         <span className="flex items-center gap-2">
           <span>Overall Verification Progress</span>
           {isComplete && (
-            <span className="text-[10px] bg-blue-50 text-blue-700 font-normal px-2 py-0.5 rounded-full border border-blue-200">
+            <span className="text-[10px] bg-festival-teal/10 text-festival-teal font-normal px-2 py-0.5 rounded-full border border-brand-border">
               Verified
             </span>
           )}
@@ -27,7 +27,7 @@ export default function ProgressBar({
         <span
           className={cn(
             "font-medium text-xs",
-            isError ? "text-red-600" : isComplete ? "text-blue-600" : "text-blue-600",
+            isError ? "text-red-600" : isComplete ? "text-festival-teal" : "text-festival-teal",
           )}
         >
           {percentage}% Completed
@@ -39,7 +39,7 @@ export default function ProgressBar({
         <div
           className={cn(
             "h-full rounded-full transition-all duration-500 ease-out",
-            isError ? "bg-red-500" : "bg-blue-600",
+            isError ? "bg-red-500" : "bg-festival-teal",
           )}
           style={{ width: `${Math.min(100, Math.max(5, percentage))}%` }}
         />

@@ -80,7 +80,7 @@ export function AlternativeModal({
       <DialogContent className="max-w-lg bg-white p-6 rounded-2xl border border-slate-200 text-left shadow-xl">
         <DialogHeader className="space-y-1 pb-2">
           <DialogTitle className="text-base font-bold text-slate-900 flex items-center gap-2">
-            <Gift className="w-5 h-5 text-blue-600" />
+            <Gift className="w-5 h-5 text-festival-teal" />
             Offer Alternative Active Coupon
           </DialogTitle>
           <DialogDescription className="text-xs text-slate-500 font-semibold">
@@ -93,7 +93,7 @@ export function AlternativeModal({
           {activeCoupons.map((coupon) => (
             <div
               key={coupon._id}
-              className="p-3.5 border border-slate-200/80 rounded-xl bg-slate-50 hover:bg-blue-50/50 hover:border-blue-200 transition-all flex items-center justify-between gap-3"
+              className="p-3.5 border border-slate-200/80 rounded-xl bg-slate-50 hover:bg-warm-ivory/50 hover:border-festival-teal transition-all flex items-center justify-between gap-3"
             >
               <div>
                 <span className="font-bold text-xs text-slate-900 block">
@@ -107,7 +107,7 @@ export function AlternativeModal({
                 size="sm"
                 disabled={isPending}
                 onClick={() => onSelectAlternative(coupon._id)}
-                className="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold rounded-lg h-8 px-3 cursor-pointer"
+                className="bg-festival-teal hover:bg-festival-teal-dark text-white text-[10px] font-bold rounded-lg h-8 px-3 cursor-pointer"
               >
                 Send Alternative
               </Button>

@@ -84,7 +84,7 @@ export default function DirectoryLayout({
           <Link
             href="/"
             style={{
-              color: "#2563eb",
+              color: "#007F79",
               textDecoration: "none",
               fontWeight: 500,
             }}
@@ -218,7 +218,7 @@ export default function DirectoryLayout({
                       gap: 10,
                       padding: "9px 14px",
                       borderRadius: 4,
-                      background: isActive ? "#2563eb" : "transparent",
+                      background: isActive ? "#007F79" : "transparent",
                       color: isActive ? "#ffffff" : "#374151",
                       fontSize: 13,
                       fontWeight: isActive ? 700 : 500,
@@ -254,7 +254,7 @@ export default function DirectoryLayout({
                   letterSpacing: "0.05em",
                   margin: "0 0 10px 0",
                   paddingBottom: 6,
-                  borderBottom: "2px solid #2563eb",
+                  borderBottom: "2px solid #007F79",
                   display: "inline-block",
                 }}
               >
@@ -279,7 +279,7 @@ export default function DirectoryLayout({
                 style={{
                   background: "none",
                   border: "none",
-                  color: "#2563eb",
+                  color: "#007F79",
                   fontSize: 11,
                   fontWeight: 700,
                   cursor: "pointer",
@@ -311,7 +311,7 @@ export default function DirectoryLayout({
                 letterSpacing: "0.05em",
                 margin: "0 0 10px 0",
                 paddingBottom: 6,
-                borderBottom: "2px solid #2563eb",
+                borderBottom: "2px solid #007F79",
                 display: "inline-block",
               }}
             >
@@ -347,7 +347,7 @@ export default function DirectoryLayout({
               style={{
                 background: "none",
                 border: "none",
-                color: "#2563eb",
+                color: "#007F79",
                 fontSize: 11,
                 fontWeight: 700,
                 cursor: "pointer",
@@ -370,20 +370,20 @@ export default function DirectoryLayout({
       <style>{`
         .sidebar-item-hover:hover {
           background: #f8fafc !important;
-          color: #2563eb !important;
+          color: #007F79 !important;
         }
         .sidebar-link-item:hover {
-          color: #2563eb !important;
+          color: #007F79 !important;
         }
         .brand-card-hover:hover {
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
-          border-color: #2563eb !important;
+          border-color: #007F79 !important;
           transform: translateY(-1px);
         }
         .grid-btn-hover:hover {
           background: #f8fafc !important;
-          color: #2563eb !important;
-          border-color: #2563eb !important;
+          color: #007F79 !important;
+          border-color: #007F79 !important;
         }
         @media (max-width: 900px) {
           .stores-grid-layout {

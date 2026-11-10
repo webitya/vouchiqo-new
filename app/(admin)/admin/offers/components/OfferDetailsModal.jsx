@@ -39,7 +39,7 @@ export default function OfferDetailsModal({
           <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-2">
             <div>
               <DialogTitle className="text-base font-bold text-slate-900 flex items-center gap-1.5">
-                <Tag className="h-4 w-4 text-blue-600" />
+                <Tag className="h-4 w-4 text-festival-teal" />
                 <span>{offer.title}</span>
               </DialogTitle>
               <p className="text-xs text-slate-500 font-normal mt-0.5 flex items-center gap-1">
@@ -144,7 +144,7 @@ export default function OfferDetailsModal({
           {/* Description */}
           <div>
             <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-wider mb-1 flex items-center gap-1">
-              <FileText className="h-3.5 w-3.5 text-blue-600" />
+              <FileText className="h-3.5 w-3.5 text-festival-teal" />
               Offer Description
             </h4>
             <p className="text-slate-600 bg-white p-2.5 rounded-lg border border-slate-200 leading-relaxed font-normal">

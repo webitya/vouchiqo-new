@@ -148,53 +148,48 @@ export default function FAQPage() {
   const rightCol = filteredFaqs.slice(mid);
 
   return (
-    <div
-      className="flex flex-col bg-white"
-      style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
-    >
+    <div className="flex flex-col bg-warm-ivory font-sans">
       <div className="min-h-screen flex flex-col w-full">
         <Navbar />
 
         {/* ── Hero ── */}
-        <section className="relative w-full bg-blue-50 border-b border-blue-100 overflow-hidden">
+        <section className="relative w-full bg-white border-b border-brand-border overflow-hidden">
           <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-14 text-center">
-            <h1 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight mb-3">
+            <h1 className="text-3xl sm:text-4xl font-bold font-heading text-royal-plum tracking-tight mb-3">
               Frequently Asked Questions
             </h1>
-            <p className="text-[14px] text-gray-500 font-normal max-w-md mx-auto mb-8">
+            <p className="text-[14px] text-royal-plum/70 font-normal max-w-md mx-auto mb-8">
               Find answers about coupon verification, the revival system,
               merchant billing, and your account.
             </p>
 
             {/* Search */}
             <div className="relative max-w-lg mx-auto">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-royal-plum/40 pointer-events-none" />
               <input
                 type="text"
                 placeholder="Search questions or keywords..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder-gray-400 text-[13px] font-normal focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all shadow-sm"
-                style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
+                className="w-full pl-11 pr-4 py-3 rounded-xl bg-warm-ivory border border-brand-border text-royal-plum placeholder-royal-plum/40 text-[13px] font-normal focus:outline-none focus:border-festival-teal focus:ring-2 focus:ring-festival-teal/20 transition-all shadow-sm"
               />
             </div>
           </div>
         </section>
 
         {/* ── Category filter pills ── */}
-        <div className="w-full bg-white border-b border-gray-100 sticky top-0 z-30">
+        <div className="w-full bg-white border-b border-brand-border sticky top-0 z-30">
           <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-2 overflow-x-auto scrollbar-none">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setActiveCategory(cat)}
-                className={`flex-shrink-0 px-3.5 py-1.5 rounded-lg text-[12px] font-medium transition-all border cursor-pointer ${
+                className={`flex-shrink-0 px-3.5 py-1.5 rounded-lg text-[12px] font-medium font-heading transition-all border cursor-pointer ${
                   activeCategory === cat
-                    ? "bg-blue-600 text-white border-blue-600"
-                    : "bg-white text-gray-600 border-gray-200 hover:border-blue-300 hover:text-blue-600"
+                    ? "bg-festival-teal text-white border-festival-teal"
+                    : "bg-white text-royal-plum border-brand-border hover:border-festival-teal hover:text-festival-teal"
                 }`}
-                style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
               >
                 {cat}
               </button>
@@ -203,7 +198,7 @@ export default function FAQPage() {
               <button
                 type="button"
                 onClick={() => setSearchQuery("")}
-                className="flex-shrink-0 ml-auto text-[11px] text-gray-400 hover:text-gray-700 transition-colors cursor-pointer border-0 bg-transparent"
+                className="flex-shrink-0 ml-auto text-[11px] text-royal-plum/50 hover:text-royal-plum transition-colors cursor-pointer border-0 bg-transparent font-medium"
               >
                 Clear search
               </button>
@@ -215,7 +210,7 @@ export default function FAQPage() {
         <main className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow">
           {filteredFaqs.length > 0 ? (
             <>
-              <p className="text-[11px] text-gray-400 font-medium mb-5">
+              <p className="text-[11px] text-royal-plum/60 font-medium mb-5">
                 Showing {filteredFaqs.length} question
                 {filteredFaqs.length !== 1 ? "s" : ""}
                 {activeCategory !== "All" ? ` in ${activeCategory}` : ""}
@@ -258,12 +253,12 @@ export default function FAQPage() {
               </div>
             </>
           ) : (
-            <div className="text-center py-20 bg-gray-50 border border-gray-100 rounded-2xl">
-              <HelpCircle className="w-10 h-10 text-gray-300 mx-auto mb-3" />
-              <h3 className="text-[15px] font-semibold text-gray-800 mb-1">
+            <div className="text-center py-20 bg-white border border-brand-border rounded-2xl">
+              <HelpCircle className="w-10 h-10 text-royal-plum/30 mx-auto mb-3" />
+              <h3 className="text-[15px] font-bold font-heading text-royal-plum mb-1">
                 No matching questions
               </h3>
-              <p className="text-[13px] text-gray-500 font-normal max-w-xs mx-auto mb-4">
+              <p className="text-[13px] text-royal-plum/70 font-normal max-w-xs mx-auto mb-4">
                 Try different keywords like "coupon", "revival", or "merchant".
               </p>
               <button
@@ -272,7 +267,7 @@ export default function FAQPage() {
                   setSearchQuery("");
                   setActiveCategory("All");
                 }}
-                className="text-blue-600 text-[13px] font-medium hover:underline border-0 bg-transparent cursor-pointer"
+                className="text-festival-teal text-[13px] font-bold font-heading hover:underline border-0 bg-transparent cursor-pointer"
               >
                 Reset filters
               </button>
@@ -291,10 +286,9 @@ function FAQItem({ faq, isOpen, onToggle }) {
     <div
       className={`bg-white border rounded-xl overflow-hidden transition-all duration-200 ${
         isOpen
-          ? "border-blue-200 shadow-sm"
-          : "border-gray-100 hover:border-gray-200"
+          ? "border-festival-teal/40 shadow-sm"
+          : "border-brand-border/70 hover:border-brand-border"
       }`}
-      style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
     >
       <button
         type="button"
@@ -303,15 +297,15 @@ function FAQItem({ faq, isOpen, onToggle }) {
       >
         <div className="flex items-center gap-3 min-w-0">
           <span
-            className={`flex-shrink-0 w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-bold transition-colors ${
-              isOpen ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-500"
+            className={`flex-shrink-0 w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-bold font-heading transition-colors ${
+              isOpen ? "bg-festival-teal text-white" : "bg-warm-ivory text-royal-plum/60 border border-brand-border"
             }`}
           >
             {faq.category[0]}
           </span>
           <span
             className={`text-[13px] font-medium leading-snug ${
-              isOpen ? "text-blue-700" : "text-gray-900"
+              isOpen ? "text-royal-plum font-semibold" : "text-royal-plum"
             }`}
           >
             {faq.q}
@@ -320,8 +314,8 @@ function FAQItem({ faq, isOpen, onToggle }) {
         <span
           className={`flex-shrink-0 w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
             isOpen
-              ? "border-blue-600 bg-blue-600 text-white rotate-180"
-              : "border-gray-300 text-gray-400"
+              ? "border-festival-teal bg-festival-teal text-white rotate-180"
+              : "border-brand-border text-royal-plum/50"
           }`}
         >
           <svg
@@ -341,17 +335,17 @@ function FAQItem({ faq, isOpen, onToggle }) {
       </button>
 
       {isOpen && (
-        <div className="px-5 pb-5 border-t border-gray-50">
+        <div className="px-5 pb-5 border-t border-brand-border/40">
           <div className="flex items-start gap-3 pt-3">
             <div className="flex-shrink-0 w-6 flex justify-center">
-              <div className="w-0.5 h-full bg-blue-100 mt-0.5 min-h-[16px]" />
+              <div className="w-0.5 h-full bg-festival-teal/30 mt-0.5 min-h-[16px]" />
             </div>
-            <p className="text-[13px] text-gray-600 leading-relaxed font-normal">
+            <p className="text-[13px] text-royal-plum/80 leading-relaxed font-normal">
               {faq.a}
             </p>
           </div>
           <div className="mt-3 ml-9">
-            <span className="inline-flex items-center text-[10px] font-semibold text-blue-600 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-full uppercase tracking-wider">
+            <span className="inline-flex items-center text-[10px] font-semibold font-heading text-festival-teal bg-festival-teal/10 border border-festival-teal/20 px-2 py-0.5 rounded-full uppercase tracking-wider">
               {faq.category}
             </span>
           </div>

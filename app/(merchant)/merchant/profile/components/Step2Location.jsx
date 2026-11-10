@@ -174,7 +174,7 @@ export default function Step2Location({
           <div key={idx} className="space-y-1.5">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-slate-800 uppercase tracking-wide flex items-center gap-1">
-                <ImageIcon className="w-3.5 h-3.5 text-blue-600" />
+                <ImageIcon className="w-3.5 h-3.5 text-festival-teal" />
                 {item.label}
               </span>
               <span className="text-[9px] font-semibold text-slate-400">
@@ -190,13 +190,13 @@ export default function Step2Location({
                     alt={item.label}
                     className="max-h-24 max-w-full object-contain rounded-lg border border-slate-200 shadow-2xs"
                   />
-                  <span className="text-[10px] text-blue-600 font-bold underline">
+                  <span className="text-[10px] text-festival-teal font-bold underline">
                     Click to replace image
                   </span>
                 </div>
               ) : (
                 <div className="my-auto py-2 space-y-1">
-                  <Upload className="w-6 h-6 text-slate-400 group-hover:text-blue-600 transition-colors mx-auto mb-1" />
+                  <Upload className="w-6 h-6 text-slate-400 group-hover:text-festival-teal transition-colors mx-auto mb-1" />
                   <span className="text-xs text-slate-700 font-bold block">
                     {item.loading ? "Uploading..." : `Upload ${item.label}`}
                   </span>
@@ -207,7 +207,7 @@ export default function Step2Location({
               )}
 
               <div className="w-full mt-2 pt-1 border-t border-slate-200/60">
-                <span className="w-full py-1.5 px-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-[11px] rounded-lg flex items-center justify-center gap-1 shadow-2xs transition-colors">
+                <span className="w-full py-1.5 px-2 bg-festival-teal hover:bg-festival-teal-dark text-white font-bold text-[11px] rounded-lg flex items-center justify-center gap-1 shadow-2xs transition-colors">
                   <Upload className="w-3 h-3" />
                   {item.loading ? "Uploading..." : item.btnText}
                 </span>
@@ -277,11 +277,11 @@ export default function Step2Location({
       </div>
 
       {/* GPS & MAP COORDINATES SECTION */}
-      <div className="border border-blue-100 bg-blue-50/40 p-4 rounded-xl space-y-3">
+      <div className="border border-brand-border bg-warm-ivory p-4 rounded-xl space-y-3">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
           <div>
             <span className="text-xs font-extrabold text-slate-900 uppercase tracking-wide flex items-center gap-1.5">
-              <Crosshair className="w-4 h-4 text-blue-600" />
+              <Crosshair className="w-4 h-4 text-festival-teal" />
               Exact Store GPS Coordinates (Latitude &amp; Longitude)
             </span>
             <p className="text-[11px] text-slate-500 font-medium">
@@ -294,7 +294,7 @@ export default function Step2Location({
             type="button"
             onClick={handleDetectGps}
             disabled={isDetectingGps}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-8 px-3 rounded-xl shadow-xs cursor-pointer flex items-center gap-1.5 shrink-0"
+            className="bg-festival-teal hover:bg-festival-teal-dark text-white font-bold text-xs h-8 px-3 rounded-xl shadow-xs cursor-pointer flex items-center gap-1.5 shrink-0"
           >
             {isDetectingGps ? (
               <Loader2 className="w-3.5 h-3.5 animate-spin" />

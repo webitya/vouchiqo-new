@@ -22,27 +22,27 @@ export default function KPICard({
   variant = "default",
 }) {
   const variantStyles = {
-    rose: "bg-gradient-to-br from-rose-50/70 via-white to-pink-50/20 border-rose-200/70 hover:border-[#F72853] hover:shadow-[0_8px_20px_rgba(247,40,83,0.12)]",
+    rose: "bg-gradient-to-br from-rose-50/70 via-white to-pink-50/20 border-rose-200/70 hover:border-[#FF2E63] hover:shadow-[0_8px_20px_rgba(247,40,83,0.12)]",
     emerald: "bg-gradient-to-br from-emerald-50/70 via-white to-teal-50/20 border-emerald-200/70 hover:border-emerald-400 hover:shadow-[0_8px_20px_rgba(16,185,129,0.12)]",
-    blue: "bg-gradient-to-br from-blue-50/70 via-white to-indigo-50/20 border-blue-200/70 hover:border-blue-400 hover:shadow-[0_8px_20px_rgba(37,99,235,0.12)]",
+    blue: "bg-gradient-to-br from-warm-ivory via-white to-warm-ivory/50 border-brand-border/70 hover:border-festival-teal hover:shadow-[0_8px_20px_rgba(0,127,121,0.12)]",
     amber: "bg-gradient-to-br from-amber-50/70 via-white to-orange-50/20 border-amber-200/70 hover:border-amber-400 hover:shadow-[0_8px_20px_rgba(245,158,11,0.12)]",
     purple: "bg-gradient-to-br from-purple-50/70 via-white to-fuchsia-50/20 border-purple-200/70 hover:border-purple-400 hover:shadow-[0_8px_20px_rgba(168,85,247,0.12)]",
-    default: "bg-white border-slate-200/90 hover:border-[#F72853]/60 hover:shadow-[0_8px_20px_rgba(247,40,83,0.08)]",
+    default: "bg-white border-slate-200/90 hover:border-[#FF2E63]/60 hover:shadow-[0_8px_20px_rgba(247,40,83,0.08)]",
   };
 
   const iconVariantStyles = {
-    rose: "bg-rose-50 text-[#F72853] border-rose-200/60",
+    rose: "bg-rose-50 text-[#FF2E63] border-rose-200/60",
     emerald: "bg-emerald-50 text-emerald-600 border-emerald-200/60",
-    blue: "bg-blue-50 text-blue-600 border-blue-200/60",
+    blue: "bg-festival-teal/10 text-festival-teal border-brand-border",
     amber: "bg-amber-50 text-amber-600 border-amber-200/60",
     purple: "bg-purple-50 text-purple-600 border-purple-200/60",
     default: "bg-slate-50 text-slate-600 border-slate-200/60",
   };
 
   const trendVariantStyles = {
-    rose: "text-[#F72853] bg-rose-50/90 border-rose-100",
+    rose: "text-[#FF2E63] bg-rose-50/90 border-rose-100",
     emerald: "text-emerald-700 bg-emerald-50/90 border-emerald-100",
-    blue: "text-blue-700 bg-blue-50/90 border-blue-100",
+    blue: "text-festival-teal bg-warm-ivory border-brand-border",
     amber: "text-amber-700 bg-amber-50/90 border-amber-100",
     purple: "text-purple-700 bg-purple-50/90 border-purple-100",
     default: isPositive

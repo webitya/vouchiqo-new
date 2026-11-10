@@ -114,7 +114,7 @@ export default function TrafficSourcesDonutChart({
       const total =
         dbSources.reduce((sum, s) => sum + (Number(s.value) || 0), 0) ||
         totalVisits;
-      const palette = ["#9A73F7", "#3AD29F", "#FDBA3C", "#FF5B7E", "#3B82F6", "#64748B"];
+      const palette = ["#007F79", "#35104A", "#FF2E63", "#FF8C05", "#FFD166", "#00605B"];
 
       return dbSources.map((s, idx) => {
         const val = Number(s.value) || 0;

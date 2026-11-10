@@ -31,26 +31,26 @@ export default function PerformanceChart({
   const hasData = chartData.some((c) => c.clicks > 0 || c.redemptions > 0);
 
   return (
-    <div className="col-span-full xl:col-span-8 bg-white border border-slate-200/80 rounded-xl shadow-2xs overflow-hidden flex flex-col h-full font-sans">
-      <div className="px-3.5 py-2.5 sm:px-4 sm:py-3 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-slate-50/40">
+    <div className="col-span-full xl:col-span-8 bg-white border border-brand-border rounded-xl shadow-2xs overflow-hidden flex flex-col h-full font-sans">
+      <div className="px-3.5 py-2.5 sm:px-4 sm:py-3 border-b border-brand-border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-warm-ivory/50">
         <div>
-          <h3 className="text-xs sm:text-sm font-semibold text-slate-800 m-0 leading-tight">
+          <h3 className="text-xs sm:text-sm font-bold font-heading text-royal-plum m-0 leading-tight">
             Clicks vs Redemptions
           </h3>
-          <p className="text-[11px] text-slate-500 font-normal mt-0.5 leading-none">
+          <p className="text-[11px] text-royal-plum/60 font-normal mt-0.5 leading-none">
             Performance trend — last {activeRange ?? "30 Days"}
           </p>
         </div>
-        <div className="flex items-center border border-slate-200/80 rounded-lg p-0.5 bg-slate-100/80 shrink-0 select-none">
+        <div className="flex items-center border border-brand-border rounded-lg p-0.5 bg-warm-ivory shrink-0 select-none">
           {TIME_RANGES.map((range) => (
             <button
               key={range}
               type="button"
               onClick={() => setActiveRange(range)}
-              className={`text-[11px] font-medium px-2 py-0.5 rounded-md transition-all cursor-pointer border-0 ${
+              className={`text-[11px] font-heading font-medium px-2 py-0.5 rounded-md transition-all cursor-pointer border-0 ${
                 (activeRange ?? "30 Days") === range
-                  ? "bg-white text-slate-900 shadow-2xs"
-                  : "text-slate-500 hover:text-slate-800 bg-transparent"
+                  ? "bg-white text-royal-plum shadow-2xs font-semibold"
+                  : "text-royal-plum/60 hover:text-royal-plum bg-transparent"
               }`}
             >
               {range}
@@ -64,19 +64,19 @@ export default function PerformanceChart({
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#F72853] shrink-0" />
-              <span className="text-xs font-normal text-slate-700">Clicks</span>
+              <span className="w-2.5 h-2.5 rounded-full bg-[#FF2E63] shrink-0" />
+              <span className="text-xs font-normal text-royal-plum">Clicks</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0" />
-              <span className="text-xs font-normal text-slate-700">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#007F79] shrink-0" />
+              <span className="text-xs font-normal text-royal-plum">
                 Redemptions
               </span>
             </div>
           </div>
-          <span className="text-xs font-normal text-slate-500">
+          <span className="text-xs font-normal text-royal-plum/60">
             Period Clicks:{" "}
-            <span className="font-semibold text-slate-900">
+            <span className="font-bold font-heading text-royal-plum">
               {totalClicksInView.toLocaleString()}
             </span>
           </span>
@@ -92,18 +92,18 @@ export default function PerformanceChart({
               >
                 <CartesianGrid
                   strokeDasharray="3 3"
-                  stroke="#f1f5f9"
+                  stroke="#EADBCE"
                   vertical={false}
                 />
                 <XAxis
                   dataKey="label"
-                  stroke="#94a3b8"
+                  stroke="#6B4C82"
                   fontSize={11}
                   tickLine={false}
                   axisLine={false}
                 />
                 <YAxis
-                  stroke="#94a3b8"
+                  stroke="#6B4C82"
                   fontSize={10}
                   tickLine={false}
                   axisLine={false}
@@ -111,31 +111,31 @@ export default function PerformanceChart({
                 />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "#0f172a",
+                    backgroundColor: "#35104A",
                     borderRadius: "8px",
                     border: "none",
-                    color: "#fff",
+                    color: "#FFF8EF",
                     fontSize: "11px",
                     padding: "6px 10px",
                   }}
-                  labelStyle={{ fontSize: "10px", color: "#94a3b8" }}
-                  itemStyle={{ fontSize: "11px", color: "#fff" }}
+                  labelStyle={{ fontSize: "10px", color: "#FFD166" }}
+                  itemStyle={{ fontSize: "11px", color: "#FFF8EF" }}
                 />
                 <Line
                   type="monotone"
                   dataKey="clicks"
-                  stroke="#F72853"
+                  stroke="#FF2E63"
                   strokeWidth={2}
-                  dot={{ r: 2.5, fill: "#F72853" }}
+                  dot={{ r: 2.5, fill: "#FF2E63" }}
                   activeDot={{ r: 4.5 }}
                   name="Clicks"
                 />
                 <Line
                   type="monotone"
                   dataKey="redemptions"
-                  stroke="#10b981"
+                  stroke="#007F79"
                   strokeWidth={2}
-                  dot={{ r: 2.5, fill: "#10b981" }}
+                  dot={{ r: 2.5, fill: "#007F79" }}
                   activeDot={{ r: 4.5 }}
                   name="Redemptions"
                 />
@@ -143,13 +143,13 @@ export default function PerformanceChart({
             </ResponsiveContainer>
           ) : (
             <div className="h-full flex flex-col items-center justify-center gap-1.5 text-center py-6">
-              <div className="w-9 h-9 rounded-xl bg-rose-50 text-[#F72853] flex items-center justify-center">
+              <div className="w-9 h-9 rounded-xl bg-festival-pink/10 text-[#FF2E63] flex items-center justify-center">
                 <MousePointerClick className="w-4 h-4" />
               </div>
-              <p className="text-xs font-medium text-slate-700">
+              <p className="text-xs font-bold font-heading text-royal-plum">
                 No activity yet
               </p>
-              <p className="text-[11px] text-slate-400 max-w-[240px] font-normal leading-normal">
+              <p className="text-[11px] text-royal-plum/60 max-w-[240px] font-normal leading-normal">
                 Clicks and redemptions will graph here in real-time as customers
                 interact with your deals.
               </p>

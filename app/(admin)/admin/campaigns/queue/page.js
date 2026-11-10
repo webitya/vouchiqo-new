@@ -40,7 +40,7 @@ import TableSearch from "@/components/shared/data/TableSearch";
 // 8 Distinct Colorful Row Palettes (Clearly visible without hover)
 const ROW_COLOR_THEMES = [
   {
-    row: "bg-blue-100/65 hover:bg-blue-100/90 border-l-[3.5px] border-l-blue-600 border-b border-blue-200/80 text-slate-900",
+    row: "bg-festival-teal/10 hover:bg-festival-teal/20 border-l-[3.5px] border-l-festival-teal border-b border-festival-teal/20 text-slate-900",
   },
   {
     row: "bg-emerald-100/65 hover:bg-emerald-100/90 border-l-[3.5px] border-l-emerald-600 border-b border-emerald-200/80 text-slate-900",
@@ -326,7 +326,7 @@ export default function AdminCampaignQueuePage() {
                   <Button
                     asChild
                     size="sm"
-                    className="h-6.5 w-6.5 p-0 flex items-center justify-center bg-blue-100 hover:bg-blue-600 text-blue-700 hover:text-white border border-blue-200 rounded-md cursor-pointer shadow-2xs transition-colors shrink-0"
+                    className="h-6.5 w-6.5 p-0 flex items-center justify-center bg-festival-teal/10 hover:bg-festival-teal text-festival-teal hover:text-white border border-brand-border rounded-md cursor-pointer shadow-2xs transition-colors shrink-0"
                   >
                     <Link href={`/admin/campaigns/queue/${id}`}>
                       <Eye className="h-3 w-3" />
@@ -382,7 +382,7 @@ export default function AdminCampaignQueuePage() {
               className={cn(
                 "rounded-xl border p-2.5 cursor-pointer transition-all duration-200 shadow-2xs font-sans",
                 activeTab === "all"
-                  ? "bg-blue-50/70 border-blue-300 ring-1 ring-blue-300"
+                  ? "bg-warm-ivory border-festival-teal/30 ring-1 ring-festival-teal/20"
                   : "bg-white border-slate-200/80 hover:border-slate-300",
               )}
             >
@@ -395,7 +395,7 @@ export default function AdminCampaignQueuePage() {
                     {stats.total}
                   </span>
                 </div>
-                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 border border-blue-200/60 flex items-center justify-center shrink-0">
+                <div className="w-7 h-7 rounded-lg bg-warm-ivory text-festival-teal border border-festival-teal/20 flex items-center justify-center shrink-0">
                   <ListOrdered className="w-3.5 h-3.5" />
                 </div>
               </CardContent>
@@ -541,7 +541,7 @@ export default function AdminCampaignQueuePage() {
                             className={cn(
                               "text-[10.5px] font-medium px-2 py-0.5 rounded-md transition-all cursor-pointer flex items-center gap-1 border-0",
                               activeTab === tab.id
-                                ? "bg-white text-blue-600 shadow-2xs"
+                                ? "bg-white text-festival-teal shadow-2xs"
                                 : "text-slate-500 hover:text-slate-800 bg-transparent",
                             )}
                           >
@@ -550,7 +550,7 @@ export default function AdminCampaignQueuePage() {
                               className={cn(
                                 "text-[9px] px-1 rounded-full",
                                 activeTab === tab.id
-                                  ? "bg-blue-50 text-blue-600"
+                                  ? "bg-warm-ivory text-festival-teal"
                                   : "bg-slate-200/70 text-slate-600",
                               )}
                             >

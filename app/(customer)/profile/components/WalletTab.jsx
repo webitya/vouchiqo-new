@@ -57,12 +57,12 @@ export default function WalletTab() {
         <div className="bg-white border border-slate-200/90 rounded-xl sm:rounded-2xl p-4 shadow-2xs flex flex-col justify-center items-stretch gap-2">
           <Button
             disabled={totalCashback <= 0}
-            className="w-full py-2 text-xs font-normal border-0 h-auto cursor-pointer bg-[#F72853] hover:bg-[#df1c44] text-white shadow-2xs disabled:opacity-40 disabled:cursor-not-allowed rounded-lg"
+            className="w-full py-2 text-xs font-normal border-0 h-auto cursor-pointer bg-[#FF2E63] hover:bg-[#df1c44] text-white shadow-2xs disabled:opacity-40 disabled:cursor-not-allowed rounded-lg"
           >
             Request Payout
           </Button>
           <span className="text-[9.5px] text-slate-400 text-center font-normal flex items-center justify-center gap-1 select-none">
-            <Info className="w-3 h-3 text-[#F72853]" />
+            <Info className="w-3 h-3 text-[#FF2E63]" />
             Payout requests require ₹100 minimum
           </span>
         </div>

@@ -29,12 +29,12 @@ export default function Leaderboard() {
                 <div
                   className={`w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-black ${
                     user.rank === 1
-                      ? "bg-yellow-100 text-yellow-700"
+                      ? "bg-golden-glow/25 text-royal-plum border border-golden-glow/50"
                       : user.rank === 2
-                        ? "bg-slate-100 text-slate-700"
+                        ? "bg-warm-ivory text-royal-plum/80 border border-brand-border"
                         : user.rank === 3
-                          ? "bg-blue-100 text-blue-700"
-                          : "bg-transparent text-slate-400"
+                          ? "bg-marigold-glow/20 text-marigold-glow border border-marigold-glow/40"
+                          : "bg-transparent text-royal-plum/40"
                   }`}
                 >
                   {user.rank}

@@ -158,7 +158,7 @@ export default function Topbar({ title = "Dashboard", user: propUser = null }) {
     >
       {/* Left section: Sidebar Trigger (Hamburger) and title */}
       <div className="flex items-center gap-2.5 sm:gap-3">
-        <SidebarTrigger className="text-slate-700 hover:text-[#F72853]" />
+        <SidebarTrigger className="text-slate-700 hover:text-[#FF2E63]" />
         <h1 className="text-[13.5px] sm:text-base font-medium text-slate-800 tracking-tight">
           {title}
         </h1>
@@ -169,7 +169,7 @@ export default function Topbar({ title = "Dashboard", user: propUser = null }) {
         {/* Search */}
         <div className="hidden sm:flex items-center bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 w-60 h-8">
           <Search
-            className="w-3.5 h-3.5 text-slate-400 mr-2 cursor-pointer hover:text-[#F72853]"
+            className="w-3.5 h-3.5 text-slate-400 mr-2 cursor-pointer hover:text-[#FF2E63]"
             onClick={handleSearchClick}
           />
           <Input
@@ -188,11 +188,11 @@ export default function Topbar({ title = "Dashboard", user: propUser = null }) {
             variant="ghost"
             size="icon"
             onClick={() => setNotifOpen(!notifOpen)}
-            className="relative text-slate-600 hover:text-[#F72853] p-1.5 rounded-lg hover:bg-rose-50/60 transition-all cursor-pointer h-8 w-8 border-0 bg-transparent shadow-none"
+            className="relative text-slate-600 hover:text-[#FF2E63] p-1.5 rounded-lg hover:bg-rose-50/60 transition-all cursor-pointer h-8 w-8 border-0 bg-transparent shadow-none"
           >
             <Bell className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
             {unreadCount > 0 && (
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#F72853] rounded-full animate-pulse"></span>
+              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#FF2E63] rounded-full animate-pulse"></span>
             )}
           </Button>
 
@@ -211,7 +211,7 @@ export default function Topbar({ title = "Dashboard", user: propUser = null }) {
                     <button
                       type="button"
                       onClick={markAllRead}
-                      className="text-[9px] font-normal text-[#F72853] hover:underline border-0 bg-transparent cursor-pointer"
+                      className="text-[9px] font-normal text-[#FF2E63] hover:underline border-0 bg-transparent cursor-pointer"
                     >
                       Mark all read
                     </button>
@@ -223,7 +223,7 @@ export default function Topbar({ title = "Dashboard", user: propUser = null }) {
                     <div className="px-3.5 py-2 border-b border-slate-100 dark:border-zinc-850 flex items-center justify-between gap-2">
                       <span className="text-[10px] text-slate-500 flex items-center gap-1">
                         {pushSubscribed ? (
-                          <Bell className="w-2.5 h-2.5 text-blue-600" />
+                          <Bell className="w-2.5 h-2.5 text-festival-teal" />
                         ) : (
                           <BellOff className="w-2.5 h-2.5" />
                         )}
@@ -238,7 +238,7 @@ export default function Topbar({ title = "Dashboard", user: propUser = null }) {
                           type="button"
                           onClick={disablePush}
                           disabled={pushLoading}
-                          className="text-[9px] font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 px-2 py-0.5 rounded transition-colors cursor-pointer disabled:opacity-50"
+                          className="text-[9px] font-semibold text-festival-teal bg-warm-ivory hover:bg-festival-teal/20 px-2 py-0.5 rounded transition-colors cursor-pointer disabled:opacity-50"
                         >
                           {pushLoading ? "..." : "Active · Turn off"}
                         </button>
@@ -261,7 +261,7 @@ export default function Topbar({ title = "Dashboard", user: propUser = null }) {
                         key={notif.id}
                         className={`p-3 text-[10px] leading-snug border-b border-slate-50 dark:border-zinc-900/60 last:border-0 hover:bg-slate-50/50 transition-colors ${
                           !notif.read
-                            ? "bg-blue-50/[0.15] font-semibold text-slate-800 dark:text-zinc-200"
+                            ? "bg-warm-ivory font-semibold text-slate-800 dark:text-zinc-200"
                             : "text-slate-500 font-light"
                         }`}
                       >

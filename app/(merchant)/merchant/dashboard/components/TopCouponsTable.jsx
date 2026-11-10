@@ -212,7 +212,7 @@ export default function TopCouponsTable({
                 {isAffiliate ? (
                   <ShoppingBag className="w-6 h-6 text-emerald-600" />
                 ) : (
-                  <Ticket className="w-6 h-6 text-[#F72853]" />
+                  <Ticket className="w-6 h-6 text-[#FF2E63]" />
                 )}
               </div>
             )}
@@ -226,7 +226,7 @@ export default function TopCouponsTable({
                 className={`text-[9px] font-semibold px-2 py-0.5 rounded-full border uppercase tracking-wider ${
                   isAffiliate
                     ? "bg-emerald-50 text-emerald-700 border-emerald-200/80"
-                    : "bg-rose-50 text-[#F72853] border-rose-200/80"
+                    : "bg-rose-50 text-[#FF2E63] border-rose-200/80"
                 }`}
               >
                 {isAffiliate ? "Affiliate Deal" : "Voucher"}
@@ -282,7 +282,7 @@ export default function TopCouponsTable({
             </span>
             <span
               className={`text-xs sm:text-sm font-bold truncate mt-0.5 ${
-                isAffiliate ? "text-emerald-700" : "text-[#F72853]"
+                isAffiliate ? "text-emerald-700" : "text-[#FF2E63]"
               }`}
             >
               {row?.discount || "Offer"}
@@ -335,7 +335,7 @@ export default function TopCouponsTable({
                   href={row.affiliateUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-lg bg-slate-100 hover:bg-blue-50 text-slate-600 hover:text-blue-600 flex items-center justify-center transition-colors cursor-pointer"
+                  className="w-8 h-8 rounded-lg bg-slate-100 hover:bg-warm-ivory text-slate-600 hover:text-festival-teal flex items-center justify-center transition-colors cursor-pointer"
                   title="Preview Store Link"
                 >
                   <Eye className="w-3.5 h-3.5" />
@@ -346,7 +346,7 @@ export default function TopCouponsTable({
                 href={`/deals/${row.id || row._id}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-slate-100 hover:bg-blue-50 text-slate-600 hover:text-blue-600 flex items-center justify-center transition-colors cursor-pointer"
+                className="w-8 h-8 rounded-lg bg-slate-100 hover:bg-warm-ivory text-slate-600 hover:text-festival-teal flex items-center justify-center transition-colors cursor-pointer"
                 title="Preview Coupon"
               >
                 <Eye className="w-3.5 h-3.5" />
@@ -411,8 +411,8 @@ export default function TopCouponsTable({
                 <span>Affiliate Deal</span>
               </span>
             ) : (
-              <span className="inline-flex items-center gap-0.5 text-[9.5px] font-medium text-blue-700 bg-blue-50 border border-blue-200/70 px-1.5 py-0.2 rounded">
-                <Ticket className="w-2.5 h-2.5 text-blue-600" />
+              <span className="inline-flex items-center gap-0.5 text-[9.5px] font-medium text-festival-teal bg-warm-ivory border border-festival-teal/25 px-1.5 py-0.2 rounded">
+                <Ticket className="w-2.5 h-2.5 text-festival-teal" />
                 <span>Voucher</span>
               </span>
             )}
@@ -454,7 +454,7 @@ export default function TopCouponsTable({
           className={`text-[11px] font-medium px-2 py-0.5 rounded-md border font-sans ${
             row?.type === "affiliate"
               ? "text-emerald-700 bg-emerald-50 border-emerald-100"
-              : "text-[#F72853] bg-rose-50 border-rose-100"
+              : "text-[#FF2E63] bg-rose-50 border-rose-100"
           }`}
         >
           {row?.discount || "Offer"}
@@ -516,7 +516,7 @@ export default function TopCouponsTable({
                   href={row.affiliateUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-6.5 h-6.5 flex items-center justify-center rounded-lg hover:bg-blue-50 text-slate-400 hover:text-blue-600 transition-colors"
+                  className="w-6.5 h-6.5 flex items-center justify-center rounded-lg hover:bg-warm-ivory text-slate-400 hover:text-festival-teal transition-colors"
                   title="Preview Store Link"
                 >
                   <Eye className="w-3 h-3" />
@@ -527,7 +527,7 @@ export default function TopCouponsTable({
                 href={`/deals/${row.id || row._id}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-6.5 h-6.5 flex items-center justify-center rounded-lg hover:bg-blue-50 text-slate-400 hover:text-blue-600 transition-colors"
+                className="w-6.5 h-6.5 flex items-center justify-center rounded-lg hover:bg-warm-ivory text-slate-400 hover:text-festival-teal transition-colors"
                 title="Preview Coupon"
               >
                 <Eye className="w-3 h-3" />
@@ -627,7 +627,7 @@ export default function TopCouponsTable({
 
           <Link
             href={viewAllHref}
-            className="text-xs font-medium text-[#F72853] hover:underline underline-offset-2 shrink-0 ml-1"
+            className="text-xs font-medium text-[#FF2E63] hover:underline underline-offset-2 shrink-0 ml-1"
           >
             View all →
           </Link>
@@ -655,7 +655,7 @@ export default function TopCouponsTable({
                 {(activeTab === "all" || activeTab === "coupons") && (
                   <Link
                     href="/merchant/coupons/new"
-                    className="text-xs font-medium text-white bg-[#F72853] hover:bg-[#e01e47] px-3 py-1.5 rounded-lg shadow-2xs transition-colors"
+                    className="text-xs font-medium text-white bg-[#FF2E63] hover:bg-[#e01e47] px-3 py-1.5 rounded-lg shadow-2xs transition-colors"
                   >
                     + Post Coupon Deal
                   </Link>

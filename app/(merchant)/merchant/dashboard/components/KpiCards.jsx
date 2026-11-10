@@ -13,7 +13,7 @@ import { Area, AreaChart, ResponsiveContainer } from "recharts";
 function RechartsSparkline({
   data = [],
   dataKey = "value",
-  color = "#F72853",
+  color = "#FF2E63",
 }) {
   if (data.length === 0) return null;
   const chartData = data.map((val, idx) => ({ id: idx, value: val }));
@@ -144,11 +144,11 @@ export default function KpiCards({
         value={pageViews > 0 ? pageViews.toLocaleString("en-IN") : "0"}
         subtitle="Coupon page visits"
         icon={Eye}
-        iconBg="bg-rose-50 text-[#F72853]"
-        iconColor="text-[#F72853]"
+        iconBg="bg-rose-50 text-[#FF2E63]"
+        iconColor="text-[#FF2E63]"
         sparkData={trendData.map((t) => t.views || 0)}
         sparkKey="clicks"
-        sparkColor="#F72853"
+        sparkColor="#FF2E63"
       />
 
       {/* Card 2: Coupon Redemptions */}
@@ -172,11 +172,11 @@ export default function KpiCards({
         trend={safeTotalRevenue > 0 ? revenueMoM : null}
         subtitle="Gross sale value driven"
         icon={IndianRupee}
-        iconBg="bg-blue-50 text-blue-600"
-        iconColor="text-blue-600"
+        iconBg="bg-warm-ivory text-festival-teal"
+        iconColor="text-festival-teal"
         sparkData={trendData.map((t) => t.revenue || 0)}
         sparkKey="revenue"
-        sparkColor="#3b82f6"
+        sparkColor="#007F79"
       />
 
       {/* Card 4: Active Listings with plan limit */}
@@ -199,7 +199,7 @@ export default function KpiCards({
                 <div className="space-y-1 w-full pt-0.5">
                   <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
                     <div
-                      className={`h-full rounded-full transition-all duration-500 ${listingPct >= 90 ? "bg-[#F72853]" : "bg-purple-600"}`}
+                      className={`h-full rounded-full transition-all duration-500 ${listingPct >= 90 ? "bg-[#FF2E63]" : "bg-purple-600"}`}
                       style={{ width: `${listingPct}%` }}
                     />
                   </div>

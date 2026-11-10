@@ -84,9 +84,9 @@ const ArticleCard = memo(function ArticleCard({ article }) {
   return (
     <Link
       href={article.href}
-      className="art-card group block no-underline cursor-pointer select-none h-full"
+      className="art-card group block no-underline cursor-pointer select-none h-full font-sans"
     >
-      <div className="art-card__inner flex flex-col rounded-2xl overflow-hidden bg-white border border-slate-200/90 hover:border-[#F72853] transition-all duration-300 hover:shadow-[0_8px_20px_rgba(247,40,83,0.14)] shadow-2xs h-full">
+      <div className="art-card__inner flex flex-col rounded-2xl overflow-hidden bg-white border border-[#EADBCE] hover:border-[#FF2E63] transition-all duration-300 hover:shadow-[0_8px_20px_rgba(255,46,99,0.16)] shadow-2xs h-full">
         {/* Cover image */}
         <div className="h-[140px] sm:h-[150px] overflow-hidden shrink-0 relative bg-slate-100">
           <SafeImage
@@ -97,29 +97,29 @@ const ArticleCard = memo(function ArticleCard({ article }) {
             className="object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none"
           />
           {/* Category pill */}
-          <span className="absolute top-2.5 left-2.5 bg-rose-50 text-[#F72853] border border-rose-200/80 text-[9px] sm:text-[9.5px] font-medium px-2 py-0.5 rounded-full uppercase tracking-wider shadow-2xs">
+          <span className="absolute top-2.5 left-2.5 bg-[#FF2E63]/10 text-[#FF2E63] border border-[#FF2E63]/20 text-[9px] sm:text-[9.5px] font-heading font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-2xs">
             {article.category}
           </span>
         </div>
 
         {/* Content */}
         <div className="flex flex-col gap-1.5 p-3.5 flex-1 text-left">
-          <h3 className="line-clamp-2 text-xs sm:text-[12.5px] font-medium text-slate-800 group-hover:text-[#F72853] transition-colors leading-snug">
+          <h3 className="line-clamp-2 text-xs sm:text-[12.5px] font-heading font-bold text-[#35104A] group-hover:text-[#FF2E63] transition-colors leading-snug">
             {article.title}
           </h3>
-          <p className="line-clamp-2 text-[11px] text-slate-500 font-normal leading-relaxed">
+          <p className="line-clamp-2 text-[11px] text-[#6B4C82] font-medium leading-relaxed">
             {article.excerpt}
           </p>
 
           {/* Meta row */}
-          <div className="flex items-center gap-2 mt-auto pt-2.5 border-t border-slate-100 text-[10.5px] sm:text-[11px] text-slate-400 font-normal">
+          <div className="flex items-center gap-2 mt-auto pt-2.5 border-t border-[#EADBCE]/60 text-[10.5px] sm:text-[11px] text-[#6B4C82]/70 font-normal">
             <span className="flex items-center gap-1">
-              <Clock className="w-3 h-3 text-slate-400" />
+              <Clock className="w-3 h-3 text-[#6B4C82]/60" />
               {article.readTime}
             </span>
             <span>•</span>
             <span>{article.date}</span>
-            <span className="ml-auto font-medium text-[#F72853] group-hover:translate-x-0.5 transition-transform">
+            <span className="ml-auto font-heading font-bold text-[#007F79] group-hover:text-[#FF2E63] group-hover:translate-x-0.5 transition-transform">
               Read →
             </span>
           </div>
@@ -196,14 +196,14 @@ export function LatestArticles() {
   };
 
   return (
-    <section className="text-left w-full overflow-hidden select-none pb-2">
+    <section className="text-left w-full overflow-hidden select-none pb-2 font-sans">
       {/* Section Header */}
       <div className="flex items-center justify-between mb-3.5 sm:mb-4">
         <div>
-          <h2 className="font-medium leading-tight text-[#F72853] text-base sm:text-lg md:text-xl tracking-tight">
+          <h2 className="font-heading font-bold leading-tight text-[#FF2E63] text-base sm:text-lg md:text-xl tracking-tight">
             Latest Articles &amp; Guides
           </h2>
-          <p className="text-[11px] text-slate-500 font-normal mt-0.5">
+          <p className="text-[11px] text-[#6B4C82] font-medium mt-0.5">
             Tips, deals breakdowns &amp; shopping guides
           </p>
         </div>
@@ -214,7 +214,7 @@ export function LatestArticles() {
             type="button"
             onClick={handlePrev}
             aria-label="Previous"
-            className="w-8 h-8 rounded-full border border-slate-200 bg-white hover:bg-rose-50 hover:border-rose-200 hover:text-[#F72853] text-slate-600 flex items-center justify-center cursor-pointer transition-colors shadow-2xs"
+            className="w-8 h-8 rounded-full border border-[#EADBCE] bg-white hover:bg-[#FFF8EF] hover:border-[#007F79] hover:text-[#007F79] text-[#35104A] flex items-center justify-center cursor-pointer transition-colors shadow-2xs"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -222,7 +222,7 @@ export function LatestArticles() {
             type="button"
             onClick={handleNext}
             aria-label="Next"
-            className="w-8 h-8 rounded-full border border-slate-200 bg-white hover:bg-rose-50 hover:border-rose-200 hover:text-[#F72853] text-slate-600 flex items-center justify-center cursor-pointer transition-colors shadow-2xs"
+            className="w-8 h-8 rounded-full border border-[#EADBCE] bg-white hover:bg-[#FFF8EF] hover:border-[#007F79] hover:text-[#007F79] text-[#35104A] flex items-center justify-center cursor-pointer transition-colors shadow-2xs"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
@@ -238,8 +238,8 @@ export function LatestArticles() {
         onMouseLeave={handleMouseUpOrLeave}
       >
         {/* Soft edge gradient masks */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-[#f8fafc] via-[#f8fafc]/80 to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-[#f8fafc] via-[#f8fafc]/80 to-transparent z-10" />
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-[#FFF8EF] via-[#FFF8EF]/80 to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-[#FFF8EF] via-[#FFF8EF]/80 to-transparent z-10" />
 
         <div
           ref={scrollRef}

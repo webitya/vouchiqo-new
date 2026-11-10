@@ -84,7 +84,7 @@ export default function RevivalManagement() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-200 pb-3">
           <div>
             <h1 className="text-base font-semibold text-slate-900 flex items-center gap-2">
-              <RefreshCw className="w-4 h-4 text-blue-600" /> Master Revival
+              <RefreshCw className="w-4 h-4 text-festival-teal" /> Master Revival
               Queue &amp; Intelligence
             </h1>
             <p className="text-xs text-slate-500 font-normal mt-0.5">
@@ -97,7 +97,7 @@ export default function RevivalManagement() {
             <LiveIndicator />
             <Button
               asChild
-              className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium h-8 px-3 rounded-lg cursor-pointer shadow-2xs"
+              className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-medium h-8 px-3 rounded-lg cursor-pointer shadow-2xs"
             >
               <Link href="/admin/merchant-demand">
                 Merchant Demand Report →

@@ -59,8 +59,8 @@ const STATUS_CONFIG = {
   under_review: {
     label: "Under Review",
     icon: Eye,
-    classes: "bg-blue-50 text-blue-700 border-blue-200",
-    dot: "bg-blue-400",
+    classes: "bg-festival-teal/10 text-festival-teal border-brand-border",
+    dot: "bg-festival-teal",
   },
   inactive: {
     label: "Inactive",
@@ -107,8 +107,8 @@ const STATUS_CONFIG = {
   processing: {
     label: "Processing",
     icon: Loader2,
-    classes: "bg-blue-50 text-blue-700 border-blue-200",
-    dot: "bg-blue-400",
+    classes: "bg-festival-teal/10 text-festival-teal border-brand-border",
+    dot: "bg-festival-teal",
   },
   // Campaign-specific
   scheduled: {

@@ -47,21 +47,21 @@ const CATEGORY_ICONS = {
 };
 
 const CATEGORY_COLORS = {
-  fashion: { bg: "bg-rose-500", text: "text-white" },
-  food: { bg: "bg-amber-600", text: "text-white" },
-  electronics: { bg: "bg-blue-600", text: "text-white" },
+  fashion: { bg: "bg-festival-pink", text: "text-white" },
+  food: { bg: "bg-marigold", text: "text-white" },
+  electronics: { bg: "bg-festival-teal", text: "text-white" },
   beauty: { bg: "bg-emerald-600", text: "text-white" },
   travel: { bg: "bg-cyan-600", text: "text-white" },
   home: { bg: "bg-orange-600", text: "text-white" },
   "home-improvement": { bg: "bg-stone-600", text: "text-white" },
   fitness: { bg: "bg-red-600", text: "text-white" },
   education: { bg: "bg-indigo-600", text: "text-white" },
-  "kids-baby": { bg: "bg-pink-500", text: "text-white" },
-  jewellery: { bg: "bg-yellow-600", text: "text-white" },
+  "kids-baby": { bg: "bg-festival-pink", text: "text-white" },
+  jewellery: { bg: "bg-golden-glow", text: "text-royal-plum" },
   automotive: { bg: "bg-slate-700", text: "text-white" },
-  entertainment: { bg: "bg-purple-600", text: "text-white" },
+  entertainment: { bg: "bg-royal-plum", text: "text-white" },
   grocery: { bg: "bg-green-600", text: "text-white" },
-  finance: { bg: "bg-teal-600", text: "text-white" },
+  finance: { bg: "bg-festival-teal-dark", text: "text-white" },
 };
 
 export default function CategoriesClient({
@@ -87,7 +87,7 @@ export default function CategoriesClient({
       {/* ── 1. COMPACT HEADER BAR ── */}
       <div className="bg-white border-b border-slate-200/90 px-3 sm:px-4 md:px-5 py-2.5">
         <div className="flex items-center gap-1.5 text-[11px] text-slate-500 font-normal mb-0.5">
-          <Link href="/" className="hover:text-[#F72853] transition-colors">
+          <Link href="/" className="hover:text-[#FF2E63] transition-colors">
             Home
           </Link>
           <span>/</span>
@@ -99,7 +99,7 @@ export default function CategoriesClient({
             <h1 className="text-sm sm:text-[15px] font-bold text-slate-900 tracking-normal">
               Explore Categories
             </h1>
-            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-rose-50 text-[#F72853] border border-rose-200/60 shadow-2xs">
+            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200/60 shadow-2xs">
               {totalCategories} Categories
             </span>
           </div>
@@ -112,7 +112,7 @@ export default function CategoriesClient({
               placeholder="Search category..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-8 pr-7 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#F72853] transition-all"
+              className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-8 pr-7 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#FF2E63] transition-all"
             />
             {searchQuery && (
               <button
@@ -173,7 +173,7 @@ export default function CategoriesClient({
                   {/* ── 3. Bottom 50%: Title & Action Row with Generous Margins ── */}
                   <div className="pt-6 sm:pt-6.5 pb-3.5 sm:pb-4 px-3 sm:px-3.5 flex flex-col justify-between flex-1 bg-white">
                     <div>
-                      <h3 className="text-[13px] sm:text-[14.5px] font-bold text-slate-900 leading-snug tracking-tight group-hover:text-[#F72853] transition-colors line-clamp-1">
+                      <h3 className="text-[13px] sm:text-[14.5px] font-bold text-slate-900 leading-snug tracking-tight group-hover:text-[#FF2E63] transition-colors line-clamp-1">
                         {cat.title}
                       </h3>
                       {cat.description && (
@@ -189,7 +189,7 @@ export default function CategoriesClient({
                         {offerCountLabel}
                       </span>
 
-                      <div className="w-6 h-6 rounded-full bg-slate-900 group-hover:bg-[#F72853] text-white flex items-center justify-center transition-colors shrink-0 shadow-2xs">
+                      <div className="w-6 h-6 rounded-full bg-slate-900 group-hover:bg-[#FF2E63] text-white flex items-center justify-center transition-colors shrink-0 shadow-2xs">
                         <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                       </div>
                     </div>
@@ -210,7 +210,7 @@ export default function CategoriesClient({
             <button
               type="button"
               onClick={() => setSearchQuery("")}
-              className="px-3 py-1 bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-medium rounded-lg transition-all cursor-pointer shadow-2xs"
+              className="px-3 py-1 bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium rounded-lg transition-all cursor-pointer shadow-2xs"
             >
               Clear Search
             </button>

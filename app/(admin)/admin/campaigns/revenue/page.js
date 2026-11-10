@@ -37,7 +37,7 @@ import { useAdminCampaignRevenue } from "@/hooks/use-admin";
 // 8 Distinct Pastel Row Palettes (Clearly visible without hover)
 const ROW_COLOR_THEMES = [
   {
-    row: "bg-blue-100/65 hover:bg-blue-100/90 border-l-[3.5px] border-l-blue-600 border-b border-blue-200/80 text-slate-900",
+    row: "bg-festival-teal/10 hover:bg-festival-teal/20 border-l-[3.5px] border-l-festival-teal border-b border-festival-teal/20 text-slate-900",
   },
   {
     row: "bg-emerald-100/65 hover:bg-emerald-100/90 border-l-[3.5px] border-l-emerald-600 border-b border-emerald-200/80 text-slate-900",
@@ -193,7 +193,7 @@ export default function AdminCampaignRevenuePage() {
                 onClick={handleExportCsv}
                 className="gap-1.5 h-7.5 px-3 text-xs font-medium border-slate-200 text-slate-700 bg-white hover:bg-slate-50 rounded-lg shrink-0 cursor-pointer shadow-2xs"
               >
-                <FileSpreadsheet className="w-3 h-3 text-blue-600" />
+                <FileSpreadsheet className="w-3 h-3 text-festival-teal" />
                 <span>Export CSV</span>
               </Button>
             </div>
@@ -223,11 +223,11 @@ export default function AdminCampaignRevenuePage() {
                   <span className="text-[10px] font-medium text-slate-500 uppercase tracking-wider block">
                     Merchant Subscriptions
                   </span>
-                  <span className="text-base font-medium text-blue-700 mt-0.5 block leading-none font-mono">
+                  <span className="text-base font-medium text-festival-teal mt-0.5 block leading-none font-mono">
                     ₹{totalSub.toLocaleString("en-IN")}
                   </span>
                 </div>
-                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 border border-blue-200/60 flex items-center justify-center shrink-0">
+                <div className="w-7 h-7 rounded-lg bg-warm-ivory text-festival-teal border border-festival-teal/20 flex items-center justify-center shrink-0">
                   <CreditCard className="w-3.5 h-3.5" />
                 </div>
               </CardContent>
@@ -277,7 +277,7 @@ export default function AdminCampaignRevenuePage() {
                   placeholder="Search transaction ID, merchant, campaign..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 focus:border-blue-500 focus:bg-white rounded-lg pl-8 pr-7 py-1 text-xs text-slate-800 placeholder-slate-400 outline-none transition-all shadow-2xs"
+                  className="w-full bg-slate-50 border border-slate-200 focus:border-festival-teal focus:bg-white rounded-lg pl-8 pr-7 py-1 text-xs text-slate-800 placeholder-slate-400 outline-none transition-all shadow-2xs"
                 />
                 {searchQuery && (
                   <button
@@ -331,7 +331,7 @@ export default function AdminCampaignRevenuePage() {
                         className={cn(
                           "text-[10.5px] font-medium px-2 py-0.5 rounded-md transition-all cursor-pointer flex items-center gap-1 border-0",
                           activeTab === tab.id
-                            ? "bg-white text-blue-600 shadow-2xs"
+                            ? "bg-white text-festival-teal shadow-2xs"
                             : "text-slate-500 hover:text-slate-800 bg-transparent",
                         )}
                       >
@@ -340,7 +340,7 @@ export default function AdminCampaignRevenuePage() {
                           className={cn(
                             "text-[9px] px-1 rounded-full",
                             activeTab === tab.id
-                              ? "bg-blue-50 text-blue-600"
+                              ? "bg-warm-ivory text-festival-teal"
                               : "bg-slate-200/70 text-slate-600",
                           )}
                         >
@@ -474,7 +474,7 @@ export default function AdminCampaignRevenuePage() {
                                       variant="outline"
                                       disabled={isDownloading}
                                       onClick={() => handleDownloadInvoice(txn)}
-                                      className="h-6.5 w-6.5 p-0 text-slate-600 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 border-slate-200 bg-white rounded-md cursor-pointer ml-auto shadow-2xs"
+                                      className="h-6.5 w-6.5 p-0 text-slate-600 hover:text-festival-teal hover:bg-warm-ivory hover:border-festival-teal border-slate-200 bg-white rounded-md cursor-pointer ml-auto shadow-2xs"
                                     >
                                       {isDownloading
                                         ? <RefreshCw className="w-3 h-3 animate-spin" />
@@ -525,7 +525,7 @@ export default function AdminCampaignRevenuePage() {
                         <MobileTableCard
                           key={txn.id || index}
                           avatarText={txn.merchantName}
-                          avatarBg="bg-blue-600"
+                          avatarBg="bg-festival-teal"
                           badge="CAMPAIGN TRANSACTION"
                           title={txn.merchantName}
                           subtitle={`${txn.campaignName} • ${txn.addOnType}`}

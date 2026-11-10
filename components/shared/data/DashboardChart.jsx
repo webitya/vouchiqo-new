@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const BAR_COLORS = [
-  "#3b82f6", // Blue
+  "#007F79", // Blue
   "#10b981", // Emerald
   "#f59e0b", // Amber
   "#ef4444", // Red
@@ -14,7 +14,7 @@ const BAR_COLORS = [
   "#14b8a6", // Teal
   "#a855f7", // Purple Light
   "#6366f1", // Indigo
-  "#3b82f6", // Blue repeat
+  "#007F79", // Blue repeat
 ];
 
 export default function DashboardChart({
@@ -97,12 +97,12 @@ export default function DashboardChart({
             {/* Multi-color gradient for the Area/Line chart fill */}
             <linearGradient id="area-gradient" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.25" />
-              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.00" />
+              <stop offset="100%" stopColor="#007F79" stopOpacity="0.00" />
             </linearGradient>
 
             {/* Vibrant colorful gradient for the line stroke */}
             <linearGradient id="stroke-gradient" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#3b82f6" />
+              <stop offset="0%" stopColor="#007F79" />
               <stop offset="50%" stopColor="#8b5cf6" />
               <stop offset="100%" stopColor="#ec4899" />
             </linearGradient>

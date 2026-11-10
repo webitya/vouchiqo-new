@@ -43,11 +43,11 @@ export default function BrandSidebar({ merchant, copiedLink, onShare }) {
   return (
     <div className="lg:col-span-4 space-y-5 text-left font-sans">
       {/* About store */}
-      <div className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all space-y-3">
-        <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider pb-2 border-b border-slate-100">
+      <div className="bg-white border border-[#EADBCE] rounded-2xl p-5 shadow-xs hover:shadow-md transition-all space-y-3 font-sans">
+        <h3 className="text-xs font-heading font-black text-[#35104A] uppercase tracking-wider pb-2 border-b border-[#EADBCE]/60">
           About {merchant.businessName}
         </h3>
-        <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed font-medium">
+        <p className="text-xs sm:text-[13px] text-[#6B4C82] leading-relaxed font-medium">
           {merchant.longDescription ||
             merchant.description ||
             `Discover active verified coupon codes, sitewide promo offers, and exclusive discounts for ${merchant.businessName}. Save on every purchase with tested deals.`}
@@ -57,19 +57,19 @@ export default function BrandSidebar({ merchant, copiedLink, onShare }) {
             href={normalizeExternalUrl(merchant.website)}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full inline-flex items-center justify-between px-3.5 py-2 rounded-xl bg-blue-50/80 hover:bg-blue-100/90 border border-blue-200/80 text-blue-700 text-xs font-semibold transition-all group shadow-2xs cursor-pointer mt-2"
+            className="w-full inline-flex items-center justify-between px-3.5 py-2 rounded-xl bg-[#007F79]/10 hover:bg-[#007F79]/15 border border-[#007F79]/20 text-[#007F79] text-xs font-heading font-bold transition-all group shadow-2xs cursor-pointer mt-2"
           >
             <span className="flex items-center gap-2 truncate">
-              <Globe className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+              <Globe className="w-3.5 h-3.5 text-[#007F79] shrink-0" />
               <span className="truncate">Visit Official Store Website</span>
             </span>
-            <ExternalLink className="w-3.5 h-3.5 text-blue-600 group-hover:translate-x-0.5 transition-transform shrink-0" />
+            <ExternalLink className="w-3.5 h-3.5 text-[#007F79] group-hover:translate-x-0.5 transition-transform shrink-0" />
           </a>
         )}
 
         {/* Official Social Media Channels */}
-        <div className="pt-2 border-t border-slate-100">
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 block mb-1.5">
+        <div className="pt-2 border-t border-[#EADBCE]/60">
+          <span className="text-[10px] font-heading font-bold uppercase tracking-wider text-[#6B4C82]/70 block mb-1.5">
             Official Channels
           </span>
           <BrandLinksBar merchant={merchant} showWebsite={false} size="sm" />
@@ -77,18 +77,18 @@ export default function BrandSidebar({ merchant, copiedLink, onShare }) {
       </div>
 
       {/* FAQ Accordion */}
-      <div className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all space-y-3">
+      <div className="bg-white border border-[#EADBCE] rounded-2xl p-5 shadow-xs hover:shadow-md transition-all space-y-3 font-sans">
         <FaqAccordion faqs={faqs} />
       </div>
 
       {/* Contact Details */}
-      <div className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all space-y-3">
-        <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider pb-2 border-b border-slate-100">
+      <div className="bg-white border border-[#EADBCE] rounded-2xl p-5 shadow-xs hover:shadow-md transition-all space-y-3 font-sans">
+        <h3 className="text-xs font-heading font-black text-[#35104A] uppercase tracking-wider pb-2 border-b border-[#EADBCE]/60">
           Store Location &amp; Contact
         </h3>
-        <div className="space-y-3 text-xs text-slate-700 font-semibold">
+        <div className="space-y-3 text-xs text-[#35104A] font-semibold">
           <div className="flex gap-2">
-            <MapPin className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+            <MapPin className="w-4 h-4 text-[#007F79] flex-shrink-0 mt-0.5" />
             <p className="leading-relaxed text-slate-600 font-medium">
               {merchant.location?.address && `${merchant.location.address}, `}
               {merchant.location?.city ? (
@@ -105,7 +105,7 @@ export default function BrandSidebar({ merchant, copiedLink, onShare }) {
           </div>
           {merchant.contactPhone && (
             <div className="flex items-center gap-2">
-              <Phone className="w-4 h-4 text-blue-600 flex-shrink-0" />
+              <Phone className="w-4 h-4 text-festival-teal flex-shrink-0" />
               <span className="text-slate-600 font-medium">
                 {merchant.contactPhone}
               </span>
@@ -113,7 +113,7 @@ export default function BrandSidebar({ merchant, copiedLink, onShare }) {
           )}
           {merchant.contactEmail && (
             <div className="flex items-center gap-2">
-              <Mail className="w-4 h-4 text-blue-600 flex-shrink-0" />
+              <Mail className="w-4 h-4 text-festival-teal flex-shrink-0" />
               <span className="text-slate-600 font-medium">
                 {merchant.contactEmail}
               </span>
@@ -121,12 +121,12 @@ export default function BrandSidebar({ merchant, copiedLink, onShare }) {
           )}
           {merchant.website && (
             <div className="flex items-center gap-2">
-              <Globe className="w-4 h-4 text-blue-600 flex-shrink-0" />
+              <Globe className="w-4 h-4 text-festival-teal flex-shrink-0" />
               <a
                 href={normalizeExternalUrl(merchant.website)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 hover:underline truncate font-medium"
+                className="text-festival-teal hover:underline truncate font-medium"
               >
                 {getDisplayDomain(merchant.website) || "Official Website"}
               </a>
@@ -184,7 +184,7 @@ function FaqAccordion({ faqs }) {
               <button
                 onClick={() => setExpandedFaq(isExpanded ? null : idx)}
                 type="button"
-                className="w-full flex justify-between items-start text-left font-bold text-[13px] text-[#191f2e] hover:text-[#3e80dd] transition-colors border-0 bg-transparent cursor-pointer p-0"
+                className="w-full flex justify-between items-start text-left font-heading font-bold text-[13px] text-[#35104A] hover:text-[#007F79] transition-colors border-0 bg-transparent cursor-pointer p-0"
               >
                 <span className="pr-4">{faq.q}</span>
                 {isExpanded ? (

@@ -15,8 +15,8 @@ export default function DocumentStatus({ documents = [] }) {
     switch (status) {
       case "verified":
         return (
-          <Badge className="bg-blue-50 text-blue-700 border-blue-200 text-[10px] font-normal gap-1 px-2 py-0.5 shadow-none">
-            <CheckCircle2 className="w-3 h-3 text-blue-600" /> Verified
+          <Badge className="bg-festival-teal/10 text-festival-teal border-brand-border text-[10px] font-normal gap-1 px-2 py-0.5 shadow-none">
+            <CheckCircle2 className="w-3 h-3 text-festival-teal" /> Verified
           </Badge>
         );
       case "rejected":
@@ -38,7 +38,7 @@ export default function DocumentStatus({ documents = [] }) {
     <Card className="border-slate-200/80 bg-white rounded-xl shadow-xs overflow-hidden text-left font-sans">
       <CardHeader className="pb-3 border-b border-slate-100 flex flex-row items-center justify-between p-4 sm:p-5">
         <CardTitle className="text-xs font-medium tracking-normal text-slate-900 flex items-center gap-2">
-          <FileCheck className="w-4 h-4 text-blue-600" /> Submitted Documents
+          <FileCheck className="w-4 h-4 text-festival-teal" /> Submitted Documents
         </CardTitle>
         <span className="text-xs text-slate-500 font-normal">
           {documents.filter((d) => d.status === "verified").length}/
@@ -54,7 +54,7 @@ export default function DocumentStatus({ documents = [] }) {
               className={cn(
                 "p-3 rounded-lg border flex items-center justify-between gap-3 text-xs transition-colors",
                 doc.status === "verified"
-                  ? "border-blue-200 bg-blue-50/20"
+                  ? "border-brand-border bg-festival-teal/10/20"
                   : doc.status === "rejected"
                     ? "border-red-200 bg-red-50/20"
                     : "border-slate-200 bg-slate-50/40",

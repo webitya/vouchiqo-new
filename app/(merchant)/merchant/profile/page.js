@@ -139,7 +139,7 @@ export default function MerchantBusinessProfile() {
                 onClick={() => {
                   window.location.href = "/merchant/application-status";
                 }}
-                className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-6 py-2.5 rounded-xl cursor-pointer shadow-md shadow-blue-500/20"
+                className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-bold px-6 py-2.5 rounded-xl cursor-pointer shadow-md shadow-festival-teal/20"
               >
                 Track Status
               </Button>
@@ -153,9 +153,9 @@ export default function MerchantBusinessProfile() {
               <Button
                 variant="outline"
                 onClick={() => openFeedback()}
-                className="border-blue-200 text-blue-700 bg-blue-50/50 hover:bg-blue-100 text-xs font-bold px-5 py-2.5 rounded-xl cursor-pointer flex items-center gap-1.5"
+                className="border-brand-border text-festival-teal bg-warm-ivory hover:bg-festival-teal/20 text-xs font-bold px-5 py-2.5 rounded-xl cursor-pointer flex items-center gap-1.5"
               >
-                <MessageSquareHeart className="w-3.5 h-3.5 text-blue-600" />
+                <MessageSquareHeart className="w-3.5 h-3.5 text-festival-teal" />
                 <span>Give Feedback</span>
               </Button>
             </div>
@@ -190,7 +190,7 @@ export default function MerchantBusinessProfile() {
                   : "Complete Merchant Profile"}
               </span>
               {isEditing && (
-                <span className="text-[10px] font-semibold bg-blue-50 text-blue-700 px-2.5 py-0.5 rounded-full border border-blue-200">
+                <span className="text-[10px] font-semibold bg-warm-ivory text-festival-teal px-2.5 py-0.5 rounded-full border border-brand-border">
                   Editing Mode
                 </span>
               )}
@@ -243,7 +243,7 @@ export default function MerchantBusinessProfile() {
                     onClick={() => setStep(s.number)}
                     className={`flex items-center gap-2 cursor-pointer ${
                       isActive
-                        ? "text-blue-600 font-extrabold"
+                        ? "text-festival-teal font-extrabold"
                         : isCompleted
                           ? "text-slate-900 font-bold"
                           : "text-slate-400 font-medium"
@@ -252,7 +252,7 @@ export default function MerchantBusinessProfile() {
                     <div
                       className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
                         isActive
-                          ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
+                          ? "bg-festival-teal text-white shadow-md shadow-festival-teal/20"
                           : isCompleted
                             ? "bg-slate-900 text-white"
                             : "bg-slate-100 text-slate-500 border border-slate-200"
@@ -355,7 +355,7 @@ export default function MerchantBusinessProfile() {
                 ? <Button
                     type="button"
                     onClick={handleNext}
-                    className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2.5 px-6 rounded-xl cursor-pointer shadow-md shadow-blue-500/20 flex items-center gap-1"
+                    className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-bold py-2.5 px-6 rounded-xl cursor-pointer shadow-md shadow-festival-teal/20 flex items-center gap-1"
                   >
                     <span>Next</span>
                     <ChevronRight className="w-4 h-4 ml-1" />

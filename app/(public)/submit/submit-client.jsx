@@ -109,19 +109,19 @@ export default function SubmitClient() {
           </p>
         </div>
         <div className="flex gap-4">
-          <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-center">
-            <span className="text-xl font-black text-blue-600 block">
+          <div className="bg-white border border-brand-border rounded-xl px-4 py-3 text-center shadow-xs">
+            <span className="text-xl font-bold font-heading text-festival-teal block">
               12,358
             </span>
-            <span className="text-[10px] font-bold text-slate-500 uppercase">
+            <span className="text-[10px] font-bold font-heading text-royal-plum/50 uppercase">
               Offer Submissions
             </span>
           </div>
-          <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-center">
-            <span className="text-xl font-black text-blue-600 block">
+          <div className="bg-white border border-brand-border rounded-xl px-4 py-3 text-center shadow-xs">
+            <span className="text-xl font-bold font-heading text-festival-teal block">
               2,976
             </span>
-            <span className="text-[10px] font-bold text-slate-500 uppercase">
+            <span className="text-[10px] font-bold font-heading text-royal-plum/50 uppercase">
               Merchant Submissions
             </span>
           </div>
@@ -132,16 +132,16 @@ export default function SubmitClient() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
           <Tabs defaultValue="coupon" className="w-full">
-            <TabsList className="bg-blue-50 p-1 rounded-xl w-full max-w-md mb-6 flex">
+            <TabsList className="bg-warm-ivory border border-brand-border p-1 rounded-xl w-full max-w-md mb-6 flex">
               <TabsTrigger
                 value="coupon"
-                className="flex-1 text-xs font-bold rounded-lg py-2 flex items-center justify-center gap-1.5"
+                className="flex-1 text-xs font-bold font-heading rounded-lg py-2 flex items-center justify-center gap-1.5 data-[state=active]:bg-festival-teal data-[state=active]:text-white"
               >
                 <Ticket className="w-4 h-4" /> Submit Offer
               </TabsTrigger>
               <TabsTrigger
                 value="merchant"
-                className="flex-1 text-xs font-bold rounded-lg py-2 flex items-center justify-center gap-1.5"
+                className="flex-1 text-xs font-bold font-heading rounded-lg py-2 flex items-center justify-center gap-1.5 data-[state=active]:bg-festival-teal data-[state=active]:text-white"
               >
                 <Store className="w-4 h-4" /> Submit Merchant
               </TabsTrigger>
@@ -174,7 +174,7 @@ export default function SubmitClient() {
                                 setCouponMerchant(m);
                                 setShowSuggestions(false);
                               }}
-                              className="px-4 py-2 text-xs font-bold text-slate-700 hover:bg-blue-50 cursor-pointer"
+                              className="px-4 py-2 text-xs font-bold text-royal-plum hover:bg-festival-teal/10 hover:text-festival-teal cursor-pointer"
                             >
                               {m}
                             </li>
@@ -312,7 +312,7 @@ export default function SubmitClient() {
                       {item.name}
                     </span>
                   </div>
-                  <span className="text-blue-600 font-bold font-mono">
+                  <span className="text-festival-teal font-bold font-heading">
                     {item.points} pts
                   </span>
                 </div>

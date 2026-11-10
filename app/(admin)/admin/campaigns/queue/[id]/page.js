@@ -147,7 +147,7 @@ export default function AdminCampaignDetailPage({ params }) {
         user={{ name: "Super Admin", role: "admin" }}
       >
         <div className="flex flex-col items-center justify-center py-20 text-slate-500 gap-3">
-          <RefreshCw className="w-6 h-6 animate-spin text-blue-600" />
+          <RefreshCw className="w-6 h-6 animate-spin text-festival-teal" />
           <span className="text-xs font-semibold">
             Loading real-time campaign details...
           </span>
@@ -185,7 +185,7 @@ export default function AdminCampaignDetailPage({ params }) {
                     campaignStatus.includes("live")
                       ? "bg-emerald-100 text-emerald-800"
                       : campaignStatus.includes("pending")
-                        ? "bg-blue-100 text-blue-800"
+                        ? "bg-festival-teal/10 text-festival-teal-dark"
                         : campaignStatus === "rejected"
                           ? "bg-rose-100 text-rose-800"
                           : "bg-amber-100 text-amber-800"
@@ -442,7 +442,7 @@ export default function AdminCampaignDetailPage({ params }) {
               {/* Scheduling Controls */}
               <div className="p-4 border border-slate-200/80 rounded-2xl space-y-3 bg-white">
                 <Label className="text-xs font-bold text-slate-900 uppercase tracking-wider block flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-blue-600" /> Launch Date
+                  <Calendar className="w-3.5 h-3.5 text-festival-teal" /> Launch Date
                   Override
                 </Label>
                 <Input

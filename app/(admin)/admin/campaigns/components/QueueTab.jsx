@@ -196,7 +196,7 @@ export default function QueueTab({
                           camp.status === "pending_review"
                             ? "bg-amber-100 text-amber-800"
                             : camp.status === "Approved — Scheduling"
-                              ? "bg-blue-100 text-blue-800"
+                              ? "bg-festival-teal/10 text-festival-teal-dark"
                               : "bg-emerald-100 text-emerald-800"
                         }`}
                       >

@@ -20,7 +20,7 @@ export default function NearbyCouponCard({ coupon, showMap, onCardClick }) {
     <div
       className={`bg-white border rounded-2xl p-4 transition-all hover:border-brand-blue cursor-pointer shadow-sm relative flex gap-3.5 group hover:shadow-md ${
         isMarbella
-          ? "border-[#2563eb]/45 bg-[#2563eb]/[0.02]"
+          ? "border-festival-teal/45 bg-festival-teal/[0.02]"
           : "border-brand-border"
       }`}
       onClick={() => onCardClick?.(coupon)}
@@ -46,12 +46,12 @@ export default function NearbyCouponCard({ coupon, showMap, onCardClick }) {
           <h4 className="font-extrabold text-[10px] text-brand-navy uppercase tracking-wider truncate">
             {brandName}
           </h4>
-          <span className="text-[10px] font-black text-brand-blue bg-[#eff6ff] px-2 py-0.5 rounded-full whitespace-nowrap">
+          <span className="text-[10px] font-black text-festival-teal bg-warm-ivory px-2 py-0.5 rounded-full whitespace-nowrap">
             {coupon.distance} km away
           </span>
         </div>
         <div className="space-y-0.5">
-          <h3 className="font-black text-base text-brand-text group-hover:text-brand-blue transition-colors leading-snug">
+          <h3 className="font-black text-base text-brand-text group-hover:text-festival-teal transition-colors leading-snug">
             {discountText}
           </h3>
           <p className="text-[11px] text-brand-subtext font-semibold leading-relaxed line-clamp-1">
@@ -68,7 +68,7 @@ export default function NearbyCouponCard({ coupon, showMap, onCardClick }) {
           </Badge>
           <Link
             href={`/deals/${coupon._id}`}
-            className="text-[11px] font-extrabold text-brand-blue hover:underline flex items-center gap-0.5 ml-auto"
+            className="text-[11px] font-extrabold text-festival-teal hover:underline flex items-center gap-0.5 ml-auto"
           >
             Claim Offer <ChevronRight className="w-3.5 h-3.5" />
           </Link>

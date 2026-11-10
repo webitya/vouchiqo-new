@@ -17,9 +17,9 @@ import {
 
 const PLAN_COLORS = {
   starter: "bg-slate-200 text-slate-700",
-  growth: "bg-blue-100 text-blue-700",
-  pro: "bg-blue-100 text-blue-800",
-  enterprise: "bg-blue-100 text-blue-900",
+  growth: "bg-festival-teal/10 text-festival-teal",
+  pro: "bg-festival-teal/10 text-festival-teal-dark",
+  enterprise: "bg-festival-teal/10 text-royal-plum",
 };
 
 function UsageBar({ label, icon: Icon, used, limit, color }) {
@@ -94,14 +94,14 @@ export default function PlanUsageCard({
           icon={LayoutList}
           used={activeCoupons}
           limit={effectiveListingLimit}
-          color="bg-[#2563eb]"
+          color="bg-festival-teal"
         />
         <UsageBar
           label="Campaigns"
           icon={Megaphone}
           used={campaignsUsed}
           limit={effectiveCampaignLimit}
-          color="bg-blue-700"
+          color="bg-festival-teal-dark"
         />
 
         {renewalDays !== null && (
@@ -119,7 +119,7 @@ export default function PlanUsageCard({
 
         <Link
           href="/merchant/billing"
-          className="flex items-center gap-1 text-[11px] font-black text-blue-600 hover:text-blue-700 hover:underline underline-offset-2 mt-1"
+          className="flex items-center gap-1 text-[11px] font-black text-festival-teal hover:text-festival-teal-dark hover:underline underline-offset-2 mt-1"
         >
           <span>Upgrade Plan</span>
           <ArrowUpRight className="w-3.5 h-3.5" />

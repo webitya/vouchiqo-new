@@ -26,11 +26,11 @@ export default function BrandsClient({ brands = [] }) {
   }, [brands, searchQuery]);
 
   return (
-    <div className="w-full bg-[#f8fafc] text-slate-900 font-sans min-h-screen pb-14 text-left select-none">
+    <div className="w-full bg-warm-ivory text-slate-900 font-sans min-h-screen pb-14 text-left select-none">
       {/* ── 1. COMPACT HEADER BAR ── */}
-      <div className="bg-white border-b border-slate-200/90 px-2.5 sm:px-4 md:px-5 py-2">
+      <div className="bg-warm-ivory-light border-b border-brand-border px-2.5 sm:px-4 md:px-5 py-2">
         <div className="flex items-center gap-1.5 text-[10.5px] sm:text-[11px] text-slate-500 font-normal mb-0.5">
-          <Link href="/" className="hover:text-blue-600 transition-colors">
+          <Link href="/" className="hover:text-festival-teal transition-colors">
             Home
           </Link>
           <span>/</span>
@@ -39,10 +39,10 @@ export default function BrandsClient({ brands = [] }) {
 
         <div className="flex flex-wrap items-center justify-between gap-2.5">
           <div className="flex items-center gap-2">
-            <h1 className="text-[13.5px] sm:text-[15px] font-medium text-[#F72853] tracking-normal">
+            <h1 className="text-[13.5px] sm:text-[15px] font-heading font-bold text-festival-pink tracking-normal">
               All Partner Brands &amp; Stores
             </h1>
-            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[9.5px] sm:text-[10px] font-normal bg-rose-50 text-[#F72853] border border-rose-200/60">
+            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[9.5px] sm:text-[10px] font-heading font-semibold bg-festival-pink/10 text-festival-pink border border-festival-pink/20">
               {filteredBrands.length} Brands
             </span>
           </div>
@@ -55,7 +55,7 @@ export default function BrandsClient({ brands = [] }) {
               placeholder="Search brand or store..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-8 pr-7 py-1 text-xs text-slate-800 font-normal placeholder-slate-400 focus:outline-none focus:border-blue-500 transition-all"
+              className="w-full bg-white border border-brand-border rounded-lg pl-8 pr-7 py-1 text-xs text-slate-800 font-normal placeholder-slate-400 focus:outline-none focus:border-festival-teal focus:ring-1 focus:ring-festival-teal/20 transition-all"
             />
             {searchQuery && (
               <button
@@ -91,14 +91,14 @@ export default function BrandsClient({ brands = [] }) {
             ))}
           </div>
         ) : (
-          <div className="bg-white border border-slate-200 rounded-xl p-8 text-center max-w-md mx-auto space-y-3 shadow-2xs my-8">
+          <div className="bg-warm-ivory-light border border-brand-border rounded-xl p-8 text-center max-w-md mx-auto space-y-3 shadow-2xs my-8">
             <Store className="w-8 h-8 text-slate-400 mx-auto" />
             <p className="text-xs font-normal text-slate-700">
               No partner brands found matching &quot;{searchQuery}&quot;
             </p>
             <button
               onClick={() => setSearchQuery("")}
-              className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-normal rounded-lg transition-colors cursor-pointer"
+              className="px-3 py-1 bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-heading font-semibold rounded-lg transition-colors cursor-pointer"
             >
               Reset Search
             </button>

@@ -92,7 +92,7 @@ export default function Step6DeclarationsReview({
                 className={`text-xs font-semibold h-8 px-3 rounded-lg border flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs shrink-0 ${
                   allCommitmentsChecked
                     ? "bg-emerald-50 text-emerald-700 border-emerald-300 hover:bg-emerald-100 font-bold"
-                    : "bg-blue-50 text-blue-700 border-blue-300 hover:bg-blue-100"
+                    : "bg-warm-ivory text-festival-teal border-brand-border hover:bg-festival-teal/20"
                 }`}
               >
                 <CheckCheck className="w-3.5 h-3.5" />
@@ -186,7 +186,7 @@ export default function Step6DeclarationsReview({
                     className={`text-xs font-semibold h-8 px-3 rounded-lg border flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs ${
                       allPoliciesChecked
                         ? "bg-emerald-50 text-emerald-700 border-emerald-300 hover:bg-emerald-100 font-bold"
-                        : "bg-blue-50 text-blue-700 border-blue-300 hover:bg-blue-100"
+                        : "bg-warm-ivory text-festival-teal border-brand-border hover:bg-festival-teal/20"
                     }`}
                   >
                     <CheckCheck className="w-3.5 h-3.5" />
@@ -262,7 +262,7 @@ export default function Step6DeclarationsReview({
                               p.id || itemKey,
                             );
                           }}
-                          className="inline-flex items-center gap-1 text-[10px] font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 px-2 py-0.5 rounded transition-all shadow-2xs shrink-0 cursor-pointer disabled:opacity-75"
+                          className="inline-flex items-center gap-1 text-[10px] font-medium text-festival-teal bg-warm-ivory hover:bg-festival-teal/20 border border-brand-border px-2 py-0.5 rounded transition-all shadow-2xs shrink-0 cursor-pointer disabled:opacity-75"
                         >
                           <FileText className="w-3 h-3 text-rose-500 shrink-0" />
                           <span>
@@ -271,9 +271,9 @@ export default function Step6DeclarationsReview({
                               : "PDF"}
                           </span>
                           {downloadingPdfId === (p.id || itemKey) ? (
-                            <Loader2 className="w-2.5 h-2.5 text-blue-600 animate-spin shrink-0" />
+                            <Loader2 className="w-2.5 h-2.5 text-festival-teal animate-spin shrink-0" />
                           ) : (
-                            <Download className="w-2.5 h-2.5 text-blue-600 shrink-0" />
+                            <Download className="w-2.5 h-2.5 text-festival-teal shrink-0" />
                           )}
                         </button>
                       )}

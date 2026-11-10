@@ -164,7 +164,7 @@ export default function MerchantRevivals() {
               }}
               className="text-[10px] font-bold rounded-lg border-slate-200 h-7 px-2.5 gap-1 cursor-pointer"
             >
-              <Gift className="w-3 h-3 text-blue-600" /> Alt Deal
+              <Gift className="w-3 h-3 text-festival-teal" /> Alt Deal
             </Button>
             <Button
               size="sm"

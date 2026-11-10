@@ -34,7 +34,7 @@ import MobileTableCard from "@/components/shared/data/MobileTableCard";
 // 8 Distinct Colorful Row Palettes (Clearly visible without hover)
 const ROW_COLOR_THEMES = [
   {
-    row: "bg-blue-100/65 hover:bg-blue-100/90 border-l-[3.5px] border-l-blue-600 border-b border-blue-200/80 text-slate-900",
+    row: "bg-festival-teal/10 hover:bg-festival-teal/20 border-l-[3.5px] border-l-festival-teal border-b border-festival-teal/20 text-slate-900",
   },
   {
     row: "bg-emerald-100/65 hover:bg-emerald-100/90 border-l-[3.5px] border-l-emerald-600 border-b border-emerald-200/80 text-slate-900",
@@ -182,7 +182,7 @@ export default function FeaturedDeals() {
               className={cn(
                 "rounded-xl border p-2.5 cursor-pointer transition-all duration-200 shadow-2xs font-sans",
                 activeTab === "regular"
-                  ? "bg-blue-50/70 border-blue-300 ring-1 ring-blue-300"
+                  ? "bg-warm-ivory border-festival-teal/30 ring-1 ring-festival-teal/20"
                   : "bg-white border-slate-200/80 hover:border-slate-300",
               )}
             >
@@ -195,7 +195,7 @@ export default function FeaturedDeals() {
                     {stats.regular}
                   </span>
                 </div>
-                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 border border-blue-200/60 flex items-center justify-center shrink-0">
+                <div className="w-7 h-7 rounded-lg bg-warm-ivory text-festival-teal border border-festival-teal/20 flex items-center justify-center shrink-0">
                   <Tag className="w-3.5 h-3.5" />
                 </div>
               </CardContent>
@@ -256,7 +256,7 @@ export default function FeaturedDeals() {
                   placeholder="Search deals by brand name or title..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 focus:border-blue-500 focus:bg-white rounded-lg pl-8 pr-7 py-1 text-xs text-slate-800 placeholder-slate-400 outline-none transition-all"
+                  className="w-full bg-slate-50 border border-slate-200 focus:border-festival-teal focus:bg-white rounded-lg pl-8 pr-7 py-1 text-xs text-slate-800 placeholder-slate-400 outline-none transition-all"
                 />
                 {searchQuery && (
                   <button
@@ -299,7 +299,7 @@ export default function FeaturedDeals() {
                         className={cn(
                           "text-[10.5px] font-medium px-2 py-0.5 rounded-md transition-all cursor-pointer flex items-center gap-1 border-0",
                           activeTab === tab.id
-                            ? "bg-white text-blue-600 shadow-2xs"
+                            ? "bg-white text-festival-teal shadow-2xs"
                             : "text-slate-500 hover:text-slate-800 bg-transparent",
                         )}
                       >
@@ -308,7 +308,7 @@ export default function FeaturedDeals() {
                           className={cn(
                             "text-[9px] px-1 rounded-full",
                             activeTab === tab.id
-                              ? "bg-blue-50 text-blue-600"
+                              ? "bg-warm-ivory text-festival-teal"
                               : "bg-slate-200/70 text-slate-600",
                           )}
                         >
@@ -349,7 +349,7 @@ export default function FeaturedDeals() {
                           colSpan={4}
                           className="py-8 text-center text-slate-400 text-xs"
                         >
-                          <RefreshCw className="w-4 h-4 animate-spin mx-auto mb-1.5 text-blue-500" />
+                          <RefreshCw className="w-4 h-4 animate-spin mx-auto mb-1.5 text-festival-teal" />
                           Loading coupon listings...
                         </td>
                       </tr>
@@ -469,14 +469,14 @@ export default function FeaturedDeals() {
                                           "h-6.5 px-2 text-[10.5px] font-medium rounded-md cursor-pointer shadow-2xs gap-1 transition-colors",
                                           isFeatured
                                             ? "bg-white text-amber-800 border-amber-300 hover:bg-amber-50"
-                                            : "bg-white text-blue-700 border-blue-200 hover:bg-blue-50",
+                                            : "bg-white text-festival-teal border-brand-border hover:bg-warm-ivory",
                                         )}
                                       >
                                         {isToggling
                                           ? <RefreshCw className="w-3 h-3 animate-spin" />
                                           : isFeatured
                                             ? <XCircle className="w-3 h-3 text-amber-600" />
-                                            : <Pin className="w-3 h-3 text-blue-600" />}
+                                            : <Pin className="w-3 h-3 text-festival-teal" />}
                                         <span>
                                           {isFeatured
                                             ? "Unfeature"
@@ -505,7 +505,7 @@ export default function FeaturedDeals() {
             <div className="md:hidden space-y-3">
               {loading
                 ? <div className="py-8 text-center text-slate-400 text-xs">
-                    <RefreshCw className="w-4 h-4 animate-spin mx-auto mb-1.5 text-blue-500" />
+                    <RefreshCw className="w-4 h-4 animate-spin mx-auto mb-1.5 text-festival-teal" />
                     Loading coupon listings...
                   </div>
                 : filteredCoupons.length === 0
@@ -538,7 +538,7 @@ export default function FeaturedDeals() {
                           avatarText={
                             !coupon.merchantId?.logo ? brandName : undefined
                           }
-                          avatarBg="bg-blue-600"
+                          avatarBg="bg-festival-teal"
                           badge="BRAND PARTNER"
                           title={brandName}
                           subtitle={`${coupon.category || "General"} • ${coupon.merchantId?.location?.city || "Ranchi"}`}

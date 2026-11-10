@@ -47,7 +47,7 @@ export default function ApplicationSummary({
         <DialogHeader className="space-y-1.5 pb-4 border-b border-slate-100">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <DialogTitle className="text-base sm:text-lg font-semibold text-slate-900 flex items-center gap-2">
-              <Store className="w-5 h-5 text-blue-600 shrink-0" />
+              <Store className="w-5 h-5 text-festival-teal shrink-0" />
               Submitted Business Profile &amp; Application Details
             </DialogTitle>
             <Badge className="bg-slate-900 text-white font-medium text-xs px-3 py-1 rounded-md shrink-0">
@@ -76,8 +76,8 @@ export default function ApplicationSummary({
               <span className="text-[10px] uppercase font-medium tracking-wider text-slate-400 block">
                 Primary Business Category
               </span>
-              <span className="font-medium text-xs sm:text-sm text-blue-700 flex items-center gap-1.5 leading-tight">
-                <Tag className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+              <span className="font-medium text-xs sm:text-sm text-festival-teal flex items-center gap-1.5 leading-tight">
+                <Tag className="w-3.5 h-3.5 text-festival-teal shrink-0" />
                 <span>{category}</span>
               </span>
             </div>
@@ -113,7 +113,7 @@ export default function ApplicationSummary({
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               <div className="flex items-center gap-3 p-3.5 bg-white rounded-xl border border-slate-200/90 shadow-2xs">
-                <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                <div className="w-8 h-8 rounded-lg bg-festival-teal/10 text-festival-teal flex items-center justify-center shrink-0">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -185,7 +185,7 @@ export default function ApplicationSummary({
                   className="p-3 rounded-xl border border-slate-200/90 flex items-center justify-between text-xs bg-white shadow-2xs hover:border-slate-300 transition-colors"
                 >
                   <span className="font-semibold text-slate-800 flex items-center gap-2 truncate pr-2">
-                    <FileCheck className="w-4 h-4 text-blue-600 shrink-0" />
+                    <FileCheck className="w-4 h-4 text-festival-teal shrink-0" />
                     <span className="truncate">{doc.name}</span>
                   </span>
                   <Badge

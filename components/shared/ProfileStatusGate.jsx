@@ -25,7 +25,7 @@ export default function ProfileStatusGate({ status }) {
         className={`w-14 h-14 rounded-full flex items-center justify-center mx-auto border ${
           isMissing
             ? "bg-amber-50 text-amber-500 border-amber-100"
-            : "bg-blue-50 text-brand-blue border-blue-100"
+            : "bg-festival-teal/10 text-brand-blue border-brand-border"
         }`}
       >
         {isMissing ? (

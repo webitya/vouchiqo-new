@@ -112,7 +112,7 @@ function CreateListingContent() {
                   className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border ${
                     listingType === "affiliate"
                       ? "bg-indigo-50 text-indigo-700 border-indigo-200/60"
-                      : "bg-rose-50 text-[#F72853] border-rose-200/60"
+                      : "bg-rose-50 text-[#FF2E63] border-rose-200/60"
                   }`}
                 >
                   {listingType === "affiliate"
@@ -147,14 +147,14 @@ function CreateListingContent() {
               onClick={() => handleSwitchType("offer")}
               className={`relative flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl border transition-all cursor-pointer select-none ${
                 listingType === "offer"
-                  ? "border-[#F72853] bg-gradient-to-br from-rose-50/70 via-white to-rose-50/30 shadow-xs ring-2 ring-[#F72853]/20"
+                  ? "border-[#FF2E63] bg-gradient-to-br from-rose-50/70 via-white to-rose-50/30 shadow-xs ring-2 ring-[#FF2E63]/20"
                   : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/60"
               }`}
             >
               <div
                 className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
                   listingType === "offer"
-                    ? "bg-[#F72853] text-white shadow-xs"
+                    ? "bg-[#FF2E63] text-white shadow-xs"
                     : "bg-slate-100 text-slate-500"
                 }`}
               >
@@ -182,7 +182,7 @@ function CreateListingContent() {
                 </div>
               </div>
               {listingType === "offer" && (
-                <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-[#F72853] text-white flex items-center justify-center shadow-2xs">
+                <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-[#FF2E63] text-white flex items-center justify-center shadow-2xs">
                   <Check className="w-3 h-3 stroke-[2.5]" />
                 </div>
               )}
@@ -275,7 +275,7 @@ function CreateListingContent() {
                         <span
                           className={`w-4.5 h-4.5 rounded-full flex items-center justify-center text-[10px] font-medium transition-all ${
                             isActive
-                              ? "bg-[#F72853] text-white shadow-2xs"
+                              ? "bg-[#FF2E63] text-white shadow-2xs"
                               : isPast
                                 ? "bg-emerald-100 text-emerald-700 border border-emerald-200"
                                 : "bg-slate-100 text-slate-400"

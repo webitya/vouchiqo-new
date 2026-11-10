@@ -53,12 +53,12 @@ const SettingsTab = dynamic(() => import("./components/SettingsTab"), {
 });
 
 const DONUT_COLORS = [
-  "#2563eb",
+  "#007F79",
   "#1E4FAF",
-  "#2563eb",
+  "#007F79",
   "#FFB020",
   "#A855F7",
-  "#3B82F6",
+  "#007F79",
   "#EC4899",
   "#14B8A6",
 ];
@@ -452,12 +452,12 @@ function ProfileContent() {
               onClick={() => handleTabChange(t.id)}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs transition-all whitespace-nowrap cursor-pointer border shrink-0 ${
                 isActive
-                  ? "bg-rose-50 text-[#F72853] border-rose-200 font-medium shadow-2xs"
+                  ? "bg-rose-50 text-[#FF2E63] border-rose-200 font-medium shadow-2xs"
                   : "bg-white text-slate-600 border-transparent hover:bg-slate-50 hover:text-slate-900 font-normal"
               }`}
             >
               <Icon
-                className={`w-3.5 h-3.5 ${isActive ? "text-[#F72853]" : "text-slate-400"}`}
+                className={`w-3.5 h-3.5 ${isActive ? "text-[#FF2E63]" : "text-slate-400"}`}
               />
               <span>{t.label}</span>
             </button>

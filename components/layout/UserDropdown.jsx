@@ -158,22 +158,22 @@ export default function UserDropdown({
   // Per-role avatar styles
   const roleAvatarStyle =
     effectiveRole === "admin"
-      ? "bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 text-white border-purple-300"
+      ? "bg-gradient-to-br from-[#35104A] via-[#1D062B] to-[#007F79] text-white border-purple-300"
       : effectiveRole === "merchant"
-        ? "bg-gradient-to-br from-[#F72853] to-rose-600 text-white border-rose-300"
+        ? "bg-gradient-to-br from-[#FF2E63] to-rose-600 text-white border-rose-300"
         : "bg-slate-100 text-slate-800 border-slate-200";
 
   const renderAvatarFallback = () => {
     if (effectiveRole === "admin") {
       return (
-        <div className="w-full h-full bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 text-white font-bold text-xs flex items-center justify-center rounded-[7px]">
+        <div className="w-full h-full bg-gradient-to-br from-[#35104A] via-[#1D062B] to-[#007F79] text-white font-bold text-xs flex items-center justify-center rounded-[7px]">
           <ShieldCheck className="w-4 h-4 text-white stroke-[2.2]" />
         </div>
       );
     }
     if (effectiveRole === "merchant") {
       return (
-        <div className="w-full h-full bg-gradient-to-br from-[#F72853] to-rose-600 text-white font-medium text-xs flex items-center justify-center rounded-[7px]">
+        <div className="w-full h-full bg-gradient-to-br from-[#FF2E63] to-rose-600 text-white font-medium text-xs flex items-center justify-center rounded-[7px]">
           <Store className="w-4 h-4 text-white stroke-[2]" />
         </div>
       );
@@ -302,8 +302,8 @@ export default function UserDropdown({
                     SUPER ADMIN
                   </span>
                 ) : effectiveRole === "merchant" ? (
-                  <span className="bg-rose-50 text-[#F72853] border border-rose-200/90 text-[8.5px] font-semibold px-1.5 py-0.5 rounded-[7px] inline-flex items-center gap-1 tracking-wider shadow-2xs">
-                    <Store className="w-2.5 h-2.5 text-[#F72853]" /> MERCHANT
+                  <span className="bg-rose-50 text-[#FF2E63] border border-rose-200/90 text-[8.5px] font-semibold px-1.5 py-0.5 rounded-[7px] inline-flex items-center gap-1 tracking-wider shadow-2xs">
+                    <Store className="w-2.5 h-2.5 text-[#FF2E63]" /> MERCHANT
                     PARTNER
                   </span>
                 ) : (
@@ -330,15 +330,15 @@ export default function UserDropdown({
                     href={item.url}
                     className={`flex items-center gap-2.5 cursor-pointer w-full text-xs rounded-xl px-2.5 py-1.5 group transition-all ${
                       active
-                        ? "bg-rose-50 text-[#F72853] font-medium border border-rose-200/70 shadow-2xs"
+                        ? "bg-rose-50 text-[#FF2E63] font-medium border border-rose-200/70 shadow-2xs"
                         : "text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-normal border border-transparent"
                     }`}
                   >
                     <Icon
                       className={`h-3.5 w-3.5 transition-colors shrink-0 ${
                         active
-                          ? "text-[#F72853]"
-                          : "text-slate-400 group-hover:text-[#F72853]"
+                          ? "text-[#FF2E63]"
+                          : "text-slate-400 group-hover:text-[#FF2E63]"
                       }`}
                     />
                     <span>{item.title}</span>
@@ -383,15 +383,15 @@ export default function UserDropdown({
                     onClick={(e) => handleMerchantNavClick(e, item.url)}
                     className={`flex items-center gap-2.5 cursor-pointer w-full text-xs rounded-xl px-2.5 py-1.5 group transition-all ${
                       active
-                        ? "bg-rose-50 text-[#F72853] font-medium border border-rose-200/70 shadow-2xs"
+                        ? "bg-rose-50 text-[#FF2E63] font-medium border border-rose-200/70 shadow-2xs"
                         : "text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-normal border border-transparent"
                     }`}
                   >
                     <Icon
                       className={`h-3.5 w-3.5 transition-colors shrink-0 ${
                         active
-                          ? "text-[#F72853]"
-                          : "text-slate-400 group-hover:text-[#F72853]"
+                          ? "text-[#FF2E63]"
+                          : "text-slate-400 group-hover:text-[#FF2E63]"
                       }`}
                     />
                     <span>{item.title}</span>
@@ -430,15 +430,15 @@ export default function UserDropdown({
                     href={item.url}
                     className={`flex items-center gap-2.5 cursor-pointer w-full text-xs rounded-xl px-2.5 py-1.5 group transition-all ${
                       active
-                        ? "bg-rose-50 text-[#F72853] font-medium border border-rose-200/70 shadow-2xs"
+                        ? "bg-rose-50 text-[#FF2E63] font-medium border border-rose-200/70 shadow-2xs"
                         : "text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-normal border border-transparent"
                     }`}
                   >
                     <Icon
                       className={`h-3.5 w-3.5 transition-colors shrink-0 ${
                         active
-                          ? "text-[#F72853]"
-                          : "text-slate-400 group-hover:text-[#F72853]"
+                          ? "text-[#FF2E63]"
+                          : "text-slate-400 group-hover:text-[#FF2E63]"
                       }`}
                     />
                     <span>{item.title}</span>
@@ -456,7 +456,7 @@ export default function UserDropdown({
             href="/"
             className={`flex items-center gap-2.5 cursor-pointer w-full text-xs rounded-xl px-2.5 py-1.5 group transition-all ${
               pathname === "/"
-                ? "bg-rose-50 text-[#F72853] font-medium border border-rose-200/70 shadow-2xs"
+                ? "bg-rose-50 text-[#FF2E63] font-medium border border-rose-200/70 shadow-2xs"
                 : "text-slate-600 hover:text-slate-900 hover:bg-slate-50 font-normal border border-transparent"
             }`}
           >

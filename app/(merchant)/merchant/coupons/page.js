@@ -68,7 +68,7 @@ function StatCard({
       onClick={onClick}
       className={`border shadow-2xs bg-white rounded-xl p-3 sm:p-3.5 transition-all font-sans cursor-pointer ${
         isActive
-          ? "border-[#F72853] ring-1 ring-[#F72853]/30 bg-rose-50/20"
+          ? "border-[#FF2E63] ring-1 ring-[#FF2E63]/30 bg-rose-50/20"
           : "border-slate-200/80 hover:border-slate-300 hover:shadow-xs"
       }`}
     >
@@ -430,7 +430,7 @@ function MerchantCouponsContent() {
                     />
                   : isAffiliate
                     ? <ShoppingBag className="w-4 h-4 text-emerald-600" />
-                    : <Ticket className="w-4 h-4 text-[#F72853]" />}
+                    : <Ticket className="w-4 h-4 text-[#FF2E63]" />}
               </div>
 
               <div className="flex flex-col gap-0.5 min-w-0">
@@ -447,7 +447,7 @@ function MerchantCouponsContent() {
                     className={`text-[9px] font-semibold px-1.5 py-0.2 rounded font-sans uppercase tracking-wider border ${
                       isAffiliate
                         ? "bg-emerald-50 text-emerald-700 border-emerald-200/60"
-                        : "bg-rose-50 text-[#F72853] border-rose-200/60"
+                        : "bg-rose-50 text-[#FF2E63] border-rose-200/60"
                     }`}
                   >
                     {isAffiliate ? "Affiliate Deal" : "Coupon Voucher"}
@@ -489,7 +489,7 @@ function MerchantCouponsContent() {
             className={`text-[10px] font-medium px-2 py-0.5 rounded-md border font-sans ${
               r.listingType === "affiliate"
                 ? "text-emerald-700 bg-emerald-50 border-emerald-200/80"
-                : "text-[#F72853] bg-rose-50 border-rose-200/80"
+                : "text-[#FF2E63] bg-rose-50 border-rose-200/80"
             }`}
           >
             {r.discountText}
@@ -654,7 +654,7 @@ const renderMobileListingCard = useCallback(
                 className={`text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1 ${
                   isAffiliate
                     ? "bg-emerald-50 text-emerald-700 border-emerald-200/80"
-                    : "bg-rose-50 text-[#F72853] border-rose-200/80"
+                    : "bg-rose-50 text-[#FF2E63] border-rose-200/80"
                 }`}
               >
                 {isAffiliate ? (
@@ -664,7 +664,7 @@ const renderMobileListingCard = useCallback(
                   </>
                 ) : (
                   <>
-                    <Ticket className="w-2.5 h-2.5 text-[#F72853] shrink-0" />
+                    <Ticket className="w-2.5 h-2.5 text-[#FF2E63] shrink-0" />
                     <span>Coupon Voucher</span>
                   </>
                 )}
@@ -706,7 +706,7 @@ const renderMobileListingCard = useCallback(
                   {isAffiliate ? (
                     <ShoppingBag className="w-6 h-6 text-emerald-600/80" />
                   ) : (
-                    <Ticket className="w-6 h-6 text-[#F72853]/80" />
+                    <Ticket className="w-6 h-6 text-[#FF2E63]/80" />
                   )}
                 </div>
               )}
@@ -756,7 +756,7 @@ const renderMobileListingCard = useCallback(
                 <div className="mt-0.5 flex items-baseline gap-1.5 flex-wrap min-w-0">
                   <span
                     className={`text-xs sm:text-sm font-bold truncate ${
-                      isAffiliate ? "text-emerald-700" : "text-[#F72853]"
+                      isAffiliate ? "text-emerald-700" : "text-[#FF2E63]"
                     }`}
                   >
                     {item.discountText || (isAffiliate && item.discountPrice ? `₹${item.discountPrice}` : "Special Offer")}
@@ -909,7 +909,7 @@ const renderMobileListingCard = useCallback(
             description="All active, pending & paused deals"
             colorClass="text-slate-900"
             icon={Layers}
-            iconBg="bg-rose-50 text-[#F72853]"
+            iconBg="bg-rose-50 text-[#FF2E63]"
             isActive={statusFilter === "all" && typeFilter === "all"}
             onClick={() => {
               handleStatusTab("all");
@@ -1030,7 +1030,7 @@ const renderMobileListingCard = useCallback(
                 <Link
                   href="/merchant/coupons/new"
                   data-tour="create-coupon-btn"
-                  className="bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-semibold py-1.5 px-4 flex items-center justify-center gap-1.5 shadow-xs rounded-xl border-0 h-9 cursor-pointer transition-all shrink-0 w-full sm:w-auto"
+                  className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-semibold py-1.5 px-4 flex items-center justify-center gap-1.5 shadow-xs rounded-xl border-0 h-9 cursor-pointer transition-all shrink-0 w-full sm:w-auto"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>Post New Listing</span>
@@ -1050,7 +1050,7 @@ const renderMobileListingCard = useCallback(
               renderMobileCard={renderMobileListingCard}
               emptyState={
                 <div className="py-12 px-4 flex flex-col items-center justify-center text-center space-y-2.5">
-                  <div className="w-10 h-10 rounded-xl bg-rose-50 text-[#F72853] flex items-center justify-center border border-rose-100/80">
+                  <div className="w-10 h-10 rounded-xl bg-rose-50 text-[#FF2E63] flex items-center justify-center border border-rose-100/80">
                     <Layers className="w-5 h-5" />
                   </div>
                   <div className="space-y-0.5">
@@ -1071,7 +1071,7 @@ const renderMobileListingCard = useCallback(
                       <div className="flex items-center gap-2 pt-1">
                         <Link
                           href="/merchant/coupons/new"
-                          className="inline-flex items-center gap-1.5 bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-medium px-4 py-1.5 rounded-xl transition-all shadow-xs"
+                          className="inline-flex items-center gap-1.5 bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium px-4 py-1.5 rounded-xl transition-all shadow-xs"
                         >
                           <Plus className="w-3.5 h-3.5" />
                           <span>Post New Listing</span>

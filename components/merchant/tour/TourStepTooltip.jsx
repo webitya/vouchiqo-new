@@ -89,7 +89,7 @@ export default function TourStepTooltip({
       </button>
 
       {/* Step Header Indicator */}
-      <div className="w-fit text-[11px] font-bold text-blue-600 bg-blue-50 border border-blue-100 px-2.5 py-0.5 rounded-full uppercase tracking-wider font-sans">
+      <div className="w-fit text-[11px] font-bold text-festival-teal bg-festival-teal/10 border border-brand-border px-2.5 py-0.5 rounded-full uppercase tracking-wider font-sans">
         STEP {currentStepIndex + 1} OF {totalSteps}
       </div>
 
@@ -115,7 +115,7 @@ export default function TourStepTooltip({
         <Button
           type="button"
           onClick={onNext}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs px-5 py-2.5 rounded-xl cursor-pointer transition-all shadow-md shadow-blue-600/20 font-sans"
+          className="bg-festival-teal hover:bg-[#00635E] text-white font-semibold text-xs px-5 py-2.5 rounded-xl cursor-pointer transition-all shadow-md shadow-festival-teal/20 font-sans"
         >
           {isLastStep ? "Got It" : "Next"}
         </Button>

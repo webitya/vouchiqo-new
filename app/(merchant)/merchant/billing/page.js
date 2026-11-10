@@ -314,7 +314,7 @@ export default function MerchantSubscription() {
           contact: merchant?.contactPhone || "",
         },
         theme: {
-          color: "#2563eb",
+          color: "#007F79",
         },
         handler: async (response) => {
           setIsRazorpayLoading(true);

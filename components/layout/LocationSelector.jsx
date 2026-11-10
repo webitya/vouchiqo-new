@@ -79,18 +79,18 @@ export default function LocationSelector({
         flex items-center justify-between font-semibold transition-all duration-200 cursor-pointer select-none outline-none
         ${
           inDrawer
-            ? "w-full px-4 py-3 text-slate-700 hover:bg-[#eff6ff] hover:text-[#2563eb] border-b border-slate-100"
+            ? "w-full px-4 py-3 text-slate-700 hover:bg-warm-ivory hover:text-festival-teal border-b border-slate-100"
             : isMobile
-              ? "text-[11px] text-[#2563eb] bg-[#2563eb]/5 border border-[#2563eb]/20 rounded-md px-2.5 py-1.5 hover:bg-[#2563eb]/10"
-              : "h-8 sm:h-8.5 xl:h-9 text-xs xl:text-[13px] text-blue-700 bg-blue-50/50 border border-blue-200/80 rounded-lg px-2 sm:px-2.5 xl:px-3 hover:bg-blue-100/60 hover:border-blue-300 hover:shadow-xs shrink-0 max-w-[125px] sm:max-w-[135px] xl:max-w-[160px]"
+              ? "text-[11px] text-festival-teal bg-festival-teal/5 border border-festival-teal/20 rounded-md px-2.5 py-1.5 hover:bg-festival-teal/10"
+              : "h-8 sm:h-8.5 xl:h-9 text-xs xl:text-[13px] text-royal-plum bg-warm-ivory border border-brand-border hover:border-festival-teal rounded-lg px-2 sm:px-2.5 xl:px-3 hover:bg-warm-ivory hover:border-festival-teal hover:shadow-xs shrink-0 max-w-[125px] sm:max-w-[135px] xl:max-w-[160px]"
         }
       `}
     >
       <div className="flex items-center gap-1 xl:gap-1.5 min-w-0">
         {isDetecting ? (
-          <Loader2 className="w-3.5 h-3.5 animate-spin text-blue-500 shrink-0" />
+          <Loader2 className="w-3.5 h-3.5 animate-spin text-festival-teal shrink-0" />
         ) : (
-          <MapPin className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+          <MapPin className="w-3.5 h-3.5 text-festival-teal shrink-0" />
         )}
         <span className="truncate leading-none">
           {inDrawer
@@ -102,7 +102,7 @@ export default function LocationSelector({
       </div>
       <ChevronDown
         className={`w-3 h-3 xl:w-3.5 xl:h-3.5 text-slate-400 transition-transform duration-200 shrink-0 ml-1 ${
-          open ? "rotate-180 text-blue-500" : ""
+          open ? "rotate-180 text-festival-teal" : ""
         }`}
       />
     </button>
@@ -154,7 +154,7 @@ export default function LocationSelector({
               w-full pl-8 pr-3 py-1.5 text-[12px] rounded-lg
               bg-slate-50 border border-slate-100 text-slate-800
               placeholder:text-slate-400 outline-none
-              focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all duration-200
+              focus:border-festival-teal focus:bg-white focus:ring-2 focus:ring-festival-teal/20 transition-all duration-200
             "
           />
         </div>
@@ -177,8 +177,8 @@ export default function LocationSelector({
                     w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[12.5px] transition-all duration-150 cursor-pointer
                     ${
                       isActive
-                        ? "bg-blue-600 text-white font-semibold"
-                        : "text-slate-600 hover:bg-blue-50 hover:text-blue-700"
+                        ? "bg-festival-teal text-white font-semibold"
+                        : "text-slate-600 hover:bg-warm-ivory hover:text-festival-teal"
                     }
                   `}
                 >
@@ -247,7 +247,7 @@ export default function LocationSelector({
             w-full pl-8 pr-3 py-1.5 text-[12px] rounded-lg
             bg-white border border-slate-200 text-slate-800
             placeholder:text-slate-400 outline-none
-            focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all duration-200
+            focus:border-festival-teal focus:ring-2 focus:ring-festival-teal/20 transition-all duration-200
           "
         />
       </div>
@@ -270,8 +270,8 @@ export default function LocationSelector({
                   w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[12.5px] transition-all duration-150 cursor-pointer
                   ${
                     isActive
-                      ? "bg-blue-600 text-white font-semibold"
-                      : "text-slate-600 hover:bg-blue-50 hover:text-blue-700 bg-white border border-slate-100"
+                      ? "bg-festival-teal text-white font-semibold"
+                      : "text-slate-600 hover:bg-warm-ivory hover:text-festival-teal bg-white border border-slate-100"
                   }
                 `}
               >

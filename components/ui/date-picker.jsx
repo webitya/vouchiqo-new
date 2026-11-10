@@ -35,7 +35,7 @@ export function DatePicker({
   onChange,
   placeholder = "Pick a date",
   className,
-  iconColor = "text-blue-600",
+  iconColor = "text-festival-teal",
   minDate = new Date(new Date().setHours(0, 0, 0, 0)),
   allowPastDates = false,
 }) {

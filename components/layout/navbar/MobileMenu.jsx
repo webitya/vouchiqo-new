@@ -141,7 +141,7 @@ export const MobileMenu = () => {
                 href={href}
                 prefetch={true}
                 onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 px-5 py-3.5 text-[14px] font-medium text-slate-700 hover:bg-rose-50/60 hover:text-[#F72853] active:bg-rose-100/60 transition-all border-b border-slate-100/50"
+                className="flex items-center gap-3 px-5 py-3.5 text-[14px] font-medium text-slate-700 hover:bg-rose-50/60 hover:text-[#FF2E63] active:bg-rose-100/60 transition-all border-b border-slate-100/50"
               >
                 <Icon className="h-4.5 w-4.5 stroke-[1.8] text-slate-400 shrink-0" />
                 <span>{label}</span>
@@ -162,9 +162,9 @@ export const MobileMenu = () => {
                         : "/profile"
                     }
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center gap-1.5 px-2 py-2 text-[12px] font-medium text-[#F72853] bg-rose-50/60 border border-rose-100 rounded-lg hover:bg-rose-100/50 transition-all"
+                    className="flex items-center justify-center gap-1.5 px-2 py-2 text-[12px] font-medium text-[#FF2E63] bg-rose-50/60 border border-rose-100 rounded-lg hover:bg-rose-100/50 transition-all"
                   >
-                    <User className="h-4 w-4 text-[#F72853] shrink-0" />
+                    <User className="h-4 w-4 text-[#FF2E63] shrink-0" />
                     <span>My Profile</span>
                   </Link>
                   <Link
@@ -174,9 +174,9 @@ export const MobileMenu = () => {
                         : "/customer/claimed"
                     }
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center gap-1.5 px-2 py-2 text-[12px] font-medium text-[#F72853] bg-rose-50/60 border border-rose-100 rounded-lg hover:bg-rose-100/50 transition-all"
+                    className="flex items-center justify-center gap-1.5 px-2 py-2 text-[12px] font-medium text-[#FF2E63] bg-rose-50/60 border border-rose-100 rounded-lg hover:bg-rose-100/50 transition-all"
                   >
-                    <Ticket className="h-4 w-4 text-[#F72853] shrink-0" />
+                    <Ticket className="h-4 w-4 text-[#FF2E63] shrink-0" />
                     <span>My Offers</span>
                   </Link>
                 </div>
@@ -191,7 +191,7 @@ export const MobileMenu = () => {
                       className="h-8 w-8 rounded-full object-cover"
                     />
                   ) : (
-                    <div className="h-8 w-8 rounded-full bg-rose-100 text-[#F72853] font-medium text-xs flex items-center justify-center uppercase">
+                    <div className="h-8 w-8 rounded-full bg-rose-100 text-[#FF2E63] font-medium text-xs flex items-center justify-center uppercase">
                       {session.user.name?.slice(0, 2).toUpperCase() || "U"}
                     </div>
                   )}
@@ -216,7 +216,7 @@ export const MobileMenu = () => {
               <Link
                 href="/login"
                 onClick={() => setIsOpen(false)}
-                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-[#F72853] text-white hover:bg-[#df1c44] text-[13px] font-medium rounded-lg transition-all shadow-xs"
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-[#FF2E63] text-white hover:bg-[#E02253] text-[13px] font-heading font-bold rounded-lg transition-all shadow-xs"
               >
                 <User className="h-4 w-4" />
                 Login

@@ -115,7 +115,7 @@ export default function AdminCampaignsPage() {
               value="calendar"
               className="rounded-xl text-xs font-bold py-2 data-[state=active]:bg-white data-[state=active]:shadow-2xs cursor-pointer"
             >
-              <Calendar className="w-3.5 h-3.5 mr-1 text-blue-600" /> Calendar
+              <Calendar className="w-3.5 h-3.5 mr-1 text-festival-teal" /> Calendar
               &amp; Schedule
             </TabsTrigger>
             <TabsTrigger

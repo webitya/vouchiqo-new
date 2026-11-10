@@ -145,12 +145,12 @@ export function NavMain({ groups, isMerchant = false }) {
                 // CTA item (e.g. Post New Listing)
                 if (item.isCta) {
                   const ctaClass = isParentActive
-                    ? "bg-[#F72853] text-white shadow-sm shadow-[#F72853]/25 font-medium rounded-xl"
-                    : "border border-rose-200 text-[#F72853] hover:bg-[#F72853] hover:text-white font-medium bg-rose-50/60 shadow-2xs rounded-xl";
+                    ? "bg-[#FF2E63] text-white shadow-sm shadow-[#FF2E63]/25 font-medium rounded-xl"
+                    : "border border-rose-200 text-[#FF2E63] hover:bg-[#FF2E63] hover:text-white font-medium bg-rose-50/60 shadow-2xs rounded-xl";
 
                   const ctaIconClass = isParentActive
                     ? "text-white"
-                    : "text-[#F72853]";
+                    : "text-[#FF2E63]";
 
                   return (
                     <SidebarMenuItem
@@ -183,8 +183,8 @@ export function NavMain({ groups, isMerchant = false }) {
                 // Expandable sub-items menu (e.g. My Listings, Merchants)
                 if (hasSubItems) {
                   const parentBtnClass = isParentActive
-                    ? "!bg-[#F72853] !text-white font-medium shadow-sm shadow-[#F72853]/25 hover:!bg-[#e01e47] rounded-xl"
-                    : "bg-transparent hover:bg-rose-50/70 text-slate-700 hover:text-[#F72853] font-normal border border-transparent hover:border-rose-200/60 rounded-xl transition-all";
+                    ? "!bg-[#FF2E63] !text-white font-medium shadow-sm shadow-[#FF2E63]/25 hover:!bg-[#e01e47] rounded-xl"
+                    : "bg-transparent hover:bg-rose-50/70 text-slate-700 hover:text-[#FF2E63] font-normal border border-transparent hover:border-rose-200/60 rounded-xl transition-all";
 
                   const parentIconClass = isParentActive
                     ? "text-white"
@@ -229,7 +229,7 @@ export function NavMain({ groups, isMerchant = false }) {
                           {item.badge && !isCollapsed && (
                             <span
                               className={`flex h-4.5 min-w-4.5 items-center justify-center rounded-full text-[9px] font-medium px-1.5 shrink-0 shadow-2xs ${
-                                item.badgeColor || "bg-[#F72853] text-white"
+                                item.badgeColor || "bg-[#FF2E63] text-white"
                               }`}
                             >
                               {item.badge}
@@ -280,8 +280,8 @@ export function NavMain({ groups, isMerchant = false }) {
                             const SubIcon = sub.icon;
 
                             const subBtnClass = isSubActive
-                              ? "!bg-[#F72853] !text-white font-medium shadow-xs rounded-lg"
-                              : "bg-transparent hover:bg-rose-50/70 text-slate-600 hover:text-[#F72853] font-normal border border-transparent hover:border-rose-200/50 rounded-lg transition-all";
+                              ? "!bg-[#FF2E63] !text-white font-medium shadow-xs rounded-lg"
+                              : "bg-transparent hover:bg-rose-50/70 text-slate-600 hover:text-[#FF2E63] font-normal border border-transparent hover:border-rose-200/50 rounded-lg transition-all";
 
                             const subIconClass = isSubActive
                               ? "!text-white"
@@ -312,7 +312,7 @@ export function NavMain({ groups, isMerchant = false }) {
                                       {sub.title}
                                     </span>
                                     {sub.badge && !isCollapsed && (
-                                      <span className="ml-auto flex h-4 min-w-4 items-center justify-center rounded-full bg-[#F72853] text-[9px] font-medium text-white px-1.5 shrink-0 shadow-2xs">
+                                      <span className="ml-auto flex h-4 min-w-4 items-center justify-center rounded-full bg-[#FF2E63] text-[9px] font-medium text-white px-1.5 shrink-0 shadow-2xs">
                                         {sub.badge}
                                       </span>
                                     )}
@@ -329,8 +329,8 @@ export function NavMain({ groups, isMerchant = false }) {
 
                 // Normal sidebar navigation item
                 const singleBtnClass = isParentActive
-                  ? "!bg-[#F72853] !text-white font-medium shadow-sm shadow-[#F72853]/25 hover:!bg-[#e01e47] rounded-xl"
-                  : "bg-transparent hover:bg-rose-50/70 text-slate-700 hover:text-[#F72853] font-normal border border-transparent hover:border-rose-200/60 rounded-xl transition-all";
+                  ? "!bg-[#FF2E63] !text-white font-medium shadow-sm shadow-[#FF2E63]/25 hover:!bg-[#e01e47] rounded-xl"
+                  : "bg-transparent hover:bg-rose-50/70 text-slate-700 hover:text-[#FF2E63] font-normal border border-transparent hover:border-rose-200/60 rounded-xl transition-all";
 
                 const singleIconClass = isParentActive
                   ? "!text-white"
@@ -391,14 +391,14 @@ export function NavMain({ groups, isMerchant = false }) {
                           <span
                             className={`flex h-5 min-w-5 items-center justify-center rounded-full text-[10px] px-2 shrink-0 ${
                               item.badgeColor ||
-                              "bg-[#F72853] text-white font-medium shadow-xs shadow-[#F72853]/40 animate-pulse"
+                              "bg-[#FF2E63] text-white font-medium shadow-xs shadow-[#FF2E63]/40 animate-pulse"
                             }`}
                           >
                             {item.badge}
                           </span>
                         )}
                         {item.badge && isCollapsed && (
-                          <span className="absolute top-0.5 right-0.5 h-2.5 w-2.5 rounded-full bg-[#F72853] border-2 border-white animate-pulse" />
+                          <span className="absolute top-0.5 right-0.5 h-2.5 w-2.5 rounded-full bg-[#FF2E63] border-2 border-white animate-pulse" />
                         )}
                       </Link>
                     </SidebarMenuButton>

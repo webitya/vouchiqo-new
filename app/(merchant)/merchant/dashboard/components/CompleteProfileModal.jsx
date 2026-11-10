@@ -251,7 +251,7 @@ export default function CompleteProfileModal({ merchant, isOpen, onClose }) {
         {/* Modal Header */}
         <div className="bg-slate-900 text-white p-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center font-bold text-white shadow-xs">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-royal-plum to-festival-teal flex items-center justify-center font-bold text-white shadow-xs">
               <Store className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -293,13 +293,13 @@ export default function CompleteProfileModal({ merchant, isOpen, onClose }) {
                 <span
                   onClick={() => setCurrentSlide(0)}
                   className={`w-2 h-2 rounded-full cursor-pointer transition-all ${
-                    currentSlide === 0 ? "w-4 bg-blue-600" : "bg-slate-300"
+                    currentSlide === 0 ? "w-4 bg-festival-teal" : "bg-slate-300"
                   }`}
                 />
                 <span
                   onClick={() => setCurrentSlide(1)}
                   className={`w-2 h-2 rounded-full cursor-pointer transition-all ${
-                    currentSlide === 1 ? "w-4 bg-blue-600" : "bg-slate-300"
+                    currentSlide === 1 ? "w-4 bg-festival-teal" : "bg-slate-300"
                   }`}
                 />
               </div>
@@ -383,16 +383,16 @@ export default function CompleteProfileModal({ merchant, isOpen, onClose }) {
               )}
 
               {!isPending && !isRejected && (
-                <div className="p-3 rounded-2xl bg-blue-50/80 border border-blue-200/80 flex items-center justify-between gap-3 text-xs">
+                <div className="p-3 rounded-2xl bg-warm-ivory border border-festival-teal/25 flex items-center justify-between gap-3 text-xs">
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-8 h-8 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-600 flex items-center justify-center shrink-0">
-                      <Zap className="w-4 h-4 text-blue-600" />
+                    <div className="w-8 h-8 rounded-xl bg-festival-teal/10 border border-festival-teal/20 text-festival-teal flex items-center justify-center shrink-0">
+                      <Zap className="w-4 h-4 text-festival-teal" />
                     </div>
                     <div className="min-w-0">
-                      <Badge className="bg-blue-100 text-blue-900 border-blue-300 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0">
+                      <Badge className="bg-festival-teal/10 text-royal-plum border-festival-teal/30 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0">
                         Profile Completion Required
                       </Badge>
-                      <p className="text-[11px] text-blue-900/90 font-medium truncate mt-0.5">
+                      <p className="text-[11px] text-royal-plum font-medium truncate mt-0.5">
                         Fill remaining details to publish offers &amp; unlock
                         dashboard
                       </p>
@@ -488,7 +488,7 @@ export default function CompleteProfileModal({ merchant, isOpen, onClose }) {
                       <span
                         key={fIdx}
                         onClick={handleGoToProfile}
-                        className="text-[10px] font-semibold bg-blue-50/90 text-blue-700 border border-blue-200/90 px-2 py-0.5 rounded-lg flex items-center gap-1 hover:bg-blue-100 transition-colors cursor-pointer"
+                        className="text-[10px] font-semibold bg-warm-ivory text-festival-teal border border-festival-teal/30 px-2 py-0.5 rounded-lg flex items-center gap-1 hover:bg-festival-teal/20 transition-colors cursor-pointer"
                       >
                         <span>+</span>
                         <span>{fieldName}</span>
@@ -519,7 +519,7 @@ export default function CompleteProfileModal({ merchant, isOpen, onClose }) {
                         }
                       : handleGoToProfile
                   }
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl h-9.5 shadow-md shadow-blue-500/25 cursor-pointer flex items-center justify-center gap-1.5"
+                  className="w-full bg-festival-teal hover:bg-festival-teal-dark text-white font-bold text-xs rounded-xl h-9.5 shadow-md shadow-festival-teal/25 cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <span>
                     {isPending ? "Track Status" : "Complete Profile"}
@@ -540,18 +540,18 @@ export default function CompleteProfileModal({ merchant, isOpen, onClose }) {
           ) : (
             /* SLIDE 2: PAYMENT & SUBSCRIPTION SETUP */
             <div className="space-y-5 animate-in fade-in duration-200">
-              <div className="p-4 rounded-2xl bg-blue-50/80 border border-blue-200/80 space-y-2">
+              <div className="p-4 rounded-2xl bg-warm-ivory border border-festival-teal/25 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-blue-900 uppercase tracking-wider flex items-center gap-1.5">
-                    <ShieldAlert className="w-4 h-4 text-blue-600" />
+                  <span className="text-xs font-bold text-royal-plum uppercase tracking-wider flex items-center gap-1.5">
+                    <ShieldAlert className="w-4 h-4 text-festival-teal" />
                     Chosen Plan: {planName}
                   </span>
-                  <Badge className="bg-blue-100 text-blue-800 border-blue-300 text-[10px] font-bold">
+                  <Badge className="bg-festival-teal/10 text-festival-teal-dark border-festival-teal/30 text-[10px] font-bold">
                     Payment Pending
                   </Badge>
                 </div>
 
-                <p className="text-xs text-blue-800 font-medium">
+                <p className="text-xs text-festival-teal-dark font-medium">
                   You selected the <strong>{planName}</strong> plan. Complete
                   your subscription billing setup to unlock unlimited campaign
                   features &amp; expired offer revivals.
@@ -564,15 +564,15 @@ export default function CompleteProfileModal({ merchant, isOpen, onClose }) {
                 </span>
                 <ul className="space-y-1.5 text-slate-700">
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-festival-teal shrink-0" />
                     <span>Up to 15 Active Offer Listings &amp; Campaigns</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-festival-teal shrink-0" />
                     <span>Expired Offer Revivals &amp; Push Notifications</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-festival-teal shrink-0" />
                     <span>Founding Partner 12-Month Rate Guarantee</span>
                   </li>
                 </ul>
@@ -582,7 +582,7 @@ export default function CompleteProfileModal({ merchant, isOpen, onClose }) {
               <div className="pt-2 border-t border-slate-100">
                 <Button
                   onClick={handleGoToBilling}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl h-10 shadow-md shadow-blue-500/25 cursor-pointer flex items-center justify-center gap-1.5"
+                  className="w-full bg-festival-teal hover:bg-festival-teal-dark text-white font-bold text-xs rounded-xl h-10 shadow-md shadow-festival-teal/25 cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <CreditCard className="w-4 h-4" />
                   <span>Complete Payment</span>

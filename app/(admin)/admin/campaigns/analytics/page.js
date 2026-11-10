@@ -37,7 +37,7 @@ import { cn } from "@/lib/utils";
 // 4 Colorful Channel Palettes
 const CHANNEL_ROW_THEMES = [
   {
-    row: "bg-blue-100/65 hover:bg-blue-100/90 border-l-[3.5px] border-l-blue-600 border-b border-blue-200/80 text-slate-900",
+    row: "bg-festival-teal/10 hover:bg-festival-teal/20 border-l-[3.5px] border-l-festival-teal border-b border-festival-teal/20 text-slate-900",
   },
   {
     row: "bg-purple-100/65 hover:bg-purple-100/90 border-l-[3.5px] border-l-purple-600 border-b border-purple-200/80 text-slate-900",
@@ -128,7 +128,7 @@ export default function AdminCampaignAnalyticsPage() {
         title: "Total Impressions",
         value: computedSummary.totalImpressions.toLocaleString(),
         icon: Eye,
-        iconBg: "bg-blue-50 text-blue-600 border-blue-200/60",
+        iconBg: "bg-warm-ivory text-festival-teal border-festival-teal/20",
         valueColor: "text-slate-900",
         desc: "Campaign views across platform",
       },
@@ -337,7 +337,7 @@ export default function AdminCampaignAnalyticsPage() {
               <Button
                 onClick={handleGenerateReport}
                 disabled={isGeneratingReport}
-                className="gap-1.5 h-7.5 px-3 text-xs font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-lg cursor-pointer shadow-2xs shrink-0"
+                className="gap-1.5 h-7.5 px-3 text-xs font-medium bg-festival-teal hover:bg-festival-teal-dark text-white rounded-lg cursor-pointer shadow-2xs shrink-0"
               >
                 {isGeneratingReport ? (
                   <Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />

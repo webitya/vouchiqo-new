@@ -30,8 +30,8 @@ export default function RecentActivityTimeline() {
           const isMerchant = item.type === "Merchant";
           return {
             icon: isMerchant ? Store : Tag,
-            color: isMerchant ? "text-[#2563eb]" : "text-[#3e80dd]",
-            bg: isMerchant ? "bg-[#2563eb]/10" : "bg-[#3e80dd]/10",
+            color: isMerchant ? "text-festival-teal" : "text-festival-teal",
+            bg: isMerchant ? "bg-festival-teal/10" : "bg-festival-teal/10",
             title: isMerchant
               ? "New Merchant Application"
               : "New Offer Submitted",
@@ -42,8 +42,8 @@ export default function RecentActivityTimeline() {
       : [
           {
             icon: Store,
-            color: "text-[#2563eb]",
-            bg: "bg-[#2563eb]/10",
+            color: "text-festival-teal",
+            bg: "bg-festival-teal/10",
             title: "System Active",
             desc: "All merchant applications up to date",
             time: "Live",
@@ -52,7 +52,7 @@ export default function RecentActivityTimeline() {
 
   return (
     <Card className="bg-white border border-slate-200/90 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col h-full p-0 gap-0 text-left font-sans">
-      <CardHeader className="px-4 py-3 sm:px-5 sm:py-3 border-b border-slate-100 flex flex-row justify-between items-center gap-3 bg-gradient-to-r from-emerald-50/60 via-white to-blue-50/40 min-h-[48px]">
+      <CardHeader className="px-4 py-3 sm:px-5 sm:py-3 border-b border-slate-100 flex flex-row justify-between items-center gap-3 bg-gradient-to-r from-emerald-50/60 via-white to-warm-ivory min-h-[48px]">
         <div>
           <CardTitle className="font-sans text-xs font-medium text-slate-800 tracking-wider uppercase m-0 leading-none">
             Recent Activity
@@ -63,7 +63,7 @@ export default function RecentActivityTimeline() {
         </div>
         <Link
           href="/admin/approvals/merchants"
-          className="text-xs font-normal text-[#2563eb] hover:underline flex items-center gap-0.5"
+          className="text-xs font-normal text-festival-teal hover:underline flex items-center gap-0.5"
         >
           <span>View all</span>
           <ArrowUpRight className="w-3.5 h-3.5" />

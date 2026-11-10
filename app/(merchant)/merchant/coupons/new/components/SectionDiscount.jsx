@@ -74,11 +74,11 @@ export default function SectionDiscount({
   return (
     <Card className="border-slate-200/90 shadow-2xs rounded-xl bg-white p-3.5 sm:p-4 space-y-3.5 text-left font-sans relative overflow-hidden">
       {/* Top Light Accent Bar */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-[#F72853]" />
+      <div className="absolute top-0 left-0 right-0 h-1 bg-[#FF2E63]" />
 
       <div className="border-b border-slate-100 pb-2.5 pt-0.5 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <span className="p-1.5 rounded-lg bg-rose-50 text-[#F72853] shrink-0">
+          <span className="p-1.5 rounded-lg bg-rose-50 text-[#FF2E63] shrink-0">
             <Ticket className="w-4 h-4" />
           </span>
           <div>
@@ -105,7 +105,7 @@ export default function SectionDiscount({
                 type="button"
                 variant="ghost"
                 onClick={generateRandomCode}
-                className="text-[11px] font-medium text-[#F72853] hover:text-[#e01e47] flex items-center gap-1 cursor-pointer h-auto p-0 border-0 bg-transparent shadow-none"
+                className="text-[11px] font-medium text-[#FF2E63] hover:text-[#e01e47] flex items-center gap-1 cursor-pointer h-auto p-0 border-0 bg-transparent shadow-none"
               >
                 <RefreshCw className="w-3.5 h-3.5" /> Auto-generate Code
               </Button>
@@ -349,7 +349,7 @@ export default function SectionDiscount({
         </Button>
         <Button
           onClick={onNext}
-          className="bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-medium h-8 px-4 rounded-xl flex items-center gap-1.5 cursor-pointer shadow-xs transition-colors"
+          className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium h-8 px-4 rounded-xl flex items-center gap-1.5 cursor-pointer shadow-xs transition-colors"
         >
           <span>Next: Validity</span>
           <ArrowRight className="w-3.5 h-3.5" />

@@ -129,7 +129,7 @@ export default function PlanComparisonGrid({
               <h3 className="font-sans text-xs font-semibold text-slate-800 uppercase tracking-wider">
                 Full Feature Comparison Matrix
               </h3>
-              <span className="bg-blue-50 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-blue-200">
+              <span className="bg-warm-ivory text-festival-teal text-[10px] font-bold px-2 py-0.5 rounded-full border border-brand-border">
                 All Plans in One Place
               </span>
             </div>
@@ -145,7 +145,7 @@ export default function PlanComparisonGrid({
             onClick={() => setShowTable(!showTable)}
             className="h-8 px-3 text-xs font-semibold text-slate-700 border-slate-200 hover:bg-slate-50 rounded-lg cursor-pointer self-start sm:self-auto gap-1.5"
           >
-            <TableIcon className="w-3.5 h-3.5 text-blue-600" />
+            <TableIcon className="w-3.5 h-3.5 text-festival-teal" />
             <span>{showTable ? "Hide Comparison Table" : "Show All Features Matrix"}</span>
             {showTable ? (
               <ChevronUp className="w-3.5 h-3.5 text-slate-400" />

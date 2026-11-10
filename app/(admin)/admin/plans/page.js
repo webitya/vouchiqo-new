@@ -146,7 +146,7 @@ const DEFAULT_MERCHANT_PLANS = [
 
 // 8 Distinct Row Colors for feature bullets
 const ROW_COLOR_THEMES = [
-  { row: "bg-blue-100/65 hover:bg-blue-100/90 border-l-[3.5px] border-l-blue-600 border-b border-blue-200/80 text-slate-900" },
+  { row: "bg-festival-teal/10 hover:bg-festival-teal/20 border-l-[3.5px] border-l-festival-teal border-b border-festival-teal/20 text-slate-900" },
   { row: "bg-emerald-100/65 hover:bg-emerald-100/90 border-l-[3.5px] border-l-emerald-600 border-b border-emerald-200/80 text-slate-900" },
   { row: "bg-amber-100/65 hover:bg-amber-100/90 border-l-[3.5px] border-l-amber-600 border-b border-amber-200/80 text-slate-900" },
   { row: "bg-purple-100/65 hover:bg-purple-100/90 border-l-[3.5px] border-l-purple-600 border-b border-purple-200/80 text-slate-900" },
@@ -337,7 +337,7 @@ export default function MerchantPlansEditorPage() {
               <Button
                 onClick={handleSave}
                 disabled={saving || loading}
-                className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg h-7.5 px-3.5 cursor-pointer shadow-2xs gap-1.5 shrink-0"
+                className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-medium rounded-lg h-7.5 px-3.5 cursor-pointer shadow-2xs gap-1.5 shrink-0"
               >
                 {saving ? (
                   <RefreshCw className="w-3.5 h-3.5 animate-spin" />
@@ -361,7 +361,7 @@ export default function MerchantPlansEditorPage() {
                     {stats.totalTiers}
                   </span>
                 </div>
-                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 border border-blue-200/60 flex items-center justify-center shrink-0">
+                <div className="w-7 h-7 rounded-lg bg-warm-ivory text-festival-teal border border-festival-teal/20 flex items-center justify-center shrink-0">
                   <CreditCard className="w-3.5 h-3.5" />
                 </div>
               </CardContent>
@@ -444,7 +444,7 @@ export default function MerchantPlansEditorPage() {
                         "w-full text-left p-2.5 rounded-xl transition-all cursor-pointer border shadow-2xs flex items-center justify-between gap-2",
                         theme.row,
                         isSelected
-                          ? "ring-2 ring-blue-500 shadow-xs border-blue-400 bg-white"
+                          ? "ring-2 ring-festival-teal/20 shadow-xs border-festival-teal bg-white"
                           : "opacity-90 hover:opacity-100",
                       )}
                     >
@@ -460,7 +460,7 @@ export default function MerchantPlansEditorPage() {
                           )}
                         </div>
                         <div className="flex items-center gap-2 mt-0.5">
-                          <span className="text-[11px] font-mono font-medium text-blue-700">
+                          <span className="text-[11px] font-mono font-medium text-festival-teal">
                             {p.priceText || `₹${p.priceMonthly || 0}`}
                           </span>
                           <span className="text-[10px] text-slate-500 font-normal">
@@ -492,7 +492,7 @@ export default function MerchantPlansEditorPage() {
                   variant="outline"
                   size="sm"
                   onClick={handleAddPlan}
-                  className="w-full text-xs font-medium rounded-xl border-dashed border-blue-300 text-blue-700 bg-blue-50/40 hover:bg-blue-50 cursor-pointer h-8 gap-1.5 shadow-2xs"
+                  className="w-full text-xs font-medium rounded-xl border-dashed border-festival-teal/30 text-festival-teal bg-warm-ivory hover:bg-warm-ivory cursor-pointer h-8 gap-1.5 shadow-2xs"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>New Plan Tier</span>
@@ -564,7 +564,7 @@ export default function MerchantPlansEditorPage() {
                         onChange={(e) =>
                           handleUpdatePlan(selectedPlanIdx, "name", e.target.value)
                         }
-                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 focus:bg-white outline-none shadow-2xs"
+                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal focus:bg-white outline-none shadow-2xs"
                       />
                     </div>
 
@@ -578,7 +578,7 @@ export default function MerchantPlansEditorPage() {
                         onChange={(e) =>
                           handleUpdatePlan(selectedPlanIdx, "badge", e.target.value)
                         }
-                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 focus:bg-white outline-none shadow-2xs"
+                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal focus:bg-white outline-none shadow-2xs"
                       />
                     </div>
 
@@ -592,7 +592,7 @@ export default function MerchantPlansEditorPage() {
                         onChange={(e) =>
                           handleUpdatePlan(selectedPlanIdx, "theme", e.target.value)
                         }
-                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 focus:bg-white outline-none shadow-2xs"
+                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal focus:bg-white outline-none shadow-2xs"
                       />
                     </div>
 
@@ -606,7 +606,7 @@ export default function MerchantPlansEditorPage() {
                         onChange={(e) =>
                           handleUpdatePlan(selectedPlanIdx, "priceText", e.target.value)
                         }
-                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 focus:bg-white outline-none shadow-2xs"
+                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal focus:bg-white outline-none shadow-2xs"
                       />
                     </div>
 
@@ -624,7 +624,7 @@ export default function MerchantPlansEditorPage() {
                             Number(e.target.value),
                           )
                         }
-                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 focus:bg-white outline-none shadow-2xs"
+                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal focus:bg-white outline-none shadow-2xs"
                       />
                     </div>
 
@@ -642,7 +642,7 @@ export default function MerchantPlansEditorPage() {
                             Number(e.target.value),
                           )
                         }
-                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 focus:bg-white outline-none shadow-2xs"
+                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal focus:bg-white outline-none shadow-2xs"
                       />
                     </div>
 
@@ -660,7 +660,7 @@ export default function MerchantPlansEditorPage() {
                             e.target.value,
                           )
                         }
-                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 focus:bg-white outline-none shadow-2xs"
+                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal focus:bg-white outline-none shadow-2xs"
                       />
                     </div>
 
@@ -678,7 +678,7 @@ export default function MerchantPlansEditorPage() {
                             e.target.value,
                           )
                         }
-                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 focus:bg-white outline-none shadow-2xs"
+                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal focus:bg-white outline-none shadow-2xs"
                       />
                     </div>
 
@@ -696,7 +696,7 @@ export default function MerchantPlansEditorPage() {
                             e.target.value,
                           )
                         }
-                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 focus:bg-white outline-none shadow-2xs"
+                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal focus:bg-white outline-none shadow-2xs"
                       />
                     </div>
                   </div>
@@ -717,7 +717,7 @@ export default function MerchantPlansEditorPage() {
                             e.target.value,
                           )
                         }
-                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 focus:bg-white outline-none shadow-2xs"
+                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal focus:bg-white outline-none shadow-2xs"
                       />
                     </div>
 
@@ -735,7 +735,7 @@ export default function MerchantPlansEditorPage() {
                             e.target.value,
                           )
                         }
-                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 focus:bg-white outline-none shadow-2xs"
+                        className="w-full bg-slate-50/70 border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal focus:bg-white outline-none shadow-2xs"
                       />
                     </div>
                   </div>
@@ -767,12 +767,12 @@ export default function MerchantPlansEditorPage() {
                             handleAddFeature(selectedPlanIdx);
                           }
                         }}
-                        className="flex-1 bg-white border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-blue-500 outline-none shadow-2xs"
+                        className="flex-1 bg-white border border-slate-200 rounded-lg text-xs h-7.5 px-2.5 font-normal text-slate-900 focus:border-festival-teal outline-none shadow-2xs"
                       />
                       <Button
                         size="sm"
                         onClick={() => handleAddFeature(selectedPlanIdx)}
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs rounded-lg h-7.5 px-3 cursor-pointer shrink-0 gap-1 shadow-2xs"
+                        className="bg-festival-teal hover:bg-festival-teal-dark text-white font-medium text-xs rounded-lg h-7.5 px-3 cursor-pointer shrink-0 gap-1 shadow-2xs"
                       >
                         <Plus className="w-3.5 h-3.5" />
                         <span>Add Line</span>
@@ -877,7 +877,7 @@ export default function MerchantPlansEditorPage() {
                     <Button
                       onClick={handleSave}
                       disabled={saving || loading}
-                      className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg h-8 px-4.5 cursor-pointer shadow-2xs flex items-center gap-1.5"
+                      className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-medium rounded-lg h-8 px-4.5 cursor-pointer shadow-2xs flex items-center gap-1.5"
                     >
                       {saving ? (
                         <>

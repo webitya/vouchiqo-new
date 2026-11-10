@@ -103,7 +103,7 @@ export default function MerchantAffiliateProductsPage() {
 
           <Link
             href="/merchant/coupons/new?type=affiliate"
-            className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 bg-[#F72853] hover:bg-[#e01e47] text-white font-medium text-xs rounded-xl shadow-xs transition-colors shrink-0 cursor-pointer h-8 sm:h-9"
+            className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 bg-[#FF2E63] hover:bg-[#e01e47] text-white font-medium text-xs rounded-xl shadow-xs transition-colors shrink-0 cursor-pointer h-8 sm:h-9"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Add Affiliate Product</span>
@@ -117,7 +117,7 @@ export default function MerchantAffiliateProductsPage() {
               <span className="text-xs font-medium text-slate-600">
                 Total Products
               </span>
-              <div className="w-7 h-7 rounded-lg bg-rose-50 text-[#F72853] flex items-center justify-center shrink-0">
+              <div className="w-7 h-7 rounded-lg bg-rose-50 text-[#FF2E63] flex items-center justify-center shrink-0">
                 <ShoppingBag className="w-3.5 h-3.5" />
               </div>
             </div>
@@ -199,7 +199,7 @@ export default function MerchantAffiliateProductsPage() {
               placeholder="Search products or links..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#F72853] transition-colors font-normal h-8 sm:h-9"
+              className="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#FF2E63] transition-colors font-normal h-8 sm:h-9"
             />
           </div>
 
@@ -234,7 +234,7 @@ export default function MerchantAffiliateProductsPage() {
                   onClick={() => setStatusFilter(id)}
                   className={`px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                     statusFilter === id
-                      ? "bg-[#F72853] text-white shadow-xs"
+                      ? "bg-[#FF2E63] text-white shadow-xs"
                       : "text-slate-600 hover:text-slate-900"
                   }`}
                 >
@@ -252,7 +252,7 @@ export default function MerchantAffiliateProductsPage() {
             </div>
           : filteredProducts.length === 0
             ? <div className="py-12 text-center bg-white border border-slate-200/80 rounded-xl p-6 space-y-2.5 shadow-2xs">
-                <div className="w-10 h-10 rounded-xl bg-rose-50 text-[#F72853] flex items-center justify-center border border-rose-100/80 mx-auto">
+                <div className="w-10 h-10 rounded-xl bg-rose-50 text-[#FF2E63] flex items-center justify-center border border-rose-100/80 mx-auto">
                   <ShoppingBag className="w-5 h-5" />
                 </div>
                 <div className="space-y-0.5">
@@ -267,7 +267,7 @@ export default function MerchantAffiliateProductsPage() {
                 </div>
                 <Link
                   href="/merchant/coupons/new?type=affiliate"
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-medium rounded-xl shadow-xs transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium rounded-xl shadow-xs transition-colors cursor-pointer"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>Add Your First Product</span>

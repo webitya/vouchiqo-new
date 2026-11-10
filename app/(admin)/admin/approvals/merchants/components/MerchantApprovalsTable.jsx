@@ -103,7 +103,7 @@ export default function MerchantApprovalsTable({ merchants, onAction }) {
           <MobileTableCard
             key={merchant._id}
             avatarText={merchant.businessName}
-            avatarBg="bg-blue-600"
+            avatarBg="bg-festival-teal"
             badge="MERCHANT APPLICATION"
             title={merchant.businessName}
             subtitle={
@@ -150,7 +150,7 @@ export default function MerchantApprovalsTable({ merchants, onAction }) {
                 <button
                   type="button"
                   onClick={() => onAction(merchant._id, "approve")}
-                  className="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold rounded-xl py-2.5 px-4 flex items-center justify-between text-xs transition-colors cursor-pointer select-none"
+                  className="flex-1 bg-warm-ivory hover:bg-festival-teal/20 text-festival-teal font-bold rounded-xl py-2.5 px-4 flex items-center justify-between text-xs transition-colors cursor-pointer select-none"
                 >
                   <span>Approve Brand</span>
                   <ArrowRight className="w-4 h-4" />

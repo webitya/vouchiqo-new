@@ -723,7 +723,7 @@ export function AppSidebar({ ...props }) {
           {/* Logo & Identity in Left */}
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[7px] border border-rose-200/80 bg-white overflow-hidden shadow-2xs">
             {role === "admin" ? (
-              <div className="w-full h-full bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 flex items-center justify-center rounded-[7px]">
+              <div className="w-full h-full bg-gradient-to-br from-[#35104A] via-[#1D062B] to-[#007F79] flex items-center justify-center rounded-[7px]">
                 <ShieldCheck className="w-5 h-5 text-white stroke-[2.2]" />
               </div>
             ) : role === "merchant" ? (
@@ -736,7 +736,7 @@ export function AppSidebar({ ...props }) {
                   className="w-full h-full object-contain p-0.5 bg-white"
                 />
               ) : (
-                <div className="w-full h-full bg-gradient-to-br from-[#F72853] to-rose-600 flex items-center justify-center rounded-[7px]">
+                <div className="w-full h-full bg-gradient-to-br from-[#FF2E63] to-rose-600 flex items-center justify-center rounded-[7px]">
                   <Store className="w-4.5 h-4.5 text-white stroke-[2]" />
                 </div>
               )
@@ -767,8 +767,8 @@ export function AppSidebar({ ...props }) {
                   </span>
                 ) : role === "merchant" ? (
                   <div className="flex items-center gap-1 flex-wrap">
-                    <span className="bg-white/95 text-[#F72853] border border-rose-200/90 text-[8.5px] font-medium px-1.5 py-0.5 rounded-[7px] inline-flex items-center gap-1 tracking-wider shadow-2xs">
-                      <Store className="w-2.5 h-2.5 text-[#F72853]" />{" "}
+                    <span className="bg-white/95 text-[#FF2E63] border border-rose-200/90 text-[8.5px] font-medium px-1.5 py-0.5 rounded-[7px] inline-flex items-center gap-1 tracking-wider shadow-2xs">
+                      <Store className="w-2.5 h-2.5 text-[#FF2E63]" />{" "}
                       {merchantPlan
                         ? (PLAN_LABELS[merchantPlan] ??
                           merchantPlan.toUpperCase())
@@ -779,7 +779,7 @@ export function AppSidebar({ ...props }) {
                         href={`/brand/${merchantProfile?.slug || merchantBadgesData?.slug}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[8.5px] font-medium text-blue-600 hover:text-blue-700 hover:underline inline-flex items-center gap-0.5 bg-blue-50 px-1 py-0.5 rounded border border-blue-200/70"
+                        className="text-[8.5px] font-medium text-festival-teal hover:text-festival-teal hover:underline inline-flex items-center gap-0.5 bg-warm-ivory px-1 py-0.5 rounded border border-brand-border"
                         title="Preview Public Storefront"
                       >
                         <Eye className="w-2 h-2" />
@@ -803,7 +803,7 @@ export function AppSidebar({ ...props }) {
             variant="ghost"
             size="icon-sm"
             onClick={() => setOpenMobile(false)}
-            className="w-8 h-8 rounded-lg text-slate-500 hover:text-[#F72853] hover:bg-rose-50/80 transition-colors shrink-0 cursor-pointer border border-slate-200/80 shadow-2xs ml-1.5"
+            className="w-8 h-8 rounded-lg text-slate-500 hover:text-[#FF2E63] hover:bg-rose-50/80 transition-colors shrink-0 cursor-pointer border border-slate-200/80 shadow-2xs ml-1.5"
             aria-label="Close drawer"
           >
             <X className="w-4 h-4 stroke-[2]" />

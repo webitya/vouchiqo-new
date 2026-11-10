@@ -276,7 +276,7 @@ export default function PlatformContentSettings() {
       <div className="space-y-6 text-left font-sans w-full">
         <div className="flex justify-between items-center border-b border-slate-100 pb-3">
           <h2 className="text-base font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-            <Sliders className="w-4 h-4 text-blue-600" /> Dynamic CMS &amp;
+            <Sliders className="w-4 h-4 text-festival-teal" /> Dynamic CMS &amp;
             Content Controls
           </h2>
         </div>
@@ -417,7 +417,7 @@ export default function PlatformContentSettings() {
           <div className="flex justify-between items-center border-b border-slate-100 pb-2">
             <div>
               <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-                <Sliders className="w-4 h-4 text-blue-600" /> Merchant Subscription Plans &amp; Rates Config
+                <Sliders className="w-4 h-4 text-festival-teal" /> Merchant Subscription Plans &amp; Rates Config
               </h3>
               <p className="text-xs text-slate-500 font-normal">
                 Fully customizable rates, features, badges &amp; pricing displayed on Merchant Registration Page
@@ -426,7 +426,7 @@ export default function PlatformContentSettings() {
             <Button
               onClick={() => handleSaveSetting("merchant_plans", plans)}
               disabled={savingKey === "merchant_plans"}
-              className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl h-9 px-5 cursor-pointer"
+              className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-bold rounded-xl h-9 px-5 cursor-pointer"
             >
               {savingKey === "merchant_plans" ? (
                 <RefreshCw className="w-3.5 h-3.5 animate-spin" />
@@ -437,9 +437,9 @@ export default function PlatformContentSettings() {
           </div>
 
           {/* Add New Plan Form */}
-          <div className="p-4 bg-blue-50/50 border border-blue-200 rounded-xl space-y-3">
-            <h4 className="text-xs font-bold text-blue-900 uppercase flex items-center gap-1.5">
-              <Plus className="w-4 h-4 text-blue-600" /> Add New Merchant Plan Card
+          <div className="p-4 bg-warm-ivory border border-brand-border rounded-xl space-y-3">
+            <h4 className="text-xs font-bold text-royal-plum uppercase flex items-center gap-1.5">
+              <Plus className="w-4 h-4 text-festival-teal" /> Add New Merchant Plan Card
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-4 gap-2">
               <FormInput
@@ -478,7 +478,7 @@ export default function PlatformContentSettings() {
               />
               <Button
                 onClick={handleAddPlan}
-                className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl h-9 px-4 cursor-pointer gap-1.5 mt-auto"
+                className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-bold rounded-xl h-9 px-4 cursor-pointer gap-1.5 mt-auto"
               >
                 <Plus className="w-4 h-4" /> Add Plan
               </Button>
@@ -505,7 +505,7 @@ export default function PlatformContentSettings() {
                           updated[pIdx].active = e.target.checked;
                           setPlans(updated);
                         }}
-                        className="rounded text-blue-600"
+                        className="rounded text-festival-teal"
                       />
                       Active
                     </label>
@@ -617,7 +617,7 @@ export default function PlatformContentSettings() {
                       }).filter(Boolean);
                       setPlans(updated);
                     }}
-                    className="w-full text-xs font-mono p-2 border border-slate-300 rounded-lg bg-white focus:outline-none focus:border-blue-500"
+                    className="w-full text-xs font-mono p-2 border border-slate-300 rounded-lg bg-white focus:outline-none focus:border-festival-teal"
                   />
                 </div>
 
@@ -654,7 +654,7 @@ export default function PlatformContentSettings() {
             <Button
               onClick={() => handleSaveSetting("merchant_plans", plans)}
               disabled={savingKey === "merchant_plans"}
-              className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl h-9 px-6 cursor-pointer"
+              className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-bold rounded-xl h-9 px-6 cursor-pointer"
             >
               {savingKey === "merchant_plans" ? (
                 <RefreshCw className="w-3.5 h-3.5 animate-spin" />

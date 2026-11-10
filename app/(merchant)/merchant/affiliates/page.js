@@ -328,7 +328,7 @@ export default function MerchantAffiliatesPage() {
               className="text-xs h-8.5 font-medium rounded-xl border-slate-200 hover:border-slate-300 text-slate-700 cursor-pointer shadow-2xs flex items-center gap-1.5"
             >
               <RefreshCw
-                className={`w-3.5 h-3.5 ${isLoading ? "animate-spin text-[#F72853]" : "text-slate-500"}`}
+                className={`w-3.5 h-3.5 ${isLoading ? "animate-spin text-[#FF2E63]" : "text-slate-500"}`}
               />
               <span>Sync DB</span>
             </Button>
@@ -338,13 +338,13 @@ export default function MerchantAffiliatesPage() {
               onClick={handleExportCSV}
               className="text-xs h-8.5 font-medium rounded-xl border-slate-200 hover:border-slate-300 text-slate-700 cursor-pointer shadow-2xs flex items-center gap-1.5"
             >
-              <FileSpreadsheet className="w-3.5 h-3.5 text-[#F72853]" />
+              <FileSpreadsheet className="w-3.5 h-3.5 text-[#FF2E63]" />
               <span>Export CSV</span>
             </Button>
             <Button
               asChild
               size="sm"
-              className="bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-medium h-8.5 px-3.5 rounded-xl shadow-xs shadow-[#F72853]/25 cursor-pointer flex items-center gap-1.5 transition-all"
+              className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium h-8.5 px-3.5 rounded-xl shadow-xs shadow-[#FF2E63]/25 cursor-pointer flex items-center gap-1.5 transition-all"
             >
               <Link href="/merchant/affiliate-products">
                 <ShoppingBag className="w-3.5 h-3.5" />
@@ -358,12 +358,12 @@ export default function MerchantAffiliatesPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
           {/* Card 1: Current Commission Model */}
           <Card className="border border-slate-200/90 shadow-2xs rounded-2xl p-4 bg-white space-y-2.5 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-500" />
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-royal-plum to-festival-teal" />
             <div className="flex items-center justify-between">
               <span className="text-xs font-medium text-slate-500">
                 Commission Model
               </span>
-              <span className="p-1.5 rounded-lg bg-blue-50 text-blue-600 border border-blue-100">
+              <span className="p-1.5 rounded-lg bg-warm-ivory text-festival-teal border border-brand-border">
                 <Percent className="w-3.5 h-3.5" />
               </span>
             </div>
@@ -377,7 +377,7 @@ export default function MerchantAffiliatesPage() {
             </div>
             <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
               <span className="text-slate-500 font-normal">Active Plan:</span>
-              <Badge className="bg-blue-50 text-blue-700 border border-blue-200 font-medium text-[10px] py-0.5 px-2">
+              <Badge className="bg-warm-ivory text-festival-teal border border-brand-border font-medium text-[10px] py-0.5 px-2">
                 {merchant?.plan
                   ? `${merchant.plan.toUpperCase()} Plan`
                   : "STARTER Plan"}
@@ -387,7 +387,7 @@ export default function MerchantAffiliatesPage() {
 
           {/* Card 2: Bank Payout Account (Persisted in DB) */}
           <Card className="border border-slate-200/90 shadow-2xs rounded-2xl p-4 bg-white space-y-2.5 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-500 to-[#F72853]" />
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-500 to-[#FF2E63]" />
             <div className="flex items-center justify-between">
               <span className="text-xs font-medium text-slate-500">
                 Payout Account
@@ -396,7 +396,7 @@ export default function MerchantAffiliatesPage() {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsEditPayoutOpen(true)}
-                className="text-[11px] font-medium text-[#F72853] hover:text-[#e01e47] hover:bg-rose-50 h-6 px-1.5 rounded-lg cursor-pointer flex items-center gap-1"
+                className="text-[11px] font-medium text-[#FF2E63] hover:text-[#e01e47] hover:bg-rose-50 h-6 px-1.5 rounded-lg cursor-pointer flex items-center gap-1"
               >
                 <Edit2 className="w-3 h-3" />
                 <span>{hasBankLinked ? "Edit" : "Setup"}</span>
@@ -483,7 +483,7 @@ export default function MerchantAffiliatesPage() {
             <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
               <Link
                 href="/merchant/affiliate-products"
-                className="text-xs font-medium text-[#F72853] hover:underline flex items-center gap-1"
+                className="text-xs font-medium text-[#FF2E63] hover:underline flex items-center gap-1"
               >
                 <span>Manage Products</span>
                 <ArrowUpRight className="w-3 h-3" />
@@ -498,7 +498,7 @@ export default function MerchantAffiliatesPage() {
         {/* AFFILIATE MONETIZATION INFO BANNER */}
         <div className="p-3.5 bg-gradient-to-r from-rose-50/60 via-pink-50/30 to-slate-50 rounded-2xl border border-rose-100/90 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-left">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-white text-[#F72853] border border-rose-200/80 shadow-2xs flex items-center justify-center shrink-0">
+            <div className="w-9 h-9 rounded-xl bg-white text-[#FF2E63] border border-rose-200/80 shadow-2xs flex items-center justify-center shrink-0">
               <TrendingUp className="w-4 h-4" />
             </div>
             <div>
@@ -516,7 +516,7 @@ export default function MerchantAffiliatesPage() {
             asChild
             variant="outline"
             size="sm"
-            className="text-xs font-medium h-8 px-3 rounded-xl border-rose-200 text-[#F72853] hover:bg-rose-50 shrink-0 cursor-pointer shadow-2xs"
+            className="text-xs font-medium h-8 px-3 rounded-xl border-rose-200 text-[#FF2E63] hover:bg-rose-50 shrink-0 cursor-pointer shadow-2xs"
           >
             <Link href="/merchant/affiliate-products">
               <Plus className="w-3.5 h-3.5 mr-1" /> Add Product
@@ -546,7 +546,7 @@ export default function MerchantAffiliatesPage() {
                 placeholder="Search offer or code..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-8 h-8 text-xs bg-slate-50 border-slate-200 rounded-xl focus-visible:ring-[#F72853]/20"
+                className="pl-8 h-8 text-xs bg-slate-50 border-slate-200 rounded-xl focus-visible:ring-[#FF2E63]/20"
               />
             </div>
           </div>
@@ -555,7 +555,7 @@ export default function MerchantAffiliatesPage() {
           <div className="overflow-x-auto">
             {isLoadingRedemptions
               ? <div className="p-10 flex items-center justify-center text-slate-500 text-xs font-normal gap-2">
-                  <Loader2 className="w-4 h-4 animate-spin text-[#F72853]" />
+                  <Loader2 className="w-4 h-4 animate-spin text-[#FF2E63]" />
                   <span>Fetching live transactions from database...</span>
                 </div>
               : filteredTransactions.length === 0
@@ -624,7 +624,7 @@ export default function MerchantAffiliatesPage() {
                           </TableCell>
                           <TableCell className="py-2.5 px-3.5 font-medium text-slate-900 max-w-[220px]">
                             <span className="truncate block">{row.title}</span>
-                            <span className="text-[10px] font-mono text-blue-600 font-normal">
+                            <span className="text-[10px] font-mono text-festival-teal font-normal">
                               Code: {row.code}
                             </span>
                           </TableCell>
@@ -635,7 +635,7 @@ export default function MerchantAffiliatesPage() {
                             ₹
                             {(Number(row.savings) || 0).toLocaleString("en-IN")}
                           </TableCell>
-                          <TableCell className="py-2.5 px-3.5 text-right font-medium text-[#F72853] text-xs">
+                          <TableCell className="py-2.5 px-3.5 text-right font-medium text-[#FF2E63] text-xs">
                             ₹
                             {(Number(row.commission) || 0).toLocaleString(
                               "en-IN",
@@ -670,7 +670,7 @@ export default function MerchantAffiliatesPage() {
             <form onSubmit={handleSavePayout} className="space-y-3.5 pt-2">
               <div className="space-y-1.5">
                 <Label className="flex items-center gap-1.5 font-medium text-xs text-slate-700">
-                  <User className="w-3.5 h-3.5 text-[#F72853]" /> Account Holder
+                  <User className="w-3.5 h-3.5 text-[#FF2E63]" /> Account Holder
                   Name *
                 </Label>
                 <Input
@@ -680,14 +680,14 @@ export default function MerchantAffiliatesPage() {
                     setBankForm({ ...bankForm, holderName: e.target.value })
                   }
                   placeholder="e.g. Webitya Enterprises"
-                  className="bg-white border-slate-200 text-xs h-9 rounded-xl focus-visible:ring-[#F72853]/20"
+                  className="bg-white border-slate-200 text-xs h-9 rounded-xl focus-visible:ring-[#FF2E63]/20"
                   required
                 />
               </div>
 
               <div className="space-y-1.5">
                 <Label className="flex items-center gap-1.5 font-medium text-xs text-slate-700">
-                  <Building2 className="w-3.5 h-3.5 text-[#F72853]" /> Bank Name
+                  <Building2 className="w-3.5 h-3.5 text-[#FF2E63]" /> Bank Name
                   *
                 </Label>
                 <Input
@@ -697,7 +697,7 @@ export default function MerchantAffiliatesPage() {
                     setBankForm({ ...bankForm, bankName: e.target.value })
                   }
                   placeholder="e.g. HDFC Bank, State Bank of India"
-                  className="bg-white border-slate-200 text-xs h-9 rounded-xl focus-visible:ring-[#F72853]/20"
+                  className="bg-white border-slate-200 text-xs h-9 rounded-xl focus-visible:ring-[#FF2E63]/20"
                   required
                 />
               </div>
@@ -705,7 +705,7 @@ export default function MerchantAffiliatesPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="space-y-1.5">
                   <Label className="flex items-center gap-1.5 font-medium text-xs text-slate-700">
-                    <CreditCard className="w-3.5 h-3.5 text-[#F72853]" />{" "}
+                    <CreditCard className="w-3.5 h-3.5 text-[#FF2E63]" />{" "}
                     Account Number *
                   </Label>
                   <Input
@@ -718,13 +718,13 @@ export default function MerchantAffiliatesPage() {
                       })
                     }
                     placeholder="Enter account number"
-                    className="bg-white border-slate-200 text-xs h-9 rounded-xl font-mono focus-visible:ring-[#F72853]/20"
+                    className="bg-white border-slate-200 text-xs h-9 rounded-xl font-mono focus-visible:ring-[#FF2E63]/20"
                     required
                   />
                 </div>
                 <div className="space-y-1.5">
                   <Label className="flex items-center gap-1.5 font-medium text-xs text-slate-700">
-                    <CreditCard className="w-3.5 h-3.5 text-[#F72853]" />{" "}
+                    <CreditCard className="w-3.5 h-3.5 text-[#FF2E63]" />{" "}
                     Confirm Account *
                   </Label>
                   <Input
@@ -737,7 +737,7 @@ export default function MerchantAffiliatesPage() {
                       })
                     }
                     placeholder="Re-enter account number"
-                    className="bg-white border-slate-200 text-xs h-9 rounded-xl font-mono focus-visible:ring-[#F72853]/20"
+                    className="bg-white border-slate-200 text-xs h-9 rounded-xl font-mono focus-visible:ring-[#FF2E63]/20"
                     required
                   />
                 </div>
@@ -746,7 +746,7 @@ export default function MerchantAffiliatesPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="space-y-1.5">
                   <Label className="flex items-center gap-1.5 font-medium text-xs text-slate-700">
-                    <Banknote className="w-3.5 h-3.5 text-[#F72853]" /> IFSC
+                    <Banknote className="w-3.5 h-3.5 text-[#FF2E63]" /> IFSC
                     Code *
                   </Label>
                   <Input
@@ -760,7 +760,7 @@ export default function MerchantAffiliatesPage() {
                     }
                     placeholder="e.g. HDFC0001234"
                     maxLength={11}
-                    className="bg-white border-slate-200 text-xs h-9 rounded-xl font-mono uppercase focus-visible:ring-[#F72853]/20"
+                    className="bg-white border-slate-200 text-xs h-9 rounded-xl font-mono uppercase focus-visible:ring-[#FF2E63]/20"
                     required
                   />
                 </div>
@@ -798,7 +798,7 @@ export default function MerchantAffiliatesPage() {
                 <Button
                   type="submit"
                   disabled={isSaving}
-                  className="bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-medium h-8.5 px-4 rounded-xl shadow-xs shadow-[#F72853]/25 cursor-pointer flex items-center gap-1.5"
+                  className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium h-8.5 px-4 rounded-xl shadow-xs shadow-[#FF2E63]/25 cursor-pointer flex items-center gap-1.5"
                 >
                   {isSaving
                     ? <>

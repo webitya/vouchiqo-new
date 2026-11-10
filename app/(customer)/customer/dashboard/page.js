@@ -198,7 +198,7 @@ export default function CustomerDashboard() {
         {/* Soft Welcome Banner */}
         <div className="bg-gradient-to-r from-rose-50/80 via-pink-50/40 to-white border border-rose-200/70 p-4 sm:p-5 rounded-xl sm:rounded-2xl relative overflow-hidden shadow-2xs">
           <div className="relative z-10 space-y-1">
-            <div className="flex items-center gap-1.5 text-xs text-[#F72853] font-medium">
+            <div className="flex items-center gap-1.5 text-xs text-[#FF2E63] font-medium">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>Customer Savings Hub</span>
             </div>
@@ -255,7 +255,7 @@ export default function CustomerDashboard() {
             <div className="bg-white border border-slate-200/90 rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-2xs space-y-3">
               <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
                 <h3 className="text-xs sm:text-[13px] font-medium text-slate-800 tracking-tight flex items-center gap-1.5">
-                  <Ticket className="w-3.5 h-3.5 text-[#F72853]" />
+                  <Ticket className="w-3.5 h-3.5 text-[#FF2E63]" />
                   <span>Recently Claimed</span>
                 </h3>
               </div>
@@ -281,7 +281,7 @@ export default function CustomerDashboard() {
             <div className="bg-white border border-slate-200/90 rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-2xs space-y-3">
               <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
                 <h3 className="text-xs sm:text-[13px] font-medium text-slate-800 tracking-tight flex items-center gap-1.5">
-                  <Bookmark className="w-3.5 h-3.5 text-[#F72853]" />
+                  <Bookmark className="w-3.5 h-3.5 text-[#FF2E63]" />
                   <span>Saved For Later</span>
                 </h3>
               </div>
@@ -307,13 +307,13 @@ export default function CustomerDashboard() {
           {/* Right Column: Activity Feed */}
           <div className="bg-white border border-slate-200/90 rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-2xs space-y-3.5">
             <h3 className="text-xs sm:text-[13px] font-medium text-slate-800 tracking-tight border-b border-slate-100 pb-2.5 flex items-center gap-1.5">
-              <History className="w-3.5 h-3.5 text-[#F72853]" />
+              <History className="w-3.5 h-3.5 text-[#FF2E63]" />
               <span>Recent Activity</span>
             </h3>
             <div className="space-y-3 relative pl-3.5 border-l border-slate-100">
               {activities.map((act, idx) => (
                 <div key={idx} className="relative space-y-0.5">
-                  <div className="absolute left-[-19px] top-1 w-2 h-2 rounded-full bg-[#F72853] border-2 border-white shadow-2xs"></div>
+                  <div className="absolute left-[-19px] top-1 w-2 h-2 rounded-full bg-[#FF2E63] border-2 border-white shadow-2xs"></div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-slate-800 font-medium">{act.title}</span>
                     <span className="text-[9px] text-slate-400 font-normal">

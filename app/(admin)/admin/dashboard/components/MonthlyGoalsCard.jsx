@@ -63,14 +63,14 @@ export default function MonthlyGoalsCard({ analyticsData = {} }) {
       current: `₹${revActual.toLocaleString("en-IN")}`,
       target: `Target: ₹${revTarget.toLocaleString("en-IN")}`,
       pct: revPct,
-      color: "bg-[#2563eb]",
+      color: "bg-festival-teal",
     },
     {
       title: "Merchant Partners",
       current: `${merchantsActual.toLocaleString("en-IN")}`,
       target: `Target: ${merchantsTarget.toLocaleString("en-IN")}`,
       pct: merchantsPct,
-      color: "bg-[#2563eb]",
+      color: "bg-festival-teal",
     },
     {
       title: "Active Deals & Offers",
@@ -83,7 +83,7 @@ export default function MonthlyGoalsCard({ analyticsData = {} }) {
 
   return (
     <Card className="bg-white border border-slate-200/90 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col p-0 gap-0 text-left font-sans">
-      <CardHeader className="px-4 py-3 sm:px-5 sm:py-3 border-b border-slate-100 bg-gradient-to-r from-blue-50/60 via-white to-indigo-50/40 min-h-[48px]">
+      <CardHeader className="px-4 py-3 sm:px-5 sm:py-3 border-b border-slate-100 bg-gradient-to-r from-warm-ivory via-white to-festival-teal/10 min-h-[48px]">
         <CardTitle className="font-sans text-xs font-medium text-slate-800 tracking-wider uppercase m-0 leading-none">
           Monthly Goals
         </CardTitle>
@@ -97,7 +97,7 @@ export default function MonthlyGoalsCard({ analyticsData = {} }) {
           <div key={idx} className="space-y-1">
             <div className="flex items-center justify-between text-xs font-normal">
               <span className="text-slate-700 font-normal">{g.title}</span>
-              <span className="text-blue-600 font-medium">{g.pct}%</span>
+              <span className="text-festival-teal font-medium">{g.pct}%</span>
             </div>
             {/* Shadcn Progress component */}
             <Progress

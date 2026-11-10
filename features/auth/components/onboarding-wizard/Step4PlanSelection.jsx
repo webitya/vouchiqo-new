@@ -49,7 +49,7 @@ export default function Step4PlanSelection({
               "bg-sky-50/60 border-sky-200/90 hover:border-sky-300";
             let badgeTheme = "bg-sky-100 text-sky-800 border-sky-200";
             let btnTheme =
-              "bg-white text-blue-600 border-2 border-blue-300 hover:bg-blue-50";
+              "bg-white text-festival-teal border-2 border-brand-border hover:bg-warm-ivory";
 
             if (plan.theme === "orange" || plan.id === "growth") {
               bgTheme =
@@ -84,7 +84,7 @@ export default function Step4PlanSelection({
                 }
                 className={`p-4 sm:p-5 rounded-2xl text-left cursor-pointer transition-all flex flex-col justify-between ${
                   isSelected
-                    ? "border-2 border-blue-600 shadow-xl ring-4 ring-blue-500/20 bg-white scale-[1.01]"
+                    ? "border-2 border-festival-teal shadow-xl ring-4 ring-festival-teal/30 bg-white scale-[1.01]"
                     : `border ${bgTheme} shadow-2xs`
                 }`}
               >
@@ -97,7 +97,7 @@ export default function Step4PlanSelection({
                           {plan.name}
                         </h4>
                         {isSelected && (
-                          <Check className="w-4 h-4 text-blue-600 stroke-[3]" />
+                          <Check className="w-4 h-4 text-festival-teal stroke-[3]" />
                         )}
                       </div>
                       <div className="flex items-baseline gap-1.5 mt-1">
@@ -128,7 +128,7 @@ export default function Step4PlanSelection({
                     </div>
                     <div className="flex flex-col items-end gap-1">
                       {isSelected ? (
-                        <Badge className="bg-blue-600 text-white font-bold text-[9.5px] px-2.5 py-0.5 shadow-sm border-0 flex items-center gap-1">
+                        <Badge className="bg-festival-teal text-white font-bold text-[9.5px] px-2.5 py-0.5 shadow-sm border-0 flex items-center gap-1">
                           <Check className="w-3 h-3 stroke-[3]" /> SELECTED
                         </Badge>
                       ) : plan.badge ? (
@@ -211,7 +211,7 @@ export default function Step4PlanSelection({
                     }}
                     className={`w-full h-9 rounded-xl font-bold text-xs cursor-pointer transition-all flex items-center justify-center gap-1.5 ${
                       isSelected
-                        ? "bg-blue-600 hover:bg-blue-700 text-white border-0 shadow-md shadow-blue-500/25"
+                        ? "bg-festival-teal hover:bg-[#00635E] text-white border-0 shadow-md shadow-festival-teal/20"
                         : btnTheme
                     }`}
                   >
@@ -243,7 +243,7 @@ export default function Step4PlanSelection({
             onChange={(e) =>
               setFormData({ ...formData, referralCode: e.target.value })
             }
-            className="pl-8 bg-white border border-slate-200/90 shadow-2xs text-xs h-9 rounded-lg font-mono uppercase font-normal focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+            className="pl-8 bg-white border border-brand-border shadow-2xs text-xs h-9 rounded-lg font-mono uppercase font-normal focus:border-festival-teal focus:ring-2 focus:ring-festival-teal/30"
           />
         </div>
       </div>

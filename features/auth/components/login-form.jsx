@@ -91,7 +91,7 @@ export function LoginForm() {
         Don't have an account?{" "}
         <Link
           href="/register"
-          className="text-brand-blue hover:text-blue-700 font-semibold transition-colors ml-0.5"
+          className="text-brand-blue hover:text-festival-teal font-semibold transition-colors ml-0.5"
         >
           Sign up
         </Link>

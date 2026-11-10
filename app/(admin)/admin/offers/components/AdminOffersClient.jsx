@@ -66,7 +66,7 @@ const STATUS_OPTIONS = [
 // 8 Distinct Colorful Row Palettes (Clearly visible without hover)
 const ROW_COLOR_THEMES = [
   {
-    row: "bg-blue-100/65 hover:bg-blue-100/90 border-l-[3.5px] border-l-blue-600 border-b border-blue-200/80 text-slate-900",
+    row: "bg-festival-teal/10 hover:bg-festival-teal/20 border-l-[3.5px] border-l-festival-teal border-b border-festival-teal/20 text-slate-900",
   },
   {
     row: "bg-emerald-100/65 hover:bg-emerald-100/90 border-l-[3.5px] border-l-emerald-600 border-b border-emerald-200/80 text-slate-900",
@@ -309,7 +309,7 @@ export default function AdminOffersClient() {
                 className={cn(
                   "px-2.5 py-1 rounded-md text-[11px] font-medium transition-all cursor-pointer flex items-center gap-1.5 border-0",
                   activeTab === "coupons"
-                    ? "bg-white text-blue-600 shadow-2xs"
+                    ? "bg-white text-festival-teal shadow-2xs"
                     : "text-slate-600 hover:text-slate-900 bg-transparent",
                 )}
               >
@@ -322,7 +322,7 @@ export default function AdminOffersClient() {
                 className={cn(
                   "px-2.5 py-1 rounded-md text-[11px] font-medium transition-all cursor-pointer flex items-center gap-1.5 border-0",
                   activeTab === "affiliates"
-                    ? "bg-white text-blue-600 shadow-2xs"
+                    ? "bg-white text-festival-teal shadow-2xs"
                     : "text-slate-600 hover:text-slate-900 bg-transparent",
                 )}
               >
@@ -356,7 +356,7 @@ export default function AdminOffersClient() {
             className={cn(
               "rounded-xl border p-2.5 cursor-pointer transition-all duration-200 shadow-2xs font-sans",
               statusFilter === "all"
-                ? "bg-blue-50/70 border-blue-300 ring-1 ring-blue-300"
+                ? "bg-warm-ivory border-festival-teal/30 ring-1 ring-festival-teal/20"
                 : "bg-white border-slate-200/80 hover:border-slate-300",
             )}
           >
@@ -369,7 +369,7 @@ export default function AdminOffersClient() {
                   {isLoading ? <Skeleton className="h-4.5 w-10 rounded mt-0.5" /> : stats.total}
                 </span>
               </div>
-              <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 border border-blue-200/60 flex items-center justify-center shrink-0">
+              <div className="w-7 h-7 rounded-lg bg-warm-ivory text-festival-teal border border-festival-teal/20 flex items-center justify-center shrink-0">
                 <Tag className="w-3.5 h-3.5" />
               </div>
             </CardContent>
@@ -490,7 +490,7 @@ export default function AdminOffersClient() {
                 placeholder="Search affiliate deals by title, tagline, or merchant..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full sm:w-80 bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 focus:outline-none focus:border-blue-600 font-normal"
+                className="w-full sm:w-80 bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 focus:outline-none focus:border-festival-teal font-normal"
               />
 
               <div className="flex items-center gap-2 self-end sm:self-auto">
@@ -610,7 +610,7 @@ export default function AdminOffersClient() {
                               <td className="px-4 py-3 font-bold">
                                 {hasExact ? (
                                   <div className="space-y-0.5">
-                                    <span className="text-blue-600 block">
+                                    <span className="text-festival-teal block">
                                       ₹{p.discountPrice?.toLocaleString()}
                                     </span>
                                     <span className="text-[10px] text-slate-400 line-through block">
@@ -650,7 +650,7 @@ export default function AdminOffersClient() {
                                       toast.success("Link copied!");
                                       setTimeout(() => setCopiedId(null), 2000);
                                     }}
-                                    className="p-1 hover:text-blue-600 rounded shrink-0 cursor-pointer"
+                                    className="p-1 hover:text-festival-teal rounded shrink-0 cursor-pointer"
                                   >
                                     {copiedId === p._id ? (
                                       <Check className="w-3 h-3 text-emerald-600" />
@@ -662,7 +662,7 @@ export default function AdminOffersClient() {
                                     href={p.affiliateUrl}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="p-1 hover:text-blue-600 rounded shrink-0"
+                                    className="p-1 hover:text-festival-teal rounded shrink-0"
                                   >
                                     <ExternalLink className="w-3 h-3 text-slate-400" />
                                   </a>
@@ -709,7 +709,7 @@ export default function AdminOffersClient() {
                                   <button
                                     type="button"
                                     onClick={() => setEditingAffiliate(p)}
-                                    className="p-1.5 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg border border-slate-200 cursor-pointer"
+                                    className="p-1.5 text-slate-600 hover:text-festival-teal hover:bg-warm-ivory rounded-lg border border-slate-200 cursor-pointer"
                                     title="Edit Deal"
                                   >
                                     <Edit2 className="w-3.5 h-3.5" />
@@ -760,7 +760,7 @@ export default function AdminOffersClient() {
                           ) : null
                         }
                         avatarText={!p.imageUrl ? p.title : undefined}
-                        avatarBg="bg-blue-600"
+                        avatarBg="bg-festival-teal"
                         badge="AFFILIATE PRODUCT"
                         title={p.title}
                         subtitle={`${merchantName} • ${p.category}`}
@@ -816,7 +816,7 @@ export default function AdminOffersClient() {
                             <button
                               type="button"
                               onClick={() => setEditingAffiliate(p)}
-                              className="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold rounded-xl py-2.5 px-4 flex items-center justify-between text-xs transition-colors cursor-pointer select-none"
+                              className="flex-1 bg-warm-ivory hover:bg-festival-teal/20 text-festival-teal font-bold rounded-xl py-2.5 px-4 flex items-center justify-between text-xs transition-colors cursor-pointer select-none"
                             >
                               <span>Edit Product</span>
                               <ArrowRight className="w-4 h-4" />

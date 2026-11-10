@@ -64,10 +64,10 @@ const INITIAL_FORM = {
 };
 
 const inputCls =
-  "w-full px-3 py-2 rounded-lg border border-gray-200 bg-white text-[13px] text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all";
+  "w-full px-3 py-2 rounded-lg border border-brand-border bg-white text-[13px] text-royal-plum placeholder-royal-plum/40 focus:outline-none focus:border-festival-teal focus:ring-2 focus:ring-festival-teal/20 transition-all";
 
 const labelCls =
-  "block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1";
+  "block text-[11px] font-semibold text-royal-plum/70 uppercase tracking-wider mb-1 font-heading";
 
 export default function ExpiredCouponRevival() {
   const [step, setStep] = useState(1);
@@ -189,40 +189,37 @@ export default function ExpiredCouponRevival() {
   const f = (key, val) => setForm((prev) => ({ ...prev, [key]: val }));
 
   return (
-    <div
-      className="min-h-screen flex flex-col bg-gray-50"
-      style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
-    >
+    <div className="min-h-screen flex flex-col bg-warm-ivory text-royal-plum font-sans">
       <Navbar />
 
       {/* ── Compact Hero Bar ── */}
-      <section className="w-full bg-white border-b border-gray-100">
+      <section className="w-full bg-white border-b border-brand-border">
         <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900 tracking-tight leading-snug">
+            <h1 className="text-2xl font-bold font-heading text-royal-plum tracking-tight leading-snug">
               Expired Offer?{" "}
-              <span className="text-blue-600">We'll Revive It.</span>
+              <span className="text-festival-teal">We'll Revive It.</span>
             </h1>
-            <p className="text-[13px] text-gray-500 font-normal mt-1">
+            <p className="text-[13px] text-royal-plum/70 font-normal mt-1">
               Submit the expired code — Vouchiqo contacts the merchant on your behalf, free, within 48 hours.
             </p>
           </div>
           {/* Stats inline */}
           <div className="flex items-center gap-4 flex-shrink-0">
             <div className="text-center">
-              <span className="block text-xl font-bold text-blue-600">
+              <span className="block text-xl font-bold font-heading text-festival-teal">
                 {stats.thisMonthRequests}
               </span>
-              <span className="text-[10px] text-gray-400 font-medium uppercase tracking-wide">
+              <span className="text-[10px] text-royal-plum/50 font-medium uppercase tracking-wide font-heading">
                 This Month
               </span>
             </div>
-            <div className="w-px h-8 bg-gray-200" />
+            <div className="w-px h-8 bg-brand-border" />
             <div className="text-center">
-              <span className="block text-xl font-bold text-gray-900">
+              <span className="block text-xl font-bold font-heading text-royal-plum">
                 {(Number(stats?.totalRequests) || 0).toLocaleString()}
               </span>
-              <span className="text-[10px] text-gray-400 font-medium uppercase tracking-wide">
+              <span className="text-[10px] text-royal-plum/50 font-medium uppercase tracking-wide font-heading">
                 Total Revived
               </span>
             </div>
@@ -235,24 +232,24 @@ export default function ExpiredCouponRevival() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
 
           {/* ── LEFT: Form (7 cols) ── */}
-          <div className="lg:col-span-7 bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden">
+          <div className="lg:col-span-7 bg-white border border-brand-border rounded-xl shadow-sm overflow-hidden">
             {submitted ? (
               <div className="flex flex-col items-center justify-center text-center p-10 space-y-4">
-                <div className="w-12 h-12 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center">
-                  <CheckCircle2 className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 rounded-full bg-festival-teal/10 border border-festival-teal/20 flex items-center justify-center">
+                  <CheckCircle2 className="w-6 h-6 text-festival-teal" />
                 </div>
                 <div>
-                  <h3 className="text-[15px] font-semibold text-gray-900 mb-1">
+                  <h3 className="text-[15px] font-bold font-heading text-royal-plum mb-1">
                     Request Submitted!
                   </h3>
-                  <p className="text-[12px] text-gray-500 font-normal max-w-sm mx-auto leading-relaxed">
+                  <p className="text-[12px] text-royal-plum/70 font-normal max-w-sm mx-auto leading-relaxed">
                     We've received your request and will contact the merchant on your behalf. You'll hear back within 48 hours via email and WhatsApp.
                   </p>
                 </div>
                 <button
                   type="button"
                   onClick={() => { setSubmitted(false); setStep(1); setForm(INITIAL_FORM); }}
-                  className="flex items-center gap-1.5 px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-[12px] font-medium rounded-lg border-0 cursor-pointer transition-colors"
+                  className="flex items-center gap-1.5 px-5 py-2 bg-festival-teal hover:bg-[#00635E] text-white text-[12px] font-heading font-semibold rounded-lg border-0 cursor-pointer transition-colors"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   Submit Another
@@ -261,15 +258,15 @@ export default function ExpiredCouponRevival() {
             ) : (
               <div>
                 {/* Step Header */}
-                <div className="px-5 pt-5 pb-4 border-b border-gray-100">
+                <div className="px-5 pt-5 pb-4 border-b border-brand-border">
                   <div className="flex items-center justify-between mb-3">
-                    <h2 className="text-[14px] font-semibold text-gray-900">
+                    <h2 className="text-[14px] font-bold font-heading text-royal-plum">
                       {step === 1 && "Merchant Details"}
                       {step === 2 && "Offer Details"}
                       {step === 3 && "Contact Information"}
                       {step === 4 && "Confirm & Submit"}
                     </h2>
-                    <span className="text-[11px] text-gray-400 font-medium">
+                    <span className="text-[11px] text-royal-plum/50 font-medium font-heading">
                       {step}/4
                     </span>
                   </div>
@@ -284,16 +281,16 @@ export default function ExpiredCouponRevival() {
                           <div
                             className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-semibold transition-all ${
                               done
-                                ? "bg-blue-600 text-white"
+                                ? "bg-festival-teal text-white"
                                 : active
-                                  ? "bg-blue-600 text-white ring-3 ring-blue-100"
-                                  : "bg-gray-100 text-gray-400"
+                                  ? "bg-festival-teal text-white ring-3 ring-festival-teal/20"
+                                  : "bg-warm-ivory text-royal-plum/40 border border-brand-border"
                             }`}
                           >
                             {done ? <CheckCircle2 className="w-3 h-3" /> : s.id}
                           </div>
                           {i < STEPS.length - 1 && (
-                            <div className={`flex-1 h-0.5 mx-1 rounded-full ${done ? "bg-blue-600" : "bg-gray-100"}`} />
+                            <div className={`flex-1 h-0.5 mx-1 rounded-full ${done ? "bg-festival-teal" : "bg-brand-border/60"}`} />
                           )}
                         </div>
                       );
@@ -303,7 +300,7 @@ export default function ExpiredCouponRevival() {
                   <div className="flex items-center gap-1.5 mt-1">
                     {STEPS.map((s, i) => (
                       <div key={s.id} className="flex items-center flex-1 last:flex-none">
-                        <span className={`text-[9px] font-medium ${step >= s.id ? "text-blue-600" : "text-gray-400"}`}>
+                        <span className={`text-[9px] font-medium font-heading ${step >= s.id ? "text-festival-teal" : "text-royal-plum/40"}`}>
                           {s.label}
                         </span>
                         {i < STEPS.length - 1 && <div className="flex-1" />}
@@ -315,7 +312,7 @@ export default function ExpiredCouponRevival() {
                 {/* Form body */}
                 <div className="px-5 py-4 space-y-4">
                   {error && (
-                    <div className="flex items-center gap-2 p-3 rounded-lg bg-red-50 border border-red-100 text-red-600 text-[12px] font-medium">
+                    <div className="flex items-center gap-2 p-3 rounded-lg bg-festival-pink/10 border border-festival-pink/20 text-festival-pink text-[12px] font-medium">
                       <AlertTriangle className="w-3.5 h-3.5 flex-shrink-0" />
                       {error}
                     </div>
@@ -344,7 +341,7 @@ export default function ExpiredCouponRevival() {
                           </select>
                         </div>
                       </div>
-                      <button type="button" onClick={nextStep} className="w-full flex items-center justify-center gap-2 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-[13px] font-medium rounded-lg border-0 cursor-pointer transition-colors mt-1">
+                      <button type="button" onClick={nextStep} className="w-full flex items-center justify-center gap-2 py-2.5 bg-festival-teal hover:bg-[#00635E] text-white text-[13px] font-heading font-bold rounded-lg border-0 cursor-pointer transition-colors mt-1">
                         Continue <ArrowRight className="w-4 h-4" />
                       </button>
                     </div>
@@ -356,7 +353,7 @@ export default function ExpiredCouponRevival() {
                       <div className="grid grid-cols-2 gap-3">
                         <div>
                           <label className={labelCls}>Expired Code (optional)</label>
-                          <input className={`${inputCls} uppercase tracking-wider`} placeholder="e.g. SAVE20" value={form.code} onChange={(e) => f("code", e.target.value.toUpperCase())} />
+                          <input className={`${inputCls} uppercase tracking-wider font-mono`} placeholder="e.g. SAVE20" value={form.code} onChange={(e) => f("code", e.target.value.toUpperCase())} />
                         </div>
                         <div>
                           <label className={labelCls}>Discount Type *</label>
@@ -374,7 +371,7 @@ export default function ExpiredCouponRevival() {
                       <div>
                         <div className="flex justify-between items-center mb-1">
                           <label className={labelCls}>Offer Description * (Max 100 Characters)</label>
-                          <span className="text-[10px] text-gray-400 font-medium">
+                          <span className="text-[10px] text-royal-plum/50 font-medium">
                             {form.description.length}/100
                           </span>
                         </div>
@@ -391,10 +388,10 @@ export default function ExpiredCouponRevival() {
                         </div>
                       </div>
                       <div className="flex gap-2 mt-1">
-                        <button type="button" onClick={prevStep} className="flex items-center gap-1.5 px-4 py-2 border border-gray-200 bg-white text-gray-700 text-[12px] font-medium rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                        <button type="button" onClick={prevStep} className="flex items-center gap-1.5 px-4 py-2 border border-brand-border bg-white text-royal-plum text-[12px] font-medium rounded-lg cursor-pointer hover:bg-warm-ivory transition-colors">
                           <ArrowLeft className="w-3.5 h-3.5" /> Back
                         </button>
-                        <button type="button" onClick={nextStep} className="flex-1 flex items-center justify-center gap-2 py-2 bg-blue-600 hover:bg-blue-700 text-white text-[13px] font-medium rounded-lg border-0 cursor-pointer transition-colors">
+                        <button type="button" onClick={nextStep} className="flex-1 flex items-center justify-center gap-2 py-2 bg-festival-teal hover:bg-[#00635E] text-white text-[13px] font-heading font-bold rounded-lg border-0 cursor-pointer transition-colors">
                           Continue <ArrowRight className="w-4 h-4" />
                         </button>
                       </div>
@@ -413,10 +410,10 @@ export default function ExpiredCouponRevival() {
                         <input type="tel" className={inputCls} placeholder="10-digit number e.g. 9876543210" value={form.mobileNumber} onChange={(e) => f("mobileNumber", e.target.value)} />
                       </div>
                       <div className="flex gap-2 mt-1">
-                        <button type="button" onClick={prevStep} className="flex items-center gap-1.5 px-4 py-2 border border-gray-200 bg-white text-gray-700 text-[12px] font-medium rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                        <button type="button" onClick={prevStep} className="flex items-center gap-1.5 px-4 py-2 border border-brand-border bg-white text-royal-plum text-[12px] font-medium rounded-lg cursor-pointer hover:bg-warm-ivory transition-colors">
                           <ArrowLeft className="w-3.5 h-3.5" /> Back
                         </button>
-                        <button type="button" onClick={nextStep} className="flex-1 flex items-center justify-center gap-2 py-2 bg-blue-600 hover:bg-blue-700 text-white text-[13px] font-medium rounded-lg border-0 cursor-pointer transition-colors">
+                        <button type="button" onClick={nextStep} className="flex-1 flex items-center justify-center gap-2 py-2 bg-festival-teal hover:bg-[#00635E] text-white text-[13px] font-heading font-bold rounded-lg border-0 cursor-pointer transition-colors">
                           Continue <ArrowRight className="w-4 h-4" />
                         </button>
                       </div>
@@ -427,8 +424,8 @@ export default function ExpiredCouponRevival() {
                   {step === 4 && (
                     <form onSubmit={handleSubmit} className="space-y-4">
                       {/* Summary */}
-                      <div className="bg-gray-50 border border-gray-100 rounded-lg p-3 space-y-1.5">
-                        <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-2">Review</p>
+                      <div className="bg-warm-ivory border border-brand-border rounded-lg p-3 space-y-1.5">
+                        <p className="text-[10px] font-bold font-heading text-royal-plum/50 uppercase tracking-widest mb-2">Review</p>
                         {[
                           { label: "Brand", value: form.brandName },
                           { label: "City", value: form.merchantCity },
@@ -438,24 +435,24 @@ export default function ExpiredCouponRevival() {
                           { label: "WhatsApp", value: form.mobileNumber },
                         ].map(({ label, value }) => (
                           <div key={label} className="flex justify-between items-center text-[12px]">
-                            <span className="text-gray-400 font-medium w-20 flex-shrink-0">{label}</span>
-                            <span className="text-gray-800 font-medium text-right truncate">{value}</span>
+                            <span className="text-royal-plum/60 font-medium w-20 flex-shrink-0">{label}</span>
+                            <span className="text-royal-plum font-medium text-right truncate">{value}</span>
                           </div>
                         ))}
                       </div>
 
                       {/* Consent */}
-                      <div className="bg-blue-50 border border-blue-100 rounded-lg p-3">
+                      <div className="bg-festival-teal/10 border border-festival-teal/20 rounded-lg p-3">
                         <label className="flex items-start gap-2.5 cursor-pointer select-none">
                           <input
                             type="checkbox"
                             checked={form.consent}
                             onChange={(e) => f("consent", e.target.checked)}
-                            className="w-3.5 h-3.5 mt-0.5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 flex-shrink-0"
+                            className="w-3.5 h-3.5 mt-0.5 rounded border-brand-border text-festival-teal focus:ring-festival-teal/30 flex-shrink-0"
                           />
-                          <span className="text-[11px] text-gray-600 leading-relaxed font-normal">
+                          <span className="text-[11px] text-royal-plum/80 leading-relaxed font-normal">
                             I understand Vouchiqo will attempt to negotiate with the merchant to revive or replace this offer. Revival is not guaranteed, and I may receive an alternative offer if the original cannot be restored. See our{" "}
-                            <a href="/privacy#revival-data-clause" target="_blank" className="text-blue-600 underline font-semibold">
+                            <a href="/privacy#revival-data-clause" target="_blank" className="text-festival-teal underline font-semibold">
                               Privacy Policy (Section 6: Merchant Demand Data Usage)
                             </a>.
                           </span>
@@ -463,10 +460,10 @@ export default function ExpiredCouponRevival() {
                       </div>
 
                       <div className="flex gap-2">
-                        <button type="button" onClick={prevStep} className="flex items-center gap-1.5 px-4 py-2 border border-gray-200 bg-white text-gray-700 text-[12px] font-medium rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                        <button type="button" onClick={prevStep} className="flex items-center gap-1.5 px-4 py-2 border border-brand-border bg-white text-royal-plum text-[12px] font-medium rounded-lg cursor-pointer hover:bg-warm-ivory transition-colors">
                           <ArrowLeft className="w-3.5 h-3.5" /> Back
                         </button>
-                        <button type="submit" disabled={loading} className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white text-[13px] font-medium rounded-lg border-0 cursor-pointer transition-colors">
+                        <button type="submit" disabled={loading} className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-festival-teal hover:bg-[#00635E] disabled:opacity-60 text-white text-[13px] font-heading font-bold rounded-lg border-0 cursor-pointer transition-colors">
                           {loading ? (
                             <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Submitting...</>
                           ) : (
@@ -485,8 +482,8 @@ export default function ExpiredCouponRevival() {
           <div className="lg:col-span-5 space-y-4">
 
             {/* How it Works */}
-            <div className="bg-white border border-gray-100 rounded-xl shadow-sm p-5">
-              <h3 className="text-[12px] font-semibold text-gray-900 uppercase tracking-wider mb-4">
+            <div className="bg-white border border-brand-border rounded-xl shadow-sm p-5">
+              <h3 className="text-[12px] font-bold font-heading text-royal-plum uppercase tracking-wider mb-4">
                 How Revival Works
               </h3>
               <div className="space-y-4">
@@ -496,18 +493,18 @@ export default function ExpiredCouponRevival() {
                   { n: "3", title: "Code Restored", desc: "Once the merchant approves, the coupon is refreshed with a new expiry and you're notified instantly." },
                 ].map((item, i) => (
                   <div key={item.n} className="flex gap-3 items-start">
-                    <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-[11px] font-semibold flex-shrink-0">
+                    <div className="w-6 h-6 rounded-full bg-festival-teal text-white flex items-center justify-center text-[11px] font-bold font-heading flex-shrink-0">
                       {item.n}
                     </div>
                     <div>
-                      <h4 className="text-[12px] font-semibold text-gray-900">{item.title}</h4>
-                      <p className="text-[11px] text-gray-500 leading-relaxed mt-0.5">{item.desc}</p>
+                      <h4 className="text-[12px] font-bold font-heading text-royal-plum">{item.title}</h4>
+                      <p className="text-[11px] text-royal-plum/70 leading-relaxed mt-0.5">{item.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-1.5 text-[11px] text-gray-400">
-                <Clock className="w-3 h-3 text-blue-500 flex-shrink-0" />
+              <div className="mt-4 pt-3 border-t border-brand-border/60 flex items-center gap-1.5 text-[11px] text-royal-plum/50">
+                <Clock className="w-3 h-3 text-festival-teal flex-shrink-0" />
                 Merchants typically respond within 48 hours.
               </div>
             </div>
@@ -515,37 +512,37 @@ export default function ExpiredCouponRevival() {
             {/* Trust row */}
             <div className="grid grid-cols-3 gap-3">
               {[
-                { icon: CheckCircle2, label: "Verified", sub: "Process", color: "text-blue-600" },
-                { icon: Clock, label: "48 hrs", sub: "Response", color: "text-gray-600" },
-                { icon: Star, label: "100%", sub: "Free", color: "text-gray-600" },
+                { icon: CheckCircle2, label: "Verified", sub: "Process", color: "text-festival-teal" },
+                { icon: Clock, label: "48 hrs", sub: "Response", color: "text-royal-plum" },
+                { icon: Star, label: "100%", sub: "Free", color: "text-marigold-glow" },
               ].map(({ icon: Icon, label, sub, color }) => (
-                <div key={label} className="bg-white border border-gray-100 rounded-xl p-3 text-center shadow-sm">
+                <div key={label} className="bg-white border border-brand-border rounded-xl p-3 text-center shadow-sm">
                   <Icon className={`w-4 h-4 mx-auto mb-1 ${color}`} />
-                  <p className="text-[12px] font-semibold text-gray-800">{label}</p>
-                  <p className="text-[10px] text-gray-400">{sub}</p>
+                  <p className="text-[12px] font-bold font-heading text-royal-plum">{label}</p>
+                  <p className="text-[10px] text-royal-plum/50">{sub}</p>
                 </div>
               ))}
             </div>
 
             {/* Success Stories */}
-            <div className="bg-white border border-gray-100 rounded-xl shadow-sm p-5">
-              <h3 className="text-[12px] font-semibold text-gray-900 uppercase tracking-wider mb-3">
+            <div className="bg-white border border-brand-border rounded-xl shadow-sm p-5">
+              <h3 className="text-[12px] font-bold font-heading text-royal-plum uppercase tracking-wider mb-3">
                 Recent Revivals
               </h3>
               <div className="space-y-3 max-h-[300px] overflow-y-auto pr-0.5 scrollbar-thin">
                 {successStories.map((story, idx) => (
-                  <div key={idx} className="bg-gray-50 border border-gray-100 rounded-lg p-3 space-y-1.5">
+                  <div key={idx} className="bg-warm-ivory border border-brand-border/60 rounded-lg p-3 space-y-1.5">
                     <div className="flex items-start justify-between gap-2">
                       <div>
-                        <p className="text-[12px] font-semibold text-gray-900 leading-none">{story.brand}</p>
-                        <p className="text-[11px] text-blue-600 font-medium mt-0.5">{story.offer}</p>
+                        <p className="text-[12px] font-bold font-heading text-royal-plum leading-none">{story.brand}</p>
+                        <p className="text-[11px] text-festival-pink font-semibold mt-0.5">{story.offer}</p>
                       </div>
-                      <span className="text-[10px] text-gray-400 font-medium whitespace-nowrap flex-shrink-0">{story.date}</span>
+                      <span className="text-[10px] text-royal-plum/40 font-medium whitespace-nowrap flex-shrink-0">{story.date}</span>
                     </div>
-                    <p className="text-[11px] text-gray-500 leading-relaxed italic border-l-2 border-blue-200 pl-2">
+                    <p className="text-[11px] text-royal-plum/70 leading-relaxed italic border-l-2 border-festival-pink/30 pl-2">
                       "{story.text}"
                     </p>
-                    <p className="text-[10px] text-gray-400 text-right">— {story.user}</p>
+                    <p className="text-[10px] text-royal-plum/50 text-right">— {story.user}</p>
                   </div>
                 ))}
               </div>

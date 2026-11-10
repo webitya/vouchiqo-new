@@ -27,14 +27,14 @@ const BloggerIcon = ({ className }) => (
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#0b0f19] text-slate-400 pt-12 pb-6 border-t border-slate-800/80 mt-auto select-none text-left font-sans">
+    <footer className="w-full bg-[#1D062B] text-[#D5BEDE] pt-12 pb-6 border-t border-[#35104A] mt-auto select-none text-left font-sans">
       <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 max-w-[1440px] mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-10 mb-10">
           {/* Brand Info Block */}
           <div className="col-span-2 lg:col-span-2 flex flex-col items-center md:items-start text-center md:text-left space-y-4">
             <Link
               href="/"
-              className="inline-block bg-white p-2 rounded-lg hover:opacity-90 transition-opacity"
+              className="inline-block bg-white p-2 rounded-lg hover:opacity-95 transition-opacity shadow-sm border border-[#EADBCE]"
             >
               <Image
                 src="/navbarlogovouchiqo.webp"
@@ -44,7 +44,7 @@ export default function Footer() {
                 className="h-8 w-auto object-contain"
               />
             </Link>
-            <p className="text-xs text-slate-400 leading-relaxed max-w-xs">
+            <p className="text-xs text-[#D5BEDE]/80 leading-relaxed max-w-xs font-sans">
               Striving towards making the world a better place to shop with
               great savings. We help you turn verified promotional offers into
               instant value.
@@ -55,7 +55,7 @@ export default function Footer() {
                 href="https://www.instagram.com/vouchiqo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-[#E1306C] flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-xs"
+                className="w-8 h-8 rounded-lg bg-[#FF2E63] flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-xs"
                 aria-label="Instagram"
               >
                 <InstagramIcon className="w-4 h-4" />
@@ -64,7 +64,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/vouchiqo/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-[#0077B5] flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-xs"
+                className="w-8 h-8 rounded-lg bg-[#007F79] flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-xs"
                 aria-label="LinkedIn"
               >
                 <LinkedInIcon className="w-4 h-4" />
@@ -73,7 +73,7 @@ export default function Footer() {
                 href="https://medium.com/@lokesh.vouchiqo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-xs"
+                className="w-8 h-8 rounded-lg bg-[#35104A] border border-[#D5BEDE]/20 flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-xs"
                 aria-label="Medium"
               >
                 <MediumIcon className="w-4 h-4" />
@@ -82,7 +82,7 @@ export default function Footer() {
                 href="https://vouchiqo.blogspot.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-[#F57D00] flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-xs"
+                className="w-8 h-8 rounded-lg bg-[#FF8C05] flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-xs"
                 aria-label="Blogger"
               >
                 <BloggerIcon className="w-4 h-4" />
@@ -92,13 +92,13 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4 uppercase tracking-wider text-xs">
+            <h4 className="text-[#FFF8EF] font-heading font-bold mb-4 uppercase tracking-wider text-xs">
               Quick Links
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2 text-xs font-sans">
               <li>
                 <Link
-                  className="hover:text-white hover:translate-x-0.5 inline-block transition-transform duration-150"
+                  className="hover:text-[#FFD166] hover:translate-x-0.5 inline-block transition-transform duration-150"
                   href="/categories"
                 >
                   Browse Categories
@@ -106,7 +106,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  className="hover:text-white hover:translate-x-0.5 inline-block transition-transform duration-150"
+                  className="hover:text-[#FFD166] hover:translate-x-0.5 inline-block transition-transform duration-150"
                   href="/brands"
                 >
                   Partner Brands
@@ -114,7 +114,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  className="hover:text-white hover:translate-x-0.5 inline-block transition-transform duration-150"
+                  className="hover:text-[#FFD166] hover:translate-x-0.5 inline-block transition-transform duration-150"
                   href="/nearby-offers"
                 >
                   Nearby Offers
@@ -122,7 +122,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  className="hover:text-white hover:translate-x-0.5 inline-block transition-transform duration-150"
+                  className="hover:text-[#FFD166] hover:translate-x-0.5 inline-block transition-transform duration-150"
                   href="/expired-coupon-revival"
                 >
                   Offer Revival
@@ -130,7 +130,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  className="hover:text-white hover:translate-x-0.5 inline-block transition-transform duration-150"
+                  className="hover:text-[#FFD166] hover:translate-x-0.5 inline-block transition-transform duration-150"
                   href="/faq"
                 >
                   Help & FAQs
@@ -141,13 +141,13 @@ export default function Footer() {
 
           {/* Accounts & Portal */}
           <div>
-            <h4 className="text-white font-semibold mb-4 uppercase tracking-wider text-xs">
+            <h4 className="text-[#FFF8EF] font-heading font-bold mb-4 uppercase tracking-wider text-xs">
               Accounts
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2 text-xs font-sans">
               <li>
                 <Link
-                  className="hover:text-white hover:translate-x-0.5 inline-block transition-transform duration-150"
+                  className="hover:text-[#FFD166] hover:translate-x-0.5 inline-block transition-transform duration-150"
                   href="/login"
                 >
                   User Login
@@ -155,7 +155,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  className="hover:text-white hover:translate-x-0.5 inline-block transition-transform duration-150"
+                  className="hover:text-[#FFD166] hover:translate-x-0.5 inline-block transition-transform duration-150"
                   href="/register"
                 >
                   User Register
@@ -248,17 +248,17 @@ export default function Footer() {
         </div>
 
         {/* Footer Bottom Block */}
-        <div className="pt-6 border-t border-slate-800/80 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-          <p className="text-[11px] text-slate-500 font-medium flex items-center justify-center md:justify-start gap-2">
+        <div className="pt-6 border-t border-[#35104A] flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+          <p className="text-[11px] text-[#D5BEDE]/70 font-medium flex items-center justify-center md:justify-start gap-2">
             <span>&copy; {new Date().getFullYear()} Vouchiqo. All Rights Reserved.</span>
           </p>
-          <p className="text-[11px] text-slate-500 font-medium">
+          <p className="text-[11px] text-[#D5BEDE]/70 font-medium">
             Designed & Maintained by{" "}
             <a
               href="https://webitya.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-blue-400 font-semibold transition-colors"
+              className="text-[#D5BEDE] hover:text-[#FFD166] font-semibold transition-colors"
             >
               Webitya
             </a>

@@ -12,7 +12,7 @@ export default function ExitConfirmModal({ isOpen, onClose, router }) {
       <div className="bg-white rounded-2xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4 animate-in fade-in zoom-in-95 duration-200">
         <div className="flex items-center justify-between border-b border-slate-100 pb-3">
           <div className="flex items-center gap-2 text-slate-900 font-bold text-base">
-            <Store className="w-5 h-5 text-blue-600" />
+            <Store className="w-5 h-5 text-festival-teal" />
             <span>Exit Merchant Registration?</span>
           </div>
           <button
@@ -33,7 +33,7 @@ export default function ExitConfirmModal({ isOpen, onClose, router }) {
           <Button
             type="button"
             onClick={() => router.push("/merchant/dashboard")}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs h-9.5 rounded-xl cursor-pointer shadow-sm flex items-center justify-center gap-2"
+            className="bg-festival-teal hover:bg-[#00635E] text-white font-semibold text-xs h-9.5 rounded-xl cursor-pointer shadow-sm flex items-center justify-center gap-2"
           >
             <Store className="w-4 h-4" />
             <span>Dashboard</span>

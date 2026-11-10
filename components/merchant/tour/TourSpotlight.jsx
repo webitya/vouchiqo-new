@@ -51,7 +51,7 @@ export default function TourSpotlight({ targetSelector, isActive }) {
             width: `${targetRect.width}px`,
             height: `${targetRect.height}px`,
           }}
-          className="absolute rounded-xl border-2 border-blue-500/80 shadow-[0_0_0_9999px_rgba(15,23,42,0.55)] transition-all duration-300 pointer-events-none"
+          className="absolute rounded-xl border-2 border-festival-teal/80 shadow-[0_0_0_9999px_rgba(15,23,42,0.55)] transition-all duration-300 pointer-events-none"
         />
       ) : (
         <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-[1px]" />

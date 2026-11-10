@@ -155,7 +155,7 @@ export default function AffiliateDealCard({ product, merchant }) {
 
           {/* Middle: Title & Live Description (Only rendered if present in DB) */}
           <div className="min-w-0">
-            <h4 className="text-xs sm:text-base md:text-[15.5px] font-bold text-slate-900 leading-snug line-clamp-1 group-hover:text-blue-600 transition-colors">
+            <h4 className="text-xs sm:text-base md:text-[15.5px] font-bold text-slate-900 leading-snug line-clamp-1 group-hover:text-festival-teal transition-colors">
               {displayTitle}
             </h4>
             {description && description.trim() !== "" ? (
@@ -218,7 +218,7 @@ export default function AffiliateDealCard({ product, merchant }) {
             <button
               type="button"
               onClick={handleClaimClick}
-              className="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs sm:text-sm py-1.5 sm:py-2 px-3 rounded-xl flex items-center justify-center gap-1.5 shadow-2xs active:scale-95 transition-all cursor-pointer whitespace-nowrap"
+              className="w-full bg-festival-pink hover:bg-[#E02253] active:bg-[#C91A46] text-white font-semibold text-xs sm:text-sm py-1.5 sm:py-2 px-3 rounded-xl flex items-center justify-center gap-1.5 shadow-2xs active:scale-95 transition-all cursor-pointer whitespace-nowrap"
             >
               <span>Claim Deal</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -229,7 +229,7 @@ export default function AffiliateDealCard({ product, merchant }) {
                 e.stopPropagation();
                 setIsDetailsOpen(true);
               }}
-              className="text-[10px] sm:text-[11px] text-slate-500 hover:text-blue-600 font-medium inline-flex items-center gap-0.5 transition-colors cursor-pointer bg-transparent border-0 p-0"
+              className="text-[10px] sm:text-[11px] text-slate-500 hover:text-festival-teal font-medium inline-flex items-center gap-0.5 transition-colors cursor-pointer bg-transparent border-0 p-0"
             >
               <span>View Details</span>
               <ArrowRight className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
@@ -325,8 +325,8 @@ export default function AffiliateDealCard({ product, merchant }) {
             )}
 
             {/* Affiliate Security Disclaimer */}
-            <div className="p-2.5 rounded-lg bg-blue-50/70 border border-blue-100/80 text-[11px] text-blue-700 flex items-start gap-2">
-              <ShieldCheck className="w-4 h-4 shrink-0 mt-0.5 text-blue-600" />
+            <div className="p-2.5 rounded-lg bg-festival-teal/10 border border-festival-teal/20 text-[11px] text-festival-teal flex items-start gap-2">
+              <ShieldCheck className="w-4 h-4 shrink-0 mt-0.5 text-festival-teal" />
               <span>
                 Clicking &quot;Claim Deal&quot; will securely take you to{" "}
                 {merchant?.businessName || "the partner store"}&apos;s website
@@ -341,7 +341,7 @@ export default function AffiliateDealCard({ product, merchant }) {
                 setIsDetailsOpen(false);
                 handleClaimClick(e);
               }}
-              className="w-full py-3 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-xs transition-all cursor-pointer"
+              className="w-full py-3 bg-festival-pink hover:bg-[#E02253] active:bg-[#C91A46] text-white font-bold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-xs transition-all cursor-pointer"
             >
               <span>Claim Deal on {merchant?.businessName || "Store"}</span>
               <ExternalLink className="w-4 h-4" />

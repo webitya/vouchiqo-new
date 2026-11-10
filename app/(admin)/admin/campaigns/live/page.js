@@ -51,7 +51,7 @@ import { cn } from "@/lib/utils";
 // 8 Distinct Colorful Card Palettes (Clearly visible without hover)
 const CARD_COLOR_THEMES = [
   {
-    card: "bg-blue-50/50 border-l-[3.5px] border-l-blue-600 border-slate-200/90 text-slate-900",
+    card: "bg-warm-ivory border-l-[3.5px] border-l-festival-teal border-slate-200/90 text-slate-900",
   },
   {
     card: "bg-emerald-50/50 border-l-[3.5px] border-l-emerald-600 border-slate-200/90 text-slate-900",
@@ -306,7 +306,7 @@ export default function AdminLiveCampaignsPage() {
               className={cn(
                 "rounded-xl border p-2.5 cursor-pointer transition-all duration-200 shadow-2xs font-sans",
                 statusFilter === "all"
-                  ? "bg-blue-50/70 border-blue-300 ring-1 ring-blue-300"
+                  ? "bg-warm-ivory border-festival-teal/30 ring-1 ring-festival-teal/20"
                   : "bg-white border-slate-200/80 hover:border-slate-300",
               )}
             >
@@ -319,7 +319,7 @@ export default function AdminLiveCampaignsPage() {
                     {stats.activeCount}
                   </span>
                 </div>
-                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 border border-blue-200/60 flex items-center justify-center shrink-0">
+                <div className="w-7 h-7 rounded-lg bg-warm-ivory text-festival-teal border border-festival-teal/20 flex items-center justify-center shrink-0">
                   <Activity className="w-3.5 h-3.5" />
                 </div>
               </CardContent>
@@ -508,7 +508,7 @@ export default function AdminLiveCampaignsPage() {
                           <span className="text-slate-500 font-normal block text-[9px]">
                             Conv.
                           </span>
-                          <span className="font-medium text-blue-700 text-[10.5px] leading-tight block mt-0.5">
+                          <span className="font-medium text-festival-teal text-[10.5px] leading-tight block mt-0.5">
                             {c.conversionRate}
                           </span>
                         </div>
@@ -526,7 +526,7 @@ export default function AdminLiveCampaignsPage() {
                           <div
                             className={cn(
                               "h-full rounded-full transition-all",
-                              c.capPercent >= 80 ? "bg-rose-500" : "bg-blue-600",
+                              c.capPercent >= 80 ? "bg-rose-500" : "bg-festival-teal",
                             )}
                             style={{ width: `${c.capPercent}%` }}
                           />
@@ -564,7 +564,7 @@ export default function AdminLiveCampaignsPage() {
                                   setCapCampaign(c);
                                   setNewCapValue(String(c.capLimit + 500));
                                 }}
-                                className="h-6.5 px-2 text-[10.5px] font-medium text-blue-700 border-blue-300 hover:bg-blue-50 bg-white rounded-md cursor-pointer shadow-2xs gap-1"
+                                className="h-6.5 px-2 text-[10.5px] font-medium text-festival-teal border-festival-teal/30 hover:bg-warm-ivory bg-white rounded-md cursor-pointer shadow-2xs gap-1"
                               >
                                 <Plus className="w-3 h-3" />
                                 <span>Boost Cap</span>
@@ -698,7 +698,7 @@ export default function AdminLiveCampaignsPage() {
                   size="sm"
                   disabled={isUpdatingCap}
                   onClick={handleConfirmIncreaseCap}
-                  className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg h-7.5"
+                  className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-medium rounded-lg h-7.5"
                 >
                   {isUpdatingCap ? (
                     <Loader2 className="w-3.5 h-3.5 animate-spin mr-1.5" />

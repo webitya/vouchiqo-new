@@ -183,13 +183,13 @@ export const NotificationBell = () => {
   const getActivityIcon = (type) => {
     switch (type) {
       case "coupon":
-        return <Tag className="w-3.5 h-3.5 text-blue-600" />;
+        return <Tag className="w-3.5 h-3.5 text-[#FF2E63]" />;
       case "brand":
-        return <Store className="w-3.5 h-3.5 text-emerald-600" />;
+        return <Store className="w-3.5 h-3.5 text-[#007F79]" />;
       case "notification":
-        return <Bell className="w-3.5 h-3.5 text-amber-600" />;
+        return <Bell className="w-3.5 h-3.5 text-[#FF8C05]" />;
       default:
-        return <Activity className="w-3.5 h-3.5 text-blue-500" />;
+        return <Activity className="w-3.5 h-3.5 text-[#007F79]" />;
     }
   };
 
@@ -197,12 +197,12 @@ export const NotificationBell = () => {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <button
-          className="relative p-1 text-slate-600 hover:text-blue-600 hover:bg-blue-50/80 rounded-full transition-colors cursor-pointer bg-transparent border-0 outline-none"
+          className="relative p-1 text-[#35104A] hover:text-[#007F79] hover:bg-[#007F79]/10 rounded-full transition-colors cursor-pointer bg-transparent border-0 outline-none"
           aria-label="Notifications"
         >
           <Bell className="h-[22px] w-[22px]" />
           {unreadCount > 0 && (
-            <span className="absolute top-0 right-0 -mt-1 -mr-1 bg-red-600 text-white text-[9.5px] font-bold h-[17px] w-[17px] flex items-center justify-center rounded-full border-2 border-white shadow-2xs">
+            <span className="absolute top-0 right-0 -mt-1 -mr-1 bg-[#FF2E63] text-white text-[9.5px] font-heading font-bold h-[17px] w-[17px] flex items-center justify-center rounded-full border-2 border-white shadow-2xs">
               {unreadCount}
             </span>
           )}
@@ -213,16 +213,16 @@ export const NotificationBell = () => {
         align="end"
         alignOffset={-4}
         sideOffset={8}
-        className="w-[280px] sm:w-[295px] max-w-[calc(100vw-36px)] rounded-xl bg-white p-0 border border-slate-200 shadow-2xl z-[600] flex flex-col overflow-hidden text-left font-sans mr-2 sm:mr-0"
+        className="w-[280px] sm:w-[295px] max-w-[calc(100vw-36px)] rounded-xl bg-white p-0 border border-[#EADBCE] shadow-2xl z-[600] flex flex-col overflow-hidden text-left font-sans mr-2 sm:mr-0"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-3 py-2 border-b border-slate-100 bg-slate-50/80 shrink-0">
+        <div className="flex items-center justify-between px-3 py-2 border-b border-[#EADBCE]/60 bg-[#FFF8EF] shrink-0">
           <div className="flex items-center gap-1.5">
             <span className="text-[11.5px] font-semibold text-slate-800">
               Recent Activities
             </span>
             {unreadCount > 0 && (
-              <span className="px-1.5 py-0.2 text-[8.5px] font-bold bg-blue-50 text-blue-600 rounded-full border border-blue-100">
+              <span className="px-1.5 py-0.2 text-[8.5px] font-bold bg-warm-ivory text-festival-teal rounded-full border border-brand-border">
                 {unreadCount} New
               </span>
             )}
@@ -270,22 +270,22 @@ export const NotificationBell = () => {
                   }}
                   className={`px-2.5 py-2 flex items-start gap-2.5 transition-colors cursor-pointer group ${
                     act.unread
-                      ? "bg-blue-50/40 hover:bg-blue-50/70"
+                      ? "bg-warm-ivory/50 hover:bg-warm-ivory"
                       : "hover:bg-slate-50/80"
                   }`}
                 >
                   {/* Activity Type Icon */}
-                  <div className="w-6 h-6 rounded-md border border-slate-200 bg-white flex items-center justify-center shrink-0 shadow-2xs group-hover:border-blue-300 transition-colors mt-0.5">
+                  <div className="w-6 h-6 rounded-md border border-slate-200 bg-white flex items-center justify-center shrink-0 shadow-2xs group-hover:border-festival-teal/40 transition-colors mt-0.5">
                     {getActivityIcon(act.type)}
                   </div>
 
                   <div className="flex-1 min-w-0 space-y-0.5">
                     <div className="flex items-center justify-between gap-1">
-                      <span className="text-[11px] font-semibold text-slate-800 truncate group-hover:text-blue-600 transition-colors">
+                      <span className="text-[11px] font-semibold text-slate-800 truncate group-hover:text-festival-teal transition-colors">
                         {act.title}
                       </span>
                       {act.unread && (
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-festival-pink shrink-0" />
                       )}
                     </div>
                     <p className="text-[10px] text-slate-600 font-normal leading-snug line-clamp-2">
@@ -317,10 +317,10 @@ export const NotificationBell = () => {
             <button
               onClick={markAllRead}
               type="button"
-              className="text-[10px] font-semibold text-blue-600 hover:text-blue-700 hover:bg-blue-50 px-1.5 py-0.5 rounded transition-colors cursor-pointer flex items-center gap-1 border-0 bg-transparent"
+              className="text-[10px] font-semibold text-festival-teal hover:text-festival-teal hover:bg-warm-ivory px-1.5 py-0.5 rounded transition-colors cursor-pointer flex items-center gap-1 border-0 bg-transparent"
               title="Mark all as read"
             >
-              <CheckCheck className="w-3 h-3 text-blue-600" />
+              <CheckCheck className="w-3 h-3 text-festival-teal" />
               <span>Read All</span>
             </button>
           </div>

@@ -28,7 +28,7 @@ export default function LocationModal({
       >
         <div className="flex justify-between items-center border-b border-brand-border pb-3">
           <h3 className="font-heading text-base font-black text-brand-navy flex items-center gap-1.5">
-            <MapPin className="w-4 h-4 text-[#2563eb]" />
+            <MapPin className="w-4 h-4 text-festival-teal" />
             <span>Select Manual Location</span>
           </h3>
           <button

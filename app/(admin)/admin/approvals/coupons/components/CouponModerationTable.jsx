@@ -124,7 +124,7 @@ export default function CouponModerationTable({
           <MobileTableCard
             key={coupon._id}
             avatarText={coupon.merchantId?.businessName || "Coupon"}
-            avatarBg="bg-blue-600"
+            avatarBg="bg-festival-teal"
             badge="COUPON MODERATION"
             title={coupon.merchantId?.businessName || "Unknown Merchant"}
             subtitle={`Plan: ${coupon.merchantId?.plan || "starter"}`}
@@ -165,7 +165,7 @@ export default function CouponModerationTable({
                   type="button"
                   disabled={actionLoading}
                   onClick={() => onApprove(coupon._id)}
-                  className="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold rounded-xl py-2.5 px-4 flex items-center justify-between text-xs transition-colors cursor-pointer select-none disabled:opacity-50"
+                  className="flex-1 bg-warm-ivory hover:bg-festival-teal/20 text-festival-teal font-bold rounded-xl py-2.5 px-4 flex items-center justify-between text-xs transition-colors cursor-pointer select-none disabled:opacity-50"
                 >
                   <span>Approve &amp; Publish</span>
                   <ArrowRight className="w-4 h-4" />

@@ -120,7 +120,7 @@ export default function MerchantDemandReport() {
           <Button
             size="sm"
             onClick={() => openOutreachModal(r)}
-            className="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold rounded-lg h-7 px-2.5 gap-1 cursor-pointer"
+            className="bg-festival-teal hover:bg-festival-teal-dark text-white text-[10px] font-bold rounded-lg h-7 px-2.5 gap-1 cursor-pointer"
           >
             <MessageSquare className="w-3.5 h-3.5" /> Contact Lead
           </Button>
@@ -151,7 +151,7 @@ export default function MerchantDemandReport() {
       <div className="space-y-6 text-left font-sans w-full">
         <div className="border-b border-slate-100 pb-3">
           <h1 className="text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
-            <Building2 className="w-5 h-5 text-blue-600" /> High-Demand Merchant
+            <Building2 className="w-5 h-5 text-festival-teal" /> High-Demand Merchant
             Lead Generation
           </h1>
           <p className="text-xs text-slate-500 font-semibold mt-0.5">
@@ -193,7 +193,7 @@ export default function MerchantDemandReport() {
         <DialogContent className="max-w-md bg-white p-6 rounded-2xl border border-slate-200 text-left shadow-xl">
           <DialogHeader className="space-y-1 pb-2">
             <DialogTitle className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <MessageSquare className="w-5 h-5 text-blue-600" /> Lead Outreach
+              <MessageSquare className="w-5 h-5 text-festival-teal" /> Lead Outreach
               Template
             </DialogTitle>
             <DialogDescription className="text-xs text-slate-500 font-semibold">
@@ -223,7 +223,7 @@ export default function MerchantDemandReport() {
                     payload: { outreachStatus: "contacted" },
                   });
                 }}
-                className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl h-9 px-5 cursor-pointer"
+                className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-bold rounded-xl h-9 px-5 cursor-pointer"
               >
                 Send &amp; Log Contact
               </Button>

@@ -33,7 +33,7 @@ export default function CampaignsHeader({
           <h2 className="text-base font-semibold text-slate-900 tracking-tight flex items-center gap-2">
             <span>My Campaigns</span>
             {isFreeMerchant && (
-              <Badge className="bg-rose-50 text-[#F72853] border-rose-200/70 text-[10px] font-semibold uppercase tracking-wider">
+              <Badge className="bg-rose-50 text-[#FF2E63] border-rose-200/70 text-[10px] font-semibold uppercase tracking-wider">
                 Free Partner Tier
               </Badge>
             )}
@@ -57,7 +57,7 @@ export default function CampaignsHeader({
 
           <Button
             onClick={onCreateClick}
-            className="bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-medium h-8.5 px-4 rounded-xl flex items-center gap-1.5 shadow-xs shadow-[#F72853]/25 cursor-pointer transition-all border-0"
+            className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium h-8.5 px-4 rounded-xl flex items-center gap-1.5 shadow-xs shadow-[#FF2E63]/25 cursor-pointer transition-all border-0"
           >
             <Plus className="w-4 h-4" />
             <span>Create Campaign</span>
@@ -102,7 +102,7 @@ export default function CampaignsHeader({
               <div className="flex items-center gap-2 w-full md:w-auto justify-end shrink-0 pt-1 md:pt-0">
                 <Button
                   onClick={onOpenPurchaseModal}
-                  className="w-full md:w-auto bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-semibold h-8.5 px-4 rounded-xl shadow-xs shadow-rose-500/20 cursor-pointer transition-all flex items-center justify-center gap-1.5"
+                  className="w-full md:w-auto bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-semibold h-8.5 px-4 rounded-xl shadow-xs shadow-rose-500/20 cursor-pointer transition-all flex items-center justify-center gap-1.5"
                 >
                   <Zap className="w-3.5 h-3.5 text-amber-200" />
                   <span>Unlock for ₹799</span>
@@ -171,7 +171,7 @@ export default function CampaignsHeader({
 
               <Button
                 asChild
-                className="bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-semibold h-8 px-4 rounded-xl shadow-xs cursor-pointer shrink-0"
+                className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-semibold h-8 px-4 rounded-xl shadow-xs cursor-pointer shrink-0"
               >
                 <Link
                   href="/merchant/billing"
@@ -198,7 +198,7 @@ export default function CampaignsHeader({
           </div>
           <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
             <div
-              className="bg-[#F72853] h-full rounded-full transition-all duration-500"
+              className="bg-[#FF2E63] h-full rounded-full transition-all duration-500"
               style={{
                 width: isPro
                   ? "25%"

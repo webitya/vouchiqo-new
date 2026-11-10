@@ -180,12 +180,12 @@ export default function Step1IdentityLocation({
 
             {/* Special Category Custom Field */}
             {formData.category === "others" && (
-              <div className="space-y-3 p-3 bg-blue-50/60 border border-blue-200 rounded-lg">
+              <div className="space-y-3 p-3 bg-warm-ivory border border-brand-border rounded-lg">
                 <div className="space-y-1">
                   <Label
                     className={getLabelClass(
                       "customCategoryName",
-                      "text-xs font-semibold text-blue-950",
+                      "text-xs font-semibold text-royal-plum",
                     )}
                   >
                     Custom Category Name{" "}
@@ -204,7 +204,7 @@ export default function Step1IdentityLocation({
                     }}
                     className={getInputClass(
                       "customCategoryName",
-                      "bg-white border-2 border-blue-300/80 shadow-[0_2px_6px_rgba(37,99,235,0.08)] text-xs rounded-lg h-9 px-3 font-normal text-slate-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25",
+                      "bg-white border-2 border-brand-border shadow-xs text-xs rounded-lg h-9 px-3 font-normal text-slate-900 focus:border-festival-teal focus:ring-2 focus:ring-festival-teal/30",
                     )}
                   />
                   {fieldErrors.customCategoryName && (
@@ -219,7 +219,7 @@ export default function Step1IdentityLocation({
                     <Label
                       className={getLabelClass(
                         "customCategoryNotes",
-                        "text-xs font-semibold text-blue-950",
+                        "text-xs font-semibold text-royal-plum",
                       )}
                     >
                       Explain your business in detail{" "}
@@ -267,7 +267,7 @@ export default function Step1IdentityLocation({
               <Label className="text-xs font-medium text-slate-700">
                 Sub-Category Tags Chips (Press Enter)
               </Label>
-              <div className="flex flex-wrap gap-1.5 p-2 bg-white border-2 border-blue-300/80 shadow-[0_2px_6px_rgba(37,99,235,0.08)] rounded-lg min-h-[38px] items-center focus-within:border-blue-600 focus-within:ring-2 focus-within:ring-blue-500/25 focus-within:shadow-[0_2px_12px_rgba(37,99,235,0.22)] transition-all">
+              <div className="flex flex-wrap gap-1.5 p-2 bg-white border-2 border-brand-border shadow-xs rounded-lg min-h-[38px] items-center focus-within:border-festival-teal focus-within:ring-2 focus-within:ring-festival-teal/30 focus-within:shadow-md transition-all">
                 {subCategoryTags.map((tag) => (
                   <Badge
                     key={tag}
@@ -466,12 +466,12 @@ export default function Step1IdentityLocation({
                   type="button"
                   onClick={handleFetchLocation}
                   disabled={isFetchingLocation}
-                  className="w-full bg-blue-50 hover:bg-blue-100 text-blue-700 border-2 border-blue-300/80 font-semibold text-xs h-9 rounded-lg cursor-pointer shadow-2xs flex items-center justify-center gap-1.5 transition-all"
+                  className="w-full bg-warm-ivory hover:bg-festival-teal/20 text-festival-teal border-2 border-brand-border font-semibold text-xs h-9 rounded-lg cursor-pointer shadow-2xs flex items-center justify-center gap-1.5 transition-all"
                 >
                   {isFetchingLocation ? (
                     <Loader2 className="w-3.5 h-3.5 animate-spin" />
                   ) : (
-                    <MapPin className="w-3.5 h-3.5 text-blue-600" />
+                    <MapPin className="w-3.5 h-3.5 text-festival-teal" />
                   )}
                   <span>
                     {formData.latitude

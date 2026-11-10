@@ -165,7 +165,7 @@ export default function PushNotificationBuilderPage() {
               {/* Scheduled Send Time (09:00 - 21:00 IST Validation) */}
               <div className="space-y-1.5">
                 <Label className="flex items-center gap-1.5 font-bold text-xs text-slate-800">
-                  <Clock className="w-3.5 h-3.5 text-blue-600" /> Scheduled Send
+                  <Clock className="w-3.5 h-3.5 text-festival-teal" /> Scheduled Send
                   Time (09:00 to 21:00 IST) *
                 </Label>
                 <Input
@@ -209,7 +209,7 @@ export default function PushNotificationBuilderPage() {
               <div className="bg-white/10 backdrop-blur-md border border-white/15 p-4 rounded-xl space-y-1.5">
                 <div className="flex justify-between items-center text-[10px] text-white/70 font-semibold">
                   <span className="flex items-center gap-1">
-                    <Bell className="w-3 h-3 text-blue-400" /> Vouchiqo
+                    <Bell className="w-3 h-3 text-festival-teal" /> Vouchiqo
                     Deals
                   </span>
                   <span>Just now</span>
@@ -223,7 +223,7 @@ export default function PushNotificationBuilderPage() {
             {/* Delivery Logs Table with Badges */}
             <Card className="border-slate-200/80 shadow-xs rounded-2xl bg-white p-5 space-y-3 text-left">
               <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-                <History className="w-4 h-4 text-blue-600" /> Push Delivery
+                <History className="w-4 h-4 text-festival-teal" /> Push Delivery
                 Status Log
               </h3>
 
@@ -243,7 +243,7 @@ export default function PushNotificationBuilderPage() {
                     </div>
 
                     <Badge
-                      className={`rounded font-bold text-[9px] border-0 ${log.status === "Push Sent" ? "bg-emerald-100 text-emerald-800" : log.status === "Push Scheduled" ? "bg-blue-100 text-blue-800" : "bg-rose-100 text-rose-800"}`}
+                      className={`rounded font-bold text-[9px] border-0 ${log.status === "Push Sent" ? "bg-emerald-100 text-emerald-800" : log.status === "Push Scheduled" ? "bg-festival-teal/10 text-festival-teal-dark" : "bg-rose-100 text-rose-800"}`}
                     >
                       {log.status}
                     </Badge>

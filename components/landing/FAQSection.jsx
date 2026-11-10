@@ -9,14 +9,14 @@ function FaqItem({ faq, index, isMobile }) {
 
   return (
     <div
-      className="faq-item rounded-xl overflow-hidden"
+      className="faq-item rounded-xl overflow-hidden font-sans"
       style={{
-        border: "1px solid #e2e8f0",
+        border: "1px solid #EADBCE",
         background: "#fff",
         transition: "box-shadow 0.2s ease",
         boxShadow: open
-          ? "0 4px 16px rgba(70,133,232,0.10)"
-          : "0 1px 4px rgba(0,0,0,0.04)",
+          ? "0 4px 16px rgba(53,16,74,0.10)"
+          : "0 1px 4px rgba(53,16,74,0.04)",
       }}
     >
       <button
@@ -33,8 +33,8 @@ function FaqItem({ faq, index, isMobile }) {
         <span
           style={{
             fontSize: isMobile ? "12px" : "13px",
-            fontWeight: 500,
-            color: "#1e293b",
+            fontWeight: 600,
+            color: "#35104A",
             lineHeight: 1.4,
           }}
         >
@@ -44,7 +44,7 @@ function FaqItem({ faq, index, isMobile }) {
           style={{
             width: isMobile ? "15px" : "16px",
             height: isMobile ? "15px" : "16px",
-            color: "#F72853",
+            color: "#FF2E63",
             flexShrink: 0,
             transition: "transform 0.3s ease",
             transform: open ? "rotate(180deg)" : "rotate(0deg)",
@@ -63,14 +63,14 @@ function FaqItem({ faq, index, isMobile }) {
         <p
           style={{
             fontSize: isMobile ? "11px" : "12px",
-            color: "#64748b",
+            color: "#6B4C82",
             lineHeight: 1.6,
             paddingLeft: isMobile ? "14px" : "20px",
             paddingRight: isMobile ? "14px" : "20px",
             paddingBottom: isMobile ? "12px" : "16px",
             paddingTop: "10px",
             margin: 0,
-            borderTop: "1px solid #f1f5f9",
+            borderTop: "1px solid #EADBCE",
             fontWeight: 400,
           }}
         >
@@ -97,9 +97,9 @@ export function FaqSection() {
   const col2 = HOME_FAQS.slice(5, 10);
 
   return (
-    <section className="w-full text-center animate-fade-in-up stagger-1 px-0 md:px-0">
+    <section className="w-full text-center animate-fade-in-up stagger-1 px-0 md:px-0 font-sans">
       <h2
-        className="font-medium tracking-tight mb-3 sm:mb-4 px-4 md:px-0 text-[#F72853] text-base sm:text-lg md:text-xl"
+        className="font-heading font-bold tracking-tight mb-3 sm:mb-4 px-4 md:px-0 text-[#FF2E63] text-base sm:text-lg md:text-xl"
       >
         Frequently Asked Questions
       </h2>

@@ -90,11 +90,11 @@ export default function FlatCouponCard({ coupon }) {
 
   return (
     <div
-      className="gh-ec"
+      className="gh-ec font-sans"
       style={{
         backgroundColor: "#ffffff",
-        borderRadius: "6px",
-        border: "1px solid #e2e8f0",
+        borderRadius: "8px",
+        border: "1px solid #EADBCE",
         display: "flex",
         flexDirection: "column",
         userSelect: "none",
@@ -104,7 +104,7 @@ export default function FlatCouponCard({ coupon }) {
         position: "relative",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.08)";
+        e.currentTarget.style.boxShadow = "0 8px 20px rgba(53,16,74,0.12)";
         e.currentTarget.style.transform = "translateY(-2px)";
       }}
       onMouseLeave={(e) => {
@@ -118,15 +118,16 @@ export default function FlatCouponCard({ coupon }) {
             position: "absolute",
             top: "8px",
             right: "8px",
-            backgroundColor: "#2563eb",
+            backgroundColor: "#007F79",
             color: "#ffffff",
             fontSize: "9px",
+            fontFamily: "var(--font-heading)",
             fontWeight: 800,
             padding: "2px 8px",
             borderRadius: "9999px",
             textTransform: "uppercase",
             letterSpacing: "0.05em",
-            boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+            boxShadow: "0 2px 4px rgba(0,127,121,0.2)",
             zIndex: 10,
           }}
         >
@@ -140,7 +141,7 @@ export default function FlatCouponCard({ coupon }) {
           display: "flex",
           alignItems: "stretch",
           padding: isMobile ? "12px 14px" : "14px 16px",
-          borderBottom: "1px solid #e2e8f0",
+          borderBottom: "1px solid #EADBCE",
         }}
       >
         {/* Left promo text (amt-header) */}
@@ -154,7 +155,7 @@ export default function FlatCouponCard({ coupon }) {
             alignItems: "center",
             justifyContent: "center",
             textAlign: "center",
-            borderRight: "1px dashed #cbd5e1",
+            borderRight: "1px dashed #EADBCE",
             paddingRight: isMobile ? "8px" : "12px",
           }}
         >
@@ -162,8 +163,9 @@ export default function FlatCouponCard({ coupon }) {
             style={{
               display: "block",
               fontSize: isMobile ? "9px" : "10px",
+              fontFamily: "var(--font-heading)",
               fontWeight: 700,
-              color: "#3E80DD",
+              color: "#FF2E63",
               textTransform: "uppercase",
               letterSpacing: "0.05em",
               lineHeight: 1.2,
@@ -175,8 +177,9 @@ export default function FlatCouponCard({ coupon }) {
             style={{
               display: "block",
               fontSize: isMobile ? "17px" : "22px",
-              fontWeight: 900,
-              color: "#3E80DD",
+              fontFamily: "var(--font-heading)",
+              fontWeight: 800,
+              color: "#FF2E63",
               textTransform: "uppercase",
               lineHeight: 1.1,
               margin: "1px 0",
@@ -189,8 +192,9 @@ export default function FlatCouponCard({ coupon }) {
             style={{
               display: "block",
               fontSize: isMobile ? "9px" : "10px",
+              fontFamily: "var(--font-heading)",
               fontWeight: 700,
-              color: "#3E80DD",
+              color: "#FF2E63",
               textTransform: "uppercase",
               letterSpacing: "0.05em",
               lineHeight: 1.2,
@@ -206,8 +210,9 @@ export default function FlatCouponCard({ coupon }) {
             flex: 1,
             paddingLeft: isMobile ? "10px" : "12px",
             fontSize: isMobile ? "12.5px" : "13.5px",
+            fontFamily: "var(--font-sans)",
             fontWeight: 600,
-            color: "#1e293b",
+            color: "#35104A",
             lineHeight: 1.35,
             margin: 0,
             display: "-webkit-box",
@@ -229,7 +234,7 @@ export default function FlatCouponCard({ coupon }) {
           justifyContent: "space-between",
           padding: isMobile ? "8px 12px" : "10px 16px",
           gap: isMobile ? "8px" : "12px",
-          backgroundColor: "#F8FAFC",
+          backgroundColor: "#FFF8EF",
         }}
       >
         {/* Merchant logo container (imw) */}
@@ -239,7 +244,7 @@ export default function FlatCouponCard({ coupon }) {
             height: isMobile ? "28px" : "34px",
             width: isMobile ? "56px" : "70px",
             borderRadius: "6px",
-            border: logoHasDarkBg ? "none" : "1px solid #e2e8f0",
+            border: logoHasDarkBg ? "none" : "1px solid #EADBCE",
             backgroundColor: logoBgColor,
             display: "flex",
             alignItems: "center",
@@ -257,7 +262,7 @@ export default function FlatCouponCard({ coupon }) {
             className="max-w-full max-h-full object-contain block"
             onError={(e) => {
               e.currentTarget.src =
-                "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%233e80dd' stroke-width='2'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'/%3E%3C/svg%3E";
+                "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23007F79' stroke-width='2'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'/%3E%3C/svg%3E";
             }}
           />
         </div>
@@ -267,24 +272,25 @@ export default function FlatCouponCard({ coupon }) {
           href={`/deals/${_id}`}
           style={{
             fontSize: isMobile ? "11px" : "12px",
+            fontFamily: "var(--font-heading)",
             fontWeight: 700,
             color: "#ffffff",
-            backgroundColor: "#2563eb",
+            backgroundColor: "#FF2E63",
             padding: isMobile ? "5px 10px" : "6px 14px",
             borderRadius: "6px",
             display: "inline-flex",
             alignItems: "center",
             gap: "5px",
             textDecoration: "none",
-            boxShadow: "0 1px 3px rgba(37,99,235,0.2)",
+            boxShadow: "0 2px 6px rgba(255,46,99,0.25)",
             transition: "background-color 200ms ease",
             flexShrink: 0,
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = "#1d4ed8";
+            e.currentTarget.style.backgroundColor = "#E02253";
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = "#2563eb";
+            e.currentTarget.style.backgroundColor = "#FF2E63";
           }}
         >
           <span>Get Offer</span>

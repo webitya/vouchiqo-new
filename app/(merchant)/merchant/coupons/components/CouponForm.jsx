@@ -195,7 +195,7 @@ export default function CouponForm({
                     onClick={() => setListingType(t.id)}
                     className={`p-3.5 rounded-xl border-2 text-left transition-all cursor-pointer ${
                       listingType === t.id
-                        ? "border-blue-600 bg-blue-50/50 shadow-2xs font-bold text-slate-900"
+                        ? "border-festival-teal bg-warm-ivory shadow-2xs font-bold text-slate-900"
                         : "border-slate-200 bg-white hover:border-slate-300 text-slate-600"
                     }`}
                   >
@@ -234,19 +234,19 @@ export default function CouponForm({
               {isCategoryLocked ? (
                 <div className="flex flex-col gap-1.5">
                   <Label className="text-xs font-medium text-slate-700 flex items-center gap-1.5">
-                    <Layers className="w-3.5 h-3.5 text-[#F72853]" />
+                    <Layers className="w-3.5 h-3.5 text-[#FF2E63]" />
                     <span>Offer Category</span>
                     <span className="text-red-500 font-medium ml-0.5">*</span>
                   </Label>
                   <div className="h-10 px-3.5 flex items-center justify-between rounded-xl border border-rose-200/90 bg-rose-50/30 text-slate-900 font-medium text-xs shadow-2xs">
                     <span className="flex items-center gap-2 truncate">
-                      <span className="text-[#F72853] font-bold">★</span>
+                      <span className="text-[#FF2E63] font-bold">★</span>
                       <span className="font-semibold text-slate-900">
                         {selectedCategory.label}
                       </span>
                     </span>
-                    <span className="inline-flex items-center gap-1 text-[10px] font-medium text-[#F72853] bg-white border border-rose-200 px-2 py-0.5 rounded-md shrink-0 shadow-2xs">
-                      <Lock className="w-3 h-3 text-[#F72853]" /> Locked to
+                    <span className="inline-flex items-center gap-1 text-[10px] font-medium text-[#FF2E63] bg-white border border-rose-200 px-2 py-0.5 rounded-md shrink-0 shadow-2xs">
+                      <Lock className="w-3 h-3 text-[#FF2E63]" /> Locked to
                       Merchant Industry
                     </span>
                   </div>
@@ -337,13 +337,13 @@ export default function CouponForm({
             <div className="space-y-3 pt-3 border-t border-slate-100">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <Label className="flex items-center gap-1.5 font-bold text-xs text-slate-800">
-                  <ImageIcon className="w-4 h-4 text-blue-600" />
+                  <ImageIcon className="w-4 h-4 text-festival-teal" />
                   <span>Offer Photo / Banner</span>
                   <span className="text-[10px] text-slate-400 font-normal">
                     (Optional)
                   </span>
                 </Label>
-                <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-blue-700 bg-blue-50 border border-blue-200/80 px-2 py-0.5 rounded-md shadow-2xs">
+                <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-festival-teal bg-warm-ivory border border-festival-teal/25 px-2 py-0.5 rounded-md shadow-2xs">
                   <span>Aspect Ratio: 2:1</span>
                   <span className="text-slate-400">•</span>
                   <span>800×400px</span>
@@ -378,7 +378,7 @@ export default function CouponForm({
 
                     <div className="flex flex-wrap items-center gap-2 pt-1">
                       {/* Change / Upload Button */}
-                      <label className="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs px-3 h-8 rounded-lg cursor-pointer transition-colors shadow-2xs">
+                      <label className="inline-flex items-center gap-1.5 bg-festival-teal hover:bg-festival-teal-dark text-white font-semibold text-xs px-3 h-8 rounded-lg cursor-pointer transition-colors shadow-2xs">
                         {uploadingImage ? (
                           <>
                             <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -452,7 +452,7 @@ export default function CouponForm({
               {/* Expandable direct URL editor when image is already set */}
               {formData.image && (
                 <details className="text-[11px] text-slate-500 pt-0.5">
-                  <summary className="hover:text-blue-600 font-medium select-none cursor-pointer">
+                  <summary className="hover:text-festival-teal font-medium select-none cursor-pointer">
                     Or edit direct image URL
                   </summary>
                   <div className="mt-1.5">
@@ -553,7 +553,7 @@ export default function CouponForm({
         <Card className="border-slate-200/80 shadow-xs rounded-2xl bg-white p-5 space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <span className="flex items-center gap-1.5 text-xs font-bold text-slate-900 uppercase tracking-wider">
-              <Eye className="w-4 h-4 text-blue-600" /> Real-Time Live Card
+              <Eye className="w-4 h-4 text-festival-teal" /> Real-Time Live Card
               Preview
             </span>
             <Badge
@@ -576,7 +576,7 @@ export default function CouponForm({
             >
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
               <div className="relative z-10 flex items-center justify-between w-full">
-                <Badge className="bg-blue-600 text-white font-bold text-[9px] uppercase px-2 py-0.5 border-0">
+                <Badge className="bg-festival-teal text-white font-bold text-[9px] uppercase px-2 py-0.5 border-0">
                   {selectedCategory.label}
                 </Badge>
                 <span className="text-white text-[10px] font-bold bg-black/60 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/20">
@@ -610,7 +610,7 @@ export default function CouponForm({
                   <span className="block text-[10px] text-slate-400 font-bold uppercase">
                     Discount
                   </span>
-                  <span className="text-blue-600 font-black">
+                  <span className="text-festival-teal font-black">
                     {discountLabel}
                   </span>
                 </div>

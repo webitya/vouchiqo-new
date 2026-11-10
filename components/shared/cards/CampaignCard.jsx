@@ -21,7 +21,7 @@ import {
 import { cn } from "@/lib/utils";
 
 const CAMPAIGN_TYPE_MAP = {
-  email: { label: "Email", icon: Megaphone, color: "text-blue-600 bg-blue-50" },
+  email: { label: "Email", icon: Megaphone, color: "text-festival-teal bg-festival-teal/10" },
   push: { label: "Push", icon: Zap, color: "text-purple-600 bg-purple-50" },
   sms: { label: "SMS", icon: Megaphone, color: "text-green-600 bg-green-50" },
   social: {

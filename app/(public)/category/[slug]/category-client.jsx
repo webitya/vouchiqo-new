@@ -526,14 +526,14 @@ export default function CategoryClient({
         <div className="space-y-2.5">
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-              <Layers className="w-3.5 h-3.5 text-[#F72853]" />
+              <Layers className="w-3.5 h-3.5 text-[#FF2E63]" />
               <span>Department</span>
             </h3>
             {selectedSub !== "all" && (
               <button
                 type="button"
                 onClick={() => setSelectedSub("all")}
-                className="text-[11px] font-semibold text-[#F72853] hover:underline cursor-pointer"
+                className="text-[11px] font-semibold text-[#FF2E63] hover:underline cursor-pointer"
               >
                 Clear
               </button>
@@ -546,7 +546,7 @@ export default function CategoryClient({
               onClick={() => setSelectedSub("all")}
               className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                 selectedSub === "all"
-                  ? "bg-rose-50 text-[#F72853] font-bold"
+                  ? "bg-rose-50 text-[#FF2E63] font-bold"
                   : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
               }`}
             >
@@ -565,7 +565,7 @@ export default function CategoryClient({
                 }
                 className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                   selectedSub === sub.name
-                    ? "bg-rose-50 text-[#F72853] font-bold"
+                    ? "bg-rose-50 text-[#FF2E63] font-bold"
                     : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                 }`}
               >
@@ -584,14 +584,14 @@ export default function CategoryClient({
         <div className="space-y-2.5 pt-4 border-t border-slate-100">
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-              <Tag className="w-3.5 h-3.5 text-[#F72853]" />
+              <Tag className="w-3.5 h-3.5 text-[#FF2E63]" />
               <span>Brand / Store</span>
             </h3>
             {selectedBrands.length > 0 && (
               <button
                 type="button"
                 onClick={() => setSelectedBrands([])}
-                className="text-[11px] font-semibold text-[#F72853] hover:underline cursor-pointer"
+                className="text-[11px] font-semibold text-[#FF2E63] hover:underline cursor-pointer"
               >
                 Clear ({selectedBrands.length})
               </button>
@@ -607,7 +607,7 @@ export default function CategoryClient({
                 value={brandSearch}
                 onChange={(e) => setBrandSearch(e.target.value)}
                 placeholder="Search brands..."
-                className="w-full h-7.5 pl-7 pr-2.5 text-[11px] bg-slate-50 rounded-lg border border-slate-200 focus:border-[#F72853] outline-none"
+                className="w-full h-7.5 pl-7 pr-2.5 text-[11px] bg-slate-50 rounded-lg border border-slate-200 focus:border-[#FF2E63] outline-none"
               />
             </div>
           )}
@@ -622,7 +622,7 @@ export default function CategoryClient({
                   onClick={() => handleToggleBrand(brand.name)}
                   className={`flex items-center justify-between px-2 py-1.5 rounded-lg text-xs cursor-pointer select-none transition-colors ${
                     isChecked
-                      ? "bg-rose-50/70 text-[#F72853] font-semibold"
+                      ? "bg-rose-50/70 text-[#FF2E63] font-semibold"
                       : "hover:bg-slate-50 text-slate-700"
                   }`}
                 >
@@ -630,7 +630,7 @@ export default function CategoryClient({
                     <div
                       className={`w-4 h-4 rounded flex items-center justify-center border transition-all ${
                         isChecked
-                          ? "bg-[#F72853] border-[#F72853] text-white"
+                          ? "bg-[#FF2E63] border-[#FF2E63] text-white"
                           : "border-slate-300 bg-white"
                       }`}
                     >
@@ -660,14 +660,14 @@ export default function CategoryClient({
       <div className="space-y-2.5 pt-4 border-t border-slate-100">
         <div className="flex items-center justify-between">
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-            <Percent className="w-3.5 h-3.5 text-[#F72853]" />
+            <Percent className="w-3.5 h-3.5 text-[#FF2E63]" />
             <span>Discount</span>
           </h3>
           {minDiscount > 0 && (
             <button
               type="button"
               onClick={() => setMinDiscount(0)}
-              className="text-[11px] font-semibold text-[#F72853] hover:underline cursor-pointer"
+              className="text-[11px] font-semibold text-[#FF2E63] hover:underline cursor-pointer"
             >
               Clear
             </button>
@@ -687,13 +687,13 @@ export default function CategoryClient({
               onClick={() => setMinDiscount(item.value)}
               className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                 minDiscount === item.value
-                  ? "bg-rose-50 text-[#F72853] font-bold"
+                  ? "bg-rose-50 text-[#FF2E63] font-bold"
                   : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
               }`}
             >
               <span>{item.label}</span>
               {minDiscount === item.value && (
-                <Check className="w-3.5 h-3.5 text-[#F72853]" />
+                <Check className="w-3.5 h-3.5 text-[#FF2E63]" />
               )}
             </button>
           ))}
@@ -704,14 +704,14 @@ export default function CategoryClient({
       <div className="space-y-2.5 pt-4 border-t border-slate-100">
         <div className="flex items-center justify-between">
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-            <Tag className="w-3.5 h-3.5 text-[#F72853]" />
+            <Tag className="w-3.5 h-3.5 text-[#FF2E63]" />
             <span>Price Range</span>
           </h3>
           {priceRange !== "all" && (
             <button
               type="button"
               onClick={() => setPriceRange("all")}
-              className="text-[11px] font-semibold text-[#F72853] hover:underline cursor-pointer"
+              className="text-[11px] font-semibold text-[#FF2E63] hover:underline cursor-pointer"
             >
               Clear
             </button>
@@ -732,13 +732,13 @@ export default function CategoryClient({
               onClick={() => setPriceRange(item.value)}
               className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                 priceRange === item.value
-                  ? "bg-rose-50 text-[#F72853] font-bold"
+                  ? "bg-rose-50 text-[#FF2E63] font-bold"
                   : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
               }`}
             >
               <span>{item.label}</span>
               {priceRange === item.value && (
-                <Check className="w-3.5 h-3.5 text-[#F72853]" />
+                <Check className="w-3.5 h-3.5 text-[#FF2E63]" />
               )}
             </button>
           ))}
@@ -759,7 +759,7 @@ export default function CategoryClient({
           >
             <Link
               href="/"
-              className="hover:text-[#F72853] transition-colors flex items-center gap-1"
+              className="hover:text-[#FF2E63] transition-colors flex items-center gap-1"
             >
               <Home className="w-3 h-3 text-slate-400" />
               <span>Home</span>
@@ -767,7 +767,7 @@ export default function CategoryClient({
             <span className="text-slate-300">/</span>
             <Link
               href="/categories"
-              className="hover:text-[#F72853] transition-colors"
+              className="hover:text-[#FF2E63] transition-colors"
             >
               Categories
             </Link>
@@ -780,13 +780,13 @@ export default function CategoryClient({
           {/* Title & Stats */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-[#F72853] to-[#FF4D6D] text-white flex items-center justify-center shadow-md shadow-rose-500/20 shrink-0">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-[#FF2E63] to-[#FF4D6D] text-white flex items-center justify-center shadow-md shadow-rose-500/20 shrink-0">
                 <CategoryIcon className="w-5 h-5 stroke-[2.2]" />
               </div>
               <div>
                 <h1 className="text-base sm:text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
                   <span>{categoryInfo?.title} Deals &amp; Offers</span>
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-rose-50 text-[#F72853] border border-rose-200/80">
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-rose-50 text-[#FF2E63] border border-rose-200/80">
                     {coupons.length + affiliateProducts.length} Live
                   </span>
                 </h1>
@@ -802,8 +802,8 @@ export default function CategoryClient({
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                 100% Tested
               </span>
-              <span className="bg-rose-50 text-[#F72853] px-2.5 py-1 rounded-lg border border-rose-200/60 flex items-center gap-1 shadow-2xs">
-                <Flame className="w-3.5 h-3.5 fill-[#F72853]" />
+              <span className="bg-rose-50 text-[#FF2E63] px-2.5 py-1 rounded-lg border border-rose-200/60 flex items-center gap-1 shadow-2xs">
+                <Flame className="w-3.5 h-3.5 fill-[#FF2E63]" />
                 Up to {maxDiscount}% OFF
               </span>
             </div>
@@ -818,12 +818,12 @@ export default function CategoryClient({
           <aside className="w-64 lg:w-72 shrink-0 hidden md:block bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-4 sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
               <div className="flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-[#F72853]" />
+                <SlidersHorizontal className="w-4 h-4 text-[#FF2E63]" />
                 <span className="text-sm font-bold text-slate-900">
                   Filters
                 </span>
                 {activeFiltersCount > 0 && (
-                  <span className="w-5 h-5 rounded-full bg-[#F72853] text-white text-[10px] font-bold flex items-center justify-center">
+                  <span className="w-5 h-5 rounded-full bg-[#FF2E63] text-white text-[10px] font-bold flex items-center justify-center">
                     {activeFiltersCount}
                   </span>
                 )}
@@ -832,7 +832,7 @@ export default function CategoryClient({
                 <button
                   type="button"
                   onClick={handleResetFilters}
-                  className="text-xs font-semibold text-[#F72853] hover:underline flex items-center gap-1 cursor-pointer"
+                  className="text-xs font-semibold text-[#FF2E63] hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   <RotateCcw className="w-3 h-3" />
                   <span>Reset</span>
@@ -855,7 +855,7 @@ export default function CategoryClient({
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={`Search deals in ${categoryInfo?.title || "category"}...`}
-                  className="w-full h-9 pl-9 pr-8 bg-slate-50 hover:bg-slate-100/70 focus:bg-white text-xs sm:text-sm text-slate-800 placeholder-slate-400 rounded-xl border border-slate-200 focus:border-[#F72853] focus:ring-2 focus:ring-rose-100 outline-none transition-all"
+                  className="w-full h-9 pl-9 pr-8 bg-slate-50 hover:bg-slate-100/70 focus:bg-white text-xs sm:text-sm text-slate-800 placeholder-slate-400 rounded-xl border border-slate-200 focus:border-[#FF2E63] focus:ring-2 focus:ring-rose-100 outline-none transition-all"
                 />
                 {searchQuery && (
                   <button
@@ -876,10 +876,10 @@ export default function CategoryClient({
                   onClick={() => setIsMobileFilterOpen(true)}
                   className="md:hidden flex items-center gap-1.5 h-9 px-3 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-xl transition-all cursor-pointer"
                 >
-                  <SlidersHorizontal className="w-3.5 h-3.5 text-[#F72853]" />
+                  <SlidersHorizontal className="w-3.5 h-3.5 text-[#FF2E63]" />
                   <span>Filters</span>
                   {activeFiltersCount > 0 && (
-                    <span className="w-4 h-4 rounded-full bg-[#F72853] text-white text-[9.5px] font-bold flex items-center justify-center">
+                    <span className="w-4 h-4 rounded-full bg-[#FF2E63] text-white text-[9.5px] font-bold flex items-center justify-center">
                       {activeFiltersCount}
                     </span>
                   )}
@@ -904,7 +904,7 @@ export default function CategoryClient({
                       onClick={() => setOfferType("deals")}
                       className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                         offerType === "deals"
-                          ? "bg-white text-[#F72853] shadow-2xs"
+                          ? "bg-white text-[#FF2E63] shadow-2xs"
                           : "text-slate-600"
                       }`}
                     >
@@ -915,7 +915,7 @@ export default function CategoryClient({
                       onClick={() => setOfferType("coupons")}
                       className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                         offerType === "coupons"
-                          ? "bg-white text-[#F72853] shadow-2xs"
+                          ? "bg-white text-[#FF2E63] shadow-2xs"
                           : "text-slate-600"
                       }`}
                     >
@@ -930,7 +930,7 @@ export default function CategoryClient({
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
-                    className="h-9 px-2.5 bg-slate-50 hover:bg-slate-100 text-xs font-medium text-slate-700 rounded-xl border border-slate-200 outline-none cursor-pointer focus:border-[#F72853]"
+                    className="h-9 px-2.5 bg-slate-50 hover:bg-slate-100 text-xs font-medium text-slate-700 rounded-xl border border-slate-200 outline-none cursor-pointer focus:border-[#FF2E63]"
                   >
                     <option value="featured">Featured Deals</option>
                     <option value="discount-desc">Discount: High to Low</option>
@@ -950,7 +950,7 @@ export default function CategoryClient({
                 </span>
 
                 {selectedSub !== "all" && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#F72853] border border-rose-200">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200">
                     <span>{selectedSub}</span>
                     <button
                       type="button"
@@ -965,7 +965,7 @@ export default function CategoryClient({
                 {selectedBrands.map((b) => (
                   <span
                     key={b}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#F72853] border border-rose-200"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200"
                   >
                     <span>{b}</span>
                     <button
@@ -979,7 +979,7 @@ export default function CategoryClient({
                 ))}
 
                 {minDiscount > 0 && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#F72853] border border-rose-200">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200">
                     <span>{minDiscount}%+ OFF</span>
                     <button
                       type="button"
@@ -992,7 +992,7 @@ export default function CategoryClient({
                 )}
 
                 {priceRange !== "all" && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#F72853] border border-rose-200">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200">
                     <span>{priceRange.replace("-", " to ")}</span>
                     <button
                       type="button"
@@ -1005,7 +1005,7 @@ export default function CategoryClient({
                 )}
 
                 {searchQuery && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#F72853] border border-rose-200">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200">
                     <span>"{searchQuery}"</span>
                     <button
                       type="button"
@@ -1020,7 +1020,7 @@ export default function CategoryClient({
                 <button
                   type="button"
                   onClick={handleResetFilters}
-                  className="text-[11px] font-semibold text-slate-500 hover:text-[#F72853] underline cursor-pointer ml-1"
+                  className="text-[11px] font-semibold text-slate-500 hover:text-[#FF2E63] underline cursor-pointer ml-1"
                 >
                   Clear all
                 </button>
@@ -1036,7 +1036,7 @@ export default function CategoryClient({
                 {selectedSub !== "all" && (
                   <span>
                     {" "}
-                    in <strong className="text-[#F72853]">{selectedSub}</strong>
+                    in <strong className="text-[#FF2E63]">{selectedSub}</strong>
                   </span>
                 )}
               </p>
@@ -1046,7 +1046,7 @@ export default function CategoryClient({
             {filteredCoupons.length > 0 && (
               <div className="space-y-3 pt-2">
                 <h2 className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
-                  <Tag className="w-3.5 h-3.5 text-[#F72853]" />
+                  <Tag className="w-3.5 h-3.5 text-[#FF2E63]" />
                   <span>Promo Codes ({filteredCoupons.length})</span>
                 </h2>
 
@@ -1089,7 +1089,7 @@ export default function CategoryClient({
                               />
                             </div>
                             <div className="min-w-0">
-                              <p className="text-xs font-semibold text-slate-800 truncate group-hover:text-[#F72853] transition-colors">
+                              <p className="text-xs font-semibold text-slate-800 truncate group-hover:text-[#FF2E63] transition-colors">
                                 {merchantName}
                               </p>
                               <span className="inline-flex items-center gap-0.5 text-[9px] font-medium text-emerald-600">
@@ -1098,7 +1098,7 @@ export default function CategoryClient({
                             </div>
                           </div>
 
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-tight bg-rose-50 text-[#F72853] border border-rose-200/70 shrink-0">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-tight bg-rose-50 text-[#FF2E63] border border-rose-200/70 shrink-0">
                             {discountBadge}
                           </span>
                         </div>
@@ -1133,7 +1133,7 @@ export default function CategoryClient({
                               className={`px-3 py-1 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer border ${
                                 isCopied
                                   ? "bg-emerald-50 text-emerald-700 border-emerald-300"
-                                  : "bg-rose-50 text-[#F72853] border-rose-200 hover:bg-[#F72853] hover:text-white active:scale-95"
+                                  : "bg-rose-50 text-[#FF2E63] border-rose-200 hover:bg-[#FF2E63] hover:text-white active:scale-95"
                               }`}
                             >
                               {isCopied ? (
@@ -1155,7 +1155,7 @@ export default function CategoryClient({
                               href={coupon.affiliateUrl || "#"}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="px-3 py-1 bg-slate-50 hover:bg-rose-50 text-slate-700 hover:text-[#F72853] border border-slate-200 hover:border-rose-200 active:scale-95 text-xs font-semibold rounded-lg transition-all flex items-center gap-1 cursor-pointer"
+                              className="px-3 py-1 bg-slate-50 hover:bg-rose-50 text-slate-700 hover:text-[#FF2E63] border border-slate-200 hover:border-rose-200 active:scale-95 text-xs font-semibold rounded-lg transition-all flex items-center gap-1 cursor-pointer"
                             >
                               <span>Get Deal</span>
                               <ExternalLink className="w-3 h-3 text-slate-400" />
@@ -1196,7 +1196,7 @@ export default function CategoryClient({
             {/* ── EMPTY STATE WHEN NO RESULTS MATCH ── */}
             {totalFilteredCount === 0 && (
               <div className="bg-white rounded-2xl border border-slate-200 p-8 sm:p-12 text-center space-y-3 shadow-2xs">
-                <div className="w-12 h-12 rounded-2xl bg-rose-50 text-[#F72853] flex items-center justify-center mx-auto shadow-2xs">
+                <div className="w-12 h-12 rounded-2xl bg-rose-50 text-[#FF2E63] flex items-center justify-center mx-auto shadow-2xs">
                   <Layers className="w-6 h-6" />
                 </div>
                 <h3 className="text-sm sm:text-base font-bold text-slate-800">
@@ -1210,7 +1210,7 @@ export default function CategoryClient({
                   <button
                     type="button"
                     onClick={handleResetFilters}
-                    className="px-4 py-2 bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-semibold rounded-xl transition-all shadow-xs cursor-pointer active:scale-95 inline-flex items-center gap-1.5"
+                    className="px-4 py-2 bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-semibold rounded-xl transition-all shadow-xs cursor-pointer active:scale-95 inline-flex items-center gap-1.5"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                     <span>Reset All Filters</span>
@@ -1236,12 +1236,12 @@ export default function CategoryClient({
             {/* Drawer Header */}
             <div className="flex items-center justify-between p-4 border-b border-slate-200">
               <div className="flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-[#F72853]" />
+                <SlidersHorizontal className="w-4 h-4 text-[#FF2E63]" />
                 <span className="text-sm font-bold text-slate-900">
                   Filters
                 </span>
                 {activeFiltersCount > 0 && (
-                  <span className="w-5 h-5 rounded-full bg-[#F72853] text-white text-[10px] font-bold flex items-center justify-center">
+                  <span className="w-5 h-5 rounded-full bg-[#FF2E63] text-white text-[10px] font-bold flex items-center justify-center">
                     {activeFiltersCount}
                   </span>
                 )}
@@ -1272,7 +1272,7 @@ export default function CategoryClient({
               <button
                 type="button"
                 onClick={() => setIsMobileFilterOpen(false)}
-                className="flex-1 py-2.5 rounded-xl bg-[#F72853] hover:bg-[#e01e47] text-xs font-semibold text-white shadow-xs cursor-pointer"
+                className="flex-1 py-2.5 rounded-xl bg-[#FF2E63] hover:bg-[#e01e47] text-xs font-semibold text-white shadow-xs cursor-pointer"
               >
                 Apply ({totalFilteredCount})
               </button>
@@ -1285,7 +1285,7 @@ export default function CategoryClient({
       <div className="w-full px-4 sm:px-6 md:px-8 mt-12">
         <div className="bg-white rounded-2xl p-5 sm:p-7 border border-slate-200/80 shadow-2xs">
           <div className="mb-4 text-left">
-            <div className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#F72853] bg-rose-50 px-2.5 py-0.5 rounded-full mb-1">
+            <div className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#FF2E63] bg-rose-50 px-2.5 py-0.5 rounded-full mb-1">
               <Tag className="w-3.5 h-3.5 text-rose-500" />
               <span>Smart Shopping Guide</span>
             </div>
@@ -1308,11 +1308,11 @@ export default function CategoryClient({
                     onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
                     className="w-full flex items-center justify-between gap-3 text-left cursor-pointer group"
                   >
-                    <span className="text-xs sm:text-[13px] font-semibold text-slate-800 group-hover:text-[#F72853] transition-colors">
+                    <span className="text-xs sm:text-[13px] font-semibold text-slate-800 group-hover:text-[#FF2E63] transition-colors">
                       {faq.q}
                     </span>
                     <ChevronDown
-                      className={`w-4 h-4 text-slate-400 group-hover:text-[#F72853] transition-transform duration-200 shrink-0 ${
+                      className={`w-4 h-4 text-slate-400 group-hover:text-[#FF2E63] transition-transform duration-200 shrink-0 ${
                         isOpen ? "rotate-180" : ""
                       }`}
                     />
@@ -1334,7 +1334,7 @@ export default function CategoryClient({
         <button
           type="button"
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-40 p-2.5 rounded-full bg-slate-900/90 text-white hover:bg-[#F72853] shadow-lg shadow-slate-900/20 backdrop-blur-xs transition-all duration-300 cursor-pointer active:scale-95"
+          className="fixed bottom-6 right-6 z-40 p-2.5 rounded-full bg-slate-900/90 text-white hover:bg-[#FF2E63] shadow-lg shadow-slate-900/20 backdrop-blur-xs transition-all duration-300 cursor-pointer active:scale-95"
           aria-label="Back to Top"
         >
           <ArrowUp className="w-4 h-4" />

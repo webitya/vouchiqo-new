@@ -169,13 +169,13 @@ export default function MerchantAccountSettings() {
           <TabsList className="bg-slate-100/90 p-1 rounded-xl border border-slate-200/90 flex flex-wrap gap-1 justify-start h-auto w-fit">
             <TabsTrigger
               value="profile"
-              className="text-xs font-medium rounded-lg px-3 py-1.5 cursor-pointer flex items-center gap-1.5 transition-all text-slate-600 hover:text-[#F72853] hover:bg-rose-50/50 data-[state=active]:!bg-[#F72853] data-[state=active]:!text-white data-[state=active]:shadow-xs"
+              className="text-xs font-medium rounded-lg px-3 py-1.5 cursor-pointer flex items-center gap-1.5 transition-all text-slate-600 hover:text-[#FF2E63] hover:bg-rose-50/50 data-[state=active]:!bg-[#FF2E63] data-[state=active]:!text-white data-[state=active]:shadow-xs"
             >
               <Store className="w-3.5 h-3.5" /> Business Profile
             </TabsTrigger>
             <TabsTrigger
               value="notifications"
-              className="text-xs font-medium rounded-lg px-3 py-1.5 cursor-pointer flex items-center gap-1.5 transition-all text-slate-600 hover:text-[#F72853] hover:bg-rose-50/50 data-[state=active]:!bg-[#F72853] data-[state=active]:!text-white data-[state=active]:shadow-xs"
+              className="text-xs font-medium rounded-lg px-3 py-1.5 cursor-pointer flex items-center gap-1.5 transition-all text-slate-600 hover:text-[#FF2E63] hover:bg-rose-50/50 data-[state=active]:!bg-[#FF2E63] data-[state=active]:!text-white data-[state=active]:shadow-xs"
             >
               <Bell className="w-3.5 h-3.5" /> Notification Preferences
             </TabsTrigger>
@@ -185,12 +185,12 @@ export default function MerchantAccountSettings() {
           <TabsContent value="profile" className="pt-2">
             <Card className="border-slate-200/90 shadow-sm rounded-2xl bg-white p-4 sm:p-5 space-y-4 text-left font-sans relative overflow-hidden">
               {/* Brand Accent Bar */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-500 via-[#F72853] to-rose-600" />
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-500 via-[#FF2E63] to-rose-600" />
 
               {/* Header */}
               <div className="border-b border-slate-100 pb-2.5 pt-1 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2">
-                  <span className="p-1.5 rounded-lg bg-rose-50 text-[#F72853] border border-rose-100/80 shrink-0">
+                  <span className="p-1.5 rounded-lg bg-rose-50 text-[#FF2E63] border border-rose-100/80 shrink-0">
                     <Building className="w-4 h-4" />
                   </span>
                   <div>
@@ -209,7 +209,7 @@ export default function MerchantAccountSettings() {
                 {/* Store Logo Section */}
                 <div className="p-3 bg-slate-50/80 rounded-xl border border-slate-200/80 space-y-2">
                   <Label className="flex items-center gap-1.5 font-medium text-xs text-slate-700">
-                    <Upload className="w-3.5 h-3.5 text-[#F72853]" /> Store Logo
+                    <Upload className="w-3.5 h-3.5 text-[#FF2E63]" /> Store Logo
                   </Label>
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                     <div className="relative w-14 h-14 rounded-full overflow-hidden border border-slate-200/90 shadow-2xs bg-slate-100 flex items-center justify-center shrink-0">
@@ -232,7 +232,7 @@ export default function MerchantAccountSettings() {
                         className="h-8.5 text-xs bg-white"
                       />
                       <div className="flex items-center justify-between flex-wrap gap-2">
-                        <label className="inline-flex items-center gap-1.5 bg-[#F72853] hover:bg-[#e01e47] text-white text-[11px] font-medium px-2.5 py-1 rounded-lg cursor-pointer transition-colors shadow-2xs">
+                        <label className="inline-flex items-center gap-1.5 bg-[#FF2E63] hover:bg-[#e01e47] text-white text-[11px] font-medium px-2.5 py-1 rounded-lg cursor-pointer transition-colors shadow-2xs">
                           <Upload className="w-3 h-3" /> Upload File
                           <input
                             type="file"
@@ -282,7 +282,7 @@ export default function MerchantAccountSettings() {
                 {/* Official Social Media Profiles */}
                 <div className="pt-2 border-t border-slate-100 space-y-2.5">
                   <div className="flex items-center gap-1.5">
-                    <Share2 className="w-3.5 h-3.5 text-[#F72853]" />
+                    <Share2 className="w-3.5 h-3.5 text-[#FF2E63]" />
                     <span className="text-xs font-medium text-slate-800">
                       Official Social Media Profiles
                     </span>
@@ -343,7 +343,7 @@ export default function MerchantAccountSettings() {
                   <Button
                     type="submit"
                     disabled={isSaving}
-                    className="bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-medium h-9 px-5 rounded-xl cursor-pointer shadow-xs shadow-[#F72853]/25 transition-all flex items-center gap-1.5"
+                    className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium h-9 px-5 rounded-xl cursor-pointer shadow-xs shadow-[#FF2E63]/25 transition-all flex items-center gap-1.5"
                   >
                     {isSaving
                       ? <>
@@ -364,12 +364,12 @@ export default function MerchantAccountSettings() {
               className="border-slate-200/90 shadow-sm rounded-2xl bg-white p-4 sm:p-5 space-y-3.5 text-left font-sans relative overflow-hidden"
             >
               {/* Brand Accent Bar */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-500 via-[#F72853] to-rose-600" />
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-500 via-[#FF2E63] to-rose-600" />
 
               {/* Header */}
               <div className="border-b border-slate-100 pb-2.5 pt-1 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2">
-                  <span className="p-1.5 rounded-lg bg-rose-50 text-[#F72853] border border-rose-100/80 shrink-0">
+                  <span className="p-1.5 rounded-lg bg-rose-50 text-[#FF2E63] border border-rose-100/80 shrink-0">
                     <Bell className="w-4 h-4" />
                   </span>
                   <div>
@@ -414,7 +414,7 @@ export default function MerchantAccountSettings() {
                             `${row.label} ${val ? "enabled" : "disabled"}`,
                           );
                         }}
-                        className="data-[state=checked]:!bg-[#F72853]"
+                        className="data-[state=checked]:!bg-[#FF2E63]"
                       />
                     </div>
                   </div>
@@ -441,7 +441,7 @@ export default function MerchantAccountSettings() {
                       window.location.href = "/merchant/dashboard";
                     }
                   }}
-                  className="bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-medium h-8 px-3.5 rounded-lg cursor-pointer shadow-xs shadow-[#F72853]/20 shrink-0 transition-all"
+                  className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium h-8 px-3.5 rounded-lg cursor-pointer shadow-xs shadow-[#FF2E63]/20 shrink-0 transition-all"
                 >
                   Restart Tour →
                 </Button>

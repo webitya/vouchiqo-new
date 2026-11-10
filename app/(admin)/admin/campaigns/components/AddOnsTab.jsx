@@ -48,12 +48,12 @@ export default function AddOnsTab() {
       <Card className="border-slate-200/80 shadow-xs rounded-2xl bg-white p-5 space-y-4">
         <div className="flex items-center justify-between border-b border-slate-100 pb-3">
           <div className="flex items-center gap-2">
-            <Mail className="w-5 h-5 text-blue-600" />
+            <Mail className="w-5 h-5 text-festival-teal" />
             <h3 className="text-sm font-medium text-slate-800 uppercase tracking-wider">
               Dedicated Email Blast (₹799)
             </h3>
           </div>
-          <Badge className="bg-blue-50 text-blue-700 font-medium border-0 text-[10px]">
+          <Badge className="bg-warm-ivory text-festival-teal font-medium border-0 text-[10px]">
             SendGrid E-9
           </Badge>
         </div>
@@ -93,7 +93,7 @@ export default function AddOnsTab() {
             <Button
               size="sm"
               onClick={() => toast.success("Email blast scheduled!")}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs h-8 rounded-xl cursor-pointer"
+              className="bg-festival-teal hover:bg-festival-teal-dark text-white font-medium text-xs h-8 rounded-xl cursor-pointer"
             >
               Schedule Blast
             </Button>

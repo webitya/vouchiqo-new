@@ -143,7 +143,7 @@ export default function CreateNewCampaignPage() {
         {isFreeMerchant && (
           <div className="flex items-center justify-between gap-3 p-3 bg-gradient-to-r from-rose-50 to-amber-50 border border-rose-200/80 rounded-xl text-xs font-sans shadow-2xs">
             <div className="flex items-center gap-2.5">
-              <span className="w-6 h-6 rounded-lg bg-[#F72853] text-white flex items-center justify-center shrink-0 font-bold text-xs shadow-2xs">
+              <span className="w-6 h-6 rounded-lg bg-[#FF2E63] text-white flex items-center justify-center shrink-0 font-bold text-xs shadow-2xs">
                 ⚡
               </span>
               <div>
@@ -158,7 +158,7 @@ export default function CreateNewCampaignPage() {
             </div>
             <Link
               href="/merchant/billing"
-              className="text-[#F72853] hover:underline font-semibold text-xs whitespace-nowrap"
+              className="text-[#FF2E63] hover:underline font-semibold text-xs whitespace-nowrap"
             >
               Need all 7 campaign types? Upgrade →
             </Link>

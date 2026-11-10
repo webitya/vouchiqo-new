@@ -127,7 +127,7 @@ export default function PlanSelector({
                   ? isCompleted
                     ? "bg-emerald-600 text-white"
                     : "bg-amber-400 text-amber-950 font-black"
-                  : "bg-blue-600 text-white",
+                  : "bg-festival-teal text-white",
               )}
             >
               {isCurrent ? (

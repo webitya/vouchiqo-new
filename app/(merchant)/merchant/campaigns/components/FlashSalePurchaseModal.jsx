@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import {
   ArrowRight,
@@ -68,7 +68,7 @@ export default function FlashSalePurchaseModal({
           {/* Badge row — semantic colors, short labels, consistent style */}
           <div className="flex items-center gap-1.5 flex-wrap">
             {/* Primary label — brand identity */}
-            <span className="inline-flex items-center bg-[#F72853] text-white text-[10px] font-semibold px-2.5 py-0.5 rounded-md tracking-wide uppercase">
+            <span className="inline-flex items-center bg-[#FF2E63] text-white text-[10px] font-semibold px-2.5 py-0.5 rounded-md tracking-wide uppercase">
               Partner Special
             </span>
             {/* Scarcity label — amber for limited/one-time */}
@@ -120,10 +120,10 @@ export default function FlashSalePurchaseModal({
             {/* Reach — blue: universal "broadcast/network" color */}
             <div className="flex flex-col gap-3 p-3.5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 transition-colors">
               <div className="flex items-start justify-between">
-                <div className="w-7 h-7 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0">
-                  <TrendingUp className="w-3.5 h-3.5 text-blue-600" />
+                <div className="w-7 h-7 rounded-lg bg-warm-ivory border border-brand-border flex items-center justify-center shrink-0">
+                  <TrendingUp className="w-3.5 h-3.5 text-festival-teal" />
                 </div>
-                <span className="text-[9.5px] font-medium bg-blue-50 border border-blue-200 text-blue-700 px-1.5 py-0.5 rounded-md">
+                <span className="text-[9.5px] font-medium bg-warm-ivory border border-brand-border text-festival-teal px-1.5 py-0.5 rounded-md">
                   Priority Reach
                 </span>
               </div>
@@ -209,7 +209,7 @@ export default function FlashSalePurchaseModal({
             <Button
               onClick={handleActivatePass}
               disabled={loading}
-              className="w-full bg-[#F72853] hover:bg-[#e01e47] text-white font-bold text-xs sm:text-sm rounded-xl h-11 sm:h-12 shadow-md shadow-[#F72853]/25 cursor-pointer flex items-center justify-center gap-2 transition-all border-0"
+              className="w-full bg-[#FF2E63] hover:bg-[#e01e47] text-white font-bold text-xs sm:text-sm rounded-xl h-11 sm:h-12 shadow-md shadow-[#FF2E63]/25 cursor-pointer flex items-center justify-center gap-2 transition-all border-0"
             >
               {loading ? (
                 <>
@@ -232,7 +232,7 @@ export default function FlashSalePurchaseModal({
               <Link
                 href="/merchant/billing"
                 onClick={onClose}
-                className="text-[11px] font-semibold text-[#F72853] hover:underline flex items-center gap-1"
+                className="text-[11px] font-semibold text-[#FF2E63] hover:underline flex items-center gap-1"
               >
                 <span>Unlimited Campaigns? Upgrade</span>
                 <ArrowRight className="w-3 h-3" />

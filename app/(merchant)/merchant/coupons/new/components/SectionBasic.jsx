@@ -59,12 +59,12 @@ export default function SectionBasic({
   return (
     <Card className="border-slate-200/90 shadow-2xs rounded-xl bg-white p-3.5 sm:p-4 space-y-3.5 text-left font-sans relative overflow-hidden">
       {/* Top Light Accent Bar */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-[#F72853]" />
+      <div className="absolute top-0 left-0 right-0 h-1 bg-[#FF2E63]" />
 
       {/* Section Header */}
       <div className="border-b border-slate-100 pb-2.5 pt-0.5 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <span className="p-1.5 rounded-lg bg-rose-50 text-[#F72853] shrink-0">
+          <span className="p-1.5 rounded-lg bg-rose-50 text-[#FF2E63] shrink-0">
             <FileText className="w-4 h-4" />
           </span>
           <div>
@@ -97,17 +97,17 @@ export default function SectionBasic({
           {/* Locked / Fixed Merchant Category Display */}
           <div className="flex flex-col gap-1.5">
             <Label className="text-xs font-medium text-slate-700 flex items-center gap-1.5">
-              <Layers className="w-3.5 h-3.5 text-[#F72853]" />
+              <Layers className="w-3.5 h-3.5 text-[#FF2E63]" />
               <span>Offer Category</span>
               <span className="text-red-500 font-medium ml-0.5">*</span>
             </Label>
             <div className="h-9 px-3 flex items-center justify-between rounded-xl border border-rose-200/90 bg-rose-50/30 text-slate-900 font-medium text-xs shadow-2xs">
               <span className="flex items-center gap-2 truncate">
-                <span className="text-[#F72853] font-medium">★</span>
+                <span className="text-[#FF2E63] font-medium">★</span>
                 <span>{categoryLabel}</span>
               </span>
-              <span className="inline-flex items-center gap-1 text-[10px] font-medium text-[#F72853] bg-white border border-rose-200 px-2 py-0.5 rounded-md shrink-0 shadow-2xs">
-                <Lock className="w-3 h-3 text-[#F72853]" /> Locked to Merchant
+              <span className="inline-flex items-center gap-1 text-[10px] font-medium text-[#FF2E63] bg-white border border-rose-200 px-2 py-0.5 rounded-md shrink-0 shadow-2xs">
+                <Lock className="w-3 h-3 text-[#FF2E63]" /> Locked to Merchant
                 Industry
               </span>
             </div>
@@ -135,7 +135,7 @@ export default function SectionBasic({
         <div className="space-y-2 p-2.5 bg-slate-50/80 rounded-xl border border-slate-200/80 shadow-2xs">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <Label className="flex items-center gap-1.5 font-medium text-xs text-slate-700">
-              <ImageIcon className="w-3.5 h-3.5 text-[#F72853]" /> Banner Image
+              <ImageIcon className="w-3.5 h-3.5 text-[#FF2E63]" /> Banner Image
               Upload
               <span className="text-[10px] text-slate-400 font-normal">
                 (Optional)
@@ -143,7 +143,7 @@ export default function SectionBasic({
             </Label>
 
             {/* Prominent Image Ratio Callout Badge */}
-            <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#F72853] bg-rose-50 border border-rose-200/90 px-2 py-0.5 rounded-lg shadow-2xs">
+            <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#FF2E63] bg-rose-50 border border-rose-200/90 px-2 py-0.5 rounded-lg shadow-2xs">
               <span className="font-medium">Aspect Ratio: 2:1</span>
               <span className="text-slate-400 font-normal">•</span>
               <span className="text-slate-700 font-normal">
@@ -185,7 +185,7 @@ export default function SectionBasic({
               2:1 Horizontal ratio (800px width × 400px height, PNG/JPG max 5MB)
               renders cleanly on all devices.
             </span>
-            <span className="text-[#F72853] font-medium text-[10px] bg-rose-50 px-2 py-0.5 rounded border border-rose-100">
+            <span className="text-[#FF2E63] font-medium text-[10px] bg-rose-50 px-2 py-0.5 rounded border border-rose-100">
               2:1 Ratio
             </span>
           </div>
@@ -203,7 +203,7 @@ export default function SectionBasic({
         </Button>
         <Button
           onClick={onNext}
-          className="bg-[#F72853] hover:bg-[#e01e47] text-white text-xs font-medium h-8 px-4 rounded-xl flex items-center gap-1.5 cursor-pointer shadow-xs transition-colors"
+          className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium h-8 px-4 rounded-xl flex items-center gap-1.5 cursor-pointer shadow-xs transition-colors"
         >
           <span>Next: Discount</span>
           <ArrowRight className="w-3.5 h-3.5" />

@@ -35,8 +35,8 @@ export default function EmblaCarouselControls({
             type="button"
             className={`transition-all duration-300 ease-in-out rounded-full cursor-pointer h-1.5 ${
               i === selectedIndex
-                ? "w-6 bg-blue-600 opacity-100"
-                : "w-1.5 bg-slate-300 opacity-60 hover:opacity-100 hover:bg-blue-600"
+                ? "w-6 bg-festival-teal opacity-100"
+                : "w-1.5 bg-slate-300 opacity-60 hover:opacity-100 hover:bg-festival-teal"
             }`}
             onClick={() => onDotClick(i)}
             aria-label={`Go to slide ${i + 1}`}

@@ -29,7 +29,7 @@ export const CATEGORIES = [
 
 export const CATEGORY_COLORS = {
   "Home & Living": "bg-slate-900 text-white border-slate-800",
-  "Electronics & Gadgets": "bg-blue-600 text-white border-blue-500",
+  "Electronics & Gadgets": "bg-festival-teal text-white border-festival-teal",
   "Fashion & Clothing": "bg-purple-600 text-white border-purple-500",
   "Food & Dining": "bg-amber-500 text-slate-950 border-amber-400 font-bold",
   "Beauty & Wellness": "bg-pink-600 text-white border-pink-500",
@@ -101,7 +101,7 @@ export default function AffiliateProductPreviewCard({
 
   return (
     <div
-      className={`bg-white border border-slate-200/80 rounded-xl p-3 sm:p-3.5 space-y-2.5 shadow-2xs hover:shadow-xs hover:border-[#F72853]/50 transition-all flex flex-col justify-between relative overflow-hidden font-sans text-left w-full ${
+      className={`bg-white border border-slate-200/80 rounded-xl p-3 sm:p-3.5 space-y-2.5 shadow-2xs hover:shadow-xs hover:border-[#FF2E63]/50 transition-all flex flex-col justify-between relative overflow-hidden font-sans text-left w-full ${
         status === "paused" ? "opacity-75 bg-slate-50/50" : ""
       }`}
     >
@@ -139,7 +139,7 @@ export default function AffiliateProductPreviewCard({
           {/* Discount Tag (Top Right) */}
           {badgeDiscountText && (
             <div className="absolute top-2 right-2 z-10">
-              <span className="inline-flex items-center gap-1 bg-[#F72853] text-white text-[10px] font-medium px-2 py-0.5 rounded-md shadow-xs border border-rose-500 max-w-[150px] truncate">
+              <span className="inline-flex items-center gap-1 bg-[#FF2E63] text-white text-[10px] font-medium px-2 py-0.5 rounded-md shadow-xs border border-rose-500 max-w-[150px] truncate">
                 <Tag className="w-2.5 h-2.5 shrink-0" />
                 {badgeDiscountText}
               </span>
@@ -174,7 +174,7 @@ export default function AffiliateProductPreviewCard({
           {hasExactPricing ? (
             <>
               <div className="flex items-baseline gap-2">
-                <span className="text-sm sm:text-base font-semibold text-[#F72853]">
+                <span className="text-sm sm:text-base font-semibold text-[#FF2E63]">
                   ₹{discountPrice.toLocaleString()}
                 </span>
                 <span className="text-xs font-normal text-slate-400 line-through">
@@ -197,13 +197,13 @@ export default function AffiliateProductPreviewCard({
                   ₹{discountPrice.toLocaleString()}
                 </span>
               </div>
-              <span className="text-[10px] font-medium text-[#F72853] bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200/80 truncate max-w-[160px]">
+              <span className="text-[10px] font-medium text-[#FF2E63] bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200/80 truncate max-w-[160px]">
                 {discountText || `Just @ ₹${discountPrice}`}
               </span>
             </div>
           ) : (
             <div className="flex items-center justify-between w-full">
-              <span className="text-xs font-medium text-[#F72853] bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200/80">
+              <span className="text-xs font-medium text-[#FF2E63] bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200/80">
                 {badgeDiscountText || "SPECIAL OFFER"}
               </span>
               <span className="text-xs font-normal text-slate-500">
@@ -226,7 +226,7 @@ export default function AffiliateProductPreviewCard({
             <button
               type="button"
               onClick={handleCopy}
-              className="p-1 text-slate-500 hover:text-[#F72853] hover:bg-white rounded transition-colors cursor-pointer shrink-0"
+              className="p-1 text-slate-500 hover:text-[#FF2E63] hover:bg-white rounded transition-colors cursor-pointer shrink-0"
               title="Copy Affiliate Link"
             >
               {copied ? (
@@ -240,7 +240,7 @@ export default function AffiliateProductPreviewCard({
               href={affiliateUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1 text-slate-500 hover:text-[#F72853] hover:bg-white rounded transition-colors shrink-0"
+              className="p-1 text-slate-500 hover:text-[#FF2E63] hover:bg-white rounded transition-colors shrink-0"
               title="Open Destination Link"
               onClick={(e) => e.stopPropagation()}
             >
@@ -254,7 +254,7 @@ export default function AffiliateProductPreviewCard({
       {!isPreview && (
         <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs mt-1">
           <div className="flex items-center gap-1.5 text-slate-500 font-normal text-xs">
-            <MousePointerClick className="w-3.5 h-3.5 text-[#F72853]" />
+            <MousePointerClick className="w-3.5 h-3.5 text-[#FF2E63]" />
             <span>{clickCount} clicks</span>
           </div>
 
@@ -282,7 +282,7 @@ export default function AffiliateProductPreviewCard({
               <button
                 type="button"
                 onClick={() => onEdit(product)}
-                className="p-1 text-slate-500 hover:text-[#F72853] hover:bg-rose-50 rounded-lg border border-slate-200 transition-colors cursor-pointer"
+                className="p-1 text-slate-500 hover:text-[#FF2E63] hover:bg-rose-50 rounded-lg border border-slate-200 transition-colors cursor-pointer"
                 title="Edit Product"
               >
                 <Edit2 className="w-3.5 h-3.5" />

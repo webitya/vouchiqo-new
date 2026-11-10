@@ -77,7 +77,7 @@ const FESTIVAL_DATES = [
 // 8 Distinct Colorful Row Palettes (Clearly visible without hover)
 const ROW_COLOR_THEMES = [
   {
-    row: "bg-blue-100/65 hover:bg-blue-100/90 border-l-[3.5px] border-l-blue-600 border-b border-blue-200/80 text-slate-900",
+    row: "bg-festival-teal/10 hover:bg-festival-teal/20 border-l-[3.5px] border-l-festival-teal border-b border-festival-teal/20 text-slate-900",
   },
   {
     row: "bg-emerald-100/65 hover:bg-emerald-100/90 border-l-[3.5px] border-l-emerald-600 border-b border-emerald-200/80 text-slate-900",
@@ -299,7 +299,7 @@ export default function AdminCampaignCalendarPage() {
                     {stats.totalScheduled}
                   </span>
                 </div>
-                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 border border-blue-200/60 flex items-center justify-center shrink-0">
+                <div className="w-7 h-7 rounded-lg bg-warm-ivory text-festival-teal border border-festival-teal/20 flex items-center justify-center shrink-0">
                   <CalendarIcon className="w-3.5 h-3.5" />
                 </div>
               </CardContent>
@@ -429,7 +429,7 @@ export default function AdminCampaignCalendarPage() {
                           <h4 className="font-medium text-slate-900 text-[11.5px] leading-tight truncate">
                             {c.name || "Scheduled Campaign"}
                           </h4>
-                          <span className="bg-white/95 text-blue-800 border border-blue-200 text-[9.5px] font-medium px-1.5 py-0.2 rounded shadow-2xs">
+                          <span className="bg-white/95 text-festival-teal-dark border border-brand-border text-[9.5px] font-medium px-1.5 py-0.2 rounded shadow-2xs">
                             {c.merchantName}
                           </span>
                           {c.hasCountdown && (
@@ -457,7 +457,7 @@ export default function AdminCampaignCalendarPage() {
                             onClick={() => handleOpenAdjust(c)}
                             className="bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 text-[11px] font-medium h-7 px-2.5 rounded-lg cursor-pointer shadow-2xs shrink-0 gap-1"
                           >
-                            <Sliders className="w-3 h-3 text-blue-600" />
+                            <Sliders className="w-3 h-3 text-festival-teal" />
                             <span>Adjust Schedule</span>
                           </Button>
                         </TooltipTrigger>
@@ -516,7 +516,7 @@ export default function AdminCampaignCalendarPage() {
                       type="checkbox"
                       checked={editCountdown}
                       onChange={(e) => setEditCountdown(e.target.checked)}
-                      className="accent-blue-600"
+                      className="accent-festival-teal"
                     />
                     <span>Activate Countdown Timer on Offer Card</span>
                   </label>
@@ -525,7 +525,7 @@ export default function AdminCampaignCalendarPage() {
                       type="checkbox"
                       checked={editTeaser}
                       onChange={(e) => setEditTeaser(e.target.checked)}
-                      className="accent-blue-600"
+                      className="accent-festival-teal"
                     />
                     <span>Activate Festival Pre-Launch Teaser Banner</span>
                   </label>
@@ -562,7 +562,7 @@ export default function AdminCampaignCalendarPage() {
                     type="submit"
                     size="sm"
                     disabled={isSaving}
-                    className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg h-7.5"
+                    className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-medium rounded-lg h-7.5"
                   >
                     {isSaving ? (
                       <Loader2 className="w-3.5 h-3.5 animate-spin mr-1.5" />

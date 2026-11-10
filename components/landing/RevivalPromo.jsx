@@ -63,19 +63,19 @@ export function RevivalPromo() {
   }
 
   return (
-    <section className="w-full bg-gradient-to-br from-rose-50/70 via-white to-pink-50/50 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 py-10 sm:py-12 px-4 sm:px-8 border-y border-rose-200/60 dark:border-zinc-900 select-none relative overflow-hidden font-sans text-left">
+    <section className="w-full bg-gradient-to-br from-[#FFF8EF] via-white to-[#FFF8EF] dark:from-[#1D062B] dark:via-[#280C38] dark:to-[#1D062B] py-10 sm:py-12 px-4 sm:px-8 border-y border-[#EADBCE] dark:border-[#4A1A66] select-none relative overflow-hidden font-sans text-left">
       {/* Decorative Gradient Graphic Orbs & Subtle Pattern */}
-      <div className="absolute -left-20 -top-20 w-96 h-96 bg-gradient-to-br from-[#F72853]/15 to-pink-300/10 rounded-full blur-3xl pointer-events-none z-0" />
-      <div className="absolute -right-20 -bottom-20 w-96 h-96 bg-gradient-to-tl from-[#F72853]/10 to-rose-300/15 rounded-full blur-3xl pointer-events-none z-0" />
-      <div className="absolute inset-0 bg-[radial-gradient(#F72853_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.035] pointer-events-none z-0" />
+      <div className="absolute -left-20 -top-20 w-96 h-96 bg-gradient-to-br from-[#FF2E63]/15 to-[#FF8C05]/10 rounded-full blur-3xl pointer-events-none z-0" />
+      <div className="absolute -right-20 -bottom-20 w-96 h-96 bg-gradient-to-tl from-[#007F79]/15 to-[#35104A]/10 rounded-full blur-3xl pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[radial-gradient(#35104A_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.035] pointer-events-none z-0" />
 
       <div className="w-full max-w-[1500px] mx-auto px-2 sm:px-6 md:px-10 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Form & Callout (lg:col-span-7) */}
           <div className="lg:col-span-7 space-y-4 text-left font-sans">
             {/* Top Pill Badge */}
-            <div className="inline-flex items-center gap-1.5 bg-rose-50 border border-rose-200 text-[#F72853] text-[10px] font-normal tracking-wider uppercase px-2.5 py-0.5 rounded-full shadow-2xs">
-              <span className="text-[10.5px] uppercase font-medium text-[#F72853] tracking-wider flex items-center justify-center md:justify-start gap-1">
+            <div className="inline-flex items-center gap-1.5 bg-[#FF2E63]/10 border border-[#FF2E63]/25 text-[#FF2E63] text-[10px] font-heading font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full shadow-2xs">
+              <span className="text-[10.5px] uppercase font-bold text-[#FF2E63] tracking-wider flex items-center justify-center md:justify-start gap-1">
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Offer Revival Engine</span>
               </span>
@@ -83,13 +83,13 @@ export function RevivalPromo() {
 
             {/* Main Title & Subtitle */}
             <div className="space-y-1.5 font-sans">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-slate-900 tracking-tight leading-tight">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-[#35104A] dark:text-[#FFF8EF] tracking-tight leading-tight">
                 Got an expired offer? <br />
-                <span className="text-[#F72853] font-medium">
+                <span className="text-[#FF2E63]">
                   We&apos;ll help you revive it.
                 </span>
               </h2>
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal max-w-xl">
+              <p className="text-xs text-[#6B4C82] dark:text-[#D5BEDE] leading-relaxed font-medium max-w-xl">
                 Submit any expired code or store offer. Our merchant relations
                 team negotiates a fresh active equivalent directly with the
                 brand — usually within 24 hours.
@@ -108,7 +108,7 @@ export function RevivalPromo() {
                   </h3>
                   <p className="text-xs text-slate-600 max-w-md mx-auto leading-relaxed font-normal">
                     We&apos;ve logged your revival request for{" "}
-                    <span className="text-[#F72853] font-medium">
+                    <span className="text-[#FF2E63] font-semibold">
                       {form.brandName || "your brand"}
                     </span>
                     . We&apos;ll email you as soon as a fresh code is
@@ -116,7 +116,7 @@ export function RevivalPromo() {
                   </p>
                   <button
                     onClick={() => setSuccess(false)}
-                    className="text-xs font-normal text-[#F72853] hover:underline pt-1 cursor-pointer"
+                    className="text-xs font-semibold text-[#FF2E63] hover:underline pt-1 cursor-pointer"
                   >
                     Revive another offer →
                   </button>
@@ -124,12 +124,12 @@ export function RevivalPromo() {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="bg-white border border-slate-200/90 rounded-xl p-3.5 sm:p-4 space-y-3 shadow-2xs font-sans"
+                  className="bg-white dark:bg-[#280C38] border border-[#EADBCE] dark:border-[#4A1A66] rounded-xl p-3.5 sm:p-4 space-y-3 shadow-2xs font-sans"
                 >
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {/* Brand Name Input */}
                     <div className="space-y-1">
-                      <label className="text-[10px] font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wider block">
+                      <label className="text-[10px] font-heading font-semibold text-[#35104A] dark:text-[#FFF8EF] uppercase tracking-wider block">
                         Store / Brand Name *
                       </label>
                       <input
@@ -139,14 +139,14 @@ export function RevivalPromo() {
                         onChange={(e) =>
                           setForm({ ...form, brandName: e.target.value })
                         }
-                        className="w-full px-3 py-1.5 text-xs rounded-lg border border-slate-200 focus:outline-none focus:ring-1 focus:ring-[#F72853] font-normal"
+                        className="w-full px-3 py-1.5 text-xs rounded-lg border border-[#EADBCE] dark:border-[#4A1A66] focus:outline-none focus:ring-1 focus:ring-[#007F79] font-medium text-[#35104A] dark:text-[#FFF8EF] dark:bg-[#1D062B]"
                         required
                       />
                     </div>
 
                     {/* Email Input */}
                     <div className="space-y-1">
-                      <label className="text-[10px] font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wider block">
+                      <label className="text-[10px] font-heading font-semibold text-[#35104A] dark:text-[#FFF8EF] uppercase tracking-wider block">
                         Your Email *
                       </label>
                       <input
@@ -156,14 +156,14 @@ export function RevivalPromo() {
                         onChange={(e) =>
                           setForm({ ...form, email: e.target.value })
                         }
-                        className="w-full px-3 py-1.5 text-xs rounded-lg border border-slate-200 focus:outline-none focus:ring-1 focus:ring-[#F72853] font-normal"
+                        className="w-full px-3 py-1.5 text-xs rounded-lg border border-[#EADBCE] dark:border-[#4A1A66] focus:outline-none focus:ring-1 focus:ring-[#007F79] font-medium text-[#35104A] dark:text-[#FFF8EF] dark:bg-[#1D062B]"
                         required
                       />
                     </div>
                   </div>
 
                   {error && (
-                    <p className="text-[11px] text-rose-600 font-normal">
+                    <p className="text-[11px] text-[#FF2E63] font-medium">
                       {error}
                     </p>
                   )}
@@ -171,7 +171,7 @@ export function RevivalPromo() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-2 bg-[#F72853] hover:bg-[#df1c44] text-white text-xs font-normal rounded-lg shadow-2xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer active:scale-[0.99] disabled:opacity-50"
+                    className="w-full py-2 bg-[#FF2E63] hover:bg-[#E02253] text-white text-xs font-heading font-bold rounded-lg shadow-2xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer active:scale-[0.99] disabled:opacity-50"
                   >
                     {loading ? (
                       <>
@@ -193,7 +193,7 @@ export function RevivalPromo() {
             <div>
               <Link
                 href="/expired-coupon-revival"
-                className="text-xs font-normal text-[#F72853] hover:underline transition-colors inline-flex items-center gap-1 font-sans"
+                className="text-xs font-normal text-[#FF2E63] hover:underline transition-colors inline-flex items-center gap-1 font-sans"
               >
                 <span>Learn how Revival Negotiation works</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -205,9 +205,9 @@ export function RevivalPromo() {
           <div className="lg:col-span-5 w-full font-sans">
             <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
               {/* Stat Card 1 */}
-              <div className="bg-white border border-slate-100 rounded-xl p-3.5 text-left shadow-2xs hover:border-[#F72853] hover:shadow-[0_6px_16px_rgba(247,40,83,0.12)] transition-all duration-200">
-                <div className="w-6 h-6 rounded-lg bg-rose-50 text-[#F72853] flex items-center justify-center mb-2 border border-rose-100">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#F72853]" />
+              <div className="bg-white border border-slate-100 rounded-xl p-3.5 text-left shadow-2xs hover:border-[#FF2E63] hover:shadow-[0_6px_16px_rgba(247,40,83,0.12)] transition-all duration-200">
+                <div className="w-6 h-6 rounded-lg bg-rose-50 text-[#FF2E63] flex items-center justify-center mb-2 border border-rose-100">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#FF2E63]" />
                 </div>
                 <span className="block text-lg sm:text-xl font-medium text-slate-900 tracking-tight">
                   94%
@@ -218,9 +218,9 @@ export function RevivalPromo() {
               </div>
 
               {/* Stat Card 2 */}
-              <div className="bg-white border border-slate-100 rounded-xl p-3.5 text-left shadow-2xs hover:border-[#F72853] hover:shadow-[0_6px_16px_rgba(247,40,83,0.12)] transition-all duration-200">
-                <div className="w-6 h-6 rounded-lg bg-rose-50 text-[#F72853] flex items-center justify-center mb-2 border border-rose-100">
-                  <Clock className="w-3.5 h-3.5 text-[#F72853]" />
+              <div className="bg-white border border-slate-100 rounded-xl p-3.5 text-left shadow-2xs hover:border-[#FF2E63] hover:shadow-[0_6px_16px_rgba(247,40,83,0.12)] transition-all duration-200">
+                <div className="w-6 h-6 rounded-lg bg-rose-50 text-[#FF2E63] flex items-center justify-center mb-2 border border-rose-100">
+                  <Clock className="w-3.5 h-3.5 text-[#FF2E63]" />
                 </div>
                 <span className="block text-lg sm:text-xl font-medium text-slate-900 tracking-tight">
                   &lt;24h
@@ -231,9 +231,9 @@ export function RevivalPromo() {
               </div>
 
               {/* Stat Card 3 */}
-              <div className="bg-white border border-slate-100 rounded-xl p-3.5 text-left shadow-2xs hover:border-[#F72853] hover:shadow-[0_6px_16px_rgba(247,40,83,0.12)] transition-all duration-200">
-                <div className="w-6 h-6 rounded-lg bg-rose-50 text-[#F72853] flex items-center justify-center mb-2 border border-rose-100">
-                  <TrendingUp className="w-3.5 h-3.5 text-[#F72853]" />
+              <div className="bg-white border border-slate-100 rounded-xl p-3.5 text-left shadow-2xs hover:border-[#FF2E63] hover:shadow-[0_6px_16px_rgba(247,40,83,0.12)] transition-all duration-200">
+                <div className="w-6 h-6 rounded-lg bg-rose-50 text-[#FF2E63] flex items-center justify-center mb-2 border border-rose-100">
+                  <TrendingUp className="w-3.5 h-3.5 text-[#FF2E63]" />
                 </div>
                 <span className="block text-lg sm:text-xl font-medium text-slate-900 tracking-tight">
                   8,400+
@@ -244,11 +244,11 @@ export function RevivalPromo() {
               </div>
 
               {/* Stat Card 4 */}
-              <div className="bg-white border border-slate-100 rounded-xl p-3.5 text-left shadow-2xs hover:border-[#F72853] hover:shadow-[0_6px_16px_rgba(247,40,83,0.12)] transition-all duration-200">
-                <div className="w-6 h-6 rounded-lg bg-rose-50 text-[#F72853] flex items-center justify-center mb-2 border border-rose-100">
-                  <Coins className="w-3.5 h-3.5 text-[#F72853]" />
+              <div className="bg-white border border-slate-100 rounded-xl p-3.5 text-left shadow-2xs hover:border-[#FF2E63] hover:shadow-[0_6px_16px_rgba(247,40,83,0.12)] transition-all duration-200">
+                <div className="w-6 h-6 rounded-lg bg-rose-50 text-[#FF2E63] flex items-center justify-center mb-2 border border-rose-100">
+                  <Coins className="w-3.5 h-3.5 text-[#FF2E63]" />
                 </div>
-                <span className="block text-lg sm:text-xl font-medium text-[#F72853] tracking-tight">
+                <span className="block text-lg sm:text-xl font-medium text-[#FF2E63] tracking-tight">
                   ₹17,500
                 </span>
                 <span className="block text-[9.5px] sm:text-[10px] text-slate-500 font-normal uppercase tracking-wider mt-0.5">

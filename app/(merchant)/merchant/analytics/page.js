@@ -101,19 +101,19 @@ export default function MerchantAnalytics() {
   // Traffic Sources Chart Data (100% Dynamic from DB)
   const trafficSources = useMemo(() => {
     if (!trafficSourcesRaw || trafficSourcesRaw.length === 0) {
-      return [{ name: "Direct & Search", value: 100, color: "#2563eb" }];
+      return [{ name: "Direct & Search", value: 100, color: "#007F79" }];
     }
     const totalVal = trafficSourcesRaw.reduce(
       (sum, s) => sum + (s.value || 0),
       0,
     );
     if (totalVal === 0) {
-      return [{ name: "Direct & Search", value: 100, color: "#2563eb" }];
+      return [{ name: "Direct & Search", value: 100, color: "#007F79" }];
     }
     return trafficSourcesRaw.map((s) => ({
       name: s.name,
       value: Math.round(((s.value || 0) / totalVal) * 100) || 0,
-      color: s.color || "#2563eb",
+      color: s.color || "#007F79",
     }));
   }, [trafficSourcesRaw]);
 
@@ -301,7 +301,7 @@ export default function MerchantAnalytics() {
         }}
       >
         <div className="flex flex-col items-center justify-center min-h-[60vh] text-center space-y-4 px-6 font-sans">
-          <div className="w-14 h-14 rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-md shadow-blue-500/20">
+          <div className="w-14 h-14 rounded-2xl bg-festival-teal text-white flex items-center justify-center shadow-md shadow-festival-teal/20">
             <Lock className="w-6 h-6" />
           </div>
           <div className="space-y-1.5 max-w-md">
@@ -316,7 +316,7 @@ export default function MerchantAnalytics() {
           </div>
           <Link
             href="/merchant/billing"
-            className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2.5 px-6 rounded-xl transition-all shadow-md shadow-blue-500/20 border-0 cursor-pointer"
+            className="bg-festival-teal hover:bg-festival-teal-dark text-white text-xs font-bold py-2.5 px-6 rounded-xl transition-all shadow-md shadow-festival-teal/20 border-0 cursor-pointer"
           >
             Upgrade to Growth — ₹1,499/mo
           </Link>
@@ -337,7 +337,7 @@ export default function MerchantAnalytics() {
         {/* Filter Bar */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3 bg-white border border-slate-200/90 p-3 rounded-2xl shadow-2xs">
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 w-full sm:w-auto">
-            <Calendar className="w-3.5 h-3.5 text-blue-600" />
+            <Calendar className="w-3.5 h-3.5 text-festival-teal" />
             <span>Report Interval:</span>
             <FormSelect
               value={timeRange}
@@ -370,7 +370,7 @@ export default function MerchantAnalytics() {
             value={(Number(totalImpressions) || 0).toLocaleString()}
             subtitle="ticker & list views"
             icon={Eye}
-            iconClassName="bg-blue-50 border-blue-200/80 text-blue-600"
+            iconClassName="bg-warm-ivory border-festival-teal/25 text-festival-teal"
           />
           <KPICard
             title="Total Clicks"
@@ -405,7 +405,7 @@ export default function MerchantAnalytics() {
             value={aov > 0 ? `₹${aov}` : "—"}
             subtitle="est. value / order"
             icon={ShoppingBag}
-            iconClassName="bg-blue-50 border-blue-200/80 text-blue-600"
+            iconClassName="bg-warm-ivory border-festival-teal/25 text-festival-teal"
           />
         </div>
 
@@ -428,7 +428,7 @@ export default function MerchantAnalytics() {
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-1.5">
-                    <div className="w-5 h-5 rounded-md bg-[#2563eb] text-white flex items-center justify-center shrink-0 shadow-2xs">
+                    <div className="w-5 h-5 rounded-md bg-festival-teal text-white flex items-center justify-center shrink-0 shadow-2xs">
                       <MousePointerClick className="w-3 h-3 stroke-[2.5]" />
                     </div>
                     <span className="text-xs font-bold text-slate-800">
@@ -489,7 +489,7 @@ export default function MerchantAnalytics() {
                               >
                                 {coupon.name}
                               </span>
-                              <span className="font-mono text-[9px] bg-blue-50 text-blue-600 border border-blue-100 px-1 py-0.2 rounded font-bold shrink-0 uppercase">
+                              <span className="font-mono text-[9px] bg-warm-ivory text-festival-teal border border-brand-border px-1 py-0.2 rounded font-bold shrink-0 uppercase">
                                 {coupon.code}
                               </span>
                             </div>
@@ -503,7 +503,7 @@ export default function MerchantAnalytics() {
                           <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                             <div
                               className={`h-full rounded-full transition-all duration-500 ${
-                                idx === 0 ? "bg-blue-600" : "bg-blue-400"
+                                idx === 0 ? "bg-festival-teal" : "bg-festival-teal/40"
                               }`}
                               style={{ width: `${Math.max(pct, 4)}%` }}
                             />
@@ -540,7 +540,7 @@ export default function MerchantAnalytics() {
           <AnalyticsCard
             title="Best Performing Days of Week"
             extra={
-              <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-700 border border-blue-200/80 px-2 py-0.5 rounded-md font-bold text-[10px]">
+              <span className="inline-flex items-center gap-1 bg-warm-ivory text-festival-teal border border-festival-teal/25 px-2 py-0.5 rounded-md font-bold text-[10px]">
                 Peak Day: {peakDay}
               </span>
             }

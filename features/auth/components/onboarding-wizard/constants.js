@@ -259,13 +259,13 @@ export const INITIAL_FORM_DATA = {
 };
 
 export const SHADOW_INPUT_CLASS =
-  "pl-8 bg-white border-2 border-blue-300/80 shadow-[0_2px_6px_rgba(37,99,235,0.08)] hover:shadow-[0_3px_10px_rgba(37,99,235,0.14)] hover:border-blue-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 focus:shadow-[0_2px_12px_rgba(37,99,235,0.22)] focus:outline-none transition-all duration-150 text-xs h-9 rounded-lg font-normal text-slate-900 placeholder:text-slate-400";
+  "pl-8 bg-white border-2 border-brand-border shadow-xs hover:shadow-sm hover:border-festival-teal focus:border-festival-teal focus:ring-2 focus:ring-festival-teal/30 focus:shadow-md focus:outline-none transition-all duration-150 text-xs h-9 rounded-lg font-normal text-slate-900 placeholder:text-slate-400";
 
 export const SHADOW_SELECT_CLASS =
-  "w-full bg-white border-2 border-blue-300/80 shadow-[0_2px_6px_rgba(37,99,235,0.08)] hover:shadow-[0_3px_10px_rgba(37,99,235,0.14)] hover:border-blue-400 rounded-lg text-xs h-9 px-3 font-normal text-slate-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 focus:shadow-[0_2px_12px_rgba(37,99,235,0.22)] focus:outline-none transition-all duration-150";
+  "w-full bg-white border-2 border-brand-border shadow-xs hover:shadow-sm hover:border-festival-teal rounded-lg text-xs h-9 px-3 font-normal text-slate-900 focus:border-festival-teal focus:ring-2 focus:ring-festival-teal/30 focus:shadow-md focus:outline-none transition-all duration-150";
 
 export const SHADOW_TEXTAREA_CLASS =
-  "w-full bg-white border-2 border-blue-300/80 shadow-[0_2px_6px_rgba(37,99,235,0.08)] hover:shadow-[0_3px_10px_rgba(37,99,235,0.14)] hover:border-blue-400 rounded-lg text-xs p-3 font-normal text-slate-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 focus:shadow-[0_2px_12px_rgba(37,99,235,0.22)] focus:outline-none transition-all duration-150";
+  "w-full bg-white border-2 border-brand-border shadow-xs hover:shadow-sm hover:border-festival-teal rounded-lg text-xs p-3 font-normal text-slate-900 focus:border-festival-teal focus:ring-2 focus:ring-festival-teal/30 focus:shadow-md focus:outline-none transition-all duration-150";
 
 export const InstagramIcon = (props) => (
   <svg
@@ -298,7 +298,7 @@ export const FacebookIcon = (props) => (
 );
 
 export const FieldTip = ({ text }) => (
-  <p className="text-[10px] text-blue-600 font-medium mt-0.5 leading-tight text-left">
+  <p className="text-[10px] text-festival-teal font-medium mt-0.5 leading-tight text-left">
     {text}
   </p>
 );

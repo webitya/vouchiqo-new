@@ -178,7 +178,7 @@ export function getOfferTableColumns({
                   size="sm"
                   variant="outline"
                   onClick={() => onViewDetails(row)}
-                  className="h-6.5 w-6.5 p-0 flex items-center justify-center border-slate-200 text-slate-700 bg-white hover:bg-slate-50 hover:text-blue-600 hover:border-blue-200 rounded-md cursor-pointer shadow-2xs transition-colors shrink-0"
+                  className="h-6.5 w-6.5 p-0 flex items-center justify-center border-slate-200 text-slate-700 bg-white hover:bg-slate-50 hover:text-festival-teal hover:border-festival-teal rounded-md cursor-pointer shadow-2xs transition-colors shrink-0"
                 >
                   <Eye className="h-3 w-3" />
                   <span className="sr-only">Audit Offer</span>
@@ -233,7 +233,7 @@ export function getOfferTableColumns({
               <Button
                 size="sm"
                 variant="outline"
-                className="h-6.5 w-6.5 p-0 flex items-center justify-center border-slate-200 text-slate-700 bg-white hover:bg-slate-50 hover:text-blue-600 hover:border-blue-200 rounded-md cursor-pointer shadow-2xs transition-colors shrink-0"
+                className="h-6.5 w-6.5 p-0 flex items-center justify-center border-slate-200 text-slate-700 bg-white hover:bg-slate-50 hover:text-festival-teal hover:border-festival-teal rounded-md cursor-pointer shadow-2xs transition-colors shrink-0"
                 onClick={() => onEdit(row)}
               >
                 <Edit2 className="h-3 w-3" />

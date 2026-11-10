@@ -68,7 +68,7 @@ import FormSelect from "@/components/shared/form/FormSelect";
 // 8 Distinct Colorful Row Palettes (Clearly visible without hover)
 const ROW_COLOR_THEMES = [
   {
-    row: "bg-blue-100/65 hover:bg-blue-100/90 border-l-[3.5px] border-l-blue-600 border-b border-blue-200/80 text-slate-900",
+    row: "bg-festival-teal/10 hover:bg-festival-teal/20 border-l-[3.5px] border-l-festival-teal border-b border-festival-teal/20 text-slate-900",
   },
   {
     row: "bg-emerald-100/65 hover:bg-emerald-100/90 border-l-[3.5px] border-l-emerald-600 border-b border-emerald-200/80 text-slate-900",
@@ -431,7 +431,7 @@ export default function CouponModerationClient() {
                 size="sm"
                 variant="outline"
                 onClick={() => handleOpenDetails(row)}
-                className="h-6.5 w-6.5 p-0 flex items-center justify-center border-slate-200 text-slate-700 bg-white hover:bg-slate-50 hover:text-blue-600 hover:border-blue-200 rounded-md cursor-pointer shadow-2xs transition-colors shrink-0"
+                className="h-6.5 w-6.5 p-0 flex items-center justify-center border-slate-200 text-slate-700 bg-white hover:bg-slate-50 hover:text-festival-teal hover:border-festival-teal rounded-md cursor-pointer shadow-2xs transition-colors shrink-0"
               >
                 <Eye className="h-3 w-3" />
                 <span className="sr-only">Audit Details</span>
@@ -531,7 +531,7 @@ export default function CouponModerationClient() {
             className={cn(
               "rounded-xl border p-2.5 cursor-pointer transition-all duration-200 shadow-2xs font-sans",
               activeTab === "all"
-                ? "bg-blue-50/70 border-blue-300 ring-1 ring-blue-300"
+                ? "bg-warm-ivory border-festival-teal/30 ring-1 ring-festival-teal/20"
                 : "bg-white border-slate-200/80 hover:border-slate-300",
             )}
           >
@@ -544,7 +544,7 @@ export default function CouponModerationClient() {
                   {isLoading ? <Skeleton className="h-4.5 w-10 rounded mt-0.5" /> : stats.total}
                 </span>
               </div>
-              <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 border border-blue-200/60 flex items-center justify-center shrink-0">
+              <div className="w-7 h-7 rounded-lg bg-warm-ivory text-festival-teal border border-festival-teal/20 flex items-center justify-center shrink-0">
                 <Tag className="w-3.5 h-3.5" />
               </div>
             </CardContent>
@@ -750,7 +750,7 @@ export default function CouponModerationClient() {
                       <div className="flex items-start justify-between gap-3 pr-6">
                         <div>
                           <div className="flex items-center gap-2">
-                            <Badge className="bg-blue-500/20 text-blue-300 border-blue-400/30 text-[10px] font-bold px-2 py-0.5">
+                            <Badge className="bg-festival-teal/20 text-festival-teal/80 border-festival-teal/30 text-[10px] font-bold px-2 py-0.5">
                               Audit Mode
                             </Badge>
                             <span className="text-[11px] text-slate-400 font-medium">
@@ -766,7 +766,7 @@ export default function CouponModerationClient() {
                             </span>
                             <span>•</span>
                             <span className="flex items-center gap-1 text-slate-300">
-                              <Mail className="w-3 h-3 text-blue-400" />{" "}
+                              <Mail className="w-3 h-3 text-festival-teal" />{" "}
                               {merchantEmail}
                             </span>
                           </div>
@@ -782,7 +782,7 @@ export default function CouponModerationClient() {
                         className={cn(
                           "px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border-0",
                           auditTab === "mechanics"
-                            ? "bg-blue-600 text-white shadow-xs"
+                            ? "bg-festival-teal text-white shadow-xs"
                             : "bg-transparent text-slate-600 hover:bg-slate-200/80",
                         )}
                       >
@@ -796,7 +796,7 @@ export default function CouponModerationClient() {
                         className={cn(
                           "px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border-0",
                           auditTab === "merchant"
-                            ? "bg-blue-600 text-white shadow-xs"
+                            ? "bg-festival-teal text-white shadow-xs"
                             : "bg-transparent text-slate-600 hover:bg-slate-200/80",
                         )}
                       >
@@ -810,7 +810,7 @@ export default function CouponModerationClient() {
                         className={cn(
                           "px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border-0",
                           auditTab === "validity"
-                            ? "bg-blue-600 text-white shadow-xs"
+                            ? "bg-festival-teal text-white shadow-xs"
                             : "bg-transparent text-slate-600 hover:bg-slate-200/80",
                         )}
                       >
@@ -824,7 +824,7 @@ export default function CouponModerationClient() {
                         className={cn(
                           "px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border-0",
                           auditTab === "compliance"
-                            ? "bg-blue-600 text-white shadow-xs"
+                            ? "bg-festival-teal text-white shadow-xs"
                             : "bg-transparent text-slate-600 hover:bg-slate-200/80",
                         )}
                       >
@@ -894,13 +894,13 @@ export default function CouponModerationClient() {
                                 Promo / Smart Code
                               </span>
                               <div className="flex items-center gap-1 mt-0.5">
-                                <code className="font-mono text-xs font-black text-blue-700 bg-white px-2 py-0.5 rounded border border-blue-200">
+                                <code className="font-mono text-xs font-black text-festival-teal bg-white px-2 py-0.5 rounded border border-brand-border">
                                   {selectedCoupon.code || "DEALOFFER"}
                                 </code>
                                 <button
                                   type="button"
                                   onClick={() => copyCode(selectedCoupon.code)}
-                                  className="p-1 text-slate-400 hover:text-blue-600 cursor-pointer border-0 bg-transparent"
+                                  className="p-1 text-slate-400 hover:text-festival-teal cursor-pointer border-0 bg-transparent"
                                   title="Copy Code"
                                 >
                                   <Copy className="w-3 h-3" />
@@ -974,13 +974,13 @@ export default function CouponModerationClient() {
                       {/* TAB 2: MERCHANT & EMAIL CONTACT */}
                       {auditTab === "merchant" && (
                         <div className="space-y-3">
-                          <div className="p-3.5 bg-blue-50/70 border border-blue-200/80 rounded-xl space-y-2">
-                            <div className="flex items-center justify-between border-b border-blue-200/60 pb-1.5">
-                              <span className="text-xs font-extrabold text-blue-900 uppercase tracking-wider flex items-center gap-1.5">
-                                <Store className="w-4 h-4 text-blue-600" />{" "}
+                          <div className="p-3.5 bg-warm-ivory border border-festival-teal/25 rounded-xl space-y-2">
+                            <div className="flex items-center justify-between border-b border-festival-teal/20 pb-1.5">
+                              <span className="text-xs font-extrabold text-royal-plum uppercase tracking-wider flex items-center gap-1.5">
+                                <Store className="w-4 h-4 text-festival-teal" />{" "}
                                 Merchant Identity &amp; Status
                               </span>
-                              <Badge className="bg-blue-600 text-white text-[10px] font-bold">
+                              <Badge className="bg-festival-teal text-white text-[10px] font-bold">
                                 {m.plan
                                   ? m.plan.toUpperCase()
                                   : "STARTER PARTNER"}
@@ -1011,7 +1011,7 @@ export default function CouponModerationClient() {
                           {/* Contact & Liaison Info */}
                           <div className="p-3.5 bg-slate-50 border border-slate-200/80 rounded-xl space-y-2.5">
                             <h4 className="text-[11px] font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
-                              <Mail className="w-3.5 h-3.5 text-blue-600" />{" "}
+                              <Mail className="w-3.5 h-3.5 text-festival-teal" />{" "}
                               Direct Contact &amp; Liaison Info
                             </h4>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
@@ -1021,7 +1021,7 @@ export default function CouponModerationClient() {
                                 </span>
                                 <a
                                   href={`mailto:${merchantEmail}`}
-                                  className="font-bold text-blue-600 hover:underline flex items-center gap-1"
+                                  className="font-bold text-festival-teal hover:underline flex items-center gap-1"
                                 >
                                   <Mail className="w-3 h-3 shrink-0" />{" "}
                                   {merchantEmail}
@@ -1132,7 +1132,7 @@ export default function CouponModerationClient() {
                               <span className="text-[10px] text-slate-500 font-bold uppercase block">
                                 Store Operating Hours
                               </span>
-                              <span className="font-bold text-blue-700 flex items-center gap-1">
+                              <span className="font-bold text-festival-teal flex items-center gap-1">
                                 <Clock className="w-3 h-3" />
                                 {selectedCoupon.validHours ||
                                   "All Business Hours"}
@@ -1160,7 +1160,7 @@ export default function CouponModerationClient() {
                               ).map((day) => (
                                 <span
                                   key={day}
-                                  className="px-2 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-200 text-[11px] font-bold"
+                                  className="px-2 py-0.5 rounded bg-festival-teal/10 text-festival-teal-dark border border-brand-border text-[11px] font-bold"
                                 >
                                   {day}
                                 </span>
@@ -1198,7 +1198,7 @@ export default function CouponModerationClient() {
                         <div className="space-y-3">
                           <div>
                             <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-wider mb-1 flex items-center gap-1">
-                              <Layers className="w-3.5 h-3.5 text-blue-600" />{" "}
+                              <Layers className="w-3.5 h-3.5 text-festival-teal" />{" "}
                               In-Store Terms &amp; Conditions
                             </h4>
                             <p className="text-slate-700 bg-slate-50 p-3 rounded-xl border border-slate-200 leading-relaxed font-normal whitespace-pre-line">
@@ -1213,7 +1213,7 @@ export default function CouponModerationClient() {
                               <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-wider mb-1">
                                 Counter Redemption Instructions
                               </h4>
-                              <p className="text-blue-800 bg-blue-50 p-2.5 rounded-xl border border-blue-200 font-bold">
+                              <p className="text-festival-teal-dark bg-warm-ivory p-2.5 rounded-xl border border-brand-border font-bold">
                                 {selectedCoupon.redemptionMethod}
                               </p>
                             </div>

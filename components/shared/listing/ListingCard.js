@@ -30,7 +30,7 @@ export const ListingCard = memo(function ListingCard({
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.06)";
-          e.currentTarget.style.borderColor = "#2563eb";
+          e.currentTarget.style.borderColor = "#007F79";
           e.currentTarget.style.transform = "translateY(-1px)";
         }}
         onMouseLeave={(e) => {
@@ -80,11 +80,11 @@ export const ListingCard = memo(function ListingCard({
                 alignItems: "center",
                 gap: 4,
                 fontSize: 11,
-                color: "#2563eb",
+                color: "#007F79",
                 fontWeight: 600,
               }}
             >
-              <Tag className="w-3 h-3 text-[#2563eb]" />
+              <Tag className="w-3 h-3 text-festival-teal" />
               <span>{coupons + offers} Active Offers</span>
             </div>
           )}
