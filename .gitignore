@@ -1,0 +1,85 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+*-orig.*
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+*.log
+*.tmp
+
+# env files
+.env*
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Prompt and rules markdown files
+Vouchiqo_Code_Rules.md
+Vouchiqo_Developer_Implementation_Prompt.md
+Vouchiqo_Security_Prompt.md
+Vouchiqo_UIUX_Prompt.md
+
+# AI Agent Configuration, Rules & Brain Files
+AGENTS.md
+GEMINI.md
+CLAUDE.md
+.gemini
+.gemini/
+.agents
+.agents/
+.claude/
+.cursor/
+/brain/
+/project-brain/
+/projects_docs/
+/project_docs/
+/temp-clone/
+parse_docs.mjs
+parse_docs.js
+
+# AI Generated Architecture, Maps & Memory Files
+api-map.md
+architecture.md
+codebase_memory.md
+database-map.md
+dependency-graph.md
+memory.md
+performance_audit.md
+routes.md
+scratch/
+
+# Credentials and sensitive notes
+details.md
+credentials.md
+

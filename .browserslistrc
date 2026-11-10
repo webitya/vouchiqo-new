@@ -1,0 +1,5 @@
+defaults and fully supports es6-module
+chrome >= 109
+edge >= 109
+firefox >= 108
+safari >= 15.6

@@ -1,0 +1,108 @@
+/**
+ * Curated list of known temporary, disposable, and burner email service domains.
+ * Prevents spam bots and fake account creation on Vouchiqo.
+ */
+export const DISPOSABLE_EMAIL_DOMAINS = new Set([
+  // Popular temporary email services
+  "10minutemail.com",
+  "10minutemail.net",
+  "10minemail.com",
+  "20minutemail.com",
+  "burnermail.io",
+  "crazymailing.com",
+  "discard.email",
+  "discardmail.com",
+  "disposablemail.com",
+  "dispostable.com",
+  "dropmail.me",
+  "emailondeck.com",
+  "fakeinbox.com",
+  "fakemailgenerator.com",
+  "getairmail.com",
+  "getnada.com",
+  "grr.la",
+  "guerrillamail.biz",
+  "guerrillamail.com",
+  "guerrillamail.de",
+  "guerrillamail.net",
+  "guerrillamail.org",
+  "guerrillamailblock.com",
+  "inboxkitten.com",
+  "inboxbear.com",
+  "inboxclean.com",
+  "mailcatch.com",
+  "maildrop.cc",
+  "mailnesia.com",
+  "mailinator.com",
+  "mailinator.net",
+  "mailinator2.com",
+  "mediseat.com",
+  "mediseat.org",
+  "mediseat.net",
+  "mediaseat.com",
+  "mediaseat.org",
+  "mediaseat.net",
+  "mohmal.com",
+  "mytemp.email",
+  "nada.ltd",
+  "nada.email",
+  "sharklasers.com",
+  "spam4.me",
+  "spambog.com",
+  "spambox.us",
+  "temp-mail.org",
+  "temp-mail.ru",
+  "tempail.com",
+  "tempinbox.com",
+  "tempmail.com",
+  "tempmail.net",
+  "tempmailaddress.com",
+  "throwawaymail.com",
+  "trashmail.com",
+  "trashmail.net",
+  "trashmail.org",
+  "yopmail.com",
+  "yopmail.fr",
+  "yopmail.net",
+  "generator.email",
+  "generator.email2",
+  "crazymailing.com",
+  "harakirimail.com",
+  "jetable.org",
+  "kasmail.com",
+  "mytrashmail.com",
+  "noclickemail.com",
+  "nomail.xl.cx",
+  "nospam.ze.tc",
+  "objectmail.com",
+  "proxymail.eu",
+  "safetymail.info",
+  "shieldedmail.com",
+  "sofort-mail.de",
+  "spamfree24.org",
+  "spaml.com",
+  "suremail.info",
+  "tafmail.com",
+  "teleworm.us",
+  "tempemail.net",
+  "tmpmail.net",
+  "tmpmail.org",
+  "wegwerfmail.de",
+  "wegwerfmail.net",
+  "wegwerfmail.org",
+  "whyspam.me",
+  "zippymail.info",
+]);
+
+/**
+ * Checks whether an email address belongs to a known disposable/temporary email provider.
+ * @param {string} email
+ * @returns {boolean}
+ */
+export function isDisposableEmail(email) {
+  if (!email || typeof email !== "string" || !email.includes("@")) {
+    return false;
+  }
+  const domain = email.split("@").pop().toLowerCase().trim();
+  return DISPOSABLE_EMAIL_DOMAINS.has(domain);
+}
