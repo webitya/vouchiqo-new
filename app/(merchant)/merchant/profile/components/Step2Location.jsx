@@ -1,6 +1,8 @@
 "use client";
 
 import {
+  Check,
+  ChevronDown,
   Compass,
   Crosshair,
   Image as ImageIcon,
@@ -8,13 +10,16 @@ import {
   Loader2,
   MapPin,
   Navigation,
+  Search,
   Upload,
+  X,
 } from "lucide-react";
-import { useState } from "react";
-import { FormInput, FormSelect, FormTextarea } from "@/components/shared/form";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { FormInput, FormTextarea } from "@/components/shared/form";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { parseGmapsCoordinates } from "@/lib/location-resolver";
 import { showError, showSuccess } from "@/lib/toast";
 import {
   INDIAN_CITIES,
@@ -37,6 +42,37 @@ export default function Step2Location({
 }) {
   const [isGeoLoading, setIsGeoLoading] = useState(false);
   const [isDetectingGps, setIsDetectingGps] = useState(false);
+  const [isCityOpen, setIsCityOpen] = useState(false);
+  const [citySearch, setCitySearch] = useState("");
+  const cityDropdownRef = useRef(null);
+  const citySearchInputRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (
+        cityDropdownRef.current &&
+        !cityDropdownRef.current.contains(e.target)
+      ) {
+        setIsCityOpen(false);
+      }
+    }
+    if (isCityOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      setTimeout(() => citySearchInputRef.current?.focus(), 50);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isCityOpen]);
+
+  const filteredCities = useMemo(() => {
+    if (!citySearch.trim()) return INDIAN_CITIES;
+    const q = citySearch.toLowerCase().trim();
+    return INDIAN_CITIES.filter(
+      (c) =>
+        c.city.toLowerCase().includes(q) ||
+        c.state.toLowerCase().includes(q) ||
+        Boolean(c.pincode?.includes(q)),
+    );
+  }, [citySearch]);
 
   const shopImage = watch("shopImage");
   const logo = watch("logo");
@@ -68,19 +104,6 @@ export default function Step2Location({
       },
       { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 },
     );
-  };
-
-  const parseGmapsCoordinates = (url) => {
-    if (!url) return null;
-    const atMatch = url.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
-    if (atMatch) {
-      return { lat: atMatch[1], lng: atMatch[2] };
-    }
-    const queryMatch = url.match(/[?&](q|ll)=(-?\d+\.\d+),(-?\d+\.\d+)/);
-    if (queryMatch) {
-      return { lat: queryMatch[2], lng: queryMatch[3] };
-    }
-    return null;
   };
 
   const handleGmapsLinkChange = (e) => {
@@ -123,13 +146,30 @@ export default function Step2Location({
     }
   };
 
+  const bindCityScrollListRef = (node) => {
+    if (!node || node._wheelBound) return;
+    node._wheelBound = true;
+    node.addEventListener(
+      "wheel",
+      (e) => {
+        if (node.scrollHeight > node.clientHeight) {
+          e.stopPropagation();
+          if (e.cancelable) e.preventDefault();
+          const delta = e.deltaMode === 1 ? e.deltaY * 24 : e.deltaY;
+          node.scrollTop += delta;
+        }
+      },
+      { passive: false },
+    );
+  };
+
   const cityOptions = INDIAN_CITIES.map((c) => ({
     value: typeof c === "string" ? c : c.city,
     label: typeof c === "string" ? c : `${c.city} (${c.state})`,
   }));
 
   return (
-    <Card className="border-slate-200/80 shadow-xs rounded-2xl bg-white p-6 space-y-5 text-left font-sans">
+    <Card className="border-slate-200/80 shadow-xs rounded-2xl bg-white p-6 space-y-5 text-left font-sans overflow-visible">
       <div className="border-b border-slate-100 pb-3 flex items-center justify-between">
         <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
           <MapPin className="w-4 h-4 text-rose-600" />
@@ -240,7 +280,7 @@ export default function Step2Location({
         <FormInput
           label="Postal PIN Code"
           icon={MapPin}
-          placeholder="e.g. 834001"
+          placeholder="834001"
           maxLength={6}
           {...register("pincode")}
           onChange={handlePincodeChange}
@@ -248,14 +288,133 @@ export default function Step2Location({
           hint={isGeoLoading ? "Auto-detecting City & State..." : undefined}
         />
 
-        <FormSelect
-          label="Store City Location"
-          icon={MapPin}
-          options={cityOptions}
-          value={selectedCity || "Ranchi"}
-          onValueChange={handleCityChange}
-          error={errors.city}
-        />
+        <div className="space-y-1 relative" ref={cityDropdownRef}>
+          <label className="text-xs font-medium text-slate-700 flex items-center gap-1.5">
+            <MapPin className="w-3.5 h-3.5 text-festival-teal" />
+            <span>Store City Location</span>
+            <span className="text-rose-500 font-medium">*</span>
+          </label>
+
+          {/* Searchable Trigger Button */}
+          <button
+            type="button"
+            onClick={() => setIsCityOpen((prev) => !prev)}
+            className="w-full flex items-center justify-between text-left cursor-pointer transition-all h-10 px-3 bg-white border border-slate-200 text-slate-800 text-xs rounded-xl focus:border-festival-teal focus:ring-2 focus:ring-festival-teal/20"
+          >
+            <span className="truncate">
+              {selectedCity
+                ? `${selectedCity}${
+                    watch("state") ? ` (${watch("state")})` : ""
+                  }`
+                : "Search & select city..."}
+            </span>
+            <ChevronDown
+              className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 shrink-0 ml-1 ${
+                isCityOpen ? "rotate-180 text-festival-teal" : ""
+              }`}
+            />
+          </button>
+
+          {/* Dropdown with Instant Search Input */}
+          {isCityOpen && (
+            <div
+              data-lenis-prevent="true"
+              className="absolute left-0 right-0 top-full mt-1.5 z-[350] bg-white rounded-xl shadow-xl border border-slate-200 p-2 space-y-2"
+            >
+              <div className="relative">
+                <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <input
+                  ref={citySearchInputRef}
+                  type="text"
+                  placeholder="Search city, state, or PIN..."
+                  value={citySearch}
+                  onChange={(e) => setCitySearch(e.target.value)}
+                  className="w-full h-8 pl-8 pr-7 text-xs bg-slate-50 text-slate-800 placeholder:text-slate-400 rounded-lg border border-slate-200 focus:bg-white focus:border-festival-teal focus:ring-1 focus:ring-festival-teal/20 outline-none transition-all font-sans"
+                />
+                {citySearch && (
+                  <button
+                    type="button"
+                    onClick={() => setCitySearch("")}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 p-0.5 cursor-pointer"
+                  >
+                    <X className="w-3 h-3" />
+                  </button>
+                )}
+              </div>
+
+              <div
+                ref={bindCityScrollListRef}
+                data-lenis-prevent="true"
+                onWheel={(e) => {
+                  e.stopPropagation();
+                  const container = e.currentTarget;
+                  if (container.scrollHeight > container.clientHeight) {
+                    const delta = e.deltaMode === 1 ? e.deltaY * 24 : e.deltaY;
+                    container.scrollTop += delta;
+                  }
+                }}
+                className="max-h-56 overflow-y-auto space-y-0.5 pr-0.5 custom-scrollbar overscroll-contain"
+                style={{
+                  overscrollBehavior: "contain",
+                  touchAction: "pan-y",
+                  WebkitOverflowScrolling: "touch",
+                }}
+              >
+                {filteredCities.length === 0 ? (
+                  <div className="py-2.5 px-2 text-center space-y-1.5">
+                    <p className="text-xs text-slate-500">
+                      No city found matching "{citySearch}"
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => handleCityChange(citySearch.trim())}
+                      className="inline-flex items-center gap-1 text-[11px] font-medium text-festival-teal hover:underline cursor-pointer bg-festival-teal/5 border border-festival-teal/20 px-2.5 py-1 rounded-md"
+                    >
+                      <span>+ Use "{citySearch.trim()}" as custom city</span>
+                    </button>
+                  </div>
+                ) : (
+                  filteredCities.map((c) => {
+                    const isSelected =
+                      selectedCity?.toLowerCase() === c.city.toLowerCase();
+                    return (
+                      <button
+                        key={`${c.city}-${c.state}`}
+                        type="button"
+                        onClick={() => handleCityChange(c.city)}
+                        className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left ${
+                          isSelected
+                            ? "bg-festival-teal text-white font-medium"
+                            : "text-slate-700 hover:bg-slate-100 hover:text-festival-teal"
+                        }`}
+                      >
+                        <div className="flex items-center gap-1.5 truncate">
+                          <span>{c.city}</span>
+                          <span
+                            className={`text-[10.5px] ${
+                              isSelected ? "text-white/80" : "text-slate-400"
+                            }`}
+                          >
+                            ({c.state})
+                          </span>
+                        </div>
+                        {isSelected && (
+                          <Check className="w-3.5 h-3.5 shrink-0" />
+                        )}
+                      </button>
+                    );
+                  })
+                )}
+              </div>
+            </div>
+          )}
+
+          {errors.city && (
+            <p className="text-xs text-red-500 font-medium mt-0.5">
+              {errors.city.message || "City is required"}
+            </p>
+          )}
+        </div>
 
         <FormInput
           label="State / Region"
@@ -313,14 +472,14 @@ export default function Step2Location({
           <FormInput
             label="Latitude (GPS)"
             icon={Compass}
-            placeholder="e.g. 23.344102"
+            placeholder="23.344102"
             {...register("lat")}
             error={errors.lat}
           />
           <FormInput
             label="Longitude (GPS)"
             icon={Compass}
-            placeholder="e.g. 85.309615"
+            placeholder="85.309615"
             {...register("lng")}
             error={errors.lng}
           />

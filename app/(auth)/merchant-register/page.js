@@ -28,7 +28,7 @@ export default function MerchantRegisterPage() {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
       <Navbar />
-      <main className="flex-1 py-4 sm:py-8 px-4 sm:px-6 lg:px-8 max-w-[1440px] w-full mx-auto flex flex-col justify-center">
+      <main className="flex-1 py-4 sm:py-8 px-4 sm:px-6 lg:px-8 max-w-[1440px] w-full mx-auto flex flex-col justify-start">
         <MerchantOnboardingWizard />
       </main>
       <Footer />

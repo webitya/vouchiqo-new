@@ -431,7 +431,7 @@ export default function PolicyAgreementsAdminPage() {
             <div className="flex flex-col sm:flex-row gap-2 bg-slate-50 p-2 rounded-xl border border-slate-200/80">
               <input
                 type="text"
-                placeholder="Enter new commitment text (e.g. I will honour every verified offer...)"
+                placeholder="Enter new commitment text - I will honour every verified offer..."
                 value={newCommitmentText}
                 onChange={(e) => setNewCommitmentText(e.target.value)}
                 className="flex-1 bg-white border border-slate-200 rounded-lg text-xs h-8 px-2.5 font-normal text-slate-900 focus:border-festival-teal outline-none shadow-2xs"
@@ -533,7 +533,7 @@ export default function PolicyAgreementsAdminPage() {
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. Agree to Merchant Agreement"
+                  placeholder="Agree to Merchant Agreement"
                   value={newPolicy.title}
                   onChange={(e) =>
                     setNewPolicy({ ...newPolicy, title: e.target.value })

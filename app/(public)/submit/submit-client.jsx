@@ -155,7 +155,7 @@ export default function SubmitClient() {
                       name="merchant"
                       label="Store / Merchant Name"
                       icon={Store}
-                      placeholder="Type store name (e.g. Amazon, Myntra)..."
+                      placeholder="Type store name - Amazon, Myntra..."
                       value={couponMerchant}
                       onChange={(e) => {
                         setCouponMerchant(e.target.value);
@@ -187,7 +187,7 @@ export default function SubmitClient() {
                     name="code"
                     label="Offer Code"
                     icon={Ticket}
-                    placeholder="e.g. SAVE50"
+                    placeholder="SAVE50"
                     value={couponCode}
                     onChange={(e) => setCouponCode(e.target.value)}
                     required
@@ -204,7 +204,7 @@ export default function SubmitClient() {
                     name="title"
                     label="Offer Title"
                     icon={Heading}
-                    placeholder="e.g. 50% Off First Order"
+                    placeholder="50% Off First Order"
                     value={couponTitle}
                     onChange={(e) => setCouponTitle(e.target.value)}
                   />
@@ -222,7 +222,7 @@ export default function SubmitClient() {
                     label="Terms & Conditions"
                     icon={FileText}
                     rows={2}
-                    placeholder="e.g. Valid once per user..."
+                    placeholder="Valid once per user..."
                     value={terms}
                     onChange={(e) => setTerms(e.target.value)}
                   />
@@ -244,7 +244,7 @@ export default function SubmitClient() {
                     name="mName"
                     label="Merchant Business Name"
                     icon={Store}
-                    placeholder="e.g. Burger House"
+                    placeholder="Burger House"
                     value={merchantName}
                     onChange={(e) => setMerchantName(e.target.value)}
                     required

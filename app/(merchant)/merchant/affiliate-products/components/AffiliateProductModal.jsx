@@ -265,7 +265,7 @@ export default function AffiliateProductModal({
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. Office Space & Meal Deal or Nike Sneakers"
+                    placeholder="Office Space & Meal Deal or Nike Sneakers"
                     value={form.title}
                     onChange={(e) =>
                       setForm({ ...form, title: e.target.value })
@@ -367,7 +367,7 @@ export default function AffiliateProductModal({
                       </label>
                       <input
                         type="number"
-                        placeholder="e.g. 20"
+                        placeholder="20"
                         value={form.discountPercentage || ""}
                         onChange={(e) => {
                           const val = e.target.value;
@@ -387,7 +387,7 @@ export default function AffiliateProductModal({
                       </label>
                       <input
                         type="text"
-                        placeholder="e.g. 20% OFF or FLAT ₹500 OFF"
+                        placeholder="20% OFF or FLAT ₹500 OFF"
                         value={form.discountText || ""}
                         onChange={(e) =>
                           setForm({ ...form, discountText: e.target.value })
@@ -404,7 +404,7 @@ export default function AffiliateProductModal({
                       </label>
                       <input
                         type="number"
-                        placeholder="e.g. 200"
+                        placeholder="200"
                         value={form.discountPrice || ""}
                         onChange={(e) => {
                           const val = e.target.value;
@@ -426,7 +426,7 @@ export default function AffiliateProductModal({
                       </label>
                       <input
                         type="text"
-                        placeholder="e.g. Office Space + Meal @ ₹200"
+                        placeholder="Office Space + Meal @ ₹200"
                         value={form.discountText || ""}
                         onChange={(e) =>
                           setForm({ ...form, discountText: e.target.value })
@@ -443,7 +443,7 @@ export default function AffiliateProductModal({
                       </label>
                       <input
                         type="number"
-                        placeholder="e.g. 39999"
+                        placeholder="39999"
                         value={form.originalPrice}
                         onChange={(e) =>
                           setForm({ ...form, originalPrice: e.target.value })
@@ -458,7 +458,7 @@ export default function AffiliateProductModal({
                       </label>
                       <input
                         type="number"
-                        placeholder="e.g. 2999"
+                        placeholder="2999"
                         value={form.discountPrice}
                         onChange={(e) =>
                           setForm({ ...form, discountPrice: e.target.value })

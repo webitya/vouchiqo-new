@@ -34,7 +34,7 @@ export default function TestimonialEditor({
                 User (Name & City)
               </label>
               <Input
-                placeholder="e.g. Riya K. from Patna"
+                placeholder="Riya K. from Patna"
                 value={newTestimonial.user}
                 onChange={(e) =>
                   setNewTestimonial({
@@ -51,7 +51,7 @@ export default function TestimonialEditor({
                 Brand Name
               </label>
               <Input
-                placeholder="e.g. Starbucks, Zomato"
+                placeholder="Starbucks, Zomato"
                 value={newTestimonial.brand}
                 onChange={(e) =>
                   setNewTestimonial({
@@ -68,7 +68,7 @@ export default function TestimonialEditor({
                 Savings Offer / Accomplishment
               </label>
               <Input
-                placeholder="e.g. Saved ₹1,200 on family dining"
+                placeholder="Saved ₹1,200 on family dining"
                 value={newTestimonial.offer}
                 onChange={(e) =>
                   setNewTestimonial({

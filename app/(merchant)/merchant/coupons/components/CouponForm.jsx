@@ -223,7 +223,7 @@ export default function CouponForm({
               name="title"
               label="Offer Title / Headline"
               icon={Tag}
-              placeholder="e.g. Free Drink with Meal"
+              placeholder="Free Drink with Meal"
               value={formData.title}
               onChange={(e) => update("title", e.target.value)}
               maxLength={70}
@@ -493,7 +493,7 @@ export default function CouponForm({
                 label="Claims Limit"
                 icon={Users}
                 type="number"
-                placeholder="e.g. 500"
+                placeholder="500"
                 value={formData.maxClaims}
                 onChange={(e) => update("maxClaims", e.target.value)}
               />

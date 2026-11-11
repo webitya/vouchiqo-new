@@ -50,7 +50,7 @@ export default function MerchantForm() {
           <InputField
             icon={<Mail />}
             label="Contact Email"
-            placeholder="e.g. partner@store.com"
+            placeholder="partner@store.com"
             value={email}
             onChange={setEmail}
             type="email"
@@ -58,7 +58,7 @@ export default function MerchantForm() {
           <InputField
             icon={<Phone />}
             label="Contact Phone"
-            placeholder="e.g. +91 98765 43210"
+            placeholder="+91 98765 43210"
             value={mobile}
             onChange={setMobile}
             type="tel"

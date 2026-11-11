@@ -42,20 +42,71 @@ function SelectTrigger({ className, size = "default", children, ...props }) {
   );
 }
 
+function bindSelectWheel(node) {
+  if (!node || node._wheelBound) return;
+  node._wheelBound = true;
+
+  const handleWheel = (e) => {
+    const viewport = node.querySelector("[data-radix-select-viewport]") || node;
+    if (!viewport) return;
+
+    const isViewportScrollable = viewport.scrollHeight > viewport.clientHeight;
+    const isNodeScrollable = node.scrollHeight > node.clientHeight;
+
+    if (isViewportScrollable || isNodeScrollable) {
+      e.stopPropagation();
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+      const delta = e.deltaMode === 1 ? e.deltaY * 24 : e.deltaY;
+      if (isViewportScrollable) {
+        viewport.scrollTop += delta;
+      } else {
+        node.scrollTop += delta;
+      }
+    }
+  };
+
+  node.addEventListener("wheel", handleWheel, { passive: false });
+}
+
 function SelectContent({
   className,
   children,
   position = "popper",
   align = "start",
+  ref: forwardedRef,
   ...props
 }) {
+  const contentRef = (node) => {
+    bindSelectWheel(node);
+    if (typeof forwardedRef === "function") {
+      forwardedRef(node);
+    } else if (forwardedRef) {
+      forwardedRef.current = node;
+    }
+  };
+
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
+        ref={contentRef}
         data-slot="select-content"
+        data-lenis-prevent="true"
         data-align-trigger={position === "item-aligned"}
+        onWheel={(e) => {
+          const viewport =
+            e.currentTarget.querySelector?.("[data-radix-select-viewport]") ||
+            e.currentTarget;
+          if (viewport && viewport.scrollHeight > viewport.clientHeight) {
+            e.stopPropagation();
+            const delta = e.deltaMode === 1 ? e.deltaY * 24 : e.deltaY;
+            viewport.scrollTop += delta;
+          }
+        }}
+        style={{ overscrollBehavior: "contain" }}
         className={cn(
-          "relative z-[300] max-h-(--radix-select-content-available-height) min-w-36 origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-2xl bg-popover text-popover-foreground shadow-lg ring-1 ring-foreground/5 duration-200 ease-out data-[align-trigger=true]:animate-none data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:ring-foreground/10 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+          "relative z-[300] max-h-72 min-w-36 origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-2xl bg-popover text-popover-foreground shadow-lg ring-1 ring-foreground/5 duration-200 ease-out data-[align-trigger=true]:animate-none data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:ring-foreground/10 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 custom-scrollbar overscroll-contain",
           position === "popper" &&
             "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
           className,
@@ -67,8 +118,14 @@ function SelectContent({
         <SelectScrollUpButton />
         <SelectPrimitive.Viewport
           data-position={position}
+          data-lenis-prevent="true"
+          style={{
+            overscrollBehavior: "contain",
+            touchAction: "pan-y",
+            WebkitOverflowScrolling: "touch",
+          }}
           className={cn(
-            "p-1 data-[position=popper]:w-full data-[position=popper]:min-w-(--radix-select-trigger-width)",
+            "p-1 data-[position=popper]:w-full data-[position=popper]:min-w-(--radix-select-trigger-width) custom-scrollbar overscroll-contain",
             position === "popper" && "",
           )}
         >

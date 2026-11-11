@@ -540,7 +540,7 @@ export default function AdminCampaignCalendarPage() {
                       maxLength={60}
                       value={editTeaserHeadline}
                       onChange={(e) => setEditTeaserHeadline(e.target.value)}
-                      placeholder="e.g. Pre-Diwali Deals Unlocking Soon!"
+                      placeholder="Pre-Diwali Deals Unlocking Soon!"
                       className="bg-white border-slate-200 text-xs h-8 rounded-lg font-normal"
                     />
                   </div>

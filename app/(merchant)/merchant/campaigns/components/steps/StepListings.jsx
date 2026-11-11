@@ -61,7 +61,7 @@ export default function StepListings({
             label="Campaign Promo Code"
             icon={Ticket}
             type="text"
-            placeholder="e.g. SAVE20"
+            placeholder="SAVE20"
             required
             {...register("code")}
             onChange={(e) =>

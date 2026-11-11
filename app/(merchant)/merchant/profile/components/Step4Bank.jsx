@@ -62,7 +62,7 @@ export default function Step4Bank({ register, setValue, watch, errors }) {
           label="Bank IFSC Code"
           icon={FileText}
           maxLength={11}
-          placeholder="e.g. HDFC0000123"
+          placeholder="HDFC0000123"
           {...register("bankIfsc")}
           onChange={(e) =>
             setValue("bankIfsc", e.target.value.toUpperCase(), {

@@ -36,7 +36,7 @@ export function DeclineModal({
 
         <div className="space-y-4 pt-2">
           <Textarea
-            placeholder="e.g., Campaign promotion has fully concluded. Please check our current active deals..."
+            placeholder="Campaign promotion has fully concluded. Please check our current active deals..."
             value={declineReason}
             onChange={(e) => setDeclineReason(e.target.value)}
             className="text-xs bg-slate-50 border-slate-200 rounded-xl min-h-[100px]"

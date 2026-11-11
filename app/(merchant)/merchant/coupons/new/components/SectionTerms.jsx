@@ -130,7 +130,7 @@ export default function SectionTerms({
           label="Internal Note to Verification Team"
           icon={MessageSquare}
           rows={2}
-          placeholder="e.g. Please approve urgently before Friday 10 AM for weekend festival sale launch."
+          placeholder="Please approve urgently before Friday 10 AM for weekend festival sale launch."
           {...register("internalNote")}
           error={errors.internalNote}
         />

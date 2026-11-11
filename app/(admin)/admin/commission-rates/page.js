@@ -607,7 +607,7 @@ export default function CommissionRatesEditorPage() {
                 <div className="sm:col-span-3">
                   <input
                     type="text"
-                    placeholder="Category Name (e.g. Clean Energy)"
+                    placeholder="Category Name - Clean Energy"
                     value={newCpaRate.category}
                     onChange={(e) =>
                       setNewCpaRate({ ...newCpaRate, category: e.target.value })
@@ -618,7 +618,7 @@ export default function CommissionRatesEditorPage() {
                 <div className="sm:col-span-3">
                   <input
                     type="text"
-                    placeholder="Base Rate (e.g. 4% / ₹500 CPL)"
+                    placeholder="Base Rate - 4% / ₹500 CPL"
                     value={newCpaRate.rate}
                     onChange={(e) =>
                       setNewCpaRate({ ...newCpaRate, rate: e.target.value })
@@ -640,7 +640,7 @@ export default function CommissionRatesEditorPage() {
                 <div className="sm:col-span-3">
                   <input
                     type="text"
-                    placeholder="Notes & Rules (e.g. Uniform rate)"
+                    placeholder="Notes & Rules - Uniform rate"
                     value={newCpaRate.notes}
                     onChange={(e) =>
                       setNewCpaRate({ ...newCpaRate, notes: e.target.value })
@@ -737,7 +737,7 @@ export default function CommissionRatesEditorPage() {
                                 <input
                                   type="text"
                                   value={rate.rate}
-                                  placeholder="e.g. 5%"
+                                  placeholder="5%"
                                   onChange={(e) =>
                                     handleUpdateField(
                                       actualIdx,
@@ -771,7 +771,7 @@ export default function CommissionRatesEditorPage() {
                                 <input
                                   type="text"
                                   value={rate.notes || ""}
-                                  placeholder="e.g. Uniform across apparel"
+                                  placeholder="Uniform across apparel"
                                   onChange={(e) =>
                                     handleUpdateField(
                                       actualIdx,
@@ -889,7 +889,7 @@ export default function CommissionRatesEditorPage() {
                               <input
                                 type="text"
                                 value={rate.rate}
-                                placeholder="e.g. 5%"
+                                placeholder="5%"
                                 onChange={(e) =>
                                   handleUpdateField(
                                     actualIdx,

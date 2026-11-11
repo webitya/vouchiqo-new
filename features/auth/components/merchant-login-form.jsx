@@ -23,7 +23,7 @@ export function MerchantLoginForm() {
           label="Email Address"
           prefix={Mail}
           type="email"
-          placeholder="rahulsharma@gmail.com"
+          placeholder="contact@yourbusiness.com"
           autoFocus
           {...register("email")}
           error={errors.email}

@@ -29,7 +29,7 @@ export function LoginForm() {
         <FormInput
           prefix={Mail}
           type="email"
-          placeholder="aaravsharma@gmail.com"
+          placeholder="user@example.com"
           autoFocus
           {...register("email")}
           error={errors.email}

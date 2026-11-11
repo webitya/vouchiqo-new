@@ -126,7 +126,7 @@ export default function StepReview({
           label="Internal Note to Verification Team"
           icon={MessageSquare}
           rows={2}
-          placeholder="e.g. Please approve before Thursday 5 PM for pre-Diwali push broadcast."
+          placeholder="Please approve before Thursday 5 PM for pre-Diwali push broadcast."
           {...register("internalNote")}
           error={errors.internalNote}
         />

@@ -293,7 +293,7 @@ export default function PlatformContentSettings() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
             <FormInput
               name="catName"
-              placeholder="e.g. Health & Fitness"
+              placeholder="Health & Fitness"
               value={newCategory.name}
               onChange={(e) =>
                 setNewCategory({
@@ -307,7 +307,7 @@ export default function PlatformContentSettings() {
             />
             <FormInput
               name="catSlug"
-              placeholder="e.g. health-fitness"
+              placeholder="health-fitness"
               value={newCategory.slug}
               onChange={(e) =>
                 setNewCategory({
@@ -443,17 +443,17 @@ export default function PlatformContentSettings() {
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-4 gap-2">
               <FormInput
-                placeholder="Plan Name (e.g. ULTRA PARTNER)"
+                placeholder="Plan Name - ULTRA PARTNER"
                 value={newPlan.name}
                 onChange={(e) => setNewPlan({ ...newPlan, name: e.target.value })}
               />
               <FormInput
-                placeholder="Price (e.g. ₹4,999)"
+                placeholder="Price - ₹4,999"
                 value={newPlan.priceText}
                 onChange={(e) => setNewPlan({ ...newPlan, priceText: e.target.value })}
               />
               <FormInput
-                placeholder="Badge (e.g. Recommended)"
+                placeholder="Badge - Recommended"
                 value={newPlan.badge}
                 onChange={(e) => setNewPlan({ ...newPlan, badge: e.target.value })}
               />
@@ -536,7 +536,7 @@ export default function PlatformContentSettings() {
                     <label className="text-[10px] font-bold text-slate-600 uppercase">Badge Text</label>
                     <FormInput
                       value={p.badge || ""}
-                      placeholder="e.g. Popular, Best Value"
+                      placeholder="Popular, Best Value"
                       onChange={(e) => {
                         const updated = [...plans];
                         updated[pIdx].badge = e.target.value;
@@ -551,7 +551,7 @@ export default function PlatformContentSettings() {
                     <label className="text-[10px] font-bold text-slate-600 uppercase">Price Text</label>
                     <FormInput
                       value={p.priceText || ""}
-                      placeholder="e.g. ₹999"
+                      placeholder="₹999"
                       onChange={(e) => {
                         const updated = [...plans];
                         updated[pIdx].priceText = e.target.value;
@@ -563,7 +563,7 @@ export default function PlatformContentSettings() {
                     <label className="text-[10px] font-bold text-slate-600 uppercase">Original Price</label>
                     <FormInput
                       value={p.originalPrice || ""}
-                      placeholder="e.g. ₹1,499"
+                      placeholder="₹1,499"
                       onChange={(e) => {
                         const updated = [...plans];
                         updated[pIdx].originalPrice = e.target.value;
@@ -575,7 +575,7 @@ export default function PlatformContentSettings() {
                     <label className="text-[10px] font-bold text-slate-600 uppercase">Price Suffix</label>
                     <FormInput
                       value={p.priceSuffix || ""}
-                      placeholder="e.g. / month"
+                      placeholder="/ month"
                       onChange={(e) => {
                         const updated = [...plans];
                         updated[pIdx].priceSuffix = e.target.value;
@@ -589,7 +589,7 @@ export default function PlatformContentSettings() {
                   <label className="text-[10px] font-bold text-slate-600 uppercase">Sub Caption</label>
                   <FormInput
                     value={p.subCaption || ""}
-                    placeholder="e.g. Start listing. Pay only when a customer visits."
+                    placeholder="Start listing. Pay only when a customer visits."
                     onChange={(e) => {
                       const updated = [...plans];
                       updated[pIdx].subCaption = e.target.value;
@@ -625,7 +625,7 @@ export default function PlatformContentSettings() {
                   <label className="text-[10px] font-bold text-slate-600 uppercase">Footer Note / Legal Disclaimer</label>
                   <FormInput
                     value={p.footerNote || ""}
-                    placeholder="e.g. Commission charged only on confirmed customer transactions"
+                    placeholder="Commission charged only on confirmed customer transactions"
                     onChange={(e) => {
                       const updated = [...plans];
                       updated[pIdx].footerNote = e.target.value;
@@ -638,7 +638,7 @@ export default function PlatformContentSettings() {
                   <label className="text-[10px] font-bold text-slate-600 uppercase">Button Action Label</label>
                   <FormInput
                     value={p.buttonText || ""}
-                    placeholder="e.g. Select Growth â€” ₹999/mo"
+                    placeholder="Select Growth â€” ₹999/mo"
                     onChange={(e) => {
                       const updated = [...plans];
                       updated[pIdx].buttonText = e.target.value;
@@ -696,12 +696,12 @@ export default function PlatformContentSettings() {
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-5 gap-2">
               <FormInput
-                placeholder="Category Name (e.g. Solar & Clean Energy)"
+                placeholder="Category Name - Solar & Clean Energy"
                 value={newCpaRate.category}
                 onChange={(e) => setNewCpaRate({ ...newCpaRate, category: e.target.value })}
               />
               <FormInput
-                placeholder="Base Rate (e.g. 4% / ₹500 CPL)"
+                placeholder="Base Rate - 4% / ₹500 CPL"
                 value={newCpaRate.rate}
                 onChange={(e) => setNewCpaRate({ ...newCpaRate, rate: e.target.value })}
               />
@@ -755,7 +755,7 @@ export default function PlatformContentSettings() {
                     <td className="px-3 py-2">
                       <FormInput
                         value={rate.rate}
-                        placeholder="e.g. 5%"
+                        placeholder="5%"
                         onChange={(e) => {
                           const updated = [...cpaRates];
                           updated[rIdx].rate = e.target.value;
@@ -777,7 +777,7 @@ export default function PlatformContentSettings() {
                     <td className="px-3 py-2">
                       <FormInput
                         value={rate.notes || ""}
-                        placeholder="e.g. Uniform across apparel"
+                        placeholder="Uniform across apparel"
                         onChange={(e) => {
                           const updated = [...cpaRates];
                           updated[rIdx].notes = e.target.value;

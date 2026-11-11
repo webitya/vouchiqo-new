@@ -111,7 +111,7 @@ export default function AdminReviewModal({
           <FormInput
             name="actionNote"
             label="Compliance Officer Note / Log Detail"
-            placeholder="e.g. Verified GSTIN and Trade license against Govt registry."
+            placeholder="Verified GSTIN and Trade license against Govt registry."
             value={actionNote}
             onChange={(e) => setActionNote(e.target.value)}
           />
@@ -120,7 +120,7 @@ export default function AdminReviewModal({
             <FormTextarea
               name="rejectionReason"
               label="Reason for Rejection / Resubmission"
-              placeholder="e.g. Uploaded Trade License is expired or illegible."
+              placeholder="Uploaded Trade License is expired or illegible."
               value={rejectionReason}
               onChange={(e) => setRejectionReason(e.target.value)}
               required

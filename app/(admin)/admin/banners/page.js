@@ -822,7 +822,7 @@ export default function BannerManagement() {
                       </span>
                     </label>
                     <Input
-                      placeholder="e.g. /deals or https://..."
+                      placeholder="/deals or https://..."
                       value={form.link}
                       onChange={(e) =>
                         setForm({ ...form, link: e.target.value })
@@ -863,7 +863,7 @@ export default function BannerManagement() {
                           Button CTA Text
                         </label>
                         <Input
-                          placeholder="e.g. Explore Offer"
+                          placeholder="Explore Offer"
                           value={form.buttonText}
                           onChange={(e) =>
                             setForm({ ...form, buttonText: e.target.value })
@@ -876,7 +876,7 @@ export default function BannerManagement() {
                           Destination Link
                         </label>
                         <Input
-                          placeholder="e.g. /deals or https://..."
+                          placeholder="/deals or https://..."
                           value={form.link}
                           onChange={(e) =>
                             setForm({ ...form, link: e.target.value })

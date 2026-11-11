@@ -758,7 +758,7 @@ export default function MerchantPlansEditorPage() {
                     <div className="flex gap-1.5 bg-slate-50 p-2 rounded-xl border border-slate-200/80">
                       <input
                         type="text"
-                        placeholder="Add feature point (e.g. Up to 20 active offer listings)..."
+                        placeholder="Add feature point - Up to 20 active offer listings..."
                         value={newFeatureText}
                         onChange={(e) => setNewFeatureText(e.target.value)}
                         onKeyDown={(e) => {

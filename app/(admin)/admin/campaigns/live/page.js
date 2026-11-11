@@ -625,7 +625,7 @@ export default function AdminLiveCampaignsPage() {
                 </Label>
                 <Textarea
                   rows={3}
-                  placeholder="e.g. Paused temporarily due to counter billing queue overload."
+                  placeholder="Paused temporarily due to counter billing queue overload."
                   value={pauseReason}
                   onChange={(e) => setPauseReason(e.target.value)}
                   className="bg-white border-slate-200 text-xs rounded-xl font-normal"

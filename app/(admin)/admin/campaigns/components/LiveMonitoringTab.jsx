@@ -232,7 +232,7 @@ export default function LiveMonitoringTab({ campaigns = [], onUpdateStatus }) {
             </Label>
             <Textarea
               rows={3}
-              placeholder="e.g. Counter staff reported high rush, pausing temporarily..."
+              placeholder="Counter staff reported high rush, pausing temporarily..."
               value={pauseReason}
               onChange={(e) => setPauseReason(e.target.value)}
               className="bg-white border-slate-200 text-xs rounded-xl"

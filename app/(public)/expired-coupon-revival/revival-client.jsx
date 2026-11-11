@@ -323,16 +323,16 @@ export default function ExpiredCouponRevival() {
                     <div className="space-y-3">
                       <div>
                         <label className={labelCls}>Brand or Business Name *</label>
-                        <input className={inputCls} placeholder="e.g. Marbella, Zomato, Starbucks" value={form.brandName} onChange={(e) => f("brandName", e.target.value)} />
+                        <input className={inputCls} placeholder="Marbella, Zomato, Starbucks" value={form.brandName} onChange={(e) => f("brandName", e.target.value)} />
                       </div>
                       <div>
                         <label className={labelCls}>Merchant Website or Instagram (optional)</label>
-                        <input className={inputCls} placeholder="e.g. @marbellaranchi or https://brand.com" value={form.merchantWebsite} onChange={(e) => f("merchantWebsite", e.target.value)} />
+                        <input className={inputCls} placeholder="@marbellaranchi or https://brand.com" value={form.merchantWebsite} onChange={(e) => f("merchantWebsite", e.target.value)} />
                       </div>
                       <div className="grid grid-cols-2 gap-3">
                         <div>
                           <label className={labelCls}>City *</label>
-                          <input className={inputCls} placeholder="e.g. Ranchi" value={form.merchantCity} onChange={(e) => f("merchantCity", e.target.value)} />
+                          <input className={inputCls} placeholder="Ranchi" value={form.merchantCity} onChange={(e) => f("merchantCity", e.target.value)} />
                         </div>
                         <div>
                           <label className={labelCls}>Where did you find it?</label>
@@ -353,7 +353,7 @@ export default function ExpiredCouponRevival() {
                       <div className="grid grid-cols-2 gap-3">
                         <div>
                           <label className={labelCls}>Expired Code (optional)</label>
-                          <input className={`${inputCls} uppercase tracking-wider font-mono`} placeholder="e.g. SAVE20" value={form.code} onChange={(e) => f("code", e.target.value.toUpperCase())} />
+                          <input className={`${inputCls} uppercase tracking-wider font-mono`} placeholder="SAVE20" value={form.code} onChange={(e) => f("code", e.target.value.toUpperCase())} />
                         </div>
                         <div>
                           <label className={labelCls}>Discount Type *</label>
@@ -365,7 +365,7 @@ export default function ExpiredCouponRevival() {
                       {(form.discountType === "percentage" || form.discountType === "fixed") && (
                         <div>
                           <label className={labelCls}>{form.discountType === "percentage" ? "Discount %" : "Discount ₹ Amount"}</label>
-                          <input type="number" className={inputCls} placeholder={form.discountType === "percentage" ? "e.g. 20" : "e.g. 500"} value={form.discountValue} onChange={(e) => f("discountValue", e.target.value)} />
+                          <input type="number" className={inputCls} placeholder={form.discountType === "percentage" ? "20" : "500"} value={form.discountValue} onChange={(e) => f("discountValue", e.target.value)} />
                         </div>
                       )}
                       <div>
@@ -375,7 +375,7 @@ export default function ExpiredCouponRevival() {
                             {form.description.length}/100
                           </span>
                         </div>
-                        <input className={inputCls} maxLength={100} placeholder="e.g. 20% off all bathroom tiles, BOGO coffee" value={form.description} onChange={(e) => f("description", e.target.value)} />
+                        <input className={inputCls} maxLength={100} placeholder="20% off all bathroom tiles, BOGO coffee" value={form.description} onChange={(e) => f("description", e.target.value)} />
                       </div>
                       <div className="grid grid-cols-2 gap-3">
                         <div>
@@ -384,7 +384,7 @@ export default function ExpiredCouponRevival() {
                         </div>
                         <div>
                           <label className={labelCls}>What were you buying?</label>
-                          <input className={inputCls} placeholder="e.g. Espresso, Tiles" value={form.whatBuying} onChange={(e) => f("whatBuying", e.target.value)} />
+                          <input className={inputCls} placeholder="Espresso, Tiles" value={form.whatBuying} onChange={(e) => f("whatBuying", e.target.value)} />
                         </div>
                       </div>
                       <div className="flex gap-2 mt-1">
@@ -407,7 +407,7 @@ export default function ExpiredCouponRevival() {
                       </div>
                       <div>
                         <label className={labelCls}>WhatsApp Number *</label>
-                        <input type="tel" className={inputCls} placeholder="10-digit number e.g. 9876543210" value={form.mobileNumber} onChange={(e) => f("mobileNumber", e.target.value)} />
+                        <input type="tel" className={inputCls} placeholder="10-digit number 9876543210" value={form.mobileNumber} onChange={(e) => f("mobileNumber", e.target.value)} />
                       </div>
                       <div className="flex gap-2 mt-1">
                         <button type="button" onClick={prevStep} className="flex items-center gap-1.5 px-4 py-2 border border-brand-border bg-white text-royal-plum text-[12px] font-medium rounded-lg cursor-pointer hover:bg-warm-ivory transition-colors">

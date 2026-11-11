@@ -416,7 +416,7 @@ export default function AdminCampaignDetailPage({ params }) {
                 </Label>
                 <Textarea
                   rows={3}
-                  placeholder="e.g. Please update minimum order value cap to ₹5,000 as discussed and clarify weekend exclusions."
+                  placeholder="Please update minimum order value cap to ₹5,000 as discussed and clarify weekend exclusions."
                   value={requestNotes}
                   onChange={(e) => setRequestNotes(e.target.value)}
                   className="bg-white border-amber-200 text-xs rounded-xl"

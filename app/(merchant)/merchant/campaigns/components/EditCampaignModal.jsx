@@ -90,7 +90,7 @@ export default function EditCampaignModal({
             label="Campaign Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="e.g. Diwali Flash Mega Clearance"
+            placeholder="Diwali Flash Mega Clearance"
             required
           />
 

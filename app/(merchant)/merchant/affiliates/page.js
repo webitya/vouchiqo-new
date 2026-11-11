@@ -679,7 +679,7 @@ export default function MerchantAffiliatesPage() {
                   onChange={(e) =>
                     setBankForm({ ...bankForm, holderName: e.target.value })
                   }
-                  placeholder="e.g. Webitya Enterprises"
+                  placeholder="Webitya Enterprises"
                   className="bg-white border-slate-200 text-xs h-9 rounded-xl focus-visible:ring-[#FF2E63]/20"
                   required
                 />
@@ -696,7 +696,7 @@ export default function MerchantAffiliatesPage() {
                   onChange={(e) =>
                     setBankForm({ ...bankForm, bankName: e.target.value })
                   }
-                  placeholder="e.g. HDFC Bank, State Bank of India"
+                  placeholder="HDFC Bank, State Bank of India"
                   className="bg-white border-slate-200 text-xs h-9 rounded-xl focus-visible:ring-[#FF2E63]/20"
                   required
                 />
@@ -758,7 +758,7 @@ export default function MerchantAffiliatesPage() {
                         ifsc: e.target.value.toUpperCase().trim(),
                       })
                     }
-                    placeholder="e.g. HDFC0001234"
+                    placeholder="HDFC0001234"
                     maxLength={11}
                     className="bg-white border-slate-200 text-xs h-9 rounded-xl font-mono uppercase focus-visible:ring-[#FF2E63]/20"
                     required

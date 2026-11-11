@@ -114,7 +114,7 @@ export default function SectionDiscount({
               label="Offer Code (Uppercase, No Spaces)"
               icon={Ticket}
               type="text"
-              placeholder="e.g. MARBLE20"
+              placeholder="MARBLE20"
               required
               {...register("code")}
               onChange={(e) =>
@@ -194,7 +194,7 @@ export default function SectionDiscount({
                 label="Discount Percentage (%)"
                 icon={Percent}
                 type="number"
-                placeholder="e.g. 20 (for 20% off)"
+                placeholder="20 (for 20% off)"
                 required
                 {...register("discountValue")}
                 error={errors.discountValue}
@@ -206,7 +206,7 @@ export default function SectionDiscount({
                 label="Flat Discount Amount (₹)"
                 icon={DollarSign}
                 type="number"
-                placeholder="e.g. 200 (for ₹200 off)"
+                placeholder="200 (for ₹200 off)"
                 required
                 {...register("discountValue")}
                 error={errors.discountValue}
@@ -218,7 +218,7 @@ export default function SectionDiscount({
                 label="Deal / Offer Detail"
                 icon={Gift}
                 type="text"
-                placeholder="e.g. Buy 1 Get 1 or Free Gift on bill"
+                placeholder="Buy 1 Get 1 or Free Gift on bill"
                 {...register("discountValue")}
                 error={errors.discountValue}
               />
@@ -231,7 +231,7 @@ export default function SectionDiscount({
               label="Maximum Discount Cap (₹)"
               icon={ShieldCheck}
               type="number"
-              placeholder="e.g. 2000 (Optional limit)"
+              placeholder="2000 (Optional limit)"
               {...register("maxCap")}
               error={errors.maxCap}
             />
@@ -240,7 +240,7 @@ export default function SectionDiscount({
               label="Minimum In-Store Purchase Value (₹)"
               icon={Tag}
               type="number"
-              placeholder="e.g. 5000 (Optional minimum bill)"
+              placeholder="5000 (Optional minimum bill)"
               {...register("minOrderValue")}
               error={errors.minOrderValue}
             />
@@ -265,7 +265,7 @@ export default function SectionDiscount({
               label="Original Price (MRP ₹)"
               icon={DollarSign}
               type="number"
-              placeholder="e.g. 2000"
+              placeholder="2000"
               {...register("originalPrice")}
               error={errors.originalPrice}
             />
@@ -274,7 +274,7 @@ export default function SectionDiscount({
               label="Special Store Offer Price (Deal ₹)"
               icon={Tag}
               type="number"
-              placeholder="e.g. 1499"
+              placeholder="1499"
               {...register("salePrice")}
               error={errors.salePrice}
               className="font-medium text-emerald-700"
@@ -330,7 +330,7 @@ export default function SectionDiscount({
             label="Full Special Offer Details"
             icon={FileText}
             rows={3}
-            placeholder="e.g. Buy any 2 Marble Slabs and get 1 Grout Sealer packet completely FREE."
+            placeholder="Buy any 2 Marble Slabs and get 1 Grout Sealer packet completely FREE."
             required
             {...register("offerDetails")}
             error={errors.offerDetails}

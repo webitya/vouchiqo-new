@@ -245,7 +245,7 @@ export default function EditAffiliateProductPage() {
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. Office Space & Meal Deal or Nike Sneakers"
+                  placeholder="Office Space & Meal Deal or Nike Sneakers"
                   value={form.title}
                   onChange={(e) => setForm({ ...form, title: e.target.value })}
                   className="w-full bg-slate-50/60 border border-slate-200 rounded-lg px-3 py-1.5 text-xs text-slate-900 focus:outline-none focus:border-[#FF2E63] focus:ring-1 focus:ring-[#FF2E63]/20 focus:bg-white transition-all font-normal placeholder:text-slate-400"
@@ -324,7 +324,7 @@ export default function EditAffiliateProductPage() {
                       </label>
                       <input
                         type="number"
-                        placeholder="e.g. 20"
+                        placeholder="20"
                         value={form.discountPercentage || ""}
                         onChange={(e) => {
                           const val = e.target.value;
@@ -344,7 +344,7 @@ export default function EditAffiliateProductPage() {
                       </label>
                       <input
                         type="text"
-                        placeholder="e.g. 20% OFF or FLAT ₹500 OFF"
+                        placeholder="20% OFF or FLAT ₹500 OFF"
                         value={form.discountText || ""}
                         onChange={(e) =>
                           setForm({ ...form, discountText: e.target.value })
@@ -361,7 +361,7 @@ export default function EditAffiliateProductPage() {
                         </label>
                         <input
                           type="number"
-                          placeholder="e.g. 200"
+                          placeholder="200"
                           value={form.discountPrice || ""}
                           onChange={(e) => {
                             const val = e.target.value;
@@ -383,7 +383,7 @@ export default function EditAffiliateProductPage() {
                         </label>
                         <input
                           type="text"
-                          placeholder="e.g. Office Space + Meal @ ₹200"
+                          placeholder="Office Space + Meal @ ₹200"
                           value={form.discountText || ""}
                           onChange={(e) =>
                             setForm({ ...form, discountText: e.target.value })
@@ -399,7 +399,7 @@ export default function EditAffiliateProductPage() {
                         </label>
                         <input
                           type="number"
-                          placeholder="e.g. 39999"
+                          placeholder="39999"
                           value={form.originalPrice}
                           onChange={(e) =>
                             setForm({ ...form, originalPrice: e.target.value })
@@ -414,7 +414,7 @@ export default function EditAffiliateProductPage() {
                         </label>
                         <input
                           type="number"
-                          placeholder="e.g. 2999"
+                          placeholder="2999"
                           value={form.discountPrice}
                           onChange={(e) =>
                             setForm({ ...form, discountPrice: e.target.value })

@@ -84,7 +84,7 @@ export default function Step1Identity({
         <FormInput
           label="Legal Entity Corporate Name"
           icon={Store}
-          placeholder="e.g. Burger House Pvt Ltd"
+          placeholder="Burger House Pvt Ltd"
           {...register("businessName")}
           onChange={handleBusinessNameChange}
           error={errors.businessName}
@@ -93,7 +93,7 @@ export default function Step1Identity({
         <FormInput
           label="Consumer Trade Brand Name"
           icon={Link2}
-          placeholder="e.g. Burger House"
+          placeholder="Burger House"
           {...register("slug")}
           disabled={isSlugLocked}
           onChange={(e) => {
@@ -143,7 +143,7 @@ export default function Step1Identity({
             <FormInput
               label="Custom Category Name / Description"
               icon={Store}
-              placeholder="Specify your custom business category (e.g. Handmade Crafts, Event Management)"
+              placeholder="Specify your custom business category - Handmade Crafts, Event Management"
               {...register("customCategoryNotes")}
               error={errors.customCategoryNotes}
             />

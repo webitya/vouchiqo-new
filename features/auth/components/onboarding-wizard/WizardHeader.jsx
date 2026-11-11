@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { Check, Home, Store, X } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -10,7 +9,6 @@ export default function WizardHeader({
   activeMasterStep,
   MASTER_STEPS,
   onExitClick,
-  router,
 }) {
   return (
     <div className="bg-white border border-slate-200/90 shadow-sm rounded-xl p-3 sm:p-4 space-y-3">
@@ -25,33 +23,11 @@ export default function WizardHeader({
             </Badge>
           </div>
           <p className="text-xs text-slate-500 font-normal mt-0.5">
-            Fill in your store details to list offers and reach Ranchi
-            shoppers • Rates locked for 6 months • ₹0 Starter plan available
+            Fill in your store details to list offers and reach Ranchi shoppers
+            • Rates locked for 6 months • ₹0 Starter plan available
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2 self-start md:self-auto">
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            onClick={() => router.push("/")}
-            className="h-8 px-2.5 text-xs font-semibold text-slate-700 hover:text-slate-900 border-slate-200 hover:bg-slate-100 rounded-lg flex items-center gap-1.5 cursor-pointer shadow-2xs"
-          >
-            <Home className="w-3.5 h-3.5 text-slate-500" />
-            <span className="hidden sm:inline">Homepage</span>
-          </Button>
-
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            onClick={() => router.push("/merchant/dashboard")}
-            className="h-8 px-2.5 text-xs font-semibold text-festival-teal hover:text-[#004D49] border-brand-border bg-warm-ivory hover:bg-festival-teal/20/80 rounded-lg flex items-center gap-1.5 cursor-pointer shadow-2xs"
-          >
-            <Store className="w-3.5 h-3.5 text-festival-teal" />
-            <span className="hidden sm:inline">Dashboard</span>
-          </Button>
-
           <div className="flex items-center gap-1.5 bg-slate-50 p-1 rounded-lg border border-slate-200/80">
             <span className="text-[11px] font-bold text-festival-teal bg-white px-2 py-0.5 rounded-md shadow-2xs border border-brand-border">
               Section {currentStep} of 6

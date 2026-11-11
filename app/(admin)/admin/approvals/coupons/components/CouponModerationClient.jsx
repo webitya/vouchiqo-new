@@ -1314,7 +1314,7 @@ export default function CouponModerationClient() {
                 so they can update and re-submit.
               </p>
               <Textarea
-                placeholder="e.g. Invalid discount code, misleading title, or unreadable banner image..."
+                placeholder="Invalid discount code, misleading title, or unreadable banner image..."
                 value={rejectionReason}
                 onChange={(e) => setRejectionReason(e.target.value)}
                 rows={4}

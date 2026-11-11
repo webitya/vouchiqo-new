@@ -146,7 +146,7 @@ export default function SectionValidity({
             label="Total Usage Limit"
             icon={Users}
             type="number"
-            placeholder="e.g. 100 total redemptions"
+            placeholder="100 total redemptions"
             {...register("usageLimit")}
             error={errors.usageLimit}
           />
@@ -337,7 +337,7 @@ export default function SectionValidity({
             <FormInput
               icon={Clock}
               type="text"
-              placeholder="e.g. 10:00 AM – 09:00 PM or Valid all day"
+              placeholder="10:00 AM – 09:00 PM or Valid all day"
               {...register("validHours")}
               error={errors.validHours}
               className="bg-white"

@@ -8,7 +8,11 @@ import toast from "react-hot-toast";
 
 import { useUser } from "@/hooks/use-user";
 import { authClient, signUp } from "@/lib/auth-client";
-
+// Import legal document utilities
+import {
+  parseGmapsCoordinates,
+  resolveAddressCoordinates,
+} from "@/lib/location-resolver";
 // Import constants and defaults
 import {
   COMMISSION_TABLE,
@@ -22,8 +26,6 @@ import {
   SHADOW_TEXTAREA_CLASS,
 } from "./onboarding-wizard/constants";
 import ExitConfirmModal from "./onboarding-wizard/ExitConfirmModal";
-
-// Import legal document utilities
 import {
   handleDirectDownload as execDirectDownload,
   handleDownloadAllDocuments as execDownloadAll,
@@ -96,6 +98,17 @@ export function MerchantOnboardingWizard() {
 
   // Wizard Navigation & Submission States
   const [currentStep, setCurrentStep] = useState(1);
+
+  // Guarantee smooth page scrolling & recalculate Lenis viewport limits on step change
+  useEffect(() => {
+    if (currentStep) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (typeof window !== "undefined" && window.lenis) {
+        window.lenis.start?.();
+        window.lenis.resize?.();
+      }
+    }
+  }, [currentStep]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [duplicateErrors, setDuplicateErrors] = useState({});
   const [checkingExistingMerchant, setCheckingExistingMerchant] =
@@ -231,34 +244,150 @@ export function MerchantOnboardingWizard() {
     }
   };
 
-  // Location Geolocation Handler
+  // Location Geolocation Handler with Multi-Tier Fallback & Reverse Geocoding
   const handleFetchLocation = () => {
-    if (!navigator.geolocation) {
-      toast.error("Geolocation is not supported by your browser.");
-      return;
-    }
     setIsFetchingLocation(true);
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
+
+    if (typeof window === "undefined" || !navigator.geolocation) {
+      // Fallback 1: Extract from Google Maps URL
+      const gmapsCoords = parseGmapsCoordinates(formData.googleUrl);
+      if (gmapsCoords) {
         setFormData((prev) => ({
           ...prev,
-          latitude: latitude.toFixed(6),
-          longitude: longitude.toFixed(6),
+          latitude: gmapsCoords.lat,
+          longitude: gmapsCoords.lng,
+          gpsSource: "google_maps",
         }));
         setIsFetchingLocation(false);
         toast.success(
-          `Location captured: ${latitude.toFixed(4)}° N, ${longitude.toFixed(4)}° E`,
+          `Extracted GPS from Google Maps link: ${gmapsCoords.lat}° N, ${gmapsCoords.lng}° E`,
         );
+        return;
+      }
+
+      // Fallback 2: Address Landmark
+      const addressCoords = resolveAddressCoordinates(
+        formData.address,
+        formData.city,
+      );
+      if (addressCoords) {
+        setFormData((prev) => ({
+          ...prev,
+          latitude: addressCoords.lat,
+          longitude: addressCoords.lng,
+          gpsSource: "address",
+        }));
+        setIsFetchingLocation(false);
+        toast.success(
+          `Resolved GPS from store address landmark: ${addressCoords.lat}° N, ${addressCoords.lng}° E`,
+        );
+        return;
+      }
+
+      setIsFetchingLocation(false);
+      toast.error(
+        "Geolocation not supported. Please paste a Google Maps link or enter coordinates manually.",
+      );
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude, accuracy } = position.coords;
+        const latStr = latitude.toFixed(6);
+        const lngStr = longitude.toFixed(6);
+        const accMeters = Math.round(accuracy || 0);
+
+        setFormData((prev) => ({
+          ...prev,
+          latitude: latStr,
+          longitude: lngStr,
+          gpsAccuracy: accMeters,
+          gpsSource: "device_gps",
+        }));
+        setIsFetchingLocation(false);
+        toast.success(
+          `Exact GPS location captured: ${latStr}° N, ${lngStr}° E (±${accMeters}m accuracy)`,
+        );
+
+        // Reverse geocode to auto-fill or confirm city & state if needed
+        try {
+          const res = await fetch(
+            `/api/location/detect?lat=${latitude}&lon=${longitude}`,
+          );
+          if (res.ok) {
+            const data = await res.json();
+            if (data?.city) {
+              setFormData((prev) => ({
+                ...prev,
+                city: prev.city || data.city,
+                state: prev.state || "Jharkhand",
+              }));
+            }
+          }
+        } catch (_) {}
       },
       () => {
+        // Fallback 1: Google Maps URL
+        const gmapsCoords = parseGmapsCoordinates(formData.googleUrl);
+        if (gmapsCoords) {
+          setFormData((prev) => ({
+            ...prev,
+            latitude: gmapsCoords.lat,
+            longitude: gmapsCoords.lng,
+            gpsSource: "google_maps",
+          }));
+          setIsFetchingLocation(false);
+          toast.success(
+            `Extracted GPS from Google Maps link: ${gmapsCoords.lat}° N, ${gmapsCoords.lng}° E`,
+          );
+          return;
+        }
+
+        // Fallback 2: Address Landmark
+        const addressCoords = resolveAddressCoordinates(
+          formData.address,
+          formData.city,
+        );
+        if (addressCoords) {
+          setFormData((prev) => ({
+            ...prev,
+            latitude: addressCoords.lat,
+            longitude: addressCoords.lng,
+            gpsSource: "address",
+          }));
+          setIsFetchingLocation(false);
+          toast.success(
+            `Resolved GPS from store address landmark: ${addressCoords.lat}° N, ${addressCoords.lng}° E`,
+          );
+          return;
+        }
+
         setIsFetchingLocation(false);
         toast.error(
-          "Could not fetch location. Please allow browser permissions.",
+          "Could not detect device GPS. Please paste your Google Maps link or enter coordinates manually.",
         );
       },
-      { enableHighAccuracy: true, timeout: 10000 },
+      { enableHighAccuracy: true, timeout: 12000, maximumAge: 0 },
     );
+  };
+
+  // Auto-extract GPS coordinates whenever the merchant pastes/types a Google Maps link
+  const handleGoogleUrlChange = (val) => {
+    setFormData((prev) => {
+      const next = { ...prev, googleUrl: val };
+      const parsed = parseGmapsCoordinates(val);
+      if (parsed) {
+        next.latitude = parsed.lat;
+        next.longitude = parsed.lng;
+        next.gpsSource = "google_maps";
+        toast.success(
+          `GPS coordinates auto-extracted from Google Maps: ${parsed.lat}° N, ${parsed.lng}° E`,
+        );
+      }
+      return next;
+    });
+    clearFieldError("googleUrl");
   };
 
   // Sub-category Tags Handlers
@@ -579,10 +708,26 @@ export function MerchantOnboardingWizard() {
           city: formData.city,
           state: formData.state,
           country: "IN",
-          coordinates: {
-            lat: formData.latitude ? Number(formData.latitude) : undefined,
-            lng: formData.longitude ? Number(formData.longitude) : undefined,
-          },
+          coordinates: (() => {
+            if (formData.latitude && formData.longitude) {
+              return {
+                lat: Number(formData.latitude),
+                lng: Number(formData.longitude),
+              };
+            }
+            const fromUrl = parseGmapsCoordinates(formData.googleUrl);
+            if (fromUrl) {
+              return { lat: Number(fromUrl.lat), lng: Number(fromUrl.lng) };
+            }
+            const fromAddr = resolveAddressCoordinates(
+              formData.address,
+              formData.city,
+            );
+            if (fromAddr) {
+              return { lat: Number(fromAddr.lat), lng: Number(fromAddr.lng) };
+            }
+            return { lat: undefined, lng: undefined };
+          })(),
         },
         contactEmail: (formData.email || authUser?.email || "")
           .toLowerCase()
@@ -748,7 +893,6 @@ export function MerchantOnboardingWizard() {
         activeMasterStep={activeMasterStep}
         MASTER_STEPS={MASTER_STEPS}
         onExitClick={() => setShowExitConfirmModal(true)}
-        router={router}
       />
 
       {/* SECTION 1: BUSINESS IDENTITY & LOCATION */}
@@ -762,6 +906,7 @@ export function MerchantOnboardingWizard() {
           checkDuplicateField={checkDuplicateField}
           isFetchingLocation={isFetchingLocation}
           handleFetchLocation={handleFetchLocation}
+          handleGoogleUrlChange={handleGoogleUrlChange}
           subCategoryInput={subCategoryInput}
           setSubCategoryInput={setSubCategoryInput}
           subCategoryTags={subCategoryTags}

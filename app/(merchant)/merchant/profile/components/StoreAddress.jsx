@@ -32,7 +32,7 @@ export default function StoreAddress({ formData, setFormData }) {
           <FieldLabel icon={MapPin}>Street Address</FieldLabel>
           <Input
             type="text"
-            placeholder="e.g. 1st Floor, Lalpur Road"
+            placeholder="1st Floor, Lalpur Road"
             value={formData.address}
             onChange={(e) =>
               setFormData({ ...formData, address: e.target.value })

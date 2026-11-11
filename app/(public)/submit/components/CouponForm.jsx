@@ -89,7 +89,7 @@ export default function CouponForm() {
           <div className="relative">
             <input
               type="text"
-              placeholder="Search or enter store name (e.g. Amazon, Nike)"
+              placeholder="Search or enter store name - Amazon, Nike"
               value={merchant}
               onChange={(e) => {
                 setMerchant(e.target.value);
@@ -123,7 +123,7 @@ export default function CouponForm() {
             icon={<Ticket />}
             label="Offer Code"
             required
-            placeholder="e.g. SAVE50, EXTRA20"
+            placeholder="SAVE50, EXTRA20"
             value={code}
             onChange={setCode}
             type="text"
@@ -175,7 +175,7 @@ export default function CouponForm() {
         <FormField
           icon={<Heading />}
           label="Title / Deal Line"
-          placeholder="e.g. Flat 50% OFF on all orders"
+          placeholder="Flat 50% OFF on all orders"
           value={title}
           onChange={setTitle}
         />

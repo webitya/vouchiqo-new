@@ -134,7 +134,7 @@ export function RevivalPromo() {
                       </label>
                       <input
                         type="text"
-                        placeholder="e.g. Ajmal Perfumes, Bewakoof, Boat Lifestyle"
+                        placeholder="Ajmal Perfumes, Bewakoof, Boat Lifestyle"
                         value={form.brandName}
                         onChange={(e) =>
                           setForm({ ...form, brandName: e.target.value })

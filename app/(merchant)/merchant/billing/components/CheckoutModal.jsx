@@ -98,7 +98,7 @@ export default function CheckoutModal({
             </Label>
             <Input
               type="text"
-              placeholder="e.g. 27AABCU9603R1ZM"
+              placeholder="27AABCU9603R1ZM"
               value={gstin}
               onChange={(e) => setGstin?.(e.target.value.toUpperCase())}
               className="bg-white border-slate-200 text-xs h-9.5 rounded-xl font-mono uppercase"

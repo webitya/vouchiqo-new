@@ -36,7 +36,7 @@ export default function OfferRejectModal({
 
           <FormTextarea
             name="rejectionReason"
-            placeholder="e.g. Invalid coupon code or misleading terms..."
+            placeholder="Invalid coupon code or misleading terms..."
             value={rejectionReason}
             onChange={(e) => setRejectionReason(e.target.value)}
             rows={4}

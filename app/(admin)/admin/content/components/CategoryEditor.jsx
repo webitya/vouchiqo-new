@@ -38,7 +38,7 @@ export default function CategoryEditor({
               Category Name
             </label>
             <Input
-              placeholder="e.g. Health & Pharmacy"
+              placeholder="Health & Pharmacy"
               value={newCategory.name}
               onChange={(e) => {
                 const val = e.target.value;
@@ -58,7 +58,7 @@ export default function CategoryEditor({
               Category Slug (Unique URL code)
             </label>
             <Input
-              placeholder="e.g. health-pharmacy"
+              placeholder="health-pharmacy"
               value={newCategory.slug}
               onChange={(e) =>
                 setNewCategory({ ...newCategory, slug: e.target.value })

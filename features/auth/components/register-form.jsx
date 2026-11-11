@@ -19,17 +19,13 @@ export function RegisterForm() {
 
   return (
     <AuthCard title="Create your free account" maxWidth="max-w-5xl">
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-3.5"
-        noValidate
-      >
+      <form onSubmit={handleSubmit} className="space-y-3.5" noValidate>
         {/* Full Name */}
         <FormInput
           label="Full Name"
           prefix={User}
           type="text"
-          placeholder="Aarav Sharma"
+          placeholder="Full Name"
           autoFocus
           {...register("name")}
           error={errors.name}
@@ -40,7 +36,7 @@ export function RegisterForm() {
           label="Email Address"
           prefix={Mail}
           type="email"
-          placeholder="aaravsharma@gmail.com"
+          placeholder="user@example.com"
           {...register("email")}
           error={errors.email}
         />
@@ -50,7 +46,7 @@ export function RegisterForm() {
           label="Mobile Number"
           prefix={Phone}
           type="tel"
-          placeholder="e.g. 9876543210"
+          placeholder="9876543210"
           {...register("phoneNumber")}
           error={errors.phoneNumber}
         />
@@ -91,11 +87,17 @@ export function RegisterForm() {
               className="text-xs text-[#6B4C82] leading-snug cursor-pointer select-none text-left font-sans font-medium"
             >
               I agree to the{" "}
-              <Link href="/terms" className="text-[#007F79] hover:text-[#35104A] font-heading font-semibold">
+              <Link
+                href="/terms"
+                className="text-[#007F79] hover:text-[#35104A] font-heading font-semibold"
+              >
                 Terms
               </Link>{" "}
               &amp;{" "}
-              <Link href="/privacy" className="text-[#007F79] hover:text-[#35104A] font-heading font-semibold">
+              <Link
+                href="/privacy"
+                className="text-[#007F79] hover:text-[#35104A] font-heading font-semibold"
+              >
                 Privacy Policy
               </Link>
             </label>

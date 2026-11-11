@@ -87,7 +87,7 @@ export default function SectionBasic({
             icon={FileText}
             type="text"
             maxLength={80}
-            placeholder="e.g. Flat 20% off on all Italian Marble Tiles"
+            placeholder="Flat 20% off on all Italian Marble Tiles"
             required
             {...register("headline")}
             error={errors.headline}
@@ -124,7 +124,7 @@ export default function SectionBasic({
           icon={MessageSquare}
           maxLength={200}
           rows={3}
-          placeholder="e.g. Get 20% discount on total invoice amount for all premium tiles."
+          placeholder="Get 20% discount on total invoice amount for all premium tiles."
           required
           {...register("shortDescription")}
           error={errors.shortDescription}

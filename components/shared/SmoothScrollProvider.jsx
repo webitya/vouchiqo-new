@@ -1,8 +1,8 @@
 "use client";
 
+import { ReactLenis, useLenis } from "lenis/react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
-import { ReactLenis, useLenis } from "lenis/react";
 
 /**
  * Controller to maintain Lenis state across route changes,
@@ -45,11 +45,12 @@ function LenisSyncController() {
     window.addEventListener("resize", handleResize);
 
     let ro = null;
-    if (typeof ResizeObserver !== "undefined" && document.body) {
+    if (typeof ResizeObserver !== "undefined") {
       ro = new ResizeObserver(() => {
         lenis.resize();
       });
-      ro.observe(document.body);
+      if (document.body) ro.observe(document.body);
+      if (document.documentElement) ro.observe(document.documentElement);
     }
 
     return () => {
@@ -58,20 +59,46 @@ function LenisSyncController() {
     };
   }, [lenis]);
 
-  // 4. Modal / Drawer scroll lock auto-detection
+  // 4. Modal / Drawer scroll lock auto-detection with 0-deadlock guarantee
   useEffect(() => {
     if (!lenis) return;
 
     const checkScrollLock = () => {
+      // ONLY check if an actual external modal/drawer or body lock is present.
+      // NEVER check lenis-stopped class because Lenis adds that to itself, creating an infinite deadlock.
       const isLocked =
         document.body.style.overflow === "hidden" ||
         document.body.hasAttribute("data-scroll-locked") ||
-        document.documentElement.classList.contains("lenis-stopped");
+        document.body.classList.contains("overflow-hidden");
 
       if (isLocked) {
         lenis.stop();
       } else {
         lenis.start();
+        lenis.resize();
+      }
+    };
+
+    // Run initial check
+    checkScrollLock();
+
+    // Auto-recover immediately on user scroll/touch if body is not locked
+    const handleInteractionRecovery = () => {
+      const isLocked =
+        document.body.style.overflow === "hidden" ||
+        document.body.hasAttribute("data-scroll-locked") ||
+        document.body.classList.contains("overflow-hidden");
+
+      if (!isLocked && lenis.isStopped) {
+        lenis.start();
+        lenis.resize();
+      }
+    };
+
+    const handleVisibility = () => {
+      if (document.visibilityState === "visible") {
+        checkScrollLock();
+        lenis.resize();
       }
     };
 
@@ -81,7 +108,22 @@ function LenisSyncController() {
       attributeFilter: ["style", "class", "data-scroll-locked"],
     });
 
-    return () => mo.disconnect();
+    window.addEventListener("wheel", handleInteractionRecovery, {
+      passive: true,
+    });
+    window.addEventListener("touchstart", handleInteractionRecovery, {
+      passive: true,
+    });
+    window.addEventListener("focus", handleVisibility);
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    return () => {
+      mo.disconnect();
+      window.removeEventListener("wheel", handleInteractionRecovery);
+      window.removeEventListener("touchstart", handleInteractionRecovery);
+      window.removeEventListener("focus", handleVisibility);
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
   }, [lenis]);
 
   // 5. Smooth Anchor Links (e.g. #faq, #deals, etc.)

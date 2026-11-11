@@ -22,7 +22,7 @@ export default function StepDetails({ data, updateField }) {
         <FieldLabel icon={Tag}>Campaign Name / Title</FieldLabel>
         <Input
           type="text"
-          placeholder="e.g. Ranchi Diwali Mega Blast"
+          placeholder="Ranchi Diwali Mega Blast"
           value={data.name}
           onChange={(e) => updateField("name", e.target.value)}
           className="bg-brand-surface border border-brand-border rounded-lg text-xs w-full h-10 px-3 shadow-none focus-visible:ring-2 focus-visible:ring-brand-blue/30 focus-visible:border-brand-blue"
@@ -52,7 +52,7 @@ export default function StepDetails({ data, updateField }) {
           <FieldLabel icon={Flag}>Campaign Goal / Objective</FieldLabel>
           <Input
             type="text"
-            placeholder="e.g. Drive checkout volume, acquire new clients"
+            placeholder="Drive checkout volume, acquire new clients"
             value={data.objective}
             onChange={(e) => updateField("objective", e.target.value)}
             className="bg-brand-surface border border-brand-border rounded-lg text-xs w-full h-10 px-3 shadow-none"

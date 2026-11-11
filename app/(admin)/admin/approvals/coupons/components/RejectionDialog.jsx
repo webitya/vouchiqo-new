@@ -34,7 +34,7 @@ export default function RejectionDialog({
           <Textarea
             value={rejectionReason}
             onChange={(e) => onReasonChange(e.target.value)}
-            placeholder="e.g. Inappropriate description, incorrect promo code terms..."
+            placeholder="Inappropriate description, incorrect promo code terms..."
             className="bg-brand-surface border border-brand-border rounded-lg text-xs w-full min-h-[90px]"
           />
         </div>

@@ -108,7 +108,7 @@ export default function LocationModal({
               Area / Pincode
             </label>
             <Input
-              placeholder="e.g. Lalpur or 834001"
+              placeholder="Lalpur or 834001"
               value={manualForm.area}
               onChange={(e) =>
                 setManualForm({ ...manualForm, area: e.target.value })

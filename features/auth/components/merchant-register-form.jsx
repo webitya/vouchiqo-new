@@ -17,17 +17,13 @@ export function MerchantRegisterForm() {
 
   return (
     <AuthCard title="Merchant Partner Registration">
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-4"
-        noValidate
-      >
+      <form onSubmit={handleSubmit} className="space-y-4" noValidate>
         {/* Brand Name */}
         <FormInput
           label="Brand Name"
           prefix={Store}
           type="text"
-          placeholder="e.g. FabIndia"
+          placeholder="Store Name"
           autoFocus
           {...register("name")}
           error={errors.name}
@@ -38,7 +34,7 @@ export function MerchantRegisterForm() {
           label="Business Email"
           prefix={Mail}
           type="email"
-          placeholder="rahulsharma@gmail.com"
+          placeholder="contact@yourbusiness.com"
           {...register("email")}
           error={errors.email}
         />

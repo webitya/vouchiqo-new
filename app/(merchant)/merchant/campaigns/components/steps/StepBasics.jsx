@@ -42,7 +42,7 @@ export default function StepBasics({
             label="Campaign Name"
             icon={FileText}
             type="text"
-            placeholder="e.g. Summer Sale Blast"
+            placeholder="Summer Sale Blast"
             required
             {...register("name")}
             error={errors.name}
@@ -130,7 +130,7 @@ export default function StepBasics({
               icon={FileText}
               type="text"
               maxLength={70}
-              placeholder="e.g. 🔥 Flat 20% off during Summer Sale Blast"
+              placeholder="🔥 Flat 20% off during Summer Sale Blast"
               {...register("headline")}
               error={errors.headline}
               hint={`${headlineValue.length}/70 chars`}
@@ -144,7 +144,7 @@ export default function StepBasics({
             icon={FileText}
             type="text"
             maxLength={70}
-            placeholder="e.g. 🪔 Flat 20% off all orders during Diwali Festival"
+            placeholder="🪔 Flat 20% off all orders during Diwali Festival"
             {...register("headline")}
             error={errors.headline}
             hint={`${headlineValue.length}/70 chars`}

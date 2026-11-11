@@ -201,6 +201,28 @@ body {
   scrollbar-color: rgba(148, 163, 184, 0.35) transparent;
 }
 
+/* Allow smooth custom scrolling inside Radix Select Viewports */
+[data-slot="select-content"] [data-radix-select-viewport],
+[data-radix-select-viewport].custom-scrollbar {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(148, 163, 184, 0.4) transparent !important;
+  overscroll-behavior: contain !important;
+}
+[data-slot="select-content"] [data-radix-select-viewport]::-webkit-scrollbar,
+[data-radix-select-viewport].custom-scrollbar::-webkit-scrollbar {
+  display: block !important;
+  width: 5px !important;
+}
+[data-slot="select-content"] [data-radix-select-viewport]::-webkit-scrollbar-thumb,
+[data-radix-select-viewport].custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4) !important;
+  border-radius: 9999px !important;
+}
+[data-slot="select-content"] [data-radix-select-viewport]::-webkit-scrollbar-thumb:hover,
+[data-radix-select-viewport].custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.7) !important;
+}
+
 /* Isolated search dropdown scroll with custom sleek scrollbar */
 .search-dropdown-scroll {
   overscroll-behavior: contain !important;

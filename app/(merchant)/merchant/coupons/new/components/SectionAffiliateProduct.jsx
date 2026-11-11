@@ -191,7 +191,7 @@ export default function SectionAffiliateProduct({ merchant }) {
             </label>
             <input
               type="text"
-              placeholder="e.g. Handmade Ceramic Cup or Wireless Earbuds"
+              placeholder="Handmade Ceramic Cup or Wireless Earbuds"
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
               className="w-full bg-slate-50/70 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-[#FF2E63] focus:ring-1 focus:ring-[#FF2E63]/20 focus:bg-white transition-all font-normal placeholder:text-slate-400"
@@ -308,7 +308,7 @@ export default function SectionAffiliateProduct({ merchant }) {
                 </label>
                 <input
                   type="number"
-                  placeholder="e.g. 25"
+                  placeholder="25"
                   value={form.discountPercentage || ""}
                   onChange={(e) => {
                     const val = e.target.value;
@@ -328,7 +328,7 @@ export default function SectionAffiliateProduct({ merchant }) {
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. 25% OFF or SPECIAL ONLINE DEAL"
+                  placeholder="25% OFF or SPECIAL ONLINE DEAL"
                   value={form.discountText || ""}
                   onChange={(e) =>
                     setForm({ ...form, discountText: e.target.value })
@@ -345,7 +345,7 @@ export default function SectionAffiliateProduct({ merchant }) {
                 </label>
                 <input
                   type="number"
-                  placeholder="e.g. 499"
+                  placeholder="499"
                   value={form.discountPrice || ""}
                   onChange={(e) => {
                     const val = e.target.value;
@@ -365,7 +365,7 @@ export default function SectionAffiliateProduct({ merchant }) {
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. Limited Edition @ ₹499"
+                  placeholder="Limited Edition @ ₹499"
                   value={form.discountText || ""}
                   onChange={(e) =>
                     setForm({ ...form, discountText: e.target.value })
@@ -382,7 +382,7 @@ export default function SectionAffiliateProduct({ merchant }) {
                 </label>
                 <input
                   type="number"
-                  placeholder="e.g. 1999"
+                  placeholder="1999"
                   value={form.originalPrice}
                   onChange={(e) =>
                     setForm({ ...form, originalPrice: e.target.value })
@@ -397,7 +397,7 @@ export default function SectionAffiliateProduct({ merchant }) {
                 </label>
                 <input
                   type="number"
-                  placeholder="e.g. 1299"
+                  placeholder="1299"
                   value={form.discountPrice}
                   onChange={(e) =>
                     setForm({ ...form, discountPrice: e.target.value })
