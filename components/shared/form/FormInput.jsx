@@ -10,6 +10,7 @@ const FormInput = forwardRef(function FormInput(
   {
     name,
     label,
+    action,
     icon: Icon,
     type = "text",
     placeholder,
@@ -19,6 +20,7 @@ const FormInput = forwardRef(function FormInput(
     prefix: Prefix,
     suffix: Suffix,
     className,
+    inputClassName,
     ...rest
   },
   ref,
@@ -33,22 +35,27 @@ const FormInput = forwardRef(function FormInput(
 
   return (
     <div className={cn("flex flex-col gap-1.5 w-full font-sans", className)}>
-      {label && (
-        <Label
-          htmlFor={name}
-          className="text-xs font-heading font-semibold text-[#35104A] flex items-center gap-1.5"
-        >
-          {Icon && <Icon className="w-3.5 h-3.5 text-[#007F79]" />}
-          <span>{label}</span>
-          {required && (
-            <span className="text-[#FF2E63] font-medium ml-0.5">*</span>
+      {(label || action) && (
+        <div className="flex items-center justify-between gap-2">
+          {label && (
+            <Label
+              htmlFor={name}
+              className="text-xs font-medium text-slate-700 flex items-center gap-1.5"
+            >
+              {Icon && <Icon className="w-3.5 h-3.5 text-[#007F79]" />}
+              <span>{label}</span>
+              {required && (
+                <span className="text-red-500 font-medium ml-0.5">*</span>
+              )}
+            </Label>
           )}
-        </Label>
+          {action && <div className="shrink-0">{action}</div>}
+        </div>
       )}
 
       <div className="relative flex items-center">
         {Prefix && (
-          <span className="absolute left-3 text-[#6B4C82]/70 pointer-events-none">
+          <span className="absolute left-3 text-slate-400 pointer-events-none">
             <Prefix className="w-4 h-4" />
           </span>
         )}
@@ -64,11 +71,12 @@ const FormInput = forwardRef(function FormInput(
           }
           aria-invalid={!!errorMessage}
           className={cn(
-            "text-base md:text-sm h-10 border-[#EADBCE] bg-white text-[#35104A] placeholder:text-[#6B4C82]/50 focus-visible:ring-[#007F79]/20 focus-visible:border-[#007F79] rounded-xl w-full transition-colors",
+            "text-base md:text-sm h-10 border-slate-200 bg-white text-slate-800 placeholder:text-slate-400 focus-visible:ring-[#007F79]/20 focus-visible:border-[#007F79] rounded-xl w-full transition-colors",
             Prefix && "pl-9",
             (Suffix || isPassword) && "pr-9",
             errorMessage &&
-              "border-[#FF2E63] focus-visible:border-[#FF2E63] focus-visible:ring-[#FF2E63]/20",
+              "border-red-500 focus-visible:border-red-500 focus-visible:ring-red-500/20",
+            inputClassName,
           )}
           {...rest}
         />
@@ -97,9 +105,9 @@ const FormInput = forwardRef(function FormInput(
         <p
           id={`${name}-error`}
           role="alert"
-          className="text-xs text-[#FF2E63] font-medium flex items-center gap-1 mt-0.5 animate-in fade-in-50 font-sans"
+          className="text-xs text-red-500 font-medium flex items-center gap-1 mt-1 font-sans"
         >
-          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+          <AlertCircle className="w-3.5 h-3.5 text-red-500 shrink-0" />
           <span>{errorMessage}</span>
         </p>
       )}

@@ -380,7 +380,7 @@ export default function CampaignsClient({
         onClick={() => {
           if (!hasCode) setSelectedCoupon(coupon);
         }}
-        className="w-[260px] sm:w-[280px] h-[146px] shrink-0 bg-white border border-slate-200/90 rounded-xl p-3 shadow-[0_1px_3px_rgba(15,23,42,0.05)] hover:shadow-[0_8px_20px_rgba(247,40,83,0.12)] hover:border-[#FF2E63] transition-all duration-200 flex flex-col justify-between select-none group text-left cursor-pointer active:scale-[0.99] relative overflow-hidden"
+        className="w-[260px] sm:w-[280px] h-[146px] shrink-0 bg-white border border-slate-200/90 rounded-xl p-3 shadow-[0_1px_3px_rgba(15,23,42,0.05)] hover:shadow-[0_8px_20px_rgba(0,127,121,0.12)] hover:border-[#007F79] transition-all duration-200 flex flex-col justify-between group text-left cursor-pointer touch-manipulation active:scale-[0.99] relative overflow-hidden"
       >
         {/* Top Accent Strip */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FF2E63] to-rose-400 opacity-80" />
@@ -716,7 +716,7 @@ export default function CampaignsClient({
   );
 
   return (
-    <div className="w-full bg-[#f8fafc] text-slate-900 font-sans min-h-screen pb-16 select-none relative">
+    <div className="w-full bg-[#f8fafc] text-slate-900 font-sans min-h-screen pb-24 sm:pb-16 relative">
       {/* ── 1. CLEAN HERO HEADER BAR (NO CLUTTERED PILLS) ── */}
       <div className="w-full bg-white border-b border-slate-200/90 shadow-2xs">
         <div className="w-full px-4 sm:px-6 lg:px-8 py-4">

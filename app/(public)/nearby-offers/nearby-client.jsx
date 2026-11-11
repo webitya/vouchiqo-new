@@ -1585,7 +1585,7 @@ export default function NearbyOffers() {
 
   return (
     <div
-      className="flex flex-col h-screen w-full overflow-hidden bg-slate-100 select-none"
+      className="flex flex-col h-screen w-full overflow-hidden bg-slate-100"
       style={{ fontFamily: "var(--font-sans), sans-serif" }}
     >
       {/* Global & Leaflet Font & Marker Styling */}
@@ -2396,7 +2396,7 @@ export default function NearbyOffers() {
         <div
           ref={mobileDealsListRef}
           data-lenis-prevent="true"
-          className="flex md:hidden flex-col px-2.5 pt-2 pb-2.5 space-y-2 bg-slate-50/50 min-h-0"
+          className="flex md:hidden flex-col px-2.5 pt-2 pb-24 sm:pb-28 space-y-2 bg-slate-50/50 min-h-0"
         >
           {loading ? (
             <div className="space-y-2 p-1">
@@ -2468,7 +2468,7 @@ export default function NearbyOffers() {
 
               {/* Mobile Pagination Bar (Google-Style) */}
               {totalPages > 1 && (
-                <div className="flex flex-col gap-1.5 px-3 py-2.5 bg-white rounded-lg border border-slate-200 mt-2 font-sans shadow-xs">
+                <div className="flex flex-col gap-1.5 px-3 py-2.5 bg-white rounded-lg border border-slate-200 mt-2 mb-4 font-sans shadow-xs">
                   <div className="flex items-center justify-between text-[11px] text-[#6B4C82]">
                     <span>
                       Showing{" "}
@@ -2494,7 +2494,7 @@ export default function NearbyOffers() {
                       type="button"
                       disabled={safeCurrentPage <= 1}
                       onClick={() => handlePageChange(safeCurrentPage - 1)}
-                      className={`px-2.5 py-1.5 rounded-md text-xs font-heading font-semibold border flex items-center gap-0.5 transition-all ${
+                      className={`px-2.5 py-1.5 rounded-md text-xs font-heading font-semibold border flex items-center gap-0.5 transition-all touch-manipulation ${
                         safeCurrentPage <= 1
                           ? "opacity-40 text-slate-400 bg-slate-50 border-slate-200 cursor-not-allowed"
                           : "text-[#35104A] bg-white hover:bg-[#FFF8EF] hover:border-[#007F79]/40 border-slate-200 cursor-pointer active:scale-95"
@@ -2510,7 +2510,7 @@ export default function NearbyOffers() {
                         p === "..." ? (
                           <span
                             key={`mob-ellipsis-${idx}`}
-                            className="px-0.5 text-slate-400 text-xs select-none"
+                            className="px-0.5 text-slate-400 text-xs"
                           >
                             ...
                           </span>
@@ -2519,7 +2519,7 @@ export default function NearbyOffers() {
                             key={`mob-page-${p}`}
                             type="button"
                             onClick={() => handlePageChange(p)}
-                            className={`min-w-[28px] h-7 px-1.5 rounded-md text-xs font-heading font-semibold border flex items-center justify-center transition-all cursor-pointer ${
+                            className={`min-w-[28px] h-7 px-1.5 rounded-md text-xs font-heading font-semibold border flex items-center justify-center transition-all cursor-pointer touch-manipulation active:scale-95 ${
                               safeCurrentPage === p
                                 ? "bg-[#007F79] text-white border-[#007F79] shadow-2xs font-bold"
                                 : "bg-white text-[#35104A] border-slate-200 hover:bg-[#FFF8EF] hover:border-[#007F79]/40"
@@ -2535,7 +2535,7 @@ export default function NearbyOffers() {
                       type="button"
                       disabled={safeCurrentPage >= totalPages}
                       onClick={() => handlePageChange(safeCurrentPage + 1)}
-                      className={`px-2.5 py-1.5 rounded-md text-xs font-heading font-semibold border flex items-center gap-0.5 transition-all ${
+                      className={`px-2.5 py-1.5 rounded-md text-xs font-heading font-semibold border flex items-center gap-0.5 transition-all touch-manipulation ${
                         safeCurrentPage >= totalPages
                           ? "opacity-40 text-slate-400 bg-slate-50 border-slate-200 cursor-not-allowed"
                           : "text-[#35104A] bg-white hover:bg-[#FFF8EF] hover:border-[#007F79]/40 border-slate-200 cursor-pointer active:scale-95"

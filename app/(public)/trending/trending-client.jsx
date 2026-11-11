@@ -254,7 +254,7 @@ export default function TrendingClient({
     minDiscount > 0;
 
   return (
-    <div className="w-full bg-[#FFFDF9] text-[#35104A] font-sans min-h-screen pb-20 select-none">
+    <div className="w-full bg-[#FFFDF9] text-[#35104A] font-sans min-h-screen pb-24 sm:pb-20 text-left">
       {/* ── 1. CLEAN FULL-WIDTH HERO HEADER ── */}
       <section className="w-full bg-[#35104A] text-white pt-5 pb-7 px-4 sm:px-6 lg:px-10 xl:px-12 border-b border-[#35104A]/60">
         <div className="w-full">

@@ -14,16 +14,16 @@ export default function CampaignListGrid({
   onDelete,
 }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-left font-sans">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left font-sans">
       {/* Dashed Create Card */}
       <div
         onClick={onCreateClick}
-        className="border-2 border-dashed border-brand-border hover:border-festival-teal bg-warm-ivory/40 hover:bg-teal-50/20 transition-all rounded-2xl p-5 flex flex-col items-center justify-center text-center cursor-pointer min-h-[140px] group shadow-2xs"
+        className="border border-dashed border-slate-300 hover:border-[#007F79] bg-slate-50/60 hover:bg-[#007F79]/5 transition-all rounded-xl p-4 flex flex-col items-center justify-center text-center cursor-pointer min-h-[110px] group shadow-2xs"
       >
-        <div className="w-9 h-9 rounded-xl bg-white border border-brand-border group-hover:border-festival-teal group-hover:scale-105 transition-all flex items-center justify-center text-slate-400 group-hover:text-festival-teal mb-2 shadow-2xs">
-          <Plus className="w-4 h-4" />
+        <div className="w-7 h-7 rounded-lg bg-white border border-slate-200 group-hover:border-[#007F79] transition-all flex items-center justify-center text-slate-400 group-hover:text-[#007F79] mb-1.5 shadow-2xs">
+          <Plus className="w-3.5 h-3.5" />
         </div>
-        <h3 className="text-xs font-semibold text-royal-plum font-heading group-hover:text-festival-teal transition-colors">
+        <h3 className="text-xs font-medium text-slate-800 group-hover:text-[#007F79] transition-colors">
           Create Campaign
         </h3>
         <p className="text-[11px] text-slate-400 font-sans mt-0.5">
@@ -35,7 +35,7 @@ export default function CampaignListGrid({
       {campaigns.map((camp) => (
         <Card
           key={camp._id || camp.name}
-          className="border border-slate-200/90 shadow-2xs hover:border-festival-teal/40 transition-all rounded-2xl overflow-hidden bg-white p-3.5 space-y-3 flex flex-col justify-between"
+          className="border border-slate-200 shadow-xs hover:border-[#007F79]/40 transition-all rounded-xl overflow-hidden bg-white p-3 space-y-2.5 flex flex-col justify-between"
         >
           <div className="space-y-2">
             <div className="flex items-start justify-between gap-2">
@@ -46,7 +46,7 @@ export default function CampaignListGrid({
                   </h3>
                   <Badge
                     variant="secondary"
-                    className="text-[10px] font-medium bg-slate-100 text-slate-700 capitalize py-0 px-1.5 border-0"
+                    className="text-[10px] font-medium bg-slate-100 text-slate-700 capitalize py-0 px-1.5 border-0 rounded-md"
                   >
                     {camp.type}
                   </Badge>
@@ -74,7 +74,7 @@ export default function CampaignListGrid({
             </div>
 
             {/* 3 Metrics Row */}
-            <div className="grid grid-cols-3 gap-1 py-1.5 px-2 bg-slate-50/80 rounded-xl border border-slate-100 text-center">
+            <div className="grid grid-cols-3 gap-1 py-1.5 px-2 bg-slate-50/80 rounded-lg border border-slate-100 text-center">
               <div>
                 <span className="text-xs font-semibold text-slate-900 block leading-tight">
                   {(camp.stats?.clicks ?? camp.clicks ?? 0).toLocaleString()}
@@ -113,7 +113,7 @@ export default function CampaignListGrid({
               variant="outline"
               size="sm"
               onClick={() => onEdit?.(camp)}
-              className="h-7 rounded-xl text-slate-700 border-slate-200 hover:bg-slate-50 text-[11px] font-medium gap-1 px-2.5 cursor-pointer shadow-none"
+              className="h-7 rounded-lg text-slate-700 border-slate-200 hover:bg-slate-50 text-[11px] font-medium gap-1 px-2.5 cursor-pointer shadow-none"
             >
               <Edit3 className="w-3 h-3 text-slate-400" /> Edit
             </Button>
@@ -122,7 +122,7 @@ export default function CampaignListGrid({
               variant="outline"
               size="sm"
               onClick={() => onDuplicate?.(camp)}
-              className="h-7 rounded-xl text-slate-700 border-slate-200 hover:bg-slate-50 text-[11px] font-medium gap-1 px-2.5 cursor-pointer shadow-none"
+              className="h-7 rounded-lg text-slate-700 border-slate-200 hover:bg-slate-50 text-[11px] font-medium gap-1 px-2.5 cursor-pointer shadow-none"
             >
               <Copy className="w-3 h-3 text-slate-400" /> Duplicate
             </Button>
@@ -131,7 +131,7 @@ export default function CampaignListGrid({
               variant="outline"
               size="sm"
               onClick={() => onReport?.(camp)}
-              className="h-7 rounded-xl text-slate-700 border-slate-200 hover:bg-slate-50 text-[11px] font-medium gap-1 px-2.5 cursor-pointer shadow-none"
+              className="h-7 rounded-lg text-slate-700 border-slate-200 hover:bg-slate-50 text-[11px] font-medium gap-1 px-2.5 cursor-pointer shadow-none"
             >
               <BarChart3 className="w-3 h-3 text-slate-400" /> Report
             </Button>
@@ -140,7 +140,7 @@ export default function CampaignListGrid({
               variant="outline"
               size="sm"
               onClick={() => onDelete?.(camp)}
-              className="h-7 rounded-xl text-rose-600 border-rose-200/80 bg-rose-50/50 hover:bg-rose-100 text-[11px] font-medium gap-1 px-2.5 ml-auto cursor-pointer shadow-none"
+              className="h-7 rounded-lg text-rose-600 border-rose-200/80 bg-rose-50/50 hover:bg-rose-100 text-[11px] font-medium gap-1 px-2.5 ml-auto cursor-pointer shadow-none"
             >
               <Trash2 className="w-3 h-3 text-rose-500" /> Delete
             </Button>

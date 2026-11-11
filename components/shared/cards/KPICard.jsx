@@ -140,11 +140,11 @@ export default function KPICard({
 
   if (href) {
     return (
-      <Link href={href} className="block no-underline h-full select-none cursor-pointer">
+      <Link href={href} className="block no-underline h-full cursor-pointer touch-manipulation active:scale-[0.99]">
         {cardContent}
       </Link>
     );
   }
 
-  return <div className="h-full select-none">{cardContent}</div>;
+  return <div className="h-full">{cardContent}</div>;
 }

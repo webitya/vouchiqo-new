@@ -1,6 +1,5 @@
 "use client";
 
-import { Edit3 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FormInput, FormSelect } from "@/components/shared/form";
 import { Button } from "@/components/ui/button";
@@ -63,12 +62,12 @@ export default function EditCampaignModal({
   };
 
   const typeOptions = [
-    { value: "flash", label: "Flash Sale (2hrs - 48hrs)" },
-    { value: "festival", label: "Festival — Festival Campaign (3 - 7 days)" },
-    { value: "new-user", label: "Target — New Customer Acquisition" },
-    { value: "seasonal", label: "Tag — Seasonal Clearance" },
-    { value: "loyalty", label: "Users — Loyalty / Returning Customer" },
-    { value: "bundle", label: "Trophy — Bundle / BOGO Campaign" },
+    { value: "flash", label: "Flash Sale (2hrs – 48hrs)" },
+    { value: "festival", label: "Festival Campaign (3 – 7 days)" },
+    { value: "new-user", label: "New Customer Acquisition" },
+    { value: "seasonal", label: "Seasonal Clearance" },
+    { value: "loyalty", label: "Loyalty / Returning Customer" },
+    { value: "bundle", label: "Bundle / BOGO Deal" },
   ];
 
   return (
@@ -76,8 +75,7 @@ export default function EditCampaignModal({
       <DialogContent className="max-w-md bg-white p-4 sm:p-5 rounded-xl border border-slate-200 text-left shadow-lg">
         <form onSubmit={handleSave} className="space-y-3.5">
           <DialogHeader className="space-y-1 pb-2.5 border-b border-slate-100">
-            <DialogTitle className="text-sm font-semibold text-slate-900 flex items-center gap-2">
-              <Edit3 className="w-4 h-4 text-festival-teal" />
+            <DialogTitle className="text-sm font-semibold text-slate-900">
               Edit Campaign Details
             </DialogTitle>
             <DialogDescription className="text-xs text-slate-500 font-normal">

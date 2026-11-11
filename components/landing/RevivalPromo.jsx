@@ -63,7 +63,7 @@ export function RevivalPromo() {
   }
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#FFF8EF] via-white to-[#FFF8EF] dark:from-[#1D062B] dark:via-[#280C38] dark:to-[#1D062B] py-10 sm:py-12 px-4 sm:px-8 border-y border-[#EADBCE] dark:border-[#4A1A66] select-none relative overflow-hidden font-sans text-left">
+    <section className="w-full bg-gradient-to-br from-[#FFF8EF] via-white to-[#FFF8EF] dark:from-[#1D062B] dark:via-[#280C38] dark:to-[#1D062B] py-10 sm:py-12 px-4 sm:px-8 border-y border-[#EADBCE] dark:border-[#4A1A66] relative overflow-hidden font-sans text-left">
       {/* Decorative Gradient Graphic Orbs & Subtle Pattern */}
       <div className="absolute -left-20 -top-20 w-96 h-96 bg-gradient-to-br from-[#FF2E63]/15 to-[#FF8C05]/10 rounded-full blur-3xl pointer-events-none z-0" />
       <div className="absolute -right-20 -bottom-20 w-96 h-96 bg-gradient-to-tl from-[#007F79]/15 to-[#35104A]/10 rounded-full blur-3xl pointer-events-none z-0" />

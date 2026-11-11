@@ -11,7 +11,7 @@ export default function SectionHeader({
   viewAllText = "View More",
 }) {
   return (
-    <div className="flex justify-between items-center mb-6 select-none text-left">
+    <div className="flex justify-between items-center mb-6 text-left">
       <h2 className="text-xl md:text-2xl font-bold text-brand-text font-heading">
         {title}
       </h2>
@@ -20,7 +20,7 @@ export default function SectionHeader({
           <button
             type="button"
             onClick={onPrev}
-            className="w-8 h-8 rounded-full border border-brand-border flex items-center justify-center text-brand-subtext hover:bg-brand-surface transition cursor-pointer"
+            className="w-8 h-8 rounded-full border border-brand-border flex items-center justify-center text-brand-subtext hover:bg-brand-surface transition cursor-pointer touch-manipulation active:scale-95"
             aria-label="Previous slide"
           >
             <ChevronLeft className="w-4 h-4" />
@@ -28,7 +28,7 @@ export default function SectionHeader({
           <button
             type="button"
             onClick={onNext}
-            className="w-8 h-8 rounded-full border border-brand-border flex items-center justify-center text-brand-subtext hover:bg-brand-surface transition cursor-pointer"
+            className="w-8 h-8 rounded-full border border-brand-border flex items-center justify-center text-brand-subtext hover:bg-brand-surface transition cursor-pointer touch-manipulation active:scale-95"
             aria-label="Next slide"
           >
             <ChevronRight className="w-4 h-4" />
@@ -37,7 +37,7 @@ export default function SectionHeader({
       ) : viewAllHref ? (
         <Link
           href={viewAllHref}
-          className="text-brand-blue text-xs font-semibold hover:underline flex items-center gap-1 transition-colors"
+          className="text-brand-blue text-xs font-semibold hover:underline flex items-center gap-1 transition-colors touch-manipulation"
         >
           <span>{viewAllText}</span>
           <div className="bg-brand-blue/5 rounded-full w-6 h-6 flex items-center justify-center">

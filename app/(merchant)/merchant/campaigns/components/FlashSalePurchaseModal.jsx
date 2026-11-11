@@ -60,154 +60,114 @@ export default function FlashSalePurchaseModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="w-[calc(100%-1.5rem)] sm:max-w-2xl md:max-w-3xl max-h-[92vh] bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl p-5 sm:p-7 text-left font-sans shadow-2xl overflow-y-auto text-slate-900">
+      <DialogContent className="w-[95vw] sm:max-w-xl max-h-[90vh] bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 text-left font-sans shadow-xl overflow-y-auto text-slate-900">
         {/* Header */}
-        <DialogHeader className="pr-8 space-y-3 border-b border-slate-100 pb-4 text-left">
-          {/* Badge row — semantic colors, short labels, consistent style */}
+        <DialogHeader className="pr-8 space-y-2 border-b border-slate-100 pb-3 text-left">
           <div className="flex items-center gap-1.5 flex-wrap">
-            {/* Primary label — brand identity */}
-            <span className="inline-flex items-center bg-festival-teal text-white text-[10px] font-semibold px-2.5 py-0.5 rounded-md tracking-wide uppercase">
-              Partner Special
-            </span>
-            {/* Scarcity label — amber for limited/one-time */}
-            <span className="inline-flex items-center bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-medium px-2 py-0.5 rounded-md">
-              1-Time Pass
-            </span>
-            {/* Savings label — green for value/savings (universal standard) */}
-            <span className="hidden sm:inline-flex items-center bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-medium px-2 py-0.5 rounded-md">
-              Save ₹1,700
+            <span className="inline-flex items-center bg-[#007F79]/10 text-[#007F79] border border-[#007F79]/30 text-[10px] font-medium px-2 py-0.5 rounded-md">
+              Partner Special • 1-Time Pass (Save ₹1,700)
             </span>
           </div>
 
-          {/* Headline — short, benefit-driven, no emoji clutter */}
-          <DialogTitle className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight leading-snug">
+          <DialogTitle className="text-base sm:text-lg font-semibold text-slate-900 tracking-tight leading-snug">
             Boost Store Visits with a 24–48hr Flash Sale
           </DialogTitle>
 
-          {/* Description — one tight sentence */}
-          <DialogDescription className="text-[12px] sm:text-[13px] text-slate-500 font-normal leading-relaxed">
-            Drive urgent buyer action with a live countdown — get 5x more clicks
-            from active shoppers in your area, one-time fee.
+          <DialogDescription className="text-xs text-slate-500 font-normal leading-relaxed">
+            Drive urgent buyer action with a live countdown and priority search
+            spotlight for your store.
           </DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-4 pt-1">
-          {/* Feature Cards — consistent neutral card bg, icon color tied to function */}
+        <div className="space-y-3.5 pt-1">
+          {/* Feature Cards — clean, uniform brand layout */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-            {/* Urgency — amber: universal "time/warning" color */}
-            <div className="flex flex-col gap-3 p-3.5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 transition-colors">
-              <div className="flex items-start justify-between">
-                <div className="w-7 h-7 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0">
-                  <Clock className="w-3.5 h-3.5 text-amber-600" />
-                </div>
-                <span className="text-[9.5px] font-medium bg-amber-50 border border-amber-200 text-amber-700 px-1.5 py-0.5 rounded-md">
-                  Urgency
-                </span>
-              </div>
-              <div className="space-y-0.5">
-                <h4 className="text-[11.5px] font-semibold text-slate-900 leading-tight">
-                  Live Countdown Clock
+            <div className="flex flex-col gap-1.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-[#007F79]/30 transition-colors">
+              <div className="flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-[#007F79]" />
+                <h4 className="text-xs font-semibold text-slate-900 leading-tight">
+                  Countdown Clock
                 </h4>
-                <p className="text-[10.5px] text-slate-500 font-normal leading-relaxed">
-                  Ticking timer on deal cards drives instant buyer conversions.
-                </p>
               </div>
+              <p className="text-[11px] text-slate-500 font-normal leading-relaxed">
+                Ticking timer on deal cards drives instant buyer conversions.
+              </p>
             </div>
 
-            {/* Reach — blue: universal "broadcast/network" color */}
-            <div className="flex flex-col gap-3 p-3.5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 transition-colors">
-              <div className="flex items-start justify-between">
-                <div className="w-7 h-7 rounded-lg bg-warm-ivory border border-brand-border flex items-center justify-center shrink-0">
-                  <TrendingUp className="w-3.5 h-3.5 text-festival-teal" />
-                </div>
-                <span className="text-[9.5px] font-medium bg-warm-ivory border border-brand-border text-festival-teal px-1.5 py-0.5 rounded-md">
-                  Priority Reach
-                </span>
-              </div>
-              <div className="space-y-0.5">
-                <h4 className="text-[11.5px] font-semibold text-slate-900 leading-tight">
-                  5x Search Spotlight
+            <div className="flex flex-col gap-1.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-[#007F79]/30 transition-colors">
+              <div className="flex items-center gap-1.5">
+                <TrendingUp className="w-3.5 h-3.5 text-[#007F79]" />
+                <h4 className="text-xs font-semibold text-slate-900 leading-tight">
+                  Search Spotlight
                 </h4>
-                <p className="text-[10.5px] text-slate-500 font-normal leading-relaxed">
-                  Featured at the top of category feeds and local deal results.
-                </p>
               </div>
+              <p className="text-[11px] text-slate-500 font-normal leading-relaxed">
+                Featured at the top of category feeds and local deal results.
+              </p>
             </div>
 
-            {/* Alert — violet: universal "notification/alert" color */}
-            <div className="flex flex-col gap-3 p-3.5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 transition-colors">
-              <div className="flex items-start justify-between">
-                <div className="w-7 h-7 rounded-lg bg-violet-50 border border-violet-200 flex items-center justify-center shrink-0">
-                  <BellRing className="w-3.5 h-3.5 text-violet-600" />
-                </div>
-                <span className="text-[9.5px] font-medium bg-violet-50 border border-violet-200 text-violet-700 px-1.5 py-0.5 rounded-md">
-                  Local Alert
-                </span>
-              </div>
-              <div className="space-y-0.5">
-                <h4 className="text-[11.5px] font-semibold text-slate-900 leading-tight">
-                  Targeted Local Notify
+            <div className="flex flex-col gap-1.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-[#007F79]/30 transition-colors">
+              <div className="flex items-center gap-1.5">
+                <BellRing className="w-3.5 h-3.5 text-[#007F79]" />
+                <h4 className="text-xs font-semibold text-slate-900 leading-tight">
+                  Local Alerts
                 </h4>
-                <p className="text-[10.5px] text-slate-500 font-normal leading-relaxed">
-                  Notifies shoppers in your city hunting for dining and retail
-                  deals.
-                </p>
               </div>
+              <p className="text-[11px] text-slate-500 font-normal leading-relaxed">
+                Notifies active shoppers in your city looking for immediate
+                deals.
+              </p>
             </div>
           </div>
 
-          {/* Pricing Block */}
-          <div className="bg-slate-950 text-white p-4 sm:p-5 rounded-xl border border-slate-800">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
-              <div className="space-y-1">
-                <span className="text-[10px] text-slate-400 font-medium uppercase tracking-widest">
+          {/* Pricing Block with Royal Plum brand tone */}
+          <div className="bg-[#35104A] text-white p-3.5 sm:p-4 rounded-xl border border-[#35104A] shadow-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="space-y-0.5">
+                <span className="text-[10px] text-white/70 font-medium uppercase tracking-widest block">
                   One-Time Campaign Pass
                 </span>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                  <span className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
                     ₹799
                   </span>
-                  <span className="text-xs text-slate-500 line-through font-normal">
+                  <span className="text-xs text-white/50 line-through font-normal">
                     ₹2,499
                   </span>
-                  {/* Emerald for savings/discount — universal, expected */}
-                  <span className="text-[10px] font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-md">
+                  <span className="text-[10px] font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-md">
                     68% off
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-400 font-normal">
-                  All-inclusive. No monthly subscription required.
+                <p className="text-[11px] text-white/80 font-normal">
+                  All-inclusive. No recurring monthly subscription.
                 </p>
               </div>
 
-              {/* Instant activation — amber for action/speed */}
-              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 shrink-0">
-                <div className="w-7 h-7 rounded-md bg-amber-400/15 border border-amber-400/20 flex items-center justify-center shrink-0">
-                  <Timer className="w-3.5 h-3.5 text-amber-400" />
-                </div>
+              <div className="flex items-center gap-2 bg-white/10 border border-white/15 rounded-lg px-3 py-2 shrink-0">
+                <Timer className="w-3.5 h-3.5 text-amber-300 shrink-0" />
                 <div className="text-left">
-                  <span className="block text-[11px] font-semibold text-white leading-tight">
+                  <span className="block text-[11px] font-medium text-white leading-tight">
                     Instant Activation
                   </span>
-                  <span className="block text-[10px] text-slate-400 mt-0.5">
+                  <span className="block text-[10px] text-white/70 mt-0.5">
                     Ready in 60s
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className="border-t border-slate-800 mt-3 pt-2.5 flex items-center justify-between text-[10px] text-slate-500 flex-wrap gap-1">
+            <div className="border-t border-white/10 mt-3 pt-2 flex items-center justify-between text-[10px] text-white/70 flex-wrap gap-1">
               <span>* Free plan: 1 Flash Sale pass included</span>
-              <span className="text-slate-400">24h – 48h Promo Window</span>
+              <span className="text-white/80">24h – 48h Promo Window</span>
             </div>
           </div>
 
           {/* CTA */}
-          <div className="space-y-2.5 pt-0.5">
+          <div className="space-y-2 pt-0.5">
             <Button
               onClick={handleActivatePass}
               disabled={loading}
-              className="w-full bg-festival-teal hover:bg-[#00635E] text-white font-bold text-xs sm:text-sm rounded-xl h-11 sm:h-12 shadow-xs cursor-pointer flex items-center justify-center gap-2 transition-colors border-0"
+              className="w-full bg-[#007F79] hover:bg-[#00635E] text-white font-medium text-xs sm:text-sm rounded-lg h-10 shadow-xs cursor-pointer flex items-center justify-center gap-2 transition-colors border-0"
             >
               {loading ? (
                 <>
@@ -224,13 +184,13 @@ export default function FlashSalePurchaseModal({
 
             <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-[10.5px] px-0.5">
               <div className="flex items-center gap-1.5 text-slate-500">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                 <span>100% Secure SSL • Instant Access</span>
               </div>
               <Link
                 href="/merchant/billing"
                 onClick={onClose}
-                className="text-[11px] font-semibold text-festival-teal hover:underline flex items-center gap-1"
+                className="text-[11px] font-medium text-[#007F79] hover:underline flex items-center gap-1"
               >
                 <span>Unlimited Campaigns? Upgrade</span>
                 <ArrowRight className="w-3 h-3" />

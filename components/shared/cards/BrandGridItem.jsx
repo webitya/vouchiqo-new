@@ -58,11 +58,11 @@ export const BrandGridItem = memo(function BrandGridItem({
     <Link
       href={href || "#"}
       prefetch={true}
-      className="group relative flex flex-col justify-between rounded-xl sm:rounded-2xl border border-[#EADBCE] bg-[#FFF8EF] shadow-2xs hover:shadow-md hover:border-[#007F79]/40 transition-all duration-200 overflow-hidden select-none text-left w-full h-[142px] sm:h-[148px] font-sans"
+      className="group relative flex flex-col justify-between rounded-xl sm:rounded-2xl border border-[#EADBCE] bg-[#FFF8EF] shadow-2xs hover:shadow-md hover:border-[#007F79]/40 transition-all duration-200 overflow-hidden text-left w-full h-[142px] sm:h-[148px] font-sans touch-manipulation active:scale-[0.98] cursor-pointer"
       style={{ textDecoration: "none" }}
     >
       {/* ── 1. Top Half: Visual Imagery & Category Tag ── */}
-      <div className="relative w-full h-1/2 overflow-hidden bg-[#35104A]">
+      <div className="relative w-full h-1/2 overflow-hidden bg-[#35104A] pointer-events-none">
         <SafeImage
           src={bgBanner}
           alt={name || "Store Banner"}
@@ -84,7 +84,7 @@ export const BrandGridItem = memo(function BrandGridItem({
       </div>
 
       {/* ── 2. Floating Circular Brand Logo (Anchor - Shifted to left edge) ── */}
-      <div className="absolute top-1/2 left-1.5 sm:left-2 -translate-y-1/2 z-20">
+      <div className="absolute top-1/2 left-1.5 sm:left-2 -translate-y-1/2 z-20 pointer-events-none">
         <div className="w-9.5 h-9.5 sm:w-10 sm:h-10 rounded-full bg-white border border-[#EADBCE] p-1 flex items-center justify-center shadow-md ring-2 ring-white group-hover:ring-[#FFF8EF] transition-all">
           {!imgError && validLogo ? (
             <SafeImage
@@ -105,7 +105,7 @@ export const BrandGridItem = memo(function BrandGridItem({
       </div>
 
       {/* ── 3. Bottom Half: Store Details with Verified Twitter Tick & Clean Offer Pill ── */}
-      <div className="pt-4.5 sm:pt-5 pb-2 px-2 sm:px-2.5 flex flex-col justify-between h-1/2 bg-[#FFF8EF] text-left font-sans">
+      <div className="pt-4.5 sm:pt-5 pb-2 px-2 sm:px-2.5 flex flex-col justify-between h-1/2 bg-[#FFF8EF] text-left font-sans pointer-events-none">
         {/* Brand Name + Twitter Verified Tick Badge on the Right */}
         <div className="flex items-center gap-1 min-w-0 pr-1">
           <h4 className="text-[12px] sm:text-[12.5px] font-heading font-semibold text-[#35104A] uppercase tracking-tight truncate group-hover:text-[#007F79] transition-colors leading-tight">

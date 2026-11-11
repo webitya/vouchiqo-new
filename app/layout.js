@@ -24,13 +24,16 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#FFFDF9",
+};
+
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className="antialiased font-sans"
-      suppressHydrationWarning
-    >
+    <html lang="en" className="antialiased font-sans" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

@@ -74,25 +74,25 @@ const PopularOfferCard = memo(function PopularOfferCard({ coupon }) {
     <Link
       href={`/deals/${coupon._id}`}
       prefetch={true}
-      className="group relative flex flex-col rounded-xl sm:rounded-2xl no-underline cursor-pointer border border-[#EADBCE] bg-[#FFF8EF] shadow-2xs hover:shadow-md hover:border-[#FF2E63]/50 transition-all duration-300 select-none text-left overflow-hidden h-full font-sans"
+      className="group relative flex flex-col rounded-xl sm:rounded-2xl no-underline cursor-pointer border border-[#EADBCE] bg-[#FFF8EF] shadow-2xs hover:shadow-md hover:border-[#007F79]/50 transition-all duration-300 text-left overflow-hidden h-full font-sans touch-manipulation active:scale-[0.98]"
     >
       {/* 16:9 Aspect Ratio Image Header */}
-      <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#35104A] shrink-0">
+      <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#35104A] shrink-0 pointer-events-none">
         <SafeImage
           src={coverImage}
           alt={coupon.title || "Offer Banner"}
           fill
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105 select-none pointer-events-none"
+          className="object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#1F0A2B]/40 via-transparent to-transparent pointer-events-none" />
       </div>
 
       {/* Content Box with Dynamic Depth */}
-      <div className="relative flex-1 flex flex-col justify-between bg-[#FFF8EF] px-2.5 sm:px-3.5 pt-4 sm:pt-4.5 pb-2.5 sm:pb-3">
+      <div className="relative flex-1 flex flex-col justify-between bg-[#FFF8EF] px-2.5 sm:px-3.5 pt-4 sm:pt-4.5 pb-2.5 sm:pb-3 pointer-events-none">
         {/* Floating Merchant Circular Logo */}
         <div
-          className="absolute flex items-center justify-center bg-white rounded-full border border-[#EADBCE] shadow-md p-0.5 group-hover:border-[#FF2E63]/40 group-hover:scale-105 transition-all"
+          className="absolute flex items-center justify-center bg-white rounded-full border border-[#EADBCE] shadow-md p-0.5 group-hover:border-[#007F79]/40 group-hover:scale-105 transition-all pointer-events-none"
           style={{
             width: "32px",
             height: "32px",

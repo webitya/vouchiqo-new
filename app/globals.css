@@ -269,7 +269,7 @@ h6,
   font-family: var(--font-heading);
 }
 
-/* ── Universal Pointer Cursor Enforcement for Interactive Elements ───────────── */
+/* ── Universal Pointer Cursor & Instant Mobile Touch Enforcement ───────────── */
 a,
 button,
 [role="button"],
@@ -281,6 +281,8 @@ summary,
 label[for],
 [tabindex]:not([tabindex="-1"]) {
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button:disabled,

@@ -28,8 +28,14 @@ export default function CouponCard({
   const trackedImpression = useRef(false);
 
   const mId = typeof merchantId === "object" ? merchantId?._id : merchantId;
-  const rawMerchantName = typeof merchantId === "object" ? merchantId?.businessName : (typeof merchantId === "string" ? merchantId : undefined);
-  const mName = typeof rawMerchantName === "string" ? rawMerchantName : "Partner";
+  const rawMerchantName =
+    typeof merchantId === "object"
+      ? merchantId?.businessName
+      : typeof merchantId === "string"
+        ? merchantId
+        : undefined;
+  const mName =
+    typeof rawMerchantName === "string" ? rawMerchantName : "Partner";
 
   useEffect(() => {
     if (!cardRef.current || trackedImpression.current) return;
@@ -57,7 +63,11 @@ export default function CouponCard({
 
   const rawVal = coupon.rawDiscountValue || discountValue;
   const rawType = coupon.rawDiscountType || discountType;
-  const isNum = rawVal !== null && rawVal !== undefined && rawVal !== "" && !isNaN(Number(rawVal));
+  const isNum =
+    rawVal !== null &&
+    rawVal !== undefined &&
+    rawVal !== "" &&
+    !Number.isNaN(Number(rawVal));
   const num = Number(rawVal);
 
   const discountFormatted = (() => {
@@ -72,7 +82,11 @@ export default function CouponCard({
     if (rawType === "freebie" || rawType === "bogo") {
       return "BUY 1 GET 1 FREE";
     }
-    return isNum && num <= 100 ? `${num}% OFF` : isNum ? `₹${num} OFF` : "SPECIAL OFFER";
+    return isNum && num <= 100
+      ? `${num}% OFF`
+      : isNum
+        ? `₹${num} OFF`
+        : "SPECIAL OFFER";
   })();
 
   const isExpiringSoon = expiresAt
@@ -81,7 +95,10 @@ export default function CouponCard({
 
   const isHotOrFeatured = coupon.isHot || coupon.isFeatured;
   const displayTitle = typeof title === "string" ? title : "Exclusive Offer";
-  const displayDesc = typeof description === "string" ? description : "No description provided. Terms and conditions apply.";
+  const displayDesc =
+    typeof description === "string"
+      ? description
+      : "No description provided. Terms and conditions apply.";
 
   return (
     <div
@@ -92,7 +109,7 @@ export default function CouponCard({
       <Link
         href={`/deals/${_id}`}
         onClick={handleCardClick}
-        className="p-3.5 flex-1 block hover:no-underline cursor-pointer"
+        className="p-3.5 flex-1 block hover:no-underline cursor-pointer touch-manipulation active:scale-[0.99]"
       >
         {/* Merchant Brand Info */}
         <div className="flex items-center gap-2 mb-3">
@@ -105,7 +122,7 @@ export default function CouponCard({
         </div>
 
         {/* Discount Value */}
-        <h3 className="text-lg font-heading font-bold text-[#35104A] mb-0.5 group-hover:text-[#FF2E63] transition-colors">
+        <h3 className="text-lg font-heading font-bold text-[#35104A] mb-0.5 group-hover:text-[#007F79] transition-colors">
           {discountFormatted}
         </h3>
         <p className="text-xs font-semibold text-[#35104A] mb-1.5 leading-snug line-clamp-1">
@@ -118,20 +135,20 @@ export default function CouponCard({
 
       {/* Ticket Cutout Divider */}
       <div className="relative w-full my-0.5">
-        <div className="absolute left-[-10px] top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#FFF8EF] border border-[#EADBCE] z-10" />
-        <div className="absolute right-[-10px] top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#FFF8EF] border border-[#EADBCE] z-10" />
+        <div className="absolute left-[-10px] top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#FFF8EF] border border-[#EADBCE] z-10 pointer-events-none" />
+        <div className="absolute right-[-10px] top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#FFF8EF] border border-[#EADBCE] z-10 pointer-events-none" />
         <div className="border-t border-dashed border-[#EADBCE] w-full" />
       </div>
 
       {/* Bottom Section */}
       <div className="p-3.5 bg-[#FFF8EF]/50">
         <div className="flex items-center justify-between mb-2.5">
-          <span className="inline-flex items-center gap-1.5 text-[10px] font-medium text-[#007F79] bg-[#007F79]/10 px-2 py-0.5 rounded-full select-none border border-[#007F79]/20">
+          <span className="inline-flex items-center gap-1.5 text-[10px] font-medium text-[#007F79] bg-[#007F79]/10 px-2 py-0.5 rounded-full border border-[#007F79]/20">
             <span className="w-1.5 h-1.5 rounded-full bg-[#007F79]" />
             <span>Active Today</span>
           </span>
           {isExpiringSoon && (
-            <span className="text-[10px] font-semibold text-[#FF2E63] flex items-center gap-1 select-none">
+            <span className="text-[10px] font-semibold text-[#FF8C05] flex items-center gap-1">
               <ShieldAlert className="w-3 h-3" />
               <span>Expiring Soon</span>
             </span>
@@ -143,7 +160,7 @@ export default function CouponCard({
               handleCardClick();
               onRedeem(coupon);
             }}
-            className="w-full text-xs py-2 rounded-xl shadow-2xs border-0 h-auto cursor-pointer font-heading font-bold bg-[#FF2E63] hover:bg-[#E02253] text-white transition-colors"
+            className="w-full text-xs py-2 rounded-xl shadow-2xs border-0 h-auto cursor-pointer font-heading font-bold bg-[#007F79] hover:bg-[#006661] text-white transition-all touch-manipulation active:scale-[0.98]"
           >
             Claim Offer
           </Button>
@@ -151,7 +168,7 @@ export default function CouponCard({
           <Button
             asChild
             onClick={handleCardClick}
-            className="w-full text-xs py-2 rounded-xl shadow-2xs border-0 h-auto cursor-pointer text-center justify-center font-heading font-bold bg-[#FF2E63] hover:bg-[#E02253] text-white transition-colors"
+            className="w-full text-xs py-2 rounded-xl shadow-2xs border-0 h-auto cursor-pointer text-center justify-center font-heading font-bold bg-[#007F79] hover:bg-[#006661] text-white transition-all touch-manipulation active:scale-[0.98]"
           >
             <Link href={`/deals/${_id}`}>View Offer</Link>
           </Button>

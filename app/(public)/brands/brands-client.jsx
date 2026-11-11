@@ -69,7 +69,7 @@ export default function BrandsClient({ brands = [] }) {
   }, [filteredBrands, visibleCount]);
 
   return (
-    <div className="w-full bg-[#FFFDF9] text-[#35104A] font-sans min-h-screen pb-14 text-left select-none">
+    <div className="w-full bg-[#FFFDF9] text-[#35104A] font-sans min-h-screen pb-24 sm:pb-14 text-left">
       {/* ── 1. COMPACT HEADER BAR ── */}
       <div className="bg-[#FFF8EF] border-b border-[#EADBCE] px-2.5 sm:px-4 md:px-5 py-2">
         <div className="flex items-center gap-1.5 text-[10.5px] sm:text-[11px] text-[#6B4C82] font-normal mb-0.5">

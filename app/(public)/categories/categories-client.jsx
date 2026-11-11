@@ -63,7 +63,7 @@ export default function CategoriesClient({
   }, [categories, searchQuery]);
 
   return (
-    <div className="w-full bg-[#FFFDF9] text-[#35104A] font-sans min-h-screen pb-12 select-none">
+    <div className="w-full bg-[#FFFDF9] text-[#35104A] font-sans min-h-screen pb-24 sm:pb-12 text-left">
       {/* ── 1. COMPACT HEADER BAR ── */}
       <div className="bg-[#FFFDF9] border-b border-[#EADBCE] px-3 sm:px-4 md:px-5 py-2.5">
         <div className="flex items-center gap-1.5 text-[11px] text-[#6B4C82] font-normal mb-0.5">
@@ -121,30 +121,31 @@ export default function CategoriesClient({
                 <Link
                   key={cat.slug}
                   href={`/category/${cat.slug}`}
-                  className="group relative flex flex-col justify-between bg-[#FFFDF9] border border-[#EADBCE] rounded-[18px] overflow-hidden shadow-2xs hover:shadow-[0_10px_24px_rgba(53,16,74,0.08)] hover:border-[#007F79]/50 transition-all duration-200 no-underline text-left cursor-pointer select-none h-[200px] sm:h-[215px]"
+                  prefetch={true}
+                  className="group relative flex flex-col justify-between bg-[#FFFDF9] border border-[#EADBCE] rounded-[18px] overflow-hidden shadow-2xs hover:shadow-[0_10px_24px_rgba(53,16,74,0.08)] hover:border-[#007F79]/50 transition-all duration-200 no-underline text-left cursor-pointer h-[200px] sm:h-[215px] touch-manipulation active:scale-[0.98]"
                 >
                   {/* ── 1. Top 50%: Photographic Hero ── */}
-                  <div className="relative w-full h-[50%] overflow-hidden bg-[#35104A]/5 shrink-0">
+                  <div className="relative w-full h-[50%] overflow-hidden bg-[#35104A]/5 shrink-0 pointer-events-none">
                     <SafeImage
                       src={cat.image}
                       alt={cat.title}
                       fill
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 select-none pointer-events-none"
+                      className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 pointer-events-none"
                       fallbackSrc="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1F0A2B]/45 via-transparent to-transparent pointer-events-none" />
                   </div>
 
                   {/* ── 2. Floating Circular Category Icon Badge ── */}
-                  <div className="absolute top-[50%] left-3 sm:left-3.5 -translate-y-1/2 z-20">
+                  <div className="absolute top-[50%] left-3 sm:left-3.5 -translate-y-1/2 z-20 pointer-events-none">
                     <div className="w-9.5 h-9.5 sm:w-10.5 sm:h-10.5 rounded-full bg-[#35104A] text-[#FFD166] group-hover:bg-[#007F79] group-hover:text-white p-1 flex items-center justify-center shadow-xs ring-3 sm:ring-4 ring-[#FFFDF9] group-hover:scale-105 transition-all duration-200">
                       <IconComp className="w-4 h-4 sm:w-4.5 sm:h-4.5 stroke-[1.6]" />
                     </div>
                   </div>
 
                   {/* ── 3. Bottom 50%: Title & Action Row ── */}
-                  <div className="pt-6 sm:pt-6.5 pb-3 sm:pb-3.5 px-3 sm:px-3.5 flex flex-col justify-between flex-1 bg-[#FFFDF9]">
+                  <div className="pt-6 sm:pt-6.5 pb-3 sm:pb-3.5 px-3 sm:px-3.5 flex flex-col justify-between flex-1 bg-[#FFFDF9] pointer-events-none">
                     <div>
                       <h2 className="text-[13px] sm:text-[14px] font-heading font-semibold text-[#35104A] leading-snug tracking-tight group-hover:text-[#007F79] transition-colors line-clamp-1">
                         {cat.title}

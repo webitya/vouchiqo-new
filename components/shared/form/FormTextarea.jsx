@@ -62,8 +62,8 @@ export default function FormTextarea({
               : undefined
         }
         className={cn(
-          "text-sm border-slate-200 bg-white text-slate-800 placeholder:text-slate-400 focus-visible:ring-brand-blue/40 resize-none leading-relaxed rounded-xl",
-          errorMessage && "border-red-500 focus-visible:ring-red-500/30",
+          "text-sm border-slate-200 bg-white text-slate-800 placeholder:text-slate-400 focus-visible:ring-[#007F79]/20 focus-visible:border-[#007F79] resize-none leading-relaxed rounded-xl",
+          errorMessage && "border-red-500 focus-visible:ring-red-500/20",
         )}
         {...rest}
         {...(value !== undefined ? { value } : {})}

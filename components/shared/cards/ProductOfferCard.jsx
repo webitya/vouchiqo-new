@@ -119,16 +119,16 @@ export const ProductOfferCard = memo(function ProductOfferCard({ product }) {
       onClick={handleClick}
       target={affiliateUrl?.startsWith("http") ? "_blank" : "_self"}
       rel="noopener noreferrer"
-      className="group relative flex flex-col rounded-xl no-underline cursor-pointer border border-[#EADBCE] bg-[#FFF8EF] shadow-2xs hover:shadow-md hover:border-[#007F79]/50 hover:shadow-[0_8px_20px_rgba(0,127,121,0.12)] hover:-translate-y-0.5 transition-all duration-200 select-none text-left overflow-hidden h-full font-sans"
+      className="group relative flex flex-col rounded-xl no-underline cursor-pointer border border-[#EADBCE] bg-[#FFF8EF] shadow-2xs hover:shadow-md hover:border-[#007F79]/50 hover:shadow-[0_8px_20px_rgba(0,127,121,0.12)] hover:-translate-y-0.5 transition-all duration-200 text-left overflow-hidden h-full font-sans touch-manipulation active:scale-[0.98]"
     >
       {/* ===== Product Banner Image - 16:9 native aspect ratio for compact promotional banners ===== */}
-      <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#35104A] shrink-0">
+      <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#35104A] shrink-0 pointer-events-none">
         <SafeImage
           src={coverImage}
           alt={title || "Offer banner"}
           fill
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.04] select-none pointer-events-none"
+          className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.04] pointer-events-none"
         />
 
         {/* Subtle bottom vignette to ensure contrast */}
@@ -136,14 +136,14 @@ export const ProductOfferCard = memo(function ProductOfferCard({ product }) {
 
         {/* Floating discount badge - top-left */}
         {badgeLabel && (
-          <div className="absolute top-2 left-2 z-10 bg-[#007F79] text-white text-[9.5px] sm:text-[10px] font-heading font-semibold px-1.5 sm:px-2 py-0.5 rounded shadow-2xs leading-none tracking-wide">
+          <div className="absolute top-2 left-2 z-10 bg-[#007F79] text-white text-[9.5px] sm:text-[10px] font-heading font-semibold px-1.5 sm:px-2 py-0.5 rounded shadow-2xs leading-none tracking-wide pointer-events-none">
             <span>{badgeLabel}</span>
           </div>
         )}
       </div>
 
       {/* ===== Card Body ===== */}
-      <div className="flex-1 flex flex-col p-2.5 sm:p-3 gap-1.5 bg-[#FFF8EF]">
+      <div className="flex-1 flex flex-col p-2.5 sm:p-3 gap-1.5 bg-[#FFF8EF] pointer-events-none">
         {/* Brand / Merchant Row */}
         <div className="flex items-center gap-1.5 min-w-0">
           <div className="w-3.5 h-3.5 rounded-full border border-[#EADBCE] bg-white overflow-hidden shrink-0 flex items-center justify-center p-0.5">

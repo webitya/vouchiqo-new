@@ -4,7 +4,6 @@ import {
   Calendar,
   CheckCircle2,
   Clock,
-  Eye,
   Gift,
   Image as ImageIcon,
   Lock,
@@ -58,30 +57,19 @@ export default function LivePreviewCard({
       : null;
 
   return (
-    <Card className="border-slate-200/90 shadow-2xs rounded-xl bg-white p-3 space-y-2.5 text-left font-sans relative overflow-hidden">
+    <Card className="border-slate-200 shadow-xs rounded-xl bg-white p-3 space-y-2.5 text-left font-sans">
       {/* Header */}
       <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-        <span className="flex items-center gap-1.5 text-xs font-medium text-slate-800">
-          <Eye className="w-4 h-4 text-[#FF2E63]" /> Live Offer Preview
+        <span className="text-xs font-heading font-semibold text-slate-800">
+          Live Offer Preview
         </span>
-        <div className="flex items-center gap-1.5">
-          <Badge
-            variant="outline"
-            className="bg-rose-50 text-[#FF2E63] border-rose-200 text-[10px] font-medium px-2 py-0.5"
-          >
-            2:1 Ratio
-          </Badge>
-          <Badge
-            variant="outline"
-            className="bg-emerald-50 text-emerald-700 border-emerald-200 text-[10px] font-medium px-2 py-0.5"
-          >
-            Live Preview
-          </Badge>
-        </div>
+        <span className="text-[10px] text-slate-400 font-normal">
+          Real-time Preview
+        </span>
       </div>
 
       {/* Main Preview Container */}
-      <div className="border border-slate-200/90 rounded-xl overflow-hidden bg-white shadow-2xs">
+      <div className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
         {/* Banner Image Container with exact 2:1 Aspect Ratio (800x400px) */}
         <div className="w-full aspect-[2/1] bg-slate-900 relative flex items-end p-3 overflow-hidden">
           {formData.image ? (
@@ -91,14 +79,14 @@ export default function LivePreviewCard({
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 hover:scale-105"
             />
           ) : (
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-rose-950/40 to-slate-900 flex items-center justify-center">
+            <div className="absolute inset-0 bg-slate-900 flex items-center justify-center">
               <div className="text-center p-3">
-                <ImageIcon className="w-7 h-7 text-rose-300/40 mx-auto mb-1" />
+                <ImageIcon className="w-6 h-6 text-slate-600 mx-auto mb-1" />
                 <span className="text-[10px] font-medium text-slate-400 block">
-                  800×400 Banner Image Preview
+                  800×400 Banner Preview
                 </span>
                 <span className="text-[9px] text-slate-500 font-normal">
-                  (Upload 2:1 horizontal image in Section 2)
+                  (Upload landscape image in Section 2)
                 </span>
               </div>
             </div>
@@ -109,26 +97,21 @@ export default function LivePreviewCard({
 
           {/* Top Floating Badges */}
           <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10">
-            <Badge className="bg-[#FF2E63] text-white font-medium text-[10px] px-2 py-0.5 border-0 shadow-sm">
+            <Badge className="bg-[#007F79] text-white font-medium text-[10px] px-2 py-0.5 border-0 shadow-xs">
               {offerType === "code"
                 ? "Smart Code"
                 : offerType === "deal"
                   ? "Direct Deal"
                   : "Special Gift"}
             </Badge>
-            <span className="text-white text-[10px] font-medium bg-slate-950/70 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/20 shadow-xs">
+            <span className="text-white text-[10px] font-normal bg-slate-950/70 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/20">
               {merchant?.businessName || "Store Name"}
             </span>
           </div>
 
-          {/* Bottom Floating Ratio Indicator */}
-          <div className="relative z-10 flex items-center justify-between w-full text-white text-[9px] font-normal">
-            <span className="bg-black/50 backdrop-blur-xs px-1.5 py-0.5 rounded text-[8px] text-slate-300">
-              2:1 Ratio
-            </span>
-            <span className="text-emerald-400 font-medium">
-              Verified Merchant
-            </span>
+          {/* Bottom Floating Status */}
+          <div className="relative z-10 flex items-center justify-end w-full text-white text-[9px] font-normal">
+            <span className="text-teal-300 font-medium">Verified Merchant</span>
           </div>
         </div>
 
@@ -137,27 +120,27 @@ export default function LivePreviewCard({
           {/* Headline & Description */}
           <div>
             <h4 className="text-xs font-medium text-slate-900 leading-snug line-clamp-2">
-              {formData.headline || "Flat 20% off on all Italian Marble Tiles"}
+              {formData.headline || "Flat 20% off on all items"}
             </h4>
             <p className="text-[11px] text-slate-600 font-normal mt-1 line-clamp-2 leading-relaxed">
               {formData.shortDescription ||
-                "Get 20% discount on total invoice amount for all premium tiles."}
+                "Get 20% discount on total billing amount."}
             </p>
           </div>
 
           {/* Offer Mechanics / Pricing Card */}
           {offerType === "code" && (
-            <div className="flex items-center justify-between p-2 bg-rose-50/40 rounded-xl border border-rose-100 text-xs">
+            <div className="flex items-center justify-between p-2 bg-slate-50 rounded-lg border border-slate-200 text-xs">
               <div className="flex items-center gap-1.5">
-                <Ticket className="w-4 h-4 text-[#FF2E63] shrink-0" />
+                <Ticket className="w-3.5 h-3.5 text-[#007F79] shrink-0" />
                 <span className="text-slate-600 font-normal text-[11px]">
                   Code:{" "}
-                  <span className="font-mono text-slate-900 font-medium uppercase text-xs bg-white px-1.5 py-0.5 rounded border border-rose-200">
+                  <span className="font-mono text-slate-900 font-medium uppercase text-xs bg-white px-1.5 py-0.5 rounded border border-slate-200">
                     {formData.code || "SAVE20"}
                   </span>
                 </span>
               </div>
-              <span className="text-[#FF2E63] font-medium text-xs bg-white px-2 py-0.5 rounded-lg border border-rose-200/80 shadow-2xs">
+              <span className="text-[#007F79] font-medium text-xs bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
                 {discountDisplay}
               </span>
             </div>
@@ -213,10 +196,10 @@ export default function LivePreviewCard({
 
           {/* Min Order Value & Max Cap Restrictions */}
           {(formData.minOrderValue || formData.maxCap) && (
-            <div className="flex items-center justify-between p-2 bg-slate-50 rounded-lg border border-slate-200/80 text-[10px] font-normal text-slate-700">
+            <div className="flex items-center justify-between p-2 bg-slate-50 rounded-lg border border-slate-200 text-[10px] font-normal text-slate-700">
               {formData.minOrderValue ? (
                 <span className="flex items-center gap-1">
-                  <ShieldCheck className="w-3 h-3 text-[#FF2E63]" />
+                  <ShieldCheck className="w-3 h-3 text-[#007F79]" />
                   Min Purchase:{" "}
                   <span className="text-slate-900 font-medium">
                     ₹{formData.minOrderValue}
@@ -242,11 +225,11 @@ export default function LivePreviewCard({
             formData.endDate ||
             formData.validHours ||
             validDaysList) && (
-            <div className="p-2 rounded-xl bg-rose-50/30 border border-rose-100/80 text-[10px] space-y-1">
+            <div className="p-2 rounded-lg bg-slate-50 border border-slate-200 text-[10px] space-y-1">
               {(formData.startDate || formData.endDate) && (
                 <div className="flex items-center justify-between text-slate-700 font-normal">
                   <span className="flex items-center gap-1 text-slate-400">
-                    <Calendar className="w-3 h-3 text-[#FF2E63]" /> Validity:
+                    <Calendar className="w-3 h-3 text-[#007F79]" /> Validity:
                   </span>
                   <span className="font-medium text-slate-800">
                     {formData.startDate
@@ -269,7 +252,7 @@ export default function LivePreviewCard({
               {validDaysList && (
                 <div className="flex items-center justify-between text-slate-700 font-normal">
                   <span className="text-slate-400">Valid Days:</span>
-                  <span className="font-medium text-[#FF2E63] bg-white px-1.5 py-0.2 rounded border border-rose-200">
+                  <span className="font-medium text-[#007F79] bg-white px-1.5 py-0.5 rounded border border-teal-200">
                     {validDaysList}
                   </span>
                 </div>
@@ -277,7 +260,7 @@ export default function LivePreviewCard({
               {formData.validHours && (
                 <div className="flex items-center justify-between text-slate-700 font-normal">
                   <span className="flex items-center gap-1 text-slate-400">
-                    <Clock className="w-3 h-3 text-[#FF2E63]" /> Store Hours:
+                    <Clock className="w-3 h-3 text-[#007F79]" /> Store Hours:
                   </span>
                   <span className="font-medium text-slate-800">
                     {formData.validHours}
@@ -290,17 +273,17 @@ export default function LivePreviewCard({
           {/* Demographic & Category Footer */}
           <div className="flex items-center justify-between text-[10px] text-slate-500 font-normal border-t border-slate-100 pt-2">
             <span className="flex items-center gap-1 text-slate-600">
-              <MapPin className="w-3 h-3 text-[#FF2E63]" />
+              <MapPin className="w-3 h-3 text-slate-400" />
               {merchant?.address?.city || "Ranchi"} (In-Store)
             </span>
-            <span className="text-slate-800 font-medium flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded-full border border-slate-200/80">
-              <Tag className="w-3 h-3 text-[#FF2E63]" />
+            <span className="text-slate-800 font-normal flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded-full border border-slate-200">
+              <Tag className="w-3 h-3 text-slate-400" />
               {selectedCategoryLabel}
             </span>
           </div>
 
-          <Button className="w-full bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium h-8.5 rounded-xl shadow-xs cursor-default flex items-center justify-center gap-1.5 transition-colors">
-            <CheckCircle2 className="w-4 h-4 text-white" />
+          <Button className="w-full bg-[#007F79] hover:bg-[#00635E] text-white text-xs font-medium h-8 rounded-lg shadow-xs cursor-default flex items-center justify-center gap-1.5 transition-colors">
+            <CheckCircle2 className="w-3.5 h-3.5 text-white" />
             <span>Get Claim Code</span>
           </Button>
         </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  BarChart3,
   DollarSign,
   MousePointer,
   ShoppingCart,
@@ -37,11 +36,10 @@ export default function CampaignReportModal({
       <DialogContent className="max-w-xl bg-white p-4 sm:p-5 rounded-xl border border-slate-200 text-left shadow-lg">
         <DialogHeader className="space-y-1 pb-2.5 border-b border-slate-100">
           <div className="flex items-center justify-between">
-            <DialogTitle className="text-sm font-semibold text-slate-900 flex items-center gap-2">
-              <BarChart3 className="w-4 h-4 text-festival-teal" />
+            <DialogTitle className="text-sm font-semibold text-slate-900">
               Campaign Analytics Report
             </DialogTitle>
-            <Badge className="bg-warm-ivory text-festival-teal border-brand-border text-[10px] font-medium capitalize">
+            <Badge className="bg-slate-50 text-[#007F79] border-slate-200 text-[10px] font-medium capitalize">
               {campaign.type || "Flash Sale"}
             </Badge>
           </div>

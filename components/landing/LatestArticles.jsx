@@ -84,7 +84,7 @@ const ArticleCard = memo(function ArticleCard({ article }) {
   return (
     <Link
       href={article.href}
-      className="art-card group block no-underline cursor-pointer select-none h-full font-sans"
+      className="art-card group block no-underline cursor-pointer h-full font-sans touch-manipulation active:scale-[0.98]"
     >
       <div className="art-card__inner flex flex-col rounded-2xl overflow-hidden bg-[#FFF8EF] border border-[#EADBCE] hover:border-[#FF2E63] transition-all duration-300 hover:shadow-[0_8px_20px_rgba(255,46,99,0.16)] shadow-2xs h-full">
         {/* Cover image */}
@@ -186,7 +186,7 @@ export function LatestArticles() {
   };
 
   return (
-    <section className="text-left w-full overflow-hidden select-none pb-2 font-sans">
+    <section className="text-left w-full overflow-hidden pb-2 font-sans">
       {/* Section Header (No top-right chevron icons) */}
       <div className="flex items-center justify-between mb-2 sm:mb-2.5">
         <div>

@@ -98,8 +98,8 @@ export default function FormSelect({
             errorMessage ? `${name}-error` : hint ? `${name}-hint` : undefined
           }
           className={cn(
-            "h-10 text-xs border-slate-200 bg-white text-slate-800 font-bold focus:ring-brand-blue/40 rounded-xl",
-            errorMessage && "border-red-500 focus:ring-red-500/30",
+            "h-10 text-xs border-slate-200 bg-white text-slate-800 font-medium focus:ring-[#007F79]/20 focus:border-[#007F79] rounded-xl",
+            errorMessage && "border-red-500 focus:ring-red-500/20",
             triggerClassName,
           )}
         >
@@ -107,7 +107,7 @@ export default function FormSelect({
         </SelectTrigger>
         <SelectContent
           className={cn(
-            "bg-white border-slate-200 text-slate-800 z-[300]",
+            "bg-white border border-slate-200 text-slate-800 shadow-lg rounded-xl z-[300] p-1",
             contentClassName,
           )}
         >
@@ -115,7 +115,7 @@ export default function FormSelect({
             <SelectItem
               key={`${opt.value}-${idx}`}
               value={opt.value}
-              className="text-xs cursor-pointer focus:bg-slate-100 font-medium"
+              className="text-xs cursor-pointer text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:bg-[#007F79]/10 focus:text-[#007F79] font-medium rounded-lg"
             >
               {opt.label}
             </SelectItem>

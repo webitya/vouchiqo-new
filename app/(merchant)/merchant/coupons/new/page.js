@@ -103,22 +103,11 @@ function CreateListingContent() {
     >
       <div className="flex flex-col gap-3.5 text-left font-sans w-full">
         {/* UNIFIED 2-SECTION SWITCHER HUB */}
-        <div className="bg-white border border-slate-200/90 rounded-2xl p-3.5 sm:p-4 shadow-2xs space-y-3">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-slate-100 pb-3">
+        <div className="bg-white border border-slate-200 rounded-xl p-3 sm:p-3.5 shadow-xs space-y-2.5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-slate-100 pb-2.5">
             <div>
-              <h1 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight flex items-center gap-2">
-                <span>Post New Listing</span>
-                <span
-                  className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border ${
-                    listingType === "affiliate"
-                      ? "bg-indigo-50 text-indigo-700 border-indigo-200/60"
-                      : "bg-rose-50 text-[#FF2E63] border-rose-200/60"
-                  }`}
-                >
-                  {listingType === "affiliate"
-                    ? "Section: Website Product Link"
-                    : "Section: Store Offer / Coupon"}
-                </span>
+              <h1 className="text-base sm:text-lg font-heading font-semibold text-slate-900 tracking-tight">
+                Post New Listing
               </h1>
               <p className="text-xs text-slate-500 font-normal mt-0.5">
                 Choose between publishing a store discount coupon/deal or a
@@ -128,7 +117,7 @@ function CreateListingContent() {
             <Button
               variant="outline"
               asChild
-              className="h-8 px-3 text-xs text-slate-600 hover:text-slate-900 border-slate-200 rounded-xl cursor-pointer self-start sm:self-auto"
+              className="h-8 px-3 text-xs text-slate-600 hover:text-slate-900 border-slate-200 rounded-lg cursor-pointer self-start sm:self-auto"
             >
               <Link
                 href="/merchant/coupons"
@@ -141,48 +130,35 @@ function CreateListingContent() {
           </div>
 
           {/* 2 Interactive Format Selection Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-0.5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 pt-0.5">
             {/* Section A: Offer & Coupon Listing */}
             <div
               onClick={() => handleSwitchType("offer")}
-              className={`relative flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl border transition-all cursor-pointer select-none ${
+              className={`relative flex items-center gap-3 p-3 rounded-xl border transition-all cursor-pointer select-none ${
                 listingType === "offer"
-                  ? "border-[#FF2E63] bg-gradient-to-br from-rose-50/70 via-white to-rose-50/30 shadow-xs ring-2 ring-[#FF2E63]/20"
+                  ? "border-[#007F79] bg-[#007F79]/5 shadow-xs ring-1 ring-[#007F79]/20"
                   : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/60"
               }`}
             >
               <div
-                className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
                   listingType === "offer"
-                    ? "bg-[#FF2E63] text-white shadow-xs"
+                    ? "bg-[#007F79] text-white"
                     : "bg-slate-100 text-slate-500"
                 }`}
               >
-                <Ticket className="w-5 h-5" />
+                <Ticket className="w-4.5 h-4.5" />
               </div>
-              <div className="flex-1 min-w-0 pr-4">
-                <div className="flex items-center gap-2">
-                  <h3 className="text-xs sm:text-sm font-semibold text-slate-900">
-                    Store Offer &amp; Coupon Listing
-                  </h3>
-                  <span className="text-[10px] font-medium px-1.5 py-0.2 rounded bg-rose-100 text-rose-700">
-                    Voucher Deal
-                  </span>
-                </div>
-                <p className="text-[11px] text-slate-500 font-normal leading-relaxed mt-1">
-                  Create promo discount codes, flat ₹ / % off, in-store or
-                  online voucher codes, and special seasonal deals for shoppers.
+              <div className="flex-1 min-w-0 pr-6">
+                <h3 className="text-xs sm:text-sm font-heading font-medium text-slate-900">
+                  Store Offer &amp; Coupon Listing
+                </h3>
+                <p className="text-[11px] text-slate-500 font-normal leading-normal mt-0.5 line-clamp-1">
+                  Promo codes, flat ₹ / % off in-store or online voucher deals.
                 </p>
-                <div className="flex items-center gap-2 mt-2 text-[10px] text-slate-400 font-medium">
-                  <span>✓ Coupon Codes</span>
-                  <span>•</span>
-                  <span>✓ Terms &amp; Limits</span>
-                  <span>•</span>
-                  <span>✓ QR Verification</span>
-                </div>
               </div>
               {listingType === "offer" && (
-                <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-[#FF2E63] text-white flex items-center justify-center shadow-2xs">
+                <div className="absolute top-3 right-3 w-4.5 h-4.5 rounded-full bg-[#007F79] text-white flex items-center justify-center shadow-xs">
                   <Check className="w-3 h-3 stroke-[2.5]" />
                 </div>
               )}
@@ -191,45 +167,32 @@ function CreateListingContent() {
             {/* Section B: Website Product Link Listing */}
             <div
               onClick={() => handleSwitchType("affiliate")}
-              className={`relative flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl border transition-all cursor-pointer select-none ${
+              className={`relative flex items-center gap-3 p-3 rounded-xl border transition-all cursor-pointer select-none ${
                 listingType === "affiliate"
-                  ? "border-indigo-600 bg-gradient-to-br from-indigo-50/70 via-white to-indigo-50/30 shadow-xs ring-2 ring-indigo-500/20"
+                  ? "border-[#007F79] bg-[#007F79]/5 shadow-xs ring-1 ring-[#007F79]/20"
                   : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/60"
               }`}
             >
               <div
-                className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
                   listingType === "affiliate"
-                    ? "bg-indigo-600 text-white shadow-xs"
+                    ? "bg-[#007F79] text-white"
                     : "bg-slate-100 text-slate-500"
                 }`}
               >
-                <ShoppingBag className="w-5 h-5" />
+                <ShoppingBag className="w-4.5 h-4.5" />
               </div>
-              <div className="flex-1 min-w-0 pr-4">
-                <div className="flex items-center gap-2">
-                  <h3 className="text-xs sm:text-sm font-semibold text-slate-900">
-                    Website Product Link Listing
-                  </h3>
-                  <span className="text-[10px] font-medium px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-700">
-                    Product Link
-                  </span>
-                </div>
-                <p className="text-[11px] text-slate-500 font-normal leading-relaxed mt-1">
-                  List specific products from your website with direct
-                  destination link, product image, original vs deal pricing, and
-                  buy link.
+              <div className="flex-1 min-w-0 pr-6">
+                <h3 className="text-xs sm:text-sm font-heading font-medium text-slate-900">
+                  Website Product Link Listing
+                </h3>
+                <p className="text-[11px] text-slate-500 font-normal leading-normal mt-0.5 line-clamp-1">
+                  Direct product link to your website with product images and
+                  pricing.
                 </p>
-                <div className="flex items-center gap-2 mt-2 text-[10px] text-slate-400 font-medium">
-                  <span>✓ Direct Website URL</span>
-                  <span>•</span>
-                  <span>✓ Product Image</span>
-                  <span>•</span>
-                  <span>✓ Instant Clicks</span>
-                </div>
               </div>
               {listingType === "affiliate" && (
-                <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-2xs">
+                <div className="absolute top-3 right-3 w-4.5 h-4.5 rounded-full bg-[#007F79] text-white flex items-center justify-center shadow-xs">
                   <Check className="w-3 h-3 stroke-[2.5]" />
                 </div>
               )}
@@ -239,9 +202,9 @@ function CreateListingContent() {
 
         {/* SECTION 1: STORE OFFER & COUPON LISTING */}
         {listingType === "offer" && (
-          <div className="flex flex-col gap-3.5 w-full animate-in fade-in duration-200">
+          <div className="flex flex-col gap-3 w-full animate-in fade-in duration-200">
             {/* COMPACT STEPPER BAR */}
-            <div className="w-full flex items-center gap-2 py-1.5 px-3 bg-white border border-slate-200/90 rounded-xl shadow-2xs overflow-x-auto">
+            <div className="w-full flex items-center gap-2 py-1.5 px-3 bg-white border border-slate-200 rounded-lg shadow-xs overflow-x-auto">
               <Button
                 variant="ghost"
                 asChild
@@ -251,7 +214,7 @@ function CreateListingContent() {
                   <ArrowLeft className="w-3.5 h-3.5" />
                 </Link>
               </Button>
-              <div className="flex items-center flex-1 min-w-0 gap-1.5 sm:gap-3">
+              <div className="flex items-center flex-1 min-w-0 gap-1.5 sm:gap-2.5">
                 {SECTIONS.map((sec, idx) => {
                   const isActive = activeSection === sec.key;
                   const isPast = currentSectionObj.number > sec.number;
@@ -266,18 +229,18 @@ function CreateListingContent() {
                         onClick={() => goToSection(sec.key)}
                         className={`flex items-center gap-1.5 text-[11px] transition-all cursor-pointer shrink-0 ${
                           isActive
-                            ? "text-slate-900 font-medium"
+                            ? "text-[#35104A] font-medium"
                             : isPast
-                              ? "text-emerald-700 font-normal"
+                              ? "text-[#007F79] font-normal"
                               : "text-slate-400 font-normal"
                         }`}
                       >
                         <span
-                          className={`w-4.5 h-4.5 rounded-full flex items-center justify-center text-[10px] font-medium transition-all ${
+                          className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-medium transition-all ${
                             isActive
-                              ? "bg-[#FF2E63] text-white shadow-2xs"
+                              ? "bg-[#007F79] text-white shadow-xs"
                               : isPast
-                                ? "bg-emerald-100 text-emerald-700 border border-emerald-200"
+                                ? "bg-teal-50 text-[#007F79] border border-teal-200"
                                 : "bg-slate-100 text-slate-400"
                           }`}
                         >
@@ -295,7 +258,7 @@ function CreateListingContent() {
                       {!isLast && (
                         <div
                           className={`h-0.5 flex-1 rounded-full transition-colors min-w-[8px] ${
-                            isPast ? "bg-emerald-500" : "bg-slate-200"
+                            isPast ? "bg-[#007F79]" : "bg-slate-200"
                           }`}
                         />
                       )}

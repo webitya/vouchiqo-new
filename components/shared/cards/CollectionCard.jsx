@@ -103,7 +103,7 @@ export default function CollectionCard({ title, logo, image, href = "#" }) {
 
   return (
     <div
-      className="bg-white rounded-md shadow-sm border border-slate-200/80 overflow-hidden relative transition-all duration-300 hover:shadow-lg select-none text-left flex flex-col h-[380px]"
+      className="bg-white rounded-md shadow-sm border border-slate-200/80 overflow-hidden relative transition-all duration-300 hover:shadow-lg text-left flex flex-col h-[380px]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

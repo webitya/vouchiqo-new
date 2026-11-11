@@ -3,7 +3,7 @@
 
 import { ArrowRight, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import BrandGridItem from "@/components/shared/cards/BrandGridItem";
 import SafeImage from "@/components/shared/SafeImage";
 import TwitterVerifiedBadge from "@/components/shared/TwitterVerifiedBadge";
@@ -234,11 +234,11 @@ export default function PopularStores({ merchants = [] }) {
   };
 
   return (
-    <section className="g-pop-store w-full select-none text-left overflow-hidden">
+    <section className="g-pop-store w-full text-left overflow-hidden">
       {/* Clean Section Header (No top dots, no arrow buttons) */}
       <div className="flex justify-between items-center mb-2 sm:mb-2.5">
         <div className="flex items-center gap-2">
-          <h2 className="text-base sm:text-lg md:text-xl font-heading font-bold text-[#FF2E63] tracking-tight">
+          <h2 className="text-base sm:text-lg md:text-xl font-heading font-bold text-[#35104A] tracking-tight">
             Popular Stores
           </h2>
           <span className="text-[10px] sm:text-[10.5px] font-heading font-semibold text-[#6B4C82] bg-[#FFF8EF] border border-[#EADBCE] px-2.5 py-0.5 rounded-full">
@@ -253,7 +253,7 @@ export default function PopularStores({ merchants = [] }) {
           <Link
             href={sodHref}
             prefetch={true}
-            className="relative flex items-center gap-2 sm:gap-2.5 p-2 sm:p-2.5 rounded-xl border border-[#EADBCE] bg-[#FFF8EF] shadow-2xs hover:shadow-md hover:border-[#FF2E63]/40 transition-all duration-200 overflow-hidden no-underline group select-none font-sans"
+            className="relative flex items-center gap-2 sm:gap-2.5 p-2 sm:p-2.5 rounded-xl border border-[#EADBCE] bg-[#FFF8EF] shadow-2xs hover:shadow-md hover:border-[#007F79]/40 transition-all duration-200 overflow-hidden no-underline group font-sans touch-manipulation active:scale-[0.98]"
           >
             {/* Subtle banner accent watermark on the right */}
             <div className="absolute right-0 top-0 bottom-0 w-2/5 overflow-hidden pointer-events-none opacity-20">

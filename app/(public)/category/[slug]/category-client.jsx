@@ -169,6 +169,21 @@ export default function CategoryClient({
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
+  // Lock background scroll when mobile filter drawer is open
+  useEffect(() => {
+    if (isMobileFilterOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.setAttribute("data-scroll-locked", "true");
+    } else {
+      document.body.style.overflow = "";
+      document.body.removeAttribute("data-scroll-locked");
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.removeAttribute("data-scroll-locked");
+    };
+  }, [isMobileFilterOpen]);
+
   const rawSlug = categoryInfo?.slug || "electronics";
 
   // Monitor scroll for back-to-top button
@@ -505,7 +520,7 @@ export default function CategoryClient({
             <button
               type="button"
               onClick={() => setSelectedSub("all")}
-              className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer ${
+              className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer touch-manipulation active:scale-[0.99] ${
                 selectedSub === "all"
                   ? "bg-[#007F79] text-white font-heading font-semibold shadow-xs"
                   : "text-[#35104A] hover:bg-[#FFF8EF] hover:text-[#007F79] font-medium"
@@ -532,7 +547,7 @@ export default function CategoryClient({
                   onClick={() =>
                     setSelectedSub(sub.name === selectedSub ? "all" : sub.name)
                   }
-                  className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer ${
+                  className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer touch-manipulation active:scale-[0.99] ${
                     isSelected
                       ? "bg-[#007F79] text-white font-heading font-semibold shadow-xs"
                       : "text-[#35104A] hover:bg-[#FFF8EF] hover:text-[#007F79] font-medium"
@@ -606,10 +621,11 @@ export default function CategoryClient({
             {filteredBrandsList.map((brand, idx) => {
               const isChecked = selectedBrands.includes(brand.name);
               return (
-                <label
+                <button
                   key={idx}
+                  type="button"
                   onClick={() => handleToggleBrand(brand.name)}
-                  className={`flex items-center justify-between px-2 py-1.5 rounded-lg text-xs cursor-pointer select-none transition-colors ${
+                  className={`w-full flex items-center justify-between px-2 py-1.5 rounded-lg text-xs cursor-pointer transition-colors touch-manipulation active:scale-[0.99] text-left ${
                     isChecked
                       ? "bg-[#007F79]/10 text-[#007F79] font-heading font-semibold"
                       : "hover:bg-[#FFF8EF] text-[#35104A]"
@@ -627,7 +643,7 @@ export default function CategoryClient({
                         <Check className="w-2.5 h-2.5 stroke-[2]" />
                       )}
                     </div>
-                    <div className="w-4 h-4 rounded-full overflow-hidden shrink-0 border border-[#EADBCE]/50 bg-white flex items-center justify-center">
+                    <div className="w-4 h-4 rounded-full overflow-hidden shrink-0 border border-[#EADBCE]/50 bg-white flex items-center justify-center pointer-events-none">
                       <SafeImage
                         src={brand.logo}
                         alt={brand.name || "Brand logo"}
@@ -641,7 +657,7 @@ export default function CategoryClient({
                   <span className="text-[10px] text-[#6B4C82] font-medium ml-1 shrink-0">
                     ({brand.count})
                   </span>
-                </label>
+                </button>
               );
             })}
           </div>
@@ -678,7 +694,7 @@ export default function CategoryClient({
                 key={item.value}
                 type="button"
                 onClick={() => setMinDiscount(item.value)}
-                className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer ${
+                className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer touch-manipulation active:scale-[0.99] ${
                   isSelected
                     ? "bg-[#007F79]/10 text-[#007F79] font-heading font-semibold border border-[#007F79]/20"
                     : "text-[#35104A] hover:bg-[#FFF8EF] hover:text-[#007F79] font-medium"
@@ -725,7 +741,7 @@ export default function CategoryClient({
                 key={item.value}
                 type="button"
                 onClick={() => setPriceRange(item.value)}
-                className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer ${
+                className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer touch-manipulation active:scale-[0.99] ${
                   isSelected
                     ? "bg-[#007F79]/10 text-[#007F79] font-heading font-semibold border border-[#007F79]/20"
                     : "text-[#35104A] hover:bg-[#FFF8EF] hover:text-[#007F79] font-medium"
@@ -744,7 +760,7 @@ export default function CategoryClient({
   );
 
   return (
-    <div className="w-full bg-[#FFFDF9] text-[#35104A] font-sans min-h-screen pb-16 select-none relative">
+    <div className="w-full bg-[#FFFDF9] text-[#35104A] font-sans min-h-screen pb-24 md:pb-16 text-left relative">
       {/* ── 1. FULL-WIDTH EDITORIAL HERO HEADER ── */}
       <div className="w-full bg-gradient-to-b from-[#FFF8EF] to-[#FFFDF9] border-b border-[#EADBCE]/80 px-2.5 sm:px-4 md:px-5 py-2.5 sm:py-3.5">
         <div className="w-full">
@@ -841,13 +857,13 @@ export default function CategoryClient({
                 )}
               </div>
 
-              {/* Mobile Filter Button + Offer Type Tabs + Sort */}
+              {/* Mobile Filter Button + Offer Type Tabs */}
               <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0">
                 {/* Mobile Filter Button */}
                 <button
                   type="button"
                   onClick={() => setIsMobileFilterOpen(true)}
-                  className="md:hidden flex items-center gap-1.5 h-9 px-3 bg-[#FFF8EF] hover:bg-[#EADBCE]/50 text-[#35104A] border border-[#EADBCE] text-xs font-heading font-medium rounded-xl transition-all cursor-pointer"
+                  className="md:hidden flex items-center gap-1.5 h-9 px-3 bg-[#FFF8EF] hover:bg-[#EADBCE]/50 text-[#35104A] border border-[#EADBCE] text-xs font-heading font-medium rounded-xl transition-all cursor-pointer touch-manipulation active:scale-95 shrink-0"
                 >
                   <SlidersHorizontal className="w-3.5 h-3.5 text-[#007F79]" />
                   <span>Filters</span>
@@ -864,7 +880,7 @@ export default function CategoryClient({
                     <button
                       type="button"
                       onClick={() => setOfferType("all")}
-                      className={`px-3 py-1 rounded-lg text-xs font-heading transition-all cursor-pointer ${
+                      className={`px-3 py-1 rounded-lg text-xs font-heading transition-all cursor-pointer touch-manipulation active:scale-95 ${
                         offerType === "all"
                           ? "bg-white text-[#35104A] font-semibold shadow-2xs border border-[#EADBCE]/60"
                           : "text-[#6B4C82] hover:text-[#35104A] font-medium"
@@ -875,7 +891,7 @@ export default function CategoryClient({
                     <button
                       type="button"
                       onClick={() => setOfferType("deals")}
-                      className={`px-3 py-1 rounded-lg text-xs font-heading transition-all cursor-pointer ${
+                      className={`px-3 py-1 rounded-lg text-xs font-heading transition-all cursor-pointer touch-manipulation active:scale-95 ${
                         offerType === "deals"
                           ? "bg-white text-[#007F79] font-semibold shadow-2xs border border-[#EADBCE]/60"
                           : "text-[#6B4C82] hover:text-[#35104A] font-medium"
@@ -886,7 +902,7 @@ export default function CategoryClient({
                     <button
                       type="button"
                       onClick={() => setOfferType("coupons")}
-                      className={`px-3 py-1 rounded-lg text-xs font-heading transition-all cursor-pointer ${
+                      className={`px-3 py-1 rounded-lg text-xs font-heading transition-all cursor-pointer touch-manipulation active:scale-95 ${
                         offerType === "coupons"
                           ? "bg-white text-[#007F79] font-semibold shadow-2xs border border-[#EADBCE]/60"
                           : "text-[#6B4C82] hover:text-[#35104A] font-medium"
@@ -896,19 +912,6 @@ export default function CategoryClient({
                     </button>
                   </div>
                 )}
-
-                {/* Sort Dropdown */}
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="h-9 px-2.5 bg-white hover:bg-[#FFF8EF] text-xs font-heading font-medium text-[#35104A] rounded-xl border border-[#EADBCE] outline-none cursor-pointer focus:border-[#007F79]"
-                >
-                  <option value="featured">Featured Deals</option>
-                  <option value="discount-desc">Discount: High to Low</option>
-                  <option value="price-asc">Price: Low to High</option>
-                  <option value="price-desc">Price: High to Low</option>
-                  <option value="latest">Newest Added</option>
-                </select>
               </div>
             </div>
 
@@ -1048,7 +1051,7 @@ export default function CategoryClient({
                     return (
                       <div
                         key={coupon._id}
-                        className="bg-[#FFFDF9] border border-[#EADBCE] rounded-2xl p-3.5 shadow-2xs hover:shadow-[0_8px_20px_rgba(53,16,74,0.08)] hover:border-[#007F79]/50 transition-all duration-300 flex flex-col justify-between select-none group text-left cursor-pointer"
+                        className="bg-[#FFFDF9] border border-[#EADBCE] rounded-2xl p-3.5 shadow-2xs hover:shadow-[0_8px_20px_rgba(53,16,74,0.08)] hover:border-[#007F79]/50 transition-all duration-300 flex flex-col justify-between group text-left cursor-pointer touch-manipulation"
                       >
                         <div className="flex items-start justify-between gap-1.5">
                           <div className="flex items-center gap-2 min-w-0">
@@ -1187,14 +1190,23 @@ export default function CategoryClient({
 
       {/* ── 3. MOBILE FILTER SLIDE-OVER DRAWER (SHEET) ── */}
       {isMobileFilterOpen && (
-        <div className="fixed inset-0 z-50 flex justify-end md:hidden">
+        <div className="fixed inset-0 z-[100] flex justify-end md:hidden">
+          {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-[#35104A]/40 backdrop-blur-xs transition-opacity"
+            className="fixed inset-0 bg-[#1D062B]/60 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
             onClick={() => setIsMobileFilterOpen(false)}
+            aria-hidden="true"
           />
 
-          <div className="relative w-full max-w-xs bg-[#FFFDF9] border-l border-[#EADBCE] h-full shadow-2xl flex flex-col z-10 animate-in slide-in-from-right duration-200">
-            <div className="flex items-center justify-between p-4 border-b border-[#EADBCE] bg-[#FFF8EF]">
+          {/* Slide-over panel */}
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Filter options"
+            className="relative w-full max-w-[320px] sm:max-w-xs bg-[#FFFDF9] border-l border-[#EADBCE] h-[100dvh] max-h-[100dvh] shadow-2xl flex flex-col z-10 animate-in slide-in-from-right duration-200 font-sans"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between px-4 py-3.5 border-b border-[#EADBCE] bg-[#FFF8EF] shrink-0">
               <div className="flex items-center gap-2">
                 <span className="text-sm font-heading font-semibold text-[#35104A]">
                   Filters
@@ -1208,31 +1220,39 @@ export default function CategoryClient({
               <button
                 type="button"
                 onClick={() => setIsMobileFilterOpen(false)}
-                className="p-1 rounded-lg text-[#6B4C82] hover:text-[#35104A] hover:bg-[#EADBCE]/40 cursor-pointer"
+                className="p-1.5 rounded-lg text-[#6B4C82] hover:text-[#35104A] hover:bg-[#EADBCE]/40 cursor-pointer touch-manipulation active:scale-90 transition-all"
+                aria-label="Close filters"
               >
                 <X className="w-5 h-5 stroke-[1.75]" />
               </button>
             </div>
 
+            {/* Scrollable Filters Content */}
             <div
               data-lenis-prevent="true"
               className="flex-1 overflow-y-auto p-4 custom-scrollbar overscroll-contain"
+              style={{
+                overscrollBehavior: "contain",
+                WebkitOverflowScrolling: "touch",
+                touchAction: "pan-y",
+              }}
             >
               {FilterPanelContent}
             </div>
 
-            <div className="p-4 border-t border-[#EADBCE] bg-[#FFF8EF] flex items-center gap-2">
+            {/* Footer Actions (Sticky Bottom with iOS Home-Bar Safe Inset) */}
+            <div className="p-3.5 sm:p-4 border-t border-[#EADBCE] bg-[#FFF8EF] shrink-0 flex items-center gap-2 pb-[max(1rem,env(safe-area-inset-bottom))]">
               <button
                 type="button"
                 onClick={handleResetFilters}
-                className="flex-1 py-2.5 rounded-xl border border-[#EADBCE] bg-white text-xs font-heading font-semibold text-[#35104A] hover:bg-[#FFF8EF] cursor-pointer"
+                className="flex-1 py-2 rounded-xl border border-[#EADBCE] bg-white text-xs font-heading font-semibold text-[#35104A] hover:bg-[#FFF8EF] cursor-pointer touch-manipulation active:scale-95 transition-all"
               >
                 Reset
               </button>
               <button
                 type="button"
                 onClick={() => setIsMobileFilterOpen(false)}
-                className="flex-1 py-2.5 rounded-xl bg-[#007F79] hover:bg-[#00605B] text-xs font-heading font-semibold text-white shadow-xs cursor-pointer"
+                className="flex-1 py-2 rounded-xl bg-[#007F79] hover:bg-[#00605B] text-xs font-heading font-semibold text-white shadow-xs cursor-pointer touch-manipulation active:scale-95 transition-all"
               >
                 Apply ({totalFilteredCount})
               </button>

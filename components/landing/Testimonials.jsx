@@ -43,7 +43,7 @@ export function Testimonials() {
   return (
     // biome-ignore lint/a11y/noStaticElementInteractions: Hover interaction is for pausing auto-scroll
     <section
-      className="py-20 bg-brand-surface border-t border-brand-border px-4 w-full select-none"
+      className="py-20 bg-brand-surface border-t border-brand-border px-4 w-full"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >

@@ -27,7 +27,7 @@ const BloggerIcon = ({ className }) => (
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#1D062B] text-[#D5BEDE] pt-12 pb-6 border-t border-[#35104A] mt-auto select-none text-left font-sans">
+    <footer className="w-full bg-[#1D062B] text-[#D5BEDE] pt-12 pb-6 border-t border-[#35104A] mt-auto text-left font-sans">
       <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 max-w-[1440px] mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-10 mb-10">
           {/* Brand Info Block */}

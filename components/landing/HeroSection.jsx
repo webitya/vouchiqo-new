@@ -213,9 +213,9 @@ export function HeroSection({ banners = [] }) {
   }
 
   return (
-    <div className="w-full flex flex-col select-none">
+    <div className="w-full flex flex-col">
       {/* Full Width Banners Section (Flush Edge-to-Edge, 0 Top/Left/Right Space) */}
-      <section className="select-none w-full text-left">
+      <section className="w-full text-left">
         <div
           className="w-full overflow-hidden shadow-2xs relative group bg-[#35104A] border-b border-[#EADBCE] h-[180px] xs:h-[210px] sm:h-[280px] md:h-[360px] lg:h-[425px] xl:h-[465px] 2xl:h-[490px] max-h-[500px]"
           onMouseEnter={() => setIsHovered(true)}

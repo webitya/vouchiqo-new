@@ -1,13 +1,12 @@
 "use client";
 
-import { Loader2, MessageSquareHeart, Star, X } from "lucide-react";
+import { Loader2, Star, X } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
 
@@ -23,9 +22,9 @@ const FEEDBACK_TAGS = [
 ];
 
 const STAR_LABELS = {
-  1: "Needs Significant Improvement",
+  1: "Needs Improvement",
   2: "Somewhat Difficult",
-  3: "Good / Standard Experience",
+  3: "Good Experience",
   4: "Very Smooth & Fast",
   5: "Exceptional & Effortless!",
 };
@@ -66,14 +65,14 @@ export default function ProcessFeedbackModal({
       };
     if (scaleScore < 70)
       return {
-        label: "Moderate",
+        label: "Average",
         color: "text-amber-600",
         barColor: "bg-amber-500",
       };
     return {
-      label: "Effortless & Intuitive",
-      color: "text-emerald-600",
-      barColor: "bg-emerald-500",
+      label: "Effortless",
+      color: "text-[#007F79]",
+      barColor: "bg-[#007F79]",
     };
   }, [scaleScore]);
 
@@ -95,23 +94,18 @@ export default function ProcessFeedbackModal({
     <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
       <DialogContent
         showCloseButton={false}
-        className="max-w-md w-full bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xl font-sans max-h-[90vh] overflow-y-auto"
+        className="w-[95vw] sm:max-w-[490px] bg-white border border-slate-200 rounded-2xl p-4 sm:p-4.5 shadow-xl font-sans max-h-[92vh] overflow-y-auto"
       >
         {/* Header with Top-Right Close Button */}
-        <div className="flex items-start justify-between gap-3 pb-1">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-festival-teal/10 border border-brand-border text-festival-teal flex items-center justify-center shrink-0">
-              <MessageSquareHeart className="w-4 h-4 text-festival-teal" />
-            </div>
-            <div>
-              <DialogTitle className="text-sm sm:text-base font-semibold text-slate-800 leading-snug">
-                {title}
-              </DialogTitle>
-              <DialogDescription className="text-xs text-slate-500 font-normal leading-normal mt-0.5">
-                {merchantName ? `${merchantName} • ` : ""}
-                {subtitle}
-              </DialogDescription>
-            </div>
+        <div className="flex items-start justify-between gap-3 pb-2 border-b border-slate-100">
+          <div>
+            <DialogTitle className="text-sm sm:text-base font-semibold text-slate-900 leading-snug">
+              {title}
+            </DialogTitle>
+            <DialogDescription className="text-xs text-slate-500 font-normal leading-normal mt-0.5">
+              {merchantName ? `${merchantName} • ` : ""}
+              {subtitle}
+            </DialogDescription>
           </div>
           <button
             type="button"
@@ -124,79 +118,71 @@ export default function ProcessFeedbackModal({
         </div>
 
         <div className="space-y-3 pt-1">
-          {/* 1. Interactive 1-5 Star Rating */}
-          <div className="bg-slate-50/80 border border-slate-200/70 rounded-xl p-2.5 text-center space-y-1">
-            <span className="text-xs font-medium text-slate-600 block">
-              Overall Setup Rating
-            </span>
-            <div className="flex items-center justify-center gap-1.5 py-0.5">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <button
-                  key={star}
-                  type="button"
-                  onClick={() => setStarRating(star)}
-                  onMouseEnter={() => setHoveredStar(star)}
-                  onMouseLeave={() => setHoveredStar(0)}
-                  className="p-1 cursor-pointer transition-transform hover:scale-115 focus:outline-none bg-transparent border-0"
-                >
-                  <Star
-                    className={
-                      "w-6 h-6 transition-colors " +
-                      (star <= activeStar
-                        ? "fill-amber-400 text-amber-500"
-                        : "text-slate-300 hover:text-slate-400")
-                    }
-                  />
-                </button>
-              ))}
-            </div>
-            <p className="text-xs font-medium text-slate-700 min-h-[16px]">
-              {STAR_LABELS[activeStar] || "Select your rating"}
-            </p>
-          </div>
-
-          {/* 2. Interactive Progress Bar Scaling */}
-          <div className="bg-white border border-slate-200/70 rounded-xl p-2.5 space-y-1.5">
-            <div className="flex items-center justify-between text-xs">
-              <span className="font-normal text-slate-600">
-                Setup Ease &amp; Satisfaction
+          {/* Row 1: Side-by-side 2-Column Grid for Star Rating + Setup Ease Slider */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {/* 1. Interactive 1-5 Star Rating */}
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-2.5 flex flex-col justify-between text-center space-y-1">
+              <span className="text-xs font-medium text-slate-700 block">
+                Overall Rating
               </span>
-              <span className={`font-medium ${getScaleDescriptor.color}`}>
-                {scaleScore}% • {getScaleDescriptor.label}
-              </span>
+              <div className="flex items-center justify-center gap-1 py-0.5">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <button
+                    key={star}
+                    type="button"
+                    onClick={() => setStarRating(star)}
+                    onMouseEnter={() => setHoveredStar(star)}
+                    onMouseLeave={() => setHoveredStar(0)}
+                    className="p-0.5 cursor-pointer transition-transform hover:scale-115 focus:outline-none bg-transparent border-0"
+                  >
+                    <Star
+                      className={
+                        "w-5 h-5 transition-colors " +
+                        (star <= activeStar
+                          ? "fill-amber-400 text-amber-500"
+                          : "text-slate-300 hover:text-slate-400")
+                      }
+                    />
+                  </button>
+                ))}
+              </div>
+              <p className="text-[11px] font-medium text-slate-700 min-h-[16px] truncate">
+                {STAR_LABELS[activeStar] || "Select rating"}
+              </p>
             </div>
 
-            {/* Custom interactive slider */}
-            <div className="relative w-full">
-              <input
-                type="range"
-                min="0"
-                max="100"
-                step="5"
-                value={scaleScore}
-                onChange={(e) => setScaleScore(Number(e.target.value))}
-                className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-festival-teal focus:outline-none"
-              />
-            </div>
+            {/* 2. Interactive Progress Bar Scaling */}
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-2.5 flex flex-col justify-between space-y-1.5">
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-medium text-slate-700">Setup Ease</span>
+                <span className={`font-medium ${getScaleDescriptor.color}`}>
+                  {scaleScore}% • {getScaleDescriptor.label}
+                </span>
+              </div>
 
-            {/* Dynamic visual progress fill */}
-            <div className="w-full bg-slate-100 rounded-full h-1 overflow-hidden">
-              <div
-                className={`h-full rounded-full transition-all duration-300 ${getScaleDescriptor.barColor}`}
-                style={{ width: `${scaleScore}%` }}
-              />
-            </div>
+              {/* Custom interactive slider */}
+              <div className="relative w-full pt-1">
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="5"
+                  value={scaleScore}
+                  onChange={(e) => setScaleScore(Number(e.target.value))}
+                  className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#007F79] focus:outline-none"
+                />
+              </div>
 
-            <div className="flex justify-between text-[10px] text-slate-400 font-normal px-0.5">
-              <span>0% (Complex)</span>
-              <span>50% (Average)</span>
-              <span>100% (Effortless)</span>
+              <div className="flex justify-between text-[10px] text-slate-400 font-normal px-0.5">
+                <span>0% Complex</span>
+                <span>100% Easy</span>
+              </div>
             </div>
           </div>
 
           {/* 3. Quick Sentiment Badges */}
           <div className="space-y-1.5">
-            <span className="text-xs font-normal text-slate-600 block">
+            <span className="text-xs font-medium text-slate-700 block">
               What highlights stood out to you?
             </span>
             <div className="flex flex-wrap gap-1.5">
@@ -208,9 +194,9 @@ export default function ProcessFeedbackModal({
                     type="button"
                     onClick={() => handleToggleTag(tag)}
                     className={
-                      "text-[11px] px-2.5 py-1 rounded-lg border transition-all cursor-pointer " +
+                      "text-[11px] px-2 py-0.5 rounded-lg border transition-all cursor-pointer " +
                       (isSelected
-                        ? "bg-festival-teal/10 text-festival-teal border-brand-border font-medium"
+                        ? "bg-[#007F79]/10 text-[#007F79] border-[#007F79]/30 font-medium shadow-2xs"
                         : "bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-50 font-normal")
                     }
                   >
@@ -224,7 +210,7 @@ export default function ProcessFeedbackModal({
 
           {/* 4. Optional Comment Textarea */}
           <div className="space-y-1">
-            <span className="text-xs font-normal text-slate-600 block">
+            <span className="text-xs font-medium text-slate-700 block">
               Additional Suggestions (Optional)
             </span>
             <textarea
@@ -232,7 +218,7 @@ export default function ProcessFeedbackModal({
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder="Tell us what we can do better or what feature you'd love to see next..."
-              className="w-full text-xs p-2.5 rounded-lg border border-brand-border focus:border-festival-teal focus:ring-1 focus:ring-festival-teal/20 outline-none resize-none font-normal text-slate-700 placeholder:text-slate-400"
+              className="w-full text-xs p-2 rounded-lg border border-slate-200 focus:border-[#007F79] focus:ring-1 focus:ring-[#007F79]/20 outline-none resize-none font-normal text-slate-700 placeholder:text-slate-400"
             />
           </div>
         </div>
@@ -244,7 +230,7 @@ export default function ProcessFeedbackModal({
             variant="ghost"
             onClick={handleClose}
             disabled={isSubmitting}
-            className="text-xs font-normal text-slate-500 hover:text-slate-800 h-8 px-3 rounded-lg cursor-pointer"
+            className="text-xs font-medium text-slate-500 hover:text-slate-800 h-8 px-3 rounded-lg cursor-pointer"
           >
             Later
           </Button>
@@ -253,7 +239,7 @@ export default function ProcessFeedbackModal({
             type="button"
             onClick={handleSubmit}
             disabled={isSubmitting}
-            className="bg-festival-teal hover:bg-[#00635E] text-white font-medium text-xs h-8 px-4 rounded-lg border-0 shadow-xs cursor-pointer transition-all flex items-center gap-1.5"
+            className="bg-[#007F79] hover:bg-[#00635E] text-white font-medium text-xs h-8 px-4 rounded-lg border-0 shadow-xs cursor-pointer transition-all flex items-center gap-1.5"
           >
             {isSubmitting ? (
               <>
@@ -261,7 +247,7 @@ export default function ProcessFeedbackModal({
                 <span>Submitting...</span>
               </>
             ) : (
-              <span>Submit</span>
+              <span>Submit Feedback</span>
             )}
           </Button>
         </div>
