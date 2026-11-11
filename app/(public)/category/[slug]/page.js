@@ -1,12 +1,10 @@
-import { Suspense } from "react";
-import { redis } from "@/lib/redis";
-import { REDIS_KEYS, REDIS_TTL } from "@/utils/constants";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/navbar";
 import { connectDB } from "@/lib/mongodb";
-import Coupon from "@/modules/coupon/coupon.model";
 import AffiliateProduct from "@/modules/affiliate-product/affiliate-product.model";
+import Coupon from "@/modules/coupon/coupon.model";
 import { COUPON_CATEGORIES } from "@/utils/constants";
 import CategoryClient from "./category-client";
 
@@ -16,7 +14,12 @@ export const dynamic = "force-dynamic";
 export const CATEGORY_META = {
   fashion: {
     title: "Fashion & Clothing",
-    subs: ["Men's Fashion", "Women's Wear", "Footwear", "Watches & Accessories"],
+    subs: [
+      "Men's Fashion",
+      "Women's Wear",
+      "Footwear",
+      "Watches & Accessories",
+    ],
   },
   food: {
     title: "Food & Dining",
@@ -32,7 +35,12 @@ export const CATEGORY_META = {
   },
   travel: {
     title: "Travel & Hospitality",
-    subs: ["Hotels & Resorts", "Flight Tickets", "Tour Packages", "Car Rentals"],
+    subs: [
+      "Hotels & Resorts",
+      "Flight Tickets",
+      "Tour Packages",
+      "Car Rentals",
+    ],
   },
   home: {
     title: "Home & Living",
@@ -48,7 +56,12 @@ export const CATEGORY_META = {
   },
   education: {
     title: "Education & Courses",
-    subs: ["Coaching Classes", "Online Courses", "Certifications", "Skill Bootcamps"],
+    subs: [
+      "Coaching Classes",
+      "Online Courses",
+      "Certifications",
+      "Skill Bootcamps",
+    ],
   },
   "kids-baby": {
     title: "Kids & Baby Care",
@@ -56,11 +69,21 @@ export const CATEGORY_META = {
   },
   jewellery: {
     title: "Jewellery & Accessories",
-    subs: ["Gold & Diamond", "Silver Jewellery", "Fashion Jewellery", "Eyewear"],
+    subs: [
+      "Gold & Diamond",
+      "Silver Jewellery",
+      "Fashion Jewellery",
+      "Eyewear",
+    ],
   },
   automotive: {
     title: "Automobile & Services",
-    subs: ["Car Services", "Auto Spare Parts", "Tyres & Care", "Car Accessories"],
+    subs: [
+      "Car Services",
+      "Auto Spare Parts",
+      "Tyres & Care",
+      "Car Accessories",
+    ],
   },
   entertainment: {
     title: "Gaming & Entertainment",
@@ -141,16 +164,17 @@ export default async function CategoryPage({ params }) {
   const affiliateProducts = JSON.parse(JSON.stringify(rawAffiliates || []));
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f8fafc] text-slate-900 font-sans">
+    <div className="min-h-screen flex flex-col bg-[#FFFDF9] text-[#35104A] font-sans selection:bg-[#FFD166]/30 selection:text-[#35104A]">
       <Navbar />
-      <Suspense fallback={<div className="min-h-screen bg-slate-50" />}><CategoryClient
-        categoryInfo={{
-          ...categoryInfo,
-          slug: cleanSlug,
-        }}
-        coupons={coupons}
-        affiliateProducts={affiliateProducts}
-      />
+      <Suspense fallback={<div className="min-h-screen bg-[#FFFDF9]" />}>
+        <CategoryClient
+          categoryInfo={{
+            ...categoryInfo,
+            slug: cleanSlug,
+          }}
+          coupons={coupons}
+          affiliateProducts={affiliateProducts}
+        />
       </Suspense>
       <Footer />
     </div>

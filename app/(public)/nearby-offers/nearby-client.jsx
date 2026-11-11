@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import {
   Baby,
   Car,
+  ChevronLeft,
   ChevronRight,
   Compass,
   Crosshair,
@@ -38,6 +39,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import Navbar from "@/components/layout/navbar";
+import SafeImage from "@/components/shared/SafeImage";
 import { useLocation } from "@/hooks/use-location";
 import { apiFetch } from "@/lib/fetcher";
 import {
@@ -97,6 +99,49 @@ function haversine(lat1, lon1, lat2, lon2) {
       Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return parseFloat((R * c).toFixed(1));
+}
+
+// ─── Pagination Settings & Compact Window Generator (Google-Style) ────────────
+
+const ITEMS_PER_PAGE = 10;
+
+/**
+ * Generates an array of page numbers with ellipsis (e.g. [1, 2, 3, 4, 5, '...', 120])
+ * Perfectly handles 1 to 100+ pages within a compact width.
+ */
+function getPageNumbers(currentPage, totalPages) {
+  if (totalPages <= 7) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+
+  // Near the start: [1, 2, 3, 4, 5, '...', totalPages]
+  if (currentPage <= 4) {
+    return [1, 2, 3, 4, 5, "...", totalPages];
+  }
+
+  // Near the end: [1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages]
+  if (currentPage >= totalPages - 3) {
+    return [
+      1,
+      "...",
+      totalPages - 4,
+      totalPages - 3,
+      totalPages - 2,
+      totalPages - 1,
+      totalPages,
+    ];
+  }
+
+  // In the middle: [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages]
+  return [
+    1,
+    "...",
+    currentPage - 1,
+    currentPage,
+    currentPage + 1,
+    "...",
+    totalPages,
+  ];
 }
 
 // ─── Custom Girl / Face Icon for Beauty Category ─────────────────────────────
@@ -601,9 +646,11 @@ function NearbyDealCard({ deal, isSelected, onSelect, cardRef }) {
           }}
         >
           {deal.logo ? (
-            <img
+            <SafeImage
               src={deal.logo}
               alt={deal.businessName}
+              width={40}
+              height={40}
               className="w-full h-full object-contain p-0.5"
             />
           ) : (
@@ -690,15 +737,15 @@ function SectionBlock({
 }) {
   if (!deals || deals.length === 0) return null;
   return (
-    <div className="space-y-1.5 pt-1">
-      <div className="flex items-center justify-between px-1 py-1 sticky top-0 bg-white/95 backdrop-blur-xs z-10 border-b border-slate-100">
+    <div className="space-y-1.5">
+      <div className="flex items-center justify-between px-2 py-1 bg-white border border-slate-200/80 rounded-md shadow-2xs">
         <div className="flex items-center gap-1.5">
           <Icon className="w-3.5 h-3.5 text-[#007F79]" />
           <span className="font-heading font-semibold text-[11px] text-[#35104A] tracking-tight">
             {title}
           </span>
         </div>
-        <span className="font-sans text-[9.5px] font-medium text-slate-500 bg-slate-100 px-1.5 py-0.2 rounded-full">
+        <span className="font-sans text-[9.5px] font-medium text-[#007F79] bg-[#007F79]/10 border border-[#007F79]/20 px-1.5 py-0.2 rounded-full">
           {count} {count === 1 ? "store" : "stores"}
         </span>
       </div>
@@ -731,6 +778,7 @@ export default function NearbyOffers() {
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [tileLayerType, setTileLayerType] = useState("google_streets");
+  const [currentPage, setCurrentPage] = useState(1);
   const { data: rawCouponsData, isLoading: loading } = useQuery({
     queryKey: [...qk.coupons.all(), "nearby-map", 250],
     queryFn: async () => {
@@ -756,6 +804,8 @@ export default function NearbyOffers() {
   const markersGroupRef = useRef(null);
   const markersMapRef = useRef({});
   const cardRefs = useRef({});
+  const dealsListRef = useRef(null);
+  const mobileDealsListRef = useRef(null);
   const categoryScrollRef = useRef(null);
   const layerMenuRef = useRef(null);
   const routeLayerRef = useRef(null);
@@ -1033,13 +1083,30 @@ export default function NearbyOffers() {
     return uniqueDeals.sort((a, b) => a.distance - b.distance);
   }, [enrichedCoupons, categoryFilter, searchQuery]);
 
-  // Google Maps Style Distance Categorised Sections
+  // Reset pagination when category, search query, or city changes
+  useEffect(() => {
+    if (categoryFilter !== undefined || searchQuery || distance || savedCity) {
+      setCurrentPage(1);
+    }
+  }, [categoryFilter, searchQuery, distance, savedCity]);
+
+  // Pagination Calculations (10 cards per page)
+  const totalPages = Math.ceil(filteredDeals.length / ITEMS_PER_PAGE) || 1;
+  const safeCurrentPage = Math.min(Math.max(1, currentPage), totalPages);
+
+  // Exactly 10 cards for the current active page
+  const paginatedDeals = useMemo(() => {
+    const start = (safeCurrentPage - 1) * ITEMS_PER_PAGE;
+    return filteredDeals.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredDeals, safeCurrentPage]);
+
+  // Google Maps Style Distance Categorised Sections for the current page
   const sections = useMemo(() => {
     const nearMe = []; // < 3 km
     const acrossTown = []; // 3 km to 10 km
     const widerRegion = []; // > 10 km
 
-    for (const deal of filteredDeals) {
+    for (const deal of paginatedDeals) {
       if (deal.distance < 3.0) {
         nearMe.push(deal);
       } else if (deal.distance <= 10.0) {
@@ -1050,7 +1117,31 @@ export default function NearbyOffers() {
     }
 
     return { nearMe, acrossTown, widerRegion };
-  }, [filteredDeals]);
+  }, [paginatedDeals]);
+
+  // Compact pagination page numbers (handles 100+ pages like Google)
+  const pageNumbers = useMemo(
+    () => getPageNumbers(safeCurrentPage, totalPages),
+    [safeCurrentPage, totalPages],
+  );
+
+  const handlePageChange = useCallback(
+    (newPage) => {
+      if (newPage < 1 || newPage > totalPages || newPage === safeCurrentPage)
+        return;
+      setCurrentPage(newPage);
+      if (dealsListRef.current) {
+        dealsListRef.current.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      if (mobileDealsListRef.current) {
+        mobileDealsListRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    },
+    [totalPages, safeCurrentPage],
+  );
 
   // Handle deal selection & draw shortest route from user location to store
   const handleSelectDeal = useCallback(
@@ -1426,11 +1517,20 @@ export default function NearbyOffers() {
       });
 
       marker.on("click", () => {
-        handleSelectDeal(deal, true);
-        const el = cardRefs.current[deal._id];
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        const dealIndex = filteredDeals.findIndex((d) => d._id === deal._id);
+        if (dealIndex !== -1) {
+          const targetPage = Math.floor(dealIndex / ITEMS_PER_PAGE) + 1;
+          if (targetPage !== safeCurrentPage) {
+            setCurrentPage(targetPage);
+          }
         }
+        handleSelectDeal(deal, true);
+        setTimeout(() => {
+          const el = cardRefs.current[deal._id];
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }
+        }, 80);
       });
 
       markersMapRef.current[deal._id] = marker;
@@ -1450,6 +1550,7 @@ export default function NearbyOffers() {
     selectedDealId,
     savedCity,
     handleSelectDeal,
+    safeCurrentPage,
   ]);
 
   // Fit all deals in viewport
@@ -1785,11 +1886,21 @@ export default function NearbyOffers() {
       <Navbar />
 
       {/* Main Container: Left Sidebar + Right Map */}
-      <div className="flex flex-col md:flex-row h-[calc(100vh-64px)] w-full overflow-y-auto md:overflow-hidden relative scroll-smooth">
+      <div
+        data-lenis-prevent="true"
+        className="flex flex-col md:flex-row h-[calc(100vh-64px)] w-full overflow-y-auto md:overflow-hidden relative scroll-smooth overscroll-contain"
+        style={{
+          overscrollBehavior: "contain",
+          WebkitOverflowScrolling: "touch",
+        }}
+      >
         {/* ─── LEFT SIDEBAR (Deals Near You Cards List) ─── */}
-        <div className="w-full md:w-[340px] lg:w-[360px] md:h-full flex flex-col bg-white md:border-r border-slate-200 shrink-0 sticky top-0 md:static z-20 shadow-xs md:shadow-none">
+        <div
+          data-lenis-prevent="true"
+          className="w-full md:w-[340px] lg:w-[360px] md:h-full min-h-0 flex flex-col bg-white md:border-r border-slate-200 shrink-0 sticky top-0 md:static z-20 shadow-xs md:shadow-none overflow-hidden"
+        >
           {/* Sidebar Top Header (Sticky on Mobile, Static on Desktop) */}
-          <div className="p-3 border-b border-slate-100 shrink-0 space-y-2 bg-white">
+          <div className="px-3 pt-3 pb-2 border-b border-slate-200 shrink-0 space-y-2 bg-white">
             {/* Title & Near Me GPS Button Header Row */}
             <div className="flex items-center justify-between gap-2">
               <div>
@@ -1851,6 +1962,7 @@ export default function NearbyOffers() {
             {/* Category Filter Pills with Auto-Centering Shift (Hidden Scrollbar) */}
             <div
               ref={categoryScrollRef}
+              data-lenis-prevent="true"
               className="flex items-center gap-1 overflow-x-auto no-scrollbar scroll-smooth w-full px-0.5 py-0.5"
             >
               {CATEGORIES.map((cat) => {
@@ -1878,7 +1990,16 @@ export default function NearbyOffers() {
           </div>
 
           {/* Deals Cards List for Desktop */}
-          <div className="hidden md:flex flex-1 overflow-y-auto p-2.5 space-y-2 scrollbar-thin bg-slate-50/50 flex-col">
+          <div
+            ref={dealsListRef}
+            data-lenis-prevent="true"
+            className="hidden md:flex flex-1 min-h-0 overflow-y-auto overscroll-contain px-2.5 pt-2 pb-2.5 space-y-2 search-dropdown-scroll bg-slate-50/50 flex-col"
+            style={{
+              overscrollBehavior: "contain",
+              WebkitOverflowScrolling: "touch",
+              touchAction: "pan-y",
+            }}
+          >
             {loading ? (
               <div className="space-y-2 p-1">
                 {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -1949,10 +2070,97 @@ export default function NearbyOffers() {
               </div>
             )}
           </div>
+
+          {/* Desktop Pagination Bar (Compact Google-Style, handles 1 to 100+ pages) */}
+          {totalPages > 1 && (
+            <div className="hidden md:flex flex-col gap-1.5 px-3 py-2 border-t border-slate-200 bg-white shrink-0 font-sans shadow-xs">
+              <div className="flex items-center justify-between text-[10.5px] text-[#6B4C82]">
+                <span>
+                  Showing{" "}
+                  <span className="font-semibold text-[#35104A]">
+                    {(safeCurrentPage - 1) * ITEMS_PER_PAGE + 1}–
+                    {Math.min(
+                      safeCurrentPage * ITEMS_PER_PAGE,
+                      filteredDeals.length,
+                    )}
+                  </span>{" "}
+                  of{" "}
+                  <span className="font-semibold text-[#35104A]">
+                    {filteredDeals.length}
+                  </span>
+                </span>
+                <span className="font-medium text-[#007F79]">
+                  Page {safeCurrentPage} of {totalPages}
+                </span>
+              </div>
+
+              {/* Prev / Page Numbers / Next Row */}
+              <div className="flex items-center justify-between gap-1 pt-0.5">
+                <button
+                  type="button"
+                  disabled={safeCurrentPage <= 1}
+                  onClick={() => handlePageChange(safeCurrentPage - 1)}
+                  className={`px-2 py-1 rounded-md text-[11px] font-heading font-semibold border flex items-center gap-0.5 transition-all ${
+                    safeCurrentPage <= 1
+                      ? "opacity-40 text-slate-400 bg-slate-50 border-slate-200 cursor-not-allowed"
+                      : "text-[#35104A] bg-white hover:bg-[#FFF8EF] hover:border-[#007F79]/40 border-slate-200 cursor-pointer active:scale-95"
+                  }`}
+                  aria-label="Previous Page"
+                >
+                  <ChevronLeft className="w-3.5 h-3.5" />
+                  <span>Prev</span>
+                </button>
+
+                <div className="flex items-center gap-1 justify-center flex-1">
+                  {pageNumbers.map((p, idx) =>
+                    p === "..." ? (
+                      <span
+                        key={`desk-ellipsis-${idx}`}
+                        className="px-0.5 text-slate-400 text-[10px] select-none"
+                      >
+                        ...
+                      </span>
+                    ) : (
+                      <button
+                        key={`desk-page-${p}`}
+                        type="button"
+                        onClick={() => handlePageChange(p)}
+                        className={`min-w-[26px] h-6.5 px-1 rounded-md text-[11px] font-heading font-semibold border flex items-center justify-center transition-all cursor-pointer ${
+                          safeCurrentPage === p
+                            ? "bg-[#007F79] text-white border-[#007F79] shadow-2xs font-bold"
+                            : "bg-white text-[#35104A] border-slate-200 hover:bg-[#FFF8EF] hover:border-[#007F79]/40"
+                        }`}
+                      >
+                        {p}
+                      </button>
+                    ),
+                  )}
+                </div>
+
+                <button
+                  type="button"
+                  disabled={safeCurrentPage >= totalPages}
+                  onClick={() => handlePageChange(safeCurrentPage + 1)}
+                  className={`px-2 py-1 rounded-md text-[11px] font-heading font-semibold border flex items-center gap-0.5 transition-all ${
+                    safeCurrentPage >= totalPages
+                      ? "opacity-40 text-slate-400 bg-slate-50 border-slate-200 cursor-not-allowed"
+                      : "text-[#35104A] bg-white hover:bg-[#FFF8EF] hover:border-[#007F79]/40 border-slate-200 cursor-pointer active:scale-95"
+                  }`}
+                  aria-label="Next Page"
+                >
+                  <span>Next</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* ─── INTERACTIVE MAP CANVAS (On mobile: 260px right after categories; on desktop: full height right column) ─── */}
-        <div className="w-full md:flex-1 h-[250px] sm:h-[290px] md:h-full relative overflow-hidden isolate z-10 bg-slate-200 shrink-0 border-b md:border-b-0 border-slate-200">
+        <div
+          data-lenis-prevent="true"
+          className="w-full md:flex-1 h-[250px] sm:h-[290px] md:h-full relative overflow-hidden isolate z-10 bg-slate-200 shrink-0 border-b md:border-b-0 border-slate-200"
+        >
           {/* Leaflet DOM element */}
           <div
             ref={mapRef}
@@ -2185,7 +2393,11 @@ export default function NearbyOffers() {
         </div>
 
         {/* ─── Deals Cards List for Mobile (rendered in natural scroll flow below map) ─── */}
-        <div className="flex md:hidden flex-col p-2.5 space-y-2 bg-slate-50/50 min-h-0">
+        <div
+          ref={mobileDealsListRef}
+          data-lenis-prevent="true"
+          className="flex md:hidden flex-col px-2.5 pt-2 pb-2.5 space-y-2 bg-slate-50/50 min-h-0"
+        >
           {loading ? (
             <div className="space-y-2 p-1">
               {[1, 2, 3, 4].map((i) => (
@@ -2252,6 +2464,89 @@ export default function NearbyOffers() {
                   cardRefs={cardRefs}
                   keyPrefix="mob-wider-"
                 />
+              )}
+
+              {/* Mobile Pagination Bar (Google-Style) */}
+              {totalPages > 1 && (
+                <div className="flex flex-col gap-1.5 px-3 py-2.5 bg-white rounded-lg border border-slate-200 mt-2 font-sans shadow-xs">
+                  <div className="flex items-center justify-between text-[11px] text-[#6B4C82]">
+                    <span>
+                      Showing{" "}
+                      <span className="font-semibold text-[#35104A]">
+                        {(safeCurrentPage - 1) * ITEMS_PER_PAGE + 1}–
+                        {Math.min(
+                          safeCurrentPage * ITEMS_PER_PAGE,
+                          filteredDeals.length,
+                        )}
+                      </span>{" "}
+                      of{" "}
+                      <span className="font-semibold text-[#35104A]">
+                        {filteredDeals.length}
+                      </span>
+                    </span>
+                    <span className="font-medium text-[#007F79]">
+                      Page {safeCurrentPage} of {totalPages}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-1 pt-0.5">
+                    <button
+                      type="button"
+                      disabled={safeCurrentPage <= 1}
+                      onClick={() => handlePageChange(safeCurrentPage - 1)}
+                      className={`px-2.5 py-1.5 rounded-md text-xs font-heading font-semibold border flex items-center gap-0.5 transition-all ${
+                        safeCurrentPage <= 1
+                          ? "opacity-40 text-slate-400 bg-slate-50 border-slate-200 cursor-not-allowed"
+                          : "text-[#35104A] bg-white hover:bg-[#FFF8EF] hover:border-[#007F79]/40 border-slate-200 cursor-pointer active:scale-95"
+                      }`}
+                      aria-label="Previous Page"
+                    >
+                      <ChevronLeft className="w-3.5 h-3.5" />
+                      <span>Prev</span>
+                    </button>
+
+                    <div className="flex items-center gap-1 justify-center flex-1">
+                      {pageNumbers.map((p, idx) =>
+                        p === "..." ? (
+                          <span
+                            key={`mob-ellipsis-${idx}`}
+                            className="px-0.5 text-slate-400 text-xs select-none"
+                          >
+                            ...
+                          </span>
+                        ) : (
+                          <button
+                            key={`mob-page-${p}`}
+                            type="button"
+                            onClick={() => handlePageChange(p)}
+                            className={`min-w-[28px] h-7 px-1.5 rounded-md text-xs font-heading font-semibold border flex items-center justify-center transition-all cursor-pointer ${
+                              safeCurrentPage === p
+                                ? "bg-[#007F79] text-white border-[#007F79] shadow-2xs font-bold"
+                                : "bg-white text-[#35104A] border-slate-200 hover:bg-[#FFF8EF] hover:border-[#007F79]/40"
+                            }`}
+                          >
+                            {p}
+                          </button>
+                        ),
+                      )}
+                    </div>
+
+                    <button
+                      type="button"
+                      disabled={safeCurrentPage >= totalPages}
+                      onClick={() => handlePageChange(safeCurrentPage + 1)}
+                      className={`px-2.5 py-1.5 rounded-md text-xs font-heading font-semibold border flex items-center gap-0.5 transition-all ${
+                        safeCurrentPage >= totalPages
+                          ? "opacity-40 text-slate-400 bg-slate-50 border-slate-200 cursor-not-allowed"
+                          : "text-[#35104A] bg-white hover:bg-[#FFF8EF] hover:border-[#007F79]/40 border-slate-200 cursor-pointer active:scale-95"
+                      }`}
+                      aria-label="Next Page"
+                    >
+                      <span>Next</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
               )}
             </div>
           )}

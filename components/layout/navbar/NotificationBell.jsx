@@ -1,5 +1,6 @@
 "use client";
 
+import { useQuery } from "@tanstack/react-query";
 import {
   Activity,
   Bell,
@@ -12,14 +13,12 @@ import {
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useQuery } from "@tanstack/react-query";
-import { apiFetch } from "@/lib/fetcher";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { apiFetch } from "@/lib/fetcher";
 
 function formatRelativeTime(dateString) {
   if (!dateString) return "Recently";
@@ -61,8 +60,7 @@ export const NotificationBell = () => {
         apiFetch("/api/notifications").catch(() => null),
       ]);
 
-      const dbCoupons =
-        resCoupons?.data?.coupons || resCoupons?.coupons || [];
+      const dbCoupons = resCoupons?.data?.coupons || resCoupons?.coupons || [];
       const dbNotifs =
         resNotifs?.data?.notifications || resNotifs?.notifications || [];
 
@@ -213,6 +211,7 @@ export const NotificationBell = () => {
         align="end"
         alignOffset={-4}
         sideOffset={8}
+        data-lenis-prevent="true"
         className="w-[280px] sm:w-[295px] max-w-[calc(100vw-36px)] rounded-xl bg-white p-0 border border-[#EADBCE] shadow-2xl z-[600] flex flex-col overflow-hidden text-left font-sans mr-2 sm:mr-0"
       >
         {/* Header */}
@@ -240,8 +239,16 @@ export const NotificationBell = () => {
           </button>
         </div>
 
-        {/* Scrollable Activities List with Compact Height */}
-        <ScrollArea className="max-h-[250px] w-full overflow-y-auto">
+        {/* Scrollable Activities List with Direct Native Momentum Scroll */}
+        <div
+          data-lenis-prevent="true"
+          className="max-h-[285px] w-full overflow-y-auto overscroll-contain search-dropdown-scroll"
+          style={{
+            overscrollBehavior: "contain",
+            WebkitOverflowScrolling: "touch",
+            touchAction: "pan-y",
+          }}
+        >
           {loading ? (
             <div className="p-5 text-center text-[11px] font-normal text-slate-400">
               Loading recent activities...
@@ -299,7 +306,7 @@ export const NotificationBell = () => {
               ))}
             </div>
           )}
-        </ScrollArea>
+        </div>
 
         {/* Solid Visible Sticky Footer Actions */}
         {visibleActivities.length > 0 && (

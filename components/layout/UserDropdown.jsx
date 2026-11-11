@@ -239,17 +239,15 @@ export default function UserDropdown({
         <button
           type="button"
           aria-label="User menu"
-          className="flex items-center justify-center focus:outline-none cursor-pointer select-none rounded-full transition-transform hover:scale-105 active:scale-95 border-0 bg-transparent outline-none p-0"
+          className={`flex items-center justify-center focus:outline-none cursor-pointer select-none rounded-full transition-all hover:scale-105 active:scale-95 p-0.5 border-2 shadow-2xs outline-none bg-white ${
+            effectiveRole === "admin"
+              ? "border-purple-400 hover:border-purple-500"
+              : effectiveRole === "merchant"
+                ? "border-[#007F79]/60 hover:border-[#007F79]"
+                : "border-[#007F79]/60 hover:border-[#007F79]"
+          }`}
         >
-          <div
-            className={`h-9 w-9 rounded-full border shrink-0 shadow-2xs transition-all overflow-hidden flex items-center justify-center bg-white ${
-              effectiveRole === "admin"
-                ? "border-purple-300 hover:border-purple-400"
-                : effectiveRole === "merchant"
-                  ? "border-[#EADBCE] hover:border-[#FF2E63]"
-                  : "border-[#EADBCE] hover:border-[#007F79]"
-            }`}
-          >
+          <div className="h-8 w-8 rounded-full border border-slate-200 shrink-0 overflow-hidden flex items-center justify-center bg-white">
             {currentImage ? (
               <SafeImage
                 src={currentImage}

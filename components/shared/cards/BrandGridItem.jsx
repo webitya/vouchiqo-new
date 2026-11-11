@@ -58,7 +58,7 @@ export const BrandGridItem = memo(function BrandGridItem({
     <Link
       href={href || "#"}
       prefetch={true}
-      className="group relative flex flex-col justify-between rounded-xl sm:rounded-2xl border border-[#EADBCE] bg-[#FFF8EF] shadow-2xs hover:shadow-md hover:border-[#FF2E63]/40 transition-all duration-200 overflow-hidden select-none text-left w-full h-[142px] sm:h-[148px] font-sans"
+      className="group relative flex flex-col justify-between rounded-xl sm:rounded-2xl border border-[#EADBCE] bg-[#FFF8EF] shadow-2xs hover:shadow-md hover:border-[#007F79]/40 transition-all duration-200 overflow-hidden select-none text-left w-full h-[142px] sm:h-[148px] font-sans"
       style={{ textDecoration: "none" }}
     >
       {/* ── 1. Top Half: Visual Imagery & Category Tag ── */}
@@ -67,6 +67,7 @@ export const BrandGridItem = memo(function BrandGridItem({
           src={bgBanner}
           alt={name || "Store Banner"}
           fill
+          loading="lazy"
           fallbackSrc={fallbackBanner}
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -91,11 +92,12 @@ export const BrandGridItem = memo(function BrandGridItem({
               alt={name || "Store Logo"}
               width={40}
               height={40}
+              loading="lazy"
               className="max-h-full max-w-full object-contain rounded-full"
               onError={() => setImgError(true)}
             />
           ) : (
-            <span className="text-[10px] font-heading font-black text-[#35104A] uppercase tracking-tight">
+            <span className="text-[10px] font-heading font-semibold text-[#35104A] uppercase tracking-tight">
               {name ? name.slice(0, 2) : "VT"}
             </span>
           )}
@@ -106,17 +108,15 @@ export const BrandGridItem = memo(function BrandGridItem({
       <div className="pt-4.5 sm:pt-5 pb-2 px-2 sm:px-2.5 flex flex-col justify-between h-1/2 bg-[#FFF8EF] text-left font-sans">
         {/* Brand Name + Twitter Verified Tick Badge on the Right */}
         <div className="flex items-center gap-1 min-w-0 pr-1">
-          <h4 className="text-[12px] sm:text-[12.5px] font-heading font-bold text-[#35104A] uppercase tracking-tight truncate group-hover:text-[#FF2E63] transition-colors leading-tight">
+          <h4 className="text-[12px] sm:text-[12.5px] font-heading font-semibold text-[#35104A] uppercase tracking-tight truncate group-hover:text-[#007F79] transition-colors leading-tight">
             {name}
           </h4>
-          {isVerified && (
-            <TwitterVerifiedBadge className="w-3 h-3 shrink-0" />
-          )}
+          {isVerified && <TwitterVerifiedBadge className="w-3 h-3 shrink-0" />}
         </div>
 
         {/* Bottom Highlight Row (Clean Offer Pill on Warm Ivory) */}
         <div className="flex items-center gap-1 mt-auto pt-0.5 w-full min-w-0">
-          <span className="inline-flex items-center text-[8.5px] sm:text-[9px] font-heading font-bold text-[#FF2E63] bg-white border border-[#FF2E63]/25 px-1.5 sm:px-2 py-0.5 rounded-md truncate max-w-full shadow-2xs">
+          <span className="inline-flex items-center text-[8.5px] sm:text-[9px] font-heading font-semibold text-[#007F79] bg-white border border-[#007F79]/25 px-1.5 sm:px-2 py-0.5 rounded-md truncate max-w-full shadow-2xs">
             {discount ||
               (coupons > 0
                 ? `${coupons} LIVE ${coupons === 1 ? "OFFER" : "OFFERS"}`

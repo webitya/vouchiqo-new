@@ -94,6 +94,7 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
   const containerRef = useRef(null);
   const inputRef = useRef(null);
   const scrollBoxRef = useRef(null);
+  const filterPillsRef = useRef(null);
 
   // Auto-focus when triggered (e.g. mobile search toggle open)
   useEffect(() => {
@@ -411,6 +412,25 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
     }
   };
 
+  // Smooth scroll clicked filter badge into view (slides to left / centers)
+  const handleTabClick = (tabKey, e) => {
+    setActiveTab(tabKey);
+    setSelectedIndex(-1);
+    if (e?.currentTarget) {
+      e.currentTarget.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (activeTab === "all" && filterPillsRef.current) {
+      filterPillsRef.current.scrollTo({ left: 0, behavior: "smooth" });
+    }
+  }, [activeTab]);
+
   const hasAnyResults =
     allSuggestions.tags.length > 0 ||
     allSuggestions.brands.length > 0 ||
@@ -419,7 +439,10 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
     allSuggestions.categories.length > 0;
 
   return (
-    <div ref={containerRef} className="w-full relative flex items-center font-sans">
+    <div
+      ref={containerRef}
+      className="w-full relative flex items-center font-sans"
+    >
       <Search
         className="absolute left-3 sm:left-3.5 h-3.5 w-3.5 sm:h-4 sm:w-4 text-slate-400 cursor-pointer hover:text-[#007F79] transition-colors z-10 shrink-0"
         onClick={handleSearchClick}
@@ -476,15 +499,13 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
             {/* In-depth filter pills if multiple result types exist */}
             {hasAnyResults && (
               <div
-                className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-0.5 pb-0.5"
+                ref={filterPillsRef}
+                className="flex items-center gap-1.5 overflow-x-auto no-scrollbar scroll-smooth pt-0.5 pb-0.5"
                 data-lenis-prevent="true"
               >
                 <button
                   type="button"
-                  onClick={() => {
-                    setActiveTab("all");
-                    setSelectedIndex(-1);
-                  }}
+                  onClick={(e) => handleTabClick("all", e)}
                   className={`px-2.5 py-1 rounded-md text-[11px] font-heading font-bold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
                     activeTab === "all"
                       ? "bg-[#007F79] text-white border-[#007F79] shadow-xs"
@@ -503,10 +524,7 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
                 {allSuggestions.tags.length > 0 && (
                   <button
                     type="button"
-                    onClick={() => {
-                      setActiveTab("tags");
-                      setSelectedIndex(-1);
-                    }}
+                    onClick={(e) => handleTabClick("tags", e)}
                     className={`px-2.5 py-1 rounded-md text-[11px] font-heading font-bold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
                       activeTab === "tags"
                         ? "bg-[#35104A] text-white border-[#35104A] shadow-xs"
@@ -526,10 +544,7 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
                 {allSuggestions.coupons.length > 0 && (
                   <button
                     type="button"
-                    onClick={() => {
-                      setActiveTab("offers");
-                      setSelectedIndex(-1);
-                    }}
+                    onClick={(e) => handleTabClick("offers", e)}
                     className={`px-2.5 py-1 rounded-md text-[11px] font-heading font-bold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
                       activeTab === "offers"
                         ? "bg-[#FF8C05] text-white border-[#FF8C05] shadow-xs"
@@ -549,18 +564,15 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
                 {allSuggestions.products.length > 0 && (
                   <button
                     type="button"
-                    onClick={() => {
-                      setActiveTab("products");
-                      setSelectedIndex(-1);
-                    }}
+                    onClick={(e) => handleTabClick("products", e)}
                     className={`px-2.5 py-1 rounded-md text-[11px] font-heading font-bold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
                       activeTab === "products"
-                        ? "bg-[#FF2E63] text-white border-[#FF2E63] shadow-xs"
-                        : "bg-white text-[#FF2E63] border-[#EADBCE] hover:bg-[#FFF8EF]"
+                        ? "bg-[#007F79] text-white border-[#007F79] shadow-xs"
+                        : "bg-white text-[#007F79] border-[#EADBCE] hover:bg-[#FFF8EF]"
                     }`}
                   >
                     <ShoppingBag
-                      className={`w-3 h-3 ${activeTab === "products" ? "text-white" : "text-[#FF2E63]"}`}
+                      className={`w-3 h-3 ${activeTab === "products" ? "text-white" : "text-[#007F79]"}`}
                     />
                     <span>Products</span>
                     <span className="opacity-75 text-[10px]">
@@ -572,10 +584,7 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
                 {allSuggestions.brands.length > 0 && (
                   <button
                     type="button"
-                    onClick={() => {
-                      setActiveTab("brands");
-                      setSelectedIndex(-1);
-                    }}
+                    onClick={(e) => handleTabClick("brands", e)}
                     className={`px-2.5 py-1 rounded-md text-[11px] font-heading font-bold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
                       activeTab === "brands"
                         ? "bg-[#007F79] text-white border-[#007F79] shadow-xs"
@@ -595,10 +604,7 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
                 {allSuggestions.categories.length > 0 && (
                   <button
                     type="button"
-                    onClick={() => {
-                      setActiveTab("categories");
-                      setSelectedIndex(-1);
-                    }}
+                    onClick={(e) => handleTabClick("categories", e)}
                     className={`px-2.5 py-1 rounded-md text-[11px] font-heading font-bold transition-colors cursor-pointer shrink-0 border flex items-center gap-1.5 ${
                       activeTab === "categories"
                         ? "bg-[#35104A] text-white border-[#35104A] shadow-xs"
@@ -667,7 +673,7 @@ export const SearchBar = ({ autoFocus = false, onSelect = null }) => {
                         ) : item.iconType === "deal" ? (
                           <Ticket className="w-3.5 h-3.5 text-[#FF8C05]" />
                         ) : item.iconType === "product" ? (
-                          <ShoppingBag className="w-3.5 h-3.5 text-[#FF2E63]" />
+                          <ShoppingBag className="w-3.5 h-3.5 text-[#007F79]" />
                         ) : (
                           <Store className="w-3.5 h-3.5 text-[#007F79]" />
                         )}

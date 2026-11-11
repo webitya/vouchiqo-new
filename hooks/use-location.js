@@ -4,40 +4,13 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 const NOMINATIM_URL = "https://nominatim.openstreetmap.org/reverse";
 
-const CITY_COORDINATES = [
-  { name: "Ranchi", lat: 23.3441, lon: 85.3096 },
-  { name: "Patna", lat: 25.5941, lon: 85.1376 },
-  { name: "Delhi", lat: 28.6139, lon: 77.209 },
-  { name: "Mumbai", lat: 19.076, lon: 72.8777 },
-  { name: "Bangalore", lat: 12.9716, lon: 77.5946 },
-  { name: "Hyderabad", lat: 17.385, lon: 78.4867 },
-  { name: "Chennai", lat: 13.0827, lon: 80.2707 },
-  { name: "Kolkata", lat: 22.5726, lon: 88.3639 },
-  { name: "Pune", lat: 18.5204, lon: 73.8567 },
-  { name: "Ahmedabad", lat: 23.0225, lon: 72.5714 },
-];
-
-function getClosestCity(lat, lon) {
-  let closestCity = "Ranchi";
-  let minDistance = Number.MAX_VALUE;
-
-  for (const c of CITY_COORDINATES) {
-    const d = (c.lat - lat) ** 2 + (c.lon - lon) ** 2;
-    if (d < minDistance) {
-      minDistance = d;
-      closestCity = c.name;
-    }
-  }
-
-  return closestCity;
-}
-
 /**
- * Detects the user's city via browser geolocation + OpenStreetMap reverse geocoding.
- * Falls back gracefully to nearest coordinate match if reverse geocoding is rate-limited.
+ * Detects the user's actual city via browser GPS + `/api/location/detect` + OpenStreetMap.
+ * Runs in the background on every mount, on visibility change, and on every open of the location selector.
  */
 export function useLocation() {
   const [city, setCityState] = useState(null);
+  const [coords, setCoords] = useState(null);
   const [status, setStatus] = useState("idle");
 
   const isMountedRef = useRef(false);
@@ -49,30 +22,32 @@ export function useLocation() {
     };
   }, []);
 
-  // Hydrate location from localStorage on mount
+  // 1. Hydrate location from localStorage on mount
   useEffect(() => {
     try {
       const saved = localStorage.getItem("vouchiqo_city");
-      if (saved) {
-        if (isMountedRef.current) {
-          setCityState(saved);
-          setStatus("ready");
-        }
+      if (saved && isMountedRef.current) {
+        setCityState(saved);
+        setStatus("ready");
       }
     } catch (e) {
       console.error("Failed to read location from localStorage:", e);
     }
   }, []);
 
-  const setCity = useCallback((newCity) => {
+  const setCity = useCallback((newCity, isManual = true) => {
     if (!isMountedRef.current) return;
     setCityState(newCity);
     try {
       if (newCity) {
         localStorage.setItem("vouchiqo_city", newCity);
+        if (isManual) {
+          localStorage.setItem("vouchiqo_city_manual", "true");
+        }
         setStatus("ready");
       } else {
         localStorage.removeItem("vouchiqo_city");
+        localStorage.removeItem("vouchiqo_city_manual");
         setStatus("idle");
       }
     } catch (e) {
@@ -80,66 +55,202 @@ export function useLocation() {
     }
   }, []);
 
-  const detect = useCallback(() => {
+  // 2. High-precision Reverse Geocode helper (tries /api/location/detect first, then client-side BDC / OSM)
+  const resolveCoordinatesToCity = useCallback(async (lat, lon) => {
+    // Try internal server API first (avoids CORS & server-side rate limits)
+    try {
+      const res = await fetch(`/api/location/detect?lat=${lat}&lon=${lon}`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data?.city) return data.city;
+      }
+    } catch (_) {}
+
+    // Fallback: BigDataCloud client-side reverse geocoding
+    try {
+      const bdcRes = await fetch(
+        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`,
+      );
+      if (bdcRes.ok) {
+        const data = await bdcRes.json();
+        const detected =
+          data.city || data.locality || data.principalSubdivision;
+        if (detected) return detected;
+      }
+    } catch (_) {}
+
+    // Fallback: OpenStreetMap Nominatim
+    try {
+      const nomRes = await fetch(
+        `${NOMINATIM_URL}?lat=${lat}&lon=${lon}&format=json`,
+        { headers: { "Accept-Language": "en" } },
+      );
+      if (nomRes.ok) {
+        const data = await nomRes.json();
+        const detected =
+          data.address?.city ||
+          data.address?.town ||
+          data.address?.municipality ||
+          data.address?.village ||
+          data.address?.county;
+        if (detected) return detected;
+      }
+    } catch (_) {}
+
+    return null;
+  }, []);
+
+  // 3. User-initiated Detect (clicking "Use Current Location")
+  const detect = useCallback(async () => {
+    if (isMountedRef.current) setStatus("detecting");
+
     if (!navigator.geolocation) {
+      // Fallback to IP detection if browser geolocation is not supported
+      try {
+        const res = await fetch("/api/location/detect");
+        if (res.ok) {
+          const data = await res.json();
+          if (data?.city && isMountedRef.current) {
+            setCity(data.city, false);
+            if (data.lat && data.lon)
+              setCoords({ lat: data.lat, lon: data.lon });
+            setStatus("ready");
+            return;
+          }
+        }
+      } catch (_) {}
       if (isMountedRef.current) setStatus("unavailable");
       return;
     }
 
-    if (isMountedRef.current) setStatus("detecting");
-
     navigator.geolocation.getCurrentPosition(
-      async ({ coords }) => {
-        let detected = null;
+      async ({ coords: posCoords }) => {
+        const { latitude, longitude } = posCoords;
+        if (isMountedRef.current) {
+          setCoords({ lat: latitude, lon: longitude });
+        }
+
+        const detectedCity = await resolveCoordinatesToCity(
+          latitude,
+          longitude,
+        );
+
+        if (detectedCity && isMountedRef.current) {
+          setCity(detectedCity, false);
+          setStatus("ready");
+        } else {
+          // If coords failed to resolve, try IP endpoint
+          try {
+            const res = await fetch("/api/location/detect");
+            if (res.ok) {
+              const data = await res.json();
+              if (data?.city && isMountedRef.current) {
+                setCity(data.city, false);
+              }
+            }
+          } catch (_) {}
+          if (isMountedRef.current) setStatus("ready");
+        }
+      },
+      async (err) => {
+        console.warn("Geolocation permission denied or timed out:", err);
+        // Seamless fallback to IP location
         try {
-          const res = await fetch(
-            `${NOMINATIM_URL}?lat=${coords.latitude}&lon=${coords.longitude}&format=json`,
-            { headers: { "Accept-Language": "en" } },
-          );
+          const res = await fetch("/api/location/detect");
           if (res.ok) {
             const data = await res.json();
-            detected =
-              data.address?.city ||
-              data.address?.town ||
-              data.address?.village ||
-              data.address?.county ||
-              null;
+            if (data?.city && isMountedRef.current) {
+              setCity(data.city, false);
+              if (data.lat && data.lon)
+                setCoords({ lat: data.lat, lon: data.lon });
+              setStatus("ready");
+              return;
+            }
           }
-        } catch (e) {
-          console.warn(
-            "Nominatim reverse geocode failed. Using coordinate fallback:",
-            e,
-          );
-        }
-
-        // If Nominatim fails or returns null, find closest Indian city from coordinates
-        if (!detected) {
-          detected = getClosestCity(coords.latitude, coords.longitude);
-        }
-
-        if (isMountedRef.current) {
-          setCity(detected);
-          setStatus("ready");
-        }
-      },
-      () => {
+        } catch (_) {}
         if (isMountedRef.current) setStatus("denied");
       },
-      { timeout: 8000, maximumAge: 5 * 60 * 1000 },
+      { enableHighAccuracy: true, timeout: 8000, maximumAge: 0 },
     );
-  }, [setCity]);
+  }, [setCity, resolveCoordinatesToCity]);
 
-  // Auto-detect on mount if browser permission has already been granted previously
-  useEffect(() => {
-    navigator.permissions
-      ?.query({ name: "geolocation" })
-      .then(({ state }) => {
-        if (state === "granted" && !localStorage.getItem("vouchiqo_city")) {
-          detect();
+  // 4. Background Detection (runs silently without blocking UI)
+  const detectBackground = useCallback(async () => {
+    try {
+      // If user has not set a manual override or if city is empty, check GPS permission
+      let permissionState = null;
+      try {
+        const perm = await navigator.permissions?.query({
+          name: "geolocation",
+        });
+        permissionState = perm?.state;
+      } catch (_) {}
+
+      if (permissionState === "granted" && navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          async ({ coords: posCoords }) => {
+            const { latitude, longitude } = posCoords;
+            if (isMountedRef.current) {
+              setCoords({ lat: latitude, lon: longitude });
+            }
+            const detected = await resolveCoordinatesToCity(
+              latitude,
+              longitude,
+            );
+            if (detected && isMountedRef.current) {
+              const isManual =
+                localStorage.getItem("vouchiqo_city_manual") === "true";
+              if (!isManual || !localStorage.getItem("vouchiqo_city")) {
+                setCity(detected, false);
+              }
+            }
+          },
+          () => {},
+          { enableHighAccuracy: false, timeout: 5000, maximumAge: 60000 },
+        );
+      } else {
+        // Fallback: silent IP detection
+        const res = await fetch("/api/location/detect");
+        if (res.ok) {
+          const data = await res.json();
+          if (data?.city && isMountedRef.current) {
+            if (data.lat && data.lon)
+              setCoords({ lat: data.lat, lon: data.lon });
+            const isManual =
+              localStorage.getItem("vouchiqo_city_manual") === "true";
+            if (!isManual || !localStorage.getItem("vouchiqo_city")) {
+              setCity(data.city, false);
+            }
+          }
         }
-      })
-      .catch(() => {});
-  }, [detect]);
+      }
+    } catch (_) {}
+  }, [setCity, resolveCoordinatesToCity]);
 
-  return { city, setCity, status, detect };
+  // 5. Run background detection on mount
+  useEffect(() => {
+    detectBackground();
+  }, [detectBackground]);
+
+  // 6. Refresh on window focus / visibility change
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        detectBackground();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () =>
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, [detectBackground]);
+
+  return {
+    city,
+    coords,
+    setCity,
+    status,
+    detect,
+    detectBackground,
+    refreshLocation: detectBackground,
+  };
 }

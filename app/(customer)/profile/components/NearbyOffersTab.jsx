@@ -146,6 +146,17 @@ export default function NearbyOffersTab() {
     handleLocateMe(false);
   }, [handleLocateMe]);
 
+  // Window resize listener to keep Leaflet map tiles matching full screen height
+  useEffect(() => {
+    const handleResize = () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.invalidateSize();
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Process & enrich all store offers with exact coordinates & distance
   const processedStores = useMemo(() => {
     const center = mapCenter;
@@ -503,6 +514,12 @@ export default function NearbyOffersTab() {
       marker.on("click", () => handleSelectDeal(store));
       marker.addTo(markersGroupRef.current);
     });
+
+    setTimeout(() => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.invalidateSize();
+      }
+    }, 150);
   }, [
     leafletLoaded,
     mapCenter,
@@ -733,9 +750,9 @@ export default function NearbyOffersTab() {
       </div>
 
       {/* Main Dual-Column Content: Map (Left) + Google Maps Style Sections (Right) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
         {/* Left Side: Interactive Leaflet Map with Live Routing */}
-        <div className="lg:col-span-7 bg-[#FFF8EF] border border-[#EADBCE] rounded-2xl relative overflow-hidden h-[360px] sm:h-[440px] flex items-center justify-center">
+        <div className="lg:col-span-7 bg-[#FFF8EF] border border-[#EADBCE] rounded-2xl relative overflow-hidden h-[420px] sm:h-[500px] lg:h-[calc(100vh-230px)] min-h-[500px] flex items-center justify-center sticky top-2">
           <div ref={mapRef} className="w-full h-full z-0" />
 
           {/* Floating GPS Recenter button on top right of map */}
@@ -813,7 +830,15 @@ export default function NearbyOffersTab() {
         </div>
 
         {/* Right Side: Google Maps Style Distance Categorised Sections */}
-        <div className="lg:col-span-5 h-[360px] sm:h-[440px] overflow-y-auto space-y-4 pr-1 scrollbar-thin">
+        <div
+          data-lenis-prevent="true"
+          className="lg:col-span-5 h-[420px] sm:h-[500px] lg:h-[calc(100vh-230px)] min-h-[500px] overflow-y-auto overscroll-contain space-y-4 pr-1.5 search-dropdown-scroll"
+          style={{
+            overscrollBehavior: "contain",
+            WebkitOverflowScrolling: "touch",
+            touchAction: "pan-y",
+          }}
+        >
           {loading ? (
             <div className="p-8 text-center text-xs font-sans text-[#6B4C82] space-y-2">
               <div className="w-6 h-6 border-2 border-[#007F79] border-t-transparent rounded-full animate-spin mx-auto" />

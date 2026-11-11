@@ -1,5 +1,6 @@
 "use client";
 
+import { useQueryClient } from "@tanstack/react-query";
 import {
   AlertTriangle,
   Bookmark,
@@ -9,16 +10,23 @@ import {
   Settings,
   Wallet,
 } from "lucide-react";
+import dynamic from "next/dynamic";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import {
+  Suspense,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import toast from "react-hot-toast";
 // Layout & Global Components
 import DashboardLayout from "@/components/layout/DashboardLayout";
+import DashboardSkeleton from "@/components/shared/feedback/DashboardSkeleton";
 import ConfirmationModal from "@/components/shared/modals/ConfirmationModal";
 import ConfirmDeleteModal from "@/components/shared/modals/ConfirmDeleteModal";
-import DashboardSkeleton from "@/components/shared/feedback/DashboardSkeleton";
 import { Button } from "@/components/ui/button";
-import { useQueryClient } from "@tanstack/react-query";
 import { useMerchantProfile } from "@/hooks/use-merchant";
 import {
   useDeleteClaim,
@@ -30,7 +38,6 @@ import {
 } from "@/hooks/use-user";
 import { apiFetch } from "@/lib/fetcher";
 import { qk } from "@/lib/query-keys";
-import dynamic from "next/dynamic";
 
 // Modular Tab Components (Code-split dynamically per Rule 57)
 const SavingsTab = dynamic(() => import("./components/SavingsTab"), {
@@ -129,9 +136,7 @@ function ProfileContent() {
 
   // ── Merchant Guard ──────────────────────────────────────────────────────────
   const shouldCheckMerchant =
-    isLoaded &&
-    role !== "merchant" &&
-    Boolean(authUser?.id);
+    isLoaded && role !== "merchant" && Boolean(authUser?.id);
 
   const { data: merchantProfile } = useMerchantProfile({
     enabled: shouldCheckMerchant,
@@ -207,7 +212,8 @@ function ProfileContent() {
   // TanStack Query Hooks
   const { data: savingsData, isLoading: isSavingsLoading } = useUserSavings();
   const { data: rawProfile, isLoading: isProfileLoading } = useUserProfile();
-  const { data: rawClaims, isLoading: isClaimsLoading } = useUserClaims("active");
+  const { data: rawClaims, isLoading: isClaimsLoading } =
+    useUserClaims("active");
   const updateUserMutation = useUpdateUserProfile();
   const deleteClaimMutation = useDeleteClaim();
 
@@ -238,13 +244,7 @@ function ProfileContent() {
     }));
   }, [rawClaims]);
 
-  useEffect(() => {
-    if (savingsData?.milestones) {
-      checkAndTriggerConfetti(savingsData.milestones);
-    }
-  }, [savingsData?.milestones]);
-
-  const checkAndTriggerConfetti = (milestones) => {
+  const checkAndTriggerConfetti = useCallback((milestones) => {
     try {
       const celebrated = JSON.parse(
         localStorage.getItem("vouchiqo_celebrated_milestones") || "[]",
@@ -266,7 +266,13 @@ function ProfileContent() {
     } catch (e) {
       console.error(e);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    if (savingsData?.milestones) {
+      checkAndTriggerConfetti(savingsData.milestones);
+    }
+  }, [savingsData?.milestones, checkAndTriggerConfetti]);
 
   // Settings Save
   const handleSaveSettings = async (e) => {
@@ -345,7 +351,10 @@ function ProfileContent() {
     toast.success("Copied & opening WhatsApp!");
     setTimeout(() => setCopiedShareCard(false), 3000);
     if (typeof window !== "undefined") {
-      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`, "_blank");
+      window.open(
+        `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`,
+        "_blank",
+      );
     }
   };
 
@@ -452,12 +461,12 @@ function ProfileContent() {
               onClick={() => handleTabChange(t.id)}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs transition-all whitespace-nowrap cursor-pointer border shrink-0 ${
                 isActive
-                  ? "bg-rose-50 text-[#FF2E63] border-rose-200 font-medium shadow-2xs"
+                  ? "bg-[#007F79]/10 text-[#007F79] border-[#007F79]/20 font-medium shadow-2xs"
                   : "bg-white text-slate-600 border-transparent hover:bg-slate-50 hover:text-slate-900 font-normal"
               }`}
             >
               <Icon
-                className={`w-3.5 h-3.5 ${isActive ? "text-[#FF2E63]" : "text-slate-400"}`}
+                className={`w-3.5 h-3.5 ${isActive ? "text-[#007F79]" : "text-slate-400"}`}
               />
               <span>{t.label}</span>
             </button>

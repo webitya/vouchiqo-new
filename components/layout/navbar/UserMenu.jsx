@@ -211,10 +211,10 @@ export const UserMenu = () => {
     <div className="relative shrink-0" ref={ref}>
       <button
         onClick={() => setOpen((v) => !v)}
-        className={`rounded-full transition-all focus:outline-none cursor-pointer flex items-center justify-center p-0.5 border-2 ${
+        className={`rounded-full transition-all focus:outline-none cursor-pointer flex items-center justify-center p-0.5 border-2 border-[#FFD166] ${
           open
-            ? "border-[#FFD166] bg-white/20"
-            : "border-transparent hover:border-[#FFD166]/60"
+            ? "bg-white/20 shadow-xs ring-2 ring-[#FFD166]/30"
+            : "hover:bg-white/10 hover:border-[#FFE599]"
         }`}
         aria-label="User menu"
         aria-haspopup="true"

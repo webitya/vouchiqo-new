@@ -2,61 +2,21 @@
 
 import {
   ArrowUp,
-  ArrowUpDown,
-  Baby,
-  Car,
   Check,
   ChevronDown,
   Copy,
-  CreditCard,
-  Dumbbell,
   ExternalLink,
-  Flame,
-  Gamepad2,
-  Gem,
-  GraduationCap,
-  Heart,
-  Home,
-  Laptop,
-  Layers,
-  Percent,
-  Plane,
   RotateCcw,
   Search,
-  ShieldCheck,
-  Shirt,
-  ShoppingCart,
   SlidersHorizontal,
-  Tag,
-  Utensils,
-  Wrench,
   X,
-  Zap,
 } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import ProductOfferCard from "@/components/shared/cards/ProductOfferCard";
-
-// Map slugs to category icons
-const CATEGORY_ICONS = {
-  electronics: Laptop,
-  fashion: Shirt,
-  food: Utensils,
-  beauty: Heart,
-  travel: Plane,
-  home: Home,
-  "home-improvement": Wrench,
-  fitness: Dumbbell,
-  education: GraduationCap,
-  "kids-baby": Baby,
-  jewellery: Gem,
-  automotive: Car,
-  entertainment: Gamepad2,
-  grocery: ShoppingCart,
-  finance: CreditCard,
-};
+import SafeImage from "@/components/shared/SafeImage";
 
 // Intelligent dynamic subcategory classifier based on actual product contents
 function classifyProduct(item, categorySlug) {
@@ -187,10 +147,10 @@ export default function CategoryClient({
 }) {
   // State for all filters
   const [selectedSub, setSelectedSub] = useState("all");
-  const [selectedBrands, setSelectedBrands] = useState([]); // array of brand names
-  const [minDiscount, setMinDiscount] = useState(0); // 0, 30, 50, 70
-  const [priceRange, setPriceRange] = useState("all"); // 'all', 'under-1000', '1000-5000', '5000-20000', 'above-20000'
-  const [offerType, setOfferType] = useState("all"); // 'all' | 'deals' | 'coupons'
+  const [selectedBrands, setSelectedBrands] = useState([]);
+  const [minDiscount, setMinDiscount] = useState(0);
+  const [priceRange, setPriceRange] = useState("all");
+  const [offerType, setOfferType] = useState("all");
   const searchParams = useSearchParams();
   const urlQuery = searchParams?.get("search") || searchParams?.get("q") || "";
   const [searchQuery, setSearchQuery] = useState(urlQuery);
@@ -200,16 +160,16 @@ export default function CategoryClient({
     if (q && q !== searchQuery) {
       setSearchQuery(q);
     }
-  }, [searchParams]);
+  }, [searchParams, searchQuery]);
+
   const [brandSearch, setBrandSearch] = useState("");
-  const [sortBy, setSortBy] = useState("featured"); // 'featured' | 'discount-desc' | 'price-asc' | 'price-desc' | 'latest'
+  const [sortBy, setSortBy] = useState("featured");
   const [copiedId, setCopiedId] = useState(null);
   const [openFaqIdx, setOpenFaqIdx] = useState(null);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   const rawSlug = categoryInfo?.slug || "electronics";
-  const CategoryIcon = CATEGORY_ICONS[rawSlug] || Tag;
 
   // Monitor scroll for back-to-top button
   useEffect(() => {
@@ -252,7 +212,6 @@ export default function CategoryClient({
       if (sub) counts[sub] = (counts[sub] || 0) + 1;
     }
 
-    // Return only those with count > 0, sorted by largest count first
     return Object.entries(counts)
       .filter(([_, count]) => count > 0)
       .map(([name, count]) => ({ name, count }))
@@ -275,7 +234,7 @@ export default function CategoryClient({
           name: clean,
           logo:
             logo ||
-            `https://ui-avatars.com/api/?name=${encodeURIComponent(clean)}&background=08214d&color=ffffff&size=64&bold=true`,
+            `https://ui-avatars.com/api/?name=${encodeURIComponent(clean)}&background=35104a&color=ffd166&size=64&bold=true`,
           count: 1,
         });
       }
@@ -332,12 +291,10 @@ export default function CategoryClient({
     if (offerType === "deals") return [];
     let list = [...enrichedCoupons];
 
-    // Subcategory filter
     if (selectedSub !== "all") {
       list = list.filter((c) => c.computedSub === selectedSub);
     }
 
-    // Brand filter
     if (selectedBrands.length > 0) {
       list = list.filter((c) => {
         const name = (
@@ -349,7 +306,6 @@ export default function CategoryClient({
       });
     }
 
-    // Discount filter
     if (minDiscount > 0) {
       list = list.filter((c) => {
         const disc = c.discountType === "percentage" ? c.discountValue : 0;
@@ -357,7 +313,6 @@ export default function CategoryClient({
       });
     }
 
-    // Search query
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase().trim();
       list = list.filter(
@@ -370,7 +325,6 @@ export default function CategoryClient({
       );
     }
 
-    // Sort
     if (sortBy === "discount-desc") {
       list.sort((a, b) => (b.discountValue || 0) - (a.discountValue || 0));
     } else if (sortBy === "latest") {
@@ -397,12 +351,10 @@ export default function CategoryClient({
     if (offerType === "coupons") return [];
     let list = [...enrichedAffiliate];
 
-    // Subcategory filter
     if (selectedSub !== "all") {
       list = list.filter((p) => p.computedSub === selectedSub);
     }
 
-    // Brand filter
     if (selectedBrands.length > 0) {
       list = list.filter((p) => {
         const name = (
@@ -416,7 +368,6 @@ export default function CategoryClient({
       });
     }
 
-    // Discount filter
     if (minDiscount > 0) {
       list = list.filter((p) => {
         const disc = p.discountPercentage <= 100 ? p.discountPercentage : 0;
@@ -424,7 +375,6 @@ export default function CategoryClient({
       });
     }
 
-    // Price range filter
     if (priceRange !== "all") {
       list = list.filter((p) => {
         const price = p.discountPrice || p.originalPrice || 0;
@@ -432,7 +382,6 @@ export default function CategoryClient({
       });
     }
 
-    // Search query
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase().trim();
       list = list.filter(
@@ -443,7 +392,6 @@ export default function CategoryClient({
       );
     }
 
-    // Sort
     if (sortBy === "discount-desc") {
       list.sort((a, b) => {
         const pA = a.discountPercentage <= 100 ? a.discountPercentage : 0;
@@ -478,7 +426,6 @@ export default function CategoryClient({
 
   const totalFilteredCount = filteredCoupons.length + filteredAffiliate.length;
 
-  // Check if any filter is active
   const activeFiltersCount =
     (selectedSub !== "all" ? 1 : 0) +
     selectedBrands.length +
@@ -517,102 +464,145 @@ export default function CategoryClient({
 
   const currentFaqs = CATEGORY_FAQS[rawSlug] || CATEGORY_FAQS.default;
 
-  // Reusable Filter Sidebar Content (shared between desktop sidebar and mobile drawer)
+  // Direct native wheel listener to ensure smooth independent brand scrolling without Lenis interference
+  const bindBrandScrollRef = (node) => {
+    if (!node || node._wheelBound) return;
+    node._wheelBound = true;
+    node.addEventListener(
+      "wheel",
+      (e) => {
+        if (node.scrollHeight > node.clientHeight) {
+          e.stopPropagation();
+          node.scrollTop += e.deltaY;
+        }
+      },
+      { passive: false },
+    );
+  };
+
+  // Reusable Filter Sidebar Content - Clean, modern, NO unnecessary decorative icons
   const FilterPanelContent = (
     <div className="space-y-6 text-left font-sans">
       {/* ── Subcategory / Department ── */}
       {activeSubcategories.length > 0 && (
-        <div className="space-y-2.5">
+        <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-              <Layers className="w-3.5 h-3.5 text-[#FF2E63]" />
-              <span>Department</span>
+            <h3 className="text-[11px] font-heading font-semibold uppercase tracking-wider text-[#35104A]">
+              Department
             </h3>
             {selectedSub !== "all" && (
               <button
                 type="button"
                 onClick={() => setSelectedSub("all")}
-                className="text-[11px] font-semibold text-[#FF2E63] hover:underline cursor-pointer"
+                className="text-[11px] font-heading font-medium text-[#007F79] hover:text-[#35104A] hover:underline cursor-pointer"
               >
                 Clear
               </button>
             )}
           </div>
 
-          <div className="space-y-1">
+          <div className="space-y-0.5">
             <button
               type="button"
               onClick={() => setSelectedSub("all")}
-              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+              className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer ${
                 selectedSub === "all"
-                  ? "bg-rose-50 text-[#FF2E63] font-bold"
-                  : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                  ? "bg-[#007F79] text-white font-heading font-semibold shadow-xs"
+                  : "text-[#35104A] hover:bg-[#FFF8EF] hover:text-[#007F79] font-medium"
               }`}
             >
               <span>All {categoryInfo?.title}</span>
-              <span className="text-[10.5px] font-semibold text-slate-400 bg-slate-100 px-1.5 py-0.2 rounded-full">
+              <span
+                className={`text-[10px] px-1.5 py-0.2 rounded-full shrink-0 ${
+                  selectedSub === "all"
+                    ? "bg-white/20 text-white font-heading font-medium"
+                    : "text-[#6B4C82] bg-[#EADBCE]/50 font-medium"
+                }`}
+              >
                 {coupons.length + affiliateProducts.length}
               </span>
             </button>
 
-            {activeSubcategories.map((sub, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() =>
-                  setSelectedSub(sub.name === selectedSub ? "all" : sub.name)
-                }
-                className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
-                  selectedSub === sub.name
-                    ? "bg-rose-50 text-[#FF2E63] font-bold"
-                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-                }`}
-              >
-                <span className="truncate pr-2">{sub.name}</span>
-                <span className="text-[10.5px] font-semibold text-slate-400 bg-slate-100 px-1.5 py-0.2 rounded-full shrink-0">
-                  {sub.count}
-                </span>
-              </button>
-            ))}
+            {activeSubcategories.map((sub, idx) => {
+              const isSelected = selectedSub === sub.name;
+              return (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() =>
+                    setSelectedSub(sub.name === selectedSub ? "all" : sub.name)
+                  }
+                  className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer ${
+                    isSelected
+                      ? "bg-[#007F79] text-white font-heading font-semibold shadow-xs"
+                      : "text-[#35104A] hover:bg-[#FFF8EF] hover:text-[#007F79] font-medium"
+                  }`}
+                >
+                  <span className="truncate pr-2">{sub.name}</span>
+                  <span
+                    className={`text-[10px] px-1.5 py-0.2 rounded-full shrink-0 ${
+                      isSelected
+                        ? "bg-white/20 text-white font-heading font-medium"
+                        : "text-[#6B4C82] bg-[#EADBCE]/50 font-medium"
+                    }`}
+                  >
+                    {sub.count}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
       )}
 
-      {/* ── Brand Filter (Only brands with real deals) ── */}
+      {/* ── Brand Filter ── */}
       {availableBrands.length > 0 && (
-        <div className="space-y-2.5 pt-4 border-t border-slate-100">
+        <div className="space-y-2 pt-4 border-t border-[#EADBCE]">
           <div className="flex items-center justify-between">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-              <Tag className="w-3.5 h-3.5 text-[#FF2E63]" />
-              <span>Brand / Store</span>
+            <h3 className="text-[11px] font-heading font-semibold uppercase tracking-wider text-[#35104A]">
+              Brand / Store
             </h3>
             {selectedBrands.length > 0 && (
               <button
                 type="button"
                 onClick={() => setSelectedBrands([])}
-                className="text-[11px] font-semibold text-[#FF2E63] hover:underline cursor-pointer"
+                className="text-[11px] font-heading font-medium text-[#007F79] hover:text-[#35104A] hover:underline cursor-pointer"
               >
                 Clear ({selectedBrands.length})
               </button>
             )}
           </div>
 
-          {/* Brand Search Input if many brands */}
           {availableBrands.length > 5 && (
             <div className="relative">
-              <Search className="w-3 h-3 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
+              <Search className="w-3.5 h-3.5 text-[#6B4C82]/60 absolute left-2.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={brandSearch}
                 onChange={(e) => setBrandSearch(e.target.value)}
                 placeholder="Search brands..."
-                className="w-full h-7.5 pl-7 pr-2.5 text-[11px] bg-slate-50 rounded-lg border border-slate-200 focus:border-[#FF2E63] outline-none"
+                className="w-full h-8 pl-8 pr-2.5 text-xs bg-white text-[#35104A] placeholder:text-[#6B4C82]/60 rounded-xl border border-[#EADBCE] focus:border-[#007F79] focus:ring-1 focus:ring-[#007F79]/20 outline-none"
               />
             </div>
           )}
 
-          {/* Brand Checkbox List */}
-          <div className="max-h-48 overflow-y-auto space-y-1 pr-1 scrollbar-thin">
+          <div
+            ref={bindBrandScrollRef}
+            data-lenis-prevent="true"
+            onWheel={(e) => {
+              e.stopPropagation();
+              const container = e.currentTarget;
+              if (container.scrollHeight > container.clientHeight) {
+                container.scrollTop += e.deltaY;
+              }
+            }}
+            className="max-h-52 overflow-y-auto overscroll-contain space-y-0.5 pr-1 custom-scrollbar"
+            style={{
+              overscrollBehavior: "contain",
+              touchAction: "pan-y",
+              WebkitOverflowScrolling: "touch",
+            }}
+          >
             {filteredBrandsList.map((brand, idx) => {
               const isChecked = selectedBrands.includes(brand.name);
               return (
@@ -621,31 +611,34 @@ export default function CategoryClient({
                   onClick={() => handleToggleBrand(brand.name)}
                   className={`flex items-center justify-between px-2 py-1.5 rounded-lg text-xs cursor-pointer select-none transition-colors ${
                     isChecked
-                      ? "bg-rose-50/70 text-[#FF2E63] font-semibold"
-                      : "hover:bg-slate-50 text-slate-700"
+                      ? "bg-[#007F79]/10 text-[#007F79] font-heading font-semibold"
+                      : "hover:bg-[#FFF8EF] text-[#35104A]"
                   }`}
                 >
                   <div className="flex items-center gap-2 min-w-0">
                     <div
-                      className={`w-4 h-4 rounded flex items-center justify-center border transition-all ${
+                      className={`w-3.5 h-3.5 rounded flex items-center justify-center border transition-all ${
                         isChecked
-                          ? "bg-[#FF2E63] border-[#FF2E63] text-white"
-                          : "border-slate-300 bg-white"
+                          ? "bg-[#007F79] border-[#007F79] text-white"
+                          : "border-[#EADBCE] bg-white"
                       }`}
                     >
-                      {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
+                      {isChecked && (
+                        <Check className="w-2.5 h-2.5 stroke-[2]" />
+                      )}
                     </div>
-                    <img
-                      src={brand.logo}
-                      alt=""
-                      className="w-3.5 h-3.5 rounded-full object-contain shrink-0"
-                      onError={(e) => {
-                        e.currentTarget.style.display = "none";
-                      }}
-                    />
+                    <div className="w-4 h-4 rounded-full overflow-hidden shrink-0 border border-[#EADBCE]/50 bg-white flex items-center justify-center">
+                      <SafeImage
+                        src={brand.logo}
+                        alt={brand.name || "Brand logo"}
+                        width={16}
+                        height={16}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
                     <span className="truncate">{brand.name}</span>
                   </div>
-                  <span className="text-[10px] text-slate-400 font-medium ml-1 shrink-0">
+                  <span className="text-[10px] text-[#6B4C82] font-medium ml-1 shrink-0">
                     ({brand.count})
                   </span>
                 </label>
@@ -656,173 +649,154 @@ export default function CategoryClient({
       )}
 
       {/* ── Discount Range ── */}
-      <div className="space-y-2.5 pt-4 border-t border-slate-100">
+      <div className="space-y-2 pt-4 border-t border-[#EADBCE]">
         <div className="flex items-center justify-between">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-            <Percent className="w-3.5 h-3.5 text-[#FF2E63]" />
-            <span>Discount</span>
+          <h3 className="text-[11px] font-heading font-semibold uppercase tracking-wider text-[#35104A]">
+            Discount
           </h3>
           {minDiscount > 0 && (
             <button
               type="button"
               onClick={() => setMinDiscount(0)}
-              className="text-[11px] font-semibold text-[#FF2E63] hover:underline cursor-pointer"
+              className="text-[11px] font-heading font-medium text-[#007F79] hover:text-[#35104A] hover:underline cursor-pointer"
             >
               Clear
             </button>
           )}
         </div>
 
-        <div className="space-y-1">
+        <div className="space-y-0.5">
           {[
             { label: "70% or more", value: 70 },
             { label: "50% or more", value: 50 },
             { label: "30% or more", value: 30 },
             { label: "All Discounts", value: 0 },
-          ].map((item) => (
-            <button
-              key={item.value}
-              type="button"
-              onClick={() => setMinDiscount(item.value)}
-              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
-                minDiscount === item.value
-                  ? "bg-rose-50 text-[#FF2E63] font-bold"
-                  : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-              }`}
-            >
-              <span>{item.label}</span>
-              {minDiscount === item.value && (
-                <Check className="w-3.5 h-3.5 text-[#FF2E63]" />
-              )}
-            </button>
-          ))}
+          ].map((item) => {
+            const isSelected = minDiscount === item.value;
+            return (
+              <button
+                key={item.value}
+                type="button"
+                onClick={() => setMinDiscount(item.value)}
+                className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer ${
+                  isSelected
+                    ? "bg-[#007F79]/10 text-[#007F79] font-heading font-semibold border border-[#007F79]/20"
+                    : "text-[#35104A] hover:bg-[#FFF8EF] hover:text-[#007F79] font-medium"
+                }`}
+              >
+                <span>{item.label}</span>
+                {isSelected && (
+                  <Check className="w-3.5 h-3.5 stroke-[2] text-[#007F79]" />
+                )}
+              </button>
+            );
+          })}
         </div>
       </div>
 
       {/* ── Price Range ── */}
-      <div className="space-y-2.5 pt-4 border-t border-slate-100">
+      <div className="space-y-2 pt-4 border-t border-[#EADBCE]">
         <div className="flex items-center justify-between">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-            <Tag className="w-3.5 h-3.5 text-[#FF2E63]" />
-            <span>Price Range</span>
+          <h3 className="text-[11px] font-heading font-semibold uppercase tracking-wider text-[#35104A]">
+            Price Range
           </h3>
           {priceRange !== "all" && (
             <button
               type="button"
               onClick={() => setPriceRange("all")}
-              className="text-[11px] font-semibold text-[#FF2E63] hover:underline cursor-pointer"
+              className="text-[11px] font-heading font-medium text-[#007F79] hover:text-[#35104A] hover:underline cursor-pointer"
             >
               Clear
             </button>
           )}
         </div>
 
-        <div className="space-y-1">
+        <div className="space-y-0.5">
           {[
             { label: "All Prices", value: "all" },
             { label: "Under ₹1,000", value: "under-1000" },
             { label: "₹1,000 - ₹5,000", value: "1000-5000" },
             { label: "₹5,000 - ₹25,000", value: "5000-25000" },
             { label: "Above ₹25,000", value: "above-25000" },
-          ].map((item) => (
-            <button
-              key={item.value}
-              type="button"
-              onClick={() => setPriceRange(item.value)}
-              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
-                priceRange === item.value
-                  ? "bg-rose-50 text-[#FF2E63] font-bold"
-                  : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-              }`}
-            >
-              <span>{item.label}</span>
-              {priceRange === item.value && (
-                <Check className="w-3.5 h-3.5 text-[#FF2E63]" />
-              )}
-            </button>
-          ))}
+          ].map((item) => {
+            const isSelected = priceRange === item.value;
+            return (
+              <button
+                key={item.value}
+                type="button"
+                onClick={() => setPriceRange(item.value)}
+                className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer ${
+                  isSelected
+                    ? "bg-[#007F79]/10 text-[#007F79] font-heading font-semibold border border-[#007F79]/20"
+                    : "text-[#35104A] hover:bg-[#FFF8EF] hover:text-[#007F79] font-medium"
+                }`}
+              >
+                <span>{item.label}</span>
+                {isSelected && (
+                  <Check className="w-3.5 h-3.5 stroke-[2] text-[#007F79]" />
+                )}
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>
   );
 
   return (
-    <div className="w-full bg-[#f8fafc] text-slate-900 font-sans min-h-screen pb-16 select-none relative">
-      {/* ── 1. COMPACT HERO HEADER ── */}
-      <div className="bg-white border-b border-slate-200/90 px-4 sm:px-6 md:px-8 py-4">
+    <div className="w-full bg-[#FFFDF9] text-[#35104A] font-sans min-h-screen pb-16 select-none relative">
+      {/* ── 1. FULL-WIDTH EDITORIAL HERO HEADER ── */}
+      <div className="w-full bg-gradient-to-b from-[#FFF8EF] to-[#FFFDF9] border-b border-[#EADBCE]/80 px-2.5 sm:px-4 md:px-5 py-2.5 sm:py-3.5">
         <div className="w-full">
-          {/* Breadcrumbs */}
+          {/* Breadcrumbs - Clean text, no unnecessary home icon */}
           <nav
             aria-label="Breadcrumb"
-            className="flex items-center gap-1.5 text-[11px] text-slate-500 font-medium mb-2"
+            className="flex items-center gap-1.5 text-[11px] text-[#6B4C82] font-medium mb-1.5"
           >
-            <Link
-              href="/"
-              className="hover:text-[#FF2E63] transition-colors flex items-center gap-1"
-            >
-              <Home className="w-3 h-3 text-slate-400" />
-              <span>Home</span>
+            <Link href="/" className="hover:text-[#007F79] transition-colors">
+              Home
             </Link>
-            <span className="text-slate-300">/</span>
+            <span className="text-[#EADBCE]">/</span>
             <Link
               href="/categories"
-              className="hover:text-[#FF2E63] transition-colors"
+              className="hover:text-[#007F79] transition-colors"
             >
               Categories
             </Link>
-            <span className="text-slate-300">/</span>
-            <span className="text-slate-800 font-semibold">
+            <span className="text-[#EADBCE]">/</span>
+            <span className="text-[#35104A] font-heading font-semibold">
               {categoryInfo?.title}
             </span>
           </nav>
 
-          {/* Title & Stats */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-[#FF2E63] to-[#FF4D6D] text-white flex items-center justify-center shadow-md shadow-rose-500/20 shrink-0">
-                <CategoryIcon className="w-5 h-5 stroke-[2.2]" />
-              </div>
-              <div>
-                <h1 className="text-base sm:text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
-                  <span>{categoryInfo?.title} Deals &amp; Offers</span>
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-rose-50 text-[#FF2E63] border border-rose-200/80">
-                    {coupons.length + affiliateProducts.length} Live
-                  </span>
-                </h1>
-                <p className="text-xs text-slate-500">
-                  Verified coupons, exclusive price drops, and store offers
-                  updated daily.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2 text-xs font-medium text-slate-600">
-              <span className="bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-lg border border-emerald-200/60 flex items-center gap-1 shadow-2xs">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                100% Tested
-              </span>
-              <span className="bg-rose-50 text-[#FF2E63] px-2.5 py-1 rounded-lg border border-rose-200/60 flex items-center gap-1 shadow-2xs">
-                <Flame className="w-3.5 h-3.5 fill-[#FF2E63]" />
-                Up to {maxDiscount}% OFF
-              </span>
-            </div>
+          {/* Title & Subtitle - Clean, human editorial header */}
+          <div>
+            <h1 className="text-lg sm:text-2xl font-heading font-semibold text-[#35104A] tracking-tight">
+              {categoryInfo?.title} Deals &amp; Offers
+            </h1>
+            <p className="text-xs text-[#6B4C82] mt-0.5 font-normal">
+              Verified coupons, exclusive price drops, and store offers updated
+              daily.
+            </p>
           </div>
         </div>
       </div>
 
-      {/* ── 2. MAIN 2-COLUMN E-COMMERCE LAYOUT ── */}
-      <div className="w-full px-4 sm:px-6 md:px-8 py-5">
-        <div className="flex items-start gap-6">
+      {/* ── 2. FULL-WIDTH 2-COLUMN LAYOUT ── */}
+      <div className="w-full px-2.5 sm:px-4 md:px-5 py-3 sm:py-4">
+        <div className="flex items-start gap-3.5 sm:gap-4 lg:gap-4.5">
           {/* ── LEFT DESKTOP FILTER SIDEBAR ── */}
-          <aside className="w-64 lg:w-72 shrink-0 hidden md:block bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-4 sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+          <aside
+            data-lenis-prevent="true"
+            className="w-56 lg:w-64 shrink-0 hidden md:block bg-[#FFFDF9] rounded-xl border border-[#EADBCE] shadow-2xs p-3 sm:p-3.5 sticky top-20 max-h-[calc(100vh-5.5rem)] overflow-y-auto custom-scrollbar overscroll-contain"
+          >
+            <div className="flex items-center justify-between pb-3 border-b border-[#EADBCE] mb-4">
               <div className="flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-[#FF2E63]" />
-                <span className="text-sm font-bold text-slate-900">
+                <span className="text-sm font-heading font-semibold text-[#35104A]">
                   Filters
                 </span>
                 {activeFiltersCount > 0 && (
-                  <span className="w-5 h-5 rounded-full bg-[#FF2E63] text-white text-[10px] font-bold flex items-center justify-center">
+                  <span className="w-5 h-5 rounded-full bg-[#007F79] text-white text-[10px] font-heading font-medium flex items-center justify-center">
                     {activeFiltersCount}
                   </span>
                 )}
@@ -831,7 +805,7 @@ export default function CategoryClient({
                 <button
                   type="button"
                   onClick={handleResetFilters}
-                  className="text-xs font-semibold text-[#FF2E63] hover:underline flex items-center gap-1 cursor-pointer"
+                  className="text-xs font-heading font-medium text-[#007F79] hover:text-[#35104A] hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   <RotateCcw className="w-3 h-3" />
                   <span>Reset</span>
@@ -844,41 +818,41 @@ export default function CategoryClient({
 
           {/* ── RIGHT MAIN CONTENT AREA ── */}
           <main className="flex-1 min-w-0 space-y-4">
-            {/* Top Toolbar: Search + Sort + Mobile Filter Trigger */}
-            <div className="bg-white rounded-2xl p-3 border border-slate-200/90 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            {/* Top Toolbar: Search + Sort + Tabs */}
+            <div className="bg-[#FFFDF9] rounded-xl p-2 sm:p-2.5 border border-[#EADBCE] shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
               {/* Search Bar */}
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B4C82]/60" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={`Search deals in ${categoryInfo?.title || "category"}...`}
-                  className="w-full h-9 pl-9 pr-8 bg-slate-50 hover:bg-slate-100/70 focus:bg-white text-xs sm:text-sm text-slate-800 placeholder-slate-400 rounded-xl border border-slate-200 focus:border-[#FF2E63] focus:ring-2 focus:ring-rose-100 outline-none transition-all"
+                  className="w-full h-9 pl-10 pr-8 bg-white text-xs sm:text-sm text-[#35104A] placeholder:text-[#6B4C82]/60 rounded-xl border border-[#EADBCE] focus:border-[#007F79] focus:ring-1 focus:ring-[#007F79]/15 outline-none transition-all font-sans"
                 />
                 {searchQuery && (
                   <button
                     type="button"
                     onClick={() => setSearchQuery("")}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-0.5 cursor-pointer"
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#6B4C82] hover:text-[#35104A] p-1 cursor-pointer"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
                 )}
               </div>
 
-              {/* Mobile Filter Button + Sort Selector */}
+              {/* Mobile Filter Button + Offer Type Tabs + Sort */}
               <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0">
-                {/* Mobile Filter Button (visible only on mobile) */}
+                {/* Mobile Filter Button */}
                 <button
                   type="button"
                   onClick={() => setIsMobileFilterOpen(true)}
-                  className="md:hidden flex items-center gap-1.5 h-9 px-3 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-xl transition-all cursor-pointer"
+                  className="md:hidden flex items-center gap-1.5 h-9 px-3 bg-[#FFF8EF] hover:bg-[#EADBCE]/50 text-[#35104A] border border-[#EADBCE] text-xs font-heading font-medium rounded-xl transition-all cursor-pointer"
                 >
-                  <SlidersHorizontal className="w-3.5 h-3.5 text-[#FF2E63]" />
+                  <SlidersHorizontal className="w-3.5 h-3.5 text-[#007F79]" />
                   <span>Filters</span>
                   {activeFiltersCount > 0 && (
-                    <span className="w-4 h-4 rounded-full bg-[#FF2E63] text-white text-[9.5px] font-bold flex items-center justify-center">
+                    <span className="w-4 h-4 rounded-full bg-[#007F79] text-white text-[9.5px] font-heading font-medium flex items-center justify-center">
                       {activeFiltersCount}
                     </span>
                   )}
@@ -886,14 +860,14 @@ export default function CategoryClient({
 
                 {/* Offer Type Tabs */}
                 {coupons.length > 0 && (
-                  <div className="inline-flex bg-slate-100 p-0.5 rounded-xl border border-slate-200 shrink-0">
+                  <div className="inline-flex bg-[#FFF8EF] p-0.5 rounded-xl border border-[#EADBCE] shrink-0">
                     <button
                       type="button"
                       onClick={() => setOfferType("all")}
-                      className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                      className={`px-3 py-1 rounded-lg text-xs font-heading transition-all cursor-pointer ${
                         offerType === "all"
-                          ? "bg-white text-slate-900 shadow-2xs"
-                          : "text-slate-600"
+                          ? "bg-white text-[#35104A] font-semibold shadow-2xs border border-[#EADBCE]/60"
+                          : "text-[#6B4C82] hover:text-[#35104A] font-medium"
                       }`}
                     >
                       All ({coupons.length + affiliateProducts.length})
@@ -901,10 +875,10 @@ export default function CategoryClient({
                     <button
                       type="button"
                       onClick={() => setOfferType("deals")}
-                      className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                      className={`px-3 py-1 rounded-lg text-xs font-heading transition-all cursor-pointer ${
                         offerType === "deals"
-                          ? "bg-white text-[#FF2E63] shadow-2xs"
-                          : "text-slate-600"
+                          ? "bg-white text-[#007F79] font-semibold shadow-2xs border border-[#EADBCE]/60"
+                          : "text-[#6B4C82] hover:text-[#35104A] font-medium"
                       }`}
                     >
                       Deals ({affiliateProducts.length})
@@ -912,10 +886,10 @@ export default function CategoryClient({
                     <button
                       type="button"
                       onClick={() => setOfferType("coupons")}
-                      className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                      className={`px-3 py-1 rounded-lg text-xs font-heading transition-all cursor-pointer ${
                         offerType === "coupons"
-                          ? "bg-white text-[#FF2E63] shadow-2xs"
-                          : "text-slate-600"
+                          ? "bg-white text-[#007F79] font-semibold shadow-2xs border border-[#EADBCE]/60"
+                          : "text-[#6B4C82] hover:text-[#35104A] font-medium"
                       }`}
                     >
                       Coupons ({coupons.length})
@@ -924,37 +898,34 @@ export default function CategoryClient({
                 )}
 
                 {/* Sort Dropdown */}
-                <div className="flex items-center gap-1.5 shrink-0">
-                  <ArrowUpDown className="w-3.5 h-3.5 text-slate-400 hidden sm:block" />
-                  <select
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value)}
-                    className="h-9 px-2.5 bg-slate-50 hover:bg-slate-100 text-xs font-medium text-slate-700 rounded-xl border border-slate-200 outline-none cursor-pointer focus:border-[#FF2E63]"
-                  >
-                    <option value="featured">Featured Deals</option>
-                    <option value="discount-desc">Discount: High to Low</option>
-                    <option value="price-asc">Price: Low to High</option>
-                    <option value="price-desc">Price: High to Low</option>
-                    <option value="latest">Newest Added</option>
-                  </select>
-                </div>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="h-9 px-2.5 bg-white hover:bg-[#FFF8EF] text-xs font-heading font-medium text-[#35104A] rounded-xl border border-[#EADBCE] outline-none cursor-pointer focus:border-[#007F79]"
+                >
+                  <option value="featured">Featured Deals</option>
+                  <option value="discount-desc">Discount: High to Low</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="latest">Newest Added</option>
+                </select>
               </div>
             </div>
 
-            {/* Active Filters Chips Bar (Shows what user has filtered) */}
+            {/* Active Filters Chips Bar */}
             {activeFiltersCount > 0 && (
-              <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                <span className="text-[11px] font-semibold text-slate-500 mr-1">
+              <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
+                <span className="text-[11px] font-heading font-medium text-[#6B4C82] mr-1">
                   Active:
                 </span>
 
                 {selectedSub !== "all" && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-heading font-medium bg-[#007F79]/10 text-[#007F79] border border-[#007F79]/25">
                     <span>{selectedSub}</span>
                     <button
                       type="button"
                       onClick={() => setSelectedSub("all")}
-                      className="hover:text-rose-900 cursor-pointer"
+                      className="hover:text-[#35104A] cursor-pointer"
                     >
                       <X className="w-3 h-3" />
                     </button>
@@ -964,13 +935,13 @@ export default function CategoryClient({
                 {selectedBrands.map((b) => (
                   <span
                     key={b}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200"
+                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-heading font-medium bg-[#007F79]/10 text-[#007F79] border border-[#007F79]/25"
                   >
                     <span>{b}</span>
                     <button
                       type="button"
                       onClick={() => handleToggleBrand(b)}
-                      className="hover:text-rose-900 cursor-pointer"
+                      className="hover:text-[#35104A] cursor-pointer"
                     >
                       <X className="w-3 h-3" />
                     </button>
@@ -978,12 +949,12 @@ export default function CategoryClient({
                 ))}
 
                 {minDiscount > 0 && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-heading font-medium bg-[#007F79]/10 text-[#007F79] border border-[#007F79]/25">
                     <span>{minDiscount}%+ OFF</span>
                     <button
                       type="button"
                       onClick={() => setMinDiscount(0)}
-                      className="hover:text-rose-900 cursor-pointer"
+                      className="hover:text-[#35104A] cursor-pointer"
                     >
                       <X className="w-3 h-3" />
                     </button>
@@ -991,12 +962,12 @@ export default function CategoryClient({
                 )}
 
                 {priceRange !== "all" && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-heading font-medium bg-[#007F79]/10 text-[#007F79] border border-[#007F79]/25">
                     <span>{priceRange.replace("-", " to ")}</span>
                     <button
                       type="button"
                       onClick={() => setPriceRange("all")}
-                      className="hover:text-rose-900 cursor-pointer"
+                      className="hover:text-[#35104A] cursor-pointer"
                     >
                       <X className="w-3 h-3" />
                     </button>
@@ -1004,12 +975,12 @@ export default function CategoryClient({
                 )}
 
                 {searchQuery && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-[#FF2E63] border border-rose-200">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-heading font-medium bg-[#007F79]/10 text-[#007F79] border border-[#007F79]/25">
                     <span>"{searchQuery}"</span>
                     <button
                       type="button"
                       onClick={() => setSearchQuery("")}
-                      className="hover:text-rose-900 cursor-pointer"
+                      className="hover:text-[#35104A] cursor-pointer"
                     >
                       <X className="w-3 h-3" />
                     </button>
@@ -1019,23 +990,28 @@ export default function CategoryClient({
                 <button
                   type="button"
                   onClick={handleResetFilters}
-                  className="text-[11px] font-semibold text-slate-500 hover:text-[#FF2E63] underline cursor-pointer ml-1"
+                  className="text-[11px] font-heading font-medium text-[#6B4C82] hover:text-[#007F79] underline cursor-pointer ml-1"
                 >
                   Clear all
                 </button>
               </div>
             )}
 
-            {/* Results Count Bar */}
-            <div className="flex items-center justify-between text-xs text-slate-600 px-1">
+            {/* Results Count */}
+            <div className="flex items-center justify-between text-xs text-[#6B4C82] px-0.5 font-sans">
               <p>
                 Showing{" "}
-                <strong className="text-slate-900">{totalFilteredCount}</strong>{" "}
+                <strong className="text-[#35104A] font-heading font-semibold">
+                  {totalFilteredCount}
+                </strong>{" "}
                 verified deals
                 {selectedSub !== "all" && (
                   <span>
                     {" "}
-                    in <strong className="text-[#FF2E63]">{selectedSub}</strong>
+                    in{" "}
+                    <strong className="text-[#007F79] font-heading font-semibold">
+                      {selectedSub}
+                    </strong>
                   </span>
                 )}
               </p>
@@ -1043,13 +1019,12 @@ export default function CategoryClient({
 
             {/* ── STORE PROMO CODES (IF ANY) ── */}
             {filteredCoupons.length > 0 && (
-              <div className="space-y-3 pt-2">
-                <h2 className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
-                  <Tag className="w-3.5 h-3.5 text-[#FF2E63]" />
-                  <span>Promo Codes ({filteredCoupons.length})</span>
+              <div className="space-y-2.5 pt-1">
+                <h2 className="text-xs sm:text-[13px] font-heading font-semibold uppercase tracking-wider text-[#35104A]">
+                  Promo Codes ({filteredCoupons.length})
                 </h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3.5">
                   {filteredCoupons.map((coupon) => {
                     const merchantName =
                       coupon.merchantId?.businessName ||
@@ -1057,7 +1032,7 @@ export default function CategoryClient({
                       "Partner Store";
                     const merchantLogo =
                       coupon.merchantId?.logo ||
-                      `https://ui-avatars.com/api/?name=${encodeURIComponent(merchantName)}&background=f72853&color=ffffff&size=64&bold=true`;
+                      `https://ui-avatars.com/api/?name=${encodeURIComponent(merchantName)}&background=35104a&color=ffd166&size=64&bold=true`;
                     const hasCode = coupon.code && coupon.code.trim() !== "";
                     const isCopied = copiedId === coupon._id;
 
@@ -1073,55 +1048,51 @@ export default function CategoryClient({
                     return (
                       <div
                         key={coupon._id}
-                        className="bg-white border border-slate-200/80 rounded-2xl p-3.5 shadow-2xs hover:shadow-[0_8px_20px_rgba(247,40,83,0.12)] hover:border-rose-300 transition-all duration-300 flex flex-col justify-between select-none group text-left cursor-pointer"
+                        className="bg-[#FFFDF9] border border-[#EADBCE] rounded-2xl p-3.5 shadow-2xs hover:shadow-[0_8px_20px_rgba(53,16,74,0.08)] hover:border-[#007F79]/50 transition-all duration-300 flex flex-col justify-between select-none group text-left cursor-pointer"
                       >
                         <div className="flex items-start justify-between gap-1.5">
                           <div className="flex items-center gap-2 min-w-0">
-                            <div className="w-7 h-7 rounded-lg bg-slate-50 border border-slate-200/80 p-0.5 flex items-center justify-center shrink-0">
-                              <img
+                            <div className="w-8 h-8 rounded-xl bg-white border border-[#EADBCE] p-1 flex items-center justify-center shrink-0 overflow-hidden">
+                              <SafeImage
                                 src={merchantLogo}
-                                alt={merchantName}
-                                className="w-full h-full object-contain rounded-sm"
-                                onError={(e) => {
-                                  e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(merchantName)}&background=f72853&color=ffffff&size=64&bold=true`;
-                                }}
+                                alt={merchantName || "Merchant logo"}
+                                width={32}
+                                height={32}
+                                className="w-full h-full object-contain rounded-md"
                               />
                             </div>
                             <div className="min-w-0">
-                              <p className="text-xs font-semibold text-slate-800 truncate group-hover:text-[#FF2E63] transition-colors">
+                              <p className="text-xs font-heading font-semibold text-[#35104A] truncate group-hover:text-[#007F79] transition-colors">
                                 {merchantName}
                               </p>
-                              <span className="inline-flex items-center gap-0.5 text-[9px] font-medium text-emerald-600">
-                                <ShieldCheck className="w-2.5 h-2.5" /> Verified
+                              <span className="text-[9.5px] font-medium text-[#007F79]">
+                                Verified Store
                               </span>
                             </div>
                           </div>
 
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-tight bg-rose-50 text-[#FF2E63] border border-rose-200/70 shrink-0">
+                          <span className="px-2 py-0.5 rounded-lg text-[10.5px] font-heading font-semibold uppercase tracking-tight bg-[#FF8C05]/10 text-[#FF8C05] border border-[#FF8C05]/20 shrink-0">
                             {discountBadge}
                           </span>
                         </div>
 
-                        <div className="my-2.5 space-y-0.5">
-                          <h3 className="text-xs font-semibold text-slate-800 leading-snug line-clamp-2">
+                        <div className="my-2.5 space-y-1">
+                          <h3 className="text-xs sm:text-[13px] font-heading font-semibold text-[#35104A] leading-snug line-clamp-2">
                             {coupon.title}
                           </h3>
                           {coupon.description && (
-                            <p className="text-[10.5px] text-slate-500 line-clamp-1 font-normal">
+                            <p className="text-[11px] text-[#6B4C82] line-clamp-2 font-normal leading-relaxed">
                               {coupon.description}
                             </p>
                           )}
                         </div>
 
-                        <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between gap-2">
-                          <div className="text-[10px] text-slate-400 font-medium flex items-center gap-1">
-                            <Flame className="w-3 h-3 text-orange-500" />
-                            <span>
-                              {coupon.totalClaims
-                                ? `${coupon.totalClaims} Claimed`
-                                : "Active"}
-                            </span>
-                          </div>
+                        <div className="pt-2.5 border-t border-dashed border-[#EADBCE] flex items-center justify-between gap-2">
+                          <span className="text-[10px] text-[#6B4C82] font-medium">
+                            {coupon.totalClaims
+                              ? `${coupon.totalClaims} Claimed`
+                              : "Verified Active"}
+                          </span>
 
                           {hasCode ? (
                             <button
@@ -1129,20 +1100,20 @@ export default function CategoryClient({
                               onClick={(e) =>
                                 handleCopyCode(e, coupon.code, coupon._id)
                               }
-                              className={`px-3 py-1 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer border ${
+                              className={`px-2.5 py-1 text-xs font-heading font-semibold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer border ${
                                 isCopied
-                                  ? "bg-emerald-50 text-emerald-700 border-emerald-300"
-                                  : "bg-rose-50 text-[#FF2E63] border-rose-200 hover:bg-[#FF2E63] hover:text-white active:scale-95"
+                                  ? "bg-[#007F79] text-white border-[#007F79] shadow-2xs"
+                                  : "bg-[#FFF8EF] hover:bg-[#35104A] hover:text-white text-[#35104A] border-dashed border-[#007F79]/50 hover:border-[#35104A] active:scale-95 shadow-2xs"
                               }`}
                             >
                               {isCopied ? (
                                 <>
-                                  <Check className="w-3 h-3 text-emerald-600" />
-                                  <span>Copied</span>
+                                  <Check className="w-3 h-3 text-white" />
+                                  <span>COPIED</span>
                                 </>
                               ) : (
                                 <>
-                                  <span className="font-mono">
+                                  <span className="font-mono tracking-wider">
                                     {coupon.code}
                                   </span>
                                   <Copy className="w-3 h-3 opacity-70" />
@@ -1154,10 +1125,10 @@ export default function CategoryClient({
                               href={coupon.affiliateUrl || "#"}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="px-3 py-1 bg-slate-50 hover:bg-rose-50 text-slate-700 hover:text-[#FF2E63] border border-slate-200 hover:border-rose-200 active:scale-95 text-xs font-semibold rounded-lg transition-all flex items-center gap-1 cursor-pointer"
+                              className="px-2.5 py-1 bg-[#007F79] hover:bg-[#00605B] text-white border border-[#007F79] active:scale-95 text-xs font-heading font-semibold rounded-lg transition-all flex items-center gap-1 cursor-pointer shadow-2xs"
                             >
                               <span>Get Deal</span>
-                              <ExternalLink className="w-3 h-3 text-slate-400" />
+                              <ExternalLink className="w-3 h-3 text-white/80" />
                             </a>
                           )}
                         </div>
@@ -1170,18 +1141,14 @@ export default function CategoryClient({
 
             {/* ── PRODUCT DEALS & PRICE DROPS GRID ── */}
             {filteredAffiliate.length > 0 && (
-              <div className="space-y-3 pt-2">
+              <div className="space-y-2.5 pt-2">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
-                    <Zap className="w-3.5 h-3.5 text-amber-500" />
-                    <span>
-                      Product Deals &amp; Price Drops (
-                      {filteredAffiliate.length})
-                    </span>
+                  <h2 className="text-xs sm:text-[13px] font-heading font-semibold uppercase tracking-wider text-[#35104A]">
+                    Product Deals &amp; Offers ({filteredAffiliate.length})
                   </h2>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-3.5 sm:gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3.5 sm:gap-4">
                   {filteredAffiliate.map((product, idx) => (
                     <ProductOfferCard
                       key={product._id || idx}
@@ -1194,14 +1161,11 @@ export default function CategoryClient({
 
             {/* ── EMPTY STATE WHEN NO RESULTS MATCH ── */}
             {totalFilteredCount === 0 && (
-              <div className="bg-white rounded-2xl border border-slate-200 p-8 sm:p-12 text-center space-y-3 shadow-2xs">
-                <div className="w-12 h-12 rounded-2xl bg-rose-50 text-[#FF2E63] flex items-center justify-center mx-auto shadow-2xs">
-                  <Layers className="w-6 h-6" />
-                </div>
-                <h3 className="text-sm sm:text-base font-bold text-slate-800">
+              <div className="bg-[#FFFDF9] rounded-2xl border border-[#EADBCE] p-10 sm:p-14 text-center space-y-3 shadow-2xs">
+                <h3 className="text-sm sm:text-base font-heading font-semibold text-[#35104A]">
                   No matching deals found
                 </h3>
-                <p className="text-xs text-slate-500 max-w-sm mx-auto leading-relaxed">
+                <p className="text-xs text-[#6B4C82] max-w-sm mx-auto leading-relaxed">
                   No deals match your selected filters. Try clearing your
                   filters or search keywords to see all available offers.
                 </p>
@@ -1209,7 +1173,7 @@ export default function CategoryClient({
                   <button
                     type="button"
                     onClick={handleResetFilters}
-                    className="px-4 py-2 bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-semibold rounded-xl transition-all shadow-xs cursor-pointer active:scale-95 inline-flex items-center gap-1.5"
+                    className="px-4 py-2 bg-[#007F79] hover:bg-[#00605B] text-white text-xs font-heading font-semibold rounded-xl transition-all shadow-xs cursor-pointer active:scale-95 inline-flex items-center gap-1.5"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                     <span>Reset All Filters</span>
@@ -1224,23 +1188,19 @@ export default function CategoryClient({
       {/* ── 3. MOBILE FILTER SLIDE-OVER DRAWER (SHEET) ── */}
       {isMobileFilterOpen && (
         <div className="fixed inset-0 z-50 flex justify-end md:hidden">
-          {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs transition-opacity"
+            className="fixed inset-0 bg-[#35104A]/40 backdrop-blur-xs transition-opacity"
             onClick={() => setIsMobileFilterOpen(false)}
           />
 
-          {/* Drawer Body */}
-          <div className="relative w-full max-w-xs bg-white h-full shadow-2xl flex flex-col z-10 animate-in slide-in-from-right duration-200">
-            {/* Drawer Header */}
-            <div className="flex items-center justify-between p-4 border-b border-slate-200">
+          <div className="relative w-full max-w-xs bg-[#FFFDF9] border-l border-[#EADBCE] h-full shadow-2xl flex flex-col z-10 animate-in slide-in-from-right duration-200">
+            <div className="flex items-center justify-between p-4 border-b border-[#EADBCE] bg-[#FFF8EF]">
               <div className="flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-[#FF2E63]" />
-                <span className="text-sm font-bold text-slate-900">
+                <span className="text-sm font-heading font-semibold text-[#35104A]">
                   Filters
                 </span>
                 {activeFiltersCount > 0 && (
-                  <span className="w-5 h-5 rounded-full bg-[#FF2E63] text-white text-[10px] font-bold flex items-center justify-center">
+                  <span className="w-5 h-5 rounded-full bg-[#007F79] text-white text-[10px] font-heading font-medium flex items-center justify-center">
                     {activeFiltersCount}
                   </span>
                 )}
@@ -1248,30 +1208,31 @@ export default function CategoryClient({
               <button
                 type="button"
                 onClick={() => setIsMobileFilterOpen(false)}
-                className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 cursor-pointer"
+                className="p-1 rounded-lg text-[#6B4C82] hover:text-[#35104A] hover:bg-[#EADBCE]/40 cursor-pointer"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5 stroke-[1.75]" />
               </button>
             </div>
 
-            {/* Drawer Scrollable Content */}
-            <div className="flex-1 overflow-y-auto p-4">
+            <div
+              data-lenis-prevent="true"
+              className="flex-1 overflow-y-auto p-4 custom-scrollbar overscroll-contain"
+            >
               {FilterPanelContent}
             </div>
 
-            {/* Drawer Footer Actions */}
-            <div className="p-4 border-t border-slate-200 bg-slate-50 flex items-center gap-2">
+            <div className="p-4 border-t border-[#EADBCE] bg-[#FFF8EF] flex items-center gap-2">
               <button
                 type="button"
                 onClick={handleResetFilters}
-                className="flex-1 py-2.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-700 hover:bg-slate-100 cursor-pointer"
+                className="flex-1 py-2.5 rounded-xl border border-[#EADBCE] bg-white text-xs font-heading font-semibold text-[#35104A] hover:bg-[#FFF8EF] cursor-pointer"
               >
                 Reset
               </button>
               <button
                 type="button"
                 onClick={() => setIsMobileFilterOpen(false)}
-                className="flex-1 py-2.5 rounded-xl bg-[#FF2E63] hover:bg-[#e01e47] text-xs font-semibold text-white shadow-xs cursor-pointer"
+                className="flex-1 py-2.5 rounded-xl bg-[#007F79] hover:bg-[#00605B] text-xs font-heading font-semibold text-white shadow-xs cursor-pointer"
               >
                 Apply ({totalFilteredCount})
               </button>
@@ -1281,23 +1242,22 @@ export default function CategoryClient({
       )}
 
       {/* ── 4. TRUST & SAVINGS GUIDE / FAQS SECTION ── */}
-      <div className="w-full px-4 sm:px-6 md:px-8 mt-12">
-        <div className="bg-white rounded-2xl p-5 sm:p-7 border border-slate-200/80 shadow-2xs">
+      <div className="w-full px-2.5 sm:px-4 md:px-5 mt-7">
+        <div className="bg-[#FFFDF9] rounded-xl p-4 sm:p-6 border border-[#EADBCE] shadow-2xs">
           <div className="mb-4 text-left">
-            <div className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#FF2E63] bg-rose-50 px-2.5 py-0.5 rounded-full mb-1">
-              <Tag className="w-3.5 h-3.5 text-rose-500" />
-              <span>Smart Shopping Guide</span>
-            </div>
-            <h2 className="text-base font-bold text-slate-900">
+            <span className="inline-block text-[11px] font-heading font-medium text-[#007F79] bg-[#007F79]/10 border border-[#007F79]/20 px-3 py-0.5 rounded-full mb-1.5">
+              Shopping Guide
+            </span>
+            <h2 className="text-base sm:text-lg font-heading font-semibold text-[#35104A]">
               How to Save More in {categoryInfo?.title}
             </h2>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-[#6B4C82] mt-0.5">
               Helpful answers and verified tips to maximize your discount
               savings on Vouchiqo.
             </p>
           </div>
 
-          <div className="divide-y divide-slate-100">
+          <div className="divide-y divide-[#EADBCE]/60">
             {currentFaqs.map((faq, idx) => {
               const isOpen = openFaqIdx === idx;
               return (
@@ -1307,17 +1267,17 @@ export default function CategoryClient({
                     onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
                     className="w-full flex items-center justify-between gap-3 text-left cursor-pointer group"
                   >
-                    <span className="text-xs sm:text-[13px] font-semibold text-slate-800 group-hover:text-[#FF2E63] transition-colors">
+                    <span className="text-xs sm:text-[13px] font-heading font-semibold text-[#35104A] group-hover:text-[#007F79] transition-colors">
                       {faq.q}
                     </span>
                     <ChevronDown
-                      className={`w-4 h-4 text-slate-400 group-hover:text-[#FF2E63] transition-transform duration-200 shrink-0 ${
+                      className={`w-4 h-4 text-[#6B4C82] group-hover:text-[#007F79] transition-transform duration-200 shrink-0 ${
                         isOpen ? "rotate-180" : ""
                       }`}
                     />
                   </button>
                   {isOpen && (
-                    <div className="pt-2 text-xs text-slate-600 leading-relaxed font-normal">
+                    <div className="pt-2 text-xs sm:text-[13px] text-[#6B4C82] leading-relaxed font-normal">
                       {faq.a}
                     </div>
                   )}
@@ -1333,7 +1293,7 @@ export default function CategoryClient({
         <button
           type="button"
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-40 p-2.5 rounded-full bg-slate-900/90 text-white hover:bg-[#FF2E63] shadow-lg shadow-slate-900/20 backdrop-blur-xs transition-all duration-300 cursor-pointer active:scale-95"
+          className="fixed bottom-6 right-6 z-40 p-2.5 rounded-full bg-[#35104A] text-white hover:bg-[#007F79] shadow-lg shadow-[#35104A]/25 border border-white/10 transition-all duration-300 cursor-pointer active:scale-95"
           aria-label="Back to Top"
         >
           <ArrowUp className="w-4 h-4" />

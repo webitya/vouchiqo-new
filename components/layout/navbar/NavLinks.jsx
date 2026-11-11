@@ -1,15 +1,30 @@
 "use client";
 
-import { Flame, LayoutGrid, MapPin, Store } from "lucide-react";
+import { LayoutGrid, MapPin, Store, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import LocationSelector from "../LocationSelector";
 
 const ALL_NAV_LINKS = [
   { href: "/brands", icon: Store, label: "Brands", shortLabel: "Brands" },
-  { href: "/categories", icon: LayoutGrid, label: "Categories", shortLabel: "Categories" },
-  { href: "/trending", icon: Flame, label: "Trending", shortLabel: "Trending" },
-  { href: "/nearby-offers", icon: MapPin, label: "Nearby Map", shortLabel: "Nearby" },
+  {
+    href: "/categories",
+    icon: LayoutGrid,
+    label: "Categories",
+    shortLabel: "Categories",
+  },
+  {
+    href: "/trending",
+    icon: TrendingUp,
+    label: "Trending",
+    shortLabel: "Trending",
+  },
+  {
+    href: "/nearby-offers",
+    icon: MapPin,
+    label: "Nearby Map",
+    shortLabel: "Nearby",
+  },
 ];
 
 const NavLink = ({ href, icon: Icon, label, shortLabel, isActive }) => (
@@ -25,8 +40,8 @@ const NavLink = ({ href, icon: Icon, label, shortLabel, isActive }) => (
     <Icon
       className={`h-4 w-4 xl:h-[18px] xl:w-[18px] shrink-0 transition-transform ${
         isActive
-          ? "stroke-[2.2] text-[#FFD166]"
-          : "stroke-[1.7] text-[#FFF8EF]/75 group-hover:text-[#FFD166]"
+          ? "stroke-[1.8] text-[#FFD166]"
+          : "stroke-[1.6] text-[#FFF8EF]/75 group-hover:text-[#FFD166]"
       }`}
     />
     <span className="hidden xl:inline">{label}</span>
@@ -41,9 +56,7 @@ export const NavLinks = () => {
     <nav className="flex items-center gap-1 xl:gap-3">
       {ALL_NAV_LINKS.map((link) => {
         const isActive =
-          link.href === "/"
-            ? pathname === "/"
-            : pathname.startsWith(link.href);
+          link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
 
         return (
           <NavLink

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Flame, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, ShieldCheck } from "lucide-react";
 import { memo } from "react";
 import SafeImage from "@/components/shared/SafeImage";
 
@@ -119,7 +119,7 @@ export const ProductOfferCard = memo(function ProductOfferCard({ product }) {
       onClick={handleClick}
       target={affiliateUrl?.startsWith("http") ? "_blank" : "_self"}
       rel="noopener noreferrer"
-      className="group relative flex flex-col rounded-xl no-underline cursor-pointer border border-[#EADBCE] bg-[#FFF8EF] shadow-2xs hover:shadow-md hover:border-[#FF2E63]/40 hover:-translate-y-0.5 transition-all duration-200 select-none text-left overflow-hidden h-full font-sans"
+      className="group relative flex flex-col rounded-xl no-underline cursor-pointer border border-[#EADBCE] bg-[#FFF8EF] shadow-2xs hover:shadow-md hover:border-[#007F79]/50 hover:shadow-[0_8px_20px_rgba(0,127,121,0.12)] hover:-translate-y-0.5 transition-all duration-200 select-none text-left overflow-hidden h-full font-sans"
     >
       {/* ===== Product Banner Image - 16:9 native aspect ratio for compact promotional banners ===== */}
       <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#35104A] shrink-0">
@@ -136,8 +136,7 @@ export const ProductOfferCard = memo(function ProductOfferCard({ product }) {
 
         {/* Floating discount badge - top-left */}
         {badgeLabel && (
-          <div className="absolute top-2 left-2 z-10 flex items-center gap-1 bg-[#FF2E63] text-white text-[9.5px] sm:text-[10px] font-heading font-extrabold px-1.5 sm:px-2 py-0.5 rounded shadow-2xs leading-none tracking-wide">
-            <Flame className="w-2.5 h-2.5 fill-white text-white shrink-0" />
+          <div className="absolute top-2 left-2 z-10 bg-[#007F79] text-white text-[9.5px] sm:text-[10px] font-heading font-semibold px-1.5 sm:px-2 py-0.5 rounded shadow-2xs leading-none tracking-wide">
             <span>{badgeLabel}</span>
           </div>
         )}
@@ -160,13 +159,13 @@ export const ProductOfferCard = memo(function ProductOfferCard({ product }) {
             {merchantName}
           </span>
           <ShieldCheck
-            className="w-3 h-3 text-[#007F79] shrink-0"
+            className="w-3 h-3 text-[#007F79] shrink-0 stroke-[1.6]"
             title="Verified Store"
           />
         </div>
 
         {/* Product Title - 2-line clamp, high contrast readability */}
-        <h3 className="text-[12px] sm:text-[12.5px] font-heading font-bold text-[#35104A] group-hover:text-[#FF2E63] transition-colors leading-[1.3] line-clamp-2 min-h-[32px]">
+        <h3 className="text-[12px] sm:text-[12.5px] font-heading font-semibold text-[#35104A] group-hover:text-[#007F79] transition-colors leading-[1.3] line-clamp-2 min-h-[32px]">
           {title}
         </h3>
 
@@ -174,7 +173,7 @@ export const ProductOfferCard = memo(function ProductOfferCard({ product }) {
         <div className="flex items-baseline gap-1.5 flex-wrap min-h-[18px]">
           {numDisc > 0 ? (
             <>
-              <span className="text-[14px] sm:text-[15px] font-heading font-extrabold text-[#35104A] tracking-tight leading-none">
+              <span className="text-[14px] sm:text-[15px] font-heading font-semibold text-[#35104A] tracking-tight leading-none">
                 ₹{numDisc.toLocaleString("en-IN")}
               </span>
               {numOrig > numDisc && (
@@ -183,13 +182,13 @@ export const ProductOfferCard = memo(function ProductOfferCard({ product }) {
                 </span>
               )}
               {savings > 0 && (
-                <span className="text-[9.5px] sm:text-[10px] font-semibold text-[#007F79] bg-[#007F79]/10 border border-[#007F79]/20 px-1.5 py-0.5 rounded leading-none">
+                <span className="text-[9.5px] sm:text-[10px] font-medium text-[#007F79] bg-[#007F79]/10 border border-[#007F79]/20 px-1.5 py-0.5 rounded leading-none">
                   Save ₹{savings.toLocaleString("en-IN")}
                 </span>
               )}
             </>
           ) : (
-            <span className="text-[10px] sm:text-[10.5px] font-heading font-bold text-[#FF2E63] bg-white border border-[#FF2E63]/25 px-1.5 py-0.5 rounded-md leading-none shadow-2xs">
+            <span className="text-[10px] sm:text-[10.5px] font-heading font-semibold text-[#007F79] bg-white border border-[#007F79]/25 px-1.5 py-0.5 rounded-md leading-none shadow-2xs">
               {discountText?.trim() ? discountText : "Exclusive Deal"}
             </span>
           )}
@@ -197,9 +196,9 @@ export const ProductOfferCard = memo(function ProductOfferCard({ product }) {
 
         {/* CTA - Proportional Fitts's Law Target */}
         <div className="mt-auto pt-1">
-          <span className="flex items-center justify-center gap-1.5 w-full h-7 sm:h-7.5 rounded-lg text-[11px] sm:text-[11.5px] font-heading font-bold text-white bg-[#FF2E63] group-hover:bg-[#E02253] active:scale-[0.98] transition-all duration-150 shadow-2xs group-hover:shadow-xs">
+          <span className="flex items-center justify-center gap-1.5 w-full h-7 sm:h-7.5 rounded-lg text-[11px] sm:text-[11.5px] font-heading font-semibold text-white bg-[#007F79] group-hover:bg-[#00605B] active:scale-[0.98] transition-all duration-150 shadow-2xs group-hover:shadow-xs">
             <span>Grab Offer</span>
-            <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.2] transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className="w-3.5 h-3.5 stroke-[1.75] transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </span>
         </div>
       </div>

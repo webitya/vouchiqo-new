@@ -1,6 +1,6 @@
 "use client";
 
-import { Flame, Home, LayoutGrid, MapPin, Store } from "lucide-react";
+import { Home, LayoutGrid, MapPin, Store, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -32,7 +32,7 @@ export default function PublicMobileBottomNav() {
     {
       label: "Trending",
       href: "/trending",
-      icon: Flame,
+      icon: TrendingUp,
     },
     {
       label: "Categories",
@@ -49,9 +49,7 @@ export default function PublicMobileBottomNav() {
       {navItems.map((item) => {
         const Icon = item.icon;
         const isActive =
-          item.href === "/"
-            ? pathname === "/"
-            : pathname.startsWith(item.href);
+          item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
 
         return (
           <Link
