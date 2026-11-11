@@ -38,10 +38,10 @@ export default function CampaignReportModal({
         <DialogHeader className="space-y-1 pb-2.5 border-b border-slate-100">
           <div className="flex items-center justify-between">
             <DialogTitle className="text-sm font-semibold text-slate-900 flex items-center gap-2">
-              <BarChart3 className="w-4 h-4 text-[#FF2E63]" />
+              <BarChart3 className="w-4 h-4 text-festival-teal" />
               Campaign Analytics Report
             </DialogTitle>
-            <Badge className="bg-rose-50 text-[#FF2E63] border-rose-200 text-[10px] font-medium capitalize">
+            <Badge className="bg-warm-ivory text-festival-teal border-brand-border text-[10px] font-medium capitalize">
               {campaign.type || "Flash Sale"}
             </Badge>
           </div>
@@ -54,7 +54,7 @@ export default function CampaignReportModal({
           {/* Key Metrics Grid */}
           <div className="grid grid-cols-3 gap-2.5">
             <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center space-y-1">
-              <div className="w-7 h-7 rounded-lg bg-rose-50 text-[#FF2E63] mx-auto flex items-center justify-center">
+              <div className="w-7 h-7 rounded-lg bg-teal-50 text-festival-teal mx-auto flex items-center justify-center">
                 <MousePointer className="w-3.5 h-3.5" />
               </div>
               <span className="text-sm sm:text-base font-semibold text-slate-900 block">
@@ -78,7 +78,7 @@ export default function CampaignReportModal({
             </div>
 
             <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center space-y-1">
-              <div className="w-7 h-7 rounded-lg bg-rose-50 text-[#FF2E63] mx-auto flex items-center justify-center">
+              <div className="w-7 h-7 rounded-lg bg-teal-50 text-festival-teal mx-auto flex items-center justify-center">
                 <DollarSign className="w-3.5 h-3.5" />
               </div>
               <span className="text-sm sm:text-base font-semibold text-slate-900 block">

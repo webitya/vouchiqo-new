@@ -23,7 +23,6 @@ import {
   MapPin,
   Megaphone,
   Percent,
-  PlusCircle,
   Settings,
   ShieldCheck,
   Sliders,
@@ -35,7 +34,6 @@ import {
   Wallet,
   X,
 } from "lucide-react";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { NavMain } from "@/components/layout/NavMain";
@@ -589,12 +587,6 @@ export function AppSidebar({ ...props }) {
                   "bg-red-500 text-white font-medium shadow-sm shadow-red-500/30",
               },
               {
-                title: "Post New Listing",
-                url: "/merchant/coupons/new",
-                icon: PlusCircle,
-                isCta: true,
-              },
-              {
                 title: "Analytics",
                 url: "/merchant/analytics",
                 icon: BarChart2,
@@ -740,25 +732,23 @@ export function AppSidebar({ ...props }) {
                   <Store className="w-4.5 h-4.5 text-white stroke-[2]" />
                 </div>
               )
+            ) : user?.image || user?.avatar || authUser?.image ? (
+              <SafeImage
+                src={user?.image || user?.avatar || authUser?.image}
+                alt={user?.name || authUser?.name || "User"}
+                width={36}
+                height={36}
+                className="w-full h-full object-cover rounded-full"
+              />
             ) : (
-              (user?.image || user?.avatar || authUser?.image) ? (
-                <SafeImage
-                  src={user?.image || user?.avatar || authUser?.image}
-                  alt={user?.name || authUser?.name || "User"}
-                  width={36}
-                  height={36}
-                  className="w-full h-full object-cover rounded-full"
-                />
-              ) : (
-                <div className="w-full h-full bg-[#007F79]/10 text-[#007F79] font-heading font-semibold text-xs uppercase flex items-center justify-center rounded-full">
-                  {(authUser?.name || user?.name || "User")
-                    .split(" ")
-                    .map((w) => w[0])
-                    .join("")
-                    .slice(0, 2)
-                    .toUpperCase()}
-                </div>
-              )
+              <div className="w-full h-full bg-[#007F79]/10 text-[#007F79] font-heading font-semibold text-xs uppercase flex items-center justify-center rounded-full">
+                {(authUser?.name || user?.name || "User")
+                  .split(" ")
+                  .map((w) => w[0])
+                  .join("")
+                  .slice(0, 2)
+                  .toUpperCase()}
+              </div>
             )}
           </div>
 

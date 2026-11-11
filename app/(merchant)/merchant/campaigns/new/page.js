@@ -141,26 +141,24 @@ export default function CreateNewCampaignPage() {
     >
       <div className="flex flex-col gap-4 text-left font-sans w-full">
         {isFreeMerchant && (
-          <div className="flex items-center justify-between gap-3 p-3 bg-gradient-to-r from-rose-50 to-amber-50 border border-rose-200/80 rounded-xl text-xs font-sans shadow-2xs">
+          <div className="flex items-center justify-between gap-3 p-3 bg-warm-ivory border border-brand-border rounded-xl text-xs font-sans shadow-2xs">
             <div className="flex items-center gap-2.5">
-              <span className="w-6 h-6 rounded-lg bg-[#FF2E63] text-white flex items-center justify-center shrink-0 font-bold text-xs shadow-2xs">
-                ⚡
-              </span>
+              <span className="w-2 h-2 rounded-full bg-festival-teal shrink-0" />
               <div>
-                <span className="font-bold text-slate-900">
-                  Free Partner Flash Sale Pass Active
+                <span className="font-bold text-royal-plum">
+                  Starter Flash Sale Pass Active
                 </span>
                 <span className="text-slate-600 block text-[11px]">
-                  Configuring your 1-time 24–48hr Flash Sale Campaign with live
+                  Configuring your 24–48hr Flash Sale Campaign with live
                   countdown timer.
                 </span>
               </div>
             </div>
             <Link
               href="/merchant/billing"
-              className="text-[#FF2E63] hover:underline font-semibold text-xs whitespace-nowrap"
+              className="text-festival-teal hover:underline font-semibold text-xs whitespace-nowrap"
             >
-              Need all 7 campaign types? Upgrade →
+              Need all campaign types? Upgrade →
             </Link>
           </div>
         )}

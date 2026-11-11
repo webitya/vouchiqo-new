@@ -61,14 +61,12 @@ export default function FlashSalePurchaseModal({
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="w-[calc(100%-1.5rem)] sm:max-w-2xl md:max-w-3xl max-h-[92vh] bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl p-5 sm:p-7 text-left font-sans shadow-2xl overflow-y-auto text-slate-900">
-
         {/* Header */}
         <DialogHeader className="pr-8 space-y-3 border-b border-slate-100 pb-4 text-left">
-
           {/* Badge row — semantic colors, short labels, consistent style */}
           <div className="flex items-center gap-1.5 flex-wrap">
             {/* Primary label — brand identity */}
-            <span className="inline-flex items-center bg-[#FF2E63] text-white text-[10px] font-semibold px-2.5 py-0.5 rounded-md tracking-wide uppercase">
+            <span className="inline-flex items-center bg-festival-teal text-white text-[10px] font-semibold px-2.5 py-0.5 rounded-md tracking-wide uppercase">
               Partner Special
             </span>
             {/* Scarcity label — amber for limited/one-time */}
@@ -88,15 +86,14 @@ export default function FlashSalePurchaseModal({
 
           {/* Description — one tight sentence */}
           <DialogDescription className="text-[12px] sm:text-[13px] text-slate-500 font-normal leading-relaxed">
-            Drive urgent buyer action with a live countdown — get 5x more clicks from active shoppers in your area, one-time fee.
+            Drive urgent buyer action with a live countdown — get 5x more clicks
+            from active shoppers in your area, one-time fee.
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4 pt-1">
-
           {/* Feature Cards — consistent neutral card bg, icon color tied to function */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-
             {/* Urgency — amber: universal "time/warning" color */}
             <div className="flex flex-col gap-3 p-3.5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 transition-colors">
               <div className="flex items-start justify-between">
@@ -152,7 +149,8 @@ export default function FlashSalePurchaseModal({
                   Targeted Local Notify
                 </h4>
                 <p className="text-[10.5px] text-slate-500 font-normal leading-relaxed">
-                  Notifies shoppers in your city hunting for dining and retail deals.
+                  Notifies shoppers in your city hunting for dining and retail
+                  deals.
                 </p>
               </div>
             </div>
@@ -209,7 +207,7 @@ export default function FlashSalePurchaseModal({
             <Button
               onClick={handleActivatePass}
               disabled={loading}
-              className="w-full bg-[#FF2E63] hover:bg-[#e01e47] text-white font-bold text-xs sm:text-sm rounded-xl h-11 sm:h-12 shadow-md shadow-[#FF2E63]/25 cursor-pointer flex items-center justify-center gap-2 transition-all border-0"
+              className="w-full bg-festival-teal hover:bg-[#00635E] text-white font-bold text-xs sm:text-sm rounded-xl h-11 sm:h-12 shadow-xs cursor-pointer flex items-center justify-center gap-2 transition-colors border-0"
             >
               {loading ? (
                 <>
@@ -232,7 +230,7 @@ export default function FlashSalePurchaseModal({
               <Link
                 href="/merchant/billing"
                 onClick={onClose}
-                className="text-[11px] font-semibold text-[#FF2E63] hover:underline flex items-center gap-1"
+                className="text-[11px] font-semibold text-festival-teal hover:underline flex items-center gap-1"
               >
                 <span>Unlimited Campaigns? Upgrade</span>
                 <ArrowRight className="w-3 h-3" />

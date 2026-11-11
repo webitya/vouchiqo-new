@@ -39,40 +39,127 @@ export default function Sidebar({ role = "customer" }) {
     switch (role) {
       case "admin":
         return [
-          { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
-          { name: "Merchant Management", href: "/admin/merchants", icon: Store },
-          { name: "Commission Rates", href: "/admin/commission-rates", icon: Percent },
-          { name: "Merchant Plans & Pricing", href: "/admin/plans", icon: CreditCard },
-          { name: "Offer Verification Queue", href: "/admin/offers", icon: CheckSquare },
-          { name: "Campaign Review Queue", href: "/admin/campaigns/queue", icon: Megaphone },
-          { name: "Campaign Calendar", href: "/admin/campaigns/calendar", icon: Clock },
-          { name: "Live Campaign Monitoring", href: "/admin/campaigns/live", icon: TrendingUp },
-          { name: "Campaign Analytics", href: "/admin/campaigns/analytics", icon: BarChart2 },
-          { name: "Campaign Revenue", href: "/admin/campaigns/revenue", icon: CreditCard },
-          { name: "Festival Package Wizard", href: "/admin/campaigns/festival-wizard", icon: Zap },
-          { name: "Email Blast Builder", href: "/admin/campaigns/email-blast-builder", icon: Mail },
-          { name: "Push Notification Builder", href: "/admin/campaigns/push-builder", icon: Bell },
-          { name: "Merchant Demand Report", href: "/admin/merchant-demand", icon: Building2 },
-          { name: "Master Revival Queue", href: "/admin/revivals", icon: AlertCircle },
+          {
+            name: "Dashboard",
+            href: "/admin/dashboard",
+            icon: LayoutDashboard,
+          },
+          {
+            name: "Merchant Management",
+            href: "/admin/merchants",
+            icon: Store,
+          },
+          {
+            name: "Commission Rates",
+            href: "/admin/commission-rates",
+            icon: Percent,
+          },
+          {
+            name: "Merchant Plans & Pricing",
+            href: "/admin/plans",
+            icon: CreditCard,
+          },
+          {
+            name: "Offer Verification Queue",
+            href: "/admin/offers",
+            icon: CheckSquare,
+          },
+          {
+            name: "Campaign Review Queue",
+            href: "/admin/campaigns/queue",
+            icon: Megaphone,
+          },
+          {
+            name: "Campaign Calendar",
+            href: "/admin/campaigns/calendar",
+            icon: Clock,
+          },
+          {
+            name: "Live Campaign Monitoring",
+            href: "/admin/campaigns/live",
+            icon: TrendingUp,
+          },
+          {
+            name: "Campaign Analytics",
+            href: "/admin/campaigns/analytics",
+            icon: BarChart2,
+          },
+          {
+            name: "Campaign Revenue",
+            href: "/admin/campaigns/revenue",
+            icon: CreditCard,
+          },
+          {
+            name: "Festival Package Wizard",
+            href: "/admin/campaigns/festival-wizard",
+            icon: Zap,
+          },
+          {
+            name: "Email Blast Builder",
+            href: "/admin/campaigns/email-blast-builder",
+            icon: Mail,
+          },
+          {
+            name: "Push Notification Builder",
+            href: "/admin/campaigns/push-builder",
+            icon: Bell,
+          },
+          {
+            name: "Merchant Demand Report",
+            href: "/admin/merchant-demand",
+            icon: Building2,
+          },
+          {
+            name: "Master Revival Queue",
+            href: "/admin/revivals",
+            icon: AlertCircle,
+          },
           { name: "User Management", href: "/admin/users", icon: Users },
           { name: "Featured Deals", href: "/admin/featured", icon: Tag },
           { name: "Homepage Banners", href: "/admin/banners", icon: Sliders },
-          { name: "Platform Revenue", href: "/admin/revenue", icon: CreditCard },
+          {
+            name: "Platform Revenue",
+            href: "/admin/revenue",
+            icon: CreditCard,
+          },
         ];
       case "merchant":
         return [
-          { name: "Dashboard", href: "/merchant/dashboard", icon: LayoutDashboard },
+          {
+            name: "Dashboard",
+            href: "/merchant/dashboard",
+            icon: LayoutDashboard,
+          },
           { name: "My Listings", href: "/merchant/coupons", icon: Tag },
-          { name: "Post New Listing", href: "/merchant/coupons/new", icon: PlusCircle },
           { name: "Campaigns", href: "/merchant/campaigns", icon: Megaphone },
-          { name: "Create Campaign", href: "/merchant/campaigns/new", icon: PlusCircle },
-          { name: "Revival Queue", href: "/merchant/revivals", icon: AlertCircle },
+          {
+            name: "Create Campaign",
+            href: "/merchant/campaigns/new",
+            icon: PlusCircle,
+          },
+          {
+            name: "Revival Queue",
+            href: "/merchant/revivals",
+            icon: AlertCircle,
+          },
           { name: "Analytics", href: "/merchant/analytics", icon: TrendingUp },
           { name: "Business Profile", href: "/merchant/profile", icon: Store },
-          { name: "Billing & Plans", href: "/merchant/billing", icon: CreditCard },
+          {
+            name: "Billing & Plans",
+            href: "/merchant/billing",
+            icon: CreditCard,
+          },
           { name: "Affiliates", href: "/merchant/affiliates", icon: LinkIcon },
-          { name: "Notifications", href: "/merchant/notifications", icon: Bell },
-          { name: "Account Settings", href: "/merchant/settings", icon: Settings },
+          {
+            name: "Notifications",
+            href: "/merchant/notifications",
+            icon: Bell,
+          },
+          {
+            name: "Account Settings",
+            href: "/merchant/settings",
+            icon: Settings,
+          },
         ];
       default:
         return [

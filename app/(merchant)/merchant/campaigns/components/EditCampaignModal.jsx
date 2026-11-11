@@ -77,7 +77,7 @@ export default function EditCampaignModal({
         <form onSubmit={handleSave} className="space-y-3.5">
           <DialogHeader className="space-y-1 pb-2.5 border-b border-slate-100">
             <DialogTitle className="text-sm font-semibold text-slate-900 flex items-center gap-2">
-              <Edit3 className="w-4 h-4 text-[#FF2E63]" />
+              <Edit3 className="w-4 h-4 text-festival-teal" />
               Edit Campaign Details
             </DialogTitle>
             <DialogDescription className="text-xs text-slate-500 font-normal">
@@ -115,7 +115,7 @@ export default function EditCampaignModal({
             <Button
               type="submit"
               disabled={loading}
-              className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium h-8 sm:h-9 px-5 rounded-xl cursor-pointer shadow-xs"
+              className="bg-festival-teal hover:bg-[#00635E] text-white text-xs font-medium h-8 sm:h-9 px-5 rounded-xl cursor-pointer shadow-xs border-0"
             >
               {loading ? "Saving..." : "Save Changes"}
             </Button>

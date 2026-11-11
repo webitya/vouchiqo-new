@@ -13,13 +13,13 @@ import {
   MerchantLockProvider,
   useMerchantLock,
 } from "@/components/shared/MerchantLockProvider";
+import AdminPageSkeleton from "@/components/shared/skeletons/AdminPageSkeleton";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useUser } from "@/hooks/use-user";
 import { authClient } from "@/lib/auth-client";
-import AdminPageSkeleton from "@/components/shared/skeletons/AdminPageSkeleton";
 
 function MerchantLockModalRenderer() {
   const { isModalOpen, closeModal, merchant } = useMerchantLock();
@@ -230,7 +230,7 @@ function MerchantNoticeBanner() {
   return (
     <div className="bg-warm-ivory border-b border-brand-border px-4 py-2.5 flex items-center justify-between text-xs font-normal text-royal-plum font-sans">
       <div className="flex items-center gap-2 min-w-0">
-        <AlertTriangle className="w-4 h-4 text-festival-teal flex-shrink-0 animate-pulse" />
+        <AlertTriangle className="w-4 h-4 text-festival-teal flex-shrink-0" />
         <span className="truncate">
           <strong>Founding Merchant Program Active:</strong>{" "}
           {isPaused ? (
@@ -400,7 +400,10 @@ export default function DashboardLayout({ title, user, children }) {
             </div>
             <div className="space-y-1.5 pt-2">
               {Array.from({ length: 7 }).map((_, i) => (
-                <div key={i} className="h-8 rounded-lg bg-slate-100/90 w-full" />
+                <div
+                  key={i}
+                  className="h-8 rounded-lg bg-slate-100/90 w-full"
+                />
               ))}
             </div>
           </div>
@@ -428,34 +431,34 @@ export default function DashboardLayout({ title, user, children }) {
   return (
     <MerchantLockProvider isMerchant={isMerchant}>
       <MerchantRouteGuard>
-      <TooltipProvider>
-        <SidebarProvider style={{ "--sidebar-width": "250px" }}>
-          <div className="min-h-screen flex bg-[#FAF6F0]/50 text-[#35104A] font-sans w-full pb-14 md:pb-0">
-            <AppSidebar />
-            <SidebarInset className="bg-[#FAF6F0]/50 flex-1 flex flex-col min-w-0 font-sans">
-              <Topbar title={title} user={user} />
+        <TooltipProvider>
+          <SidebarProvider style={{ "--sidebar-width": "250px" }}>
+            <div className="min-h-screen flex bg-[#FAF6F0]/50 text-[#35104A] font-sans w-full pb-14 md:pb-0">
+              <AppSidebar />
+              <SidebarInset className="bg-[#FAF6F0]/50 flex-1 flex flex-col min-w-0 font-sans">
+                <Topbar title={title} user={user} />
 
-              {/* Dynamic Live Merchant Notice Alert Banner */}
-              {isMerchant && <MerchantNoticeBanner />}
+                {/* Dynamic Live Merchant Notice Alert Banner */}
+                {isMerchant && <MerchantNoticeBanner />}
 
-              <main className="p-2 sm:p-4 w-full grow bg-[#FAF6F0]/50 relative">
-                {isMerchant && <MerchantPageLockOverlay />}
-                {children}
-              </main>
-            </SidebarInset>
-          </div>
+                <main className="p-2 sm:p-4 w-full grow bg-[#FAF6F0]/50 relative">
+                  {isMerchant && <MerchantPageLockOverlay />}
+                  {children}
+                </main>
+              </SidebarInset>
+            </div>
 
-          {/* Interactive Guided Tour for Merchants */}
-          {isMerchant && <MerchantTour />}
+            {/* Interactive Guided Tour for Merchants */}
+            {isMerchant && <MerchantTour />}
 
-          {/* Mobile Bottom Tab Bar (5 Tabs) */}
-          <MobileBottomNav />
+            {/* Mobile Bottom Tab Bar (5 Tabs) */}
+            <MobileBottomNav />
 
-          {/* Global Controlled Merchant Complete Profile Modal */}
-          {isMerchant && <MerchantLockModalRenderer />}
-        </SidebarProvider>
-      </TooltipProvider>
-    </MerchantRouteGuard>
+            {/* Global Controlled Merchant Complete Profile Modal */}
+            {isMerchant && <MerchantLockModalRenderer />}
+          </SidebarProvider>
+        </TooltipProvider>
+      </MerchantRouteGuard>
     </MerchantLockProvider>
   );
 }

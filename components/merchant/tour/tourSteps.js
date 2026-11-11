@@ -1,11 +1,11 @@
 export const TOUR_STEPS = [
-  // ─── STEP 1: Welcome via Post New CTA ────────────────────────────────────
+  // ─── STEP 1: Welcome to Merchant Portal ────────────────────────────────────
   {
-    id: "post-new",
+    id: "welcome",
     title: "Welcome to Vouchiqo Merchant Portal! 👋",
     content:
-      "Let's take a quick guided tour. Click 'Post New Listing' anytime to create and publish new offers, discounts, or deals for your customers.",
-    anchor: "[data-tour='tour-post-new']",
+      "Let's take a quick guided tour. Manage and create your store offers, discounts, or deals anytime from your My Listings page.",
+    anchor: "[data-tour='tour-my-listings']",
     mode: "sidebar",
   },
 

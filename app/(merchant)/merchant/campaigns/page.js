@@ -1,8 +1,8 @@
 "use client";
 
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import DashboardSkeleton from "@/components/shared/feedback/DashboardSkeleton";
@@ -33,7 +33,8 @@ export default function MerchantCampaigns() {
 
   // Fetch merchant profile & real-time merchant campaigns via cached hooks
   const { data: merchant, isLoading: loadingProfile } = useMerchantProfile();
-  const { data: dbCampaigns = [], isLoading: loadingCampaigns } = useMerchantCampaigns();
+  const { data: dbCampaigns = [], isLoading: loadingCampaigns } =
+    useMerchantCampaigns();
 
   // Check if free / starter merchant
   const isFreeMerchant = useMemo(() => {
@@ -45,32 +46,6 @@ export default function MerchantCampaigns() {
   const flashSalePurchased = !!merchant?.flashSalePurchased;
   const flashSaleCampaignUsed = !!merchant?.flashSaleCampaignUsed;
   const hasUsedCampaign = flashSaleCampaignUsed || dbCampaigns.length >= 1;
-
-  // Auto-prompt catchy popup modal on first visit for free merchants who haven't availed yet
-  useEffect(() => {
-    if (
-      isFreeMerchant &&
-      !flashSalePurchased &&
-      !hasUsedCampaign &&
-      !loadingProfile
-    ) {
-      const shownKey = `vouchiqo_fs_popup_shown_${merchant?._id || "free"}`;
-      const alreadyShown = sessionStorage.getItem(shownKey);
-      if (!alreadyShown) {
-        const timer = setTimeout(() => {
-          setFlashSaleModalOpen(true);
-          sessionStorage.setItem(shownKey, "true");
-        }, 1200);
-        return () => clearTimeout(timer);
-      }
-    }
-  }, [
-    isFreeMerchant,
-    flashSalePurchased,
-    hasUsedCampaign,
-    loadingProfile,
-    merchant?._id,
-  ]);
 
   // Listen for real-time campaign status changes from admin moderation
   useRealtime(SOCKET_EVENTS.CAMPAIGN_STATUS_CHANGED, (data) => {
@@ -112,7 +87,7 @@ export default function MerchantCampaigns() {
                   toast.dismiss(t.id);
                   router.push("/merchant/billing");
                 }}
-                className="mt-1 bg-[#FF2E63] hover:bg-[#e01e47] text-white px-3 py-1.5 rounded-lg text-xs font-semibold self-start cursor-pointer transition-all"
+                className="mt-1 bg-festival-teal hover:bg-[#00635E] text-white px-3 py-1.5 rounded-lg text-xs font-semibold self-start cursor-pointer transition-colors"
               >
                 Upgrade Plan
               </button>

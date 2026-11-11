@@ -1,7 +1,12 @@
 "use client";
 
-import React from "react";
-import { CheckCheck, ChevronLeft, ChevronRight, Download, Loader2 } from "lucide-react";
+import {
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  Download,
+  Loader2,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function WizardFooter({
@@ -56,14 +61,12 @@ export default function WizardFooter({
               }`}
               title="Accept All Acknowledgements (Merchant Commitments)"
             >
-              <CheckCheck className="w-3.5 h-3.5" />
+              <Check className="w-3.5 h-3.5" />
               <span className="hidden md:inline">
-                {allCommitmentsChecked
-                  ? "✓ Ack. Accepted"
-                  : "Accept All Ack."}
+                {allCommitmentsChecked ? "Ack. Accepted" : "Accept All Ack."}
               </span>
               <span className="md:hidden">
-                {allCommitmentsChecked ? "✓ Ack. Accepted" : "Accept Ack."}
+                {allCommitmentsChecked ? "Ack. Accepted" : "Accept Ack."}
               </span>
             </Button>
 
@@ -79,14 +82,12 @@ export default function WizardFooter({
               }`}
               title="Accept All Legal Policy Documents"
             >
-              <CheckCheck className="w-3.5 h-3.5" />
+              <Check className="w-3.5 h-3.5" />
               <span className="hidden md:inline">
-                {allPoliciesChecked
-                  ? "✓ Docs Accepted"
-                  : "Accept All Docs"}
+                {allPoliciesChecked ? "Docs Accepted" : "Accept All Docs"}
               </span>
               <span className="md:hidden">
-                {allPoliciesChecked ? "✓ Docs Accepted" : "Accept Docs"}
+                {allPoliciesChecked ? "Docs Accepted" : "Accept Docs"}
               </span>
             </Button>
 

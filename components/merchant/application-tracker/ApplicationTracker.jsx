@@ -1,6 +1,5 @@
 "use client";
 
-import { useQueryClient } from "@tanstack/react-query";
 import {
   AlertTriangle,
   BadgeCheck,
@@ -10,11 +9,9 @@ import {
   Edit2,
   FileCheck,
   FileText,
-  HelpCircle,
   Home,
   Mail,
   MapPin,
-  MessageSquare,
   Phone,
   Receipt,
   RefreshCw,
@@ -25,7 +22,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ProcessFeedbackModal from "@/components/merchant/feedback/ProcessFeedbackModal";
 import DashboardSkeleton from "@/components/shared/feedback/DashboardSkeleton";
 import ErrorState from "@/components/shared/feedback/ErrorState";
@@ -36,15 +33,12 @@ import { Progress } from "@/components/ui/progress";
 import { useApplicationStatus } from "@/hooks/use-application-status";
 import { useProcessFeedback } from "@/hooks/use-process-feedback";
 import { showSuccess } from "@/lib/toast";
-import AdminReviewModal from "./AdminReviewModal";
 
 /**
  * ApplicationTracker — Full-width, compact Merchant Application Status Tracker.
  */
 export default function ApplicationTracker({ initialData }) {
   const router = useRouter();
-  const queryClient = useQueryClient();
-  const [adminModalOpen, setAdminModalOpen] = useState(false);
 
   const { data, isLoading, isError, refetch, isRefetching, isConnected } =
     useApplicationStatus();
@@ -637,76 +631,6 @@ export default function ApplicationTracker({ initialData }) {
         )}
       </Card>
 
-      {/* ── 4. QUICK ACTIONS TOOLBAR ── */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-slate-900 text-white text-xs">
-        <div className="flex items-center gap-2">
-          <HelpCircle className="w-4 h-4 text-festival-teal/80 shrink-0" />
-          <span className="font-normal text-slate-200 text-xs">
-            Need help or want to update your submission?
-          </span>
-        </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <Button
-            size="sm"
-            onClick={() => router.push("/merchant/dashboard")}
-            className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium h-7 px-3.5 rounded-lg cursor-pointer border-0"
-          >
-            <Store className="w-3 h-3 mr-1" />
-            Dashboard
-          </Button>
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={() => router.push("/")}
-            className="bg-white/10 hover:bg-white/20 text-white border-white/20 text-xs font-medium h-7 px-3 rounded-lg cursor-pointer"
-          >
-            <Home className="w-3 h-3 mr-1" />
-            Homepage
-          </Button>
-          <Button
-            size="sm"
-            onClick={() => router.push("/merchant/profile?edit=true")}
-            className="bg-festival-teal hover:bg-[#00635E] text-white text-xs font-medium h-7 px-3.5 rounded-lg cursor-pointer border-0"
-          >
-            <Edit2 className="w-3 h-3 mr-1" />
-            Edit Profile
-          </Button>
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={() =>
-              window.open(
-                `https://wa.me/919876543210?text=Hi%20Vouchiqo%20Support%2C%20I%20am%20checking%20status%20for%20Application%20${applicationId}`,
-                "_blank",
-              )
-            }
-            className="bg-white/10 hover:bg-white/20 text-white border-white/20 text-xs font-medium h-7 px-3.5 rounded-lg cursor-pointer"
-          >
-            <MessageSquare className="w-3 h-3 mr-1 text-emerald-400" />
-            Contact Support
-          </Button>
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={() => setAdminModalOpen(true)}
-            className="text-slate-400 hover:text-white text-xs font-normal h-7 px-3 rounded-lg cursor-pointer"
-          >
-            [Dev] Test Status
-          </Button>
-        </div>
-      </div>
-
-      {/* Admin Simulator Modal */}
-      <AdminReviewModal
-        open={adminModalOpen}
-        onOpenChange={setAdminModalOpen}
-        applicationId={applicationId}
-        onStatusUpdated={() => {
-          queryClient.invalidateQueries({
-            queryKey: ["merchant-application-status"],
-          });
-        }}
-      />
       {/* Process-Based Onboarding Wizard Feedback */}
       <ProcessFeedbackModal
         isOpen={isFeedbackOpen}

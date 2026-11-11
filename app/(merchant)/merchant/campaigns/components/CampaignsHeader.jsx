@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  ArrowRight,
-  CheckCircle2,
-  Clock,
-  Flame,
-  Lock,
-  Plus,
-  Zap,
-} from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock, Lock, Plus } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -30,34 +22,39 @@ export default function CampaignsHeader({
     <>
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
         <div>
-          <h2 className="text-base font-semibold text-slate-900 tracking-tight flex items-center gap-2">
+          <h2 className="text-base font-bold text-royal-plum font-heading tracking-tight flex items-center gap-2">
             <span>My Campaigns</span>
             {isFreeMerchant && (
-              <Badge className="bg-rose-50 text-[#FF2E63] border-rose-200/70 text-[10px] font-semibold uppercase tracking-wider">
-                Free Partner Tier
+              <Badge
+                variant="outline"
+                className="bg-warm-ivory text-festival-teal border-brand-border text-[10px] font-semibold uppercase tracking-wider"
+              >
+                Starter Plan
               </Badge>
             )}
           </h2>
-          <p className="text-xs text-slate-500 font-normal mt-0.5">
+          <p className="text-xs text-slate-500 font-sans mt-0.5">
             Bundle multiple offers into a coordinated promotional push with live
-            urgency countdowns.
+            countdown timers.
           </p>
         </div>
 
         <div className="flex items-center gap-2 shrink-0">
           {isFreeMerchant && !flashSalePurchased && !hasUsedCampaign && (
             <Button
+              type="button"
+              variant="outline"
               onClick={onOpenPurchaseModal}
-              className="bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white text-xs font-semibold h-8.5 px-3.5 rounded-xl flex items-center gap-1.5 shadow-xs cursor-pointer border-0 transition-all"
+              className="border-brand-border bg-warm-ivory hover:bg-brand-border/40 text-royal-plum text-xs font-semibold h-8.5 px-3.5 rounded-xl flex items-center gap-1.5 shadow-2xs cursor-pointer transition-colors"
             >
-              <Flame className="w-3.5 h-3.5 animate-pulse" />
-              <span>Avail Campaign (₹799)</span>
+              <span>Unlock Pass (₹799)</span>
             </Button>
           )}
 
           <Button
+            type="button"
             onClick={onCreateClick}
-            className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-medium h-8.5 px-4 rounded-xl flex items-center gap-1.5 shadow-xs shadow-[#FF2E63]/25 cursor-pointer transition-all border-0"
+            className="bg-festival-teal hover:bg-[#00635E] text-white text-xs font-semibold h-8.5 px-4 rounded-xl flex items-center gap-1.5 shadow-xs cursor-pointer transition-colors border-0"
           >
             <Plus className="w-4 h-4" />
             <span>Create Campaign</span>
@@ -65,47 +62,35 @@ export default function CampaignsHeader({
         </div>
       </div>
 
-      {/* CATCHY PROMOTIONAL CAMPAIGN BAR FOR FREE MERCHANTS */}
+      {/* INFORMATIONAL PROMOTION CARD FOR STARTER MERCHANTS */}
       {isFreeMerchant ? (
-        <Card className="border border-rose-200/90 shadow-2xs rounded-2xl bg-gradient-to-br from-rose-50/60 via-white to-amber-50/40 p-3.5 sm:p-4 font-sans relative overflow-hidden">
+        <Card className="border border-brand-border/80 shadow-2xs rounded-2xl bg-warm-ivory/50 p-4 font-sans text-left">
           {/* STATE 1: NOT YET PURCHASED */}
           {!flashSalePurchased && !hasUsedCampaign && (
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3.5">
-              <div className="flex items-start gap-3 flex-1 min-w-0">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-rose-500 to-amber-500 text-white flex items-center justify-center shrink-0 shadow-2xs">
-                  <Zap className="w-4.5 h-4.5" />
+              <div className="space-y-1 flex-1 min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-[10px] font-semibold uppercase tracking-wider bg-white text-royal-plum border border-brand-border px-2 py-0.5 rounded-md">
+                    Starter Plan Feature
+                  </span>
                 </div>
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-[10px] font-bold uppercase tracking-wider bg-rose-100 text-rose-800 px-2 py-0.2 rounded-full">
-                      Free Partner Special • 1-Time Flash Sale Pass
-                    </span>
-                    <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/70 px-2 py-0.2 rounded-full">
-                      Flat 68% Off
-                    </span>
-                  </div>
-                  <h3 className="text-xs sm:text-sm font-bold text-slate-900 leading-tight">
-                    ⚡ Supercharge Your Store Visits With A 24–48hr Flash Sale
-                    Campaign!
-                  </h3>
-                  <p className="text-[11px] text-slate-600 font-normal leading-relaxed max-w-2xl">
-                    Free merchants can unlock 1 high-impact{" "}
-                    <strong>Flash Sale Campaign</strong> for just{" "}
-                    <span className="font-bold text-slate-900">₹799</span>{" "}
-                    (Original ₹2,499). Includes live urgency countdown timers on
-                    customer cards, 5x search spotlight &amp; active shopper
-                    alert!
-                  </p>
-                </div>
+                <h3 className="text-sm font-bold text-royal-plum font-heading">
+                  Promotional Flash Sale Pass
+                </h3>
+                <p className="text-xs text-slate-600 font-normal leading-relaxed max-w-2xl">
+                  Run a 24–48 hour promotional push for your store with live
+                  countdown timers and category spotlight for ₹799. Upgrading to
+                  Growth or Pro unlocks year-round festival campaigns.
+                </p>
               </div>
 
               <div className="flex items-center gap-2 w-full md:w-auto justify-end shrink-0 pt-1 md:pt-0">
                 <Button
+                  type="button"
                   onClick={onOpenPurchaseModal}
-                  className="w-full md:w-auto bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-semibold h-8.5 px-4 rounded-xl shadow-xs shadow-rose-500/20 cursor-pointer transition-all flex items-center justify-center gap-1.5"
+                  className="w-full md:w-auto bg-festival-teal hover:bg-[#00635E] text-white text-xs font-semibold h-8.5 px-4 rounded-xl shadow-xs cursor-pointer transition-colors border-0 flex items-center justify-center gap-1.5"
                 >
-                  <Zap className="w-3.5 h-3.5 text-amber-200" />
-                  <span>Unlock for ₹799</span>
+                  <span>Unlock Pass (₹799)</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Button>
               </div>
@@ -116,31 +101,32 @@ export default function CampaignsHeader({
           {flashSalePurchased && !hasUsedCampaign && (
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-xl bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-2xs">
+                <div className="w-8 h-8 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center shrink-0">
                   <CheckCircle2 className="w-4.5 h-4.5" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-slate-900">
-                      1-Time Flash Sale Campaign Pass Active
+                    <span className="text-xs font-bold text-royal-plum font-heading">
+                      Flash Sale Campaign Pass Active
                     </span>
-                    <Badge className="bg-emerald-100 text-emerald-800 text-[9px] font-semibold">
+                    <Badge className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[9px] font-semibold">
                       Ready to Launch
                     </Badge>
                   </div>
                   <p className="text-[11px] text-slate-600 font-normal">
-                    Your ₹799 promotional pass is active. You can now configure
-                    your 24–48hr Flash Sale offer.
+                    Your promotional pass is active. You can now configure your
+                    24–48hr Flash Sale offer.
                   </p>
                 </div>
               </div>
 
               <Button
+                type="button"
                 onClick={onCreateClick}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold h-8 px-4 rounded-xl shadow-xs cursor-pointer shrink-0"
+                className="bg-festival-teal hover:bg-[#00635E] text-white text-xs font-semibold h-8 px-4 rounded-xl shadow-xs cursor-pointer shrink-0 border-0 flex items-center gap-1.5"
               >
                 <span>Configure Flash Sale</span>
-                <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </Button>
             </div>
           )}
@@ -149,21 +135,21 @@ export default function CampaignsHeader({
           {hasUsedCampaign && (
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-xl bg-slate-200 text-slate-700 flex items-center justify-center shrink-0">
+                <div className="w-8 h-8 rounded-xl bg-slate-100 text-slate-600 border border-slate-200 flex items-center justify-center shrink-0">
                   <Clock className="w-4 h-4" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-slate-900">
+                    <span className="text-xs font-bold text-royal-plum font-heading">
                       1 of 1 Promotional Flash Sale Campaign Used
                     </span>
                     <Badge className="bg-slate-100 text-slate-600 text-[9px] font-medium border border-slate-200">
-                      Quota Finished
+                      Starter Limit
                     </Badge>
                   </div>
                   <p className="text-[11px] text-slate-500 font-normal">
-                    Free merchants are entitled to 1 promotional campaign. To
-                    run year-round Festival, Seasonal &amp; Loyalty campaigns,
+                    Starter merchants receive 1 promotional campaign. To run
+                    year-round Festival, Seasonal &amp; Loyalty campaigns,
                     upgrade to Growth Plan.
                   </p>
                 </div>
@@ -171,7 +157,7 @@ export default function CampaignsHeader({
 
               <Button
                 asChild
-                className="bg-[#FF2E63] hover:bg-[#e01e47] text-white text-xs font-semibold h-8 px-4 rounded-xl shadow-xs cursor-pointer shrink-0"
+                className="bg-festival-teal hover:bg-[#00635E] text-white text-xs font-semibold h-8 px-4 rounded-xl shadow-xs cursor-pointer shrink-0 border-0"
               >
                 <Link
                   href="/merchant/billing"
@@ -198,7 +184,7 @@ export default function CampaignsHeader({
           </div>
           <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
             <div
-              className="bg-[#FF2E63] h-full rounded-full transition-all duration-500"
+              className="bg-festival-teal h-full rounded-full transition-all duration-500"
               style={{
                 width: isPro
                   ? "25%"

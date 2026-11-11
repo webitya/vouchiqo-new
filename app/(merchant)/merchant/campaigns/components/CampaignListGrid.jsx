@@ -18,15 +18,15 @@ export default function CampaignListGrid({
       {/* Dashed Create Card */}
       <div
         onClick={onCreateClick}
-        className="border-2 border-dashed border-slate-300/80 hover:border-[#FF2E63] bg-slate-50/50 hover:bg-rose-50/20 transition-all rounded-2xl p-5 flex flex-col items-center justify-center text-center cursor-pointer min-h-[140px] group shadow-2xs"
+        className="border-2 border-dashed border-brand-border hover:border-festival-teal bg-warm-ivory/40 hover:bg-teal-50/20 transition-all rounded-2xl p-5 flex flex-col items-center justify-center text-center cursor-pointer min-h-[140px] group shadow-2xs"
       >
-        <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 group-hover:border-[#FF2E63] group-hover:scale-105 transition-all flex items-center justify-center text-slate-400 group-hover:text-[#FF2E63] mb-2 shadow-2xs">
+        <div className="w-9 h-9 rounded-xl bg-white border border-brand-border group-hover:border-festival-teal group-hover:scale-105 transition-all flex items-center justify-center text-slate-400 group-hover:text-festival-teal mb-2 shadow-2xs">
           <Plus className="w-4 h-4" />
         </div>
-        <h3 className="text-xs font-semibold text-slate-800 group-hover:text-[#FF2E63] transition-colors">
+        <h3 className="text-xs font-semibold text-royal-plum font-heading group-hover:text-festival-teal transition-colors">
           Create Campaign
         </h3>
-        <p className="text-[11px] text-slate-400 font-normal mt-0.5">
+        <p className="text-[11px] text-slate-400 font-sans mt-0.5">
           Plan &amp; launch a coordinated promotion
         </p>
       </div>
@@ -35,7 +35,7 @@ export default function CampaignListGrid({
       {campaigns.map((camp) => (
         <Card
           key={camp._id || camp.name}
-          className="border border-slate-200/90 shadow-2xs hover:border-rose-200 transition-all rounded-2xl overflow-hidden bg-white p-3.5 space-y-3 flex flex-col justify-between"
+          className="border border-slate-200/90 shadow-2xs hover:border-festival-teal/40 transition-all rounded-2xl overflow-hidden bg-white p-3.5 space-y-3 flex flex-col justify-between"
         >
           <div className="space-y-2">
             <div className="flex items-start justify-between gap-2">
